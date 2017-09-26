@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TBL_Contacts" representedClassName=".TBL_Contacts" syncable="YES">
+        <attribute name="contact_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="contact_selectedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TBL_DailyTips" representedClassName=".TBL_DailyTips" syncable="YES">
+        <attribute name="eventId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tipId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tipMessage" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TBL_Reminders" representedClassName=".TBL_Reminders" syncable="YES">
+        <attribute name="rmdrId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rmdrName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rmdrStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rmdrTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rmdrType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="TBL_Tweaks" representedClassName=".TBL_Tweaks" syncable="YES">
+        <attribute name="tweakAudioMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakDateCreated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakDateUpdated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakModifiedImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakOriginalImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakStatus" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakSuggestedText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TBL_Contacts" positionX="-596" positionY="-5562" width="128" height="103"/>
+        <element name="TBL_DailyTips" positionX="-774" positionY="-5566" width="128" height="103"/>
+        <element name="TBL_Reminders" positionX="-596" positionY="-5725" width="128" height="118"/>
+        <element name="TBL_Tweaks" positionX="-927" positionY="-5724" width="128" height="208"/>
+    </elements>
+</model>

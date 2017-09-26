@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OrkneyRegular.ttf">
+            <string>Orkney-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TweakServiceAgreement" customModule="Tweak_and_Eat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6J-OW-HxN">
+                    <rect key="frame" x="9" y="63" width="302" height="455"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWq-Ym-pbN">
+                    <rect key="frame" x="56" y="32" width="208" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="QIH-nz-YBU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Orkney-Regular" family="Orkney" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b63-ma-GPC">
+                    <rect key="frame" x="19" y="528" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="6oM-Rl-Rzh"/>
+                        <constraint firstAttribute="height" constant="26" id="Xpq-yA-WAY"/>
+                    </constraints>
+                    <state key="normal" image="whiteCheckbox"/>
+                    <connections>
+                        <action selector="checkBoxAct:" destination="iN0-l3-epB" eventType="touchUpInside" id="s4K-pO-Sah"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOV-J5-v4C">
+                    <rect key="frame" x="63" y="526" width="209" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="vjq-X6-zy6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <state key="normal" title="I Agree">
+                        <color key="titleColor" red="0.36368450520000001" green="0.086302645499999997" blue="0.53960508110000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="agreeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2Og-Eo-aad"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JOV-J5-v4C" secondAttribute="trailing" constant="48" id="AXx-mG-DrC"/>
+                <constraint firstItem="b63-ma-GPC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="EkE-AJ-f76"/>
+                <constraint firstItem="q6J-OW-HxN" firstAttribute="top" secondItem="wWq-Ym-pbN" secondAttribute="bottom" constant="10" id="Qgc-4I-rk5"/>
+                <constraint firstAttribute="bottom" secondItem="b63-ma-GPC" secondAttribute="bottom" constant="14" id="R4M-kt-sxB"/>
+                <constraint firstItem="wWq-Ym-pbN" firstAttribute="centerX" secondItem="q6J-OW-HxN" secondAttribute="centerX" id="T9B-N9-bF4"/>
+                <constraint firstItem="JOV-J5-v4C" firstAttribute="top" secondItem="q6J-OW-HxN" secondAttribute="bottom" constant="8" id="Ye3-6Y-NN8"/>
+                <constraint firstAttribute="trailing" secondItem="q6J-OW-HxN" secondAttribute="trailing" constant="9" id="Yz2-hU-Ojr"/>
+                <constraint firstItem="q6J-OW-HxN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="9" id="Z38-3R-r1r"/>
+                <constraint firstItem="wWq-Ym-pbN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="bA1-v0-M2K"/>
+                <constraint firstAttribute="bottom" secondItem="JOV-J5-v4C" secondAttribute="bottom" constant="12" id="osc-dw-TA5"/>
+                <constraint firstItem="wWq-Ym-pbN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="56" id="z26-g8-bIV"/>
+                <constraint firstItem="JOV-J5-v4C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="63" id="zT2-H0-O1t"/>
+            </constraints>
+            <connections>
+                <outlet property="agreedBtn" destination="JOV-J5-v4C" id="CCA-JF-Kg4"/>
+                <outlet property="checkBoxBtn" destination="b63-ma-GPC" id="aqe-MW-RNC"/>
+                <outlet property="termsServiceTextView" destination="q6J-OW-HxN" id="RhR-DK-iHP"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="54"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="whiteCheckbox" width="26" height="26"/>
+    </resources>
+</document>

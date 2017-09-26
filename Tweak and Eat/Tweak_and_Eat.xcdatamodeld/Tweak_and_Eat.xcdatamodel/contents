@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TBL_Tweaks" representedClassName="TBL_Tweaks" syncable="YES">
+        <attribute name="tweakAudioMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakDateCreated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakDateUpdated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakModifiedImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakOriginalImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakStatus" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tweakSuggestedText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TBL_Tweaks" positionX="-63" positionY="-18" width="128" height="210"/>
+    </elements>
+</model>
