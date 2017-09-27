@@ -75,6 +75,7 @@
 		57C3248D1D967C480057B590 /* TweakReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3248C1D967C480057B590 /* TweakReminderViewController.swift */; };
 		57C324961D9680450057B590 /* TweakAndEatRemindeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C324941D9680450057B590 /* TweakAndEatRemindeCell.swift */; };
 		57C324971D9680450057B590 /* TweakAndEatRemindeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */; };
+		731625941F7B9645007D48CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731625931F7B9645007D48CF /* WebViewController.swift */; };
 		735159F81F5C468B002F3CA1 /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159F71F5C468B002F3CA1 /* MyWallViewController.swift */; };
 		737D9C911F2F5A8400823448 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D9C901F2F5A8400823448 /* PieChart.swift */; };
 		737D9C931F30826B00823448 /* ExpandedPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D9C921F30826B00823448 /* ExpandedPieChart.swift */; };
@@ -291,6 +292,7 @@
 		57C3248C1D967C480057B590 /* TweakReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakReminderViewController.swift; sourceTree = "<group>"; };
 		57C324941D9680450057B590 /* TweakAndEatRemindeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakAndEatRemindeCell.swift; sourceTree = "<group>"; };
 		57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakAndEatRemindeCell.xib; sourceTree = "<group>"; };
+		731625931F7B9645007D48CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
 		735159F71F5C468B002F3CA1 /* MyWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
 		737D9C901F2F5A8400823448 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		737D9C921F30826B00823448 /* ExpandedPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedPieChart.swift; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 		849944601E41D01900C169A7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				731625931F7B9645007D48CF /* WebViewController.swift */,
 				57C324881D9664ED0057B590 /* AboutAppViewController.swift */,
 				84D7E24C1F3C863900E3BA6E /* ManageProfileViewController.swift */,
 				845089A31ED30301006C5C88 /* NotificationService.swift */,
@@ -1162,6 +1165,7 @@
 				84DB23E21F0FB2DD00725A92 /* TweakAndEatSelectionView.swift in Sources */,
 				5702E5F21D9EB34E00647A54 /* HCSStarRatingView.m in Sources */,
 				735159F81F5C468B002F3CA1 /* MyWallViewController.swift in Sources */,
+				731625941F7B9645007D48CF /* WebViewController.swift in Sources */,
 				5702E5E91D9D646100647A54 /* UIImageView+HighlightedWebCache.m in Sources */,
 				8490A84E1E63F240002DE7F8 /* AllowedCharsTextField.swift in Sources */,
 				5735D8361D79CEEB001DAF83 /* AFURLResponseSerialization.m in Sources */,
