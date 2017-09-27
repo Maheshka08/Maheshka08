@@ -40,12 +40,10 @@
 	<key>NSCameraUsageDescription</key>
 	<string>&quot;Tweak &amp; Eat&quot; wants to access camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; would like to access your contacts.
-By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+	<string>By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
 Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSContactsUsageDescription </key>
-	<string>&quot;Tweak &amp; Eat&quot; would like to access your contacts.
-By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+	<string>By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
 Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSLocalizedDescription</key>
 	<string>$(PRODUCT_NAME) local location</string>
