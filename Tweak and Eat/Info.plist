@@ -38,19 +38,23 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME)camera usage</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants to access camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Tweak and Eat will access your contacts. By clicking 'OK' below you give us the consent to communicate with and upload any contact chosen so Tweak &amp; Eat can 'Buzz' them when you need.</string>
+	<string>&quot;Tweak &amp; Eat&quot; would like to access your contacts.
+By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSContactsUsageDescription </key>
-	<string>Tweak and Eat will access your contacts. By clicking 'OK' below you give us the consent to communicate with and upload any contact chosen so Tweak &amp; Eat can 'Buzz' them when you need.</string>
+	<string>&quot;Tweak &amp; Eat&quot; would like to access your contacts.
+By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSLocalizedDescription</key>
-	<string>$(PRODUCT_NAME)local location</string>
+	<string>$(PRODUCT_NAME) local location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME)always show loaction</string>
+	<string>$(PRODUCT_NAME) always show loaction</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME)location manager</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants to use your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses photos</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants to access photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>$(PRODUCT_NAME) reminders</string>
 	<key>UIAppFonts</key>
