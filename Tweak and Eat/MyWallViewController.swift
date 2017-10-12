@@ -57,10 +57,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
-        
+        //if self.tweakFeedsInfo?.count == 0 {
             MBProgressHUD.showAdded(to: self.view, animated: true);
 
             self.getFireBaseData()
+//        } else {
+//            self.refreshPage = (self.tweakFeedsInfo?.count)!
+//        }
+//        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+//        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
         
         let userdefaults = UserDefaults.standard
         if userdefaults.string(forKey: "USERBLOCKED") != nil{
