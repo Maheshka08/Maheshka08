@@ -46,7 +46,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         tweakFeedsRef = Database.database().reference().child("TweakFeeds")
-   
+        self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
+
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
         for myProfObj in self.myProfileInfo! {
@@ -55,6 +56,80 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             Number = myProfObj.msisdn
             
         }
+        
+        tweakFeedsRef.observe(.childChanged, with: { (snapshot) in
+            let ID = snapshot.key
+            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = \(ID)")
+//            let feedObj = snapshot.value as? [String : AnyObject]
+//            
+//            let tweakFeedObj = TweakFeedsInfo()
+//            tweakFeedObj.feedContent = (feedObj?["feedContent"] as AnyObject) as! String
+//            
+//            tweakFeedObj.gender = (feedObj?["gender"] as AnyObject) as! String
+//            tweakFeedObj.imageUrl = (feedObj?["imageUrl"] as AnyObject) as! String
+//            tweakFeedObj.msisdn = (feedObj?["msisdn"] as AnyObject) as! String
+//            let milisecond = feedObj?["postedOn"] as AnyObject as! NSNumber;
+//            let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
+//            let dateFormatter = DateFormatter();
+//            dateFormatter.dateFormat = "d MMM, EEE, yyyy h:mm:ss:SSS a";
+//            let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
+//            tweakFeedObj.postedOn = dateArrayElement as! String
+//            tweakFeedObj.tweakOwner = (feedObj?["tweakOwner"] as AnyObject) as! String
+//            
+//            let awesomeCount = (feedObj?["awesomeCount"] as AnyObject) as! Int
+//            tweakFeedObj.awesomeCount = awesomeCount
+//            let awesomeMembers = feedObj?["awesomeMembers"]  as? [String : AnyObject]
+//            
+//            if awesomeCount != 0 && awesomeMembers != nil{
+//                for members in awesomeMembers! {
+//                    
+//                    let awesomeMemObj = AwesomeMembers()
+//                    let number = (members.value["msisdn"] as AnyObject) as! String
+//                    if number == self.Number {
+//                        awesomeMemObj.youLiked = "true"
+//                    }else {
+//                        awesomeMemObj.youLiked = "false"
+//                    }
+//                    awesomeMemObj.aweSomeNickName = (members.value["nickName"] as AnyObject) as! String
+//                    let milisecond = members.value["postedOn"] as AnyObject;
+//                    let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
+//                    let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
+//                    
+//                    awesomeMemObj.aweSomePostedOn = dateArrayElement as! String
+//                    awesomeMemObj.aweSomeMsisdn = (members.value["msisdn"] as AnyObject) as! String
+//                    tweakFeedObj.awesomeMembers.append(awesomeMemObj)
+//                }
+//            }
+//            let commentsCount = (feedObj?["commentsCount"] as AnyObject) as! Int
+//            tweakFeedObj.commentsCount = commentsCount
+//            let commentsMembers = feedObj?["comments"] as? [String : AnyObject]
+//            if commentsCount != 0 && commentsMembers != nil{
+//                for members in commentsMembers! {
+//                    let commentsObj = CommentsMembers()
+//                    
+//                    commentsObj.commentsCommentText = (members.value["commentText"] as AnyObject) as! String
+//                    commentsObj.commentsMsisdn = (members.value["msisdn"] as AnyObject) as! String
+//                    commentsObj.commentsNickName = (members.value["nickName"] as AnyObject) as! String
+//                    let milisecond = members.value["postedOn"] as AnyObject;
+//                    let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
+//                    let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
+//                    commentsObj.commentsPostedOn = dateArrayElement as! String
+//                    tweakFeedObj.comments.append(commentsObj)
+//                }
+//                
+//            }
+//            
+//            tweakFeedObj.snapShot = snapshot.key
+//            
+//            saveToRealmOverwrite(objType: TweakFeedsInfo.self, objValues: tweakFeedObj)
+//            let ind = self.tweakFeedsInfo?.index(of: <#T##TweakFeedsInfo#>)
+//                let indexPath = IndexPath(item: <#T##Int#>, section: <#T##Int#>)
+//                self.tableView.reloadRows(at: [indexPath], with: .none)
+            
+        })
+        
         tweakFeedsRef.observe(.childAdded, with: { snapshot in
             
             if snapshot.childrenCount > 0 {
@@ -142,7 +217,6 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tweakWallTableView.reloadData()
             }
         })
-        self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
         //if self.tweakFeedsInfo?.count == 0 {
             MBProgressHUD.showAdded(to: self.view, animated: true);
 
@@ -171,114 +245,36 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getFireBaseData() {
         
         
-        tweakFeedsRef.queryLimited(toLast: UInt(self.refreshPage)).observeSingleEvent(of: .value, with: { snapshot in            
-            if snapshot.childrenCount > 0 {
-                let dispatch_group = DispatchGroup()
-                dispatch_group.enter()
-
-                for tweakFeeds in snapshot.children.allObjects as! [DataSnapshot] {
-                    
-                    let feedObj = tweakFeeds.value as? [String : AnyObject]
-                    
-                    let tweakFeedObj = TweakFeedsInfo()
-                    tweakFeedObj.feedContent = (feedObj?["feedContent"] as AnyObject) as! String
-                    
-                    tweakFeedObj.gender = (feedObj?["gender"] as AnyObject) as! String
-                    tweakFeedObj.imageUrl = (feedObj?["imageUrl"] as AnyObject) as! String
-                    tweakFeedObj.msisdn = (feedObj?["msisdn"] as AnyObject) as! String
-                    let milisecond = feedObj?["postedOn"] as AnyObject as! NSNumber;
-                    let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-                    let dateFormatter = DateFormatter();
-                    dateFormatter.dateFormat = "d MMM, EEE, yyyy h:mm:ss:SSS a";
-                    let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-                    tweakFeedObj.postedOn = dateArrayElement as! String
-                    tweakFeedObj.tweakOwner = (feedObj?["tweakOwner"] as AnyObject) as! String
-                    
-                    let awesomeCount = (feedObj?["awesomeCount"] as AnyObject) as! Int
-                    tweakFeedObj.awesomeCount = awesomeCount
-                    let awesomeMembers = feedObj?["awesomeMembers"]  as? [String : AnyObject]
-                    
-                    if awesomeCount != 0 && awesomeMembers != nil{
-                        for members in awesomeMembers! {
-                            
-                            let awesomeMemObj = AwesomeMembers()
-                            let number = (members.value["msisdn"] as AnyObject) as! String
-                            if number == self.Number {
-                                awesomeMemObj.youLiked = "true"
-                            }else {
-                                awesomeMemObj.youLiked = "false"
-                            }
-                            awesomeMemObj.aweSomeNickName = (members.value["nickName"] as AnyObject) as! String
-                            let milisecond = members.value["postedOn"] as AnyObject;
-                            let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-                            let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-                            
-                            awesomeMemObj.aweSomePostedOn = dateArrayElement as! String
-                            awesomeMemObj.aweSomeMsisdn = (members.value["msisdn"] as AnyObject) as! String
-                            tweakFeedObj.awesomeMembers.append(awesomeMemObj)
-                        }
-                    }
-                    let commentsCount = (feedObj?["commentsCount"] as AnyObject) as! Int
-                    tweakFeedObj.commentsCount = commentsCount
-                    let commentsMembers = feedObj?["comments"] as? [String : AnyObject]
-                    if commentsCount != 0 && commentsMembers != nil{
-                        for members in commentsMembers! {
-                            let commentsObj = CommentsMembers()
-                            
-                            commentsObj.commentsCommentText = (members.value["commentText"] as AnyObject) as! String
-                            commentsObj.commentsMsisdn = (members.value["msisdn"] as AnyObject) as! String
-                            commentsObj.commentsNickName = (members.value["nickName"] as AnyObject) as! String
-                            let milisecond = members.value["postedOn"] as AnyObject;
-                            let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-                            let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-                            commentsObj.commentsPostedOn = dateArrayElement as! String
-                            tweakFeedObj.comments.append(commentsObj)
-                        }
-                        
-                    }
-                    
-                    tweakFeedObj.snapShot = tweakFeeds.key
-                    
-                    saveToRealmOverwrite(objType: TweakFeedsInfo.self, objValues: tweakFeedObj)
-                }
-                    self.initialLoad = false
-                dispatch_group.leave()
-                dispatch_group.notify(queue: DispatchQueue.main) {
-                    
-                    let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-                    self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    
-                    self.tweakWallTableView.reloadData()
-                }
-                
-            }
+        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
+            print("inital data loaded so reload tableView!  /(snapshot.childrenCount)")
+            self.tweakWallTableView.reloadData()
+            self.initialLoad = false
             
             
             
         })
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if !loadingData && indexPath.row == self.refreshPage - 1 {
-            loadingData = true
-            MBProgressHUD.showAdded(to: self.view, animated: true);
-            self.refreshPage += 10
-            loadMoreData()
-        }
-    }
-    
-    func loadMoreData() {
-        DispatchQueue.global(qos: .background).async {
-            // this runs on the background queue
-            // here the query starts to add new 10 rows of data to arrays
-            self.getFireBaseData()
-            DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true);
-                self.loadingData = false
-                
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if !loadingData && indexPath.row == self.refreshPage - 1 {
+//            loadingData = true
+//            MBProgressHUD.showAdded(to: self.view, animated: true);
+//            self.refreshPage += 10
+//            loadMoreData()
+//        }
+//    }
+//    
+//    func loadMoreData() {
+//        DispatchQueue.global(qos: .background).async {
+//            // this runs on the background queue
+//            // here the query starts to add new 10 rows of data to arrays
+//            self.getFireBaseData()
+//            DispatchQueue.main.async {
+//                MBProgressHUD.hide(for: self.view, animated: true);
+//                self.loadingData = false
+//                
+//            }
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
