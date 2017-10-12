@@ -47,6 +47,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         tweakFeedsRef = Database.database().reference().child("TweakFeeds")
         self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
+        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
 
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
@@ -131,7 +133,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         })
         
-        tweakFeedsRef.observe(.childAdded, with: { snapshot in
+        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
             
             if snapshot.childrenCount > 0 {
                 let dispatch_group = DispatchGroup()
@@ -221,7 +223,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //if self.tweakFeedsInfo?.count == 0 {
             MBProgressHUD.showAdded(to: self.view, animated: true);
 
-            self.getFireBaseData()
+            //self.getFireBaseData()
 //        } else {
 //            self.refreshPage = (self.tweakFeedsInfo?.count)!
 //        }
