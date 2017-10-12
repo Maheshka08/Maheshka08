@@ -45,21 +45,11 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MBProgressHUD.showAdded(to: self.view, animated: true);
-
         tweakFeedsRef = Database.database().reference().child("TweakFeeds")
-                DispatchQueue.global(qos: .background).async {
-                    // this runs on the background queue
-                    // here the query starts to add new 10 rows of data to arrays
-                    self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
-                    let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-                    self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-                    DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: self.view, animated: true);
-                        
-                    }
-                }
-      
+        
+        self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
+        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
 
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
@@ -230,6 +220,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
         //if self.tweakFeedsInfo?.count == 0 {
+            MBProgressHUD.showAdded(to: self.view, animated: true);
 
             //self.getFireBaseData()
 //        } else {
