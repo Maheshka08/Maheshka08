@@ -132,7 +132,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         })
         
-        tweakFeedsRef.observe(DataEventType.value, with: { snapshot in
+        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
             
             if snapshot.childrenCount > 0 {
                 let dispatch_group = DispatchGroup()
