@@ -60,12 +60,16 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         
-        tweakFeedsRef.observe(DataEventType.childChanged, with: { (snapshot) in
-            //let ID = snapshot.key
-//            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-//            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-//            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = %@",ID)
-//            print(index)
+        tweakFeedsRef.observe(DataEventType.childAdded, with: { (snapshot) in
+            let ID = snapshot.key
+            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = %@",ID)
+            print(index)
+            for ind in index {
+                if ind["snapShot"] as AnyObject as? String == ID {
+                    
+                
             let feedObj = snapshot.value as? [String : AnyObject]
             
             let tweakFeedObj = TweakFeedsInfo()
@@ -128,10 +132,12 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tweakFeedObj.snapShot = snapshot.key
             
             saveToRealmOverwrite(objType: TweakFeedsInfo.self, objValues: tweakFeedObj)
-//            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-//            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
 
                 self.tweakWallTableView.reloadRows(at: [self.myIndexPath], with: .none)
+                }
+            }
             
         })
         
