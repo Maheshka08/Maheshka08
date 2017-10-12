@@ -12,6 +12,7 @@ class TweakAnimationWelcomeView: UIView {
     
     let screenHeight: CGFloat = UIScreen.main.bounds.height;
     
+    @IBOutlet var refreshView: UIView!
     @IBOutlet var animationView: UIView!;
     @IBOutlet var welcomeNote: UILabel!;
     @IBOutlet var welcomeToLabel: UILabel!;
@@ -41,6 +42,9 @@ class TweakAnimationWelcomeView: UIView {
         delegate.switchToSecondScreen();
     }
     
+    @IBAction func refreshPage(_ sender: Any) {
+        delegate.getStaticText()
+    }
    
     
     func animateLogo() {

@@ -262,6 +262,8 @@ class TweakAndEatOptionsView: UIView, UITextFieldDelegate {
                                             //error
                                             print("error")
                                             TweakAndEatUtils.hideMBProgressHUD()
+                                            let alert : UIAlertView = UIAlertView(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", delegate: nil, cancelButtonTitle: "OK");
+                                            alert.show();
                                         }
                                     }
                                     //TweakAndEatUtils.hideMBProgressHUD()
@@ -275,6 +277,8 @@ class TweakAndEatOptionsView: UIView, UITextFieldDelegate {
                             //error
                             print("error")
                             TweakAndEatUtils.hideMBProgressHUD()
+                            let alert : UIAlertView = UIAlertView(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", delegate: nil, cancelButtonTitle: "OK");
+                            alert.show();
                         }
                         
                         
@@ -290,6 +294,8 @@ class TweakAndEatOptionsView: UIView, UITextFieldDelegate {
             //error
             print("error")
             TweakAndEatUtils.hideMBProgressHUD()
+            let alert : UIAlertView = UIAlertView(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", delegate: nil, cancelButtonTitle: "OK");
+            alert.show();
         }
     }
     
@@ -352,6 +358,8 @@ class TweakAndEatOptionsView: UIView, UITextFieldDelegate {
                     //error
                     print("error")
                     TweakAndEatUtils.hideMBProgressHUD()
+                    let alert : UIAlertView = UIAlertView(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", delegate: nil, cancelButtonTitle: "OK");
+                    alert.show();
                 }
             } else {
                 if(delegate.selectedGender == "M") {

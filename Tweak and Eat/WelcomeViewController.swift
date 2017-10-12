@@ -80,12 +80,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    
+    
     override func viewDidLoad() {
-        //  del()
-        //  alert()
+        
         super.viewDidLoad()
-        
-        
+        appDelegateTAE = UIApplication.shared.delegate as! AppDelegate;
+
         picker.delegate = self;
         self.tweakReactView.layer.borderWidth = 1;
         self.tweakReactView.layer.borderColor = UIColor.white.cgColor;
@@ -100,7 +101,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         self.tweakTermsServiceView = (Bundle.main.loadNibNamed("TweakServiceAgreement", owner: self, options: nil)! as NSArray).firstObject as! TweakServiceAgreement;
         
-        //randomTitbitMessage()
         locManager.delegate = self;
         locManager.desiredAccuracy = kCLLocationAccuracyBest;
         locManager.requestWhenInUseAuthorization();
@@ -108,7 +108,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways)
         {
-            //print(locManager.location!)"\(ratingView.value)"
+            
             latitude = "\(locManager.location?.coordinate.latitude ?? 0.0)";
             longitude = "\(locManager.location?.coordinate.longitude ?? 0.0)";
             
@@ -116,6 +116,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.reachabilityChanged(notification:)), name: NSNotification.Name.reachabilityChanged, object: nil);
+        
+        self.getStaticText()
+        
+    }
+    
+    func getStaticText() {
         let showRegistration : Bool?  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool;
         if(showRegistration == nil || showRegistration!) {
             
@@ -123,7 +129,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.navigationController?.isNavigationBarHidden = true;
             
             tweakView = (Bundle.main.loadNibNamed("TweakAnimationWelcomeView", owner: self, options: nil)! as NSArray).firstObject as! TweakAnimationWelcomeView;
-           // self.tweakView.blockedUserView.isHidden = true
             tweakView.frame = self.view.frame;
             tweakView.delegate = self;
             self.view.addSubview(tweakView);
@@ -133,6 +138,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 MBProgressHUD.showAdded(to: self.view, animated: true);
                 APIWrapper.sharedInstance.getStaticText({ (responceDic : AnyObject!) ->(Void) in
                     if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                        self.tweakView.refreshView.isHidden = true
+
                         let response : [String:AnyObject] = responceDic as! [String:AnyObject];
                         var welcomeText : NSString? = nil;
                         if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
@@ -167,26 +174,34 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }) { (error : NSError!) -> (Void) in
                     //error
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.tweakView.refreshView.isHidden = false
+
                 }
             }
             if(self.reachability.currentReachabilityStatus() == NetworkStatus.NotReachable) {
-                self.showNetworkFailureScreen();
+                MBProgressHUD.hide(for: self.view, animated: true);
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+                // self.showNetworkFailureScreen();
+                self.tweakView.refreshView.isHidden = false
             } else {
                 appDelegateTAE.networkReconnectionBlock!();
             }
         }
-        
     }
+    
     func registrationProcess(){
-         TweakAndEatUtils.AlertView.showAlert(view: self, message: "You account is in 'Blocked' status\n\nAn account is usually blocked if a user violates our 'Terms of Use'.You can please contact us at appsmanager@purpleteal.com to request ‘Unblocking’ the account.")
+        TweakAndEatUtils.AlertView.showAlert(view: self, message: "You account is in 'Blocked' status\n\nAn account is usually blocked if a user violates our 'Terms of Use'.You can please contact us at appsmanager@purpleteal.com to request ‘Unblocking’ the account.")
         
-        //        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.reachabilityChanged(notification:)), name: NSNotification.Name.reachabilityChanged, object: nil);
-        // let showRegistration : Bool?  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool;
-        // if(showRegistration == nil || showRegistration!) {
         self.tabBarController?.tabBar.isHidden = true;
         self.navigationController?.isNavigationBarHidden = true;
         tweakView = (Bundle.main.loadNibNamed("TweakAnimationWelcomeView", owner: self, options: nil)! as NSArray).firstObject as! TweakAnimationWelcomeView;
-       // tweakView.blockedUserView.isHidden = false
         tweakView.frame = self.view.bounds;
         tweakView.delegate = self;
         self.view.addSubview(tweakView);
@@ -230,15 +245,20 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }) { (error : NSError!) -> (Void) in
                 //error
                 MBProgressHUD.hide(for: self.view, animated: true);
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
-        if(self.reachability.currentReachabilityStatus() == NetworkStatus.NotReachable) {
-            self.showNetworkFailureScreen();
-        } else {
-            appDelegateTAE.networkReconnectionBlock!();
-        }
+//        if(self.reachability.currentReachabilityStatus() == NetworkStatus.NotReachable) {
+//            self.showNetworkFailureScreen();
+//        } else {
+//            appDelegateTAE.networkReconnectionBlock!();
+//        }
         //  }
     }
+    
     func takephoto()
     {
         
@@ -318,11 +338,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         if userdefaults.string(forKey: "userSession") != nil{
             self.tabBarController?.tabBar.isHidden = false
         }
-       
-        
+            
+            
         else {
             self.tabBarController?.tabBar.isHidden = true
-
+            
         }
         if userdefaults.string(forKey: "USERBLOCKED") != nil{
             
@@ -346,7 +366,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if UserDefaults.standard.value(forKey: "userSession") as? String != nil {
             //  foodHabitsImages()
-            randomTitbitMessage()
+            // randomTitbitMessage()
             homeInfoApiCalls()
         }
         
@@ -357,16 +377,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             comingFromSettings = false;
         }
     }
+    
     func alert(){
-        //        let alert = UIAlertController(title: "Alert", message: "My Alert for test", preferredStyle: UIAlertControllerStyle.alert)
-        //        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
-        //            print("you have pressed the ok button")
-        
         self.registrationProcess()
-        
-        // }))
-        //self.present(alert, animated: true, completion: nil)
     }
+    
+    
     func scheduleNotification(hour : String, min : String, title:String, body: String) {
         
         if #available(iOS 10.0, *) {
@@ -392,7 +408,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     internal func schedule(request: UNNotificationRequest!) {
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             if error != nil {
-                print(error?.localizedDescription as String!);
+               // print("Your internet connection appears to be offline !!" as String!);
             }
         }
     }
@@ -453,6 +469,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }) { (error : NSError!) -> (Void) in
             print("Error in reminders");
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+            
         }
         
     }
@@ -489,12 +510,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
         }) { (error : NSError!) -> (Void) in
             print("Error in reminders");
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         }
         
     }
     
     func checkTweakable(){
-        //  MBProgressHUD.showAdded(to: self.view, animated: true);
+        
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.CHECKTWEAKABLE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
             let responseResult = responseDic["callStatus"] as! String
@@ -505,7 +530,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             } else{
                 let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NutritionistPopViewController") as! NutritionistPopViewController;
                 self.addChildViewController(popOverVC);
-                // popOverVC.view.frame = self.view.frame;
                 popOverVC.viewController = self
                 popOverVC.popUp = true
                 self.view.addSubview(popOverVC.view);
@@ -514,7 +538,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }, failure : { error in
             
-            
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         })
         
     }
@@ -530,13 +557,17 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     self.tweakStreak()
                 }
             } else {
-                //error
+                
                 print("error")
                 
             }
         }) { (error : NSError!) -> (Void) in
             //error
             print("error")
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
             
         }
         
@@ -558,37 +589,38 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.present(alertController, animated: true, completion: nil);
             }
         }, failure : { error in
-            
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
             
         })
     }
     
     
     func foodHabitsImages(){
-        //  MBProgressHUD.showAdded(to: self.view, animated: true);
+        
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.USER_HOMEPAGE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
             
             self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));
             
-            //  MBProgressHUD.hide(for: self.view, animated: true);
             
         }, failure : { error in
             
-            let alertController = UIAlertController.init(title: nil, message: "Something went wrong!", preferredStyle : .alert);
-            alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler : nil));
-            self.present(alertController, animated: true, completion: nil);
-            MBProgressHUD.hide(for: self.view, animated: true);
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         })
     }
     
     
     
     func homeInfoApiCalls(){
-        //  MBProgressHUD.showAdded(to: self.view, animated: true);
+        
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
-            //  let responseResult = responseDic["callStatus"] as! String
             
             let tweakStreakCountValue = responseDic["tweakStreak"] as! Int
             UserDefaults.standard.setValue(responseDic["userStatus"], forKey: "userStatusInfo")
@@ -599,8 +631,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
                 self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));
                 self.tweakStreakCount.text = String(tweakStreakCountValue )
-
-
+                
+                
             }
             else if  userStatus == 0{
                 UserDefaults.standard.removeObject(forKey: "userSession")
@@ -611,15 +643,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.deleteAllData(entity: "TBL_Reminders")
                 self.alert()
                 self.del()
-
+                
             }
-            //  MBProgressHUD.hide(for: self.view, animated: true);
+            self.randomTitbitMessage()
             
         }, failure : { error in
             
-            let alertController = UIAlertController.init(title: nil, message: "Something went wrong!", preferredStyle : .alert);
-            alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler : nil));
-            self.present(alertController, animated: true, completion: nil);
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
             MBProgressHUD.hide(for: self.view, animated: true);
         })
     }
@@ -645,7 +678,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
         }
     }
-
+    
     
     func del(){
         
@@ -655,20 +688,19 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
-    
     func reachabilityChanged(notification : NSNotification) {
-        let networkStatus : NetworkStatus = self.reachability.currentReachabilityStatus();
-        if(networkStatus == NetworkStatus.NotReachable) {
-            self.showNetworkFailureScreen();
-        } else {
-            if(appDelegateTAE.networkReconnectionBlock != nil) {
-                appDelegateTAE.networkReconnectionBlock!();
-            }
-            if(tweakNoNetworkView != nil) {
-                tweakNoNetworkView.removeFromSuperview();
-                tweakNoNetworkView = nil;
-            }
-        }
+        //        let networkStatus : NetworkStatus = self.reachability.currentReachabilityStatus();
+        //        if(networkStatus == NetworkStatus.NotReachable) {
+        //            self.showNetworkFailureScreen();
+        //        } else {
+        //            if(appDelegateTAE.networkReconnectionBlock != nil) {
+        //                appDelegateTAE.networkReconnectionBlock!();
+        //            }
+        //            if(tweakNoNetworkView != nil) {
+        //                tweakNoNetworkView.removeFromSuperview();
+        //                tweakNoNetworkView = nil;
+        //            }
+        //        }
     }
     
     func showNetworkFailureScreen() {
@@ -700,13 +732,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
             })
             
-            //            let termsOfUseTextDic = self.introTextArray!.filter({ (element) -> Bool in
-            //                if((element as! NSDictionary).value(forKey: TweakAndEatConstants.STATIC_NAME) as! String == TweakAndEatConstants.TERMS_OF_USE) {
-            //                    return true;
-            //                } else {
-            //                    return false;
-            //                }
-            //            })
             
             var welcomeText : String? = nil;
             
@@ -714,17 +739,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 welcomeText = (introTextDic[0] as! NSDictionary).value(forKey: TweakAndEatConstants.STATIC_VALUE) as? String;
             }
             
-            //            if(termsOfUseTextDic.count > 0) {
-            //                termsOfUse = (termsOfUseTextDic[0] as! NSDictionary).value(forKey: TweakAndEatConstants.STATIC_VALUE) as? String;
-            //            }
-            
             
             if(welcomeText != nil) {
                 self.changeFonts((welcomeText!.html2AttributedString.mutableCopy()) as! NSMutableAttributedString);
             }
-            //            if(termsOfUse != nil) {
-            //                self.changeFonts1((termsOfUse!.html2AttributedString.mutableCopy()) as! NSMutableAttributedString);
-            //            }
+            
         }
     }
     
@@ -769,6 +788,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }) { (error : NSError!) -> (Void) in
                 //error
                 TweakAndEatUtils.hideMBProgressHUD();
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         appDelegateTAE.networkReconnectionBlock!();
@@ -953,7 +976,17 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
                     // let pushToken = status.subscriptionStatus.pushToken
                     let userId = status.subscriptionStatus.userId;
+                    if userId != nil {
                     UserDefaults.standard.setValue(userId! as String, forKey: "PLAYER_ID");
+                    } else {
+                        self.tabBarController?.tabBar.isHidden = true
+                        let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                        let defaultAction = UIAlertAction(title: "Refresh", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        return
+                    }
+                    
                     
                     self.getTimeLines();
                     APIWrapper.sharedInstance.sendGCM(["gcmId":UserDefaults.standard.value(forKey: "PLAYER_ID") as Any], userSession: userSession, successBlock: {(responseDic : AnyObject!) -> (Void) in
@@ -989,7 +1022,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                 } else {
                                     
                                     //Tells the user that there is an error and then gets firebase to tell them the error
-                                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                                    let alertController = UIAlertController(title: "Error", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
                                     
                                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                                     alertController.addAction(defaultAction)
@@ -1000,7 +1033,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             
                         }, failure: { error in
                             print("failure");
-                            let alertController = UIAlertController(title: "No Internet Connection", message: error?.localizedDescription, preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
                             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                             alertController.addAction(defaultAction)
                             self.present(alertController, animated: true, completion: nil)
@@ -1010,7 +1043,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         
                     }, failureBlock: {(error : NSError!) -> (Void) in
                         print("Failure");
-                        let alertController = UIAlertController(title: "No Internet Connection", message: error?.localizedDescription, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alertController.addAction(defaultAction)
                         self.present(alertController, animated: true, completion: nil)
@@ -1024,7 +1057,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }, failureBlock: { (error : NSError!) -> (Void) in
                 //error
                 print("error");
-                let alertController = UIAlertController(title: "No Internet Connection", message: error?.localizedDescription, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
@@ -1034,7 +1067,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         appDelegateTAE.networkReconnectionBlock!();
     }
-    
     
     
     func getTimeLines(){
@@ -1047,7 +1079,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     for tweak in tweaks! {
                         DataManager.sharedInstance.saveTweak(tweak: tweak as! NSDictionary);
                         
-                        
                     }
                     self.addReminders();
                     
@@ -1057,6 +1088,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
         }) { (error : NSError!) -> (Void) in
             print("failure");
+            
             self.addReminders();
             TweakAndEatUtils.hideMBProgressHUD();
         }
@@ -1136,7 +1168,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func onClickOfSettings(_ sender: AnyObject) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-        let tabBarController : UITabBarController = storyBoard.instantiateViewController(withIdentifier: "settingsTabController") as! UITabBarController;
+        let tabBarController : UITabBarController = storyBoard.instantiateViewController(withIdentifier: "settingsTabController") as! SettingsTabBarController;
+        //tabBarController.selectedIndex = 2
         self.navigationController?.pushViewController(tabBarController, animated: true);
     }
     
@@ -1218,13 +1251,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
         let faces = faceDetector?.features(in: personciImage)
         print(faces!.count)
-//        if faces!.count > 0 {
-//            self.faceDetectionView.isHidden = false
-//            //self.faceDetectionView.addSubview(faceDetectionImageView)
-//            self.faceDetectionImageView.image = detect
-//            self.settingsBarButton.isEnabled = false
-//            
-//        }
+        
         // Convert Core Image Coordinate to UIView Coordinate
         let ciImageSize = personciImage.extent.size
         var transform = CGAffineTransform(scaleX: 1, y: -1)
@@ -1277,8 +1304,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.navigationController?.pushViewController(clickViewController, animated: true);
     }
     
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -1289,6 +1314,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
+    
     func getProfileData(){
         if UserDefaults.standard.value(forKey: "userSession") as? String != nil {
             APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.PROFILEFACTS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
@@ -1307,8 +1333,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     saveToRealmOverwrite(objType: TweakPieChartValues.self, objValues: chartValues)
                 }
                 
-                
-                
                 self.pieChartView = (Bundle.main.loadNibNamed("TweakPieChartView", owner: self, options: nil)! as NSArray).firstObject as! TweakPieChartView;
                 self.pieChartView.frame = self.view.frame;
                 self.pieChartView.delegate = self;
@@ -1319,7 +1343,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
                 
             }, failure : { error in
-                
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
                 
             })
         }

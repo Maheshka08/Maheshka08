@@ -172,7 +172,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }) { (error : NSError!) -> (Void) in
                 MBProgressHUD.hide(for: self.view, animated: true);
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: "NO EDR")
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
                 MBProgressHUD.hide(for: self.view, animated: true);
             }
         }

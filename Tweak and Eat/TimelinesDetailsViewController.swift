@@ -181,6 +181,10 @@ class TimelinesDetailsViewController: UIViewController, GADBannerViewDelegate, G
                 
             }, failureBlock: {(error : NSError!) -> (Void) in
                 print("Failure");
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
             })
 
         }

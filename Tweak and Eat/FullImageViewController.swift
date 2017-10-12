@@ -157,7 +157,17 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
         let currentTime = Int64(currentTimeStamp);
         
         // convert to Integer
-        self.tweakFeedsRef.child("TweakFeeds").childByAutoId().setValue(["feedContent": tweakFeedComments.text! as AnyObject, "imageUrl": imageUrl!, "gender": self.sex, "postedOn" : currentTime! , "tweakOwner": self.nicKName, "msisdn" : self.userMsisdn, "awesomeCount" : 0, "commentsCount" : 0] as [String : AnyObject]);
+        DispatchQueue.global(qos: .background).async {
+            self.tweakFeedsRef.child("TweakFeeds").childByAutoId().setValue(["feedContent": self.tweakFeedComments.text! as AnyObject, "imageUrl": self.imageUrl!, "gender": self.sex, "postedOn" : currentTime! , "tweakOwner": self.nicKName, "msisdn" : self.userMsisdn, "awesomeCount" : 0, "commentsCount" : 0] as [String : AnyObject]);
+            DispatchQueue.main.async {
+         
+                self.tweakFeedComments.text = "";
+                self.view.frame = CGRect(x:0, y:0, width: self.view.frame.size.width, height: self.view.frame.size.height);
+                self.view.endEditing(true);
+
+            }
+        }
+        
        
         let alert = UIAlertController(title: "Alert", message: "Your Tweak has been Shared to Tweak Wall Sucessfully!", preferredStyle: UIAlertControllerStyle.alert);
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
@@ -168,8 +178,5 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
         
         self.present(alert, animated: true, completion: nil);
 
-        self.tweakFeedComments.text = "";
-        self.view.frame = CGRect(x:0, y:0, width: self.view.frame.size.width, height: self.view.frame.size.height);
-        self.view.endEditing(true);
-        }
+                }
 }

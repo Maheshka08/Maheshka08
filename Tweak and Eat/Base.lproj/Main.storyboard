@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="65N-aM-d2q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="65N-aM-d2q">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1296,9 +1296,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="About App" image="AboutApp" id="AzV-sv-kym"/>
                     <connections>
+                        <outlet property="buildNumberLabel" destination="Myb-4F-eb7" id="BJd-31-DQx"/>
                         <outlet property="communityGuidelinesBtn" destination="wPc-xX-iyT" id="3Po-Lu-tqP"/>
                         <outlet property="privacyPolicyBtn" destination="KxX-fr-UIN" id="Lh4-im-qGp"/>
                         <outlet property="termsAndPolicyBtn" destination="tka-kh-Jx7" id="uKD-Cd-O6d"/>
+                        <outlet property="versionNumberLabel" destination="clU-97-nvy" id="era-ZX-BKR"/>
                         <segue destination="bJs-bv-bQh" kind="show" identifier="showWebView" id="cj4-dL-0Dr"/>
                     </connections>
                 </viewController>
@@ -1369,14 +1371,14 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportsCell" rowHeight="437" id="djF-z7-z9G" customClass="ReportsTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="437"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="437"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="djF-z7-z9G" id="zbb-Ix-eTf">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="436.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reports from " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-rN-aOQ">
-                                                    <rect key="frame" x="0.0" y="47" width="375" height="25"/>
+                                                    <rect key="frame" x="0.0" y="47" width="320" height="25"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="Tmy-fL-NIn"/>
@@ -1409,7 +1411,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-07-31" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKo-h9-LHR">
-                                                    <rect key="frame" x="0.0" y="8" width="375" height="37"/>
+                                                    <rect key="frame" x="0.0" y="8" width="320" height="37"/>
                                                     <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="L8U-g9-tMQ"/>
@@ -1419,7 +1421,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reports from " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuO-eW-Sir">
-                                                    <rect key="frame" x="0.0" y="237" width="375" height="25"/>
+                                                    <rect key="frame" x="0.0" y="237" width="320" height="25"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="M1a-a4-KAY"/>
@@ -1771,10 +1773,10 @@ It will also include 'Recommendations for the coming week in terms of both % car
             </objects>
             <point key="canvasLocation" x="1257" y="-1057"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Settings Tab Bar Controller-->
         <scene sceneID="76z-1Z-eQw">
             <objects>
-                <tabBarController storyboardIdentifier="settingsTabController" id="Blh-RC-Ld6" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="settingsTabController" id="Blh-RC-Ld6" customClass="SettingsTabBarController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="382" height="667"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="HJa-LL-UyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -2083,17 +2085,17 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" rowHeight="478" id="yKh-8Z-RK8" customClass="TweakMyWallTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="478"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="478"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yKh-8Z-RK8" id="EBJ-cu-xgo">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="477.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="477"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n88-1k-HEL">
-                                                    <rect key="frame" x="6" y="3" width="363.5" height="423"/>
+                                                    <rect key="frame" x="6" y="3" width="309" height="423"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 Minsago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Um-nk-cnp">
-                                                            <rect key="frame" x="45" y="23" width="274.5" height="11"/>
+                                                            <rect key="frame" x="45" y="23" width="220" height="11"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="11" id="PU6-r4-xU6"/>
                                                             </constraints>
@@ -2111,7 +2113,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cdgsfhvebdgshfcbhfebufyeywyufeuyefyefuyuyfewjkjkjkkjkjkjjkjjkjk" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIB-fn-MQO">
-                                                            <rect key="frame" x="8" y="42" width="347.5" height="24"/>
+                                                            <rect key="frame" x="8" y="42" width="293" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="quy-mO-ZUv"/>
                                                             </constraints>
@@ -2134,7 +2136,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRx-1w-eO2">
-                                                            <rect key="frame" x="163.5" y="384" width="35" height="35"/>
+                                                            <rect key="frame" x="136.5" y="384" width="35" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="8Rx-T4-K4R"/>
                                                                 <constraint firstAttribute="width" constant="35" id="SDU-n9-OOB"/>
@@ -2148,7 +2150,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tz-TK-0xb">
-                                                            <rect key="frame" x="313.5" y="384" width="35" height="35"/>
+                                                            <rect key="frame" x="259" y="384" width="35" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="35" id="qr4-cM-z2c"/>
                                                                 <constraint firstAttribute="height" constant="35" id="rMe-Ak-0j5"/>
@@ -2162,7 +2164,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anusha Thota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se5-9b-XYd">
-                                                            <rect key="frame" x="45" y="6" width="274.5" height="15"/>
+                                                            <rect key="frame" x="45" y="6" width="220" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="cnI-I1-Yc3"/>
                                                             </constraints>
@@ -2171,7 +2173,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yw5-xb-mRZ">
-                                                            <rect key="frame" x="0.0" y="373" width="363.5" height="1"/>
+                                                            <rect key="frame" x="0.0" y="373" width="309" height="1"/>
                                                             <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="zGw-25-hZV"/>
@@ -2201,7 +2203,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnh-mA-GRw">
-                                                            <rect key="frame" x="238.5" y="341" width="125" height="30"/>
+                                                            <rect key="frame" x="184" y="341" width="125" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="LPs-RU-fhW"/>
                                                                 <constraint firstAttribute="width" constant="125" id="vK6-tc-N94"/>
@@ -2214,7 +2216,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozn-gj-XH7">
-                                                            <rect key="frame" x="44" y="387" width="109.5" height="30"/>
+                                                            <rect key="frame" x="44" y="387" width="82.5" height="30"/>
                                                             <state key="normal" title="Awesome">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
@@ -2223,7 +2225,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o2-bn-lcN">
-                                                            <rect key="frame" x="202.5" y="387" width="105" height="30"/>
+                                                            <rect key="frame" x="175.5" y="387" width="77.5" height="30"/>
                                                             <state key="normal" title="Comments">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
@@ -2276,7 +2278,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-5J-2EY">
-                                                    <rect key="frame" x="3" y="427" width="368.5" height="49"/>
+                                                    <rect key="frame" x="3" y="427" width="314" height="49"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="49" id="Tri-yI-vEn"/>
@@ -2421,19 +2423,19 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsx-Df-W9r">
-                                                            <rect key="frame" x="28" y="8" width="308" height="21"/>
+                                                            <rect key="frame" x="28" y="8" width="253" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eH1-aT-MNf">
-                                                            <rect key="frame" x="28" y="35" width="308" height="21"/>
+                                                            <rect key="frame" x="28" y="35" width="253" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkq-zm-MbQ">
-                                                            <rect key="frame" x="28" y="60" width="308" height="17"/>
+                                                            <rect key="frame" x="28" y="60" width="253" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2814,15 +2816,15 @@ My Profile Plate is generated algorithmically based on the profile information y
                         <sections>
                             <tableViewSection headerTitle="Profile Details" id="adV-iy-EvG">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="140" id="GaR-c7-eCm">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="188" id="GaR-c7-eCm">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GaR-c7-eCm" id="7df-Nw-5Z5">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-rC-1Yx">
-                                                    <rect key="frame" x="11" y="54" width="42" height="21"/>
+                                                    <rect key="frame" x="11" y="95" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
@@ -2830,21 +2832,21 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0R-0Q-7tq">
-                                                    <rect key="frame" x="7" y="105" width="66" height="21"/>
+                                                    <rect key="frame" x="7" y="146" width="66" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arM-Pd-0BQ">
-                                                    <rect key="frame" x="218" y="57" width="35" height="21"/>
+                                                    <rect key="frame" x="218" y="98" width="35" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <label opaque="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBG-OE-2UO">
-                                                    <rect key="frame" x="271" y="57" width="33" height="21"/>
+                                                    <rect key="frame" x="271" y="98" width="33" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2852,7 +2854,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In KGS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVs-oe-M9J" customClass="AllowedCharsTextField" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                                    <rect key="frame" x="75" y="99" width="70" height="30"/>
+                                                    <rect key="frame" x="75" y="140" width="70" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="16"/>
@@ -2865,7 +2867,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In CMS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VbI-Ug-4H8" customClass="AllowedCharsTextField" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                                    <rect key="frame" x="242" y="99" width="71" height="30"/>
+                                                    <rect key="frame" x="242" y="140" width="71" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="16"/>
@@ -2878,21 +2880,21 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIJ-Wd-nI8">
-                                                    <rect key="frame" x="184" y="105" width="62" height="21"/>
+                                                    <rect key="frame" x="184" y="146" width="62" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nickname*:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGL-Cm-iOP">
-                                                    <rect key="frame" x="11" y="18" width="93" height="21"/>
+                                                    <rect key="frame" x="11" y="59" width="93" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-DK-eKc" customClass="AllowedCharsTextField" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                                    <rect key="frame" x="117" y="6" width="114" height="33"/>
+                                                    <rect key="frame" x="117" y="47" width="114" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Regular" family="Orkney" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -2904,7 +2906,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs0-xE-aCx">
-                                                    <rect key="frame" x="117" y="38" width="114" height="1"/>
+                                                    <rect key="frame" x="117" y="79" width="114" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.36368450520000001" green="0.086302645499999997" blue="0.53960508110000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2912,14 +2914,14 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT6-JN-yXE">
-                                                    <rect key="frame" x="143" y="57" width="67" height="21"/>
+                                                    <rect key="frame" x="143" y="98" width="67" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="In Years" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZSy-K7-5Ig" customClass="AllowedCharsTextField" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                                    <rect key="frame" x="53" y="49" width="73" height="30"/>
+                                                    <rect key="frame" x="53" y="90" width="73" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="16"/>
@@ -2934,7 +2936,21 @@ My Profile Plate is generated algorithmically based on the profile information y
                                                         <outlet property="delegate" destination="MLW-Qc-lVd" id="QJA-a6-QWv"/>
                                                     </connections>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered Mobile:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNW-fn-2DK">
+                                                    <rect key="frame" x="11" y="23" width="309" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="ZJY-uo-nwA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Orkney-Medium" family="Orkney" pointSize="17"/>
+                                                    <color key="textColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uNW-fn-2DK" firstAttribute="leading" secondItem="7df-Nw-5Z5" secondAttribute="leadingMargin" constant="3" id="4Mf-UV-mQs"/>
+                                                <constraint firstItem="uNW-fn-2DK" firstAttribute="top" secondItem="7df-Nw-5Z5" secondAttribute="topMargin" constant="15" id="7Qi-mO-BGO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uNW-fn-2DK" secondAttribute="trailing" constant="-8" id="e6f-Y8-67f"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -2942,7 +2958,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                             <tableViewSection headerTitle="Food Habits" id="hqX-WD-GHv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="87" id="1UP-Ce-1zp">
-                                        <rect key="frame" x="0.0" y="196" width="320" height="87"/>
+                                        <rect key="frame" x="0.0" y="244" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1UP-Ce-1zp" id="Pi8-FM-t9b">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
@@ -2954,7 +2970,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                             <tableViewSection headerTitle="Allergies" id="DOo-aQ-dfu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="46" id="3tF-CS-XsP">
-                                        <rect key="frame" x="0.0" y="311" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="359" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3tF-CS-XsP" id="woX-Zi-3vf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
@@ -2966,7 +2982,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                             <tableViewSection headerTitle="Conditions" id="hm8-3L-RFF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="74" id="aMl-vw-rZt">
-                                        <rect key="frame" x="0.0" y="385" width="320" height="74"/>
+                                        <rect key="frame" x="0.0" y="433" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMl-vw-rZt" id="dkO-cP-tF0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
@@ -2978,7 +2994,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                             <tableViewSection headerTitle="Select Body Shapes" id="bNW-B9-6JJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="327" id="6jX-S6-izD">
-                                        <rect key="frame" x="0.0" y="487" width="320" height="327"/>
+                                        <rect key="frame" x="0.0" y="535" width="320" height="327"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6jX-S6-izD" id="1da-Ga-PNv">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="327"/>
@@ -3142,7 +3158,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                             <tableViewSection id="XVL-wH-W3Q">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="pxw-Hh-pxB">
-                                        <rect key="frame" x="0.0" y="814" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="862" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pxw-Hh-pxB" id="gcu-Qo-XdY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
@@ -3200,13 +3216,14 @@ My Profile Plate is generated algorithmically based on the profile information y
                         <outlet property="option4" destination="wtS-uK-OIc" id="ypE-wT-Fqw"/>
                         <outlet property="option5" destination="QwL-dv-f0a" id="BsR-pp-Llb"/>
                         <outlet property="option6" destination="gdP-LM-jJ2" id="e4k-Ui-fhS"/>
+                        <outlet property="registeredMobile" destination="uNW-fn-2DK" id="X1e-me-UKu"/>
                         <outlet property="updateProfileBtn" destination="UlO-aW-v3y" id="Hou-8e-ECz"/>
                         <outlet property="weightTextField" destination="WVs-oe-M9J" id="zI7-rl-SXf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iC-Vx-1pV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7121" y="868"/>
+            <point key="canvasLocation" x="7119.375" y="867.5"/>
         </scene>
     </scenes>
     <resources>

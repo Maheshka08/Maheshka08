@@ -19,6 +19,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
     var foodhabit : String!
     
     
+    @IBOutlet var registeredMobile: UILabel!
     @IBOutlet weak var dummy: UITextField!
     var allergies = [[String : AnyObject]]()
     var foodHabitsArray = [[String : AnyObject]]()
@@ -197,6 +198,16 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      
+        
+       
+        
+//        self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update Profile", style: .plain, target: self, action: #selector(barButtonItemClicked))
+        
+        
+        let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
+        self.registeredMobile.text = "Registered Mobile: +\(msisdn)"
         self.myProfile = uiRealm.objects(MyProfileInfo.self)
         self.pieChartInfo = uiRealm.objects(TweakPieChartValues.self)
         print(Realm.Configuration.defaultConfiguration.fileURL!);
@@ -418,6 +429,13 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
+    
+//    func barButtonItemClicked() {
+//        
+//        self.updateProfile()
+//        
+//    }
+    
     
     func setSelectedBodyShape(tagVal: Int) {
         var selectedImg = self.bodyShapesContentView.viewWithTag(tagVal) as! UIImageView
@@ -1093,7 +1111,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func updateProfileAction(_ sender: Any) {
+    func updateProfile() {
         var tempDict = [String : AnyObject]();
         tempDict = ["age":  Int(ageTextField.text!) as AnyObject,
                     "bodyShape": Int(bodyShapesString) as AnyObject,
@@ -1172,7 +1190,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                         chartValues.fatPerc = responseResult["fatPerc"]!
                         chartValues.fiberPerc = responseResult["fiberPerc"]!
                         saveToRealmOverwrite(objType: TweakPieChartValues.self, objValues: chartValues)
-                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your Profile has been Updated Sucessfully!")                        
+                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your Profile has been Updated Sucessfully!")
                         
                     }
                 } else{
@@ -1182,23 +1200,32 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             }, failure : { error in
                 
                 print("failure")
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
             })
             
             //MBProgressHUD.hide(for: self.view, animated: true);
             
         }, failure : { error in
             
-            let alertController = UIAlertController.init(title: nil, message: "Something went wrong!", preferredStyle : .alert);
-            alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler : nil));
-            self.present(alertController, animated: true, completion: nil);
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    @IBAction func updateProfileAction(_ sender: Any) {
+        self.updateProfile()
         
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 140
+            return 188
         } else if indexPath.section == 1 {
             if self.foodHabitsArray.count % 2 == 0{
                 return CGFloat((self.foodHabitsArray.count * 30)/2 + self.foodHabitsArray.count / 2 * 5 + 5)

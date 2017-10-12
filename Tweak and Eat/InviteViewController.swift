@@ -219,7 +219,10 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
             }
                    }, failure: { error in
             MBProgressHUD.hide(for: self.view, animated: true);
-             TweakAndEatUtils.AlertView.showAlert(view: self, message: "Something went Wrong!")
+                    let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
         })
     }
     

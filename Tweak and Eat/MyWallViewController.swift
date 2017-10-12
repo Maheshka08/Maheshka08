@@ -29,6 +29,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweakFeedsInfo : Results<TweakFeedsInfo>?
     let realm :Realm = try! Realm()
     var myIndex : Int = 0
+    var refreshPage: Int = 10
     var myIndexPath : IndexPath = []
     var tweakFeedsRef : DatabaseReference!
     var tweakFeedsArray = [TweakFeedsModel]()
@@ -38,13 +39,14 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var userMsisdn : String = ""
     var isLiked : Bool?
     var Number : String = ""
-    
+    var loadingData = false
     
     @IBOutlet var tweakWallTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tweakFeedsRef = Database.database().reference().child("TweakFeeds")
+   
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
         for myProfObj in self.myProfileInfo! {
@@ -53,11 +55,17 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             Number = myProfObj.msisdn
             
         }
-        MBProgressHUD.showAdded(to: self.view, animated: true);
 
         self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
-        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+        //if self.tweakFeedsInfo?.count == 0 {
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+
+            self.getFireBaseData()
+//        } else {
+//            self.refreshPage = (self.tweakFeedsInfo?.count)!
+//        }
+//        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+//        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
         
         let userdefaults = UserDefaults.standard
         if userdefaults.string(forKey: "USERBLOCKED") != nil{
@@ -70,13 +78,19 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
            // userdefaults.set("Here you can save value", forKey: "key")
         
 
-        tweakFeedsRef = Database.database().reference().child("TweakFeeds")
+       
+        
+    }
+    
+    func getFireBaseData() {
         
         
-        tweakFeedsRef.observe(DataEventType.value, with: { (snapshot) in
+        tweakFeedsRef.queryLimited(toLast: UInt(self.refreshPage)).observe(DataEventType.value, with: { (snapshot) in
             
             if snapshot.childrenCount > 0 {
-                
+                let dispatch_group = DispatchGroup()
+                dispatch_group.enter()
+
                 for tweakFeeds in snapshot.children.allObjects as! [DataSnapshot] {
                     
                     let feedObj = tweakFeeds.value as? [String : AnyObject]
@@ -98,8 +112,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let awesomeCount = (feedObj?["awesomeCount"] as AnyObject) as! Int
                     tweakFeedObj.awesomeCount = awesomeCount
                     let awesomeMembers = feedObj?["awesomeMembers"]  as? [String : AnyObject]
-                   
-                    if awesomeCount != 0 {
+                    
+                    if awesomeCount != 0 && awesomeMembers != nil{
                         for members in awesomeMembers! {
                             
                             let awesomeMemObj = AwesomeMembers()
@@ -122,7 +136,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let commentsCount = (feedObj?["commentsCount"] as AnyObject) as! Int
                     tweakFeedObj.commentsCount = commentsCount
                     let commentsMembers = feedObj?["comments"] as? [String : AnyObject]
-                    if commentsCount != 0 {
+                    if commentsCount != 0 && commentsMembers != nil{
                         for members in commentsMembers! {
                             let commentsObj = CommentsMembers()
                             
@@ -135,23 +149,49 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             commentsObj.commentsPostedOn = dateArrayElement as! String
                             tweakFeedObj.comments.append(commentsObj)
                         }
-                
+                        
                     }
                     
                     tweakFeedObj.snapShot = tweakFeeds.key
                     
                     saveToRealmOverwrite(objType: TweakFeedsInfo.self, objValues: tweakFeedObj)
                 }
-            
+                dispatch_group.leave()
+                dispatch_group.notify(queue: DispatchQueue.main) {
+                    
+                    let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+                    self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                    
+                    self.tweakWallTableView.reloadData()
+                }
+                
             }
-            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-            MBProgressHUD.hide(for: self.view, animated: true);
-
-            self.tweakWallTableView.reloadData()
+            
+            
             
         })
-        
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !loadingData && indexPath.row == self.refreshPage - 1 {
+            loadingData = true
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+            self.refreshPage += 10
+            loadMoreData()
+        }
+    }
+    
+    func loadMoreData() {
+        DispatchQueue.global(qos: .background).async {
+            // this runs on the background queue
+            // here the query starts to add new 10 rows of data to arrays
+            self.getFireBaseData()
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true);
+                self.loadingData = false
+                
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -370,6 +410,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.awesomeBtn.setImage(UIImage(named:"AwesomeIconFilled.png"), for: UIControlState.normal)
             aweSomeCount += 1
+        
+        
         DispatchQueue.global(qos: .background).async {
                        // Bounce back to the main thread to update the UI
             self.tweakFeedsRef.child(snap).child("awesomeMembers").childByAutoId().setValue([
@@ -377,12 +419,13 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 "postedOn" : currentTime as AnyObject,
                 "nickName": self.nicKName as AnyObject
                 ])
+            self.tweakFeedsRef.child(snap).updateChildValues(["awesomeCount" : aweSomeCount as AnyObject])
             DispatchQueue.main.async {
             
             }
         }
             self.awesomePopUpSound()
-            self.tweakFeedsRef.child(snap).updateChildValues(["awesomeCount" : aweSomeCount as AnyObject])
+        
         
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -152,11 +152,61 @@
                         <constraint firstAttribute="height" constant="180" id="vsM-fb-1di"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGf-Hb-Q6U">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your internet connection and try again !!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2L-jw-OvA">
+                            <rect key="frame" x="8" y="208.5" width="304" height="63"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="304" id="9PA-Q9-ugh"/>
+                                <constraint firstAttribute="height" constant="63" id="cGq-D6-XWz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="23"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ9-hd-zbq">
+                            <rect key="frame" x="120" y="337" width="80" height="30"/>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.69803921570000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="MCL-4i-d8J"/>
+                                <constraint firstAttribute="height" constant="30" id="NMY-dX-24L"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                            <state key="normal" title="REFRESH">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="refreshPage:" destination="iN0-l3-epB" eventType="touchUpInside" id="P8t-qb-mTw"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-internet" translatesAutoresizingMaskIntoConstraints="NO" id="Jhp-sz-b10">
+                            <rect key="frame" x="88" y="52" width="145" height="134"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="145" id="2Yw-18-Q4E"/>
+                                <constraint firstAttribute="height" constant="134" id="WdO-hT-RCt"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="B2L-jw-OvA" firstAttribute="centerX" secondItem="aGf-Hb-Q6U" secondAttribute="centerX" id="7Cs-nI-8HI"/>
+                        <constraint firstItem="MZ9-hd-zbq" firstAttribute="centerX" secondItem="B2L-jw-OvA" secondAttribute="centerX" id="KCM-ct-nQu"/>
+                        <constraint firstItem="B2L-jw-OvA" firstAttribute="centerY" secondItem="aGf-Hb-Q6U" secondAttribute="centerY" id="NG3-kd-yXE"/>
+                        <constraint firstItem="Jhp-sz-b10" firstAttribute="centerX" secondItem="aGf-Hb-Q6U" secondAttribute="centerX" id="gDO-Dh-c3k"/>
+                        <constraint firstItem="MZ9-hd-zbq" firstAttribute="top" secondItem="B2L-jw-OvA" secondAttribute="bottom" constant="65.5" id="pAz-JU-XRL"/>
+                        <constraint firstItem="Jhp-sz-b10" firstAttribute="top" secondItem="aGf-Hb-Q6U" secondAttribute="top" constant="52" id="sZB-53-Li9"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.34901960784313724" green="0.0" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="aGf-Hb-Q6U" secondAttribute="bottom" id="4IJ-C8-7gR"/>
+                <constraint firstItem="aGf-Hb-Q6U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GcC-hO-AXL"/>
+                <constraint firstAttribute="trailing" secondItem="aGf-Hb-Q6U" secondAttribute="trailing" id="Nnx-De-au4"/>
                 <constraint firstItem="Zdj-fW-jt3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="Qsl-S7-Tx9"/>
                 <constraint firstItem="Zdj-fW-jt3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yut-tj-tOW"/>
+                <constraint firstItem="aGf-Hb-Q6U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gTc-FA-Iu4"/>
                 <constraint firstAttribute="trailing" secondItem="ano-oG-YNw" secondAttribute="trailing" constant="20" id="mXl-SF-JgG"/>
                 <constraint firstItem="ano-oG-YNw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="sro-k4-xFu"/>
                 <constraint firstItem="ano-oG-YNw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="112" id="uia-TN-hQ2"/>
@@ -169,6 +219,7 @@
                 <outlet property="logoView" destination="983-qP-kQM" id="uFL-jE-152"/>
                 <outlet property="looseWeightNote" destination="byy-cz-upb" id="Y6f-wx-0QC"/>
                 <outlet property="okButton" destination="ZSX-N7-Yzn" id="XfC-ge-pX6"/>
+                <outlet property="refreshView" destination="aGf-Hb-Q6U" id="qkO-FM-yGA"/>
                 <outlet property="welcomeNote" destination="ANc-So-Ggp" id="V7R-b0-Jmx"/>
                 <outlet property="welcomeTextDisplayView" destination="ano-oG-YNw" id="KTG-xf-EYM"/>
                 <outlet property="welcomeTextView" destination="TQn-UN-wk3" id="3hl-Uw-cnj"/>
@@ -179,5 +230,6 @@
     </objects>
     <resources>
         <image name="birdie_food" width="405" height="662"/>
+        <image name="no-internet" width="200" height="200"/>
     </resources>
 </document>

@@ -179,13 +179,24 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         tempDict["msisdn"] = self.userMsisdn as AnyObject
         let currentTimeStamp = getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate)
         let currentTime = Int64(currentTimeStamp)
-        self.tweakFeedsRef.child("TweakFeeds").child(self.childSnap).child("comments").childByAutoId().setValue(["msisdn" : self.userMsisdn as AnyObject,"postedOn" : currentTime as AnyObject,"commentText": self.commentsTxtView.text! as AnyObject,"nickName": self.nicKName as AnyObject])
-        self.tweakFeedsRef.child("TweakFeeds").child(self.childSnap).updateChildValues(["commentsCount" : self.commentsCount as AnyObject])
         
-        self.tweaksFeedsArray.add(tempDict)
-        self.awesomeTableView.reloadData()
-        self.commentsTxtView.text = ""
-        placeHolderLabel?.isHidden = false
+        DispatchQueue.global(qos: .background).async {
+            // this runs on the background queue
+            // here the query starts to add new 10 rows of data to arrays
+            self.tweakFeedsRef.child("TweakFeeds").child(self.childSnap).child("comments").childByAutoId().setValue(["msisdn" : self.userMsisdn as AnyObject,"postedOn" : currentTime as AnyObject,"commentText": self.commentsTxtView.text! as AnyObject,"nickName": self.nicKName as AnyObject])
+            self.tweakFeedsRef.child("TweakFeeds").child(self.childSnap).updateChildValues(["commentsCount" : self.commentsCount as AnyObject])
+            
+            DispatchQueue.main.async {
+                self.tweaksFeedsArray.add(tempDict)
+                self.awesomeTableView.reloadData()
+                self.commentsTxtView.text = ""
+                self.placeHolderLabel?.isHidden = false
+                
+            }
+        }
+        
+        
+        
         
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

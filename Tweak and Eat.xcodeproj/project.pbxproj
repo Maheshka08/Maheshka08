@@ -77,6 +77,7 @@
 		57C324971D9680450057B590 /* TweakAndEatRemindeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */; };
 		731625941F7B9645007D48CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731625931F7B9645007D48CF /* WebViewController.swift */; };
 		735159F81F5C468B002F3CA1 /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159F71F5C468B002F3CA1 /* MyWallViewController.swift */; };
+		735B637F1F8E26640055DF17 /* SettingsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */; };
 		737D9C911F2F5A8400823448 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D9C901F2F5A8400823448 /* PieChart.swift */; };
 		737D9C931F30826B00823448 /* ExpandedPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D9C921F30826B00823448 /* ExpandedPieChart.swift */; };
 		73D5C9AE1EC581510083A059 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D5C9AD1EC581510083A059 /* NotificationService.swift */; };
@@ -294,6 +295,7 @@
 		57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakAndEatRemindeCell.xib; sourceTree = "<group>"; };
 		731625931F7B9645007D48CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
 		735159F71F5C468B002F3CA1 /* MyWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
+		735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabBarController.swift; sourceTree = "<group>"; };
 		737D9C901F2F5A8400823448 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		737D9C921F30826B00823448 /* ExpandedPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedPieChart.swift; sourceTree = "<group>"; };
 		73D5C9AB1EC581510083A059 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -611,6 +613,7 @@
 				84B951561F222BE20092D6ED /* MainViewControler */,
 				84B951551F222B8F0092D6ED /* AppDelegate */,
 				84B951541F2221B30092D6ED /* TabBarController */,
+				735B637D1F8E26010055DF17 /* SettingsTabBarController */,
 				84B860521F175C5200CE7343 /* TweakWall */,
 				5772205C1D9C0D5500348402 /* Tweak Utils */,
 				5772205D1D9C0D8400348402 /* Tweak Constants */,
@@ -628,6 +631,15 @@
 				57BED1511D749B780008CC4D /* LaunchScreen.storyboard */,
 			);
 			path = "Tweak and Eat";
+			sourceTree = "<group>";
+		};
+		735B637D1F8E26010055DF17 /* SettingsTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */,
+			);
+			name = SettingsTabBarController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		73D5C9AC1EC581510083A059 /* OneSignalNotificationServiceExtension */ = {
@@ -1145,6 +1157,7 @@
 				57C234931DA8D35B001FA5D2 /* FullImageViewController.swift in Sources */,
 				5702E5E81D9D646100647A54 /* UIImage+WebP.m in Sources */,
 				5702E5DE1D9D646100647A54 /* SDImageCache.m in Sources */,
+				735B637F1F8E26640055DF17 /* SettingsTabBarController.swift in Sources */,
 				84882AFA1F76527D0082A442 /* Constants.swift in Sources */,
 				57BED15D1D749D250008CC4D /* TweakAnimationWelcomeView.swift in Sources */,
 				846D07491F271D8500902097 /* TweakFeeds.swift in Sources */,

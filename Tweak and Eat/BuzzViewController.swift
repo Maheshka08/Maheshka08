@@ -118,7 +118,11 @@ class BuzzViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 MBProgressHUD.hide(for: self.view, animated: true);
                 
             }, failure : { error in
-                 TweakAndEatUtils.AlertView.showAlert(view: self, message: "Something went wrong!")
+
+                let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
 
             })
         } else {
@@ -199,9 +203,10 @@ class BuzzViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }, failureBlock: { error in
             print("Failure");
-            let alertController = UIAlertController.init(title: nil, message: "Error! ", preferredStyle : .alert);
-            alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler : nil));
-            self.present(alertController, animated: true, completion: nil);
+            let alertController = UIAlertController(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
         })
     }
     

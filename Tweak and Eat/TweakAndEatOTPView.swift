@@ -162,6 +162,8 @@ class TweakAndEatOTPView: UIView {
             }
         }) { (error : NSError!) -> (Void) in
             TweakAndEatUtils.hideMBProgressHUD();
+            let alert : UIAlertView = UIAlertView(title: "No Internet Connection", message: "Your internet connection appears to be offline !!", delegate: nil, cancelButtonTitle: "OK");
+            alert.show();
             //error
         }
     }

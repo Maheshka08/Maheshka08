@@ -15,11 +15,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>300</string>
+	<string>400</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -38,21 +40,21 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants to access camera</string>
+	<string>"Tweak &amp; Eat" wants to access camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+	<string>By clicking 'OK' below you give us the consent to upload any or all contacts chosen by you, so 'Tweak &amp; Eat' can communicate with them, by buzzing them with a message, when you need it (when you press the 'Buzz' button).
 Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSContactsUsageDescription </key>
-	<string>By clicking &apos;OK&apos; below you give us the consent to upload any or all contacts chosen by you, so &apos;Tweak &amp; Eat&apos; can communicate with them, by buzzing them with a message, when you need it (when you press the &apos;Buzz&apos; button).
+	<string>By clicking 'OK' below you give us the consent to upload any or all contacts chosen by you, so 'Tweak &amp; Eat' can communicate with them, by buzzing them with a message, when you need it (when you press the 'Buzz' button).
 Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
 	<key>NSLocalizedDescription</key>
 	<string>$(PRODUCT_NAME) local location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>$(PRODUCT_NAME) always show loaction</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants to use your location</string>
+	<string>"Tweak &amp; Eat" wants to use your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants to access photos</string>
+	<string>"Tweak &amp; Eat" wants to access photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>$(PRODUCT_NAME) reminders</string>
 	<key>UIAppFonts</key>
