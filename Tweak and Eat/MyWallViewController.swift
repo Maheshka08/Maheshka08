@@ -59,8 +59,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         
-        tweakFeedsRef.observe(.childChanged, with: { (snapshot) in
-            let ID = snapshot.key
+        tweakFeedsRef.observe(DataEventType.childChanged, with: { (snapshot) in
+            //let ID = snapshot.key
 //            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
 //            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
 //            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = %@",ID)
@@ -132,7 +132,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         })
         
-        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
+        tweakFeedsRef.observe(DataEventType.value, with: { snapshot in
             
             if snapshot.childrenCount > 0 {
                 let dispatch_group = DispatchGroup()
