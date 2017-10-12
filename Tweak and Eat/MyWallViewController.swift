@@ -61,7 +61,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let ID = snapshot.key
             let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
             self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = \(ID)")
+            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = %@",ID)
+            print(index)
 //            let feedObj = snapshot.value as? [String : AnyObject]
 //            
 //            let tweakFeedObj = TweakFeedsInfo()
