@@ -48,9 +48,9 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tweakFeedsRef = Database.database().reference().child("TweakFeeds")
         
         self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
-//        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-//        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-//
+        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
         for myProfObj in self.myProfileInfo! {
@@ -135,7 +135,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
             self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
 
-                self.tweakWallTableView.reloadRows(at: [self.myIndexPath], with: .none)
+                //self.tweakWallTableView.reloadRows(at: [self.myIndexPath], with: .none)
+                    self.tweakWallTableView.reloadData()
                 }
             }
             
