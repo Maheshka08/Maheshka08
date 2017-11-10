@@ -199,13 +199,7 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if self.checkVariable == "Awesomes" {
-//            return 85.0 - 21.0
-//        }
-//        return 85.0
-//    }
-    
+
     func showAnimate()
     {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

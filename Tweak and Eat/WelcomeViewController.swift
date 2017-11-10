@@ -81,7 +81,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -216,7 +215,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
                         self.introTextArray = response[TweakAndEatConstants.DATA] as? [AnyObject];
                         if(self.introTextArray != nil) {
-                            let introTextDic = self.introTextArray!.filter({ (element) -> Bool in
+                            let introTextDic =  self.introTextArray!.filter({ (element) -> Bool in
                                 if((element as! NSDictionary).value(forKey: TweakAndEatConstants.STATIC_NAME) as! String == TweakAndEatConstants.INTRO_TEXT) {
                                     return true;
                                 } else {
@@ -338,8 +337,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         if userdefaults.string(forKey: "userSession") != nil{
             self.tabBarController?.tabBar.isHidden = false
         }
-            
-            
+           
         else {
             self.tabBarController?.tabBar.isHidden = true
             
@@ -519,7 +517,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func checkTweakable(){
-        
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.CHECKTWEAKABLE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
             let responseResult = responseDic["callStatus"] as! String
@@ -574,7 +571,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func tweakStreak(){
-        
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.TWEAKSTREAK, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
             let responseResult = responseDic["callStatus"] as! String
@@ -599,8 +595,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     func foodHabitsImages(){
-        
-        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.USER_HOMEPAGE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+    APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.USER_HOMEPAGE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
             
             self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));

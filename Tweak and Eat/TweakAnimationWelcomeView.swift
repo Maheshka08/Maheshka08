@@ -46,14 +46,13 @@ class TweakAnimationWelcomeView: UIView {
         delegate.getStaticText()
     }
    
-    
     func animateLogo() {
         self.welcomeTextView.alpha = 1;
         self.welcomeToLabel.alpha = 1;
         self.TweakandEatLabel.alpha = 1;
         self.welcomeTextDisplayView.alpha = 1.0;
         self.okButton.isHidden = false;
-           }
+   }
     
     func beginning() {
         logoBorderView.clipsToBounds = true;

@@ -40,17 +40,13 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isLiked : Bool?
     var Number : String = ""
     var loadingData = false
-    var initialLoad = true
+    
     @IBOutlet var tweakWallTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tweakFeedsRef = Database.database().reference().child("TweakFeeds")
         
-        self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
-        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-
         self.userMsisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         self.myProfileInfo = self.realm.objects(MyProfileInfo.self)
         for myProfObj in self.myProfileInfo! {
@@ -60,89 +56,36 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         
-        tweakFeedsRef.observe(DataEventType.childAdded, with: { (snapshot) in
-            let ID = snapshot.key
-            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-            let index = self.realm.objects(TweakFeedsInfo.self).filter("snapShot = %@",ID)
-            print(index)
-            for ind in index {
-                if ind["snapShot"] as AnyObject as? String == ID {
-                    
-                
-            let feedObj = snapshot.value as? [String : AnyObject]
-            
-            let tweakFeedObj = TweakFeedsInfo()
-            tweakFeedObj.feedContent = (feedObj?["feedContent"] as AnyObject) as! String
-            
-            tweakFeedObj.gender = (feedObj?["gender"] as AnyObject) as! String
-            tweakFeedObj.imageUrl = (feedObj?["imageUrl"] as AnyObject) as! String
-            tweakFeedObj.msisdn = (feedObj?["msisdn"] as AnyObject) as! String
-            let milisecond = feedObj?["postedOn"] as AnyObject as! NSNumber;
-            let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-            let dateFormatter = DateFormatter();
-            dateFormatter.dateFormat = "d MMM, EEE, yyyy h:mm:ss:SSS a";
-            let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-            tweakFeedObj.postedOn = dateArrayElement as! String
-            tweakFeedObj.tweakOwner = (feedObj?["tweakOwner"] as AnyObject) as! String
-            
-            let awesomeCount = (feedObj?["awesomeCount"] as AnyObject) as! Int
-            tweakFeedObj.awesomeCount = awesomeCount
-            let awesomeMembers = feedObj?["awesomeMembers"]  as? [String : AnyObject]
-            
-            if awesomeCount != 0 && awesomeMembers != nil{
-                for members in awesomeMembers! {
-                    
-                    let awesomeMemObj = AwesomeMembers()
-                    let number = (members.value["msisdn"] as AnyObject) as! String
-                    if number == self.Number {
-                        awesomeMemObj.youLiked = "true"
-                    }else {
-                        awesomeMemObj.youLiked = "false"
-                    }
-                    awesomeMemObj.aweSomeNickName = (members.value["nickName"] as AnyObject) as! String
-                    let milisecond = members.value["postedOn"] as AnyObject;
-                    let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-                    let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-                    
-                    awesomeMemObj.aweSomePostedOn = dateArrayElement as! String
-                    awesomeMemObj.aweSomeMsisdn = (members.value["msisdn"] as AnyObject) as! String
-                    tweakFeedObj.awesomeMembers.append(awesomeMemObj)
-                }
-            }
-            let commentsCount = (feedObj?["commentsCount"] as AnyObject) as! Int
-            tweakFeedObj.commentsCount = commentsCount
-            let commentsMembers = feedObj?["comments"] as? [String : AnyObject]
-            if commentsCount != 0 && commentsMembers != nil{
-                for members in commentsMembers! {
-                    let commentsObj = CommentsMembers()
-                    
-                    commentsObj.commentsCommentText = (members.value["commentText"] as AnyObject) as! String
-                    commentsObj.commentsMsisdn = (members.value["msisdn"] as AnyObject) as! String
-                    commentsObj.commentsNickName = (members.value["nickName"] as AnyObject) as! String
-                    let milisecond = members.value["postedOn"] as AnyObject;
-                    let dateVar = Date.init(timeIntervalSince1970: TimeInterval(milisecond as! Int64) / 1000.0 )
-                    let dateArrayElement = dateFormatter.string(from: dateVar) as AnyObject
-                    commentsObj.commentsPostedOn = dateArrayElement as! String
-                    tweakFeedObj.comments.append(commentsObj)
-                }
-                
-            }
-            
-            tweakFeedObj.snapShot = snapshot.key
-            
-            saveToRealmOverwrite(objType: TweakFeedsInfo.self, objValues: tweakFeedObj)
-            let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-            self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-
-                //self.tweakWallTableView.reloadRows(at: [self.myIndexPath], with: .none)
-                    self.tweakWallTableView.reloadData()
-                }
-            }
-            
-        })
+        self.tweakFeedsInfo = self.realm.objects(TweakFeedsInfo.self)
+        //if self.tweakFeedsInfo?.count == 0 {
+        MBProgressHUD.showAdded(to: self.view, animated: true);
         
-        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
+        self.getFireBaseData()
+        //        } else {
+        //            self.refreshPage = (self.tweakFeedsInfo?.count)!
+        //        }
+        //        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        //        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
+        
+        let userdefaults = UserDefaults.standard
+        if userdefaults.string(forKey: "USERBLOCKED") != nil{
+            TweakAndEatUtils.AlertView.showAlert(view: self, message: "No tweakfeeds")
+            MBProgressHUD.hide(for: self.view, animated: true);
+            
+            return
+        }
+        print("No value in Userdefault,Either you can save value here or perform other operation")
+        // userdefaults.set("Here you can save value", forKey: "key")
+        
+        
+        
+        
+    }
+    
+    func getFireBaseData() {
+        
+        
+        tweakFeedsRef.queryLimited(toLast: UInt(self.refreshPage)).observe(DataEventType.value, with: { (snapshot) in
             
             if snapshot.childrenCount > 0 {
                 let dispatch_group = DispatchGroup()
@@ -224,72 +167,35 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 
             }
-            //upon first load, don't reload the tableView until all children are loaded
-            if ( self.initialLoad == false ) {
-                self.tweakWallTableView.reloadData()
-            }
+            
+            
+            
         })
-        //if self.tweakFeedsInfo?.count == 0 {
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !loadingData && indexPath.row == self.refreshPage - 1 {
+            loadingData = true
             MBProgressHUD.showAdded(to: self.view, animated: true);
-
-            //self.getFireBaseData()
-//        } else {
-//            self.refreshPage = (self.tweakFeedsInfo?.count)!
-//        }
-//        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-//        self.tweakFeedsInfo = self.tweakFeedsInfo!.sorted(by: sortProperties)
-        
-        let userdefaults = UserDefaults.standard
-        if userdefaults.string(forKey: "USERBLOCKED") != nil{
-            TweakAndEatUtils.AlertView.showAlert(view: self, message: "No tweakfeeds")
-            MBProgressHUD.hide(for: self.view, animated: true);
-
-            return
+            self.refreshPage += 10
+            loadMoreData()
         }
-            print("No value in Userdefault,Either you can save value here or perform other operation")
-           // userdefaults.set("Here you can save value", forKey: "key")
-        
-
-       
-        
     }
     
-    func getFireBaseData() {
-        
-        
-        tweakFeedsRef.observeSingleEvent(of: .value, with: { snapshot in
-            print("inital data loaded so reload tableView!  /(snapshot.childrenCount)")
-            self.tweakWallTableView.reloadData()
-            self.initialLoad = false
-            
-            
-            
-        })
+    func loadMoreData() {
+        DispatchQueue.global(qos: .background).async {
+            // this runs on the background queue
+            // here the query starts to add new 10 rows of data to arrays
+            self.getFireBaseData()
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true);
+                self.loadingData = false
+                
+            }
+        }
     }
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if !loadingData && indexPath.row == self.refreshPage - 1 {
-//            loadingData = true
-//            MBProgressHUD.showAdded(to: self.view, animated: true);
-//            self.refreshPage += 10
-//            loadMoreData()
-//        }
-//    }
-//    
-//    func loadMoreData() {
-//        DispatchQueue.global(qos: .background).async {
-//            // this runs on the background queue
-//            // here the query starts to add new 10 rows of data to arrays
-//            self.getFireBaseData()
-//            DispatchQueue.main.async {
-//                MBProgressHUD.hide(for: self.view, animated: true);
-//                self.loadingData = false
-//                
-//            }
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if self.tweakFeedsInfo!.count > 0 {
             MBProgressHUD.hide(for: self.view, animated: true);
         }
@@ -308,15 +214,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cellDictionary = self.tweakFeedsInfo?[indexPath.row]
         let awesomeMem = cellDictionary?["awesomeMembers"]  as! List<AwesomeMembers>
         cell.awesomeBtn?.setImage(UIImage(named: "AwesomeIcon.png"), for: .normal)
-
+        
         for mem in awesomeMem {
             
             if mem.youLiked  == "true" {
                 cell.awesomeBtn?.setImage(UIImage(named: "AwesomeIconFilled.png"), for: .normal)
             }
         }
-
-
+        
+        
         if cellDictionary?["gender"] as AnyObject as? String == "F" {
             cell.profilePic.image = UIImage.init(named: "wall_female")
         } else {
@@ -340,27 +246,27 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if cellDictionary?["awesomeCount"] as AnyObject as? Int != 0 {
             cell.likesBtn.isHidden = false
             
-                cell.likesBtn.setTitle("\(cellDictionary?["awesomeCount"] as AnyObject as! Int) Awesome", for: .normal)
+            cell.likesBtn.setTitle("\(cellDictionary?["awesomeCount"] as AnyObject as! Int) Awesome", for: .normal)
             
         }
         if cellDictionary?["awesomeCount"] as AnyObject as? Int == 0 {
-           cell.awesomeBtn.setImage(UIImage(named: "AwesomeIcon")!, for: UIControlState.normal);
+            cell.awesomeBtn.setImage(UIImage(named: "AwesomeIcon")!, for: UIControlState.normal);
         }
         
         if cellDictionary?["commentsCount"] as AnyObject as? Int != 0 {
             cell.userCommentsBtn.isHidden = false
-             cell.commentBtn.setImage(UIImage(named: "CommentsFilledIcon.png"), for: .normal)
+            cell.commentBtn.setImage(UIImage(named: "CommentsFilledIcon.png"), for: .normal)
             if cellDictionary?["commentsCount"] as AnyObject as? Int == 1 {
                 cell.userCommentsBtn.setTitle("\(cellDictionary?["commentsCount"] as AnyObject as! Int) Comment", for: .normal)
-               
+                
             } else {
                 cell.userCommentsBtn.setTitle("\(cellDictionary?["commentsCount"] as AnyObject as! Int) Comments", for: .normal)
-               
+                
             }
             
         }
         if cellDictionary?["commentsCount"] as AnyObject as? Int == 0 {
-             cell.commentBtn.setImage(UIImage(named: "CheckBoxIcon.png"), for: .normal)
+            cell.commentBtn.setImage(UIImage(named: "CheckBoxIcon.png"), for: .normal)
         }
         
         cell.tweakOwner.text = cellDictionary?["tweakOwner"] as AnyObject as? String
@@ -370,7 +276,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let dateElement = dateFormatter.date(from: (cellDictionary?["postedOn"] as AnyObject as? String)!)
         if dateElement == nil {
             dateFormatter.dateFormat = "d MMM, EEE, yyyy h:mm a";
-            let dateElement1 = dateFormatter.date(from: (cellDictionary?["postedOn"] as AnyObject as? String)!)            
+            let dateElement1 = dateFormatter.date(from: (cellDictionary?["postedOn"] as AnyObject as? String)!)
             cell.postedOn.text = dateFormatter.string(from: dateElement1!)
         } else {
             dateFormatter.dateFormat = "d MMM, EEE, yyyy h:mm a";
@@ -378,7 +284,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.postedOn.text = dateFormatter.string(from: dateElement!)
         }
         
-       
+        
         
         let imageUrl = cellDictionary?["imageUrl"] as AnyObject as? String
         cell.imageUrl.sd_setImage(with: URL(string: imageUrl!));
@@ -391,53 +297,53 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tempArray = NSMutableArray()
         if segue.identifier == "popOver" {
             if sender as! String == "comments"{
-            let popOverVC = segue.destination as! AwesomeCountViewController
-            let cellDict = self.tweakFeedsInfo?[self.myIndexPath.row]
-            let comments = cellDict?["comments"] as! List<CommentsMembers>
-            
-            if cellDict?["commentsCount"] as! Int != 0 {
-                var tempDict : [String:AnyObject] = [:]
-                for members in comments {
-                    tempDict["commentText"] = members.commentsCommentText as AnyObject
-                    tempDict["nickName"] = members.commentsNickName as AnyObject
-                    tempDict["postedOn"] = members.commentsPostedOn as AnyObject
-                    tempDict["msisdn"] = members.commentsMsisdn as AnyObject
-                    tempDict["commentsTime"] = members.commentsTimeIn as AnyObject
-                    tempArray.add(tempDict)
+                let popOverVC = segue.destination as! AwesomeCountViewController
+                let cellDict = self.tweakFeedsInfo?[self.myIndexPath.row]
+                let comments = cellDict?["comments"] as! List<CommentsMembers>
+                
+                if cellDict?["commentsCount"] as! Int != 0 {
+                    var tempDict : [String:AnyObject] = [:]
+                    for members in comments {
+                        tempDict["commentText"] = members.commentsCommentText as AnyObject
+                        tempDict["nickName"] = members.commentsNickName as AnyObject
+                        tempDict["postedOn"] = members.commentsPostedOn as AnyObject
+                        tempDict["msisdn"] = members.commentsMsisdn as AnyObject
+                        tempDict["commentsTime"] = members.commentsTimeIn as AnyObject
+                        tempArray.add(tempDict)
+                    }
+                    popOverVC.tweakDictionary["comments"] = tempArray as AnyObject
+                    
+                    
                 }
-                popOverVC.tweakDictionary["comments"] = tempArray as AnyObject
-                
-                
-            }
-            popOverVC.checkVariable = "Comments"
-            popOverVC.titleName = " Comments";
-            popOverVC.feedContent = (cellDict?.feedContent)!
-            popOverVC.gender = (cellDict?.gender)!
-            popOverVC.imageUrl = (cellDict?.imageUrl)!
-            popOverVC.msisdn = (cellDict?.msisdn)!
-            popOverVC.awesomeCount = (cellDict?.awesomeCount)!
-            popOverVC.commentsCount = (cellDict?.commentsCount)!
-            popOverVC.tweakOwner = (cellDict?.tweakOwner)!
-            popOverVC.childSnap = (cellDict?.snapShot)!
-            popOverVC.nicKName = nicKName
-            popOverVC.sex = sex
+                popOverVC.checkVariable = "Comments"
+                popOverVC.titleName = " Comments";
+                popOverVC.feedContent = (cellDict?.feedContent)!
+                popOverVC.gender = (cellDict?.gender)!
+                popOverVC.imageUrl = (cellDict?.imageUrl)!
+                popOverVC.msisdn = (cellDict?.msisdn)!
+                popOverVC.awesomeCount = (cellDict?.awesomeCount)!
+                popOverVC.commentsCount = (cellDict?.commentsCount)!
+                popOverVC.tweakOwner = (cellDict?.tweakOwner)!
+                popOverVC.childSnap = (cellDict?.snapShot)!
+                popOverVC.nicKName = nicKName
+                popOverVC.sex = sex
             } else {
                 let popOverVC = segue.destination as! AwesomeCountViewController
-                        popOverVC.titleName = " Awesome";
-                        var tempDict : [String:AnyObject] = [:]
-                        let cellDict = self.tweakFeedsInfo?[self.myIndexPath.row]
-                        let awesomeMembers = cellDict?["awesomeMembers"] as! List<AwesomeMembers>
-                        if cellDict?["awesomeCount"] as! Int != 0 {
-                            for members in awesomeMembers {
-                                tempDict["nickName"] = members.aweSomeNickName as AnyObject
-                                tempDict["postedOn"] = members.aweSomePostedOn as AnyObject
-                                tempDict["msisdn"] = members.aweSomeMsisdn as AnyObject
-                                tempArray.add(tempDict)
-            
-                            }
-                            popOverVC.tweakDictionary["awesomeMembers"] = tempArray as AnyObject
-                        }
-                        popOverVC.checkVariable = "Awesome"
+                popOverVC.titleName = " Awesome";
+                var tempDict : [String:AnyObject] = [:]
+                let cellDict = self.tweakFeedsInfo?[self.myIndexPath.row]
+                let awesomeMembers = cellDict?["awesomeMembers"] as! List<AwesomeMembers>
+                if cellDict?["awesomeCount"] as! Int != 0 {
+                    for members in awesomeMembers {
+                        tempDict["nickName"] = members.aweSomeNickName as AnyObject
+                        tempDict["postedOn"] = members.aweSomePostedOn as AnyObject
+                        tempDict["msisdn"] = members.aweSomeMsisdn as AnyObject
+                        tempArray.add(tempDict)
+                        
+                    }
+                    popOverVC.tweakDictionary["awesomeMembers"] = tempArray as AnyObject
+                }
+                popOverVC.checkVariable = "Awesome"
             }
         }
     }
@@ -475,8 +381,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.myIndexPath = cell.myIndexPath
         
         
-       
-
+        
+        
         cell.awesomeBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         
         UIView.animate(withDuration: 2.0,
@@ -498,16 +404,16 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for mem in awesomeMem {
             if mem.youLiked == "true" {
                 
-            return
+                return
+            }
         }
-    }
         
         cell.awesomeBtn.setImage(UIImage(named:"AwesomeIconFilled.png"), for: UIControlState.normal)
-            aweSomeCount += 1
+        aweSomeCount += 1
         
         
         DispatchQueue.global(qos: .background).async {
-                       // Bounce back to the main thread to update the UI
+            // Bounce back to the main thread to update the UI
             self.tweakFeedsRef.child(snap).child("awesomeMembers").childByAutoId().setValue([
                 "msisdn" : self.userMsisdn as AnyObject,
                 "postedOn" : currentTime as AnyObject,
@@ -515,15 +421,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 ])
             self.tweakFeedsRef.child(snap).updateChildValues(["awesomeCount" : aweSomeCount as AnyObject])
             DispatchQueue.main.async {
-            
+                
             }
         }
-            self.awesomePopUpSound()
+        self.awesomePopUpSound()
         
         
     }
     
-   
+    
     func cellTappedLikes(_ cell: TweakMyWallTableViewCell) {
         
         self.myIndex = cell.cellIndexPath
@@ -554,7 +460,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let imageData = UIImageJPEGRepresentation(cell.imageUrl.image!, 0.7)
         let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent(msisdn)
         if fileManager.fileExists(atPath: imagePAth){
-
+            
             // set up activity view controller
             let imageToShare = [ imageData ]
             let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
@@ -562,7 +468,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             // present the view controller
             self.present(activityViewController, animated: true, completion: nil)
-
+            
         }else{
             print("No Image")
             fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
@@ -575,7 +481,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             // present the view controller
             self.present(activityViewController, animated: true, completion: nil)
-
+            
         }
     }
     
@@ -602,7 +508,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 478.0 - 49.0;
+        return 478.0 - 49.0;
     }
     
     override func didReceiveMemoryWarning() {

@@ -45,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
             print("App already launched")
-          
             
             return true
         }else{
@@ -72,7 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
             
             //print("Requests: \(notificationRequests)")
         }
-
 
         UIApplication.shared.statusBarStyle = .lightContent;
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6742453784279360~7172537695");
@@ -192,7 +190,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         }
     }
     
-
     func scheduleNotification(hour : String, min : String, title:String, body: String) {
         if #available(iOS 10.0, *) {
             let content = UNMutableNotificationContent.init();
@@ -317,7 +314,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     func applicationDidBecomeActive(_ application: UIApplication) {
         let isFirstTime = isAppAlreadyLaunchedOnce()
         if isFirstTime == false {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in    
             let notification = notificationRequests as [AnyObject]
             for notify in notification {
                 if notify.content.title == "Daily Tips" {

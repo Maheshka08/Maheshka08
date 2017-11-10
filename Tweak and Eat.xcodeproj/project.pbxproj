@@ -125,6 +125,7 @@
 		848468DF1ECAF89500601DB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848468DE1ECAF89500601DB1 /* Foundation.framework */; };
 		84882AFA1F76527D0082A442 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84882AF91F76527D0082A442 /* Constants.swift */; };
 		84882AFC1F7653200082A442 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84882AFB1F7653200082A442 /* Utils.swift */; };
+		848C6D961FB2D16800876229 /* TweakNotifyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C6D951FB2D16800876229 /* TweakNotifyTableViewCell.swift */; };
 		8490A84C1E63F1F8002DE7F8 /* MaxLengthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490A84B1E63F1F8002DE7F8 /* MaxLengthTextField.swift */; };
 		8490A84E1E63F240002DE7F8 /* AllowedCharsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490A84D1E63F240002DE7F8 /* AllowedCharsTextField.swift */; };
 		849D6B711F46D6C500A882E9 /* birds018.wav in Resources */ = {isa = PBXBuildFile; fileRef = 849D6B701F46D6C500A882E9 /* birds018.wav */; };
@@ -142,6 +143,7 @@
 		84B66E0B1F1F6AF0008D1949 /* RealmUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B66E0A1F1F6AF0008D1949 /* RealmUtility.swift */; };
 		84B8E1631ED6D9D4007B1BD1 /* TipsNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8E1621ED6D9D4007B1BD1 /* TipsNotifications.swift */; };
 		84C8064A1F162A96009F19FE /* TweakShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C806491F162A96009F19FE /* TweakShareViewController.swift */; };
+		84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D058531FA9A59900EB856A /* TweakNotificationsViewController.swift */; };
 		84D7E24D1F3C863900E3BA6E /* ManageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7E24C1F3C863900E3BA6E /* ManageProfileViewController.swift */; };
 		84DB23DF1F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB23DE1F0FB29800725A92 /* TweakAndEatSelectionView.xib */; };
 		84DB23E01F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB23DE1F0FB29800725A92 /* TweakAndEatSelectionView.xib */; };
@@ -339,6 +341,7 @@
 		848468DE1ECAF89500601DB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84882AF91F76527D0082A442 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84882AFB1F7653200082A442 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		848C6D951FB2D16800876229 /* TweakNotifyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TweakNotifyTableViewCell.swift; path = ../TweakNotifyTableViewCell.swift; sourceTree = "<group>"; };
 		8490A84B1E63F1F8002DE7F8 /* MaxLengthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLengthTextField.swift; sourceTree = "<group>"; };
 		8490A84D1E63F240002DE7F8 /* AllowedCharsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowedCharsTextField.swift; sourceTree = "<group>"; };
 		849D6B701F46D6C500A882E9 /* birds018.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = birds018.wav; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 		84B66E0A1F1F6AF0008D1949 /* RealmUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUtility.swift; sourceTree = "<group>"; };
 		84B8E1621ED6D9D4007B1BD1 /* TipsNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsNotifications.swift; sourceTree = "<group>"; };
 		84C806491F162A96009F19FE /* TweakShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakShareViewController.swift; sourceTree = "<group>"; };
+		84D058531FA9A59900EB856A /* TweakNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakNotificationsViewController.swift; sourceTree = "<group>"; };
 		84D7E24C1F3C863900E3BA6E /* ManageProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageProfileViewController.swift; sourceTree = "<group>"; };
 		84DB23DE1F0FB29800725A92 /* TweakAndEatSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakAndEatSelectionView.xib; sourceTree = "<group>"; };
 		84DB23E11F0FB2DD00725A92 /* TweakAndEatSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakAndEatSelectionView.swift; sourceTree = "<group>"; };
@@ -762,6 +766,8 @@
 				57C324881D9664ED0057B590 /* AboutAppViewController.swift */,
 				84D7E24C1F3C863900E3BA6E /* ManageProfileViewController.swift */,
 				845089A31ED30301006C5C88 /* NotificationService.swift */,
+				84D058531FA9A59900EB856A /* TweakNotificationsViewController.swift */,
+				848C6D951FB2D16800876229 /* TweakNotifyTableViewCell.swift */,
 				57C3248C1D967C480057B590 /* TweakReminderViewController.swift */,
 				57C324941D9680450057B590 /* TweakAndEatRemindeCell.swift */,
 				57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */,
@@ -1166,6 +1172,7 @@
 				84EF2D8A1DE6CA6700F340C5 /* TBL_Tweaks+CoreDataClass.swift in Sources */,
 				73DC7B621F2F405C00A16A05 /* ReportsTableViewCell.swift in Sources */,
 				84536C5D1DE2C1C5005FE31E /* Contacts.swift in Sources */,
+				848C6D961FB2D16800876229 /* TweakNotifyTableViewCell.swift in Sources */,
 				84EF2D911DE6CA6700F340C5 /* TBL_DailyTips+CoreDataProperties.swift in Sources */,
 				57C324961D9680450057B590 /* TweakAndEatRemindeCell.swift in Sources */,
 				84B2BD6B1EC449F4004F19D0 /* TimelineTableViewCellWithAd.swift in Sources */,
@@ -1201,6 +1208,7 @@
 				84AD652E1F18C496007067DB /* TweakMyWallTableViewCell.swift in Sources */,
 				5702E5E21D9D646100647A54 /* SDWebImageDownloaderOperation.m in Sources */,
 				57BED1461D749B780008CC4D /* AppDelegate.swift in Sources */,
+				84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */,
 				5702E5AF1D9CAAF100647A54 /* TimelinesViewController.swift in Sources */,
 				5735D8451D79E2A2001DAF83 /* TweakAndEatConstants.swift in Sources */,
 				84AD65311F18E12B007067DB /* AwesomeCountViewController.swift in Sources */,

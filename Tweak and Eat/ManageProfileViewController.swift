@@ -17,10 +17,10 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
     
     var selectGender : String = " "
     var foodhabit : String!
-    
-    
+
     @IBOutlet var registeredMobile: UILabel!
     @IBOutlet weak var dummy: UITextField!
+    
     var allergies = [[String : AnyObject]]()
     var foodHabitsArray = [[String : AnyObject]]()
     var conditionsArray = [[String : AnyObject]]()
@@ -137,7 +137,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 food.append(label.text!)
             }
             
-            
         } else if label.isDescendant(of: self.allergiesContentView) {
             if (sender.currentImage?.isEqual(UIImage(named: "tweakCheck.png")))! {
                 self.clickedOff(sender)
@@ -148,7 +147,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 self.clickedon(sender)
                 allergy.append(label.text!)
             }
-            
             
         } else if label.isDescendant(of: self.conditionsContentView) {
             if (sender.currentImage?.isEqual(UIImage(named: "tweakCheck.png")))! {
@@ -161,11 +159,9 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 conditions.append(label.text!)
             }
             
-            
         }
         
     }
-    
     
     func createFoodHabitLabel(xAxis: CGFloat, yAxis: CGFloat, foodhabit: String, type: Int, tag: Int, isChecked: Bool) {
         let foodHabitLabel = UILabel()
@@ -192,16 +188,11 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             self.conditionsContentView.addSubview(foodHabitLabel)
         }
         
-        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-        
-       
         
 //        self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update Profile", style: .plain, target: self, action: #selector(barButtonItemClicked))
         
@@ -251,8 +242,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             }
             count += 1
             
-            
-            if count % 2 != 0 {
+                if count % 2 != 0 {
                 tagBtn += 1
                 tagLbl += 1
                 x = 10
@@ -308,7 +298,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 y = CGFloat(5 + y11)
                 
             }
-            
         }
         
         y = 5
@@ -349,7 +338,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             }
             
         }
-        
+        //print(UIScreen.main.bounds.size.height)
         setImageViewsOfGender()
         setborderLabels()
         setBodySizes()
@@ -407,6 +396,13 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         self.femaleLabel.backgroundColor = UIColor.clear
         self.femaleLabel.textColor = UIColor.white
         
+        let tapGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TweakAndEatOptionsView.labelGenderOptionTapped(_:)));
+        tapGesture.numberOfTapsRequired = 1;
+        let tapGesture1 : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TweakAndEatOptionsView.labelGenderOptionTapped(_:)));
+        tapGesture1.numberOfTapsRequired = 1;
+        maleLabel.addGestureRecognizer(tapGesture);
+        femaleLabel.addGestureRecognizer(tapGesture1);
+        
         for myProfileObj in self.myProfile! {
             
             self.ageTextField.text = myProfileObj.age;
@@ -430,12 +426,22 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-//    func barButtonItemClicked() {
-//        
-//        self.updateProfile()
-//        
-//    }
-    
+    func labelGenderOptionTapped(_ tapGesture: UITapGestureRecognizer) {
+        let tappedLabel : UILabel = tapGesture.view as! UILabel
+        if(tappedLabel.tag == 2000) {
+
+             gender = "M"
+            self.selectLabel(tappedLabel)
+            self.deselectLabel(femaleLabel)
+            genderShapeChanged()
+        } else {
+            
+            gender = "F"
+            self.selectLabel(tappedLabel)
+            self.deselectLabel(maleLabel)
+            genderShapeChanged()
+        }
+    }
     
     func setSelectedBodyShape(tagVal: Int) {
         var selectedImg = self.bodyShapesContentView.viewWithTag(tagVal) as! UIImageView
@@ -445,60 +451,71 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
             self.bodyShapesContentView.addSubview(selectedImg);
             bodyShapesString = "1"
-            
         } else if bodyShapesString == "2" {
             //for 5s Screen
             if UIScreen.main.bounds.size.height == 568  {
                 selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 6, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "2"
-            } //for 7s plus Screen
+            }// for ipad
+            else if UIScreen.main.bounds.size.height == 480  {
+                selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 7, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                self.bodyShapesContentView.addSubview(selectedImg);
+                bodyShapesString = "2"
+            }
+            //for 7s plus Screen
             else if UIScreen.main.bounds.size.height == 736 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 48, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 34, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "2"
             }
-                // for 4s Screen
-            else if UIScreen.main.bounds.size.height == 480 {
+                // for 6s/7 Screen
+            else if UIScreen.main.bounds.size.height == 667 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "2"
             }
-                
-                
-            else //for 6s plus Screen
+            else
             {
                 selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 28, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "2"
             }
         } else if bodyShapesString == "3" {
             if UIScreen.main.bounds.size.height == 568 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
-                self.bodyShapesContentView.addSubview(selectedImg);
-                bodyShapesString = "3"
-            }else if UIScreen.main.bounds.size.height == 736 {
-                selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 94, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 16, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "3"
             }
-                //for iphone 4S
-            else if UIScreen.main.bounds.size.height == 480 {
+            //for ipad
+            if UIScreen.main.bounds.size.height == 480 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 17, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "3"
             }
-                
-            else{
+            else if UIScreen.main.bounds.size.height == 736 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 55, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 70, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                self.bodyShapesContentView.addSubview(selectedImg);
+                bodyShapesString = "3"
+            }
+                //for iphone 6S
+            else if UIScreen.main.bounds.size.height == 667 {
+                selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                self.bodyShapesContentView.addSubview(selectedImg);
+                bodyShapesString = "3"
+            }
+            else {
+                selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "3"
             }
@@ -511,25 +528,30 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         } else if bodyShapesString == "5" {
             if UIScreen.main.bounds.size.height == 568 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 9, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                self.bodyShapesContentView.addSubview(selectedImg);
+                bodyShapesString = "5"
+            }else if UIScreen.main.bounds.size.height == 480 {
+                selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX - 9, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "5"
             }else if UIScreen.main.bounds.size.height == 736 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 48, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 34, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "5"
             }
-                //for iphone 4S
-            else if UIScreen.main.bounds.size.height == 480 {
+                //for iphone 6S
+            else if UIScreen.main.bounds.size.height == 667 {
                 selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19 , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "5"
             }
             else{
                 selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 28, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                 self.bodyShapesContentView.addSubview(selectedImg);
                 bodyShapesString = "5"
             }
@@ -545,55 +567,68 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             } else if bodyShapesString == "7" {
                 if UIScreen.main.bounds.size.height == 568  {
                     selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 8, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "7"
                 }
-                else if UIScreen.main.bounds.size.height == 480 {
+                //ipad
+                else if UIScreen.main.bounds.size.height == 480  {
                     selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 8, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "7"
+                }
+                else if UIScreen.main.bounds.size.height == 667 {
+                    selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 20, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "7"
                 }
                     
                 else if UIScreen.main.bounds.size.height == 736 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 48, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 34, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "7"
                 }
-                    
                 else {
                     selectedImg = self.bodyShapesContentView.viewWithTag(201) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 28, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "7"
                 }
             } else if bodyShapesString == "8" {
                 if UIScreen.main.bounds.size.height == 568 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 16, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "8"
                 }
-                    //for iphone 4S
-                else if UIScreen.main.bounds.size.height == 480 {
+                // ipad
+                if UIScreen.main.bounds.size.height == 480 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 16, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "8"
+                }
+                    //for iphone 6S
+                else if UIScreen.main.bounds.size.height == 667 {
+                    selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 39 , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "8"
                 }
                     
                 else if UIScreen.main.bounds.size.height == 736 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 94, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 70, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "8"
                 }
                     
                 else{
                     selectedImg = self.bodyShapesContentView.viewWithTag(202) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 55, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "8"
                     
@@ -608,28 +643,33 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             } else if bodyShapesString == "10" {
                 if UIScreen.main.bounds.size.height == 568  {
                     selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 8, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "10"
-                }
-                    //for iphone 4S
-                else if UIScreen.main.bounds.size.height == 480 {
+                } //for ipad
+                else if UIScreen.main.bounds.size.height == 480  {
                     selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 8, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "10"
                 }
-                    
+                    //for iphone 6S
+                else if UIScreen.main.bounds.size.height == 667 {
+                    selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "10"
+                }
+                  // 7+
                 else if UIScreen.main.bounds.size.height == 736 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 48, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 33, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "10"
                 }
-                    
                 else{
                     selectedImg = self.bodyShapesContentView.viewWithTag(204) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 28, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 19, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "10"
                     
@@ -637,29 +677,32 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             } else if bodyShapesString == "11" {
                 if UIScreen.main.bounds.size.height == 568 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 58, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "11"
+                } //for ipad
+                else if UIScreen.main.bounds.size.height == 480 {
+                    selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 15, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
-                    //for iphone 4S
-                else if UIScreen.main.bounds.size.height == 480 {
+                    //for iphone 6S
+                else if UIScreen.main.bounds.size.height == 667 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 67 , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38 , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
                 else if UIScreen.main.bounds.size.height == 736 {
                     selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 95, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 70, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
-                    
-                    
-                    
                 else{
                     selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 55, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
@@ -681,9 +724,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         tapGesture1.numberOfTapsRequired = 1;
         option1.addGestureRecognizer(tapGesture1);
         option1.isUserInteractionEnabled = true;
-        
         self.bodyShapesContentView.addSubview(option1);
-        
         
         option2.tag = 201;
         option2.layer.cornerRadius = genderSelectionSize / 2;
@@ -695,9 +736,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         tapGesture2.numberOfTapsRequired = 1;
         option2.addGestureRecognizer(tapGesture2);
         option2.isUserInteractionEnabled = true;
-        
         self.bodyShapesContentView.addSubview(option2);
-        
         
         option3.tag = 202;
         option3.layer.cornerRadius = genderSelectionSize / 2;
@@ -709,9 +748,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         tapGesture3.numberOfTapsRequired = 1;
         option3.addGestureRecognizer(tapGesture3);
         option3.isUserInteractionEnabled = true;
-        
         self.bodyShapesContentView.addSubview(option3);
-        
         
         option4.tag = 203;
         option4.layer.cornerRadius = genderSelectionSize / 2;
@@ -723,9 +760,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         tapGesture4.numberOfTapsRequired = 1;
         option4.addGestureRecognizer(tapGesture4);
         option4.isUserInteractionEnabled = true;
-        
         self.bodyShapesContentView.addSubview(option4);
-        
         
         option5.tag = 204;
         option5.layer.cornerRadius = genderSelectionSize / 2;
@@ -736,9 +771,7 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         tapGesture5.numberOfTapsRequired = 1;
         option5.addGestureRecognizer(tapGesture5);
         option5.isUserInteractionEnabled = true;
-        
         self.bodyShapesContentView.addSubview(option5);
-        
         
         option6.tag = 205;
         option6.layer.cornerRadius = genderSelectionSize / 2;
@@ -758,18 +791,12 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         borderLabel.layer.cornerRadius = genderSelectionSize / 2;
         borderLabel.layer.masksToBounds = true;
         borderLabel.tag = 199;
-        
         self.bodyShapesContentView.addSubview(borderLabel);
-        
-        
         
         borderLabel.frame = CGRect(x: selectedImg.frame.minX + 76, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize);
         
-        
     }
-    
-    
-    
+
     func clickedon(_ sender: UIButton) {
         sender.setImage(UIImage(named: "tweakCheck.png")!, for: UIControlState.normal)
     }
@@ -835,7 +862,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             if gender == "F" {
                 bodyShapesString = "11"
             }
-            
         }
         
         UIView.animate(withDuration: 0.5, animations: {
@@ -902,6 +928,18 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    func genderShapeChanged(){
+        
+        if gender == "M" {
+            bodyShapesString = "1"
+            self.setSelectedBodyShape(tagVal: 200)
+        } else {
+            bodyShapesString = "6"
+            self.setSelectedBodyShape(tagVal: 200)
+        }
+    }
+    
+    
     func setBodySizes() {
         
         self.myProfile = uiRealm.objects(MyProfileInfo.self)
@@ -938,7 +976,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 option6.isHidden = true
                 option6.isUserInteractionEnabled = false
                 flabel6.isHidden = true
-                
                 
             } else {
                 option1 = self.bodyShapesContentView.viewWithTag(200) as! UIImageView
@@ -1007,7 +1044,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
             option6.isUserInteractionEnabled = false
             flabel6.isHidden = true
             
-            //borderLabel.removeFromSuperview()
             if bodyShapesString  == "11" && self.gender == "M"{
                 let  selectedImg = self.bodyShapesContentView.viewWithTag(200) as! UIImageView
                 borderLabel.frame = CGRect(x: selectedImg.frame.minX , y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
@@ -1046,35 +1082,40 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
                 
                 if UIScreen.main.bounds.size.height == 568  {
                     let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
-                    self.bodyShapesContentView.addSubview(selectedImg);
-                    bodyShapesString = "11"
-                }else if UIScreen.main.bounds.size.height == 736 {
-                    let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 95, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 16, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
+                // for ipad
                 else if UIScreen.main.bounds.size.height == 480 {
                     let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX - 15, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "11"
+                }
+                
+                else if UIScreen.main.bounds.size.height == 736 {
+                    let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 70, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    self.bodyShapesContentView.addSubview(selectedImg);
+                    bodyShapesString = "11"
+                }
+                else if UIScreen.main.bounds.size.height == 667 {
+                    let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
                     
                 else{
                     let selectedImg = self.bodyShapesContentView.viewWithTag(205) as! UIImageView
-                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 55, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
+                    borderLabel.frame = CGRect(x: selectedImg.frame.minX + 38, y: selectedImg.frame.minY, width: genderSelectionSize, height: genderSelectionSize)
                     self.bodyShapesContentView.addSubview(selectedImg);
                     bodyShapesString = "11"
                 }
-                
             }
-            
         }
-        
     }
-    
     
     func selectLabel(_ label : UILabel) {
         label.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
@@ -1085,7 +1126,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         label.clipsToBounds = true
         label.textColor = UIColor.white
         label.backgroundColor = TweakAndEatColorConstants.AppDefaultColor
-        
         genderSelection()
     }
     
@@ -1098,7 +1138,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         label.layer.cornerRadius = 3
         label.layer.borderColor = TweakAndEatColorConstants.AppDefaultColor.cgColor
         genderSelection()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -1219,8 +1258,6 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func updateProfileAction(_ sender: Any) {
         self.updateProfile()
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -1255,6 +1292,5 @@ class ManageProfileViewController: UITableViewController, UITextFieldDelegate {
         let realm = try! Realm()
         return (realm.objects(MyProfileInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
-    
 }
 
