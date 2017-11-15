@@ -61,11 +61,11 @@ PODS:
   - nanopb/encode (0.3.8)
   - OneSignal (2.5.3)
   - Protobuf (3.3.0)
-  - Realm (2.7.0):
-    - Realm/Headers (= 2.7.0)
-  - Realm/Headers (2.7.0)
-  - RealmSwift (2.7.0):
-    - Realm (= 2.7.0)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
 
 DEPENDENCIES:
   - Firebase
@@ -74,8 +74,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - OneSignal (< 3.0, >= 2.5.2)
-  - Realm
-  - RealmSwift
+  - RealmSwift (~> 2.10.2)
 
 SPEC CHECKSUMS:
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
@@ -88,12 +87,12 @@ SPEC CHECKSUMS:
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
-  nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OneSignal: 08a57b17168033a3e8c635d676241eb07614a5e6
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
-  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
 
-PODFILE CHECKSUM: 40acae35f107b2f0389268edd2f75d185e779f6b
+PODFILE CHECKSUM: 6927812d471fc40e63cd2ca8bc4feadfaadd10f1
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

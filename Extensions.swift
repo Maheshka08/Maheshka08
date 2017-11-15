@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 extension UITextField {
     func setBottomBorder() {
@@ -40,6 +41,8 @@ extension UIImageView {
         downloadedFrom(url: url, contentMode: mode)
     }
 }
+
+
 
 let imageCache = NSCache<NSString, UIImage>()
 
@@ -75,3 +78,90 @@ extension UIImageView {
         task.resume()
     }
 }
+
+extension String {
+    var htmlAttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return nil
+        }
+    }
+    var html2String: String {
+        return htmlAttributedString?.string ?? ""
+    }
+}
+extension CALayer {
+    
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+        
+        let border = CALayer()
+        
+        switch edge {
+        case UIRectEdge.top:
+            border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect(x: 0, y: self.frame.height - thickness, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect(x: self.frame.width - thickness, y: 0, width: thickness, height: self.frame.height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.cgColor;
+        
+        self.addSublayer(border)
+    }
+    
+}
+
+extension String {
+    func extractURLs() -> [URL] {
+        var urls : [URL] = []
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            detector.enumerateMatches(in: self, options: [], range: NSMakeRange(0, self.characters.count), using: { (result, _, _) in
+                if let match = result, let url = match.url {
+                    urls.append(url)
+                }
+            })
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return urls
+    }
+}
+
+extension UNNotificationAttachment {
+    
+    static func create(identifier: String, urlString: String, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
+        let url = URL(string:urlString)
+        let fileManager = FileManager.default
+        let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
+        let tmpSubFolderURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName, isDirectory: true)
+        do {
+            try fileManager.createDirectory(at: tmpSubFolderURL, withIntermediateDirectories: true, attributes: nil)
+            let imageFileIdentifier = identifier+".png"
+            let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
+            let data = try? Data(contentsOf: url!)
+            let image = UIImage(data: data!)
+            guard let imageData = UIImagePNGRepresentation(image!) else {
+                return nil
+            }
+            try imageData.write(to: fileURL)
+            let imageAttachment = try UNNotificationAttachment.init(identifier: imageFileIdentifier, url: fileURL, options: options)
+            return imageAttachment
+        } catch {
+            print("error " + error.localizedDescription)
+        }
+        return nil
+    }
+}
+

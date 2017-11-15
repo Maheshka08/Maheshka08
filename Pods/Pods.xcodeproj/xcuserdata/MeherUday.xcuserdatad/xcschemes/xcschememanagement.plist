@@ -4,128 +4,48 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Charts.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-OneSignalNotificationServiceExtension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-Tweak and Eat.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Protobuf.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>02D1A7F28FCE60A1508DF7E133EAACDA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1CFDF0CA406D90B76E17766C296DB3D6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4C06B89B789AB38F0FCA879A82F1044B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4E70352A6A7777D7F495582817FF59AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>69FA9C9BB8FE4825DC63B6FF9ABF2A43</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>734C6F592D31F6C3EE650FF65AF53D43</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>745A2536ABC9981AD547B885DBBC3C73</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8343DD3493D329B9FA709F2DA6602507</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>927DDA5E642A50302DFE1A8AF40CD4F8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BDEE7123ED95632FE233CE5335C7B150</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F307B842FF76B2DE6C55DB67C0885325</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

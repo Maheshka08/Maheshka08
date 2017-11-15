@@ -23,7 +23,22 @@ import CoreImage
 
 class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
+    @IBOutlet var shadowImageTopConstraint: NSLayoutConstraint!
+    @IBOutlet var myProfileButtonTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var myProfileLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var myEDRButton: UIButton!
+    @IBOutlet var myProfileButton: UIButton!
+    
+    @IBOutlet var buzzButton: UIButton!
+    
+    @IBOutlet var myWallButton: UIButton!
+    
+    @IBOutlet var notificationBadgeLabel: UILabel!
+    
     @IBOutlet var birdieImgView: UIImageView!
+    @IBOutlet var tweakStreakCountButton: UIButton!
     @IBOutlet var settingsBarButton: UIBarButtonItem!
     @IBOutlet var faceDetectionImageView: UIImageView!
     @IBOutlet var faceDetectionView: UIView!
@@ -42,7 +57,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var streakTextView: UIView!
     
     @IBOutlet weak var randomMessages: UILabel!
-    @IBOutlet weak var tweakStreakCount: UILabel!
+    
     var faceBox : UIView!
     var locManager = CLLocationManager();
     var selectedDate : String!;
@@ -72,11 +87,27 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     var height : NSString? = nil;
     
     override func viewDidLayoutSubviews() {
-        if UIScreen.main.bounds.size.height == 480 {
-            self.birdieImgView.isHidden = true
-            self.streakTextView.frame = CGRect(x:52, y: 245, width: self.streakTextView.frame.size.width, height: self.streakTextView.frame.size.height)
-            self.tweakReactView.frame = CGRect(x:26, y: 300, width: self.tweakReactView.frame.size.width, height: self.tweakReactView.frame.size.height)
-            
+//        if UIScreen.main.bounds.size.height == 480 {
+//            self.birdieImgView.isHidden = true
+//            self.streakTextView.frame = CGRect(x:52, y: 245, width: self.streakTextView.frame.size.width, height: self.streakTextView.frame.size.height)
+//            self.tweakReactView.frame = CGRect(x:26, y: 300, width: self.tweakReactView.frame.size.width, height: self.tweakReactView.frame.size.height)
+//
+//        }
+        
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("iPhone 5 or 5S or 5C")
+            case 1334:
+                print("iPhone 6/6S/7/8")
+            case 2208:
+                print("iPhone 6+/6S+/7+/8+")
+            case 2436:
+                print("iPhone X")
+            default:
+                print("unknown")
+            }
         }
     }
     
@@ -577,7 +608,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let tweakStreakCountValue = responseDic["tweakStreak"] as! Int
             if  responseResult == "GOOD" {
                 print("Sucess")
-                self.tweakStreakCount.text = String(tweakStreakCountValue as! Int)
+                self.tweakStreakCountButton.titleLabel?.text =  String(tweakStreakCountValue as! Int)
                 
             } else{
                 let alertController = UIAlertController.init(title: nil, message: "Error", preferredStyle : .alert);
@@ -625,7 +656,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             if  userStatus ==  1 {
                 
                 self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));
-                self.tweakStreakCount.text = String(tweakStreakCountValue )
+                self.tweakStreakCountButton.titleLabel?.text = String(tweakStreakCountValue )
                 
                 
             }
@@ -1353,5 +1384,25 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.tabBarController?.tabBar.isHidden = false
         self.settingsBarButton.isEnabled = true
     }
+    
+    @IBAction func tweakStreakCountButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func announcementsBtnTapped(_ sender: Any) {
+    }
+    
+    @IBAction func myProfileButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func buzzButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func myWallButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func myEDRButtonTapped(_ sender: Any) {
+    }
+    
+    
     
 }

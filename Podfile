@@ -5,8 +5,8 @@ target 'OneSignalNotificationServiceExtension' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 pod 'OneSignal', '>= 2.5.2', '< 3.0'
-pod 'Realm'
-pod 'RealmSwift'
+pod 'RealmSwift', '~> 2.10.2'
+
   # Pods for OneSignalNotificationServiceExtension
 
 end

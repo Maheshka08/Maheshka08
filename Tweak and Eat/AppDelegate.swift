@@ -22,6 +22,7 @@ let uiRealm = try! Realm()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, GADBannerViewDelegate, UNUserNotificationCenterDelegate {
     
+    
     let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
     var window: UIWindow?;
     var adBannerView = GADBannerView();
@@ -55,7 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config;
         FirebaseApp.configure()
         
         let isFirstTime = isAppAlreadyLaunchedOnce()
@@ -312,57 +322,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let isFirstTime = isAppAlreadyLaunchedOnce()
-        if isFirstTime == false {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in    
-            let notification = notificationRequests as [AnyObject]
-            for notify in notification {
-                if notify.content.title == "Daily Tips" {
-                    
-                    let identifierString = String(notify.identifier)
-                   let identifierArray = identifierString?.components(separatedBy: "+")
-                    //let todaysDate = identifierArray?[2]
-                    let time = identifierArray?[1]
-                    let date = Date();
-                    let formatter = DateFormatter();
-                    formatter.dateFormat = "dd/MM/yyyy";
-                    let todaysDate = formatter.string(from: date);
-                    let dailyTipInfo = self.fetchRecord(time: time!, date: todaysDate)
-                    if dailyTipInfo == 1 {
-                        return
-                    }
-                    
-                    let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
-                    APIWrapper.sharedInstance.getRequest(TweakAndEatURLConstants.DAILYTIPS, sessionString: userSession, success:
-                        { (responseDic : AnyObject!) -> (Void) in
-                            
-                            if(TweakAndEatUtils.isValidResponse(responseDic as? [String:AnyObject])) {
-                                let response : [String:AnyObject] = responseDic as! [String:AnyObject];
-                                let reminders : [String:AnyObject]? = response["tweaks"]  as? [String:AnyObject];
-                                print(reminders!);
-                                
-                                let tipid = DailyTipsNotify();
-                                tipid.pkg_evt_id = String(reminders?["pkg_evt_id"] as! Int);
-                                tipid.selectedDate = todaysDate
-                                tipid.selectedTime = time!
-                                tipid.tipNotificationMessage = reminders?["pkg_evt_message"] as! String;
-                                do {
-                                    try uiRealm.write { () -> Void in
-                                        uiRealm.create(DailyTipsNotify.self, value: tipid, update: true)
-                                    }
-                                } catch {
-                                    print("Error");
-                                }
-                                
-                            }
-                    }) { (error : NSError!) -> (Void) in
-                        print("Error in reminders");
-                    }
-                }
-            }
-            print(notification)
-        }
-        }
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

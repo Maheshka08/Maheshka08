@@ -75,6 +75,7 @@
 		57C3248D1D967C480057B590 /* TweakReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3248C1D967C480057B590 /* TweakReminderViewController.swift */; };
 		57C324961D9680450057B590 /* TweakAndEatRemindeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C324941D9680450057B590 /* TweakAndEatRemindeCell.swift */; };
 		57C324971D9680450057B590 /* TweakAndEatRemindeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */; };
+		731012461FB6DC7900EFD2C9 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731012451FB6DC7900EFD2C9 /* Announcements.swift */; };
 		731625941F7B9645007D48CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731625931F7B9645007D48CF /* WebViewController.swift */; };
 		735159F81F5C468B002F3CA1 /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159F71F5C468B002F3CA1 /* MyWallViewController.swift */; };
 		735B637F1F8E26640055DF17 /* SettingsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */; };
@@ -295,7 +296,10 @@
 		57C3248C1D967C480057B590 /* TweakReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakReminderViewController.swift; sourceTree = "<group>"; };
 		57C324941D9680450057B590 /* TweakAndEatRemindeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakAndEatRemindeCell.swift; sourceTree = "<group>"; };
 		57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakAndEatRemindeCell.xib; sourceTree = "<group>"; };
+		731012451FB6DC7900EFD2C9 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		731625931F7B9645007D48CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
+		73272BF61FBADAE600C99831 /* AirplaneDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AirplaneDing.wav; sourceTree = "<group>"; };
+		733BF0781FB72B6D00572ADF /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		735159F71F5C468B002F3CA1 /* MyWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
 		735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabBarController.swift; sourceTree = "<group>"; };
 		737D9C901F2F5A8400823448 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
@@ -632,6 +636,7 @@
 				84CFC2781F404DD00063B2CD /* Charts */,
 				84CFC2791F404E290063B2CD /* Extensions */,
 				57BED14F1D749B780008CC4D /* Assets.xcassets */,
+				733BF0781FB72B6D00572ADF /* donut.png */,
 				57BED1511D749B780008CC4D /* LaunchScreen.storyboard */,
 			);
 			path = "Tweak and Eat";
@@ -804,6 +809,7 @@
 			children = (
 				849D6B701F46D6C500A882E9 /* birds018.wav */,
 				845628A81F584A8800AF85D9 /* AwesomePopUpSound.mp3 */,
+				73272BF61FBADAE600C99831 /* AirplaneDing.wav */,
 			);
 			name = "TweakAudio ";
 			sourceTree = "<group>";
@@ -817,6 +823,7 @@
 				84B8E1621ED6D9D4007B1BD1 /* TipsNotifications.swift */,
 				84820E221F29C78D0064346B /* TweakFeedsInfo.swift */,
 				84882AF91F76527D0082A442 /* Constants.swift */,
+				731012451FB6DC7900EFD2C9 /* Announcements.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -1190,6 +1197,7 @@
 				8490A84E1E63F240002DE7F8 /* AllowedCharsTextField.swift in Sources */,
 				5735D8361D79CEEB001DAF83 /* AFURLResponseSerialization.m in Sources */,
 				84EF2D901DE6CA6700F340C5 /* TBL_DailyTips+CoreDataClass.swift in Sources */,
+				731012461FB6DC7900EFD2C9 /* Announcements.swift in Sources */,
 				8436E4221ED58587001F9FE0 /* WelcomeViewController.swift in Sources */,
 				84EF2D8E1DE6CA6700F340C5 /* TBL_Reminders+CoreDataClass.swift in Sources */,
 				5720483C1D90CFFA00948EAD /* TweakAndEatFinalIntroScreen.swift in Sources */,
