@@ -119,7 +119,6 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         //saveDailyTip()
        
     }
-    let topVC = UIApplication.shared.
      func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
      
         completionHandler();
