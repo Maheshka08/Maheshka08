@@ -119,13 +119,16 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         //saveDailyTip()
        
     }
-    
+    let topVC = UIApplication.shared.
      func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
      
         completionHandler();
         if response.notification.request.content.title == "Announcements" {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-            let destination = storyBoard.instantiateViewController(withIdentifier: "TweakNotificationsViewController") as! TweakNotificationsViewController;
+            let destination = storyBoard.instantiateViewController(withIdentifier:
+                "TweakNotificationsViewController") as! TweakNotificationsViewController;
+            
+            
             //tabBarController.selectedIndex = 2
            // let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController

@@ -67,9 +67,8 @@ class ImageUploadingViewController: UIViewController {
     @IBAction func gotItAction(_ sender: Any) {
         self.gotIt.isHidden = true;
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAKID"), object: nil)
-        self.tabBarController?.selectedIndex = 3;
-        self.navigationController?.popToRootViewController(animated: true);
-        self.tabBarController?.tabBar.isHidden = false
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "timelinesViewController") as! TimelinesViewController;
+        self.navigationController?.pushViewController(clickViewController, animated: true);
     }
     
     @IBAction func backButton(_ sender: Any) {

@@ -77,6 +77,7 @@
 		57C324971D9680450057B590 /* TweakAndEatRemindeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */; };
 		731012461FB6DC7900EFD2C9 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731012451FB6DC7900EFD2C9 /* Announcements.swift */; };
 		731625941F7B9645007D48CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731625931F7B9645007D48CF /* WebViewController.swift */; };
+		732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732578961FBC81B700270CC3 /* BadgeCount.swift */; };
 		735159F81F5C468B002F3CA1 /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159F71F5C468B002F3CA1 /* MyWallViewController.swift */; };
 		735B637F1F8E26640055DF17 /* SettingsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735B637E1F8E26640055DF17 /* SettingsTabBarController.swift */; };
 		737D9C911F2F5A8400823448 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D9C901F2F5A8400823448 /* PieChart.swift */; };
@@ -298,6 +299,7 @@
 		57C324951D9680450057B590 /* TweakAndEatRemindeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakAndEatRemindeCell.xib; sourceTree = "<group>"; };
 		731012451FB6DC7900EFD2C9 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		731625931F7B9645007D48CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
+		732578961FBC81B700270CC3 /* BadgeCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCount.swift; sourceTree = "<group>"; };
 		73272BF61FBADAE600C99831 /* AirplaneDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AirplaneDing.wav; sourceTree = "<group>"; };
 		733BF0781FB72B6D00572ADF /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		735159F71F5C468B002F3CA1 /* MyWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				84820E221F29C78D0064346B /* TweakFeedsInfo.swift */,
 				84882AF91F76527D0082A442 /* Constants.swift */,
 				731012451FB6DC7900EFD2C9 /* Announcements.swift */,
+				732578961FBC81B700270CC3 /* BadgeCount.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				573B3E9E1D9B72DF00478D06 /* DataManager.swift in Sources */,
 				5735D83B1D79CF7E001DAF83 /* APIWrapper.swift in Sources */,
 				5735D8301D79CEEB001DAF83 /* AFHTTPRequestOperationManager.m in Sources */,
+				732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */,
 				73EBF3771F370D730085E7BF /* LineChart.swift in Sources */,
 				84EF2D8B1DE6CA6700F340C5 /* TBL_Tweaks+CoreDataProperties.swift in Sources */,
 				840A2E641F360EDC0073E5A5 /* MHAAddReadingsContainer.swift in Sources */,

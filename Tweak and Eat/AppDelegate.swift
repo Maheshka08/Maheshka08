@@ -16,17 +16,22 @@ import UserNotifications
 import Realm
 import RealmSwift
 import Firebase
+import FirebaseDatabase
 
 let uiRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, GADBannerViewDelegate, UNUserNotificationCenterDelegate {
     
-    
+    var badgeCountData : Results<BadgeCount>?
+    var badgeCount: Int = 0
+    var tweakNotifyRef : DatabaseReference!
+    var announcements : Results<Announcements>?
+let realm :Realm = try! Realm()
     let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
     var window: UIWindow?;
     var adBannerView = GADBannerView();
-    var networkReconnectionBlock : ((Void) -> Void)? = nil;
+    var networkReconnectionBlock : (() -> Void)? = nil;
     let requestId = "Request ID";
     let categoryId = "Category ID";
     
@@ -135,8 +140,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
              let tweakID = additionalData["tweak_id"] as! NSNumber
                 UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAKID"), object: nil)
-                let tabBar: UITabBarController = self.window?.rootViewController as! TabBarController;
-                tabBar.selectedIndex = 3;
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let clickViewController = storyBoard.instantiateViewController(withIdentifier: "timelinesViewController") as! TimelinesViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController; navController?.pushViewController(clickViewController, animated: true);
                 
             }
         }
@@ -308,11 +315,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-       
+        self.getAnnouncements()
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-       
     }
     
      func fetchRecord(time: String, date: String) -> Int {
@@ -320,9 +327,107 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         let scope = realm.objects(DailyTipsNotify.self).filter("selectedDate == %@ AND selectedTime == %@", date,time)
         return scope.count
     }
+    func getAnnouncements() {
+    self.announcements = self.realm.objects(Announcements.self)
+    //if self.tweakFeedsInfo?.count == 0 {
+    //MBProgressHUD.showAdded(to: self.view, animated: true);
+    tweakNotifyRef = Database.database().reference().child("TweakNotificationsIos")
+    tweakNotifyRef.observeSingleEvent(of: .childRemoved, with: { (snapshot) in
+    let announcement = snapshot.value as? [String: AnyObject]
+    let announcementObj = Announcements()
+    announcementObj.postedOn = (announcement?["dateTime"] as AnyObject) as! String
+    let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
+    if announceMentData != nil {
+    deleteRealmObj(objToDelete: announceMentData!)
+    }
+    
+    
+    })
+    tweakNotifyRef.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+    if snapshot.childrenCount > 0 {
+    let dispatch_group = DispatchGroup()
+    dispatch_group.enter()
+    
+    for announceMent in snapshot.children.allObjects as! [DataSnapshot] {
+    
+    let announcements = announceMent.value as? [String : AnyObject]
+    
+    let announcementObj = Announcements()
+    announcementObj.postedOn = (announcements?["dateTime"] as AnyObject) as! String
+    let keyExists = announcements?["img"] != nil
+    if (keyExists) {
+    announcementObj.imageUrl = (announcements?["img"] as AnyObject) as! String
+    } else {
+    announcementObj.imageUrl = ""
+    }
+    let message = (announcements?["message"] as AnyObject) as! String
+    // cell.notificationMessageLbl.text = message?.html2String
+    announcementObj.announcement = message
+    let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
+    if announceMentData == nil {
+    //self.sendPushNotification()
+    //self.badgeCountData = self.realm.objects(BadgeCount.self)
+    // for badges in self.badgeCountData! {
+    
+    let badge = BadgeCount()
+    badge.badgeCount = self.badgeCount + 1
+    badge.id = self.incrementID()
+    saveToRealmOverwrite(objType: BadgeCount.self, objValues: badge)
+    let entities = self.realm.objects(BadgeCount.self)
+    let id = entities.max(ofProperty: "id") as Int?
+    let entity = id != nil ? entities.filter("id == %@", id!).first : nil
+    if entity == nil {
+    self.badgeCount = 0
+    } else {
+    self.badgeCount = (entity?.badgeCount)!
+    }
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BADGECOUNT"), object: badge.badgeCount)
+    //}
+    
+    
+    
+    let identifier = ProcessInfo.processInfo.globallyUniqueString
+    let content = UNMutableNotificationContent()
+    content.title = "Announcements"
+    content.body = message.html2String
+    content.sound = UNNotificationSound(named: "AirplaneDing.wav")
+    if announcementObj.imageUrl != "" {
+    if let attachment = UNNotificationAttachment.create(identifier: identifier, urlString: announcementObj.imageUrl, options: nil) {
+    // where myImage is any UIImage that follows the
+    content.attachments = [attachment]
+    }
+    }
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+    let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
+    UNUserNotificationCenter.current().add(request) { (error) in
+    // handle error
+    }
+    }
+    saveToRealmOverwrite(objType: Announcements.self, objValues: announcementObj)
+    
+    
+    }
+    dispatch_group.leave()
+    dispatch_group.notify(queue: DispatchQueue.main) {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RELOAD_TABLE"), object: nil)
+    
+    }
+    } else {
+    
+    
+    }
+    // ...
+    })
+    
+}
 
+func incrementID() -> Int {
+    let realm = try! Realm()
+    return (realm.objects(MyProfileInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
+}
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
+        self.getAnnouncements()
+
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -54,6 +54,9 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
         }
 
     }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var badgeCountData : Results<BadgeCount>?
+    var badgeCount: Int = 0
     var myIndex : Int = 0
     var myIndexPath : IndexPath = []
     var announcements : Results<Announcements>?
@@ -61,26 +64,7 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
     var tweakNotifyRef : DatabaseReference!
     @IBOutlet weak var notificationTableView: UITableView!
     
-    func sendPushNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Here is a new Announcement"
-        //content.subtitle = "new notification push"
-        content.body = "This is notification 1"
-        content.sound = UNNotificationSound.default()
-//        let imageUrl: URL = URL(string:"http://www.geek-week.net/wp-content/uploads/2017/02/AP-EAMCET-2017-Notification-Exam-Dates-Apply-Online-@sche.ap_.gov_.in_.jpg")!
-//        let attachment = try! UNNotificationAttachment(identifier: "imageName", url: imageUrl, options: .none)
-//
-//        content.attachments = [attachment]
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-        //NotificationCenter.default.post(name: notificationBackgroundProcessName, object: nil)
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-        UNUserNotificationCenter.current().add(request){ error in
-            if error != nil {
-                print("error sending a push notification :\(String(describing: error?.localizedDescription))")
-            }
-        }
-    }
+    
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound]);
@@ -90,10 +74,49 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler();
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+          UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        try! realm.write {
+            self.badgeCountData = self.realm.objects(BadgeCount.self)
+            realm.delete(self.badgeCountData!)
+            appDelegate.badgeCount = 0
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BADGECOUNT"), object: 0)
+        }
+            self.announcements = self.realm.objects(Announcements.self)
+
+        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        self.announcements = self.announcements!.sorted(by: sortProperties)
+        if self.announcements?.count == 0 {
+            MBProgressHUD.hide(for: self.view, animated: true);
+            let alertController = UIAlertController(title: "No announcements", message: "", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(TweakNotificationsViewController.reloadTable(notification:)), name: NSNotification.Name(rawValue: "RELOAD_TABLE"), object: nil);
+    }
+    func reloadTable(notification : NSNotification) {
+        //MBProgressHUD.showAdded(to: self.view, animated: true);
+
+        let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+        self.announcements = self.announcements!.sorted(by: sortProperties)
+        if self.announcements?.count == 0 {
+        MBProgressHUD.hide(for: self.view, animated: true);
+        let alertController = UIAlertController(title: "No announcements", message: "", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        }
+
+        MBProgressHUD.hide(for: self.view, animated: true);
+        
+        self.notificationTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (success, error) in
             if success {
                 print("success")
@@ -101,92 +124,113 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
                 print("error")
             }
         }
-        self.announcements = self.realm.objects(Announcements.self)
-        //if self.tweakFeedsInfo?.count == 0 {
-        MBProgressHUD.showAdded(to: self.view, animated: true);
-         tweakNotifyRef = Database.database().reference().child("TweakNotificationsIos")
-        tweakNotifyRef.observeSingleEvent(of: .childRemoved, with: { (snapshot) in
-            let announcement = snapshot.value as? [String: AnyObject]
-            let announcementObj = Announcements()
-            announcementObj.postedOn = (announcement?["dateTime"] as AnyObject) as! String
-            let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
-            if announceMentData != nil {
-                deleteRealmObj(objToDelete: announceMentData!)
-            }
-
-            
- })
-         tweakNotifyRef.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
-            if snapshot.childrenCount > 0 {
-                let dispatch_group = DispatchGroup()
-                dispatch_group.enter()
-                
-                for announceMent in snapshot.children.allObjects as! [DataSnapshot] {
-                    
-                    let announcements = announceMent.value as? [String : AnyObject]
-                    
-                    let announcementObj = Announcements()
-                    announcementObj.postedOn = (announcements?["dateTime"] as AnyObject) as! String
-                    let keyExists = announcements?["img"] != nil
-                    if (keyExists) {
-                        announcementObj.imageUrl = (announcements?["img"] as AnyObject) as! String
-                    } else {
-                       announcementObj.imageUrl = ""
-                    }
-                    let message = (announcements?["message"] as AnyObject) as! String
-                    // cell.notificationMessageLbl.text = message?.html2String
-                    announcementObj.announcement = message
-                    let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
-                    if announceMentData == nil {
-                        //self.sendPushNotification()
-                        let identifier = ProcessInfo.processInfo.globallyUniqueString
-                        let content = UNMutableNotificationContent()
-                        content.title = "Announcements"
-                        content.body = message.html2String
-                        content.sound = UNNotificationSound(named: "AirplaneDing.wav")
-                        if announcementObj.imageUrl != "" {
-                        if let attachment = UNNotificationAttachment.create(identifier: identifier, urlString: announcementObj.imageUrl, options: nil) {
-                            // where myImage is any UIImage that follows the
-                            content.attachments = [attachment]
-                        }
-                        }
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
-                        let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
-                        UNUserNotificationCenter.current().add(request) { (error) in
-                            // handle error
-                        }
-                    }
-                    saveToRealmOverwrite(objType: Announcements.self, objValues: announcementObj)
-                   
-
-                }
-                dispatch_group.leave()
-                dispatch_group.notify(queue: DispatchQueue.main) {
-                    
-                    let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
-                    self.announcements = self.announcements!.sorted(by: sortProperties)
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    
-                    self.notificationTableView.reloadData()
-                }
-            } else {
-                
-                MBProgressHUD.hide(for: self.view, animated: true);
-                let alertController = UIAlertController(title: "No announcements", message: "", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                self.present(alertController, animated: true, completion: nil)
-
-            }
-            // ...
-        })
-//        tweakNotifyRef.observe(DataEventType.childAdded, with: { (snapshot) in
-//            self.notifyObj = snapshot.value as? [String : AnyObject]
-//
-//        })
-        // Do any additional setup after loading the view.
-       
     }
+//        self.announcements = self.realm.objects(Announcements.self)
+//        //if self.tweakFeedsInfo?.count == 0 {
+//        MBProgressHUD.showAdded(to: self.view, animated: true);
+//         tweakNotifyRef = Database.database().reference().child("TweakNotificationsIos")
+//        tweakNotifyRef.observeSingleEvent(of: .childRemoved, with: { (snapshot) in
+//            let announcement = snapshot.value as? [String: AnyObject]
+//            let announcementObj = Announcements()
+//            announcementObj.postedOn = (announcement?["dateTime"] as AnyObject) as! String
+//            let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
+//            if announceMentData != nil {
+//                deleteRealmObj(objToDelete: announceMentData!)
+//            }
+//
+//
+// })
+//         tweakNotifyRef.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+//            if snapshot.childrenCount > 0 {
+//                let dispatch_group = DispatchGroup()
+//                dispatch_group.enter()
+//
+//                for announceMent in snapshot.children.allObjects as! [DataSnapshot] {
+//
+//                    let announcements = announceMent.value as? [String : AnyObject]
+//
+//                    let announcementObj = Announcements()
+//                    announcementObj.postedOn = (announcements?["dateTime"] as AnyObject) as! String
+//                    let keyExists = announcements?["img"] != nil
+//                    if (keyExists) {
+//                        announcementObj.imageUrl = (announcements?["img"] as AnyObject) as! String
+//                    } else {
+//                       announcementObj.imageUrl = ""
+//                    }
+//                    let message = (announcements?["message"] as AnyObject) as! String
+//                    // cell.notificationMessageLbl.text = message?.html2String
+//                    announcementObj.announcement = message
+//                    let announceMentData = self.realm.object(ofType: Announcements.self, forPrimaryKey: announcementObj.postedOn);
+//                    if announceMentData == nil {
+//                        //self.sendPushNotification()
+//                        //self.badgeCountData = self.realm.objects(BadgeCount.self)
+//                       // for badges in self.badgeCountData! {
+//
+//                            let badge = BadgeCount()
+//                            badge.badgeCount = self.badgeCount + 1
+//                            badge.id = self.incrementID()
+//                            saveToRealmOverwrite(objType: BadgeCount.self, objValues: badge)
+//                        let entities = self.realm.objects(BadgeCount.self)
+//                        let id = entities.max(ofProperty: "id") as Int?
+//                        let entity = id != nil ? entities.filter("id == %@", id!).first : nil
+//                        if entity == nil {
+//                            self.badgeCount = 0
+//                        } else {
+//                            self.badgeCount = (entity?.badgeCount)!
+//                        }
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BADGECOUNT"), object: badge.badgeCount)
+//                        //}
+//
+//
+//
+//                        let identifier = ProcessInfo.processInfo.globallyUniqueString
+//                        let content = UNMutableNotificationContent()
+//                        content.title = "Announcements"
+//                        content.body = message.html2String
+//                        content.sound = UNNotificationSound(named: "AirplaneDing.wav")
+//                        if announcementObj.imageUrl != "" {
+//                        if let attachment = UNNotificationAttachment.create(identifier: identifier, urlString: announcementObj.imageUrl, options: nil) {
+//                            // where myImage is any UIImage that follows the
+//                            content.attachments = [attachment]
+//                        }
+//                        }
+//                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+//                        let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
+//                        UNUserNotificationCenter.current().add(request) { (error) in
+//                            // handle error
+//                        }
+//                    }
+//                    saveToRealmOverwrite(objType: Announcements.self, objValues: announcementObj)
+//
+//
+//                }
+//                dispatch_group.leave()
+//                dispatch_group.notify(queue: DispatchQueue.main) {
+//
+//                    let sortProperties = [SortDescriptor(keyPath: "timeIn", ascending: false)]
+//                    self.announcements = self.announcements!.sorted(by: sortProperties)
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                    self.notificationTableView.reloadData()
+//                }
+//            } else {
+//
+//                MBProgressHUD.hide(for: self.view, animated: true);
+//                let alertController = UIAlertController(title: "No announcements", message: "", preferredStyle: .alert)
+//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                alertController.addAction(defaultAction)
+//                self.present(alertController, animated: true, completion: nil)
+//
+//            }
+//            // ...
+//        })
+//
+//    }
+//
+//    func incrementID() -> Int {
+//        let realm = try! Realm()
+//        return (realm.objects(MyProfileInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
+//    }
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.announcements!.count

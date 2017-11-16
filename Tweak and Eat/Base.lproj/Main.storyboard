@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3IO-yt-yZe">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,10 +19,10 @@
             <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
-        <array key="OrkneyMedium.ttf">
+        <array key="OrkneyMedium.otf">
             <string>Orkney-Medium</string>
         </array>
-        <array key="OrkneyRegular.ttf">
+        <array key="OrkneyRegular.otf">
             <string>Orkney-Regular</string>
         </array>
         <array key="SourceSansPro-Regular.ttf">
@@ -30,6 +30,9 @@
         </array>
         <array key="TrebuchetMS.ttf">
             <string>TrebuchetMS</string>
+        </array>
+        <array key="TrebuchetMSBold.ttf">
+            <string>TrebuchetMS-Bold</string>
         </array>
     </customFonts>
     <scenes>
@@ -199,10 +202,10 @@
                                     <outletCollection property="gestureRecognizers" destination="PWQ-iD-P4h" appends="YES" id="Vjz-9i-k4b"/>
                                 </connections>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdiefood" translatesAutoresizingMaskIntoConstraints="NO" id="3Dm-B5-3Ja">
-                                <rect key="frame" x="108.5" y="421" width="103" height="71"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdiefood" translatesAutoresizingMaskIntoConstraints="NO" id="3Dm-B5-3Ja">
+                                <rect key="frame" x="133" y="421" width="54" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="gNR-lo-2Wf"/>
+                                    <constraint firstAttribute="width" constant="54" id="gNR-lo-2Wf"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-a4-VP3">
@@ -303,86 +306,128 @@
                                     <segue destination="3Tl-Pj-Nlm" kind="show" id="by9-O7-z9s"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFA-NC-hBv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFA-NC-hBv">
                                 <rect key="frame" x="42" y="72" width="25" height="25"/>
                                 <color key="backgroundColor" red="1" green="0.045435291284737112" blue="0.32602612393793495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Q88-Pm-fbp"/>
                                     <constraint firstAttribute="width" constant="25" id="q1f-q5-gcX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-0m-ruO">
-                                <rect key="frame" x="35" y="296" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1oJ-xU-MlP"/>
-                                    <constraint firstAttribute="width" constant="50" id="QPn-br-sEH"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="my_profile"/>
-                                <connections>
-                                    <action selector="myProfileButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mej-bq-Iqe"/>
-                                    <segue destination="QiA-Ne-3AG" kind="show" id="aAB-hj-eQG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szl-JU-Ho7">
-                                <rect key="frame" x="102" y="296" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="A1U-o0-qKP"/>
-                                    <constraint firstAttribute="height" constant="50" id="bS3-TX-qBf"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="buzz"/>
-                                <connections>
-                                    <action selector="buzzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eaC-75-V8O"/>
-                                    <segue destination="fve-kg-G41" kind="show" id="fLH-bw-yMq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="es3-3D-c2z">
-                                <rect key="frame" x="169" y="296" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="gWX-hg-TT8"/>
-                                    <constraint firstAttribute="width" constant="50" id="yyf-S0-3mX"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="tweak_wall"/>
-                                <connections>
-                                    <action selector="myWallButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPu-Fg-wpk"/>
-                                    <segue destination="P3a-tJ-D69" kind="show" id="d4k-GC-EoD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Stf-Ae-vM8">
-                                <rect key="frame" x="236" y="296" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Bns-2U-V8P"/>
-                                    <constraint firstAttribute="height" constant="50" id="znx-Hc-ufv"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="my_edr"/>
-                                <connections>
-                                    <action selector="myEDRButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0p-Rf-4uq"/>
-                                    <segue destination="RqT-Yt-Gtc" kind="show" id="kkL-qJ-C67"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-nY-dN4">
-                                <rect key="frame" x="28.5" y="353" width="62.5" height="17"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buzz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiG-02-2kp">
-                                <rect key="frame" x="112" y="353" width="29" height="17"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-yX-vYy">
+                                <rect key="frame" x="0.0" y="289" width="320" height="83"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-0m-ruO">
+                                        <rect key="frame" x="16" y="1" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ebS-oL-XY6"/>
+                                            <constraint firstAttribute="width" constant="60" id="l2v-8W-sYZ"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="my_profile"/>
+                                        <connections>
+                                            <action selector="myProfileButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mej-bq-Iqe"/>
+                                            <segue destination="QiA-Ne-3AG" kind="show" id="aAB-hj-eQG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szl-JU-Ho7">
+                                        <rect key="frame" x="91" y="1" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="km4-h3-ZjJ"/>
+                                            <constraint firstAttribute="height" constant="60" id="kue-aw-zcf"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="buzz"/>
+                                        <connections>
+                                            <action selector="buzzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eaC-75-V8O"/>
+                                            <segue destination="fve-kg-G41" kind="show" id="fLH-bw-yMq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="es3-3D-c2z">
+                                        <rect key="frame" x="167" y="1" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="4kN-fh-w65"/>
+                                            <constraint firstAttribute="width" constant="60" id="eht-ah-q9j"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="tweak_wall"/>
+                                        <connections>
+                                            <action selector="myWallButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPu-Fg-wpk"/>
+                                            <segue destination="P3a-tJ-D69" kind="show" id="d4k-GC-EoD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Stf-Ae-vM8">
+                                        <rect key="frame" x="243" y="1" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Ak6-7s-pY4"/>
+                                            <constraint firstAttribute="width" constant="60" id="B4R-1g-1wv"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="my_edr"/>
+                                        <connections>
+                                            <action selector="myEDRButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0p-Rf-4uq"/>
+                                            <segue destination="RqT-Yt-Gtc" kind="show" id="kkL-qJ-C67"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-nY-dN4">
+                                        <rect key="frame" x="15" y="65" width="62.5" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buzz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiG-02-2kp">
+                                        <rect key="frame" x="106.5" y="65" width="29" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Wall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI4-v2-8Sp">
+                                        <rect key="frame" x="173" y="65" width="48" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My EDR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMn-0I-AUg">
+                                        <rect key="frame" x="249.5" y="65" width="45.5" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eNZ-0m-ruO" firstAttribute="leading" secondItem="cQk-yX-vYy" secondAttribute="leading" constant="16" id="0bg-eg-DoW"/>
+                                    <constraint firstItem="eNZ-0m-ruO" firstAttribute="top" secondItem="cQk-yX-vYy" secondAttribute="top" constant="1" id="1Tt-tJ-pUn"/>
+                                    <constraint firstItem="szl-JU-Ho7" firstAttribute="top" secondItem="eNZ-0m-ruO" secondAttribute="top" id="4pO-kx-hUo"/>
+                                    <constraint firstAttribute="height" constant="83" id="ERy-a7-kdO"/>
+                                    <constraint firstItem="es3-3D-c2z" firstAttribute="leading" secondItem="szl-JU-Ho7" secondAttribute="trailing" constant="16" id="IkG-s6-fFx"/>
+                                    <constraint firstItem="Stf-Ae-vM8" firstAttribute="top" secondItem="es3-3D-c2z" secondAttribute="top" id="Zki-H8-chy"/>
+                                    <constraint firstItem="Stf-Ae-vM8" firstAttribute="leading" secondItem="es3-3D-c2z" secondAttribute="trailing" constant="16" id="dLB-0h-4YP"/>
+                                    <constraint firstItem="szl-JU-Ho7" firstAttribute="leading" secondItem="eNZ-0m-ruO" secondAttribute="trailing" constant="15" id="eSD-sF-ndd"/>
+                                    <constraint firstItem="es3-3D-c2z" firstAttribute="top" secondItem="szl-JU-Ho7" secondAttribute="top" id="gSA-Ki-3DT"/>
+                                    <constraint firstAttribute="trailing" secondItem="Stf-Ae-vM8" secondAttribute="trailing" constant="17" id="uqZ-9G-YVj"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Tweak Streak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycx-1d-qt2">
+                                <rect key="frame" x="252" y="130" width="64" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="M8V-1r-egO"/>
+                                    <constraint firstAttribute="height" constant="34" id="lh6-a2-aCK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Wall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI4-v2-8Sp">
-                                <rect key="frame" x="170.5" y="353" width="48" height="17"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My EDR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMn-0I-AUg">
-                                <rect key="frame" x="239" y="353" width="45.5" height="17"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check This Out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ke-4R-SUH">
+                                <rect key="frame" x="7.5" y="130" width="64" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="4oX-2V-P6e"/>
+                                    <constraint firstAttribute="height" constant="34" id="pih-qG-kgd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -390,38 +435,28 @@
                         <color key="backgroundColor" red="0.34901960784313724" green="0.0" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Dm-B5-3Ja" firstAttribute="top" secondItem="zpj-hf-J7E" secondAttribute="bottom" constant="8" id="0Sl-2t-Enw"/>
-                            <constraint firstItem="2nr-nY-dN4" firstAttribute="top" secondItem="eNZ-0m-ruO" secondAttribute="bottom" constant="7" id="25x-Gy-5zO"/>
                             <constraint firstAttribute="trailing" secondItem="MUF-Tr-qR4" secondAttribute="trailing" constant="2000" id="3u5-ix-scc"/>
-                            <constraint firstItem="DI4-v2-8Sp" firstAttribute="top" secondItem="QiG-02-2kp" secondAttribute="top" id="73O-yu-B4F"/>
                             <constraint firstItem="vFA-NC-hBv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8eD-6u-8KO"/>
                             <constraint firstItem="MUF-Tr-qR4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AHv-V8-23d"/>
-                            <constraint firstItem="szl-JU-Ho7" firstAttribute="top" secondItem="eNZ-0m-ruO" secondAttribute="top" id="BE6-Ht-WqO"/>
                             <constraint firstAttribute="bottom" secondItem="MUF-Tr-qR4" secondAttribute="bottom" id="Bqh-7K-iom"/>
                             <constraint firstItem="5mO-3Y-yjd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="EMa-tc-G2P"/>
-                            <constraint firstItem="DI4-v2-8Sp" firstAttribute="centerX" secondItem="es3-3D-c2z" secondAttribute="centerX" id="Ebi-7d-ToD"/>
+                            <constraint firstItem="9Ke-4R-SUH" firstAttribute="centerX" secondItem="5mO-3Y-yjd" secondAttribute="centerX" id="FGn-sj-fuv"/>
                             <constraint firstAttribute="trailing" secondItem="0ln-Fe-nzu" secondAttribute="trailing" constant="13" id="GQx-yL-WT3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9r9-a4-VP3" secondAttribute="bottom" constant="53" id="Hwo-l4-n1e"/>
-                            <constraint firstItem="IMn-0I-AUg" firstAttribute="centerX" secondItem="Stf-Ae-vM8" secondAttribute="centerX" id="I6u-FM-uSP"/>
                             <constraint firstItem="ZqA-YQ-WC7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IsP-g0-wS2"/>
+                            <constraint firstItem="9Ke-4R-SUH" firstAttribute="top" secondItem="5mO-3Y-yjd" secondAttribute="bottom" id="MDk-KM-BxV"/>
                             <constraint firstItem="ZqA-YQ-WC7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="P6r-QU-AU0"/>
                             <constraint firstItem="9r9-a4-VP3" firstAttribute="centerX" secondItem="ZqA-YQ-WC7" secondAttribute="centerX" constant="2" id="PZD-fr-ij2"/>
-                            <constraint firstItem="QiG-02-2kp" firstAttribute="centerX" secondItem="szl-JU-Ho7" secondAttribute="centerX" id="PbY-v8-Tvb"/>
                             <constraint firstAttribute="bottomMargin" secondItem="3Dm-B5-3Ja" secondAttribute="bottom" constant="-12" id="QGZ-oZ-MWq"/>
                             <constraint firstItem="5mO-3Y-yjd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="17" id="RA8-rX-gSi"/>
-                            <constraint firstItem="es3-3D-c2z" firstAttribute="top" secondItem="szl-JU-Ho7" secondAttribute="top" id="TMT-lB-FNC"/>
-                            <constraint firstItem="eNZ-0m-ruO" firstAttribute="top" secondItem="ZqA-YQ-WC7" secondAttribute="bottom" constant="8" id="Tm8-I2-biK"/>
-                            <constraint firstItem="QiG-02-2kp" firstAttribute="top" secondItem="2nr-nY-dN4" secondAttribute="top" id="WZL-3g-GCZ"/>
-                            <constraint firstItem="szl-JU-Ho7" firstAttribute="leading" secondItem="eNZ-0m-ruO" secondAttribute="trailing" constant="17" id="ZNx-Kz-wXs"/>
+                            <constraint firstItem="cQk-yX-vYy" firstAttribute="top" secondItem="ZqA-YQ-WC7" secondAttribute="bottom" constant="1" id="VC5-gk-BjG"/>
                             <constraint firstItem="vFA-NC-hBv" firstAttribute="leading" secondItem="5mO-3Y-yjd" secondAttribute="trailing" constant="-20" id="cDq-Hu-DsG"/>
-                            <constraint firstItem="es3-3D-c2z" firstAttribute="leading" secondItem="szl-JU-Ho7" secondAttribute="trailing" constant="17" id="cwq-5J-OPX"/>
-                            <constraint firstItem="Stf-Ae-vM8" firstAttribute="top" secondItem="es3-3D-c2z" secondAttribute="top" id="dgs-nm-fSt"/>
-                            <constraint firstItem="IMn-0I-AUg" firstAttribute="top" secondItem="DI4-v2-8Sp" secondAttribute="top" id="eg5-bK-lHL"/>
                             <constraint firstItem="MUF-Tr-qR4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-2000" id="f2b-yG-3jE"/>
-                            <constraint firstItem="2nr-nY-dN4" firstAttribute="centerX" secondItem="eNZ-0m-ruO" secondAttribute="centerX" id="fmm-5A-xdB"/>
                             <constraint firstItem="3Dm-B5-3Ja" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hKk-AL-gFH"/>
-                            <constraint firstItem="eNZ-0m-ruO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="35" id="oSU-yA-ANa"/>
-                            <constraint firstItem="Stf-Ae-vM8" firstAttribute="leading" secondItem="es3-3D-c2z" secondAttribute="trailing" constant="17" id="rHx-TH-AFk"/>
                             <constraint firstItem="0ln-Fe-nzu" firstAttribute="top" secondItem="5mO-3Y-yjd" secondAttribute="top" id="s9j-Tq-GSr"/>
+                            <constraint firstItem="ycx-1d-qt2" firstAttribute="centerX" secondItem="0ln-Fe-nzu" secondAttribute="centerX" id="sYS-4r-LLW"/>
+                            <constraint firstItem="cQk-yX-vYy" firstAttribute="centerX" secondItem="ZqA-YQ-WC7" secondAttribute="centerX" id="wT9-za-2Qh"/>
+                            <constraint firstItem="ycx-1d-qt2" firstAttribute="top" secondItem="0ln-Fe-nzu" secondAttribute="bottom" id="zfL-79-p2Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweak &amp; Eat" id="Wux-rW-jap">
@@ -435,14 +470,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="ButtonTopConstraint" destination="VC5-gk-BjG" id="Obr-Td-qAf"/>
                         <outlet property="birdieImgView" destination="3Dm-B5-3Ja" id="H9x-kc-FFb"/>
                         <outlet property="buzzButton" destination="szl-JU-Ho7" id="daR-Of-R2t"/>
                         <outlet property="faceDetectionImageView" destination="lVu-Vz-YRr" id="zV3-o4-8eC"/>
                         <outlet property="faceDetectionView" destination="MUF-Tr-qR4" id="uYH-4r-5Km"/>
                         <outlet property="myEDRButton" destination="Stf-Ae-vM8" id="ehg-9L-PDE"/>
                         <outlet property="myProfileButton" destination="eNZ-0m-ruO" id="L8R-aY-hAL"/>
-                        <outlet property="myProfileButtonTopConstraint" destination="Tm8-I2-biK" id="7LJ-On-K2l"/>
-                        <outlet property="myProfileLeadingConstraint" destination="oSU-yA-ANa" id="nHB-lM-FyJ"/>
                         <outlet property="myWallButton" destination="es3-3D-c2z" id="DV4-PC-IVY"/>
                         <outlet property="notificationBadgeLabel" destination="vFA-NC-hBv" id="E2b-xt-ilF"/>
                         <outlet property="randomMessages" destination="zpj-hf-J7E" id="F2N-KU-Dkk"/>
@@ -536,7 +570,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fibre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yql-ao-oWi">
-                                <rect key="frame" x="200" y="444" width="33.5" height="21"/>
+                                <rect key="frame" x="200" y="444" width="31.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lax-m3-kul"/>
                                 </constraints>
@@ -545,7 +579,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbA-Gg-rgk">
-                                <rect key="frame" x="244" y="444" width="17" height="17"/>
+                                <rect key="frame" x="242" y="444" width="17" height="17"/>
                                 <color key="backgroundColor" red="0.13582369690000001" green="0.61015200609999998" blue="0.1322111785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="PgA-SW-aE4"/>
@@ -556,7 +590,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOP-0D-czv">
-                                <rect key="frame" x="264" y="444" width="47.5" height="21"/>
+                                <rect key="frame" x="262" y="444" width="44.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0mg-9v-zJl"/>
                                 </constraints>
@@ -2096,25 +2130,6 @@ My Profile Plate is generated algorithmically based on the profile information y
             </objects>
             <point key="canvasLocation" x="-1578.75" y="343.75"/>
         </scene>
-        <!--My EDR-->
-        <scene sceneID="Bou-h1-uuP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="caa-NJ-l9F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My EDR" image="ic_action_timeline" id="MqL-8w-15m"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aqN-K3-v1c">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RqT-Yt-Gtc" kind="relationship" relationship="rootViewController" id="0zK-2g-H7Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U2o-HI-8cg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-935.625" y="284.15492957746477"/>
-        </scene>
         <!--Home-->
         <scene sceneID="let-Rk-reB">
             <objects>
@@ -2132,26 +2147,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oq-hL-97r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.375" y="284.15492957746477"/>
-        </scene>
-        <!--Buzz-->
-        <scene sceneID="C3g-bU-tGY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rHE-Ql-UgM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buzz" image="ic_action_buzz" id="RwI-Sp-cNn"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yLK-1j-Agz">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fve-kg-G41" kind="relationship" relationship="rootViewController" id="cZf-aR-jLB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CjD-4O-Piz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-377" y="-1056"/>
+            <point key="canvasLocation" x="-92" y="-249"/>
         </scene>
         <!--TweakMyWall-->
         <scene sceneID="tBl-6a-Qqm">
@@ -2437,25 +2433,6 @@ My Profile Plate is generated algorithmically based on the profile information y
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZq-ld-Ik3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438.125" y="-194.36619718309859"/>
-        </scene>
-        <!--TWEAK WALL-->
-        <scene sceneID="B2c-Rc-mgy">
-            <objects>
-                <navigationController title="TWEAK WALL" automaticallyAdjustsScrollViewInsets="NO" id="S1p-DK-1vr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tweak Wall" image="Mywall" selectedImage="Mywall" id="cfb-Eb-36r"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IzE-gy-F1k">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="P3a-tJ-D69" kind="relationship" relationship="rootViewController" id="vQd-k5-5ym"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nQl-gO-ijO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="650.625" y="-194.36619718309859"/>
         </scene>
         <!--Awesome Count View Controller-->
         <scene sceneID="62d-zU-qdA">
@@ -3435,7 +3412,6 @@ My Profile Plate is generated algorithmically based on the profile information y
         <image name="Cross" width="25" height="25"/>
         <image name="Home" width="25" height="25"/>
         <image name="InfoBtn" width="25" height="25"/>
-        <image name="Mywall" width="30" height="30"/>
         <image name="ShareNewIcon" width="100" height="100"/>
         <image name="TweakRemainder" width="32" height="32"/>
         <image name="awesome" width="100" height="100"/>
@@ -3446,10 +3422,8 @@ My Profile Plate is generated algorithmically based on the profile information y
         <image name="check_this_out" width="100" height="100"/>
         <image name="close-btn" width="31" height="31"/>
         <image name="food1" width="1782" height="1782"/>
-        <image name="ic_action_buzz" width="24" height="24"/>
         <image name="ic_action_invite" width="24" height="24"/>
         <image name="ic_action_settings" width="24" height="24"/>
-        <image name="ic_action_timeline" width="24" height="24"/>
         <image name="ic_camera" width="200" height="160"/>
         <image name="iconInfo" width="104" height="104"/>
         <image name="idlyPic" width="266" height="189"/>
@@ -3467,9 +3441,6 @@ My Profile Plate is generated algorithmically based on the profile information y
         <image name="whiteCheckbox" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d4k-GC-EoD"/>
-        <segue reference="fLH-bw-yMq"/>
-        <segue reference="kkL-qJ-C67"/>
         <segue reference="2Ti-en-Il3"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.36368450522422791" green="0.08630264550447464" blue="0.53960508108139038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

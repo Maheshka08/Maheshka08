@@ -20,13 +20,14 @@ import Firebase
 import FirebaseAuth
 import FirebaseInstanceID
 import CoreImage
+import Realm
+import RealmSwift
 
 class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet var shadowImageTopConstraint: NSLayoutConstraint!
-    @IBOutlet var myProfileButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet var ButtonTopConstraint: NSLayoutConstraint!
     
-    @IBOutlet var myProfileLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet var myEDRButton: UIButton!
     @IBOutlet var myProfileButton: UIButton!
@@ -57,7 +58,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var streakTextView: UIView!
     
     @IBOutlet weak var randomMessages: UILabel!
-    
+    var badgeCount: Int = 0
     var faceBox : UIView!
     var locManager = CLLocationManager();
     var selectedDate : String!;
@@ -69,6 +70,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     var picker = UIImagePickerController();
     var dbArray:[AnyObject] = [];
     let textSaperator : String = "#";
+    let realm :Realm = try! Realm()
+
     
     @IBOutlet weak var roundImageView: UIImageView!;
     
@@ -99,8 +102,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             switch UIScreen.main.nativeBounds.height {
             case 1136:
                 print("iPhone 5 or 5S or 5C")
+                self.setConstraints(forBtnTop: 20.0, forMyShadowTop: 0.0)
             case 1334:
                 print("iPhone 6/6S/7/8")
+                self.setConstraints(forBtnTop: 80.0, forMyShadowTop: 0.0)
+
             case 2208:
                 print("iPhone 6+/6S+/7+/8+")
             case 2436:
@@ -115,12 +121,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.notificationBadgeLabel.layer.cornerRadius = self.notificationBadgeLabel.frame.size.width / 2
+        self.notificationBadgeLabel.clipsToBounds = true
+        self.notificationBadgeLabel.isHidden = true
         appDelegateTAE = UIApplication.shared.delegate as! AppDelegate;
 
         picker.delegate = self;
         self.tweakReactView.layer.borderWidth = 1;
         self.tweakReactView.layer.borderColor = UIColor.white.cgColor;
-        streakTextView.layer.cornerRadius = 6.0;
         self.tweakReactView.layer.cornerRadius = 5.0;
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.checkTweakable));
         roundImageView.isUserInteractionEnabled = true;
@@ -146,9 +154,40 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.reachabilityChanged(notification:)), name: NSNotification.Name.reachabilityChanged, object: nil);
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.badgeCountChanged(notification:)), name: NSNotification.Name(rawValue: "BADGECOUNT"), object: nil);
         self.getStaticText()
         
+    }
+    
+    func badgeCountChanged(notification : NSNotification) {
+        let entities = self.realm.objects(BadgeCount.self)
+        let id = entities.max(ofProperty: "id") as Int?
+        let entity = id != nil ? entities.filter("id == %@", id!).first : nil
+        if entity == nil {
+            self.badgeCount = 0
+        } else {
+            self.badgeCount = (entity?.badgeCount)!
+        }
+        DispatchQueue.main.async(execute: {
+            if self.badgeCount == 0 {
+                self.notificationBadgeLabel.isHidden = true
+            } else {
+            self.notificationBadgeLabel.isHidden = false
+            self.notificationBadgeLabel.text = String(self.badgeCount)
+            }
+            
+        })
+       
+    }
+    
+    func setConstraints(forBtnTop: CGFloat, forMyShadowTop: CGFloat) {
+        if forBtnTop != 0.0 {
+            self.ButtonTopConstraint.constant = forBtnTop
+        }
+        
+        if forMyShadowTop != 0.0 {
+            self.shadowImageTopConstraint.constant = forMyShadowTop
+        }
     }
     
     func getStaticText() {
@@ -582,7 +621,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 let responseMessage = response["message"] as! String
                 if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
                     self.randomMessages.text = responseMessage
-                    self.tweakStreak()
+                   // self.tweakStreak()
                 }
             } else {
                 
@@ -656,7 +695,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             if  userStatus ==  1 {
                 
                 self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));
-                self.tweakStreakCountButton.titleLabel?.text = String(tweakStreakCountValue )
+                self.tweakStreakCountButton.setTitle(String(tweakStreakCountValue ), for: .normal)
+                
                 
                 
             }
