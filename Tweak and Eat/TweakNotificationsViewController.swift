@@ -76,7 +76,7 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-          UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+          UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         try! realm.write {
             self.badgeCountData = self.realm.objects(BadgeCount.self)
             realm.delete(self.badgeCountData!)

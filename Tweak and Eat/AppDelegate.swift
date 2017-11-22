@@ -315,8 +315,11 @@ let realm :Realm = try! Realm()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        self.getAnnouncements()
-
+        if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
+            if !showRegistration {
+                self.getAnnouncements()
+            }
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -370,17 +373,18 @@ let realm :Realm = try! Realm()
     // for badges in self.badgeCountData! {
     
     let badge = BadgeCount()
+        let entities = self.realm.objects(BadgeCount.self)
+        let id = entities.max(ofProperty: "id") as Int?
+        let entity = id != nil ? entities.filter("id == %@", id!).first : nil
+        if entity == nil {
+            self.badgeCount = 0
+        } else {
+            self.badgeCount = (entity?.badgeCount)!
+        }
     badge.badgeCount = self.badgeCount + 1
     badge.id = self.incrementID()
     saveToRealmOverwrite(objType: BadgeCount.self, objValues: badge)
-    let entities = self.realm.objects(BadgeCount.self)
-    let id = entities.max(ofProperty: "id") as Int?
-    let entity = id != nil ? entities.filter("id == %@", id!).first : nil
-    if entity == nil {
-    self.badgeCount = 0
-    } else {
-    self.badgeCount = (entity?.badgeCount)!
-    }
+    
     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BADGECOUNT"), object: badge.badgeCount)
     //}
     
@@ -426,7 +430,12 @@ func incrementID() -> Int {
     return (realm.objects(MyProfileInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
 }
     func applicationDidBecomeActive(_ application: UIApplication) {
-        self.getAnnouncements()
+        if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
+            if !showRegistration {
+                self.getAnnouncements()
+            }
+        }
+       
 
     }
 

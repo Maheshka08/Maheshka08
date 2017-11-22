@@ -35,7 +35,9 @@ class TweakAndEatFinalIntroScreen: UIView {
 
     @IBAction func onClickOfOkay(sender: AnyObject) {
         self.delegate.resignRegistrationScreen()
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.getAnnouncements()
+
         //self.delegate.homeInfoApiCalls()
     }
 }

@@ -105,12 +105,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.setConstraints(forBtnTop: 20.0, forMyShadowTop: 0.0)
             case 1334:
                 print("iPhone 6/6S/7/8")
-                self.setConstraints(forBtnTop: 80.0, forMyShadowTop: 0.0)
+                self.setConstraints(forBtnTop: 83.0, forMyShadowTop: 0.0)
 
             case 2208:
                 print("iPhone 6+/6S+/7+/8+")
+                self.setConstraints(forBtnTop: 95.0, forMyShadowTop: 0.0)
+
             case 2436:
                 print("iPhone X")
+                self.setConstraints(forBtnTop: 105.0, forMyShadowTop: 0.0)
+
             default:
                 print("unknown")
             }
@@ -159,7 +163,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
-    func badgeCountChanged(notification : NSNotification) {
+    func showBadge() {
         let entities = self.realm.objects(BadgeCount.self)
         let id = entities.max(ofProperty: "id") as Int?
         let entity = id != nil ? entities.filter("id == %@", id!).first : nil
@@ -172,12 +176,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             if self.badgeCount == 0 {
                 self.notificationBadgeLabel.isHidden = true
             } else {
-            self.notificationBadgeLabel.isHidden = false
-            self.notificationBadgeLabel.text = String(self.badgeCount)
+                self.notificationBadgeLabel.isHidden = false
+                self.notificationBadgeLabel.text = String(self.badgeCount)
             }
             
         })
-       
+    }
+    
+    func badgeCountChanged(notification : NSNotification) {
+      
+       self.showBadge()
     }
     
     func setConstraints(forBtnTop: CGFloat, forMyShadowTop: CGFloat) {
@@ -696,6 +704,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
                 self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String));
                 self.tweakStreakCountButton.setTitle(String(tweakStreakCountValue ), for: .normal)
+                self.showBadge()
                 
                 
                 
