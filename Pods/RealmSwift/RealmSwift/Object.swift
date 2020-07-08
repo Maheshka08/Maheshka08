@@ -97,7 +97,7 @@ open class Object: RLMObjectBase, ThreadConfined {
 
      - parameter value:  The value used to populate the object.
      */
-    public init(value: Any) {
+    @objc public init(value: Any) {
         super.init(value: value, schema: .partialPrivateShared())
     }
 
@@ -131,7 +131,7 @@ open class Object: RLMObjectBase, ThreadConfined {
     public final override var className: String { return "" }
     #else
     /// Helper to return the class name for an Object subclass.
-    public final var className: String { return "" }
+    @objc public final var className: String { return "" }
     #endif
 
     /**
@@ -414,7 +414,7 @@ public class ObjectUtil: NSObject {
     @objc private class func getGenericListPropertyNames(_ object: Any) -> NSArray {
         return Mirror(reflecting: object).children.filter { (prop: Mirror.Child) in
             return type(of: prop.value) is RLMListBase.Type
-        }.flatMap { (prop: Mirror.Child) in
+        }.compactMap { (prop: Mirror.Child) in
             return prop.label
         } as NSArray
     }
@@ -464,7 +464,7 @@ public class ObjectUtil: NSObject {
     @objc private class func getLinkingObjectsProperties(_ object: Any) -> [String: [String: String]] {
         let properties = Mirror(reflecting: object).children.filter { (prop: Mirror.Child) in
             return prop.value as? LinkingObjectsBase != nil
-        }.flatMap { (prop: Mirror.Child) in
+        }.compactMap { (prop: Mirror.Child) in
             (prop.label!, prop.value as! LinkingObjectsBase)
         }
         return properties.reduce([:]) { (dictionary, property) in
@@ -484,7 +484,7 @@ private func forceCastToInferred<T, V>(_ x: T) -> V {
 }
 
 extension Object: AssistedObjectiveCBridgeable {
-    static func bridging(from objectiveCValue: Any, with metadata: Any?) -> Self {
+    @objc static func bridging(from objectiveCValue: Any, with metadata: Any?) -> Self {
         return forceCastToInferred(objectiveCValue)
     }
 

@@ -11,12 +11,11 @@ import Realm;
 import RealmSwift;
 
 class BadgeCount: Object {
-    dynamic var badgeCount = 0;
-    dynamic var id = 0
+    
+    @objc dynamic var badgeCount = 0;
+    @objc dynamic var id = 0
     
     override static func primaryKey() -> String? {
         return "id"
-    }
-
-    
+    }    
 }

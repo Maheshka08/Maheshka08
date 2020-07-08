@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Tweak and Eat
+
+  Created by Apple on 8/21/18.
+  Copyright © 2018 Purpleteal. All rights reserved.
+*/
+AppName = "Tweak & Eat"
+
+TweakWall = "Tweak Wall";

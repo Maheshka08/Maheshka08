@@ -12,20 +12,23 @@ import RealmSwift
 
 class MyProfileInfo: Object {
     
-    dynamic var name =  ""
-    dynamic var age =  ""
-    dynamic var gender =  ""
-    dynamic var weight =  ""
-    dynamic var height =  ""
-    dynamic var msisdn = ""
+    @objc dynamic var name =  ""
+    @objc dynamic var age =  ""
+    @objc dynamic var gender =  ""
+    @objc dynamic var weight =  ""
+    @objc dynamic var height =  ""
+    @objc dynamic var msisdn = ""
 
 
-    dynamic var foodHabits = ""
-    dynamic var allergies = ""
-    dynamic var conditions = ""
-    dynamic var bodyShape = ""
+    @objc dynamic var foodHabits = ""
+    @objc dynamic var allergies = ""
+    @objc dynamic var conditions = ""
+    @objc dynamic var bodyShape = ""
+    @objc dynamic var goals = ""
+    @objc dynamic var providerName = ""
+    @objc dynamic var email = ""
 
-    dynamic var id = 0
+    @objc dynamic var id = 0
     
     override static func primaryKey() -> String? {
         return "id"

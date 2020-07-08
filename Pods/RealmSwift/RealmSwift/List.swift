@@ -36,7 +36,7 @@ public class ListBase: RLMListBase {
     }
 
     /// Returns the number of objects in this List.
-    public var count: Int { return Int(_rlmArray.count) }
+    @objc public var count: Int { return Int(_rlmArray.count) }
 }
 
 /**
@@ -64,7 +64,7 @@ public final class List<T: Object>: ListBase {
     }
 
     /// Indicates if the list can no longer be accessed.
-    public var isInvalidated: Bool { return _rlmArray.isInvalidated }
+    @objc public var isInvalidated: Bool { return _rlmArray.isInvalidated }
 
     // MARK: Initializers
 
@@ -73,7 +73,7 @@ public final class List<T: Object>: ListBase {
         super.init(array: RLMArray(objectClassName: (T.self as Object.Type).className()))
     }
 
-    internal init(rlmArray: RLMArray<RLMObject>) {
+    @objc internal init(rlmArray: RLMArray<RLMObject>) {
         super.init(array: rlmArray)
     }
 
@@ -332,7 +332,7 @@ public final class List<T: Object>: ListBase {
 
      - parameter index: The index at which to remove the object.
      */
-    public func remove(objectAtIndex index: Int) {
+    @objc public func remove(objectAtIndex index: Int) {
         throwForNegativeIndex(index)
         _rlmArray.removeObject(at: UInt(index))
     }
@@ -342,7 +342,7 @@ public final class List<T: Object>: ListBase {
 
      - warning: This method may only be called during a write transaction.
      */
-    public func removeLast() {
+    @objc public func removeLast() {
         _rlmArray.removeLastObject()
     }
 
@@ -351,7 +351,7 @@ public final class List<T: Object>: ListBase {
 
      - warning: This method may only be called during a write transaction.
      */
-    public func removeAll() {
+    @objc public func removeAll() {
         _rlmArray.removeAllObjects()
     }
 
@@ -380,7 +380,7 @@ public final class List<T: Object>: ListBase {
      - parameter from:  The index of the object to be moved.
      - parameter to:    index to which the object at `from` should be moved.
      */
-    public func move(from: Int, to: Int) {
+    @objc public func move(from: Int, to: Int) {
         throwForNegativeIndex(from)
         throwForNegativeIndex(to)
         _rlmArray.moveObject(at: UInt(from), to: UInt(to))
@@ -396,7 +396,7 @@ public final class List<T: Object>: ListBase {
      - parameter index1: The index of the object which should replace the object at index `index2`.
      - parameter index2: The index of the object which should replace the object at index `index1`.
      */
-    public func swap(index1: Int, _ index2: Int) {
+    @objc public func swap(index1: Int, _ index2: Int) {
         throwForNegativeIndex(index1, parameterName: "index1")
         throwForNegativeIndex(index2, parameterName: "index2")
         _rlmArray.exchangeObject(at: UInt(index1), withObjectAt: UInt(index2))

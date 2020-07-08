@@ -23,12 +23,16 @@ class ReportsTableViewCell: UITableViewCell {
     @IBOutlet var prevReportsLbl: UILabel!;
     @IBOutlet var dateLbl: UILabel!;
     var cellDelegate: ExpandPieChartDelegate?;
-    var cellIndexPath : Int = 0;
+    @objc var cellIndexPath : Int = 0;
 
     @IBOutlet var nextTxtView: UITextView!;
     @IBOutlet var prevTxtView: UITextView!;
     @IBOutlet var nextView: UIView!;
     @IBOutlet var prevView: UIView!;
+    
+    
+    @IBOutlet weak var prevAdviseLabel: UILabel!
+    @IBOutlet weak var nextAdviseLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +47,6 @@ class ReportsTableViewCell: UITableViewCell {
         self.prevReportsLbl.font = UIFont.systemFont(ofSize: 11.0)
             self.nextReportsLbl.font = UIFont.systemFont(ofSize: 11.0)
         }
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -54,9 +57,9 @@ class ReportsTableViewCell: UITableViewCell {
 
     @IBAction func nextWeekPieChartBtnTapped(_ sender: Any) {
         self.cellDelegate?.nextWeekPieChartTapped(self)
-        
     }
-    @IBAction func prevWeekPieChartBtnTapped(_ sender: Any) {
+    @IBAction func prevWeekPieChartBtnTapped(_ sender: Any)
+    {
         self.cellDelegate?.prevWeekPieChartTapped(self)
     }
 }

@@ -18,7 +18,7 @@ get {
     } else {
         return DatabaseController.managedObjectContext;
     }
-}
+  }
 }
 class DatabaseController {
     

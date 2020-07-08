@@ -22,14 +22,14 @@ import Realm
 /// :nodoc:
 /// Internal class. Do not use directly. Used for reflection and initialization
 public class LinkingObjectsBase: NSObject, NSFastEnumeration {
-    internal let objectClassName: String
-    internal let propertyName: String
+    @objc internal let objectClassName: String
+    @objc internal let propertyName: String
 
     fileprivate var cachedRLMResults: RLMResults<RLMObject>?
     @objc fileprivate var object: RLMWeakObjectHandle?
     @objc fileprivate var property: RLMProperty?
 
-    internal var rlmResults: RLMResults<RLMObject> {
+    @objc internal var rlmResults: RLMResults<RLMObject> {
         if cachedRLMResults == nil {
             if let object = self.object, let property = self.property {
                 cachedRLMResults = RLMDynamicGet(object.object, property)! as? RLMResults
@@ -42,7 +42,7 @@ public class LinkingObjectsBase: NSObject, NSFastEnumeration {
         return cachedRLMResults!
     }
 
-    init(fromClassName objectClassName: String, property propertyName: String) {
+    @objc init(fromClassName objectClassName: String, property propertyName: String) {
         self.objectClassName = objectClassName
         self.propertyName = propertyName
     }
@@ -85,10 +85,10 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
     /// The linking objects become invalid if `invalidate()` is called on the containing `realm` instance.
     ///
     /// An invalidated linking objects can be accessed, but will always be empty.
-    public var isInvalidated: Bool { return rlmResults.isInvalidated }
+    @objc public var isInvalidated: Bool { return rlmResults.isInvalidated }
 
     /// The number of linking objects.
-    public var count: Int { return Int(rlmResults.count) }
+    @objc public var count: Int { return Int(rlmResults.count) }
 
     // MARK: Initializers
 

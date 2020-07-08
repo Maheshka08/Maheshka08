@@ -11,14 +11,14 @@ import CoreData
 
 class DataManager: NSObject {
     
-    var managedObjectContext : NSManagedObjectContext! = nil;
-    var managedObjectModel : NSManagedObjectModel! = nil;
-    var persistentStoreCoordinator : NSPersistentStoreCoordinator! = nil;
+    @objc var managedObjectContext : NSManagedObjectContext! = nil;
+    @objc var managedObjectModel : NSManagedObjectModel! = nil;
+    @objc var persistentStoreCoordinator : NSPersistentStoreCoordinator! = nil;
     
-    let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate;
+    @objc let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate;
     
     
-    class var sharedInstance: DataManager {
+    @objc class var sharedInstance: DataManager {
         struct Static {
             static let instance = DataManager()
         }
@@ -31,7 +31,7 @@ class DataManager: NSObject {
         return Static.instance;
     }
     
-    func saveChanges() {
+    @objc func saveChanges() {
         do {
             try self.managedObjectContext.save();
         } catch let error {
@@ -41,7 +41,7 @@ class DataManager: NSObject {
     
     //TBL Tweaks
     
-    func saveTweak(tweak : NSDictionary) {
+    @objc func saveTweak(tweak : NSDictionary) {
         
         var tweakObject : TBL_Tweaks? = self.fetchTWEAKWithId(value: tweak.value(forKey: TBL_TweakConstants.TWEAK_ID) as! NSNumber);
         
@@ -64,30 +64,33 @@ class DataManager: NSObject {
         } else {
             tweakObject!.tweakLongitude = tweak.value(forKey: TBL_TweakConstants.TWEAK_LONGITUDE) as! Double;
         }
-        tweakObject!.tweakRating = tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) as! Float;
+        if tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) is NSNumber {
+            tweakObject!.tweakRating = tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) as! Float;
+
+        } else if tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) is String {
+        if (tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) as! String).contains(",") {
+            let tweakString = tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) as! String;
+
+            tweakObject!.tweakRating = Float(tweakString.replacingOccurrences(of: ",", with: "."))!
+
+
+        } else {
+            let tweakString = tweak.value(forKey: TBL_TweakConstants.TWEAK_RATING) as! String;
+            tweakObject!.tweakRating = Float(tweakString)!
+            }
+        }
         tweakObject!.tweakAudioMessage = tweak.value(forKey: TBL_TweakConstants.TWEAK_AUDIO_MSG) as? String;
         tweakObject!.tweakDateCreated = tweak.value(forKey: TBL_TweakConstants.TWEAK_CORRECT_DATE) as? String;
         tweakObject!.tweakDateUpdated = tweak.value(forKey: TBL_TweakConstants.TWEAK_UPDATED_DATE) as? String;
-        
+         if tweak.value(forKey: TBL_TweakConstants.TWEAK_USER_COMMENTS) is NSNull {
+            tweakObject!.tweakUserComments = ""
+         } else {
+        tweakObject!.tweakUserComments = tweak.value(forKey: TBL_TweakConstants.TWEAK_USER_COMMENTS) as? String;
+        }
         self.saveChanges()
     }
     
-    //TBL Tips
-    func saveTips(tips : NSDictionary) {
-        
-        var tweakObject : TBL_DailyTips? = self.fetchDailyTipWithId(id: Int64(tips.value(forKey: TBL_DailyTipConstants.TIP_ID) as! NSNumber));
-        
-        if(tweakObject == nil) {
-            tweakObject = NSEntityDescription.insertNewObject(forEntityName: "TBL_DailyTips", into: self.managedObjectContext) as? TBL_DailyTips;
-        }
-        tweakObject!.eventId = Int64(tips.value(forKey: TBL_DailyTipConstants.EVENT_ID) as! NSInteger);
-        tweakObject!.tipId = Int64(tips.value(forKey: TBL_DailyTipConstants.TIP_ID) as! NSInteger);
-        tweakObject!.tipMessage = tips.value(forKey: TBL_DailyTipConstants.TIP_MESSAGE) as? String;
-                
-        self.saveChanges()
-    }
-
-    func fetchTWEAKWithId(value : NSNumber) -> TBL_Tweaks? {
+    @objc func fetchTWEAKWithId(value : NSNumber) -> TBL_Tweaks? {
         let fetchRequest : NSFetchRequest<TBL_Tweaks> = TBL_Tweaks.fetchRequest();
         fetchRequest.predicate = NSPredicate(format: "tweakId == %@",value);
         
@@ -104,7 +107,7 @@ class DataManager: NSObject {
         }
     }
     
-    func fetchTweaks() -> [TBL_Tweaks]? {
+    @objc func fetchTweaks() -> [TBL_Tweaks]? {
         let fetchRequest : NSFetchRequest<TBL_Tweaks> = TBL_Tweaks.fetchRequest();
         let sortDecriptor = NSSortDescriptor(key: "tweakId", ascending: false);
         fetchRequest.sortDescriptors = [sortDecriptor];
@@ -122,10 +125,9 @@ class DataManager: NSObject {
         }
     }
     
-    
     // TBL Reminders
     
-    func saveReminders(reminder : [String : AnyObject]) {
+    @objc func saveReminders(reminder : [String : AnyObject]) {
         var reminderObject : TBL_Reminders? = self.fetchReminderWithId(id: (reminder[TBL_ReminderConstants.REMINDER_ID]! as! NSNumber).int64Value);
         
         if(reminderObject == nil) {
@@ -141,7 +143,7 @@ class DataManager: NSObject {
         self.saveChanges();
     }
     
-    func fetchReminderWithId(id : Int64) -> TBL_Reminders? {
+    @objc func fetchReminderWithId(id : Int64) -> TBL_Reminders? {
         let fetchRequest : NSFetchRequest<TBL_Reminders> = TBL_Reminders.fetchRequest();
         fetchRequest.predicate = NSPredicate(format: "rmdrId == %d",id);
         
@@ -159,7 +161,7 @@ class DataManager: NSObject {
         }
     }
     
-    func fetchReminderWithType(type : String) -> [TBL_Reminders]? {
+    @objc func fetchReminderWithType(type : String) -> [TBL_Reminders]? {
         let fetchRequest : NSFetchRequest<TBL_Reminders> = TBL_Reminders.fetchRequest();
         fetchRequest.predicate = NSPredicate(format: "rmdrType == %@",type);
         
@@ -176,7 +178,7 @@ class DataManager: NSObject {
         }
     }
     
-    func changeStatusOfReminderID(id : Int64) {
+    @objc func changeStatusOfReminderID(id : Int64) {
         let reminder : TBL_Reminders = self.fetchReminderWithId(id: id)!;
         let timeString = reminder.rmdrTime!;
         let timeArray = timeString.components(separatedBy: ":");
@@ -203,7 +205,7 @@ class DataManager: NSObject {
         self.saveChanges();
     }
     
-    func makeReminderStatusON(id : Int64) {
+    @objc func makeReminderStatusON(id : Int64) {
         let reminderObj : TBL_Reminders = self.fetchReminderWithId(id: id)!
         reminderObj.rmdrStatus = TBL_ReminderConstants.REMINDER_STATUS_ENABLED;
         
@@ -211,7 +213,7 @@ class DataManager: NSObject {
         
     }
     
-    func changeTimeOfReminderID(reminder : TBL_Reminders, time : String) {
+    @objc func changeTimeOfReminderID(reminder : TBL_Reminders, time : String) {
         let reminder : TBL_Reminders? = self.fetchReminderWithId(id: reminder.rmdrId)!;
         if(reminder != nil) {
             reminder?.rmdrTime = time;
@@ -219,65 +221,10 @@ class DataManager: NSObject {
         
         self.saveChanges();
     }
-    
-    // TBL DailyTips
-    func saveDailyTip(reminder : [String : AnyObject], status : Bool) {
-        var tipObject : TBL_DailyTips? = self.fetchDailyTipWithId(id: (reminder[TBL_DailyTipConstants.TIP_ID]! as! NSNumber).int64Value);
         
-        if(tipObject == nil) {
-            tipObject = NSEntityDescription.insertNewObject(forEntityName: "TBL_DailyTips", into: self.managedObjectContext) as? TBL_DailyTips;
-        }
-        
-        tipObject!.tipId = (reminder[TBL_DailyTipConstants.TIP_ID]! as! NSNumber).int64Value;
-        tipObject!.eventId = (reminder[TBL_DailyTipConstants.EVENT_ID]! as! NSNumber).int64Value;
-        tipObject!.status = status;
-        tipObject!.tipMessage = reminder[TBL_DailyTipConstants.TIP_MESSAGE]! as? String;
-        
-        self.saveChanges();
-    }
-    
-    func fetchDailyTips() -> [TBL_DailyTips]? {
-        let fetchRequest : NSFetchRequest<TBL_DailyTips> = TBL_DailyTips.fetchRequest();
-        let sortDecriptor = NSSortDescriptor(key: "tipId", ascending: false);
-        fetchRequest.sortDescriptors = [sortDecriptor];
-                //tweakId
-        var results :[TBL_DailyTips]? = nil;
-        do {
-            results = try self.managedObjectContext.fetch(fetchRequest);
-            
-            } catch {
-        
-        }
-        
-        if(results?.count == 0) {
-            return nil;
-        } else {
-            return results!;
-        }
-
-    }
-    
-    func fetchDailyTipWithId(id : Int64) -> TBL_DailyTips? {
-        let fetchRequest : NSFetchRequest<TBL_DailyTips> = TBL_DailyTips.fetchRequest();
-        fetchRequest.predicate = NSPredicate(format: "tipId == %d",id);
-        
-        var results :[TBL_DailyTips]? = nil;
-        do {
-            results = try self.managedObjectContext.fetch(fetchRequest);
-        } catch {
-            
-        }
-        
-        if(results?.count == 0) {
-            return nil;
-        } else {
-            return results![0];
-        }
-    }
-    
     // TBL Contacts
     
-    func saveInvitedFriends(friends : [String : AnyObject]) {
+    @objc func saveInvitedFriends(friends : [String : AnyObject]) {
       var invitedFriendsObj : TBL_Contacts? = self.fetchContactsWithId(id: (friends[TBL_ContactConstants.CONTACT_NUMBER]! as! NSNumber).int64Value);
         
         if(invitedFriendsObj == nil) {
@@ -293,7 +240,7 @@ class DataManager: NSObject {
         
     }
     
-    func fetchContactsWithId(id : Int64) -> TBL_Contacts? {
+    @objc func fetchContactsWithId(id : Int64) -> TBL_Contacts? {
         let fetchRequest : NSFetchRequest<TBL_Contacts> = TBL_Contacts.fetchRequest();
         fetchRequest.predicate = NSPredicate(format : "contact_number == %d", id);
         

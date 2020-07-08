@@ -11,11 +11,10 @@ import Foundation
 struct TweakAndEatConstants {
     
     static let DATA : String = "Data"
-
-    static let AGE_GROUP_NAME : String = "name"
     
+    static let AGE_GROUP_NAME : String = "name"
     static let CALL_STATUS : String = "callStatus"
-
+    
     static let STATIC_NAME : String = "static_name"
     static let STATIC_VALUE : String = "static_value"
     
@@ -24,12 +23,15 @@ struct TweakAndEatConstants {
     
     static let BUILD_VALUE : String = "build_value"
     static let BUILD_KEY : String = "build_key"
-   
+    
     static let INTRO_TEXT : String = "INTRO_TEXT"
     static let DATA_TEXT : String =  "HOWTO_TEXT"
     static let TERMS_OF_USE : String =  "TERMS_OF_USE"
     static let PRIVACY : String =  "PRIVACY"
     static let GUIDE_LINES : String =  "GUIDE_LINES"
+    static let TWEAK_STREAK : String =  "TWEAK_STREAK"
+    static let TWEAK_TOTAL : String =  "TWEAK_TOTAL"
+    
     
     static let TWEAK_STATUS_GOOD : String = "GOOD"
     
@@ -37,7 +39,7 @@ struct TweakAndEatConstants {
     static let BODYSHAPE_NAME : String = "name"
     static let BODYSHAPE_GENDER : String = "gender"
     static let BODYSHAPE_IMAGE : String = "imgurl"
-
+    
     static let GENDER_MALE : String = "M"
     static let GENDER_FEMALE : String = "F"
     
@@ -51,8 +53,16 @@ struct TweakAndEatConstants {
     
     static let TWEAKS : String = "tweaks"
     static let VERSION : String = "version"
-    static let LATEST_BUILD : String = "latest_build" 
+    static let LATEST_BUILD : String = "latest_build"
+    static let TAE_APP_ID_FOR_ADS = "S7ZyF2gDMzeTawV9fctm8kpHxQrJBX3sEYq4UGWj6dNPRnKCuh"
+    
+}
 
+struct Handle_Notifications_Constants {
+    static let NOTIFY : String = "notify"
+    static let WALL_NOTIFY: String = "wall_notify"
+    static let CHAT_NOTIFY: String = "chat_notify"
+    static let TWEAK_NOTIFY: String = "tweak_notify"
 }
 
 struct TBL_TweakConstants {
@@ -65,7 +75,7 @@ struct TBL_TweakConstants {
     static let TWEAK_RATING : String = "tweak_rating"
     static let TWEAK_LATITUDE : String = "tweak_latitude"
     static let TWEAK_LONGITUDE : String = "tweak_longitude"
-    
+    static let TWEAK_USER_COMMENTS: String = "tweak_usr_comments"
     static let TWEAK_AUDIO_MSG : String = "tweak_audio_message"
     
     static let TWEAK_CORRECT_DATE : String = "tweak_crt_dttm"
@@ -108,6 +118,12 @@ struct TweakAndEatColorConstants {
     
     static let AppDefaultColor : UIColor = UIColor(red: 89/255, green: 0/255, blue: 120/255, alpha: 1.0)
     
+}
+
+struct FitBitDetails {
+    
+   static let clientID = "22CMY8"
+   static let clientSecret = "a170437952d51518880fb9ac32d8c823"
 }
 
 

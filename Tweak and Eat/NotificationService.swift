@@ -14,15 +14,16 @@ import RealmSwift
 
 @available(iOS 10.0, *)
 class NotificationService: NSObject {
-    
-    var dateFormat : TweakReminderViewController! = nil;
-    var authorized: Bool = false;
-    let requestId = "Request ID";
-    let categoryId = "Category ID";
-    var selectedDate : String!;
-    var window: UIWindow?;
-    let nav1 = UINavigationController();
-    var reminder : TweakReminderViewController! = nil;
+    @objc var popUpView : PopUpNotificationView! = nil;
+
+    @objc var dateFormat : TweakReminderViewController! = nil;
+    @objc var authorized: Bool = false;
+    @objc let requestId = "Request ID";
+    @objc let categoryId = "Category ID";
+    @objc var selectedDate : String!;
+    @objc var window: UIWindow?;
+    @objc let nav1 = UINavigationController();
+    @objc var reminder : TweakReminderViewController! = nil;
    
     @available(iOS 10.0, *)
     lazy private var category: UNNotificationCategory? = {
@@ -33,7 +34,7 @@ class NotificationService: NSObject {
         return category;
     }()
     
-    func setupAtAppStart() {
+    @objc func setupAtAppStart() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self;
         } else {
@@ -46,7 +47,7 @@ class NotificationService: NSObject {
         }
     }
     
-    func requestAuthorization(callback: ((Bool) -> Void)?) {
+    @objc func requestAuthorization(callback: ((Bool) -> Void)?) {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current();
             center.requestAuthorization(options: [.alert, .badge, .sound]) { [unowned self] (granted, error) in
@@ -66,14 +67,14 @@ class NotificationService: NSObject {
         }
     }
     
-    func scheduleNotification(hour : String, min : String, title:String, body: String) {
+    @objc func scheduleNotification(hour : String, min : String, title:String, body: String) {
         
         if #available(iOS 10.0, *) {
             let content = UNMutableNotificationContent.init();
             content.title = title;
             content.body = body;
             content.categoryIdentifier = self.categoryId + hour + min;
-            content.sound = UNNotificationSound(named: "birds018.wav");
+            content.sound = UNNotificationSound(named: convertToUNNotificationSoundName("birds018.wav"));
             let date = Date();
             let formatter = DateFormatter();
             formatter.dateFormat = "dd/MM/yyyy";
@@ -92,7 +93,7 @@ class NotificationService: NSObject {
         }
     }
     
-    @available(iOS 10.0, *)
+    @objc @available(iOS 10.0, *)
     internal func schedule(request: UNNotificationRequest!) {
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             if error != nil {
@@ -101,7 +102,7 @@ class NotificationService: NSObject {
         }
     }
     
-    internal func check() {
+    @objc internal func check() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings: UNNotificationSettings) in
             self.authorized = (settings.authorizationStatus == .authorized);
         }
@@ -113,91 +114,143 @@ extension NotificationService: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
         
-      
-
         completionHandler([.alert,.badge, .sound]);
-        //saveDailyTip()
        
     }
      func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
      
         completionHandler();
+//        var msg = "Dear Tweakers, We now have more than 2,20,000 tweakers! More the merrier! Here to healthy life!"
+//                       var imgUrlString = "https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20180906_01.png"
+//                       var link = "-IndIWj1mSzQ1GDlBpUt"
+//                       var type = 0
+//                      if type == 0 || type == 1 {
+//                          let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+//                                 self.popUpView = (Bundle.main.loadNibNamed("PopUpNotificationView", owner: self, options: nil)! as NSArray).firstObject as? PopUpNotificationView;
+//                                 self.popUpView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+//                              self.popUpView.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
+//                          self.popUpView.showUIForSmallPopUp(imgUrlString: imgUrlString, msg: msg, link: link, type: type)
+//                                 UIApplication.shared.keyWindow?.addSubview(self.popUpView)
+//      //                    let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+//      //                                          let v = UIView();
+//      //                                          v.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
+//      //                                          v.backgroundColor = .blue
+//      //                                         // navController?.view.window?.addSubview(v)
+//      //                           UIApplication.shared.keyWindow?.addSubview(v)
+//                      }
+     //   print(response.notification.request.content.title)
+        
+       // UIApplication.shared.applicationIconBadgeNumber = 1
+        print(response)
         if response.notification.request.content.title == "Announcements" {
+          
+            let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+            if let viewControllers = navController?.viewControllers {
+                for viewController in viewControllers {
+                    // some process
+                    if viewController is TweakNotificationsViewController {
+                        print("yes it is")
+                        return
+                    }
+                }
+            }
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
             let destination = storyBoard.instantiateViewController(withIdentifier:
                 "TweakNotificationsViewController") as! TweakNotificationsViewController;
-            
-            
-            //tabBarController.selectedIndex = 2
-           // let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-            //let navController = appDelegate.window?.rootViewController as? UINavigationController
             navController?.pushViewController(destination, animated: true)
 
-            //appDelegate?.navigationController?.pushViewController(tabBarController, animated: true);
+           
+        } else if response.notification.request.content.title == "Fulfillments" {
+//            let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+//            if let viewControllers = navController?.viewControllers {
+//                for viewController in viewControllers {
+//                    // some process
+//                    if (viewController is OrdersTableViewController || viewController is OrderDetailsViewController) {
+//                        print("yes it is")
+//                        return
+//                    }
+//                }
+//            }
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//            let destination = storyBoard.instantiateViewController(withIdentifier:
+//                "OrdersTableViewController") as! OrdersTableViewController;
+//            navController?.pushViewController(destination, animated: true)
+        } else {
+          
+            if (response.notification.request.content.title != "" && response.notification.request.content.title != "Announcements" && response.notification.request.content.title != "Fulfillments" &&  response.notification.request.content.title != "Tweak & Eat Reminder" && response.notification.request.content.title != "Tweak & Eat"
+                && response.notification.request.content.title != "New Message" &&  response.notification.request.content.title != "First Tweaker Contest") {
+                
+                let userInfo = response.notification.request.content.userInfo
+                print(userInfo)
+                var msg = "Dear Tweakers, We now have more than 2,20,000 tweakers! More the merrier! Here to healthy life!"
+                var imgUrlString = "https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20180906_01.png"
+                var link = ""
+                var type = 0
+                if userInfo.index(forKey: "aps") != nil {
+                    let apsInfo = userInfo["aps"] as AnyObject as! [String: AnyObject]
+                    if apsInfo.index(forKey: "msg") != nil {
+                        let message = apsInfo["msg"] as! String
+                        msg = message
+                        
+                    }
+                    if apsInfo.index(forKey: "img") != nil {
+                
+                        imgUrlString = apsInfo["img"] as! String
+
+                    }
+
+                    
+                    if apsInfo.index(forKey: "type") != nil {
+                        type = apsInfo["type"] as AnyObject as! Int
+                    }
+                    if apsInfo.index(forKey: "link") != nil {
+
+                        let links = apsInfo["link"] as AnyObject as! String
+
+                            if (links == "-Qis3atRaproTlpr4zIs" || links == "-KyotHu4rPoL3YOsVxUu" || links == "-SquhLfL5nAsrhdq7GCY" || links == "-TacvBsX4yDrtgbl6YOQ" || links == "PP_LABELS" || links == "PP_PACKAGES" || links == "-IndIWj1mSzQ1GDlBpUt" || links == "-AiDPwdvop1HU7fj8vfL" || links == "-MalAXk7gLyR3BNMusfi" || links == "-MzqlVh6nXsZ2TCdAbOp" || links == "-IdnMyAiDPoP9DFGkbas" || links == "-SgnMyAiDPuD8WVCipga" || links == "-PtpIndu4fke3hfj8skf" || links == "-PtpUsa9aqws5fcb7mkG" || links == "-PtpSgn5Kavqo3cakpqh" || links == "-PtpMys1ogs7bwt3malu" || links == "-PtpIdno8kwg2npl5vna" || links == "-PtpPhy3mskop9Avqj5L" || links == "-IndAiBPtmMrS4VPnwmD" || links == "-IdnAiBPLKMO5ePamQle" || links == "-SgnAiBPJlXfM3KzDWR8" || links == "-MysAiBPyaX9TgFT1YOp" || links == "-MysRamadanwgtLoss99" || links == "-PhyAiBPcYLiSYlqhjbI" || links == "-UsaAiBPxnaopT55GJxl"  || links == "CALS_LEFT_FS_POPUP" || links == "HOW_IT_WORKS" || links == "CHECK_THIS_OUT" || links == "-IndWLIntusoe3uelxER") {
+                            link = links
+                        } else {
+                            link = links
+                            }
+
+                    } else {
+                        link = ""
+                    }
+                }
+                let data = ["msg": msg, "imgUrlString":imgUrlString, "link": link, "type": type] as [String: AnyObject]
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                if type == 0 || type == 1 {
+                    let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                           self.popUpView = (Bundle.main.loadNibNamed("PopUpNotificationView", owner: self, options: nil)! as NSArray).firstObject as? PopUpNotificationView;
+                           self.popUpView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                        self.popUpView.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
+                    self.popUpView.showUIForSmallPopUp(imgUrlString: imgUrlString, msg: msg.html2String.replacingOccurrences(of: "\\", with: ""), link: link, type: type)
+                           UIApplication.shared.keyWindow?.addSubview(self.popUpView)
+
+                } else {
+                if navController?.topViewController is MyWallViewController {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: data)
+                } else {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                           let myWall : MyWallViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as! MyWallViewController;
+                          // myWall.postedOn = postedOn
+                           myWall.feedId = link
+                           myWall.type = type
+                           navController?.pushViewController(myWall, animated: true);
+                    // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_POPUP"), object: data)
+                }
+                }
+
+            }
         }
-    
     }
 }
+
 
 func fetchRecord(time: String, date: String) -> Int {
     let realm = try! Realm()
     let scope = realm.objects(DailyTipsNotify.self).filter("selectedDate == %@ AND selectedTime == %@", date,time)
     return scope.count
-}
-
-func saveDailyTip(){
-    UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-        let notification = notificationRequests as [AnyObject]
-        for notify in notification {
-            if notify.content.title == "Daily Tips" {
-                
-                let identifierString = String(notify.identifier)
-                let identifierArray = identifierString?.components(separatedBy: "+")
-                //let todaysDate = identifierArray?[2]
-                let time = identifierArray?[1]
-                let date = Date();
-                let formatter = DateFormatter();
-                formatter.dateFormat = "dd/MM/yyyy";
-                let todaysDate = formatter.string(from: date);
-                let dailyTipInfo = fetchRecord(time: time!, date: todaysDate)
-                if dailyTipInfo == 1 {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshTips"), object: nil)
-                    return
-                }
-                
-                let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
-                APIWrapper.sharedInstance.getRequest(TweakAndEatURLConstants.DAILYTIPS, sessionString: userSession, success:
-                    { (responseDic : AnyObject!) -> (Void) in
-                        
-                        if(TweakAndEatUtils.isValidResponse(responseDic as? [String:AnyObject])) {
-                            let response : [String:AnyObject] = responseDic as! [String:AnyObject];
-                            let reminders : [String:AnyObject]? = response["tweaks"]  as? [String:AnyObject];
-                            print(reminders!);
-                            
-                            let tipid = DailyTipsNotify();
-                            tipid.pkg_evt_id = String(reminders?["pkg_evt_id"] as! Int);
-                            tipid.selectedDate = todaysDate
-                            tipid.selectedTime = time!
-                            tipid.tipNotificationMessage = reminders?["pkg_evt_message"] as! String;
-                            do {
-                                try uiRealm.write { () -> Void in
-                                    uiRealm.create(DailyTipsNotify.self, value: tipid, update: true)
-                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshTips"), object: nil)
-                                }
-                            } catch {
-                                print("Error");
-                            }
-                            
-                        }
-                }) { (error : NSError!) -> (Void) in
-                    print("Error in reminders");
-                }
-            }
-        }
-        print(notification)
-    }
-
 }
 
 class Notifications {
@@ -230,8 +283,35 @@ extension Notification.Name {
     static let notificationServiceAuthorized = Notification.Name("Authorized");
 }
 
+func getVisibleViewController(_ rootViewController: UIViewController?) -> UIViewController? {
+    
+    var rootVC = rootViewController
+    if rootVC == nil {
+        rootVC = UIApplication.shared.keyWindow?.rootViewController
+    }
+    
+    if rootVC?.presentedViewController == nil {
+        return rootVC
+    }
+    
+    if let presented = rootVC?.presentedViewController {
+        if presented.isKind(of: UINavigationController.self) {
+            let navigationController = presented as! UINavigationController
+            return navigationController.viewControllers.last!
+        }
+        
+        if presented.isKind(of: UITabBarController.self) {
+            let tabBarController = presented as! UITabBarController
+            return tabBarController.selectedViewController!
+        }
+        
+        return getVisibleViewController(presented)
+    }
+    return nil
+}
+
 extension UIApplication {
-    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    @objc class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
         }
@@ -245,4 +325,9 @@ extension UIApplication {
         }
         return controller
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotificationSoundName {
+	return UNNotificationSoundName(rawValue: input)
 }

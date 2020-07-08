@@ -12,14 +12,13 @@ import RealmSwift
 
 class DailyTipsNotify: Object {
     
-    dynamic var pkg_evt_id = " ";
-    dynamic var selectedDate = "";
-    dynamic var selectedTime = "";
-    dynamic var tipNotificationMessage = " ";
-    dynamic var timeIn = Date()
+    @objc dynamic var pkg_evt_id = " ";
+    @objc dynamic var selectedDate = "";
+    @objc dynamic var selectedTime = "";
+    @objc dynamic var tipNotificationMessage = " ";
+    @objc dynamic var timeIn = Date()
     
     override static func primaryKey() -> String? {
         return "pkg_evt_id";
-    }
-    
+    }    
 }

@@ -63,7 +63,7 @@
     _maximumValue = 5;
     _value = 0;
     _spacing = 5.f;
-    _continuous = YES;
+    _continuous = FALSE;
     [self _updateAppearanceForState:self.enabled];
 }
 

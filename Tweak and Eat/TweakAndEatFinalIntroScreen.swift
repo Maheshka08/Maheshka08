@@ -8,7 +8,10 @@
 
 import UIKit
 import CoreData
-
+import Firebase
+import FirebaseAuth
+import FirebaseInstanceID
+import FirebaseMessaging
 
 class TweakAndEatFinalIntroScreen: UIView {
 
@@ -16,13 +19,19 @@ class TweakAndEatFinalIntroScreen: UIView {
     @IBOutlet var logoView: UIView!;
     @IBOutlet var logoImageView: UIImageView!;
     @IBOutlet var logoBorderView: UIView!;
-    @IBOutlet var titleLabel: UILabel!;
-    var delegate : WelcomeViewController! = nil;
-    var timelines : TimelinesDetailsViewController! = nil;
-    var tweakOtpView : TweakAndEatOTPView! = nil;
-    var dbArray:[AnyObject] = [];
+  
+    @objc var delegate : WelcomeViewController! = nil;
+    @objc var timelines : TimelinesDetailsViewController! = nil;
+    @objc var tweakOtpView : TweakAndEatOTPView! = nil;
+    @objc var dbArray:[AnyObject] = [];
     
-    func beginning() {
+    
+    @IBOutlet weak var takePhotoOfNextMeal: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!;
+    @IBOutlet weak var okBtn: UIButton!
+    
+    @objc func beginning() {
         logoBorderView.clipsToBounds = true;
         logoBorderView.layer.cornerRadius = logoBorderView.frame.size.width / 2;
         animationView.clipsToBounds = true;
@@ -34,10 +43,53 @@ class TweakAndEatFinalIntroScreen: UIView {
     }
 
     @IBAction func onClickOfOkay(sender: AnyObject) {
-        self.delegate.resignRegistrationScreen()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let dispatch_group = DispatchGroup();
+        dispatch_group.enter();
+        self.delegate.homeInfoApiCalls()
+        self.delegate.setUpUI()
+        self.delegate.getTrends()
+        self.delegate.showButtonsView()
+        
         appDelegate.getAnnouncements()
+        
+        self.delegate.showButtonsView()
+        //self.delegate.checkUserPremiumMember()
+        //self.delegate.checkUserPremiumMember1()
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+          let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            
+            if countryCode == "91"{
+               self.delegate.getNutritionistFBID()
+                self.delegate.getUserCallSchedueDetails()
+                //self.delegate.getPremiumBtn()
+            } else if countryCode == "63" {
+                self.delegate.setUpPhilippinesView()
+            }
+        }
+        dispatch_group.leave();
+        dispatch_group.notify(queue: DispatchQueue.main) {
+            self.delegate.resignRegistrationScreen()
 
-        //self.delegate.homeInfoApiCalls()
+        }
+       // self.delegate.playVideo()
+        
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AuthStateDidChange, object: Auth.auth(), queue: nil) { _ in
+//            self.delegate.registrationProcess()
+//
+//            let user = Auth.auth().currentUser
+//        }
+//        if UserDefaults.standard.string(forKey: "userSession") != nil{
+//
+//            Auth.auth().addStateDidChangeListener { auth, user in
+//                if user != nil {
+//                    // User is signed in. Show home screen
+//                    self.delegate.registrationProcess()
+//                } else {
+//                    // No User is signed in. Show user the login screen
+//                }
+//            }
+//        }
+
     }
 }

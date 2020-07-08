@@ -77,7 +77,7 @@ extension Int64: AddableType {}
  */
 public final class Results<T: Object>: NSObject, NSFastEnumeration {
 
-    internal let rlmResults: RLMResults<RLMObject>
+    @objc internal let rlmResults: RLMResults<RLMObject>
 
     /// A human-readable description of the objects represented by the results.
     public override var description: String {
@@ -107,14 +107,14 @@ public final class Results<T: Object>: NSObject, NSFastEnumeration {
      The results becomes invalid if `invalidate()` is called on the containing `realm`. An invalidated results can be
      accessed, but will always be empty.
      */
-    public var isInvalidated: Bool { return rlmResults.isInvalidated }
+    @objc public var isInvalidated: Bool { return rlmResults.isInvalidated }
 
     /// The number of objects in the results.
-    public var count: Int { return Int(rlmResults.count) }
+    @objc public var count: Int { return Int(rlmResults.count) }
 
     // MARK: Initializers
 
-    internal init(_ rlmResults: RLMResults<RLMObject>) {
+    @objc internal init(_ rlmResults: RLMResults<RLMObject>) {
         self.rlmResults = rlmResults
     }
 

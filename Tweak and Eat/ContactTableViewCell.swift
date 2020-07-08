@@ -26,7 +26,7 @@ class ContactTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    class func nib() -> UINib {
+    @objc class func nib() -> UINib {
         return UINib.init(nibName: "ContactTableViewCell", bundle: nil);
     }
     

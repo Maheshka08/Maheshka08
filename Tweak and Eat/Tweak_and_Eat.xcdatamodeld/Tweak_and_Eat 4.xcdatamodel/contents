@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="19A471t" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="TBL_Contacts" representedClassName=".TBL_Contacts" syncable="YES">
         <attribute name="contact_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contact_number" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,11 +31,12 @@
         <attribute name="tweakRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tweakStatus" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tweakSuggestedText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweakUserComments" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="TBL_Contacts" positionX="-596" positionY="-5562" width="128" height="103"/>
         <element name="TBL_DailyTips" positionX="-774" positionY="-5566" width="128" height="103"/>
         <element name="TBL_Reminders" positionX="-596" positionY="-5725" width="128" height="118"/>
-        <element name="TBL_Tweaks" positionX="-927" positionY="-5724" width="128" height="208"/>
+        <element name="TBL_Tweaks" positionX="-927" positionY="-5724" width="128" height="225"/>
     </elements>
 </model>

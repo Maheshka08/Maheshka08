@@ -89,10 +89,10 @@ open class LineChart: UIView {
     }
     
     // default configuration
-    open var area: Bool = true
+    @objc open var area: Bool = true
     open var animation: Animation = Animation()
     open var dots: Dots = Dots()
-    open var lineWidth: CGFloat = 2
+    @objc open var lineWidth: CGFloat = 2
     
     open var x: Coordinate = Coordinate()
     open var y: Coordinate = Coordinate()
@@ -128,7 +128,7 @@ open class LineChart: UIView {
     fileprivate var removeAll: Bool = false
     
     // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
-    open var colors: [UIColor] = [
+    @objc open var colors: [UIColor] = [
         UIColor(red: 0.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1),
         UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 91.0/255.0, alpha: 1),
         UIColor(red: 83.0/255.0, green: 178.0/255.0, blue: 13.0/255.0, alpha: 1),
@@ -507,7 +507,7 @@ open class LineChart: UIView {
         for (index, _) in xAxisData.enumerated() {
             let xValue = self.x.scale(CGFloat(index)) + x.axis.inset - (width / 2)
             let label = UILabel(frame: CGRect(x: xValue, y: y, width: width, height: x.axis.inset))
-            label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption2)
             label.textAlignment = .center
             if (x.labels.values.count != 0) {
                 text = x.labels.values[index]
@@ -530,7 +530,7 @@ open class LineChart: UIView {
         for i in stride(from: start, through: stop, by: step){
             yValue = self.bounds.height - self.y.scale(i) - (y.axis.inset * 1.5)
             let label = UILabel(frame: CGRect(x: 0, y: yValue, width: y.axis.inset, height: y.axis.inset))
-            label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption2)
             label.textAlignment = .center
             label.text = String(Int(round(i)))
             self.addSubview(label)
@@ -540,7 +540,7 @@ open class LineChart: UIView {
     /**
      * Add line chart
      */
-    open func addLine(_ data: [CGFloat]) {
+    @objc open func addLine(_ data: [CGFloat]) {
         self.dataStore.append(data)
         self.setNeedsDisplay()
     }
@@ -548,7 +548,7 @@ open class LineChart: UIView {
     /**
      * Make whole thing white again.
      */
-    open func clearAll() {
+    @objc open func clearAll() {
         self.removeAll = true
         clear()
         self.setNeedsDisplay()
@@ -559,7 +559,7 @@ open class LineChart: UIView {
     /**
      * Remove charts, areas and labels but keep axis and grid.
      */
-    open func clear() {
+    @objc open func clear() {
         // clear data
         dataStore.removeAll()
         self.setNeedsDisplay()
@@ -573,8 +573,8 @@ open class LineChart: UIView {
  */
 class DotCALayer: CALayer {
     
-    var innerRadius: CGFloat = 8
-    var dotInnerColor = UIColor.black
+    @objc var innerRadius: CGFloat = 8
+    @objc var dotInnerColor = UIColor.black
     
     override init() {
         super.init()

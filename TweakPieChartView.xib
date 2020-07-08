@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -78,14 +78,14 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tweakPlate" translatesAutoresizingMaskIntoConstraints="NO" id="Oy8-9F-INI">
-                                    <rect key="frame" x="24" y="46" width="240" height="240"/>
+                                    <rect key="frame" x="24" y="10" width="240" height="240"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="240" id="32k-va-PK5"/>
                                         <constraint firstAttribute="width" constant="240" id="DmI-2D-fRO"/>
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sox-oM-JFI" customClass="PieChart" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="66" width="200" height="200"/>
+                                    <rect key="frame" x="45" y="30" width="200" height="200"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="o35-Ou-Uh8"/>
@@ -93,9 +93,9 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brA-RS-59i">
-                                    <rect key="frame" x="8" y="294" width="273" height="98"/>
+                                    <rect key="frame" x="8" y="258" width="273" height="138"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="98" id="ebV-Be-aVz"/>
+                                        <constraint firstAttribute="height" constant="138" id="ebV-Be-aVz"/>
                                     </constraints>
                                     <string key="text">This is how your ideal profile plate should look like. This is generated algorithmically based on your profile information, that you just entered. You can view this any time by going to the 'Profile Section'</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,14 +108,14 @@
                                 <constraint firstAttribute="bottom" secondItem="a7L-gl-z2c" secondAttribute="bottom" constant="12" id="9aa-kn-9wf"/>
                                 <constraint firstItem="brA-RS-59i" firstAttribute="trailing" secondItem="9ah-hl-Njo" secondAttribute="trailingMargin" id="Cdt-FU-eae"/>
                                 <constraint firstItem="brA-RS-59i" firstAttribute="trailing" secondItem="a7L-gl-z2c" secondAttribute="trailing" id="I2r-pl-H3u"/>
-                                <constraint firstItem="a7L-gl-z2c" firstAttribute="top" secondItem="brA-RS-59i" secondAttribute="bottom" constant="12" id="PXJ-qJ-3iG"/>
+                                <constraint firstItem="a7L-gl-z2c" firstAttribute="top" secondItem="brA-RS-59i" secondAttribute="bottom" constant="8" id="PXJ-qJ-3iG"/>
                                 <constraint firstItem="Oy8-9F-INI" firstAttribute="centerX" secondItem="9ah-hl-Njo" secondAttribute="centerX" id="RrN-ET-Q1H"/>
                                 <constraint firstAttribute="height" constant="445" id="cHM-TV-W5P"/>
                                 <constraint firstItem="Sox-oM-JFI" firstAttribute="centerX" secondItem="brA-RS-59i" secondAttribute="centerX" id="cJI-8i-MOW"/>
                                 <constraint firstItem="Sox-oM-JFI" firstAttribute="top" secondItem="Oy8-9F-INI" secondAttribute="bottom" constant="-220" id="eBV-Ce-asg"/>
                                 <constraint firstItem="brA-RS-59i" firstAttribute="leading" secondItem="9ah-hl-Njo" secondAttribute="leadingMargin" id="g1s-lF-sI4"/>
                                 <constraint firstItem="Sox-oM-JFI" firstAttribute="centerX" secondItem="cnr-Rf-gen" secondAttribute="centerX" id="hlj-1O-SZo"/>
-                                <constraint firstItem="Oy8-9F-INI" firstAttribute="top" secondItem="9ah-hl-Njo" secondAttribute="top" constant="46" id="opQ-l8-oiB"/>
+                                <constraint firstItem="Oy8-9F-INI" firstAttribute="top" secondItem="9ah-hl-Njo" secondAttribute="top" constant="10" id="opQ-l8-oiB"/>
                                 <constraint firstItem="cnr-Rf-gen" firstAttribute="top" secondItem="9ah-hl-Njo" secondAttribute="top" constant="-100" id="otc-VV-hOc"/>
                             </constraints>
                         </view>
@@ -129,7 +129,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="cLn-55-1Lm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ctd-FS-Hr2"/>
                 <constraint firstAttribute="bottom" secondItem="cLn-55-1Lm" secondAttribute="bottom" constant="-84" id="WFD-aH-axr"/>
@@ -141,7 +141,9 @@
                 <outlet property="logoBorderView" destination="VNn-ne-IgE" id="Mty-bv-Q0f"/>
                 <outlet property="logoImageView" destination="Oy8-9F-INI" id="HDo-bB-s6G"/>
                 <outlet property="logoView" destination="MfB-pb-C3k" id="Qyz-C7-7Tu"/>
+                <outlet property="okBtn" destination="a7L-gl-z2c" id="0rc-Qs-aL8"/>
                 <outlet property="pieChartView" destination="Sox-oM-JFI" id="PeP-wM-7Vb"/>
+                <outlet property="profilePlateDesc" destination="brA-RS-59i" id="5nY-xf-bgT"/>
                 <outlet property="tweakPieChartScrollView" destination="cLn-55-1Lm" id="uX1-iq-tli"/>
                 <outlet property="tweakPieChartView" destination="9ah-hl-Njo" id="Ghx-jD-XYY"/>
             </connections>

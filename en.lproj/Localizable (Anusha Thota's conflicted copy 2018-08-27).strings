@@ -1,0 +1,275 @@
+/* 
+  Localizable.strings
+  Tweak and Eat
+
+  Created by Apple on 8/21/18.
+  Copyright © 2018 Purpleteal. All rights reserved.
+*/
+
+
+app_name = "Tweak & Eat";
+action_settings = "Settings";
+title = "Tweak and Eat ";
+action_buzz = "Buzz";
+action_invite = "Invite";
+action_timeline = "Timeline";
+action_done = "Done";
+action_cancel = "Cancel";
+camera_click_text = " Click here to tweak ";
+check_this_out = " Check \n This Out";
+my_tweak_streak = " My Tweak \n   Streak";
+my_tweak_total = " My Tweak \n   Total";
+my_profile = "My Profile";
+my_fitness = "My Fitness";
+my_edr = "My EDR";
+my_edr_seg = "MY EDR";
+my_reports_seg = "MY REPORTS";
+buzz = "Buzz";
+tweak_wall = "Tweak Wall";
+
+opencame = "Tweak Now";
+edr = "My EDR";
+wall = "Tweak Wall";
+recipe_wall = "Recipe Wall";
+chekthis = "Check this out";
+purchased_package = "Purchased Packages";
+buy_ingredients_title = "25 rice bowl recipies that make cooking dinner almost too easy";
+refill = "is this a refill?";
+planning_to_refill = "Planning to refill?";
+tweak = "TWEAK";
+chatclose = "Chat Closed";
+ask_question = "Ask a question";
+nodataavailable = "No Data available";
+comments = "Comments ";
+save = "save ";
+orderdate = "Order Date:";
+listitems = "List Of Items:";
+items = "Items";
+quantity = "Quantity";
+cost = "Cost";
+steps = "Steps";
+floors = "Floors";
+distance = "Distance";
+active_min = "Active min";
+health_kit = "Health Kit";
+health_kit_headerText = "Active Min and Calories will be shown based on your daily workouts.";
+fitBit_headerText = "Your activities data will be updated regularily";
+disconnect = "DISCONNECT";
+health_kit_disconnect = "Are you sure you want to disconnect from Health Kit?";
+fitbit_disconnect = "Are you sure you want to disconnect from FitBit?";
+disconnected = "DISCONNECTED !!";
+disconnected_FitBit = "You've successfully disconnected from FitBit !!";
+disconnected_HealthKit = "You've successfully disconnected from Health Kit !!";
+select_device = "Please select your Device or App";
+sync_devices_footer_text = "Please sync one of the devices or apps above. All your activity (i.e Steps, Distance, Calories etc) will be sent along with your tweak, every time you tweak.\nOur nutritionists will guide you based on both your profile and your recent physical activity. So get your fitness device synced!";
+devices = "Devices";
+fitBit = "FitBit";
+ok ="OK";
+no = "NO";
+
+title_activity_profile = "Profile";
+title_activity_camera = "CameraActivity";
+title_activity_post_upload = "PostUploadActivity";
+title_activity_pre_upload = "PreUploadActivity";
+title_activity_upload = "UploadActivity";
+title_activity_tweak = "TweakActivity";
+title_activity_timeline = "TimelineActivity";
+title_activity_invite = "InviteActivity";
+title_activity_buzz = "BuzzActivity";
+title_activity_settings = "SettingsActivity";
+title_activity_Tips = "TipsActivity";
+
+main_text_default = "We Tweak. You Slim.";
+main_text_tweak_received = "I have something to tell you!";
+
+camera_text = "Place Your Food";
+timeline_text = "MY EDR";
+
+buzz_text = "Buzz the Crave";
+invite_text = "Invite to Buzz the Crave";
+settings_text = "Settings";
+settings_tips = "Tips";
+post_upload_status = "Your Tweak will be sent back shortly.\n\nWatch for the pop up notification or just refresh My EDR in a few minutes";
+post_upload_did_you_know = "HERE IS A TIP";
+
+pre_upload_default = "We Tweak. You Slim.";
+
+button_share = "SHARE";
+button_got_it = "GOT IT";
+button_ok = "OK";
+button_try_again = "TRY AGAIN";
+button_send_code = "SEND CODE";
+button_verify = "VERIFY";
+button_resend = "RESEND";
+button_buzz = "BUZZ";
+button_buzzing = "BUZZING…";
+button_buzzed = "BUZZED";
+
+progress_dialog = "Loading…";
+progress_dialog_register = "Signing up…";
+
+toast_take_photos = "Take some photos of your meal";
+chat_text = "Please ask a question that is tied to this tweak only. We will not be able to respond to other questions.\n Our Nutritionists will respond to this question as soon as possible";
+
+intro_welcome = "WELCOME TO";
+intro_how_to = "HERE\'S HOW IT WORKS:";
+no_report = "Your reports will be updated every Saturday and you will be informed through a notification as soon as the Reports are updated.\n\nYour Reports will include your \'Last week\'s report on what you have consumed in terms of % carbs, protein, fiber and fat\' and some comments from our certified nutritionist.\n\nIt will also include \'Recommendations for the coming week in terms of both % carbs, protein, fiber and fat\' and some Advise from our certified nutritionist.";
+
+register_label = "To help you lose weight, we need to know a few things about you:";
+register_age = "Age:";
+register_sex = "Gender:";
+register_sex_male = "M";
+register_sex_female = "F";
+register_height = "Height:";
+register_weight = "Weight:";
+nick_name = "Nick Name:";
+register_body_shape = "Select Body Shape";
+update_profile = "Update Profile";
+register_finished_1 = "It\'s done!\nBut don\'t forget";
+register_finished_2 = "to take a photo of your next meal and send it to me!";
+
+no_tweaks = "You don\'t have any tweaks yet.\nTake a photo of your next meal and send it to me! :)";
+no_invited_friends = "You don\'t have any invited friends.\nGo to Invite screen to add your friends information";
+
+text_phonenumber = "Enter your phone number";
+info_text = "Add any comments that you want to share about your plate to the nutritionist.\nFor e.g. this dosa is a ghee dosa, or, the green is coriander chutney";
+refill_text = "You can ‘Tweak’ it again once you refill,or,Enter what you plan to refill below.\nFor e.g. one more roti, or, more veggies, or one cup rice and yoghurt.";
+plate_desc = "This is how your ideal profile plate should look like.This is generated algorithmically based on your profile information, that you just entered.\n\n You can view this any time by going to the ‘Profile Section’";
+text_code = "Enter the code you received";
+desc = "<![CDATA[Nutritionists are available from 7.30am to 11 pm daily.<br/><br/>You can still take a photo when you have breakfast, brunch or snacking during off-lunch or off-dinner hours, and Tweak the same <br/><br/>It will be tied to your <b>EDR (Electronic Diet Record)</b> and will be included in your weekly report and analysis that you will receive from the nutritionist]]>";
+
+description_zoom_touch_close = "Expanded image (touch to close)";
+
+banner_ad_unit_id = "ca-app-pub-6742453784279360/3079032401";
+
+hello_blank_fragment = "Hello blank fragment";
+
+ideal_plate = "My Ideal Plate";
+profile_plate_desc = "MY IDEAL PLATE:\nThis is how your ideal plate should look like. It shows the % of Carbs, Protein, Fiber and Fat that you can consume when you have your breakfast, lunch or dinner.\nMy Profile Plate is generated algorithmically based on the profile information you entered at the time of registration.";
+
+
+tweak_streak = "<p>Tweak Streak adds up by one every time you tweak</p>\n\n<p>You don’t Tweak on any given day your tweak streak will be reset to zero. So make sure your Tweak at least once a day</p>\n\n<p>Tweak Streak Leader board (Top 10) will be announced first and 15th of every month</p>\n\n<p>Exciting Prizes to the winner of the Top 10 list will be announced every 15 days.</p>\n\nAll the best! Go get’em!";
+ingredients = "INGREDIENTS";
+benfits = "BENEFITS";
+instructions = "INSTRUCTIONS";
+nutrition = "NUTRITION";
+device_list_title = "Select your device to connect";
+
+card_number = "Card Number";
+mm_yy = "MM/yy";
+card_holders_name = "Name";
+cvv = "CVV";
+proceed = "Proceed with Card";
+example_name = "Test Name";
+example_email = "android-sdk-sample-app@instamojo.com";
+example_phone = "9876543210";
+example_amount = "10";
+test_description = "Test description";
+pay = "Pay";
+edit_hint = "Fill with your comments";
+cost_gst = "(Cost+GST)";
+delivery_charges = "Delivery Charges:";
+total_cost = "Total Cost:";
+questions_title = "Please complete the following questions to allow our nutritionist to know about your profile";
+next = "next";
+order_fulfill_by = "Your order will be fulfilled by";
+
+weight_reading = "Weight Reading";
+reminder_title = "Weight Reading For Last 7 Days";
+recorded_weight_reading = "Recorded Weight Reading";
+your_reports = "Your reports";
+tweak_and_eat = "TWEAK AND EAT";
+
+by = "by";
+purpleteal_inc = "PURPLETEAL INC.,";
+version = "VERSION: ";
+build = "BUILD: ";
+terms_of_use = "Terms of use";
+privacy_policy = "Privacy Policy";
+community_guidelines = "Community Guidelines";
+
+your_profile_details = "Your profile details";
+registered_mobile = "Registered Mobile:";
+food_type = "Food Type";
+allergies = "Allergies";
+conditions = "Conditions";
+body_shapes = "Body Shapes";
+body_shapes_female1 = "HOUR GLASS";
+body_shapes_female2 = "FIT";
+body_shapes_female3 = "SLENDER";
+body_shapes_female4 = "PEAR";
+body_shapes_female5 = "APPLE";
+body_shapes_female6 = "HEAVY";
+
+body_shapes_male1 = "SUPER FIT";
+body_shapes_male3 = "AVERAGE";
+body_shapes_male4 = "BOTTOM";
+body_shapes_male5 = "CENTRAL";
+
+feet = "feet";
+inch = "inch";
+enter_your_message = "Enter your message";
+nutritionist = "Nutritionist";
+ask_a_question = "Ask a question";
+carbs = "Carbs:";
+refill_comment = " Enter comments...";
+calories = "Calories:";
+awesome = " Awesome";
+share = "Share";
+awesomes = "Awesomes";
+previous_weeks_report = "Previous week\'s report";
+recommendation_for_next_week = "Recommendation for next week";
+number_of_portion = "Number of portion";
+cost_per_portion = "Cost per portion";
+sgst_9 = "SGST(9%)";
+cgst_9 = "CGST(9%)";
+total = "Total";
+delivery_date_time = "Delivery date/time";
+before_9pm = "Before 9:00pm - Tomorrow will be delivered";
+after_9pm = "After 9:00pm - Day after tomorrow will be delivered";
+enter_your_comment = "Enter your comment";
+tweakstreak = "My Tweak Streak";
+i_agree = "I Agree";
+features_and_benefits = "&#160;&#160;Click here for more infomation";
+your_diet_unpublished = "Your diet plan is being prepared by Nutritionist. Once it is prepared you will be notified";
+approve_diet_paln = "Approve Diet Plan";
+not_required_zero = "Please do NOT add ZERO (0) before your number.\n If your number is \'123456789\' then just enter \'123456789\'. The country code is already selected.";
+carbs = "CARBS:";
+cooking_Time = "COOKING TIME";
+preparation_Time = "PREP TIME";
+preferred_language = "Please select the preferred language";
+next = "NEXT >";
+prev = "< PREV";
+tweak_reminders = "Tweak Reminders";
+blocked_status = "Your account is in 'Blocked' status\n\nAn account is usually blocked if a user violates our 'Terms of Use'.You can please contact us at appsmanager@purpleteal.com to request ‘Unblocking’ the account.";
+camera = "Camera";
+choose_photo_library = "Choose from Photo Library";
+capture_food = "Please choose or capture food items only!";
+about_app = "About App";
+manage_profile = "Manage Profile";
+refill_placeholder_text = "Enter what you plan to refill..";
+breakfast_reminder_text = "Breakfast Tweak Reminder";
+lunch_reminder_text = "Lunch Tweak Reminder";
+dinner_reminder_text = "Dinner Tweak Reminder";
+check_internet_connection = "Your internet connection appears to be offline !!";
+no_internet = "No Internet !";
+retry = "RETRY";
+coming_soon = "Coming soon";
+fat = "Fat";
+fiber = "Fiber";
+protein = "Protein";
+say_cheese = "Say Cheese !!";
+detect_face = " If it is food item, then please zoom the image and tweak again!!";
+detected_a_face = "We detected a face !";
+update_profile_alert = "Your Profile has been Updated Sucessfully!";
+no_reports = "NO REPORTS";
+
+years_hint = "In Years";
+kgs_hint = "In KGS";
+cms_hint = "In CMS";
+alert = "Alert";
+alert_allfields = "All fields are required";
+share_alert = "This tweak has already been shared to tweak wall!";
+
+
+

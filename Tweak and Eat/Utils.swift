@@ -9,11 +9,10 @@
 import Foundation;
 import RealmSwift;
 
-
 // Return 1 constant realm object from Constants table
-func GetConstantItem(itemFor: String) -> Constants {
-    var thisUserConstants = Constants();
-    let userConstants = uiRealm.objects(Constants.self).filter("constName == %@", itemFor);
+func GetConstantItem(itemFor: String) -> ConstantsTable {
+    var thisUserConstants = ConstantsTable();
+    let userConstants = uiRealm.objects(ConstantsTable.self).filter("constName == %@", itemFor);
     if userConstants.count > 0 {
         thisUserConstants = userConstants[0];
     }

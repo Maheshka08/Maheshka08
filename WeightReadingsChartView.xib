@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WeightReadingsChartView" customModule="Tweak_and_Eat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please click on the PLUS (+) sign to record new weight reading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRh-0F-anJ">
+                    <rect key="frame" x="10" y="20" width="301" height="39.5"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOR-XQ-sPz">
+                    <rect key="frame" x="10" y="67" width="310" height="243"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKv-yB-RD7">
+                            <rect key="frame" x="0.0" y="20" width="310" height="223"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MKv-yB-RD7" firstAttribute="top" secondItem="jOR-XQ-sPz" secondAttribute="top" constant="20" id="3vQ-ta-Wqy"/>
+                        <constraint firstAttribute="trailing" secondItem="MKv-yB-RD7" secondAttribute="trailing" id="9ye-8P-SrD"/>
+                        <constraint firstItem="MKv-yB-RD7" firstAttribute="leading" secondItem="jOR-XQ-sPz" secondAttribute="leading" id="g99-8t-MDr"/>
+                        <constraint firstAttribute="bottom" secondItem="MKv-yB-RD7" secondAttribute="bottom" id="rIw-aR-1wf"/>
+                    </constraints>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight readings for last 7 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fog-O5-ZsX">
+                    <rect key="frame" x="19" y="67" width="281" height="20"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l8o-OF-q86">
+                    <rect key="frame" x="0.0" y="311" width="320" height="257"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="257" id="MmU-hA-Izc"/>
+                    </constraints>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="l8o-OF-q86" firstAttribute="top" secondItem="jOR-XQ-sPz" secondAttribute="bottom" constant="1" id="22W-YO-7cE"/>
+                <constraint firstItem="l8o-OF-q86" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7PF-bR-j05"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jOR-XQ-sPz" secondAttribute="trailing" id="9Uc-Vr-HS2"/>
+                <constraint firstItem="l8o-OF-q86" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Imu-QI-dK6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aRh-0F-anJ" secondAttribute="trailing" constant="9" id="W1f-Vy-QxY"/>
+                <constraint firstItem="l8o-OF-q86" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eNn-tw-Xzr"/>
+                <constraint firstItem="fog-O5-ZsX" firstAttribute="top" secondItem="jOR-XQ-sPz" secondAttribute="top" id="fms-i8-Ll0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fog-O5-ZsX" secondAttribute="trailing" constant="20" id="hhF-3J-dap"/>
+                <constraint firstItem="aRh-0F-anJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ibe-F2-NiC"/>
+                <constraint firstItem="jOR-XQ-sPz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="lJB-XB-qWb"/>
+                <constraint firstItem="fog-O5-ZsX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="lWr-kc-hXA"/>
+                <constraint firstItem="fog-O5-ZsX" firstAttribute="top" secondItem="aRh-0F-anJ" secondAttribute="bottom" constant="7.5" id="stV-pY-etr"/>
+                <constraint firstItem="aRh-0F-anJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="wJx-RN-nTn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lineChart" destination="MKv-yB-RD7" id="qAO-Bc-GIr"/>
+                <outlet property="outerView" destination="jOR-XQ-sPz" id="dCa-au-hCc"/>
+                <outlet property="weightTableView" destination="l8o-OF-q86" id="TUl-0o-hhi"/>
+            </connections>
+            <point key="canvasLocation" x="16.875" y="59.154929577464792"/>
+        </view>
+    </objects>
+</document>

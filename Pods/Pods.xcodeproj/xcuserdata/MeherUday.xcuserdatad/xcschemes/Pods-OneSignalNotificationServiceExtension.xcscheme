@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C06B89B789AB38F0FCA879A82F1044B"
+               BlueprintIdentifier = "6BEDE3FC77C46A980961D28CBC3183AB"
                BuildableName = "Pods_OneSignalNotificationServiceExtension.framework"
                BlueprintName = "Pods-OneSignalNotificationServiceExtension"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C06B89B789AB38F0FCA879A82F1044B"
+            BlueprintIdentifier = "6BEDE3FC77C46A980961D28CBC3183AB"
             BuildableName = "Pods_OneSignalNotificationServiceExtension.framework"
             BlueprintName = "Pods-OneSignalNotificationServiceExtension"
             ReferencedContainer = "container:Pods.xcodeproj">

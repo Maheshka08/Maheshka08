@@ -11,21 +11,16 @@ import UIKit
 class WebViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet var webView: UIWebView!
-    var urlString: String = ""
-    var navigationTitle: String = ""
+    @objc var urlString: String = ""
+    @objc var navigationTitle: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.navigationTitle
-        // Do any additional setup after loading the view.
-        
-        
-        //let url = URL(string: self.urlString)
+       
         if let url = URL(string: self.urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)   {
             let request = URLRequest(url: url as URL)
             webView.loadRequest(request)
-        }
-        
-       
+        }       
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

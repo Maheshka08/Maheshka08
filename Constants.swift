@@ -9,7 +9,7 @@
 import Realm;
 import RealmSwift;
 
-class Constants: Object {
+class ConstantsTable: Object {
     dynamic var constName = "";
     dynamic var constValue = "";
     

@@ -16,19 +16,25 @@ class TweakAndEatWelcomeScreen: UIView {
     @IBOutlet var textScroll: UITextView!;
     @IBOutlet var logoBorderView: UIView!;
     
-    var delegate : WelcomeViewController! = nil;
+    
+    @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var howItWorksLbl: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
+    @objc var delegate : WelcomeViewController! = nil;
 
-    func setIntroText(_ attributedText : NSAttributedString) {
+    @objc func setIntroText(_ attributedText : NSAttributedString) {
 
         textScroll.attributedText = attributedText;
 
     }
     
     @IBAction func onClickOfOk(_ sender: AnyObject) {
+       // delegate.getAllCountryCodes()
         delegate.switchToThirdScreen();
     }
     
-    func beginning() {
+    @objc func beginning() {
         logoBorderView.clipsToBounds = true;
         logoBorderView.layer.cornerRadius = logoBorderView.frame.size.width / 2;
         animationView.clipsToBounds = true;

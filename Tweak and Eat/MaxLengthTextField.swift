@@ -13,7 +13,6 @@ class MaxLengthTextField: UITextField, UITextFieldDelegate {
     
     private var characterLimit: Int?
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         delegate = self
@@ -45,7 +44,7 @@ class MaxLengthTextField: UITextField, UITextFieldDelegate {
     }
     
     // 2. ...and here's the second!
-    func allowedIntoTextField(text: String) -> Bool {
+    @objc func allowedIntoTextField(text: String) -> Bool {
         return text.characters.count <= maxLength
     }
     

@@ -12,6 +12,10 @@ class TweakAndEatUtils {
     
     static let window : UIWindow = (UIApplication.shared.delegate as! AppDelegate).window!
     
+ 
+
+    
+    
     class func showMBProgressHUD() {
         MBProgressHUD.showAdded(to: self.window, animated: true)
     }
@@ -33,16 +37,30 @@ class TweakAndEatUtils {
         return label.frame.width + (5 * label.frame.width/100)
     }
     
+    
+    
     class AlertView: NSObject {
         
-        class func showAlert(view: UIViewController , message: String){
-            
-            let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        @objc class func showAlert(view: UIViewController , message: String) {
+            var title = "OK"
+            if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+                let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
+                if language == "BA" {
+                  title = "BAIK"
+                } else if language == "EN" {
+                   title = "OK"
+                }
+            }
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: title, style: UIAlertAction.Style.default, handler: nil))
             view.present(alert, animated: true, completion: nil)
         }
     }
     
+    class func getEventNames(countryISO: String, eventName: String) -> String {
+        
+        return "evt_" + countryISO.lowercased() + "_" + "i_" + eventName
+    }
     
     class func getHeightForString(_ text:String, font:UIFont, width:CGFloat) -> CGFloat
     {
@@ -99,12 +117,12 @@ class TweakAndEatUtils {
         let resultDate : Date = simpleDateFormat.date(from: dateString)!
         
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MMM dd,yyyy"
+        dateFormat.dateFormat = "d MMM yyyy"
         
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "hh:mm a"
         
-        return dateFormat.string(from: resultDate) + " at " + timeFormat.string(from: resultDate)
+        return dateFormat.string(from: resultDate) + " " + timeFormat.string(from: resultDate)
     }
 }
 
@@ -131,9 +149,24 @@ extension String {
     var html2AttributedString:NSAttributedString {
         
         do {
-            return try NSAttributedString(data: data(using: String.Encoding.utf8)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil)
+            return try NSAttributedString(data: data(using: String.Encoding.utf8)!, options:convertToNSAttributedStringDocumentReadingOptionKeyDictionary([convertFromNSAttributedStringDocumentAttributeKey(NSAttributedString.DocumentAttributeKey.documentType):convertFromNSAttributedStringDocumentType(NSAttributedString.DocumentType.html)]), documentAttributes: nil)
         } catch {
         }
         return NSAttributedString(string: "")
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringDocumentReadingOptionKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.DocumentReadingOptionKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.DocumentReadingOptionKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentAttributeKey(_ input: NSAttributedString.DocumentAttributeKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentType(_ input: NSAttributedString.DocumentType) -> String {
+	return input.rawValue
 }

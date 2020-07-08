@@ -25,9 +25,7 @@ class AllowedCharsTextField: MaxLengthTextField {
     override func allowedIntoTextField(text: String) -> Bool {
         return super.allowedIntoTextField(text: text) &&
             text.containsOnlyCharactersIn(matchCharacters: allowedChars);
-    
-    }
-    
+    }    
 }
   
 private extension String {

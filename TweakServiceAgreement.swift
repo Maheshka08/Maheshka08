@@ -9,48 +9,44 @@
 import UIKit
 
 class TweakServiceAgreement: UIView {
-    var delegate : WelcomeViewController! = nil;
+    @objc var delegate : WelcomeViewController! = nil;
     
-    var checkbox = UIImage(named: "whiteCheckedBox")
-    var uncheckBox =  UIImage(named:"whiteCheckbox")
+    @objc var checkbox = UIImage(named: "whiteCheckedBox");
+    @objc var uncheckBox =  UIImage(named:"whiteCheckbox");
     
-    @IBOutlet weak var checkBoxBtn: UIButton!
-    var isboxclicked:Bool!
+    @IBOutlet weak var checkBoxBtn: UIButton!;
+    var isboxclicked:Bool!;
+    
+    
+    @IBOutlet weak var termsServiceTextView: UITextView!
     
     @IBOutlet weak var agreedBtn: UIButton!
-    @IBOutlet weak var termsServiceTextView: UITextView!
+    @IBOutlet weak var termsOfUseLabel: UILabel!
+    
     @IBAction func agreeAction(_ sender: Any) {
         
-        self.delegate.switchToSixthScreen()
+        self.delegate.switchToSixthScreen();
     }
     
-    
-   
     @IBAction func checkBoxAct(_ sender: UIButton) {
+      
+        sender.isSelected = !sender.isSelected;
         
-        
-   
-        sender.isSelected = !sender.isSelected
-        
-
         if(sender.isSelected == true)
         {
-            checkBoxBtn.setImage(checkbox, for: UIControlState.normal)
-            agreedBtn.isHighlighted = false
-            agreedBtn.isUserInteractionEnabled = true
+            checkBoxBtn.setImage(checkbox, for: UIControl.State.normal);
+            agreedBtn.isHighlighted = false;
+            agreedBtn.isUserInteractionEnabled = true;
         }
         else
         {
-            checkBoxBtn.setImage(uncheckBox, for: UIControlState.normal)
-            agreedBtn.isHighlighted = true
-            agreedBtn.isUserInteractionEnabled = false
+            checkBoxBtn.setImage(uncheckBox, for: UIControl.State.normal);
+            agreedBtn.isHighlighted = true;
+            agreedBtn.isUserInteractionEnabled = false;
         }
-        
-        
     }
 
-    
-    func setTermsOfUse(_ attributedText : NSAttributedString) {
+    @objc func setTermsOfUse(_ attributedText : NSAttributedString) {
         
         termsServiceTextView.attributedText = attributedText;
         

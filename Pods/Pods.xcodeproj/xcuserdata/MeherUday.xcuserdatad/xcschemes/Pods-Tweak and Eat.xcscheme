@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1CFDF0CA406D90B76E17766C296DB3D6"
+               BlueprintIdentifier = "086663703033405577B6A57EA65665F4"
                BuildableName = "Pods_Tweak_and_Eat.framework"
                BlueprintName = "Pods-Tweak and Eat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1CFDF0CA406D90B76E17766C296DB3D6"
+            BlueprintIdentifier = "086663703033405577B6A57EA65665F4"
             BuildableName = "Pods_Tweak_and_Eat.framework"
             BlueprintName = "Pods-Tweak and Eat"
             ReferencedContainer = "container:Pods.xcodeproj">

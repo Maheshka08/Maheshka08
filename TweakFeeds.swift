@@ -9,6 +9,7 @@
 import Foundation
 
 class TweakFeedsModel {
+    
     var awesomeCount : String?
     var awesomeMemNickName : String?
     var awesomeMemPostedOn : String?

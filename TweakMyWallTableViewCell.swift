@@ -4,9 +4,10 @@
 //
 //  Created by Anusha Thota on 7/14/17.
 //  Copyright © 2017 Purpleteal. All rights reserved.
-//
+//  Reviewed
 
 import UIKit
+
 protocol ButtonCellDelegate {
     func cellTappedAwesome(_ cell: TweakMyWallTableViewCell)
     func cellTappedComments(_ cell: TweakMyWallTableViewCell)
@@ -17,12 +18,14 @@ protocol ButtonCellDelegate {
 }
 
 class TweakMyWallTableViewCell: UITableViewCell {
-    var cellIndexPath : Int = 0
-    var myIndexPath : IndexPath!
+    
+    @objc var cellIndexPath : Int = 0
+    @objc var myIndexPath : IndexPath!
     var buttonDelegate: ButtonCellDelegate?
     
     @IBOutlet var cellCommentsLbl: UILabel!
     @IBOutlet var cellAwesomeLbl: UILabel!
+    
     @IBOutlet var userCommentsHeightConstraint: NSLayoutConstraint!
     @IBOutlet var likesHeightConstraint: NSLayoutConstraint!
     @IBOutlet var userCommentsBtn: UIButton!
@@ -32,8 +35,11 @@ class TweakMyWallTableViewCell: UITableViewCell {
     @IBOutlet var commentBtn: UIButton!
     @IBOutlet var borderView: UIView!
     var isLiked : Bool?
-    var boostedButton = UIImage(named: "AwesomeFilledIcon.png")
+    @objc var boostedButton = UIImage(named: "awesome_icon_hover.png")
+    
 
+    @IBOutlet weak var awesomeButtonTitle: UIButton!
+    @IBOutlet weak var commentsButtonTitle: UIButton!
     
     @IBOutlet weak var postedOn: UILabel!
     @IBOutlet weak var tweakOwner: UILabel!
@@ -47,65 +53,64 @@ class TweakMyWallTableViewCell: UITableViewCell {
     
     @IBAction func awesomeAction(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedAwesome(self)
-             
+            delegate.cellTappedAwesome(self);
         }
     }
     
     @IBAction func userCommentsTapped(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedUserComments(self)
+            delegate.cellTappedUserComments(self);
         }
 
     }
+    
     @IBAction func likesTapped(_ sender: Any) {
         
         if let delegate = buttonDelegate {
-            delegate.cellTappedLikes(self)
+            delegate.cellTappedLikes(self);
         }
     }
     @IBAction func shareAction(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedShare(self)
+            delegate.cellTappedShare(self);
         }
     }
     
     @IBAction func commentAction(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedComments(self)
+            delegate.cellTappedComments(self);
         }
     }
     
     @IBAction func commentsBtn2Tapped(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedComments(self)
+            delegate.cellTappedComments(self);
         }
-
     }
     
     @IBAction func awesomeBtn2Tapped(_ sender: Any) {
         if let delegate = buttonDelegate {
-            delegate.cellTappedAwesome(self)
-            
+            delegate.cellTappedAwesome(self);
         }
-
     }
     
     override func awakeFromNib() {
-        super.awakeFromNib()
+        super.awakeFromNib();
         // Initialization code
-        self.isLiked = false
-        self.likesBtn.isHidden = true
-        self.userCommentsBtn.isHidden = true
-        self.adMobViewHeightConstraint.constant = 0
-        self.imageUrl.isUserInteractionEnabled = true
-        let tapped:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TappedOnImage))
-        tapped.numberOfTapsRequired = 1
-        self.imageUrl?.addGestureRecognizer(tapped)
+        self.imageUrl.contentMode = .scaleAspectFill
+        self.imageUrl.clipsToBounds = true
+        self.isLiked = false;
+        self.likesBtn.isHidden = true;
+        self.userCommentsBtn.isHidden = true;
+        self.adMobViewHeightConstraint.constant = 0;
+        self.imageUrl.isUserInteractionEnabled = true;
+        let tapped:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TappedOnImage));
+        tapped.numberOfTapsRequired = 1;
+        self.imageUrl?.addGestureRecognizer(tapped);
     }
     
-    func TappedOnImage(sender:UITapGestureRecognizer){
-        self.buttonDelegate?.cellTappedOnImage(self,sender: sender)
+    @objc func TappedOnImage(sender:UITapGestureRecognizer){
+        self.buttonDelegate?.cellTappedOnImage(self,sender: sender);
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

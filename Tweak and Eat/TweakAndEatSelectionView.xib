@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="QUESTRIAL-REGULAR.TTF">
+            <string>Questrial-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -96,7 +100,6 @@
                                 <constraint firstAttribute="width" constant="44" id="cWB-1t-prp"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-x9-GMM">
@@ -106,7 +109,6 @@
                                 <constraint firstAttribute="height" constant="21" id="iEO-e2-VM4"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8j-IV-08T">
@@ -116,7 +118,6 @@
                                 <constraint firstAttribute="width" constant="42" id="gg5-yN-YiH"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shellfish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLD-en-Tci">
@@ -126,19 +127,16 @@
                                 <constraint firstAttribute="width" constant="71" id="jkA-1p-xSQ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hie-3f-FU8">
                             <rect key="frame" x="197" y="237" width="29" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheat (Gluten)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIi-RU-tDh">
-                            <rect key="frame" x="193" y="272" width="116" height="21"/>
+                            <rect key="frame" x="192" y="272" width="117" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergies:-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-ZF-f9q">
@@ -319,7 +317,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4h-Vf-GP0">
-                            <rect key="frame" x="160" y="268" width="25" height="25"/>
+                            <rect key="frame" x="159" y="268" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="8lR-BS-UjU"/>
                                 <constraint firstAttribute="width" constant="25" id="Qg3-tA-BwM"/>
@@ -341,7 +339,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="eNA-nf-ZnB"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -363,7 +361,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="DUk-Yf-N90"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -385,7 +383,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="aMz-ku-IbA"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -424,6 +422,7 @@
                                 <constraint firstAttribute="width" constant="83" id="34O-EV-YGt"/>
                                 <constraint firstAttribute="height" constant="42" id="i86-9t-BcT"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                             <state key="normal" title="OK">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -497,7 +496,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.34901960780000002" green="0.0" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Dn2-go-k9V" firstAttribute="leading" secondItem="SxY-aQ-GfW" secondAttribute="leading" constant="4" id="KZh-eQ-n4i"/>
                 <constraint firstItem="Dn2-go-k9V" firstAttribute="top" secondItem="SxY-aQ-GfW" secondAttribute="top" constant="128" id="TDi-V8-obr"/>
@@ -515,18 +514,22 @@
                 <outlet property="allergiesBox6" destination="t4h-Vf-GP0" id="QB0-bu-780"/>
                 <outlet property="allergiesContentView" destination="ucc-iA-1Cd" id="KKy-rN-p8L"/>
                 <outlet property="allergiesHeightConstant" destination="gLg-zP-IQp" id="GGK-Rx-FD8"/>
+                <outlet property="allergiesLabel" destination="fTp-Ag-9zG" id="LaZ-dc-bLA"/>
                 <outlet property="animationView" destination="7em-6X-4P0" id="abK-MX-Oli"/>
                 <outlet property="conditionBox1" destination="iys-py-stB" id="J93-H0-Cif"/>
                 <outlet property="conditionBox2" destination="7dM-pE-b80" id="Iit-sB-HDG"/>
                 <outlet property="conditionBox3" destination="hYG-dT-QzQ" id="FJt-tX-BPK"/>
                 <outlet property="conditionsContentView" destination="YPO-iZ-pWE" id="eD5-2F-esw"/>
                 <outlet property="conditionsHeightConstant" destination="Tkn-ji-JcD" id="SMn-Zc-jyR"/>
+                <outlet property="conditionsLabel" destination="D4H-wL-5pC" id="RLR-WJ-iba"/>
                 <outlet property="foodHabitContentView" destination="fhd-ml-CPx" id="v5z-nj-j3P"/>
+                <outlet property="foodHabitsLabel" destination="HFP-A4-9aI" id="Wfk-xR-GfQ"/>
                 <outlet property="foodhabitHeightConstant" destination="kXP-pG-7dc" id="EAP-K3-rYt"/>
                 <outlet property="logoBorderView" destination="cpm-WC-QVK" id="P4G-3r-HQy"/>
                 <outlet property="logoImageView" destination="Efc-Q0-OQj" id="hrc-5A-351"/>
                 <outlet property="logoView" destination="8k3-mV-f4O" id="QwD-wK-3q1"/>
                 <outlet property="nonVegLabel" destination="r94-2K-oX8" id="54L-37-mbQ"/>
+                <outlet property="okBtn" destination="3LQ-IL-3gC" id="I5A-YP-zbB"/>
                 <outlet property="selectionView" destination="Dn2-go-k9V" id="HqO-Q3-yXt"/>
                 <outlet property="vegAndEggLabel" destination="LT7-fX-BQB" id="zjo-lj-Ytw"/>
                 <outlet property="vegLabel" destination="UNP-Br-sWb" id="XWi-sY-OZB"/>

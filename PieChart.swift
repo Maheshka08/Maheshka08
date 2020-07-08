@@ -41,19 +41,19 @@ class PieChart: UIView {
     }
     
     /// Defines whether the segment labels should be shown when drawing the pie chart
-    var showSegmentLabels = true {
+    @objc var showSegmentLabels = true {
         didSet { setNeedsDisplay() }
     }
     
     /// Defines whether the segment labels will show the value of the segment in brackets
-    var showSegmentValueInLabel = false {
+    @objc var showSegmentValueInLabel = false {
         didSet { setNeedsDisplay() }
     }
     
     /// The font to be used on the segment labels
-    var segmentLabelFont = UIFont.systemFont(ofSize: 20) {
+    @objc var segmentLabelFont = UIFont.systemFont(ofSize: 20) {
         didSet {
-            textAttributes[NSFontAttributeName] = segmentLabelFont
+            textAttributes[convertFromNSAttributedStringKey(NSAttributedString.Key.font)] = segmentLabelFont
             setNeedsDisplay()
         }
     }
@@ -65,7 +65,7 @@ class PieChart: UIView {
     }()
     
     private lazy var textAttributes : [String : Any] = {
-        return [NSParagraphStyleAttributeName : self.paragraphStyle, NSFontAttributeName : self.segmentLabelFont]
+        return [convertFromNSAttributedStringKey(NSAttributedString.Key.paragraphStyle) : self.paragraphStyle, convertFromNSAttributedStringKey(NSAttributedString.Key.font) : self.segmentLabelFont]
     }()
     
     override init(frame: CGRect) {
@@ -132,20 +132,31 @@ class PieChart: UIView {
                 let averageRGB = (colorComponents[0] + colorComponents[1] + colorComponents[2]) / 3
                 
                 // if too light, use black. If too dark, use white
-                textAttributes[NSForegroundColorAttributeName] = (averageRGB > 0.7) ? UIColor.black : UIColor.white
+                textAttributes[convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor)] = (averageRGB > 0.7) ? UIColor.black : UIColor.white
                 
                 // the bounds that the text will occupy
-                var renderRect = CGRect(origin: .zero, size: textToRender.size(attributes: textAttributes))
+                var renderRect = CGRect(origin: .zero, size: textToRender.size(withAttributes: convertToOptionalNSAttributedStringKeyDictionary(textAttributes)))
                 
                 // center the origin of the rect
                 renderRect.origin = CGPoint(x: segmentCenter.x - renderRect.size.width * 0.5, y: segmentCenter.y - renderRect.size.height * 0.5)
                 
                 // draw text in the rect, with the given attributes
-                textToRender.draw(in: renderRect, withAttributes: textAttributes)
+                textToRender.draw(in: renderRect, withAttributes: convertToOptionalNSAttributedStringKeyDictionary(textAttributes))
             }
             
             // update starting angle of the next segment to the ending angle of this segment
             startAngle = endAngle
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

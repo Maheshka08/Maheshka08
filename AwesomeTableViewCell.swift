@@ -4,7 +4,7 @@
 //
 //  Created by Anusha Thota on 7/18/17.
 //  Copyright © 2017 Purpleteal. All rights reserved.
-//
+//  Reviewed
 
 import UIKit
 
@@ -21,6 +21,7 @@ class AwesomeTableViewCell: UITableViewCell {
         // Initialization code
         self.commentsLabel.text = ""
         self.awesomeTime.text = ""
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,5 +29,4 @@ class AwesomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

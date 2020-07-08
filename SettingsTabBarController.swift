@@ -9,31 +9,64 @@
 import UIKit
 
 class SettingsTabBarController: UITabBarController {
+    @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj")
+    @objc var bundle = Bundle()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBarController?.selectedIndex = 2
-        self.selectedIndex = 2
+        bundle = Bundle.init(path: path!)! as Bundle
 
+        if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+            let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
+            if language == "BA" {
+                path = Bundle.main.path(forResource: "id", ofType: "lproj")
+                bundle = Bundle.init(path: path!)! as Bundle
+            } else if language == "EN" {
+                path = Bundle.main.path(forResource: "en", ofType: "lproj")
+                bundle = Bundle.init(path: path!)! as Bundle
+            }
+        }
+
+
+        self.selectedIndex = 0
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue : UIColor(red: 89/255, green: 21/255, blue: 112/255, alpha: 1.0)]);
+       
         
+    }
+    
+    @objc func addBackButton() {
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(named: "backIcon"), for: .normal)
+        backButton.addTarget(self, action: #selector(self.backAction(_:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    @IBAction func backAction(_ sender: UIButton) {
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
 
-        // Do any additional setup after loading the view.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addBackButton()
+        guard let tabbaritem = tabBar.items else { return }
+        
+        tabbaritem[0].title = bundle.localizedString(forKey: "ideal_plate", value: nil, table: nil)
+        tabbaritem[1].title = bundle.localizedString(forKey: "manage_profile", value: nil, table: nil)
+        tabbaritem[2].title = bundle.localizedString(forKey: "tweak_reminders", value: nil, table: nil)
+        tabbaritem[3].title = bundle.localizedString(forKey: "about_app", value: nil, table: nil)
+        tabbaritem[4].title = bundle.localizedString(forKey: "how_it_works", value: nil, table: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

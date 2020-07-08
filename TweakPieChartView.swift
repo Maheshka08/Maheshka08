@@ -11,8 +11,8 @@ import Realm
 import RealmSwift
 
 class TweakPieChartView: UIView {
-    
-
+    @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj")
+    @objc var bundle = Bundle()
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var tweakPieChartView: UIView!
     @IBOutlet weak var logoBorderView: UIView!
@@ -21,24 +21,38 @@ class TweakPieChartView: UIView {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet var tweakPieChartScrollView: UIScrollView!
     
-    var delegate : WelcomeViewController! = nil;
     
-    var profileData : NSArray! = nil;
+    @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var profilePlateDesc: UILabel!
+    
+    @objc var delegate : WelcomeViewController! = nil;
+    @objc var profileData : NSArray! = nil;
     
     var profileFacts : Results<TweakPieChartValues>?
-    var trackingPercentage = [Int]()
+    @objc var trackingPercentage = [Int]()
     
-    func profileArray(){
+    @objc func profileArray(){
     self.profileFacts = uiRealm.objects(TweakPieChartValues.self)
         if (self.profileFacts?.count)! > 0 {
     for myProfileFacts in self.profileFacts! {
 
         self.trackingPercentage = [myProfileFacts.carbsPerc,myProfileFacts.fatPerc,myProfileFacts.proteinPerc,myProfileFacts.fiberPerc]
         }
-    }
-        
-    }
-    func beginning() {
+     }
+}
+    @objc func beginning() {
+        bundle = Bundle.init(path: path!)! as Bundle
+        if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+            let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
+            if language == "BA" {
+                path = Bundle.main.path(forResource: "id", ofType: "lproj")
+                bundle = Bundle.init(path: path!)! as Bundle
+            } else if language == "EN" {
+                path = Bundle.main.path(forResource: "en", ofType: "lproj")
+                bundle = Bundle.init(path: path!)! as Bundle
+            }
+        }
+
         profileArray()
         updateChartData()
         logoBorderView.clipsToBounds = true
@@ -56,21 +70,23 @@ class TweakPieChartView: UIView {
         self.delegate.switchToSeventhScreen()
     }
     
-    func updateChartData(){
-//        if UIScreen.main.bounds.size.height == 480 {
-//        self.tweakPieChartScrollView.contentSize = CGSize(width: self.frame.size.width, height: 668)
-//        }
+    @objc func updateChartData(){
+
         self.profileFacts = uiRealm.objects(TweakPieChartValues.self)
         for myProfileFacts in self.profileFacts! {
         self.pieChartView.segments = [
-            Segment(color: UIColor(red: 0.0/255.0, green: 128.0/255.0, blue: 255.0/255.0, alpha: 1.0), name:"carbPerc", value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.carbsPerc))!)),
-            Segment(color: UIColor(red:255.0/255.0, green: 128.0/255.0, blue: 0.0/255.0, alpha: 1.0), name: "fatPerc", value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.fatPerc))!)),
-            Segment(color: UIColor(red: 128.0/255.0, green: 0.0/255.0, blue: 128.0/255.0, alpha: 1.0), name: "fiberPerc", value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.fiberPerc))!)),
-            Segment(color: UIColor(red: 0.0/255.0, green: 155.0/255.0, blue: 58.0/255.0, alpha: 1.0), name: "proteinPerc", value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.proteinPerc))!))
+            Segment(color: UIColor(red: 0.0/255.0, green: 128.0/255.0, blue: 255.0/255.0, alpha: 1.0), name: bundle.localizedString(forKey: "Carbs", value: nil, table: nil)
+, value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.carbsPerc))!)),
+            Segment(color: UIColor(red:255.0/255.0, green: 128.0/255.0, blue: 0.0/255.0, alpha: 1.0), name:  bundle.localizedString(forKey: "fat", value: nil, table: nil)
+, value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.fatPerc))!)),
+            Segment(color: UIColor(red: 128.0/255.0, green: 0.0/255.0, blue: 128.0/255.0, alpha: 1.0), name:  bundle.localizedString(forKey: "others", value: nil, table: nil)
+, value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.fiberPerc))!)),
+            Segment(color: UIColor(red: 0.0/255.0, green: 155.0/255.0, blue: 58.0/255.0, alpha: 1.0), name:  bundle.localizedString(forKey: "protein", value: nil, table: nil)
+, value: CGFloat(NumberFormatter().number(from: String(myProfileFacts.proteinPerc))!))
         ]
         pieChartView.segmentLabelFont = UIFont.systemFont(ofSize: 13)
         pieChartView.showSegmentValueInLabel = true
-    }
+      }
     
     }
 }

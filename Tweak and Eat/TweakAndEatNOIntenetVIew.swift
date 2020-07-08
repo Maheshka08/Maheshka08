@@ -10,7 +10,7 @@ import UIKit
 
 class TweakAndEatNOIntenetVIew: UIView {
 
-    let screenHeight: CGFloat = UIScreen.main.bounds.height;
+    @objc let screenHeight: CGFloat = UIScreen.main.bounds.height;
 
     @IBOutlet var logoView: UIView!;
     @IBOutlet var logoImageView: UIImageView!;
@@ -23,7 +23,7 @@ class TweakAndEatNOIntenetVIew: UIView {
     @IBOutlet var okButton: UIButton!;
     @IBOutlet var okButtonTop: NSLayoutConstraint!;
 
-    func beginning() {
+    @objc func beginning() {
         logoBorderView.clipsToBounds = true;
         logoBorderView.layer.cornerRadius = logoBorderView.frame.size.width / 2;
         animationView.clipsToBounds = true;
@@ -36,7 +36,7 @@ class TweakAndEatNOIntenetVIew: UIView {
         self.perform(#selector(TweakAndEatNOIntenetVIew.animateLogo), with: nil, afterDelay: 0.3);
     }
     
-    func animateLogo() {
+    @objc func animateLogo() {
         UIView.animate(withDuration: 0.5, animations: {
             self.animationView.center = CGPoint(x: self.animationView.center.x, y: self.frame.origin.y + 110);
             }, completion: { (animate : Bool) in

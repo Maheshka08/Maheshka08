@@ -27,5 +27,6 @@ extension TBL_Tweaks {
     @NSManaged public var tweakRating: Float
     @NSManaged public var tweakStatus: Int64
     @NSManaged public var tweakSuggestedText: String?
+    @NSManaged public var tweakUserComments: String?
 
 }

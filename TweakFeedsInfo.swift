@@ -11,19 +11,18 @@ import Realm
 import RealmSwift
 
 class TweakFeedsInfo: Object {
-    dynamic var snapShot = ""
-    dynamic var feedContent =  ""
-    dynamic var gender =  ""
-    dynamic var imageUrl =  ""
-    dynamic var msisdn =  ""
-    dynamic var postedOn =  ""
-    dynamic var awesomeCount =  0
-    dynamic var commentsCount =  0
-    dynamic var tweakOwner =  ""
-    dynamic var timeIn = NSDate()
+    @objc dynamic var snapShot = ""
+    @objc dynamic var feedContent =  ""
+    @objc dynamic var gender =  ""
+    @objc dynamic var imageUrl =  ""
+    @objc dynamic var msisdn =  ""
+    @objc dynamic var postedOn =  ""
+    @objc dynamic var awesomeCount =  0
+    @objc dynamic var commentsCount =  0
+    @objc dynamic var tweakOwner =  ""
+    @objc dynamic var timeIn = NSDate()
     let awesomeMembers = List<AwesomeMembers>()
     let comments = List<CommentsMembers>()
-    
     
     override static func primaryKey() -> String? {
         return "postedOn";
@@ -32,17 +31,18 @@ class TweakFeedsInfo: Object {
 }
 
 class AwesomeMembers: Object {
-    dynamic var aweSomeNickName = ""
-    dynamic var aweSomePostedOn = ""
-    dynamic var aweSomeMsisdn = ""
-    dynamic var youLiked = "false"
+    @objc dynamic var aweSomeNickName = ""
+    @objc dynamic var aweSomePostedOn = ""
+    @objc dynamic var aweSomeMsisdn = ""
+    @objc dynamic var youLiked = "false"
+    @objc dynamic var awesomeSnapShot = ""
 }
 
 class CommentsMembers: Object {
-    dynamic var commentsNickName = ""
-    dynamic var commentsPostedOn = ""
-    dynamic var commentsMsisdn = ""
-    dynamic var commentsCommentText = ""
-    dynamic var commentsTimeIn = NSDate()
+    @objc dynamic var commentsNickName = ""
+    @objc dynamic var commentsPostedOn = ""
+    @objc dynamic var commentsMsisdn = ""
+    @objc dynamic var commentsCommentText = ""
+    @objc dynamic var commentsTimeIn = NSDate()
 
 }

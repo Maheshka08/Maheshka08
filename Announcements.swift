@@ -12,13 +12,12 @@ import RealmSwift
 
 class Announcements: Object {
     
-    dynamic var postedOn = "";
-    dynamic var imageUrl = "";
-    dynamic var announcement = "";
-    dynamic var timeIn = NSDate()
+    @objc dynamic var postedOn = "";
+    @objc dynamic var imageUrl = "";
+    @objc dynamic var announcement = "";
+    @objc dynamic var timeIn = NSDate()
     
     override static func primaryKey() -> String? {
         return "postedOn";
     }
-    
 }

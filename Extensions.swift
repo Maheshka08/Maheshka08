@@ -9,8 +9,304 @@
 import Foundation
 import UserNotifications
 
+//extension String {
+//    func getEventNames(countryISO: String, eventName: String) -> String {
+//        return "evt_" + countryISO.lowercased() + "_" + "i_" + eventName
+//    }
+//    
+//}
+
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+}
+
+extension NSMutableAttributedString {
+    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "QUESTRIAL-REGULAR", size: 18)!]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+        let normal = NSAttributedString(string: text)
+        append(normal)
+        
+        return self
+    }
+    
+//    @discardableResult func changeTextColor(_ text: String, _ fullText: String) -> NSMutableAttributedString {
+//        let range = (fullText as NSString).range(of: text)
+//
+//        let attribute = NSMutableAttributedString.init(string: fullText)
+//        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black , range: range)
+//        let changedText = NSMutableAttributedString(string:text, attributes: attribute)
+//        append(changedText)
+//        
+//        return self
+//    }
+    
+  
+}
+
+extension String {
+    func isValidEmail() -> Bool {
+        // here, `try!` will always succeed because the pattern is valid
+        let regularExpressionForEmail = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let testEmail = NSPredicate(format:"SELF MATCHES %@", regularExpressionForEmail)
+        return testEmail.evaluate(with: self)
+    }
+}
+extension UIView {
+    
+    @objc func addTopBorder(_ color: UIColor, height: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(border)
+        border.addConstraint(NSLayoutConstraint(item: border,
+                                                attribute: NSLayoutConstraint.Attribute.height,
+                                                relatedBy: NSLayoutConstraint.Relation.equal,
+                                                toItem: nil,
+                                                attribute: NSLayoutConstraint.Attribute.height,
+                                                multiplier: 1, constant: height))
+        self.addConstraint(NSLayoutConstraint(item: border,
+                                              attribute: NSLayoutConstraint.Attribute.top,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
+                                              toItem: self,
+                                              attribute: NSLayoutConstraint.Attribute.top,
+                                              multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: border,
+                                              attribute: NSLayoutConstraint.Attribute.leading,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
+                                              toItem: self,
+                                              attribute: NSLayoutConstraint.Attribute.leading,
+                                              multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: border,
+                                              attribute: NSLayoutConstraint.Attribute.trailing,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
+                                              toItem: self,
+                                              attribute: NSLayoutConstraint.Attribute.trailing,
+                                              multiplier: 1, constant: 0))
+    }
+}
+
+extension UIView {
+    
+    // Example use: myView.addBorder(toSide: .Left, withColor: UIColor.redColor().CGColor, andThickness: 1.0)
+    
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+    
+    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+        
+        let border = CALayer()
+        border.backgroundColor = color
+        
+        switch side {
+        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+        }
+        
+        layer.addSublayer(border)
+    }
+}
+
+extension CALayer {
+    
+    @objc func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+        
+        let border = CALayer()
+        
+        switch edge {
+        case UIRectEdge.top:
+            border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect(x: 0, y: self.frame.height - thickness, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect(x: self.frame.width - thickness, y: 0, width: thickness, height: self.frame.height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.cgColor;
+        self.addSublayer(border)
+        
+    }
+    
+}
+
+extension UIImageView {
+    
+    @objc func maskWith(color: UIColor) {
+        guard let tempImage = image?.withRenderingMode(.alwaysTemplate) else { return }
+        image = tempImage
+        tintColor = color
+    }
+    
+}
+extension String {
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func localized(comment: String = "") -> String {
+        return NSLocalizedString(self, comment: comment)
+    }
+    
+}
+
+extension UILabel {
+    
+    @objc func startBlink() {
+        UIView.animate(withDuration: 0.8,
+                       delay:0.0,
+                       options:[.allowUserInteraction, .transitionCrossDissolve, .autoreverse, .repeat],
+                       animations: { self.alpha = 0 },
+                       completion: nil)
+    }
+    
+    @objc func stopBlink() {
+        layer.removeAllAnimations()
+        alpha = 1
+    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
+extension Double {
+    var cleanValue: String {
+        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}
+
+extension Date {
+    static func getDates(forLastNDays nDays: Int) -> [String] {
+        let cal = NSCalendar.current
+        // start with today
+        var date = cal.startOfDay(for: Date())
+        
+        var arrDates = [String]()
+        
+        for _ in 1 ... nDays {
+            // move back in time by one day:
+            date = cal.date(byAdding: Calendar.Component.day, value: -1, to: date)!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: date)
+            arrDates.append(dateString)
+        }
+        print(arrDates)
+        return arrDates
+    }
+    
+    static func getWantedDate(forLastNDays nDays: Int) -> String {
+        let cal = NSCalendar.current
+        // start with today
+        var date = cal.startOfDay(for: Date())
+        
+        
+            // move back in time by one day:
+            date = cal.date(byAdding: Calendar.Component.day, value: -nDays, to: date)!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+}
+
+extension UIDevice {
+    
+    @objc var modelName: String {
+        if let simulatorModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] { return simulatorModelIdentifier }
+        var sysinfo = utsname()
+        uname(&sysinfo) // ignore return value
+        let identifier = String(bytes: Data(bytes: &sysinfo.machine, count: Int(_SYS_NAMELEN)), encoding: .ascii)!.trimmingCharacters(in: .controlCharacters)
+        
+        switch identifier {
+        case "iPod5,1":                                 return "iPod Touch 5"
+        case "iPod7,1":                                 return "iPod Touch 6"
+        case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
+        case "iPhone4,1":                               return "iPhone 4s"
+        case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
+        case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
+        case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
+        case "iPhone7,2":                               return "iPhone 6"
+        case "iPhone7,1":                               return "iPhone 6 Plus"
+        case "iPhone8,1":                               return "iPhone 6s"
+        case "iPhone8,2":                               return "iPhone 6s Plus"
+        case "iPhone9,1", "iPhone9,3":                  return "iPhone 7"
+        case "iPhone9,2", "iPhone9,4":                  return "iPhone 7 Plus"
+        case "iPhone8,4":                               return "iPhone SE"
+        case "iPhone10,1", "iPhone10,4":                return "iPhone 8"
+        case "iPhone10,2", "iPhone10,5":                return "iPhone 8 Plus"
+        case "iPhone10,3", "iPhone10,6":                return "iPhone X"
+        case "iPhone11,2":
+            return "iPhone XS"
+        case "iPhone11,4":
+            return "iPhone XS Max"
+        case "iPhone11,6":
+            return "iPhone XS Max China"
+        case "iPhone11,8":
+            return "iPhone XR"
+        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
+        case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
+        case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
+        case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
+        case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
+        case "iPad6,11", "iPad6,12":                    return "iPad 5"
+        case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
+        case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
+        case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
+        case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
+        case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
+        case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
+        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9 Inch 2. Generation"
+        case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5 Inch"
+        case "AppleTV5,3":                              return "Apple TV"
+        case "AppleTV6,2":                              return "Apple TV 4K"
+        case "AudioAccessory1,1":                       return "HomePod"
+        case "i386", "x86_64":                          return "Simulator"
+        default:                                        return identifier
+        }
+        
+    }
+}
+
 extension UITextField {
-    func setBottomBorder() {
+    @objc func setBottomBorder() {
         self.borderStyle = .none
         self.layer.backgroundColor = UIColor.white.cgColor
         self.layer.masksToBounds = false
@@ -22,7 +318,7 @@ extension UITextField {
 }
 
 extension UIImageView {
-    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    @objc func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
@@ -36,7 +332,7 @@ extension UIImageView {
             }
             }.resume()
     }
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleToFill) {
+    @objc func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleToFill) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
     }
@@ -48,7 +344,7 @@ let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
     
-    func downloadImage(from imgURL: String!) {
+    @objc func downloadImage(from imgURL: String!) {
         let url = URLRequest(url: URL(string: imgURL)!)
         
         // set initial image to nil so it doesn't use the image from a reused cell
@@ -82,7 +378,7 @@ extension UIImageView {
 extension String {
     var htmlAttributedString: NSAttributedString? {
         do {
-            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: Data(utf8), options: convertToNSAttributedStringDocumentReadingOptionKeyDictionary([convertFromNSAttributedStringDocumentAttributeKey(NSAttributedString.DocumentAttributeKey.documentType): convertFromNSAttributedStringDocumentType(NSAttributedString.DocumentType.html), convertFromNSAttributedStringDocumentAttributeKey(NSAttributedString.DocumentAttributeKey.characterEncoding): String.Encoding.utf8.rawValue]), documentAttributes: nil)
         } catch {
             print("error:", error)
             return nil
@@ -92,35 +388,7 @@ extension String {
         return htmlAttributedString?.string ?? ""
     }
 }
-extension CALayer {
-    
-    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
-        
-        let border = CALayer()
-        
-        switch edge {
-        case UIRectEdge.top:
-            border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: thickness)
-            break
-        case UIRectEdge.bottom:
-            border.frame = CGRect(x: 0, y: self.frame.height - thickness, width: self.frame.width, height: thickness)
-            break
-        case UIRectEdge.left:
-            border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.frame.height)
-            break
-        case UIRectEdge.right:
-            border.frame = CGRect(x: self.frame.width - thickness, y: 0, width: thickness, height: self.frame.height)
-            break
-        default:
-            break
-        }
-        
-        border.backgroundColor = color.cgColor;
-        
-        self.addSublayer(border)
-    }
-    
-}
+
 
 extension String {
     func extractURLs() -> [URL] {
@@ -141,7 +409,7 @@ extension String {
 
 extension UNNotificationAttachment {
     
-    static func create(identifier: String, urlString: String, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
+    @objc static func create(identifier: String, urlString: String, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
         let url = URL(string:urlString)
         let fileManager = FileManager.default
         let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
@@ -152,7 +420,7 @@ extension UNNotificationAttachment {
             let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
             let data = try? Data(contentsOf: url!)
             let image = UIImage(data: data!)
-            guard let imageData = UIImagePNGRepresentation(image!) else {
+            guard let imageData = image!.pngData() else {
                 return nil
             }
             try imageData.write(to: fileURL)
@@ -165,3 +433,18 @@ extension UNNotificationAttachment {
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringDocumentReadingOptionKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.DocumentReadingOptionKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.DocumentReadingOptionKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentAttributeKey(_ input: NSAttributedString.DocumentAttributeKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringDocumentType(_ input: NSAttributedString.DocumentType) -> String {
+	return input.rawValue
+}

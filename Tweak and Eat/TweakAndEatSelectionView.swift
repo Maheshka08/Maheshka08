@@ -24,34 +24,42 @@ class TweakAndEatSelectionView: UIView {
     @IBOutlet var conditionsContentView: UIView!
     @IBOutlet var allergiesContentView: UIView!
     @IBOutlet var foodHabitContentView: UIView!
-    var foodhabit : String = ""
-   
-    var allergies : NSArray! = nil;
-    var selectedAllergies = [String]()
-    var selectedConditions = [String]()
-    var food = [String]()
-    var allergy = [String]()
-    var conditions = [String]()
+    @objc var foodhabit : String = ""
     
-    var eggs : String = ""
-    var Milk : String = " "
-    var Nuts : String = " "
-    var Shellfish : String = " "
-    var Soy : String = " "
-    var Wheat : String = " "
-    var BloodPressure : String = " "
-    var Cholesterol : String = " "
-    var Diabetes : String = " "
-    var y: CGFloat = 25
-    var x: CGFloat = 10
-    var y1: CGFloat = 25
-    var y11: CGFloat = 25
-    var x1: CGFloat = 10
-
-    var allergiesArray = [[String : AnyObject]]()
-    var foodHabitsArray = [[String : AnyObject]]()
-    var conditionsArray = [[String : AnyObject]]()
-    var profileData : NSArray! = nil;
+    
+    @IBOutlet weak var conditionsLabel: UILabel!
+    @IBOutlet weak var allergiesLabel: UILabel!
+    @IBOutlet weak var foodHabitsLabel: UILabel!
+    @IBOutlet weak var okBtn: UIButton!
+    
+    @objc var allergies : NSArray! = nil;
+    @objc var selectedAllergies = [String]()
+    @objc var selectedConditions = [String]()
+    @objc var food = [String]()
+    @objc var allergy = [String]()
+    @objc var conditions = [String]()
+    
+    @objc var eggs : String = ""
+    @objc var Milk : String = " "
+    @objc var Nuts : String = " "
+    @objc var Shellfish : String = " "
+    @objc var Soy : String = " "
+    @objc var Wheat : String = " "
+    @objc var BloodPressure : String = " "
+    @objc var Cholesterol : String = " "
+    @objc var Diabetes : String = " "
+    @objc var y: CGFloat = 25
+    @objc var x: CGFloat = 10
+    @objc var y1: CGFloat = 25
+    @objc var y11: CGFloat = 25
+    @objc var x1: CGFloat = 10
+    @objc var fooddHabitName = "fh_name"
+    @objc var conditionName = "cond_name"
+    @objc var allergiesName = "alg_name"
+    @objc var allergiesArray = [[String : AnyObject]]()
+    @objc var foodHabitsArray = [[String : AnyObject]]()
+    @objc var conditionsArray = [[String : AnyObject]]()
+    @objc var profileData : NSArray! = nil;
 
     @IBOutlet weak var allergiesBox1: UIButton!
     @IBOutlet weak var allergiesBox2: UIButton!
@@ -66,9 +74,9 @@ class TweakAndEatSelectionView: UIView {
     @IBOutlet weak var conditionBox3: UIButton!
     
     
-    var delegate : WelcomeViewController! = nil;
+    @objc var delegate : WelcomeViewController! = nil;
     
-    func createButton(xAxis: CGFloat, yAxis: CGFloat, tag: Int, type: Int, isChecked: Bool) {
+    @objc func createButton(xAxis: CGFloat, yAxis: CGFloat, tag: Int, type: Int, isChecked: Bool) {
         let checkBoxBtn = UIButton()
         checkBoxBtn.frame = CGRect(x:xAxis, y:yAxis, width:30, height: 30)
         checkBoxBtn.addTarget(self, action: #selector(ManageProfileViewController.btnPressed(_:)), for: .touchUpInside)
@@ -90,7 +98,7 @@ class TweakAndEatSelectionView: UIView {
         }
     }
     
-    func btnPressed(_ sender: UIButton!) {
+    @objc func btnPressed(_ sender: UIButton!) {
         print(sender.tag)
         let labelTag = sender.tag + 100
         let label = self.viewWithTag(labelTag) as! UILabel
@@ -135,9 +143,9 @@ class TweakAndEatSelectionView: UIView {
         
     }
     
-    func createFoodHabitLabel(xAxis: CGFloat, yAxis: CGFloat, foodhabit: String, type: Int, tag: Int, isChecked: Bool) {
+    @objc func createFoodHabitLabel(xAxis: CGFloat, yAxis: CGFloat, foodhabit: String, type: Int, tag: Int, isChecked: Bool) {
         let foodHabitLabel = UILabel()
-        foodHabitLabel.frame = CGRect(x:xAxis, y:yAxis, width:120, height: 30)
+        foodHabitLabel.frame = CGRect(x:xAxis, y:yAxis, width:140, height: 30)
         foodHabitLabel.font = UIFont.systemFont(ofSize: 13.0)
         foodHabitLabel.text = foodhabit
         if isChecked == true {
@@ -163,7 +171,7 @@ class TweakAndEatSelectionView: UIView {
         
     }
     
-    func setUpViews() {
+    @objc func setUpViews() {
         var count = 0
         var tagBtn = 0
         var tagLbl = 100
@@ -173,7 +181,7 @@ class TweakAndEatSelectionView: UIView {
         conditionsArray = UserDefaults.standard.value(forKey: "CONDITIONS") as! [[String : AnyObject]]
         
         for foodHabit in foodHabitsArray {
-            let food = foodHabit["fh_name"] as AnyObject as? String
+            let food = foodHabit[fooddHabitName] as AnyObject as? String
             count += 1
             
             
@@ -204,7 +212,7 @@ class TweakAndEatSelectionView: UIView {
         y = 25
         count = 0
         for allergy in allergiesArray {
-            let allerg = allergy["alg_name"] as AnyObject as? String
+            let allerg = allergy[allergiesName] as AnyObject as? String
             count += 1
             
             
@@ -234,7 +242,7 @@ class TweakAndEatSelectionView: UIView {
         y = 25
         count = 0
         for cond in conditionsArray {
-            let condition = cond["cond_name"] as AnyObject as? String
+            let condition = cond[conditionName] as AnyObject as? String
             count += 1
             
             
@@ -263,7 +271,7 @@ class TweakAndEatSelectionView: UIView {
         }
     }
     
-    func setSelectionType(){
+    @objc func setSelectionType(){
     
         vegLabel.tag = 100;
         vegAndEggLabel.tag = 101;
@@ -459,16 +467,16 @@ class TweakAndEatSelectionView: UIView {
         }
     }
     
-    func clickedon(_ sender: UIButton) {
-        sender.setImage(UIImage(named: "tweakCheck.png")!, for: UIControlState.normal)
+    @objc func clickedon(_ sender: UIButton) {
+        sender.setImage(UIImage(named: "tweakCheck.png")!, for: UIControl.State.normal)
     }
     
-    func clickedOff(_ sender: UIButton){
-        sender.setImage(UIImage(named: "uncheckTweak.png")!, for: UIControlState.normal)
+    @objc func clickedOff(_ sender: UIButton){
+        sender.setImage(UIImage(named: "uncheckTweak.png")!, for: UIControl.State.normal)
     }
     
     // Receive action
-    func labelGenderOptionTapped(_ tapGesture: UITapGestureRecognizer) {
+    @objc func labelGenderOptionTapped(_ tapGesture: UITapGestureRecognizer) {
         var tappedLabel : UILabel = tapGesture.view as! UILabel
         if(tappedLabel.tag == 100) {
             self.selectLabel(vegLabel)
@@ -497,7 +505,7 @@ class TweakAndEatSelectionView: UIView {
     }
    
     
-    func selectLabel(_ label : UILabel) {
+    @objc func selectLabel(_ label : UILabel) {
         label.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         label.layer.cornerRadius = 3
         label.clipsToBounds = true
@@ -505,7 +513,7 @@ class TweakAndEatSelectionView: UIView {
         label.backgroundColor = TweakAndEatColorConstants.AppDefaultColor
     }
     
-    func deselectLabel(_ label : UILabel) {
+    @objc func deselectLabel(_ label : UILabel) {
         label.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         
         label.textColor = TweakAndEatColorConstants.AppDefaultColor
@@ -513,12 +521,18 @@ class TweakAndEatSelectionView: UIView {
     }
 
     @IBAction func okAction(_ sender: Any) {
-    
-        self.delegate.switchToEighthScreen()
+     self.delegate.switchToGoalsView()
         
     }
 
-    func beginning() {
+    @objc func beginning() {
+        if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+            if (UserDefaults.standard.value(forKey: "LANGUAGE") as! String == "BA") {
+                 fooddHabitName = "fh_ba_name"
+                 conditionName = "cond_ba_name"
+                 allergiesName = "alg_ba_name"
+            }
+        }
         logoBorderView.clipsToBounds = true
         logoBorderView.layer.cornerRadius = logoBorderView.frame.size.width / 2
         animationView.clipsToBounds = true

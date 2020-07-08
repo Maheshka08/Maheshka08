@@ -15,13 +15,43 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.purpleteal.tweakeatapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>purpleteal</string>
+				<string>fb269853870748452</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>400</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>269853870748452</string>
+	<key>FacebookAutoInitEnabled</key>
+	<true/>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
+	<key>FacebookDisplayName</key>
+	<string>Tweak &amp; Eat</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>purpleteal://</string>
+		<string>com.purpleteal.tweakeatapp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -40,23 +70,25 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants to access camera</string>
-	<key>NSContactsUsageDescription</key>
-	<string>By clicking 'OK' below you give us the consent to upload any or all contacts chosen by you, so 'Tweak &amp; Eat' can communicate with them, by buzzing them with a message, when you need it (when you press the 'Buzz' button).
-Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
-	<key>NSContactsUsageDescription </key>
-	<string>By clicking 'OK' below you give us the consent to upload any or all contacts chosen by you, so 'Tweak &amp; Eat' can communicate with them, by buzzing them with a message, when you need it (when you press the 'Buzz' button).
-Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about our Privacy Policy</string>
+	<string>"Tweak &amp; Eat" would like access to help take photos of food plates so we can help you tweak it</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Tweak and Eat wants to access your health data to send to our nutritionists</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Tweak and Eat wants to access your health data to send to our nutritionists</string>
 	<key>NSLocalizedDescription</key>
 	<string>$(PRODUCT_NAME) local location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) always show loaction</string>
+	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants to use your location</string>
+	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>"Tweak &amp; Eat" would like access the device's microphone to make and receive calls</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>"Tweak &amp; Eat" needs permission to save photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants to access photos</string>
+	<string>"Tweak &amp; Eat" would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>$(PRODUCT_NAME) reminders</string>
+	<string>"Tweak &amp; Eat" wants users to remind of tweaking their food plate.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>source-sans-pro.light.ttf</string>
@@ -65,9 +97,54 @@ Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about o
 		<string>source-sans-pro.black.ttf</string>
 		<string>SourceSansPro-Semibold.ttf</string>
 		<string>SourceSansPro-Regular.ttf</string>
+		<string>QUESTRIAL-REGULAR.TTF</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>cameraItem</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeTweakNow</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Tweak Now</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).TweakNow</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>myEDRItem</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeMy EDR</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>My EDR</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).MyEDR</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>myWallItem</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeTweakWall</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Tweak Wall</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).TweakWall</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>recipeWallItem</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeRecipeWall</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Recipe Wall</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).RecipeWall</string>
+		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -80,11 +157,15 @@ Please click on Settings--&gt;About App--&gt;Privacy Policy to know more about o
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 </dict>
 </plist>

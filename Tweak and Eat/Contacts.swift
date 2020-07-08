@@ -12,34 +12,34 @@ import CoreData
 private var contactsSingleTon : Contacts? = nil;
 private let version : Float = (UIDevice.current.systemVersion as NSString).floatValue;
 private let mainStoryboard = UIStoryboard(name: "Main", bundle: nil);
-private let inviteFriends = mainStoryboard.instantiateViewController(withIdentifier: "InviteViewController") as! InviteViewController;
+//private let inviteFriends = mainStoryboard.instantiateViewController(withIdentifier: "InviteViewController") as! InviteViewController;
 
 class Contacts: NSObject {
     
-    var contactsArray : [[String:AnyObject]] = [[String:AnyObject]]();
+    @objc var contactsArray : [[String:AnyObject]] = [[String:AnyObject]]();
     
-    lazy var addressBook: ABAddressBook = {
+    @objc lazy var addressBook: ABAddressBook = {
         var error: Unmanaged<CFError>?;
         return ABAddressBookCreateWithOptions(nil, &error).takeRetainedValue() as ABAddressBook;
     }()
-    class func sharedContacts() -> Contacts{
+    @objc class func sharedContacts() -> Contacts{
         if (contactsSingleTon == nil) {
             contactsSingleTon = Contacts();
         }
         return contactsSingleTon!;
     }
     
-    func getAllContactsBelowLatestVersioN() {
+    @objc func getAllContactsBelowLatestVersioN() {
         
-        if (version < 9.0) {
-            
-            
-        }else {
-            
-        }
+//        if (NSObject.version < 9.0) {
+//            
+//            
+//        }else {
+//            
+//        }
     }
     
-    func getContactsAuthenticationForAddressBook() {
+    @objc func getContactsAuthenticationForAddressBook() {
         
         switch ABAddressBookGetAuthorizationStatus(){
         case .authorized:
@@ -66,7 +66,7 @@ class Contacts: NSObject {
     }
     
     
-    func readFromAddressBook(addressBook: ABAddressBook){
+    @objc func readFromAddressBook(addressBook: ABAddressBook){
 
         let allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray;
             if self.contactsArray.count > 0 {
@@ -87,7 +87,7 @@ class Contacts: NSObject {
                 if let data = ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)?.takeRetainedValue() as Data! {
                     Idata = data;
                 }else{
-                    Idata = UIImagePNGRepresentation(UIImage(named: "Contact")!);
+                    Idata = UIImage(named: "Contact")!.pngData();
                 }
                 
                 var fullName = fName+" "+lName;
@@ -121,7 +121,7 @@ class Contacts: NSObject {
     }
     
     
-    class func getDataBase() -> Array<TBL_Contacts> {
+    @objc class func getDataBase() -> Array<TBL_Contacts> {
         let fetchRequest = NSFetchRequest<TBL_Contacts>(entityName: "TBL_Contacts");
         let sortDescripter = NSSortDescriptor.init(key: "contact_selectedDate", ascending: false);
         fetchRequest.sortDescriptors = [sortDescripter];

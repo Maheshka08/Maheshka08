@@ -9,12 +9,10 @@
 import UIKit
 
 protocol TweakNotifyTableViewCellDelegate {
-
-func cellTappedOnImage(_ cell: TweakNotifyTableViewCell, sender: UITapGestureRecognizer)
-    
-func cellTappedOnMessageLbl(_ cell: TweakNotifyTableViewCell, sender: UITapGestureRecognizer)
-    
+   func cellTappedOnImage(_ cell: TweakNotifyTableViewCell, sender: UITapGestureRecognizer)
+   func cellTappedOnMessageLbl(_ cell: TweakNotifyTableViewCell, sender: UITapGestureRecognizer)
 }
+
 class TweakNotifyTableViewCell: UITableViewCell {
 
     @IBOutlet var cellSubView: UIView!
@@ -22,17 +20,20 @@ class TweakNotifyTableViewCell: UITableViewCell {
     @IBOutlet var notificationMessageLbl: UILabel!
     @IBOutlet var notificationImageView: UIImageView!
     @IBOutlet weak var notificationDate: UILabel!
-    var cellIndexPath : Int = 0
-    var myIndexPath : IndexPath!
+    @objc var cellIndexPath : Int = 0
+    
+    @objc var myIndexPath : IndexPath!
     var cellDelegate: TweakNotifyTableViewCellDelegate?
+    
     override func awakeFromNib() {
-        super.awakeFromNib()
+        super.awakeFromNib();
         // Initialization code
-        //self.layer.addBorder(edge: .bottom, color: UIColor.darkGray, thickness: 2.0)
-       self.cellSubView.layer.cornerRadius = 10
-       self.cellSubView.layer.borderWidth = 1
         
-        self.cellSubView.layer.borderColor = UIColor.lightGray.cgColor; self.notificationImageView.layer.cornerRadius = 10.0
+        self.cellSubView.layer.cornerRadius = 10;
+        self.cellSubView.layer.borderWidth = 1;
+        self.notificationImageView.clipsToBounds = true
+        self.cellSubView.layer.borderColor = UIColor.lightGray.cgColor;
+        //self.notificationImageView.layer.cornerRadius = 10.0;
         self.notificationImageView.isUserInteractionEnabled = true
         let tappedOnImageView:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnImage))
         tappedOnImageView.numberOfTapsRequired = 1
@@ -44,11 +45,11 @@ class TweakNotifyTableViewCell: UITableViewCell {
         self.notificationMessageLbl?.addGestureRecognizer(tappedOnMessageLbl)
     }
     
-    func tappedOnImage(sender:UITapGestureRecognizer){
+    @objc func tappedOnImage(sender:UITapGestureRecognizer){
         self.cellDelegate?.cellTappedOnImage(self,sender: sender)
     }
     
-    func tappedOnMessageLabel(sender:UITapGestureRecognizer){
+    @objc func tappedOnMessageLabel(sender:UITapGestureRecognizer){
         self.cellDelegate?.cellTappedOnMessageLbl(self,sender: sender)
     }
 
