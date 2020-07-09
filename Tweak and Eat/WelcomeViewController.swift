@@ -237,7 +237,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.nutritionViewLast10TweaksDataVal = data
             tableView.isHidden = true
             self.dataBtnName = self.dataBtnDict[data]!
-            self.mealType = 0
             self.myNutritionDetailsView.last10TweaksLbl.text = data
             self.setDefaultDataBtns(name: self.dataBtnName)
             
@@ -570,6 +569,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func floatingCrownBtnTapped(_ sender: Any) {
         if self.floatingCrownBtn.currentImage != UIImage.init(named: "cancel-btn") {
             DispatchQueue.main.async {
+                self.view.bringSubviewToFront(self.floatingButtonsView)
+                self.view.bringSubviewToFront(self.floatingCrownBtn)
+
                      self.floatingCrownBtn.setImage(UIImage.init(named: "cancel-btn"), for: .normal)
                    self.floatingButtonsView.isHidden = false
                    self.floatingButtonsView.backgroundColor = UIColor.black.withAlphaComponent(0.8)

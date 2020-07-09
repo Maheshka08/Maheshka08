@@ -105,7 +105,6 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             self.nutritionViewLast10TweaksDataVal = data
             tableView.isHidden = true
             self.dataBtnName = self.dataBtnDict[data]!
-            self.mealType = 0
             self.myNutritionDetailsView.last10TweaksLbl.text = data
             self.setDefaultDataBtns(name: self.dataBtnName)
             
