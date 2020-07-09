@@ -53,25 +53,25 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="cAC-ZF-uoE"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                     <color key="textColor" red="0.8724142909" green="0.41237258910000002" blue="0.39998453859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54p-0A-Aae">
                     <rect key="frame" x="109.5" y="154.5" width="93.5" height="27"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                     <color key="textColor" red="0.95432752369999996" green="0.70256859059999999" blue="0.30969226360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqe-ig-NNZ">
                     <rect key="frame" x="211" y="154.5" width="93.5" height="27"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                     <color key="textColor" red="0.60259181260000005" green="0.76952844860000003" blue="0.31753569840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-sb-4kg">
                     <rect key="frame" x="312.5" y="154.5" width="93.5" height="27"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                     <color key="textColor" red="0.31036183239999998" green="0.44155493379999999" blue="0.68238013980000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>

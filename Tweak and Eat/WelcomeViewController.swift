@@ -124,7 +124,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func tappedOnSelectYourMeal() {
         self.myNutritionViewLast10TweaksTableView.isHidden = true
-        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 250)
+        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 310)
         self.myNutritionViewSelectYourMealTableView.delegate = self
         self.myNutritionViewSelectYourMealTableView.dataSource = self
         self.view.addSubview(self.myNutritionViewSelectYourMealTableView)
@@ -165,8 +165,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         cell.textLabel?.textColor = .white
             if tableView == self.myNutritionViewSelectYourMealTableView {
-                cell.contentView.backgroundColor = UIColor.groupTableViewBackground;
-                cell.textLabel?.textColor = .black
+                cell.contentView.backgroundColor = UIColor.init(displayP3Red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1);
+                cell.textLabel?.textColor = .white
+
 
             } else {
         cell.contentView.backgroundColor = UIColor.black.withAlphaComponent(0.6);
@@ -190,8 +191,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else if tableView == self.myNutritionViewLast10TweaksTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
             cell.textLabel?.text = self.dataBtnArray[indexPath.row];
-            cell.contentView.backgroundColor = UIColor.groupTableViewBackground;
-            cell.textLabel?.textColor = .black
+            cell.contentView.backgroundColor = UIColor.init(displayP3Red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1);
+            cell.textLabel?.textColor = .white
+
             cell.textLabel?.textAlignment = .center
             return cell
         }
@@ -3014,11 +3016,13 @@ if dictionary.index(forKey: "weeksData") != nil {
         if UserDefaults.standard.value(forKey: "GET_TREND_CALORIES") != nil {
                    let calArray = UserDefaults.standard.value(forKey: "GET_TREND_CALORIES")
            
-
+            
           self.mealType = 0
             self.mealTypeLabel.text = "All"
             self.dataBtnName = "lastTenData"
             self.trends = "Calories"
+            nutritionViewSelectedMeal = "Select your meal"
+            nutritionViewLast10TweaksDataVal = "Last 10 Tweaks"
             DispatchQueue.main.async {
                       self.caloriesButton.alpha = 1.0
                       self.carbsButton.alpha = 1.0
