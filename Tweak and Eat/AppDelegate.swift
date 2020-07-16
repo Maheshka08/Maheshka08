@@ -178,6 +178,7 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isAutoInitEnabled = true
         ApplicationDelegate.initializeSDK(nil)
+        //AppEvents.logEvent(.init("fb_mobile_purchase"))
         
 //      ApplicationDelegate.shared.application(
 //          application,
