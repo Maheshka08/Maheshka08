@@ -821,8 +821,9 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                               let imageView = UIImageView(image: image!)
                               imageView.frame = CGRect(x: 0, y: 0, width: self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.width, height: self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.width)
                               self.myNutritionDetailsView.myNutritionCaloriesView.addSubview(imageView)
-               showCircularProgressViews(image: "carbs", someViews: self.myNutritionDetailsView.myNutritionCarbsView, value: (carbsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 229.0/255.0, green: 202.0/255.0, blue: 155.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 140.0/255.0, green: 90.0/255.0, blue: 31.0/255.0, alpha: 1.0) )
-                     showCircularProgressViews(image: "fats", someViews: self.myNutritionDetailsView.myNutritionFatsView, value: (fatsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 208.0/255.0, green: 235.0/255.0, blue: 165.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 85.0/255.0, green: 123.0/255.0, blue: 34.0/255.0, alpha: 1.0))
+              showCircularProgressViews(image: "carbs", someViews: self.myNutritionDetailsView.myNutritionCarbsView, value: (carbsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 208.0/255.0, green: 235.0/255.0, blue: 165.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 85.0/255.0, green: 123.0/255.0, blue: 34.0/255.0, alpha: 1.0))
+               showCircularProgressViews(image: "fats", someViews: self.myNutritionDetailsView.myNutritionFatsView, value: (fatsVal/Double(100)).round(to:2),progressColor: UIColor.init(red: 229.0/255.0, green: 202.0/255.0, blue: 155.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 140.0/255.0, green: 90.0/255.0, blue: 31.0/255.0, alpha: 1.0) )
+
                      showCircularProgressViews(image: "protein", someViews: self.myNutritionDetailsView.myNutritionProteinsView, value: (proteinVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 163.0/255.0, green: 189.0/255.0, blue: 234.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 16.0/255.0, green: 54.0/255.0, blue: 123.0/255.0, alpha: 1.0))
         if (self.caloriesArray.count == 0 || self.carbsArray.count == 0 || self.proteinArray.count == 0 ||
         self.fatssArray.count == 0) {
@@ -1405,6 +1406,17 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
 
         }
     }
+    func calculateDaysBetweenTwoDates(start: Date, end: Date) -> Int {
+
+        let currentCalendar = Calendar.current
+        guard let start = currentCalendar.ordinality(of: .day, in: .era, for: start) else {
+            return 0
+        }
+        guard let end = currentCalendar.ordinality(of: .day, in: .era, for: end) else {
+            return 0
+        }
+        return end - start
+    }
     
     @IBAction func immunityBoosterTapped(_ sender: Any) {
         self.myNutritionViewLast10TweaksTableView.isHidden = true
@@ -1417,6 +1429,15 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         if segue.identifier == "chat" {
             let destination = segue.destination as! ChatVC;
             destination.fromPackages = true;
+            if UserDefaults.standard.value(forKey: "AIDP_EXP_DATE") != nil {
+                           let start = Date()
+                           let end = UserDefaults.standard.value(forKey: "AIDP_EXP_DATE")
+                           let diff = calculateDaysBetweenTwoDates(start: start, end: end as! Date)
+                           if diff < 22 {
+                            destination.hideBottomMessageBox = true
+                            //2020-07-14T05:22:06.000Z
+                           }
+                       }
             if countryCode == "1" {
                 if self.packageID == self.ptpPackage {
                     destination.chatID = self.ptpPackage
@@ -1453,6 +1474,8 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         } else if segue.identifier == "aidpPurchasePack" {
             let popOverVC = segue.destination as! AiDPViewController;
            // popOverVC.stayHere = false;
+          //AIDP_EXP_DATE
+           
             if countryCode == "1" {
                 if self.packageID == self.ptpPackage {
                     popOverVC.packageId = self.ptpPackage

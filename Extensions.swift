@@ -16,6 +16,18 @@ import UserNotifications
 //    
 //}
 
+extension Date {
+
+    func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
+
+        let currentCalendar = Calendar.current
+
+        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
+        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
+
+        return end - start
+    }
+}
 extension Double {
     func round(to places: Int) -> Double {
         let divisor = pow(10.0, Double(places))

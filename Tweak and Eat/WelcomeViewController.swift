@@ -1623,8 +1623,8 @@ if dictionary.index(forKey: "weeksData") != nil {
                               let imageView = UIImageView(image: image!)
                               imageView.frame = CGRect(x: 0, y: 0, width: self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.width, height: self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.width)
                               self.myNutritionDetailsView.myNutritionCaloriesView.addSubview(imageView)
-               showCircularProgressViews(image: "carbs", someViews: self.myNutritionDetailsView.myNutritionCarbsView, value: (carbsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 229.0/255.0, green: 202.0/255.0, blue: 155.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 140.0/255.0, green: 90.0/255.0, blue: 31.0/255.0, alpha: 1.0) )
-                     showCircularProgressViews(image: "fats", someViews: self.myNutritionDetailsView.myNutritionFatsView, value: (fatsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 208.0/255.0, green: 235.0/255.0, blue: 165.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 85.0/255.0, green: 123.0/255.0, blue: 34.0/255.0, alpha: 1.0))
+               showCircularProgressViews(image: "carbs", someViews: self.myNutritionDetailsView.myNutritionCarbsView, value: (carbsVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 208.0/255.0, green: 235.0/255.0, blue: 165.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 85.0/255.0, green: 123.0/255.0, blue: 34.0/255.0, alpha: 1.0))
+                     showCircularProgressViews(image: "fats", someViews: self.myNutritionDetailsView.myNutritionFatsView, value: (fatsVal/Double(100)).round(to:2),progressColor: UIColor.init(red: 229.0/255.0, green: 202.0/255.0, blue: 155.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 140.0/255.0, green: 90.0/255.0, blue: 31.0/255.0, alpha: 1.0) )
                      showCircularProgressViews(image: "protein", someViews: self.myNutritionDetailsView.myNutritionProteinsView, value: (proteinVal/Double(100)).round(to:2), progressColor: UIColor.init(red: 163.0/255.0, green: 189.0/255.0, blue: 234.0/255.0, alpha: 1.0), trackColor: UIColor.init(red: 16.0/255.0, green: 54.0/255.0, blue: 123.0/255.0, alpha: 1.0))
         if (self.caloriesArray.count == 0 || self.carbsArray.count == 0 || self.proteinArray.count == 0 ||
         self.fatssArray.count == 0) {
@@ -1647,10 +1647,29 @@ if dictionary.index(forKey: "weeksData") != nil {
 //           tableView.layer.cornerRadius = ShadowTableViewController.cornerRadius
            tableView.layer.masksToBounds = true
        }
-   
+   func calculateDaysBetweenTwoDates(start: Date, end: Date) -> Int {
+
+          let currentCalendar = Calendar.current
+          guard let start = currentCalendar.ordinality(of: .day, in: .era, for: start) else {
+              return 0
+          }
+          guard let end = currentCalendar.ordinality(of: .day, in: .era, for: end) else {
+              return 0
+          }
+          return end - start
+      }
     override func viewDidLoad() {
 
         super.viewDidLoad();
+//        let dateFormatter = DateFormatter()
+//                                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//                                  let start = Date()
+//                                  let end = dateFormatter.date(from: "2020-08-16T05:22:06.000Z")
+//                                  let diff = calculateDaysBetweenTwoDates(start: start, end: end!)
+//                                  if diff < 22 {
+//                                  // destination.hideBottomMessageBox = true
+//                                   //2020-07-14T05:22:06.000Z
+//                                  }
         self.topImageView.alpha = 0
         self.outerChartView.alpha = 0
         
@@ -5237,7 +5256,7 @@ self.floatingCallBtn.isHidden = false
                 
                 let expDateStr =  responseDic["userPhlAibpSubExpDttm"] as! String;
                 let expDate = dateFormatter.date(from: expDateStr);
-                
+                        
                 let currentDate = Date();
                 if expDate! < currentDate {
                     self.showTrialPeriodView()
@@ -5308,7 +5327,8 @@ self.floatingCallBtn.isHidden = false
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
                 let expDateStr =  responseDic["userSgnMyAidpSubExpDttm"] as! String;
                 let expDate = dateFormatter.date(from: expDateStr);
-                
+                UserDefaults.standard.set(expDate, forKey: "AIDP_EXP_DATE")
+                UserDefaults.standard.synchronize()
                 let currentDate = Date();
                 if expDate! < currentDate {
                       UserDefaults.standard.removeObject(forKey: "-SgnMyAiDPuD8WVCipga")
@@ -5384,7 +5404,8 @@ self.floatingCallBtn.isHidden = false
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
                 let expDateStr =  responseDic["userIdnMyAidpSubExpDttm"] as! String;
                 let expDate = dateFormatter.date(from: expDateStr);
-                
+                UserDefaults.standard.set(expDate, forKey: "AIDP_EXP_DATE")
+                UserDefaults.standard.synchronize()
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-IdnMyAiDPoP9DFGkbas")
@@ -5460,7 +5481,8 @@ self.floatingCallBtn.isHidden = false
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
                 let expDateStr =  responseDic["userUsaSubExpDttm"] as! String;
                 let expDate = dateFormatter.date(from: expDateStr);
-                
+                UserDefaults.standard.set(expDate, forKey: "AIDP_EXP_DATE")
+                UserDefaults.standard.synchronize()
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
@@ -5533,7 +5555,8 @@ self.floatingCallBtn.isHidden = false
                 
                 let expDateStr =  responseDic["userMysSubExpDttm"] as! String;
                 let expDate = dateFormatter.date(from: expDateStr);
-                
+                UserDefaults.standard.set(expDate, forKey: "AIDP_EXP_DATE")
+                UserDefaults.standard.synchronize()
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
@@ -5642,7 +5665,8 @@ self.floatingCallBtn.isHidden = false
                     
                     let expDateStr =  responseDic["userIndMyAidpSubExpDttm"] as! String;
                     let expDate = dateFormatter.date(from: expDateStr);
-                    
+                    UserDefaults.standard.set(expDate, forKey: "AIDP_EXP_DATE")
+                    UserDefaults.standard.synchronize()
                     let currentDate = Date();
                     if expDate! < currentDate {
                         self.userIndMyAidpSub = 0

@@ -11,7 +11,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
 
     //MARK: Properties
     var dateFormatter = DateFormatter();
-
+    var hideBottomMessageBox = false
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -495,6 +495,9 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.hideBottomMessageBox == true {
+            self.inputBar.isHidden = true
+        }
         self.addBackButton()
         
         
