@@ -269,7 +269,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 //    var tweakFeedsArray = [TweakWall]()
     
     @IBOutlet weak var smallScreenPopUpBtn: UIButton!
- 
+ @IBOutlet weak var approxCalLeftForDayLabel: UILabel!
     @IBOutlet weak var floatingBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var floatingButtonsView: UIView!
     @IBOutlet weak var floatingCrownBtn: UIButton!
@@ -869,7 +869,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                                        } else if IS_iPHONE678 {
                                                            self.draggableViewHeightConstraint.constant = 175 - 76
                                                        } else if IS_iPHONE5 {
-                                                           self.draggableViewHeightConstraint.constant = 43 - 86 + 30
+                                                           self.draggableViewHeightConstraint.constant = 30
                                                        } else {
                                                            self.draggableViewHeightConstraint.constant = 43 - 86 + 30
                                                        }
@@ -884,7 +884,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                                        } else if IS_iPHONE678 {
                                                            self.draggableViewHeightConstraint.constant = 175 - 76
                                                        } else if IS_iPHONE5 {
-                                                           self.draggableViewHeightConstraint.constant = 43 - 86
+                                                           self.draggableViewHeightConstraint.constant = 30
                                                        } else {
                                                            self.draggableViewHeightConstraint.constant = 43 - 86
                                                        }
@@ -925,14 +925,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                }
                if (IS_iPHONE5 || IS_IPHONE4) {
                    if self.showGraph == false {
-                       aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 170)
-                                  self.chatViewHeightConstraint.constant = 170
+                       aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+                                  self.chatViewHeightConstraint.constant = 140
                                   self.monthBtnTrailingConstraint.constant = 30;
-                                  self.draggableViewHeightConstraint.constant = 43 - 86 + 30
+                                  self.draggableViewHeightConstraint.constant = 30
                    } else {
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 200)
-                   self.chatViewHeightConstraint.constant = 200
-                   self.draggableViewHeightConstraint.constant = 43 - 86
+                   aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+                   self.chatViewHeightConstraint.constant = 140
+                   self.draggableViewHeightConstraint.constant = 30
                    
                    }
                    self.foodImageShadowViewHeightConstraint.constant = 113
@@ -1154,6 +1154,7 @@ if dictionary.index(forKey: "weeksData") != nil {
                 //self.tweaksArray = responseDic["tweaks"] as AnyObject as! NSArray
                 let tweakDict = responseDic as AnyObject as! [String: AnyObject]
                 let tweakLblDict = tweakDict["tweaks"] as! [String : AnyObject]
+                self.draggableView.isUserInteractionEnabled = true
                 self.getDataTrendsArray(dictionary: tweakLblDict, tweakDictionary: tweakDict)
                 self.setDefaultDataBtns(name: self.dataBtnName)
                 
@@ -1564,22 +1565,22 @@ if dictionary.index(forKey: "weeksData") != nil {
             self.outerChartView.alpha = 1
             self.myNutritionDetailsView.updateSwitchUI(bool: false)
        
-             if IS_iPHONE5 || IS_IPHONE4 {
-                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
-                    } else if IS_iPHONE678 {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
-                    } else if IS_iPHONE678P {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
-                    } else if IS_iPHONEXRXSMAX {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
-                      } else if IS_iPHONEXXS {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
-                    }
+//             if IS_iPHONE5 || IS_IPHONE4 {
+//                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
+//                    } else if IS_iPHONE678 {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
+//                    } else if IS_iPHONE678P {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
+//                    } else if IS_iPHONEXRXSMAX {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
+//                      } else if IS_iPHONEXXS {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
+//                    }
                     self.myNutritionDetailsView.layoutIfNeeded()
                     self.myNutritionDetailsView.myNutritionCarbsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
                     self.myNutritionDetailsView.myNutritionFatsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
@@ -1593,6 +1594,16 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
     
     func showCircularProgressViews() {
+        if IS_iPHONE5 {
+          
+            self.myNutritionDetailsView.last10TweaksLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+            self.myNutritionDetailsView.selectYourMealLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+            self.myNutritionDetailsView.carbsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.fatsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.proteinsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.caloriesValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+
+        }
         self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
                self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
         var count = CGFloat(0)
@@ -1661,6 +1672,10 @@ if dictionary.index(forKey: "weeksData") != nil {
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        if IS_iPHONE5 {
+                  self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+
+              }
 //        let dateFormatter = DateFormatter()
 //                                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 //                                  let start = Date()
@@ -1670,6 +1685,7 @@ if dictionary.index(forKey: "weeksData") != nil {
 //                                  // destination.hideBottomMessageBox = true
 //                                   //2020-07-14T05:22:06.000Z
 //                                  }
+        self.draggableView.isUserInteractionEnabled = false
         self.topImageView.alpha = 0
         self.outerChartView.alpha = 0
         

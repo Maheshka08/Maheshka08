@@ -124,6 +124,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     var myNutritionViewSelectYourMealTableView = UITableView()
     var myNutritionViewLast10TweaksTableView = UITableView()
     var loadingView = UIView()
+    @IBOutlet weak var approxCalLeftForDayLabel: UILabel!
     @IBOutlet weak var minCalCountLabel: UILabel!
     @IBOutlet weak var myNutritionTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatViewHeightConstraint: NSLayoutConstraint!
@@ -791,6 +792,15 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         }
     }
     func showCircularProgressViews() {
+        if IS_iPHONE5 {
+            self.myNutritionDetailsView.last10TweaksLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+                       self.myNutritionDetailsView.selectYourMealLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+            self.myNutritionDetailsView.carbsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.fatsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.proteinsValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+            self.myNutritionDetailsView.caloriesValue.font = UIFont(name:"QUESTRIAL-REGULAR", size: 14.0)
+
+        }
         self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
                self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
         var count = CGFloat(0)
@@ -844,22 +854,22 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         self.view.addSubview(self.myNutritionDetailsView)
             self.myNutritionDetailsView.updateSwitchUI(bool: false)
        
-             if IS_iPHONE5 || IS_IPHONE4 {
-                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
-                    } else if IS_iPHONE678 {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
-                    } else if IS_iPHONE678P {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
-                    } else if IS_iPHONEXRXSMAX {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
-                      } else if IS_iPHONEXXS {
-                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
-                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
-                    }
+//             if IS_iPHONE5 || IS_IPHONE4 {
+//                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
+//                    } else if IS_iPHONE678 {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
+//                    } else if IS_iPHONE678P {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
+//                    } else if IS_iPHONEXRXSMAX {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
+//                      } else if IS_iPHONEXXS {
+//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
+//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
+//                    }
                     self.myNutritionDetailsView.layoutIfNeeded()
                     self.myNutritionDetailsView.myNutritionCarbsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
                     self.myNutritionDetailsView.myNutritionFatsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
@@ -921,7 +931,10 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        
+        if IS_iPHONE5 {
+            self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+
+        }
         self.loadingView.backgroundColor = UIColor.white
                self.loadingView.isHidden = true
                self.outerChartView.addSubview(self.loadingView)
