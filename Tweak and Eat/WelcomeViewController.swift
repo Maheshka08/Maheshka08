@@ -110,6 +110,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     var showGraph = false
     var switchButton: SwitchWithText!
     func tappedOnLast10Tweaks() {
+        if self.myNutritionViewLast10TweaksTableView.isHidden == false {
+            self.myNutritionViewLast10TweaksTableView.isHidden = true
+            return
+        }
         self.myNutritionViewSelectYourMealTableView.isHidden = true
         self.myNutritionViewLast10TweaksTableView.frame = CGRect(x: self.myNutritionDetailsView.last10TweaksView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 200)
                self.myNutritionViewLast10TweaksTableView.delegate = self
@@ -123,6 +127,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func tappedOnSelectYourMeal() {
+        if self.myNutritionViewSelectYourMealTableView.isHidden == false {
+            self.myNutritionViewSelectYourMealTableView.isHidden = true
+            return
+        }
         self.myNutritionViewLast10TweaksTableView.isHidden = true
         self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 310)
         self.myNutritionViewSelectYourMealTableView.delegate = self
@@ -482,6 +490,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var tweakReactView: UIView!;
     @IBOutlet weak var streakTextView: UIView!;
     
+    @IBOutlet weak var appVersionUpdateButton: UIButton!
+    @IBOutlet weak var appCheckVersionView: UIView!
     @IBOutlet weak var subscribeToPTPNowLblHeightConstraint: NSLayoutConstraint!
     @objc var name : String = "";
     @objc var countryCode = "";
@@ -622,6 +632,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    @IBAction func appVersionCheckUpdateBtn(_ sender: Any) {
+        self.appCheckVersionView.isHidden = true
+        guard let url = URL(string: "https://apps.apple.com/in/app/tweak-eat/id1267286348") else {
+                                     return
+                                 }
+                                if UIApplication.shared.canOpenURL(url) {
+                                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                 }
+    }
     @IBAction func trendsButtonTapped(_ sender: Any) {
         let btn = sender as! UIButton
         DispatchQueue.main.async {
@@ -1669,9 +1688,48 @@ if dictionary.index(forKey: "weeksData") != nil {
           }
           return end - start
       }
+    
+    func checkAppVersion() {
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                   self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            let extraParam = "/\(self.countryCode)/IOS"
+               
+        APIWrapper.sharedInstance.getJSON(url: TweakAndEatURLConstants.CHECK_APP_VERSION + extraParam , { (responceDic : AnyObject!) -> (Void) in
+            if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                let response : [String:AnyObject] = responceDic as! [String:AnyObject];
+                
+                if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
+                   // MBProgressHUD.hide(for: self.view, animated: true)
+                    let dictionary = Bundle.main.infoDictionary!;
+                    let currentAppVersionInString = dictionary["CFBundleShortVersionString"] as! String;
+                    let currentAppVersionInDouble = Double(currentAppVersionInString)!
+                    let version =  response["version"] as! NSNumber
+                    if currentAppVersionInDouble < Double(truncating: version) {
+                        self.appCheckVersionView.isHidden = false
+                    }
+                } else {
+                        //MBProgressHUD.hide(for: self.view, animated: true)
+                    }
+                }
+             else {
+                //error
+                //MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }) { (error : NSError!) -> (Void) in
+            //error
+            if error?.code == -1011 {
+                           
+                       } else {
+                           TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+                       }
+                   }
+        }
+    }
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        self.appVersionUpdateButton.layer.cornerRadius = 15
+        self.appCheckVersionView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         if IS_iPHONE5 {
                   self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
 
@@ -4463,6 +4521,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         if UserDefaults.standard.value(forKey: "userSession") as? String != nil {
             
             homeInfoApiCalls()
+            self.checkAppVersion()
             self.getUserCallSchedueDetails()
         }
         

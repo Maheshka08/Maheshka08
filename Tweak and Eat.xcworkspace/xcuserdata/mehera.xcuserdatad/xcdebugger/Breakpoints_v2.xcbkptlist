@@ -7,17 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4E4D499A-664A-4E15-B2C1-B9EAE7C40296"
+            uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyTweakAndEatVCViewController.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1449"
-            endingLineNumber = "1449"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "confirmCaptchaScheduleCall(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48 - f3088a900ce8b1ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tweak_and_Eat.MoreInfoPremiumPackagesViewController.confirmCaptchaScheduleCall(Any) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MoreInfoPremiumPackagesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "7958">
+               </Location>
+               <Location
+                  uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48 - 38f2f1c5cbcdb986"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in Tweak_and_Eat.MoreInfoPremiumPackagesViewController.confirmCaptchaScheduleCall(Any) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MoreInfoPremiumPackagesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "273">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

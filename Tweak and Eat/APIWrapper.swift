@@ -32,6 +32,11 @@ class APIWrapper: AFHTTPSessionManager {
         self.getRequest(TweakAndEatURLConstants.GET_ALL_TIMESLOTS, success: successBlock, failure: failureBlock)
         
     }
+    
+    @objc func getJSON(url: String,_ successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
+           self.getRequest(url, success: successBlock, failure: failureBlock)
+           
+       }
     @objc func getDifferencesForUSA(type: String, _ successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
         self.getRequest(String(format: TweakAndEatURLConstants.GET_DIFFERENCES_BY_CODE_USA,type), success: successBlock, failure: failureBlock)
         

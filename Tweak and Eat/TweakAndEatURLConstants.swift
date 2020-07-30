@@ -120,6 +120,9 @@ struct TweakAndEatURLConstants {
     static let GET_ALL_TIMESLOTS = BASE_URL + "/api/callschedules/getalltimeslots"
     static let CHECK_USER_SCHEDULE = BASE_URL + "/api/callschedules/checkuserschedule"
     static let SCHEDULE_USER_CALL = BASE_URL + "/api/callschedules/scheduleusercall"
+    static let CHECK_APP_VERSION = BASE_URL + "/api/master/appversion"
+    static let CALL_SCHEDULE_LANGUAGES = BASE_URL + "/api/master/callschlangs"
+
     
 }
 

@@ -47,6 +47,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         let dispatch_group = DispatchGroup();
         dispatch_group.enter();
         self.delegate.homeInfoApiCalls()
+        self.delegate.checkAppVersion()
         self.delegate.setUpUI()
         self.delegate.getTrends()
         self.delegate.showButtonsView()

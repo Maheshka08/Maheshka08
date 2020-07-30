@@ -36,9 +36,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           v.translatesAutoresizingMaskIntoConstraints=false
           return v
       }()
+    
     var navTitle = ""
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var calendarInnerView: UIView!
+    @IBOutlet weak var languageTableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var calView: UIView!
     @IBOutlet weak var calendarOuterView: UIView!
@@ -46,6 +48,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var moreInfoSelectPlanView: UIView!
     @IBOutlet weak var chooseSubScriptionPlanLbl: UILabel!
     @IBOutlet weak var userCallScheduleView1: UIView!
+    @IBOutlet weak var captchViewInfoLbl: UILabel!
     @IBOutlet weak var userCallScheduleView2: UIView!
     @IBOutlet weak var buyNowMoreInfoBtn: UIButton!
     @IBOutlet weak var moreInfoSubscribeTextView: UITextView!
@@ -63,6 +66,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var infoView: UIView!;
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var timeSlotTextField: UITextField!
+    @IBOutlet weak var languageTextField: UITextField!
     @IBOutlet weak var packageDescTextView: UITextView!;
     @IBOutlet weak var areYouSureLbl: UILabel!
     @IBOutlet weak var unSubscribeImgViewHeightContraint: NSLayoutConstraint!
@@ -74,11 +78,21 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak  var usdAmtLabel: UILabel!
     @IBOutlet weak  var nutritionstDescLbl: UILabel!
     var system = 0;
+    var confirmationText = ""
     var cardImageString = "";
     var labelsPrice = "pkgPrice"
     var lables = "pkgDisplayDescription"
     var lableCount = "pkgDuration"
+    @IBOutlet weak var captchaInnerView: UIView!
     var timerForShowScrollIndicator: Timer?
+    @IBOutlet weak var refreshBtn: UIButton!
+    @IBOutlet weak var captchInputTF: UITextField!
+    
+    @IBOutlet weak var confirmCaptchaBtn: UIButton!
+    
+    @IBOutlet weak var captchaGeneratorTF: UITextField!
+    
+    @IBOutlet weak var captchaView: UIView!
     @objc var ptpPackage = ""
     @IBOutlet weak var packageTitle: UILabel!
     @IBOutlet weak var packagePrice: UILabel!
@@ -123,7 +137,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var productIdentifier = ""
     @objc var selectedIndex: Int = 0;
     var products: [SKProduct] = []
-
+    @objc var languagesArray = [[String: AnyObject]]()
     @objc var displayAmount : String = "";
     @objc var displayCurrency : String = "";
     @objc var pkgDescription : String = "";
@@ -258,6 +272,116 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             SKPaymentQueue.default().add(payment);
         }
     }
+    @IBAction func confirmCaptchaScheduleCall(_ sender: Any) {
+        if self.captchaGeneratorTF.text != self.captchInputTF.text {
+            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please enter a valid 4 digit number!")
+            self.captchInputTF.text = ""
+            
+            return
+        }
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                let date = (self.calenderView.selectedDate < 10) ? "0\(self.calenderView.selectedDate)" : "\(self.calenderView.selectedDate)"
+                let month = (self.calenderView.currentMonthIndex < 10) ? "0\(self.calenderView.currentMonthIndex)" : "\(self.calenderView.currentMonthIndex)"
+                let year = "\(self.calenderView.currentYear)"
+                let time = "\(self.timeSlotTextField.text?.replacingOccurrences(of: " AM", with: ":00").replacingOccurrences(of: " PM", with: ":00") ?? "")"
+                let timeSlot: String = year + "-" + month + "-" + date + " " + self.timeSlotTextField.text!
+        let paramsDictionary = ["callDateTime": timeSlot, "lang": self.languageTextField.text!] as [String : AnyObject]
+                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.SCHEDULE_USER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
+                    print(response!)
+                    
+                    let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                    let responseResult = responseDic["callStatus"] as! String;
+                    if  responseResult == "GOOD" {
+                       
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                        self.captchaView.isHidden = true
+                        self.view.endEditing(true)
+                        self.callSchedulePopup = (Bundle.main.loadNibNamed("UserCallSchedulePopUp", owner: self, options: nil)! as NSArray).firstObject as? UserCallSchedulePopUp;
+                                                     self.callSchedulePopup.frame = CGRect(0, 0, self.view.frame.width, self.view.frame.height);
+                                                            self.callSchedulePopup.userCallScheduleDelegate = self;
+                                                            self.callSchedulePopup.beginning();
+                        self.view.addSubview(self.callSchedulePopup)
+                        self.callSchedulePopup.yourCallLabel.text = "Your CALL has been scheduled !"
+                         let data = responseDic["data"] as! [String: AnyObject]
+                        let callDateTime: String = data["callDateTime"] as! String
+                        let stringValue = "When: " + callDateTime
+                                              let whenRange = stringValue.range(of: "When: ")
+                                              
+                                              let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
+                                              attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(whenRange!, in: stringValue))
+                                              attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSRange(whenRange!, in: stringValue))
+                                              
+
+                                             
+                                              self.callSchedulePopup.whenLbl.attributedText = attributedString
+                        let userMsisdn = data["userMsisdn"] as! String
+                        
+                        let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn
+                        let scheduleDetails = ["callDateTime": callDateTime, "certNutText":certNutText, "userMsisdn": userMsisdn] as [String: AnyObject];
+                        UserDefaults.standard.set(scheduleDetails, forKey: "CALL_SCHEDULED");
+                        UserDefaults.standard.synchronize()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
+                                              let msisdnRange = certNutText.range(of: userMsisdn)
+                                              let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
+                                              certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
+                                              certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
+                                              self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
+        //                let callDateTime = daIndWLIntusoe3uelxER
+                        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" || self.packageId == "-IndWLIntusoe3uelxER" {
+                                self.callNutritionistBtn2HeightContraint.isActive = false
+                            self.userCallScheduleView2.isHidden = false
+                                self.userCallScheduleView2.layer.cornerRadius = 15
+                        self.userCallScheduleView2.layer.borderColor = UIColor.purple.cgColor
+                            self.userCallScheduleView2.layer.borderWidth = 3
+                           let yourCallStr: String = "Your CALL has been already scheduled !\n\n"
+                            let certNutText = yourCallStr + "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn + " on " + callDateTime;
+                            
+                            let msisdnRange = certNutText.range(of: userMsisdn)
+                            let callDateTimeRange =  certNutText.range(of: callDateTime)
+                            let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
+                            let yourCallRange = certNutText.range(of: "Your CALL has been already scheduled !")
+                                           certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(yourCallRange!, in: certNutText))
+                                           certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(yourCallRange!, in: certNutText))
+                            certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
+                            certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
+                            certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0), range: NSRange(callDateTimeRange!, in: certNutText))
+                            self.callNutritionistTextLbl2.attributedText = certAttrStr
+                        }
+        //                } else {
+        //                    self.userCallScheduleView1.isHidden = false
+        //                self.unSubscribeImgViewHeightContraint.isActive = false
+        //                self.userCallScheduleView1.layer.cornerRadius = 15
+        //                self.userCallScheduleView1.layer.borderColor = UIColor.purple.cgColor
+        //                self.userCallScheduleView1.layer.borderWidth = 3
+        //
+        //                        let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn + " on" + callDateTime;
+        //                                           let msisdnRange = certNutText.range(of: userMsisdn)
+        //                                           let callDateTimeRange =  certNutText.range(of: callDateTime)
+        //                                           let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
+        //                                           certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
+        //                                           certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
+        //                                           certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0), range: NSRange(callDateTimeRange!, in: certNutText))
+        //                                           self.callNutritionistTextLbl1.attributedText = certAttrStr
+        //                }
+                    }
+                }, failure : { error in
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                    
+                    print("failure")
+                    if error?.code == -1011 {
+                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your payment was declined.");
+                        return
+                    }
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+                })
+        
+
+    }
+    @IBAction func refreshCaptcha(_ sender: Any) {
+        self.captchaGeneratorTF.text = fourDigitNumber
+        self.captchInputTF.text = ""
+
+    }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
@@ -328,6 +452,42 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         startTimerForShowScrollIndicator()
     }
     
+    
+    
+    @IBAction func languageBtnTapped(_ sender: Any) {
+        if self.languageTableView.isHidden == true {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+                    APIWrapper.sharedInstance.getJSON(url: TweakAndEatURLConstants.CALL_SCHEDULE_LANGUAGES , { (responceDic : AnyObject!) -> (Void) in
+                        if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                            let response : [String:AnyObject] = responceDic as! [String:AnyObject];
+                            
+                            if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                                self.languagesArray = response["data"] as! [[String: AnyObject]]
+                                self.languageTableView.isHidden = false
+                                self.languageTableView.reloadData()
+
+                            } else {
+                                    MBProgressHUD.hide(for: self.view, animated: true)
+                                }
+                            }
+                         else {
+                            //error
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                        }
+                    }) { (error : NSError!) -> (Void) in
+                        //error
+                        if error?.code == -1011 {
+                                       
+                                   } else {
+                                       TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+                                   }
+                               }
+                    }
+
+        }
+        
+    
     @IBAction func dropDownTapped(_ sender: Any) {
         if self.priceTableView.isHidden == true {
             self.buyNowButton.isEnabled = false
@@ -339,6 +499,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          if tableView == moreInfoTableView {
             return self.moreInfoPremiumPackagesArray.count;
+        } else if tableView == languageTableView {
+            return self.languagesArray.count;
         } else {
             return self.nutritionLabelPriceArray.count
         }
@@ -389,6 +551,14 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             }
             return cell
             
+        } else if tableView == languageTableView {
+                   let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+            cell.contentView.backgroundColor = .groupTableViewBackground
+            let cellDict = self.languagesArray[indexPath.row] ;
+            cell.textLabel?.font = UIFont(name:"QUESTRIAL-REGULAR", size: 17.0)
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.text = cellDict["mcl_name"] as? String
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pricesCell", for: indexPath)
             let cellDict = self.nutritionLabelPriceArray[indexPath.row] as! [String : AnyObject];
@@ -437,9 +607,21 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.buyNowButton.isEnabled = true
             self.priceTableView.isHidden = true
             self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+        } else if tableView == languageTableView {
+                   let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+            
+            let cellDict = self.languagesArray[indexPath.row] ;
+            
+            self.languageTextField.text = cellDict["mcl_name"] as? String
+            self.languageTableView.isHidden = true
+            self.updateAreYouSureLbl()
         }
     }
     
+    @IBAction func closCaptchaView(_ sender: Any) {
+        self.captchaView.isHidden = true
+        self.view.endEditing(true)
+    }
     
     func getMyTweakAndEatDetails() {
        // MBProgressHUD.showAdded(to: self.view, animated: true);
@@ -890,124 +1072,22 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
            return false
        }
     @IBAction func scheduleCallTapped(_ sender: Any) {
-        if self.calenderView.selectedDate == 0 || self.timeSlotTextField.text?.count == 0 {
-            if self.calenderView.selectedDate == 0 && self.timeSlotTextField.text?.count != 0 {
+        
+      
+        if self.calenderView.selectedDate == 0 || self.timeSlotTextField.text?.count == 0 || self.languageTextField.text?.count == 0{
+            if self.calenderView.selectedDate == 0 && self.timeSlotTextField.text?.count != 0 && self.languageTextField.text?.count != 0 {
                 TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose a date from calendar !")
-            } else if self.timeSlotTextField.text?.count == 0 && self.calenderView.selectedDate != 0 {
+            } else if self.timeSlotTextField.text?.count == 0 && self.calenderView.selectedDate != 0 && self.languageTextField.text?.count != 0 {
                 TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose time !")
+            } else if self.timeSlotTextField.text?.count != 0 && self.calenderView.selectedDate != 0 && self.languageTextField.text?.count == 0 {
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose the language !")
             } else {
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose date and time to schedule a call from our Certified Nutritionists !")
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose date, time and language to schedule a call from our Certified Nutritionists !")
             }
             return
         }
-        
-        let alert = UIAlertController(title: "", message: self.areYouSureLbl.text!, preferredStyle: .alert)
-        
-        let action1 = UIAlertAction(title: "Yes", style: .default, handler: {(_ action: UIAlertAction) -> Void in
-
-                    MBProgressHUD.showAdded(to: self.view, animated: true)
-                    let date = (self.calenderView.selectedDate < 10) ? "0\(self.calenderView.selectedDate)" : "\(self.calenderView.selectedDate)"
-                    let month = (self.calenderView.currentMonthIndex < 10) ? "0\(self.calenderView.currentMonthIndex)" : "\(self.calenderView.currentMonthIndex)"
-                    let year = "\(self.calenderView.currentYear)"
-                    let time = "\(self.timeSlotTextField.text?.replacingOccurrences(of: " AM", with: ":00").replacingOccurrences(of: " PM", with: ":00") ?? "")"
-                    let timeSlot: String = year + "-" + month + "-" + date + " " + self.timeSlotTextField.text!
-                    let paramsDictionary = ["callDateTime": timeSlot] as [String : AnyObject]
-                    APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.SCHEDULE_USER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
-                        print(response!)
-                        
-                        let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                        let responseResult = responseDic["callStatus"] as! String;
-                        if  responseResult == "GOOD" {
-                           
-                            MBProgressHUD.hide(for: self.view, animated: true);
-                            self.callSchedulePopup = (Bundle.main.loadNibNamed("UserCallSchedulePopUp", owner: self, options: nil)! as NSArray).firstObject as? UserCallSchedulePopUp;
-                                                         self.callSchedulePopup.frame = CGRect(0, 0, self.view.frame.width, self.view.frame.height);
-                                                                self.callSchedulePopup.userCallScheduleDelegate = self;
-                                                                self.callSchedulePopup.beginning();
-                            self.view.addSubview(self.callSchedulePopup)
-                            self.callSchedulePopup.yourCallLabel.text = "Your CALL has been scheduled !"
-                             let data = responseDic["data"] as! [String: AnyObject]
-                            let callDateTime: String = data["callDateTime"] as! String
-                            let stringValue = "When: " + callDateTime
-                                                  let whenRange = stringValue.range(of: "When: ")
-                                                  
-                                                  let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
-                                                  attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(whenRange!, in: stringValue))
-                                                  attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSRange(whenRange!, in: stringValue))
-                                                  
-
-                                                 
-                                                  self.callSchedulePopup.whenLbl.attributedText = attributedString
-                            let userMsisdn = data["userMsisdn"] as! String
-                            
-                            let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn
-                            let scheduleDetails = ["callDateTime": callDateTime, "certNutText":certNutText, "userMsisdn": userMsisdn] as [String: AnyObject];
-                            UserDefaults.standard.set(scheduleDetails, forKey: "CALL_SCHEDULED");
-                            UserDefaults.standard.synchronize()
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
-                                                  let msisdnRange = certNutText.range(of: userMsisdn)
-                                                  let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
-                                                  certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
-                                                  certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
-                                                  self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
-            //                let callDateTime = daIndWLIntusoe3uelxER
-                            if self.packageId == "-IndIWj1mSzQ1GDlBpUt" || self.packageId == "-IndWLIntusoe3uelxER" {
-                                    self.callNutritionistBtn2HeightContraint.isActive = false
-                                self.userCallScheduleView2.isHidden = false
-                                    self.userCallScheduleView2.layer.cornerRadius = 15
-                            self.userCallScheduleView2.layer.borderColor = UIColor.purple.cgColor
-                                self.userCallScheduleView2.layer.borderWidth = 3
-                               let yourCallStr: String = "Your CALL has been already scheduled !\n\n"
-                                let certNutText = yourCallStr + "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn + " on " + callDateTime;
-                                
-                                let msisdnRange = certNutText.range(of: userMsisdn)
-                                let callDateTimeRange =  certNutText.range(of: callDateTime)
-                                let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
-                                let yourCallRange = certNutText.range(of: "Your CALL has been already scheduled !")
-                                               certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(yourCallRange!, in: certNutText))
-                                               certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(yourCallRange!, in: certNutText))
-                                certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
-                                certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
-                                certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0), range: NSRange(callDateTimeRange!, in: certNutText))
-                                self.callNutritionistTextLbl2.attributedText = certAttrStr
-                            }
-            //                } else {
-            //                    self.userCallScheduleView1.isHidden = false
-            //                self.unSubscribeImgViewHeightContraint.isActive = false
-            //                self.userCallScheduleView1.layer.cornerRadius = 15
-            //                self.userCallScheduleView1.layer.borderColor = UIColor.purple.cgColor
-            //                self.userCallScheduleView1.layer.borderWidth = 3
-            //
-            //                        let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn + " on" + callDateTime;
-            //                                           let msisdnRange = certNutText.range(of: userMsisdn)
-            //                                           let callDateTimeRange =  certNutText.range(of: callDateTime)
-            //                                           let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
-            //                                           certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
-            //                                           certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
-            //                                           certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0), range: NSRange(callDateTimeRange!, in: certNutText))
-            //                                           self.callNutritionistTextLbl1.attributedText = certAttrStr
-            //                }
-                        }
-                    }, failure : { error in
-                        MBProgressHUD.hide(for: self.view, animated: true);
-                        
-                        print("failure")
-                        if error?.code == -1011 {
-                            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your payment was declined.");
-                            return
-                        }
-                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
-                    })
-            
-        })
-        let action2 = UIAlertAction(title: "No", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
-
-        })
-        alert.addAction(action1)
-        alert.addAction(action2)
-
-       
-        present(alert, animated: true) {() -> Void in }
+        self.captchaView.isHidden = false
+        self.captchViewInfoLbl.text = self.confirmationText
         
 
         
@@ -1061,12 +1141,36 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                        let month = (self.calenderView.currentMonthIndex < 10) ? "0\(self.calenderView.currentMonthIndex)" : "\(self.calenderView.currentMonthIndex)"
                        let year = "\(self.calenderView.currentYear)"
             let time = self.timeSlotTextField.text!
+            let lang = self.languageTextField.text!
             self.areYouSureLbl.text = "Are you sure you want to fix a call on " + date + "/" + month + "/" + year + " at " + time + "?"
+            self.confirmationText = "on " + date + "/" + month + "/" + year + " at " + time + " in " + lang
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event);
+        view.endEditing(true);
+
+    }
+    
+    var fourDigitNumber: String {
+     var result = ""
+     repeat {
+         // Create a string with a random number 0...9999
+         result = String(format:"%04d", arc4random_uniform(10000) )
+     } while Set<Character>(result.characters).count < 4
+     return result
+    }
+
+    // USAGE
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.captchaInnerView.layer.cornerRadius = 10
+        self.refreshBtn.layer.cornerRadius = 10
+        self.confirmCaptchaBtn.layer.cornerRadius = 10
+        
+        self.captchaGeneratorTF.text = fourDigitNumber
+        self.languageTableView.backgroundColor = UIColor.groupTableViewBackground
          NotificationCenter.default.addObserver(self, selector: #selector(MoreInfoPremiumPackagesViewController.updateAreYouSureLbl), name: NSNotification.Name(rawValue: "DATE_SELECTED"), object: nil)
         self.scheduleBtn.layer.cornerRadius = 15
         self.cancelBtn.layer.cornerRadius = 15
