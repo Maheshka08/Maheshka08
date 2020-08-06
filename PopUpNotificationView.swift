@@ -87,7 +87,9 @@ class PopUpNotificationView: UIView {
             self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
         }
         let promoAppLink = link //PP_PACKAGES
-        if promoAppLink == "PP_PACKAGES" {
+        if promoAppLink == "HOME" || promoAppLink == "" {
+            
+        } else if promoAppLink == "PP_PACKAGES" {
           //  self.performSegue(withIdentifier: "buyPackages", sender: self);
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                                  let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
@@ -98,6 +100,8 @@ class PopUpNotificationView: UIView {
         } else if promoAppLink == "PP_LABELS" || promoAppLink == "-Qis3atRaproTlpr4zIs" {
            // self.performSegue(withIdentifier: "nutritionPack", sender: self)
             self.showNutritionLabels(promoLink: promoAppLink)
+        }else if promoAppLink == "CHECK_THIS_OUT" {
+           // self.performSegue(withIdentifier: "checkThisOut", sender: self)
         } else if promoAppLink == self.link {
                    
                    
@@ -115,9 +119,7 @@ class PopUpNotificationView: UIView {
                    }
                    
                }
-        else if promoAppLink == "CHECK_THIS_OUT" {
-                  // self.performSegue(withIdentifier: "checkThisOut", sender: self)
-               }
+        
         //else if promoAppLink == "-Qis3atRaproTlpr4zIs" {
 //                   self.performSegue(withIdentifier: "floatingToNutrition", sender: promoAppLink)
 //
@@ -261,6 +263,9 @@ class PopUpNotificationView: UIView {
     }
     @IBAction func doneTapped(_ sender: Any) {
         self.removeFromSuperview()
+        if self.link == "HOME" || self.link == "" {
+           return
+        }
        tappedOnPopUpDone()
 
     }

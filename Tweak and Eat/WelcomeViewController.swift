@@ -5338,11 +5338,16 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpPhilippinesPackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpPhilippinesPackage, forKey: PTPPackages.ptpPhilippinesPackage)
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpPhilippinesPackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
                     self.removePTPExpiryView()
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpPhilippinesPackage)
+
+                    }
                     }
             }
             }
@@ -5379,11 +5384,16 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpSingaporePackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
+
                     UserDefaults.standard.set(PTPPackages.ptpSingaporePackage, forKey: PTPPackages.ptpSingaporePackage)
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpSingaporePackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                         UserDefaults.standard.removeObject(forKey: PTPPackages.ptpSingaporePackage)
                     }
+                }
                 }
                 }
                 let userSubscribed = responseDic["userSgnMyAidpSub"] as! Int
@@ -5408,11 +5418,15 @@ self.floatingCallBtn.isHidden = false
                 if expDate! < currentDate {
                       UserDefaults.standard.removeObject(forKey: "-SgnMyAiDPuD8WVCipga")
                 } else {
+                    if userSubscribed == 1 {
                     UserDefaults.standard.set("-SgnMyAiDPuD8WVCipga", forKey: "-SgnMyAiDPuD8WVCipga")
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-SgnMyAiDPuD8WVCipga" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
                     
+                    } else {
+                    UserDefaults.standard.removeObject(forKey: "-SgnMyAiDPuD8WVCipga")
+                    }
                     }
             }
                 
@@ -5452,11 +5466,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndonesiaPackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpIndonesiaPackage, forKey: PTPPackages.ptpIndonesiaPackage)
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpIndonesiaPackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndonesiaPackage)
 
+                    }
                     }
                 }
                 }
@@ -5486,11 +5504,18 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: "-IdnMyAiDPoP9DFGkbas")
                     
                 } else {
+                    if userSubscribed == 1{
                     UserDefaults.standard.set("-IdnMyAiDPoP9DFGkbas", forKey: "-IdnMyAiDPoP9DFGkbas")
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-IdnMyAiDPoP9DFGkbas" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                    UserDefaults.standard.removeObject(forKey: "-IdnMyAiDPoP9DFGkbas")
+
+                                       }
+
                     }
+                    
                 }
 
                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil {
@@ -5530,11 +5555,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpUSAPackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpUSAPackage, forKey: PTPPackages.ptpUSAPackage)
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpUSAPackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
-                    
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpUSAPackage)
+
+                    }
                         }
                 }
                 }
@@ -5563,10 +5592,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
 
                 } else {
+                    if userSubscribed == 1 {
                     UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
+
+                    }
                     }
                 }
                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil {
@@ -5604,11 +5638,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpMalaysiaPackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpMalaysiaPackage, forKey: PTPPackages.ptpMalaysiaPackage)
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpMalaysiaPackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpMalaysiaPackage)
 
+                    }
                     }
                 }
                 }
@@ -5637,10 +5675,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
 
                 } else {
+                    if userSubscribed == 1 {
                     UserDefaults.standard.set("-MalAXk7gLyR3BNMusfi", forKey: "-MalAXk7gLyR3BNMusfi")
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-MalAXk7gLyR3BNMusfi" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
+
+                    }
                     }
                 }
                 
@@ -5668,10 +5711,15 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: "-MysRamadanwgtLoss99")
 
                 } else {
+                    if userMysRmdSub == 1 {
                     UserDefaults.standard.set("-MysRamadanwgtLoss99", forKey: "-MysRamadanwgtLoss99")
                     UserDefaults.standard.synchronize()
                     floatingButtonArray.append(["pkgName": "Ramadan Weight Loss" as AnyObject, "imgName": "ramadan-icon" as AnyObject, "pkg": "-MysRamadanwgtLoss99" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-MysRamadanwgtLoss99")
+
+                    }
                     }
                 }
                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil  {
@@ -5712,11 +5760,16 @@ self.floatingCallBtn.isHidden = false
                       UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndiaPackage)
                     
                 } else {
+                    if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpIndiaPackage, forKey: PTPPackages.ptpIndiaPackage)
                     UserDefaults.standard.synchronize()
                    floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpIndiaPackage as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndiaPackage)
+
                     }
+                        }
                 }
                 }
                 self.packageNames = "Normal"
@@ -5747,10 +5800,15 @@ self.floatingCallBtn.isHidden = false
                         self.userIndMyAidpSub = 0
                         UserDefaults.standard.removeObject(forKey: "-AiDPwdvop1HU7fj8vfL")
                     } else {
+                        if self.userIndMyAidpSub == 1 {
                         UserDefaults.standard.set("-AiDPwdvop1HU7fj8vfL", forKey: "-AiDPwdvop1HU7fj8vfL")
                         UserDefaults.standard.synchronize()
                         floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-AiDPwdvop1HU7fj8vfL" as AnyObject])
                         self.floatingCrownBtn.isHidden = false
+                        } else {
+                            UserDefaults.standard.removeObject(forKey: "-AiDPwdvop1HU7fj8vfL")
+
+                        }
                     }
                 }
                 
@@ -5779,11 +5837,16 @@ self.floatingCallBtn.isHidden = false
                     self.userSubscribedTAE = 0
                     UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
                 } else {
+                    if self.userSubscribedTAE == 1 {
                     UserDefaults.standard.set("-IndIWj1mSzQ1GDlBpUt", forKey: "-IndIWj1mSzQ1GDlBpUt")
                     UserDefaults.standard.synchronize()
                 
                     floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-IndIWj1mSzQ1GDlBpUt" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
+
+                    }
                     }
                 }
                 var intermittentWLUser = responseDic["userIndWlIntSub"] as! Int
@@ -5811,11 +5874,16 @@ self.floatingCallBtn.isHidden = false
                     intermittentWLUser = 0
                     UserDefaults.standard.removeObject(forKey: "-IndWLIntusoe3uelxER")
                 } else {
+                    if intermittentWLUser == 1 {
                     UserDefaults.standard.set("-IndWLIntusoe3uelxER", forKey: "-IndWLIntusoe3uelxER")
                     UserDefaults.standard.synchronize()
                 
                     floatingButtonArray.append(["pkgName": "Weight Loss with Intermittent Fasting" as AnyObject, "imgName": "if-icon" as AnyObject, "pkg": "-IndWLIntusoe3uelxER" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-IndWLIntusoe3uelxER")
+
+                    }
                     }
                 }
                 
