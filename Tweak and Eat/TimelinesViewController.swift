@@ -532,7 +532,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                           labelsCount = UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") as! Int
                       }
                 if self.countryCode == "91" {//IndWLIntusoe3uelxER
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || labelsCount > 10 {
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil  {
                     DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     }
@@ -1021,6 +1021,9 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    if packageObj.count == 0 {
+                        return
+                    }
                     self.performSegue(withIdentifier: "moreInfo", sender: packageObj)
                 }
             }

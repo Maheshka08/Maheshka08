@@ -980,7 +980,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgA-3E-kwq">
-                                        <rect key="frame" x="40" y="550" width="160" height="45"/>
+                                        <rect key="frame" x="40" y="560" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="2zd-l2-Iaf"/>
                                         </constraints>
@@ -991,7 +991,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sv-zh-VnL">
-                                        <rect key="frame" x="214" y="550" width="160" height="45"/>
+                                        <rect key="frame" x="214" y="560" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="gfb-yC-wvn"/>
                                             <constraint firstAttribute="height" constant="45" id="zCm-fx-Mtv"/>
@@ -1003,7 +1003,7 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upC-bg-bBk">
-                                        <rect key="frame" x="40" y="550" width="334" height="45"/>
+                                        <rect key="frame" x="40" y="560" width="334" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sm3-JW-bQx">
                                                 <rect key="frame" x="87" y="0.0" width="160" height="45"/>
@@ -1024,11 +1024,17 @@
                                             <constraint firstItem="sm3-JW-bQx" firstAttribute="centerY" secondItem="upC-bg-bBk" secondAttribute="centerY" id="WmG-FR-xlw"/>
                                         </constraints>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweak &amp; Eat Club MEMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFH-Fa-UMq">
+                                        <rect key="frame" x="97" y="540.5" width="220" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
+                                        <color key="textColor" red="0.3502984643" green="0.0" blue="0.5019912124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6n-Df-Srq">
-                                        <rect key="frame" x="111" y="550" width="192" height="65"/>
+                                        <rect key="frame" x="97" y="560" width="220" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="ohF-AH-B7O"/>
-                                            <constraint firstAttribute="width" constant="192" id="vgz-t4-R4W"/>
+                                            <constraint firstAttribute="width" constant="220" id="vgz-t4-R4W"/>
                                         </constraints>
                                         <connections>
                                             <action selector="goPremiumTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2v-nK-LwL"/>
@@ -1089,7 +1095,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evz-uI-afn">
-                                        <rect key="frame" x="0.0" y="550" width="414" height="75"/>
+                                        <rect key="frame" x="0.0" y="560" width="414" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pls-JI-3c8">
                                                 <rect key="frame" x="214" y="5" width="192" height="65"/>
@@ -1122,22 +1128,22 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRj-v0-HGj">
-                                        <rect key="frame" x="0.0" y="311" width="414" height="314"/>
+                                        <rect key="frame" x="0.0" y="311" width="414" height="324"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-nW-Lke">
-                                                <rect key="frame" x="20" y="26" width="374" height="108.5"/>
+                                                <rect key="frame" x="20" y="26" width="374" height="113.5"/>
                                                 <connections>
                                                     <action selector="taeClubHome2BtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EIt-YY-4c2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XE4-Oq-Eyg">
-                                                <rect key="frame" x="20" y="179.5" width="374" height="108.5"/>
+                                                <rect key="frame" x="20" y="184.5" width="374" height="113.5"/>
                                                 <connections>
                                                     <action selector="goPremiumTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gMc-oL-d6m"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb6-th-jvJ">
-                                                <rect key="frame" x="189" y="143.5" width="36" height="26"/>
+                                                <rect key="frame" x="189" y="148.5" width="36" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="2Kx-t2-pJq"/>
                                                     <constraint firstAttribute="width" constant="36" id="cUU-EX-1fM"/>
@@ -1421,10 +1427,10 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCu-wz-e3P">
-                                                        <rect key="frame" x="111" y="14" width="192" height="65"/>
+                                                        <rect key="frame" x="97" y="14" width="220" height="65"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="65" id="8bv-AF-w8m"/>
-                                                            <constraint firstAttribute="width" constant="192" id="a8l-BB-uep"/>
+                                                            <constraint firstAttribute="width" constant="220" id="a8l-BB-uep"/>
                                                         </constraints>
                                                         <connections>
                                                             <action selector="goPremiumTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fsk-gO-bdb"/>
@@ -1538,11 +1544,12 @@
                                     <constraint firstItem="u1G-kg-1b1" firstAttribute="top" secondItem="iME-IJ-JVG" secondAttribute="bottom" constant="-18" id="UmL-RO-IHZ"/>
                                     <constraint firstItem="zdr-Oh-eLM" firstAttribute="leading" secondItem="pZX-OH-XPQ" secondAttribute="leading" id="VvT-Ex-Izb"/>
                                     <constraint firstItem="fRj-v0-HGj" firstAttribute="top" secondItem="llX-mf-kur" secondAttribute="bottom" id="XIl-wN-Meq"/>
-                                    <constraint firstItem="EgA-3E-kwq" firstAttribute="top" secondItem="70i-9O-sU1" secondAttribute="bottom" constant="35" id="bVL-4x-w3B"/>
+                                    <constraint firstItem="EgA-3E-kwq" firstAttribute="top" secondItem="70i-9O-sU1" secondAttribute="bottom" constant="45" id="bVL-4x-w3B"/>
                                     <constraint firstItem="llX-mf-kur" firstAttribute="bottom" secondItem="3Bl-cu-1Ij" secondAttribute="bottom" id="cd1-Cv-mQy"/>
                                     <constraint firstItem="3Bl-cu-1Ij" firstAttribute="leading" secondItem="8jS-Hg-m7u" secondAttribute="leading" id="dOc-kK-KDx"/>
                                     <constraint firstItem="bHi-Va-VOV" firstAttribute="trailing" secondItem="Evz-uI-afn" secondAttribute="trailing" id="dQj-bh-24O"/>
                                     <constraint firstItem="FAY-yu-7cm" firstAttribute="trailing" secondItem="u1G-kg-1b1" secondAttribute="trailing" constant="40" id="dTL-Gi-85T"/>
+                                    <constraint firstItem="rFH-Fa-UMq" firstAttribute="centerX" secondItem="G6n-Df-Srq" secondAttribute="centerX" id="dVO-Uk-Gk1"/>
                                     <constraint firstItem="tGF-0a-y9j" firstAttribute="leading" secondItem="8jS-Hg-m7u" secondAttribute="leading" id="eq2-8U-FcQ"/>
                                     <constraint firstItem="llX-mf-kur" firstAttribute="top" secondItem="3Bl-cu-1Ij" secondAttribute="top" id="exz-4a-gx9"/>
                                     <constraint firstItem="rjL-bT-S01" firstAttribute="leading" secondItem="u1G-kg-1b1" secondAttribute="leading" id="fqv-kA-qe7"/>
@@ -1557,10 +1564,13 @@
                                     <constraint firstItem="rjL-bT-S01" firstAttribute="top" secondItem="Qiy-DA-H2s" secondAttribute="bottom" constant="-16" id="m23-FY-hR5"/>
                                     <constraint firstItem="EgA-3E-kwq" firstAttribute="leading" secondItem="8jS-Hg-m7u" secondAttribute="leading" constant="40" id="m7t-ix-7eu"/>
                                     <constraint firstItem="8jS-Hg-m7u" firstAttribute="trailing" secondItem="0Sv-zh-VnL" secondAttribute="trailing" constant="40" id="pTq-Ce-XH3"/>
+                                    <constraint firstItem="G6n-Df-Srq" firstAttribute="top" secondItem="rFH-Fa-UMq" secondAttribute="bottom" constant="3" id="ph1-NF-u7v"/>
                                     <constraint firstItem="fRj-v0-HGj" firstAttribute="leading" secondItem="8jS-Hg-m7u" secondAttribute="leading" id="pm6-yN-jDm"/>
                                     <constraint firstItem="KfX-QY-1zZ" firstAttribute="trailing" secondItem="8jS-Hg-m7u" secondAttribute="trailing" id="psb-SH-Zuf"/>
                                     <constraint firstItem="fRj-v0-HGj" firstAttribute="trailing" secondItem="8jS-Hg-m7u" secondAttribute="trailing" id="qwX-Zj-7oy"/>
+                                    <constraint firstItem="G6n-Df-Srq" firstAttribute="trailing" secondItem="rFH-Fa-UMq" secondAttribute="trailing" id="rgM-Gs-jUJ"/>
                                     <constraint firstItem="0Sv-zh-VnL" firstAttribute="top" secondItem="EgA-3E-kwq" secondAttribute="top" id="t9X-0E-35g"/>
+                                    <constraint firstItem="G6n-Df-Srq" firstAttribute="leading" secondItem="rFH-Fa-UMq" secondAttribute="leading" id="w8k-8B-AK2"/>
                                     <constraint firstItem="70i-9O-sU1" firstAttribute="top" secondItem="rjL-bT-S01" secondAttribute="bottom" constant="5" id="yYi-bA-7is"/>
                                     <constraint firstItem="3Bl-cu-1Ij" firstAttribute="bottom" secondItem="Or4-9q-1wu" secondAttribute="bottom" id="ymY-nY-yek"/>
                                 </constraints>
@@ -1570,7 +1580,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gel-Ow-D88">
-                                        <rect key="frame" x="129" y="698" width="277" height="82"/>
+                                        <rect key="frame" x="129" y="651" width="277" height="82"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="277" id="CpK-YP-6ao"/>
@@ -1847,7 +1857,7 @@
                             <constraint firstItem="oHe-tZ-7XS" firstAttribute="trailing" secondItem="3aX-no-wzo" secondAttribute="trailing" constant="9" id="Bhb-YQ-5Gc"/>
                             <constraint firstItem="oHe-tZ-7XS" firstAttribute="bottom" secondItem="ZqA-YQ-WC7" secondAttribute="bottom" constant="315" id="Buv-T3-a1s"/>
                             <constraint firstItem="9Ke-4R-SUH" firstAttribute="top" secondItem="5mO-3Y-yjd" secondAttribute="bottom" id="Bz7-KV-Qqw"/>
-                            <constraint firstItem="dxo-7F-OSf" firstAttribute="top" secondItem="Gel-Ow-D88" secondAttribute="bottom" constant="-37" id="DFc-mb-e5b"/>
+                            <constraint firstItem="dxo-7F-OSf" firstAttribute="top" secondItem="Gel-Ow-D88" secondAttribute="bottom" constant="10" id="DFc-mb-e5b"/>
                             <constraint firstItem="oHe-tZ-7XS" firstAttribute="bottom" secondItem="DAb-WF-nxK" secondAttribute="bottom" constant="5" id="DO4-2p-YAQ"/>
                             <constraint firstItem="khM-oi-wcs" firstAttribute="trailing" secondItem="oHe-tZ-7XS" secondAttribute="trailing" id="Fwt-8L-oum"/>
                             <constraint firstItem="tPy-Kp-6EI" firstAttribute="trailing" secondItem="oHe-tZ-7XS" secondAttribute="trailing" id="LOW-5m-WUN"/>
@@ -2049,6 +2059,7 @@
                         <outlet property="trialPeriodExpiryTextLbl" destination="Jv9-b9-aPX" id="SbX-tn-1e9"/>
                         <outlet property="trialPeriodExpiryView" destination="llX-mf-kur" id="Pb7-Gm-Wlv"/>
                         <outlet property="tweakAndEatCLubExpiryViewWithButtons" destination="fRj-v0-HGj" id="hIi-dP-v0V"/>
+                        <outlet property="tweakAndEatClubMemberLabel" destination="rFH-Fa-UMq" id="Kao-9Y-AgO"/>
                         <outlet property="tweakBubbleImageView" destination="DAb-WF-nxK" id="4XZ-ac-n9A"/>
                         <outlet property="tweakCountLbl" destination="Tgb-Ce-aH8" id="MBW-OQ-Suo"/>
                         <outlet property="tweakReactView" destination="9r9-a4-VP3" id="JV7-oX-zfk"/>
@@ -4240,14 +4251,30 @@ My Profile Plate is generated algorithmically based on the profile information y
                                     <constraint firstAttribute="height" id="fsZ-LF-gKL"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999998807907104" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F3n-Lg-qdg">
+                                <rect key="frame" x="20" y="679" width="374" height="110"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="yI7-Br-uBc"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HHW-b8-nel" id="poo-To-XNs"/>
+                                </connections>
+                            </textView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRr-nj-YdA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! Thank you for subscribing to Tweak &amp; Eat Club." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-eY-GzX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-eY-GzX">
                                         <rect key="frame" x="47" y="394" width="320" height="74.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Rlv-ga-x2t"/>
                                         </constraints>
+                                        <string key="text">Congratulations on joining the Tweak &amp; Eat Club!
+Enjoy!</string>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="24"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -4289,14 +4316,17 @@ My Profile Plate is generated algorithmically based on the profile information y
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="I9u-VH-MXB" firstAttribute="trailing" secondItem="044-ku-6MH" secondAttribute="trailing" id="28r-Pi-J6x"/>
-                            <constraint firstItem="I9u-VH-MXB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vNn-N7-rwE" secondAttribute="bottom" constant="20" id="4v8-oZ-WLO"/>
+                            <constraint firstItem="F3n-Lg-qdg" firstAttribute="leading" secondItem="044-ku-6MH" secondAttribute="leading" constant="20" id="94X-eU-TRk"/>
                             <constraint firstItem="I9u-VH-MXB" firstAttribute="bottom" secondItem="044-ku-6MH" secondAttribute="bottom" id="Eb3-5K-cuZ"/>
                             <constraint firstAttribute="trailing" secondItem="JRr-nj-YdA" secondAttribute="trailing" id="Es6-wT-1xo"/>
+                            <constraint firstItem="044-ku-6MH" firstAttribute="trailing" secondItem="F3n-Lg-qdg" secondAttribute="trailing" constant="20" id="MEi-4r-oQb"/>
                             <constraint firstItem="I9u-VH-MXB" firstAttribute="leading" secondItem="044-ku-6MH" secondAttribute="leading" id="TKJ-Ih-7ka"/>
                             <constraint firstItem="JRr-nj-YdA" firstAttribute="leading" secondItem="044-ku-6MH" secondAttribute="leading" id="YVT-UY-yFV"/>
                             <constraint firstItem="JRr-nj-YdA" firstAttribute="top" secondItem="gzi-Vk-HwT" secondAttribute="top" id="ZmC-HN-sER"/>
                             <constraint firstItem="044-ku-6MH" firstAttribute="trailing" secondItem="vNn-N7-rwE" secondAttribute="trailing" id="cd0-W3-Egf"/>
+                            <constraint firstItem="F3n-Lg-qdg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vNn-N7-rwE" secondAttribute="bottom" constant="20" id="ePZ-22-xVB"/>
                             <constraint firstItem="044-ku-6MH" firstAttribute="bottom" secondItem="JRr-nj-YdA" secondAttribute="bottom" id="hxS-yL-Kxa"/>
+                            <constraint firstItem="I9u-VH-MXB" firstAttribute="top" secondItem="F3n-Lg-qdg" secondAttribute="bottom" constant="13" id="jBc-nc-oFu"/>
                             <constraint firstItem="vNn-N7-rwE" firstAttribute="leading" secondItem="044-ku-6MH" secondAttribute="leading" id="w6b-cY-GwK"/>
                             <constraint firstItem="vNn-N7-rwE" firstAttribute="top" secondItem="044-ku-6MH" secondAttribute="top" id="xn6-Aj-I80"/>
                         </constraints>
@@ -4305,6 +4335,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                     <navigationItem key="navigationItem" id="L95-IM-ofN"/>
                     <connections>
                         <outlet property="club4ImageView" destination="vNn-N7-rwE" id="DHq-SA-pHQ"/>
+                        <outlet property="featuresViewSubscribeTextView" destination="F3n-Lg-qdg" id="aUu-7a-s0o"/>
                         <outlet property="imageViewHeightConstraint" destination="fsZ-LF-gKL" id="Vgx-0W-5hk"/>
                         <outlet property="paymentSuccessView" destination="JRr-nj-YdA" id="0ZD-xh-e47"/>
                         <outlet property="submitBtn" destination="I9u-VH-MXB" id="pIT-fA-R6q"/>
@@ -4508,6 +4539,8 @@ My Profile Plate is generated algorithmically based on the profile information y
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descLbl" destination="fGJ-Jg-Gev" id="SqS-dD-s9x"/>
+                                            <outlet property="imageViewHeightConstraint" destination="KfF-z7-lkU" id="27F-UN-yF5"/>
+                                            <outlet property="imageViewWidthConstraint" destination="MZP-eq-thY" id="DhQ-YZ-Slc"/>
                                             <outlet property="nameLbl" destination="KDP-Gx-gt5" id="2l3-z1-McC"/>
                                             <outlet property="profilePic" destination="c2b-Qx-k2o" id="4hU-iO-uUp"/>
                                         </connections>
@@ -4562,6 +4595,8 @@ My Profile Plate is generated algorithmically based on the profile information y
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descLbl" destination="wPl-BF-joA" id="fMT-ad-XQ0"/>
+                                            <outlet property="imageViewHeightConstraint" destination="okf-nB-qD9" id="mzH-I7-gUU"/>
+                                            <outlet property="imageViewWidthConstraint" destination="UwX-Sx-9U4" id="ANv-lO-rRP"/>
                                             <outlet property="nameLbl" destination="4Kh-3y-H7D" id="V5b-PG-RMZ"/>
                                             <outlet property="profilePic" destination="loG-CM-5aw" id="qhL-zW-VVU"/>
                                         </connections>
@@ -6728,7 +6763,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wof-63-Jyp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wof-63-Jyp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.84313725490196079" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -7074,7 +7109,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 <rect key="frame" x="0.0" y="336" width="414" height="526"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="UGj-U6-IOd">
-                                    <rect key="frame" x="0.0" y="94.5" width="414" height="125"/>
+                                    <rect key="frame" x="0.0" y="92.5" width="414" height="125"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-EL-Kgu">
@@ -7108,14 +7143,14 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="zBb-Sk-gG9" customClass="RecipeDetailsCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="21"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="19"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBb-Sk-gG9" id="DXW-R6-ePA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-nU-i2e">
-                                                    <rect key="frame" x="11" y="0.0" width="392" height="21"/>
+                                                    <rect key="frame" x="11" y="0.0" width="392" height="19"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -7844,7 +7879,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-hU-6pJ">
-                                                <rect key="frame" x="39" y="5" width="123" height="19"/>
+                                                <rect key="frame" x="53" y="5" width="117" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Vzk-rY-CbR"/>
                                                 </constraints>
@@ -7858,7 +7893,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-fb-JSz">
-                                                <rect key="frame" x="183" y="5" width="54" height="19"/>
+                                                <rect key="frame" x="191" y="5" width="51" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" TODAY ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -7869,7 +7904,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubl-VC-c2N">
-                                                <rect key="frame" x="257" y="5" width="48" height="19"/>
+                                                <rect key="frame" x="262" y="5" width="46" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" WEEK ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -7880,7 +7915,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-YK-k7V">
-                                                <rect key="frame" x="325" y="5" width="59" height="19"/>
+                                                <rect key="frame" x="328" y="5" width="56" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="9ga-bM-dJx"/>
                                                 </constraints>
@@ -7894,21 +7929,21 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-E9-AVf">
-                                                <rect key="frame" x="172" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="180" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-V5-NFN">
-                                                <rect key="frame" x="244" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="249" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFz-N1-ccK">
-                                                <rect key="frame" x="314" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="317" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="8Y5-iH-Jie"/>
@@ -8079,7 +8114,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="63" width="414" height="39"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-Mt-DTX">
-                                                <rect key="frame" x="350" y="4" width="56" height="30"/>
+                                                <rect key="frame" x="350" y="4" width="56" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="FHm-is-ghV"/>
@@ -8093,7 +8128,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq1-kg-58W">
-                                                <rect key="frame" x="299" y="4" width="46" height="30"/>
+                                                <rect key="frame" x="299" y="4" width="46" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="GtJ-Ec-LSM"/>
@@ -8107,7 +8142,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-m0-R5m">
-                                                <rect key="frame" x="243" y="4" width="51" height="30"/>
+                                                <rect key="frame" x="243" y="4" width="51" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="Z1o-fl-lLO"/>
@@ -8121,7 +8156,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aER-aK-x1t">
-                                                <rect key="frame" x="173" y="4" width="65" height="30"/>
+                                                <rect key="frame" x="173" y="4" width="65" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="ouc-ga-7cf"/>
@@ -8135,7 +8170,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Carbs Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlK-Gy-Qzv">
-                                                <rect key="frame" x="8" y="4" width="85.5" height="13"/>
+                                                <rect key="frame" x="8" y="4" width="84" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="9bJ-Ju-Sd9"/>
                                                 </constraints>
@@ -11130,7 +11165,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
         <scene sceneID="OAQ-SO-xrY">
             <objects>
                 <viewController id="SQ6-ib-YyC" customClass="AiDPViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="7Kc-Tw-oaX">
+                    <view key="view" contentMode="scaleToFill" id="7Kc-Tw-oaX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -11292,10 +11327,10 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <outlet property="delegate" destination="SQ6-ib-YyC" id="a4v-lA-OSh"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
                                 <rect key="frame" x="-400" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
                                         <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -11327,10 +11362,10 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="psZ-EU-PJH" firstAttribute="top" secondItem="Due-Nx-Cu3" secondAttribute="top" constant="36" id="pVv-3C-6yB"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
                                         <rect key="frame" x="28" y="422" width="358.5" height="18"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -13425,7 +13460,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="lMP-CW-m2y"/>
         <segue reference="H2E-CF-Hc1"/>
         <segue reference="Yl1-aV-dl8"/>
-        <segue reference="arv-dL-nZW"/>
+        <segue reference="Zyf-gX-8GO"/>
         <segue reference="6Z8-h3-4eg"/>
         <segue reference="2eF-Oz-vLq"/>
         <segue reference="5vE-qp-Xfk"/>

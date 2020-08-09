@@ -12,10 +12,19 @@ class TAEClub2TableViewCellLeft: UITableViewCell {
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-       if IS_iPHONE5 || IS_iPHONE678 || IS_iPHONEXXS {
+       if IS_iPHONE5 {
+        self.imageViewWidthConstraint.constant = 60
+                   self.imageViewHeightConstraint.constant = 60
+                   self.nameLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
+                   self.descLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 10.0)
+               } else if IS_iPHONE678 || IS_iPHONEXXS {
                    self.nameLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 16.0)
                    self.descLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
                } else {

@@ -119,6 +119,9 @@ class GamifyViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    if packageObj.count == 0 {
+                        return
+                    }
                     self.performSegue(withIdentifier: "moreInfo", sender: packageObj)
                 }
             }
@@ -217,7 +220,15 @@ class GamifyViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.moveToAnotherView(promoAppLink: promoAppLink)
                 
             }
-        } else if promoAppLink == "-MysRamadanwgtLoss99" {
+        } else if promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                       
+                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                   } else {
+                      goToTAEClub()
+                       
+                   }
+               } else if promoAppLink == "-MysRamadanwgtLoss99" {
                    if UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil {
                        
                        self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
@@ -243,6 +254,13 @@ class GamifyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    
+    func goToTAEClub() {
+             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                     let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                     navController?.pushViewController(vc, animated: true);
+         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "nutritionLabels" {
                    let pkgID = sender as! String

@@ -10,7 +10,15 @@ import UIKit
 import Firebase
 import StoreKit
 
-class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+     if textView == self.featuresViewSubscribeTextView  {
+         UIApplication.shared.open(URL)
+     }
+        return false
+    }
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
          let count : Int = response.products.count
                if (count>0) {
@@ -87,7 +95,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
            
            
        }
-    
+    @IBOutlet weak var featuresViewSubscribeTextView: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var club4ImageView: UIImageView!
@@ -189,8 +197,48 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
   
     }
     
+    func getSubscriptionText() {
+        Database.database().reference().child("GlobalVariables").observe(DataEventType.value, with: { (snapshot) in
+            if snapshot.childrenCount > 0 {
+                        
+                           for obj in snapshot.children.allObjects as! [DataSnapshot] {
+                         if obj.key == "ios_terms_pp_buy" {
+                            let terms = obj.value as AnyObject as! [String: AnyObject]
+
+                           let subscriptionDetailsText = terms["auorenewal"] as! String
+                            self.featuresViewSubscribeTextView.linkTextAttributes = [
+                            NSAttributedString.Key.foregroundColor: UIColor.blue,
+                            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                                                                  ]
+                            self.featuresViewSubscribeTextView.text = subscriptionDetailsText.replacingOccurrences(of: "\\n", with: "\n")
+                              
+                            }
+
+                }
+                
+            }
+           
+            
+            
+        })
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.featuresViewSubscribeTextView.flashScrollIndicators()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.featuresViewSubscribeTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        self.featuresViewSubscribeTextView.flashScrollIndicators()
+
+        
+        self.featuresViewSubscribeTextView.textColor = UIColor.gray
+      
+        self.featuresViewSubscribeTextView.layer.cornerRadius = 10;
+        self.featuresViewSubscribeTextView.layer.borderWidth = 2
+        self.featuresViewSubscribeTextView.layer.borderColor = UIColor.darkGray.cgColor
+        
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                   countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
               }
@@ -293,6 +341,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
                 dispatch_group.notify(queue: DispatchQueue.main) {
 
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    self.getSubscriptionText()
                 }
                 
             } else {
@@ -327,7 +376,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
                   if dict["name"] as! String == "body_img" {
                       let urlString = dict["value"] as! String
 
-                      self.club4ImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+                    self.club4ImageView.sd_setImage(with: URL(string: urlString.replacingOccurrences(of: "tae_club_sub4_bg", with: "tae_club_sub4_bg_ios"))) { (image, error, cache, url) in
                                                                        // Your code inside completion block
                       let ratio = image!.size.width / image!.size.height
                       let newHeight = self.club4ImageView.frame.width / ratio

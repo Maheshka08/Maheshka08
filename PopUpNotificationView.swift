@@ -62,6 +62,9 @@ class PopUpNotificationView: UIView {
 
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self, animated: true);
+                    if packageObj.count == 0 {
+                        return
+                    }
                     self.showAvailablePremiumPackageVC(obj: packageObj)
                     //self.performSegue(withIdentifier: "fromAdsToMore", sender: packageObj)
                 }

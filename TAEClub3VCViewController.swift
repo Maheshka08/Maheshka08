@@ -46,7 +46,13 @@ class TAEClub3VCViewController: UIViewController {
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text1Lbl.attributedText = attributedString
-                self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+                if IS_iPHONE5 {
+                self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+
+                }
+
                 
                 UIView.animate(
                     withDuration: 0.5,
@@ -70,7 +76,12 @@ class TAEClub3VCViewController: UIViewController {
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text2Lbl.attributedText = attributedString
-                self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+                if IS_iPHONE5 {
+                self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+
+                }
                 UIView.animate(
                     withDuration: 0.5, delay: 1,
                                animations: {
@@ -84,7 +95,12 @@ class TAEClub3VCViewController: UIViewController {
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text3Lbl.attributedText = attributedString
-                self.text3Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 24.0)
+                if IS_iPHONE5 {
+                self.text3Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text3Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+
+                }
                 UIView.animate(
                     withDuration: 0.5, delay: 1.5,
                                animations: {
@@ -99,7 +115,12 @@ class TAEClub3VCViewController: UIViewController {
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text4TV.attributedText = attributedString
-                self.text4TV.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+                if IS_iPHONE5 {
+                self.text4TV.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text4TV.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+
+                }
                 self.text4TV.textAlignment = .left
                 UIView.animate(
                     withDuration: 0.5, delay: 2.5,

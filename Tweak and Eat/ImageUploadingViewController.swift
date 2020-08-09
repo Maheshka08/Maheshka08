@@ -482,6 +482,9 @@ class ImageUploadingViewController: UIViewController {
                 
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    if packageObj.count == 0 {
+                        return
+                    }
                     self.performSegue(withIdentifier: "premiumPackagesToMore", sender: packageObj)
                 }
             }

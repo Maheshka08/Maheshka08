@@ -47,6 +47,9 @@ class TAEClub2VCViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if IS_iPHONE5 {
+            return 90
+        }
         return 121
     }
     
@@ -92,7 +95,12 @@ class TAEClub2VCViewController: UIViewController, UITableViewDelegate, UITableVi
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text1Lbl.attributedText = attributedString
-                self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+                if IS_iPHONE5 {
+                self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text1Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 22.0)
+
+                }
 
             }
             if dict["name"] as! String == "text2" {
@@ -100,7 +108,12 @@ class TAEClub2VCViewController: UIViewController, UITableViewDelegate, UITableVi
                                              
                                            let attributedString = getAttributedString(htmlText: htmlText)
                 self.text2Lbl.attributedText = attributedString
-                self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 22.0)
+                if IS_iPHONE5 {
+                self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
+                } else {
+                    self.text2Lbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 22.0)
+
+                }
                 self.text2LblView.isHidden = false
 
             }

@@ -115,7 +115,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         self.myNutritionViewSelectYourMealTableView.isHidden = true
-        self.myNutritionViewLast10TweaksTableView.frame = CGRect(x: self.myNutritionDetailsView.last10TweaksView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 200)
+        self.myNutritionViewLast10TweaksTableView.frame = CGRect(x: self.myNutritionDetailsView.last10TweaksView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 180)
                self.myNutritionViewLast10TweaksTableView.delegate = self
                self.myNutritionViewLast10TweaksTableView.dataSource = self
                self.view.addSubview(self.myNutritionViewLast10TweaksTableView)
@@ -132,7 +132,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         self.myNutritionViewLast10TweaksTableView.isHidden = true
-        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 310)
+        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 260)
         self.myNutritionViewSelectYourMealTableView.delegate = self
         self.myNutritionViewSelectYourMealTableView.dataSource = self
         self.view.addSubview(self.myNutritionViewSelectYourMealTableView)
@@ -420,7 +420,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var fitBitSyncView: UIView!;
     @IBOutlet weak var tweakCountLbl: UILabel!;
     @IBOutlet weak var tweakStreakView: UIView!;
-    
+    @IBOutlet weak var tweakAndEatClubMemberLabel: UILabel!
     @IBOutlet weak var adsImageView: UIImageView!;
     @objc var deviceInfo = UIDevice.current.modelName;
     @IBOutlet weak var kuwaitIconsView: UIView!;
@@ -852,6 +852,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func handleSwipe(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        self.myNutritionViewLast10TweaksTableView.isHidden = true
+              self.myNutritionViewSelectYourMealTableView.isHidden = true
+              self.mealTypeTableView.isHidden = true
         if gestureRecognizer.direction == .up {
             if self.goneUp == true {
                 return
@@ -1811,7 +1814,8 @@ tappedOnTAEClubExpiryView()
        // tweakAndEatCLubExpiryViewWithButtons.isHidden = false
         
         self.appVersionUpdateButton.layer.cornerRadius = 15
-        self.appCheckVersionView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        self.appCheckVersionView.backgroundColor = UIColor.purple.withAlphaComponent(0.7)
+       // self.tweakAndEatClubMemberLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
         if IS_iPHONE5 {
                   self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
 
@@ -2561,7 +2565,7 @@ tappedOnTAEClubExpiryView()
                           labelsCount = UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") as! Int
                       }
                 if self.countryCode == "91" {//IndWLIntusoe3uelxER
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || labelsCount > 10 {
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil  {
                     DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     }
@@ -3642,7 +3646,7 @@ tappedOnTAEClubExpiryView()
         }
         let promoAppLink = self.randomPromoLink //PP_PACKAGES
         // || promoAppLink == "-IndClub3gu7tfwko6Zx"
-        if promoAppLink == "CLUB_SUBSCRIPTION" {
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
             self.performSegue(withIdentifier: "taeClub", sender: self);
 
         } else if promoAppLink == "PP_PACKAGES" {
@@ -4308,6 +4312,9 @@ tappedOnTAEClubExpiryView()
                 
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                    if packageObj.count == 0 {
+                        return
+                    }
                     self.performSegue(withIdentifier: "fromAdsToMore", sender: packageObj)
                 }
             }
@@ -5972,7 +5979,16 @@ self.floatingCallBtn.isHidden = false
                 if expDate! < currentDate {
                     self.showTrialPeriodView()
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpPhilippinesPackage)
-                    
+                    if ptpUserSubscribed == 1 {
+                    UserDefaults.standard.set(PTPPackages.ptpPhilippinesPackage, forKey: PTPPackages.ptpPhilippinesPackage)
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpPhilippinesPackage as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    self.removePTPExpiryView()
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpPhilippinesPackage)
+
+                    }
                 } else {
                     if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpPhilippinesPackage, forKey: PTPPackages.ptpPhilippinesPackage)
@@ -6018,7 +6034,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpSingaporePackage)
-                    
+                    if ptpUserSubscribed == 1 {
+
+                    UserDefaults.standard.set(PTPPackages.ptpSingaporePackage, forKey: PTPPackages.ptpSingaporePackage)
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpSingaporePackage as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                         UserDefaults.standard.removeObject(forKey: PTPPackages.ptpSingaporePackage)
+                    }
                 } else {
                     if ptpUserSubscribed == 1 {
 
@@ -6053,6 +6077,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                       UserDefaults.standard.removeObject(forKey: "-SgnMyAiDPuD8WVCipga")
+                    if userSubscribed == 1 {
+                    UserDefaults.standard.set("-SgnMyAiDPuD8WVCipga", forKey: "-SgnMyAiDPuD8WVCipga")
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-SgnMyAiDPuD8WVCipga" as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    
+                    } else {
+                    UserDefaults.standard.removeObject(forKey: "-SgnMyAiDPuD8WVCipga")
+                    }
                 } else {
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-SgnMyAiDPuD8WVCipga", forKey: "-SgnMyAiDPuD8WVCipga")
@@ -6100,7 +6133,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndonesiaPackage)
-                    
+                    if ptpUserSubscribed == 1 {
+                    UserDefaults.standard.set(PTPPackages.ptpIndonesiaPackage, forKey: PTPPackages.ptpIndonesiaPackage)
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpIndonesiaPackage as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndonesiaPackage)
+
+                    }
                 } else {
                     if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpIndonesiaPackage, forKey: PTPPackages.ptpIndonesiaPackage)
@@ -6138,7 +6179,16 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-IdnMyAiDPoP9DFGkbas")
-                    
+                    if userSubscribed == 1{
+                    UserDefaults.standard.set("-IdnMyAiDPoP9DFGkbas", forKey: "-IdnMyAiDPoP9DFGkbas")
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-IdnMyAiDPoP9DFGkbas" as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                    UserDefaults.standard.removeObject(forKey: "-IdnMyAiDPoP9DFGkbas")
+
+                                       }
+
                 } else {
                     if userSubscribed == 1{
                     UserDefaults.standard.set("-IdnMyAiDPoP9DFGkbas", forKey: "-IdnMyAiDPoP9DFGkbas")
@@ -6189,7 +6239,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpUSAPackage)
-                    
+                    if ptpUserSubscribed == 1 {
+                                       UserDefaults.standard.set(PTPPackages.ptpUSAPackage, forKey: PTPPackages.ptpUSAPackage)
+                                       UserDefaults.standard.synchronize()
+                                       floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpUSAPackage as AnyObject])
+                                       self.floatingCrownBtn.isHidden = false
+                                       } else {
+                                           UserDefaults.standard.removeObject(forKey: PTPPackages.ptpUSAPackage)
+
+                                       }
                 } else {
                     if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpUSAPackage, forKey: PTPPackages.ptpUSAPackage)
@@ -6226,7 +6284,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
+                    if userSubscribed == 1 {
+                    UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
 
+                    }
                 } else {
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
@@ -6272,7 +6338,15 @@ self.floatingCallBtn.isHidden = false
                 if expDate! < currentDate {
 
                     UserDefaults.standard.removeObject(forKey: PTPPackages.ptpMalaysiaPackage)
-                    
+                    if ptpUserSubscribed == 1 {
+                    UserDefaults.standard.set(PTPPackages.ptpMalaysiaPackage, forKey: PTPPackages.ptpMalaysiaPackage)
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpMalaysiaPackage as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: PTPPackages.ptpMalaysiaPackage)
+
+                    }
                 } else {
                     if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpMalaysiaPackage, forKey: PTPPackages.ptpMalaysiaPackage)
@@ -6309,7 +6383,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
+                    if userSubscribed == 1 {
+                                       UserDefaults.standard.set("-MalAXk7gLyR3BNMusfi", forKey: "-MalAXk7gLyR3BNMusfi")
+                                       UserDefaults.standard.synchronize()
+                                       floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-MalAXk7gLyR3BNMusfi" as AnyObject])
+                                       self.floatingCrownBtn.isHidden = false
+                                       } else {
+                                           UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
 
+                                       }
                 } else {
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-MalAXk7gLyR3BNMusfi", forKey: "-MalAXk7gLyR3BNMusfi")
@@ -6345,7 +6427,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MysRamadanwgtLoss99")
+                    if userMysRmdSub == 1 {
+                    UserDefaults.standard.set("-MysRamadanwgtLoss99", forKey: "-MysRamadanwgtLoss99")
+                    UserDefaults.standard.synchronize()
+                    floatingButtonArray.append(["pkgName": "Ramadan Weight Loss" as AnyObject, "imgName": "ramadan-icon" as AnyObject, "pkg": "-MysRamadanwgtLoss99" as AnyObject])
+                    self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-MysRamadanwgtLoss99")
 
+                    }
                 } else {
                     if userMysRmdSub == 1 {
                     UserDefaults.standard.set("-MysRamadanwgtLoss99", forKey: "-MysRamadanwgtLoss99")
@@ -6394,6 +6484,15 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                       UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndiaPackage)
+                    if ptpUserSubscribed == 1 {
+                                       UserDefaults.standard.set(PTPPackages.ptpIndiaPackage, forKey: PTPPackages.ptpIndiaPackage)
+                                       UserDefaults.standard.synchronize()
+                                      floatingButtonArray.append(["pkgName": "My AiBP" as AnyObject, "imgName": "aibp-icon" as AnyObject, "pkg": PTPPackages.ptpIndiaPackage as AnyObject])
+                                       self.floatingCrownBtn.isHidden = false
+                                       } else {
+                                           UserDefaults.standard.removeObject(forKey: PTPPackages.ptpIndiaPackage)
+
+                                       }
                     
                 } else {
                     if ptpUserSubscribed == 1 {
@@ -6435,6 +6534,15 @@ self.floatingCallBtn.isHidden = false
                     if expDate! < currentDate {
                         self.userIndMyAidpSub = 0
                         UserDefaults.standard.removeObject(forKey: "-AiDPwdvop1HU7fj8vfL")
+                        if self.userIndMyAidpSub == 1 {
+                                             UserDefaults.standard.set("-AiDPwdvop1HU7fj8vfL", forKey: "-AiDPwdvop1HU7fj8vfL")
+                                             UserDefaults.standard.synchronize()
+                                             floatingButtonArray.append(["pkgName": "My AiDP" as AnyObject, "imgName": "aidp-icon" as AnyObject, "pkg": "-AiDPwdvop1HU7fj8vfL" as AnyObject])
+                                             self.floatingCrownBtn.isHidden = false
+                                             } else {
+                                                 UserDefaults.standard.removeObject(forKey: "-AiDPwdvop1HU7fj8vfL")
+
+                                             }
                     } else {
                         if self.userIndMyAidpSub == 1 {
                         UserDefaults.standard.set("-AiDPwdvop1HU7fj8vfL", forKey: "-AiDPwdvop1HU7fj8vfL")
@@ -6472,6 +6580,16 @@ self.floatingCallBtn.isHidden = false
                    
                     self.userSubscribedTAE = 0
                     UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
+                    if self.userSubscribedTAE == 1 {
+                                    UserDefaults.standard.set("-IndIWj1mSzQ1GDlBpUt", forKey: "-IndIWj1mSzQ1GDlBpUt")
+                                    UserDefaults.standard.synchronize()
+                                
+                                    floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-IndIWj1mSzQ1GDlBpUt" as AnyObject])
+                                    self.floatingCrownBtn.isHidden = false
+                                    } else {
+                                        UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
+
+                                    }
                 } else {
                     if self.userSubscribedTAE == 1 {
                     UserDefaults.standard.set("-IndIWj1mSzQ1GDlBpUt", forKey: "-IndIWj1mSzQ1GDlBpUt")
@@ -6485,6 +6603,7 @@ self.floatingCallBtn.isHidden = false
                     }
                     }
                 }
+                
                 var intermittentWLUser = responseDic["userIndWlIntSub"] as! Int
                 
                 if intermittentWLUser == 1 {
@@ -6509,6 +6628,17 @@ self.floatingCallBtn.isHidden = false
                    
                     intermittentWLUser = 0
                     UserDefaults.standard.removeObject(forKey: "-IndWLIntusoe3uelxER")
+                        if intermittentWLUser == 1 {
+                        UserDefaults.standard.set("-IndWLIntusoe3uelxER", forKey: "-IndWLIntusoe3uelxER")
+                        UserDefaults.standard.synchronize()
+                    
+                        floatingButtonArray.append(["pkgName": "Weight Loss with Intermittent Fasting" as AnyObject, "imgName": "if-icon" as AnyObject, "pkg": "-IndWLIntusoe3uelxER" as AnyObject])
+                        self.floatingCrownBtn.isHidden = false
+                        } else {
+                            UserDefaults.standard.removeObject(forKey: "-IndWLIntusoe3uelxER")
+
+                        }
+
                 } else {
                     if intermittentWLUser == 1 {
                     UserDefaults.standard.set("-IndWLIntusoe3uelxER", forKey: "-IndWLIntusoe3uelxER")
@@ -6539,7 +6669,8 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
                 }
                 if responseDic["userTaeClubSubExpDttm"] is NSNull {
-                    
+              //      UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
                 } else {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
@@ -6549,14 +6680,22 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
+                    UserDefaults.standard.synchronize()
+
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+
 
                 } else {
                     if userSubscribedToClub == 1 {
                     UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
                     UserDefaults.standard.synchronize()
-//                    floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
-//                    self.floatingCrownBtn.isHidden = false
-                        //self.tweakandeatClubButtonView.isHidden = true
+
                     } else {
                         UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
                         //self.tweakandeatClubButtonView.isHidden = false
@@ -6638,7 +6777,7 @@ self.floatingCallBtn.isHidden = false
                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                     self.taeClubTrialPeriodExpiryView.isHidden = true
 
-                                       self.removePTPExpiryView()
+                    self.removePTPExpiryView()
                                   } else {
                     //self.showTrialPeriodView()
                                   }
@@ -6661,13 +6800,12 @@ self.floatingCallBtn.isHidden = false
                                 }
                                 }
 
-//            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-//                              self.removePTPExpiryView()
-//                          } else {
-//                self.getClubHome2()
-//                //self.tweakandeatClubButtonView.isHidden = false
-//
-//            }
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                self.tweakAndEatClubMemberLabel.isHidden = false
+                          } else {
+                self.tweakAndEatClubMemberLabel.isHidden = true
+
+            }
             if self.countryCode == "91" {
              self.getClubHome1()
             // self.getClubHome2()
