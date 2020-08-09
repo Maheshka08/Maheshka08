@@ -47,6 +47,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         let dispatch_group = DispatchGroup();
         dispatch_group.enter();
         self.delegate.homeInfoApiCalls()
+        
         self.delegate.checkAppVersion()
         self.delegate.setUpUI()
         self.delegate.getTrends()
@@ -61,6 +62,10 @@ class TweakAndEatFinalIntroScreen: UIView {
           let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             
             if countryCode == "91"{
+                    self.delegate.getClubHome1()
+                   // self.delegate.getClubHome2()
+                           //self.getClub1Info()
+                           
                self.delegate.getNutritionistFBID()
                 self.delegate.getUserCallSchedueDetails()
                 //self.delegate.getPremiumBtn()

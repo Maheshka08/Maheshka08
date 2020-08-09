@@ -80,6 +80,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.commentBox.becomeFirstResponder()
         self.checkBoxBtn.layer.borderWidth = 4
         self.checkBoxBtn.layer.borderColor = UIColor.lightGray.cgColor
         

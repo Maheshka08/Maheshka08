@@ -54,11 +54,8 @@ class PremiumTweakPackController: UIViewController, UICollectionViewDelegate, UI
         //91e841953e9f4d19976283cd2ee78992
         
         print(recieptString!)
-        //        UserDefaults.standard.set(receiptData, forKey: "RECEIPT")
-        //        UserDefaults.standard.synchronize()
-        //
+      
         
-        // MBProgressHUD.showAdded(to: self.view, animated: true);
         APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             var responseResult = ""
@@ -72,36 +69,6 @@ class PremiumTweakPackController: UIViewController, UICollectionViewDelegate, UI
                 print("in-app done")
           self.paymentSuccessView.isHidden = false
                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PTP-IN-APP-SUCCESSFUL"), object: responseDic);
-//                var data = [String: AnyObject]()
-//                let response = responseDic ;
-//                if response.index(forKey: "data") != nil {
-//                    // contains key
-//                    data = responseDic["data"] as AnyObject as! [String: AnyObject]
-//
-//                } else if response.index(forKey: "Data") != nil {
-//                    // contains key
-//                    data = responseDic["Data"] as AnyObject as! [String: AnyObject]
-//
-//                }
-//
-//                //   let data = responseDic["data"] as AnyObject as! [String: AnyObject]
-//                if data["NutritionistFirebaseId"] is NSNull {
-//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirebaseId")
-//                } else {
-//                    UserDefaults.standard.setValue(data["NutritionistFirebaseId"] as AnyObject as! String, forKey: "NutritionistFirebaseId")
-//                }
-//
-//                if data["NutritionistFirstName"] is NSNull {
-//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirstName")
-//                } else {
-//                    UserDefaults.standard.setValue(data["NutritionistFirstName"] as AnyObject as! String, forKey: "NutritionistFirstName")
-//                }
-//                if data["NutritionistSignature"] is NSNull {
-//                    UserDefaults.standard.setValue("", forKey: "NutritionistSignature")
-//                } else {
-//                    UserDefaults.standard.setValue(data["NutritionistSignature"] as AnyObject as! String, forKey: "NutritionistSignature")
-//                }
-                
 
             }
         }, failure : { error in
@@ -227,6 +194,7 @@ class PremiumTweakPackController: UIViewController, UICollectionViewDelegate, UI
         
         let currency = (self.ptpPriceDict["display_currency"] as? String)! + ")"
         let totalDesc: String = labels + amount + currency;
+        
         self.productIdentifier = self.ptpPriceDict["productIdentifier"] as AnyObject as! String
         
       self.selectYourPackLabel.text = totalDesc

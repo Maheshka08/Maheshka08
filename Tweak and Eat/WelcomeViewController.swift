@@ -315,7 +315,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var popUpPTPTextView: UITextView!
     @IBOutlet weak var popUPPTPImageView: UIImageView!
+    @IBOutlet weak var taeClubTrialPeriodExpiryView: UIView!
     @IBOutlet weak var ptpPhBtn1: UIButton!
+    @IBOutlet weak var taeClubTrialPeriodExpiryViewLbl: UILabel!
     @IBOutlet weak var ptpPhBtn2: UIButton!
     
     @IBOutlet weak var topImageView: UIView!
@@ -336,7 +338,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var smallScreenPopUp: UIView!
     @IBOutlet weak var navBarButtonItemTimer: UIBarButtonItem!
     @IBOutlet weak var premiumTweakPackBtnTopConstraint: NSLayoutConstraint!
+    var randomPromoLink = ""
     @IBOutlet weak var foodImageShadowViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var taeClubViewTopConstraint: NSLayoutConstraint!
     private var minimumHeight: CGFloat!
     private var minimumFrame: CGRect!
     @IBOutlet weak var foodImageView: UIImageView!
@@ -538,6 +542,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var getPromoResponse = [String: AnyObject]();
     @IBOutlet weak var floatingCallBtn: UIButton!
     
+    @IBOutlet weak var tweakandeatClubButtonView: UIView!
+    @IBOutlet weak var tweakandeatClubButtonViewBottom: UIView!
+    @IBOutlet weak var tweakAndEatCLubExpiryViewWithButtons: UIView!
     @IBOutlet weak var smallScreenPopupImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var randomMessages: UILabel!;
     @IBOutlet weak var tweakStreakLbl: UILabel!;
@@ -552,12 +559,24 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var fatssArray = NSMutableArray();
     @objc var proteinArray = NSMutableArray()
     
+    @IBOutlet weak var clubHome1LeftBth: UIButton!
+    @IBOutlet weak var clubHome1RightBth: UIButton!
+    @IBOutlet weak var clubHome2LeftBth: UIButton!
+    @IBOutlet weak var clubHome2RightBth: UIButton!
     @IBOutlet weak var navigationBarButtonItemTimer: UIBarButtonItem!
     @IBOutlet weak var navigationBarTimerViewButton: UIButton!
     
+    @IBOutlet weak var personalisedServicesBtn: UIButton!
     
-        @IBAction func smallScreenPopUpDoneTapped(_ sender: Any) {
-        if link == "" {
+    @IBOutlet weak var taeClubHome2Btn: UIButton!
+    
+    @IBAction func taeClubHome2BtnTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "taeClub", sender: self);
+
+    }
+    
+    @IBAction func smallScreenPopUpDoneTapped(_ sender: Any) {
+        if (link == "" || link == "HOME") {
             self.smallScreenPopUp.isHidden = true
         } else if link == "CALS_LEFT_FS_POPUP" {
             //UIView.setani
@@ -569,6 +588,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             self.smallScreenPopUp.isHidden = true
             self.playVideo()
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+            self.smallScreenPopUp.isHidden = true
+
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                       
+                   } else {
+                       self.goToTAEClub()
+                   }
         } else {
             self.smallScreenPopUp.isHidden = true
             tappedOnPopUpDone()
@@ -855,8 +882,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.switchButton.alpha = 0
                         
                        // self.chartView.alpha = 0
-                            self.buyMoreBtn2.isHidden = false
-                            self.ptpBtn2.isHidden = false
+                           // self.buyMoreBtn2.isHidden = false
+                            //self.ptpBtn2.isHidden = false
                             self.bottomBtnViewTopConstraint.constant = 0
                             //self.bottomButtonsView.backgroundColor = UIColor.groupTableViewBackground
                             self.view.layoutIfNeeded()
@@ -865,7 +892,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             },  completion: {(_ completed: Bool) -> Void in
                 self.goneUp = true
                 
-                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "HIDE_CONTAINER_BUTTONS"), object: false);
             })
             }
         } else if gestureRecognizer.direction == .down {
@@ -914,7 +940,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.outerChartView.alpha = 1
 
                        
-                            self.bottomBtnViewTopConstraint.constant = -88
+                            self.bottomBtnViewTopConstraint.constant = -108
 
                             self.view.layoutIfNeeded()
                             
@@ -956,12 +982,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    }
                    self.foodImageShadowViewHeightConstraint.constant = 113
                    self.monthBtnTrailingConstraint.constant = 0;
+                self.taeClubViewTopConstraint.constant = 2
+
                } else if IS_iPHONE678P {
                    
                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
                    self.chatViewHeightConstraint.constant = 170
                    self.draggableViewHeightConstraint.constant = 130
                    self.monthBtnTrailingConstraint.constant = 50;
+                self.taeClubViewTopConstraint.constant = 20
+
                    
                } else if IS_iPHONE678 {
                    
@@ -971,6 +1001,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    self.foodImageShadowViewHeightConstraint.constant = 113
                    self.premiumTweakPackBtnTopConstraint.constant = 8
                    self.monthBtnTrailingConstraint.constant = 30;
+                self.taeClubViewTopConstraint.constant = 15
+
                    
                } else if IS_iPHONEXXS {
                    if self.showGraph == false {
@@ -984,8 +1016,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    self.monthBtnTrailingConstraint.constant = 30;
                    self.draggableViewHeightConstraint.constant = 150
                    }
-                   
+                   self.taeClubViewTopConstraint.constant = 21
+
                } else if IS_iPHONEXRXSMAX {
+                self.taeClubViewTopConstraint.constant = 27
                    if self.showGraph == false {
                        aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
                        self.chatViewHeightConstraint.constant = 170
@@ -1223,6 +1257,11 @@ if dictionary.index(forKey: "weeksData") != nil {
         }
     }
     
+    //tappedOnTAEClubTrialPeriodExpiryView
+    @objc func tappedOnTAEClubTrialPeriodExpiryView() {
+        
+tappedOnTAEClubExpiryView()
+    }
     @objc func tappedOntrialPeriodExpiryView() {
         
         //self.performSegue(withIdentifier: "premiumTweakPack", sender: self)
@@ -1728,6 +1767,49 @@ if dictionary.index(forKey: "weeksData") != nil {
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        self.tweakandeatClubButtonView.isHidden = true
+        self.tweakandeatClubButtonViewBottom.isHidden = true
+        self.taeClubTrialPeriodExpiryView.isHidden = true
+        if UserDefaults.standard.value(forKey: "CLUBHOME1_RIGHT_BUTTON") != nil {
+                 DispatchQueue.main.async {
+                     
+                     self.clubHome1RightBth.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_RIGHT_BUTTON") as! Data), for: .normal)
+                    self.clubHome2RightBth.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_RIGHT_BUTTON") as! Data), for: .normal)
+                     
+                     
+                 }
+             }
+             if UserDefaults.standard.value(forKey: "CLUBHOME1_LEFT_BUTTON") != nil {
+                 DispatchQueue.main.async {
+                     
+                     self.clubHome1LeftBth.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_LEFT_BUTTON") as! Data), for: .normal)
+                    self.clubHome2LeftBth.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_LEFT_BUTTON") as! Data), for: .normal)
+                    self.premiumMemberTopBtn.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_LEFT_BUTTON") as! Data), for: .normal)
+                    self.premiumMemberBottomBtn.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME1_LEFT_BUTTON") as! Data), for: .normal)
+                    
+
+                     
+                     
+                 }
+             }
+        if UserDefaults.standard.value(forKey: "CLUBHOME2_TOP_BUTTON") != nil {
+                       DispatchQueue.main.async {
+                           
+                           self.taeClubHome2Btn.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME2_TOP_BUTTON") as! Data), for: .normal)
+                           
+                           
+                       }
+                   }
+                   if UserDefaults.standard.value(forKey: "PERSONALIZED_SERVICES_BTN_DATA") != nil {
+                       DispatchQueue.main.async {
+                           
+                           self.personalisedServicesBtn.setImage(UIImage(data: UserDefaults.standard.value(forKey: "PERSONALIZED_SERVICES_BTN_DATA") as! Data), for: .normal)
+                           
+                           
+                       }
+                   }
+       // tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+        
         self.appVersionUpdateButton.layer.cornerRadius = 15
         self.appCheckVersionView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         if IS_iPHONE5 {
@@ -1767,13 +1849,15 @@ if dictionary.index(forKey: "weeksData") != nil {
         self.myNutritionViewLast10TweaksTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
         
            NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.showPopUpNotifications(_:)), name: NSNotification.Name(rawValue: "SHOW_POPUP"), object: nil);
+        self.tweakBubbleImageView.isHidden = false
+                           self.tweakReactView.isHidden = false
             if UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") != nil {
                 DispatchQueue.main.async {
                     
-                    self.premiumMemberTopBtn.setBackgroundImage(UIImage(data: UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") as! Data), for: .normal)
-                    self.premiumMemberBottomBtn.setBackgroundImage(UIImage(data: UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") as! Data), for: .normal)
-                    self.tweakBubbleImageView.isHidden = false
-                    self.tweakReactView.isHidden = false
+//                    self.premiumMemberTopBtn.setBackgroundImage(UIImage(data: UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") as! Data), for: .normal)
+//                    self.premiumMemberBottomBtn.setBackgroundImage(UIImage(data: UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") as! Data), for: .normal)
+//                    self.tweakBubbleImageView.isHidden = false
+//                    self.tweakReactView.isHidden = false
                     
                 }
             }
@@ -1792,8 +1876,8 @@ if dictionary.index(forKey: "weeksData") != nil {
         
         //self.link = "CHECK_THIS_OUT"
 //        self.smallScreenPopUpBtn.setTitle("PLAY VIDEO", for: .normal)
-       // self.dummyPopUp()
-//        self.link = "CALS_LEFT_FS_POPUP"
+//        self.dummyPopUp()
+//        self.link = "HOME"
     // self.link = "-MysRamadanwgtLoss99"
         //HOW_IT_WORKS
         self.minCalCountLabel.text = ""
@@ -1853,6 +1937,12 @@ if dictionary.index(forKey: "weeksData") != nil {
         let trialTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOntrialPeriodExpiryView))
         trialTapGesture.numberOfTapsRequired = 1
         self.trialPeriodExpiryView.addGestureRecognizer(trialTapGesture)
+        
+        self.taeClubTrialPeriodExpiryView.isUserInteractionEnabled = true
+              let trialTapGestureForTAEClub = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnTAEClubTrialPeriodExpiryView))
+              trialTapGestureForTAEClub.numberOfTapsRequired = 1
+              self.taeClubTrialPeriodExpiryView.addGestureRecognizer(trialTapGestureForTAEClub)
+        
         self.startTweakingView.isUserInteractionEnabled = true
         let startTweakViewtapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnStartTweakingView))
         startTweakViewtapGesture.numberOfTapsRequired = 1
@@ -2792,8 +2882,16 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
     
     @objc func pressed(sender: UIButton!) {
-        if link == "" {
+        if (link == "" || link == "HOME") {
             self.popUpView.removeFromSuperview()
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+            self.popUpView.removeFromSuperview()
+
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                       
+                   } else {
+                       self.goToTAEClub()
+                   }
         } else {
             self.popUpView.removeFromSuperview()
             tappedOnPopUpDone()
@@ -3280,6 +3378,9 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
 
     @objc func getPremiumBtn() {
+        //CLUBHOME1_RIGHT_BUTTON
+     
+
         if let _ = Auth.auth().currentUser?.uid {
             if UserDefaults.standard.value(forKey: "PREMIUM_BUTTON_DATA") != nil {
                 DispatchQueue.main.async {
@@ -3511,6 +3612,346 @@ if dictionary.index(forKey: "weeksData") != nil {
             }
         })
     }
+    
+    @objc func tappedOnTAEClubExpiryView() {
+        if self.countryCode == "91" {
+            self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
+        } else if self.countryCode == "1" {
+            self.ptpPackage = "-UsaAiBPxnaopT55GJxl"
+        } else if self.countryCode == "65" {
+            self.ptpPackage = "-SgnAiBPJlXfM3KzDWR8"
+        } else if self.countryCode == "62" {
+            self.ptpPackage = "-IdnAiBPLKMO5ePamQle"
+        } else if self.countryCode == "60" {
+            self.ptpPackage = "-MysAiBPyaX9TgFT1YOp"
+        } else if self.countryCode == "63" {
+            self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
+        }
+        self.pkgIdsArray = NSMutableArray()
+        if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+            if UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") != nil {
+                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray;
+                for pkgID in pkgsArray {
+                    let pkgDict = pkgID as! [String: AnyObject];
+                    let pkgIDs = pkgDict["premium_pack_id"] as! String;
+                    self.pkgIdsArray.add(pkgIDs)
+                }
+                
+                
+            }
+        }
+        let promoAppLink = self.randomPromoLink //PP_PACKAGES
+        // || promoAppLink == "-IndClub3gu7tfwko6Zx"
+        if promoAppLink == "CLUB_SUBSCRIPTION" {
+            self.performSegue(withIdentifier: "taeClub", sender: self);
+
+        } else if promoAppLink == "PP_PACKAGES" {
+            self.performSegue(withIdentifier: "buyPackages", sender: self);
+        } else if promoAppLink == "PP_LABELS" {
+            self.performSegue(withIdentifier: "nutritionPack", sender: self)
+        } else if promoAppLink == "-TacvBsX4yDrtgbl6YOQ" {
+            if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray
+                if pkgsArray.count == 1 {
+                    for dict in pkgsArray {
+                        let infoDict = dict as! [String: AnyObject]
+                        let pkgID = infoDict["premium_pack_id"] as! String
+                        if pkgID == promoAppLink {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == pkgID {
+                                    self.performSegue(withIdentifier: "fromAdsToPurchase", sender: infoDict)
+                                }
+                            }
+                        } else {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == promoAppLink {
+                                    self.performSegue(withIdentifier: "nutritionPack", sender: infoDict)
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                } else if pkgsArray.count > 1 {
+                    if (self.pkgIdsArray.contains(promoAppLink)) {
+                        for dict in pkgsArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            let pkgID = infoDict["premium_pack_id"] as! String
+                            if pkgID == promoAppLink {
+                                for dict in self.premiumPackagesArray {
+                                    let infoDict = dict as! [String: AnyObject]
+                                    if infoDict["packageId"] as! String == pkgID {
+                                        self.performSegue(withIdentifier: "fromAdsToPurchase", sender: infoDict)
+                                    }
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        for dict in self.premiumPackagesArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            if infoDict["packageId"] as! String == promoAppLink {
+                                self.performSegue(withIdentifier: "nutritionPack", sender: infoDict)
+                            }
+                        }
+                    }
+                    
+                }
+                
+            } else {
+                for dict in self.premiumPackagesArray {
+                    let infoDict = dict as! [String: AnyObject]
+                    if infoDict["packageId"] as! String == promoAppLink {
+                        self.performSegue(withIdentifier: "nutritionPack", sender: infoDict)
+                    }
+                }
+            }
+        } else if promoAppLink == "-KyotHu4rPoL3YOsVxUu" {
+            if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray
+                if pkgsArray.count == 1 {
+                    for dict in pkgsArray {
+                        let infoDict = dict as! [String: AnyObject]
+                        let pkgID = infoDict["premium_pack_id"] as! String
+                        if pkgID == promoAppLink {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == pkgID {
+                                    self.performSegue(withIdentifier: "fromAdsToPurchase", sender: infoDict)
+                                }
+                            }
+                        } else {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == promoAppLink {
+                                    self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                } else if pkgsArray.count > 1 {
+                    if (self.pkgIdsArray.contains(promoAppLink)) {
+                        for dict in pkgsArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            let pkgID = infoDict["premium_pack_id"] as! String
+                            if pkgID == promoAppLink {
+                                for dict in self.premiumPackagesArray {
+                                    let infoDict = dict as! [String: AnyObject]
+                                    if infoDict["packageId"] as! String == pkgID {
+                                        self.performSegue(withIdentifier: "fromAdsToPurchase", sender: infoDict)
+                                    }
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        for dict in self.premiumPackagesArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            if infoDict["packageId"] as! String == promoAppLink {
+                                self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                            }
+                        }
+                    }
+                    
+                }
+                
+            } else {
+                for dict in self.premiumPackagesArray {
+                    let infoDict = dict as! [String: AnyObject]
+                    if infoDict["packageId"] as! String == promoAppLink {
+                        self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                    }
+                }
+            }
+        } else if promoAppLink == "-SquhLfL5nAsrhdq7GCY" {
+            if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray
+                if pkgsArray.count == 1 {
+                    for dict in pkgsArray {
+                        let infoDict = dict as! [String: AnyObject]
+                        let pkgID = infoDict["premium_pack_id"] as! String
+                        if pkgID == promoAppLink {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == pkgID {
+                                    self.performSegue(withIdentifier: "fromAdsToAiDP", sender: infoDict)
+                                }
+                            }
+                        } else {
+                            for dict in self.premiumPackagesArray {
+                                let infoDict = dict as! [String: AnyObject]
+                                if infoDict["packageId"] as! String == promoAppLink {
+                                    self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                } else if pkgsArray.count > 1 {
+                    if (self.pkgIdsArray.contains(promoAppLink)) {
+                        for dict in pkgsArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            let pkgID = infoDict["premium_pack_id"] as! String
+                            if pkgID == promoAppLink {
+                                for dict in self.premiumPackagesArray {
+                                    let infoDict = dict as! [String: AnyObject]
+                                    if infoDict["packageId"] as! String == pkgID {
+                                        self.performSegue(withIdentifier: "fromAdsToAiDP", sender: infoDict)
+                                    }
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        for dict in self.premiumPackagesArray {
+                            let infoDict = dict as! [String: AnyObject]
+                            if infoDict["packageId"] as! String == promoAppLink {
+                                self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                            }
+                        }
+                    }
+                    
+                }
+                
+            } else {
+                for dict in self.premiumPackagesArray {
+                    let infoDict = dict as! [String: AnyObject]
+                    if infoDict["packageId"] as! String == promoAppLink {
+                        self.performSegue(withIdentifier: "fromAdsToMore", sender: infoDict)
+                    }
+                }
+            }
+        } else if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {//IndWLIntusoe3uelxER
+            
+            
+            if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        } else if promoAppLink == "-IndWLIntusoe3uelxER" {//IndWLIntusoe3uelxER
+                   
+                   
+                   if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                       
+                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                   } else {
+                       DispatchQueue.main.async {
+                       MBProgressHUD.showAdded(to: self.view, animated: true);
+                       }
+                       self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                       
+                       
+                   }
+                   
+        } else if promoAppLink == "CHECK_THIS_OUT" {
+            self.performSegue(withIdentifier: "checkThisOut", sender: self)
+        } else if promoAppLink == "-Qis3atRaproTlpr4zIs" {
+            self.performSegue(withIdentifier: "floatingToNutrition", sender: promoAppLink)
+
+        } else if promoAppLink == "-AiDPwdvop1HU7fj8vfL" {
+            if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+              self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+            }
+        } else if promoAppLink == "-IdnMyAiDPoP9DFGkbas" {
+            if UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+            }
+        } else if promoAppLink == "-MalAXk7gLyR3BNMusfi" {
+            if UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+            }
+        } else if promoAppLink == "-MzqlVh6nXsZ2TCdAbOp" {
+            if UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+            }
+        } else if promoAppLink == "-SgnMyAiDPuD8WVCipga" {
+            if UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+            }
+        } else if promoAppLink == "-MysRamadanwgtLoss99" {
+                   if UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil {
+                       
+                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                   } else {
+                       DispatchQueue.main.async {
+                           MBProgressHUD.showAdded(to: self.view, animated: true);
+                       }
+                       self.moveToAnotherView(promoAppLink: promoAppLink)
+                       
+                   }
+               } else if promoAppLink == self.ptpPackage {
+            if UserDefaults.standard.value(forKey:  self.ptpPackage) != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+            
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+                
+
+            }
+        }
+    }
+    
+    func goToTAEClub() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    
     @objc func tappedOnPopUpDone() {
         if self.countryCode == "91" {
             self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
@@ -3541,7 +3982,13 @@ if dictionary.index(forKey: "weeksData") != nil {
         let promoAppLink = link //PP_PACKAGES
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
-        } else if promoAppLink == "PP_LABELS" {
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+            
+        } else {
+            self.goToTAEClub()
+        }
+            } else if promoAppLink == "PP_LABELS" {
             self.performSegue(withIdentifier: "nutritionPack", sender: self)
         } else if promoAppLink == "-TacvBsX4yDrtgbl6YOQ" {
             if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
@@ -4315,6 +4762,8 @@ if dictionary.index(forKey: "weeksData") != nil {
         
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.homeInfoApiCalls), name: NSNotification.Name(rawValue: "PTP-IN-APP-SUCCESSFUL"),
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.homeInfoApiCalls), name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"),
+                                                      object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.homeInfoApiCalls), name: NSNotification.Name(rawValue: "PREMIUM_PACK_IN-APP-SUCCESSFUL"),
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.homeInfoApiCalls), name: NSNotification.Name(rawValue: "NUTRITION_LABELS_PURHASE_SUCCESSFUL"),
@@ -4521,6 +4970,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         if UserDefaults.standard.value(forKey: "userSession") as? String != nil {
             
             homeInfoApiCalls()
+            
             self.checkAppVersion()
             self.getUserCallSchedueDetails()
         }
@@ -5077,12 +5527,7 @@ if dictionary.index(forKey: "weeksData") != nil {
             self.navigationBarTimerViewButton.setImage(UIImage.init(named: "\(7 - noDays)"), for: .normal)
             self.navigationBarTimerViewButton.isHidden = false
             self.trialPeriodExpiryView.isUserInteractionEnabled = false
-//            if self.tweaksArray.count == 0 {
-//                self.startTweakingView.isHidden = false
-//                self.startTweakingView.alpha = 0.7
-//                self.startTweakingLabel.alpha = 1.0
-//
-//            }
+
             if noDays == 7 {
               self.showTrialPeriodView()
 
@@ -5147,6 +5592,12 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
     
     func showTrialPeriodView() {
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        }
+        if self.countryCode == "91" {
+            self.getClubHome2()
+        } else {
         DispatchQueue.main.async {
             self.navigationBarButtonItemTimer.tintColor = UIColor.white
             self.navigationBarButtonItemTimer.isEnabled = false
@@ -5155,10 +5606,288 @@ if dictionary.index(forKey: "weeksData") != nil {
             self.trialPeriodExpiryView.isUserInteractionEnabled = true
             
             self.trialPeriodExpiryTextLbl.text = "Your trial period is completed.\n(Continue to use base service for free)\n\nClick here to subscribe now.";
+            self.trialPeriodExpiryTextLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
+
             self.startTweakingLabel.alpha = 0
             self.startTweakingView.isHidden = true
-            self.trialPeriodExpiryView.alpha = 0.7;
+            self.trialPeriodExpiryView.alpha = 0.8;
         }
+        }
+    }
+    
+    func getClub1Info() {
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_SUB3, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                    print(data)
+                      if data.count == 0 {
+                          
+                      } else {
+                        for dict in data {
+                            if dict["name"] as! String == "text1" {
+                                let htmlText = (dict["value"] as! String).replacingOccurrences(of: "<![CDATA[", with: "").replacingOccurrences(of: "]]>", with: "")
+                                let encodedData = htmlText.data(using: String.Encoding.utf8)!
+                                  var attributedString: NSAttributedString
+
+                                  do {
+                                      attributedString = try NSAttributedString(data: encodedData, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html,NSAttributedString.DocumentReadingOptionKey.characterEncoding:NSNumber(value: String.Encoding.utf8.rawValue)], documentAttributes: nil)
+                                      
+                                      self.taeClubTrialPeriodExpiryView.isHidden = false
+                                      self.taeClubTrialPeriodExpiryView.alpha = 0.8;
+
+                                      self.taeClubTrialPeriodExpiryViewLbl.attributedText = attributedString
+                                      self.taeClubTrialPeriodExpiryViewLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
+                                  } catch let error as NSError {
+                                      print(error.localizedDescription)
+                                  } catch {
+                                      print("error")
+                                  }
+                            }
+                                if dict["name"] as! String == "left_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_LEFT_BUTTON");
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.clubHome1LeftBth.setImage(image, for: .normal)
+                                                self.clubHome2LeftBth.setImage(image, for: .normal)
+                                                self.premiumMemberTopBtn.setImage(image, for: .normal)
+                                                self.premiumMemberBottomBtn.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                } else if dict["name"] as! String == "right_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_RIGHT_BUTTON");
+
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.clubHome1RightBth.setImage(image, for: .normal)
+                                                self.clubHome2RightBth.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                }
+                            
+                        }
+                      }
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
+    
+    func getClubHome2() {
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_HOME2, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                    //self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                      if data.count == 0 {
+                          
+                      } else {
+                        for dict in data {
+                            
+                                if dict["name"] as! String == "top_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+                                      
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME2_TOP_BUTTON");
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.taeClubHome2Btn.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                } else if dict["name"] as! String == "bottom_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "PERSONALIZED_SERVICES_BTN_DATA");
+
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.personalisedServicesBtn.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                }
+                            if dict["name"] as! String == "random_promo" {
+                                self.taeClubTrialPeriodExpiryView.isHidden = false
+                                self.taeClubTrialPeriodExpiryView.alpha = 0.8;
+
+                                self.taeClubTrialPeriodExpiryViewLbl.text = (dict["value"] as! String)
+                                self.taeClubTrialPeriodExpiryViewLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
+
+                            }
+                            if dict["name"] as! String == "random_promo_link" {
+                                self.taeClubTrialPeriodExpiryView.isHidden = false
+                                self.taeClubTrialPeriodExpiryView.alpha = 0.8;
+
+                                self.randomPromoLink = (dict["value"] as! String)
+                                print("randomPromoLink: \(self.randomPromoLink)")
+                            }
+                        }
+                      }
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
+    
+    func getClubHome1() {
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_HOME1, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+//                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+//                        self.tweakandeatClubButtonView.isHidden = true
+//                        self.tweakandeatClubButtonViewBottom.isHidden = true
+//
+//                    } else {
+//                        self.tweakandeatClubButtonView.isHidden = false
+//                        self.tweakandeatClubButtonViewBottom.isHidden = false
+//
+//                    }
+                     let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                      if data.count == 0 {
+                          
+                      } else {
+                        for dict in data {
+                            
+                                if dict["name"] as! String == "left_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_LEFT_BUTTON");
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.clubHome1LeftBth.setImage(image, for: .normal)
+                                                self.premiumMemberTopBtn.setImage(image, for: .normal)
+                                                self.premiumMemberBottomBtn.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                } else if dict["name"] as! String == "right_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_RIGHT_BUTTON");
+
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.clubHome1RightBth.setImage(image, for: .normal)
+                                                
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                }
+                            
+                        }
+                      }
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
     }
     
     func getStaticDateForComparison(noDays: Int) {
@@ -5276,9 +6005,11 @@ self.floatingCallBtn.isHidden = false
                 if let imageData = data {
                     let image = UIImage(data: imageData)
                     DispatchQueue.main.async {
+                        if self.countryCode != "91" {
+                            self.premiumMemberBottomBtn.setBackgroundImage(image, for: .normal)
+                            self.premiumMemberTopBtn.setBackgroundImage(image, for: .normal)
+                        }
                         
-                        self.premiumMemberBottomBtn.setBackgroundImage(image, for: .normal)
-                        self.premiumMemberTopBtn.setBackgroundImage(image, for: .normal)
                         
                     }
             }
@@ -5304,8 +6035,8 @@ self.floatingCallBtn.isHidden = false
             createdDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
             
             let crtDateStr =  responseDic["userCrtDttm"] as! String;
-            let crtDate = createdDateFormatter.date(from: crtDateStr);
-            let noDays = (self.daysBetweenDates(startDate: crtDate!, endDate: Date()))
+            let crtDate = createdDateFormatter.date(from: crtDateStr)!;
+            let noDays = (self.daysBetweenDates(startDate: crtDate, endDate: Date()))
             if self.countryCode == "63" {
                 let ptpUserSubscribed = responseDic["userPhlAibpSub"] as! Int
                 
@@ -5886,14 +6617,55 @@ self.floatingCallBtn.isHidden = false
                     }
                     }
                 }
+                let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
+                //let userSubscribedToClub = 1
                 
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
-                    
-                    self.removePTPExpiryView()
-                } else {
-                    self.getStaticDateForComparison(noDays: noDays)
-                }
+                if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
+                    UserDefaults.standard.synchronize()
+                  self.tweakandeatClubButtonView.isHidden = true
+                    self.tweakandeatClubButtonViewBottom.isHidden = true
+                  self.taeClubTrialPeriodExpiryView.isHidden = true
 
+
+                } else {
+                    UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+                }
+                if responseDic["userTaeClubSubExpDttm"] is NSNull {
+                    
+                } else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                let expDateStr =  responseDic["userTaeClubSubExpDttm"] as! String;
+                let expDate = dateFormatter.date(from: expDateStr);
+                
+                let currentDate = Date();
+                if expDate! < currentDate {
+                    UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
+                } else {
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
+                    UserDefaults.standard.synchronize()
+//                    floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
+//                    self.floatingCrownBtn.isHidden = false
+                        //self.tweakandeatClubButtonView.isHidden = true
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+                    }
+                }
+                
+//                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+//
+//                    self.removePTPExpiryView()
+//                } else {
+//                    self.getStaticDateForComparison(noDays: noDays)
+//                }
+                
+              
                 
             }
             if responseDic.index(forKey: "userLabelsCount") != nil {
@@ -5906,28 +6678,94 @@ self.floatingCallBtn.isHidden = false
                     self.floatingCrownBtn.isHidden = false
 
                     self.removePTPExpiryView()
-//                    self.getStaticDateForComparison(noDays: noDays)
+                   // self.getStaticDateForComparison(noDays: noDays)
                 } else {
-                    if self.countryCode == "60" {
-                        //UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil
-                        if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
-//IndWLIntusoe3uelxER
-
-                                               self.removePTPExpiryView()
-                                          } else {
-                                          self.getStaticDateForComparison(noDays: noDays)
-                                          }
-                    } else  {
-                    if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
-
-
-                         self.removePTPExpiryView()
-                    } else {
-                    self.getStaticDateForComparison(noDays: noDays)
-                    }
-                    }
                 }
             }
+            
+            if self.countryCode == "91" {
+                if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil && UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil && UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil && UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {
+                    let tenthAugDateStr = "2020-08-10"
+                    let fifteenthAugDateStr = "2020-08-16"
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd"
+                    let tenthAugDate = formatter.date(from: tenthAugDateStr)!
+                    let fifteenthAugDate = formatter.date(from: fifteenthAugDateStr)!
+                    let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 5, to: crtDate)!
+
+                    if crtDate < tenthAugDate {
+                        let currentDate = Date()
+                        if currentDate < fifteenthAugDate {
+                            self.tweakandeatClubButtonView.isHidden = false
+                            self.tweakandeatClubButtonViewBottom.isHidden = false
+                            self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                            self.taeClubTrialPeriodExpiryView.isHidden = true
+
+                        } else {
+                            self.tweakandeatClubButtonView.isHidden = true
+                            self.tweakandeatClubButtonViewBottom.isHidden = false
+                            self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                            self.showTrialPeriodView()
+
+                        }
+                    } else  {
+                        if sixDaysAfterCrtDttm > Date() {
+                            self.tweakandeatClubButtonView.isHidden = false
+                            self.tweakandeatClubButtonViewBottom.isHidden = false
+                            self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                            self.taeClubTrialPeriodExpiryView.isHidden = true
+
+                        } else {
+                            self.tweakandeatClubButtonView.isHidden = true
+                            self.tweakandeatClubButtonViewBottom.isHidden = false
+                            self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                            self.showTrialPeriodView()
+
+                        }
+                    }
+                    
+                    
+                } else if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {
+                    self.tweakandeatClubButtonView.isHidden = true
+                    self.tweakandeatClubButtonViewBottom.isHidden = true
+                    self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                    self.taeClubTrialPeriodExpiryView.isHidden = true
+
+                                       self.removePTPExpiryView()
+                                  } else {
+                    //self.showTrialPeriodView()
+                                  }
+            } else if self.countryCode == "60" {
+                                    //UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil
+                                    if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+
+                                                           self.removePTPExpiryView()
+                                                      } else {
+                                                      self.getStaticDateForComparison(noDays: noDays)
+                                                      }
+                                } else  {
+                    
+                                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+
+
+                                     self.removePTPExpiryView()
+                                } else {
+                                self.getStaticDateForComparison(noDays: noDays)
+                                }
+                                }
+
+//            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+//                              self.removePTPExpiryView()
+//                          } else {
+//                self.getClubHome2()
+//                //self.tweakandeatClubButtonView.isHidden = false
+//
+//            }
+            if self.countryCode == "91" {
+             self.getClubHome1()
+            // self.getClubHome2()
+             //self.getClub1Info()
+             }
 
             if floatingButtonArray.count > 0 {
                 self.floatingButtonsArray = floatingButtonArray

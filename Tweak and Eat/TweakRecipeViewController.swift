@@ -292,7 +292,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         DispatchQueue.main.async {
                       MBProgressHUD.showAdded(to: self.view, animated: true);
                       }
-        self.moveToAnotherView(promoAppLink: self.ptpPackage)
+        self.moveToAnotherView(promoAppLink: "-AiDPwdvop1HU7fj8vfL")
     }
     @IBAction func mytweakAndEatSubscribe(_ sender: Any) {
         DispatchQueue.main.async {
@@ -1566,7 +1566,21 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.goToDesiredVC(promoAppLink: self.topBannerImageLink)
     }
+    func goToTAEClub() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                
+            } else {
+                self.goToTAEClub()
+            }
+        }
         if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             
             

@@ -89,6 +89,13 @@ class PopUpNotificationView: UIView {
         let promoAppLink = link //PP_PACKAGES
         if promoAppLink == "HOME" || promoAppLink == "" {
             
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+                                        
+                      if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                           
+                       } else {
+                           self.goToTAEClub()
+                       }
         } else if promoAppLink == "PP_PACKAGES" {
           //  self.performSegue(withIdentifier: "buyPackages", sender: self);
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -288,6 +295,13 @@ class PopUpNotificationView: UIView {
                 navController?.pushViewController(vc, animated: true);
     }
     
+    func goToTAEClub() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    
     func showCaloriesVC() {
         //CaloriesLeftForTheDayController
          let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -309,7 +323,13 @@ class PopUpNotificationView: UIView {
                } else if link == "HOW_IT_WORKS" {
                    
                  self.playVideo()
-               } else {
+               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                
+            } else {
+                self.goToTAEClub()
+            }
+                } else {
                    tappedOnPopUpDone()
                }
 //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);

@@ -194,8 +194,13 @@ class ImageUploadingViewController: UIViewController {
                 
             }
         }
-       
-        if promoAppLink == "PP_LABELS" {
+       if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+                  if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                      
+                  } else {
+                      self.goToTAEClub()
+                  }
+              } else if promoAppLink == "PP_LABELS" {
             self.performSegue(withIdentifier: "nutritionPack", sender: promoAppLink)
         } else  if promoAppLink == "PP_PACKAGES" {
                    //self.performSegue(withIdentifier: "buyPackages", sender: self);
@@ -643,6 +648,12 @@ class ImageUploadingViewController: UIViewController {
     @objc func back(sender: UIBarButtonItem) {
         _ = navigationController?.popToRootViewController(animated: true);
     }
+    func goToTAEClub() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                   let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                   let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                   navController?.pushViewController(vc, animated: true);
+       }
 
     @objc func didYouKnowStaticText(){
         let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;

@@ -118,6 +118,14 @@ class TimelinesDetailsViewController: UIViewController {
         self.goToDesiredVC(promoAppLink: self.promoAppLink)
     }
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
+        
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                
+            } else {
+                self.goToTAEClub()
+            }
+        }
         if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             
             
@@ -684,6 +692,13 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
         self.present(alert, animated: true, completion: nil);
     }
     
+    func goToTAEClub() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                   let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                   let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                   navController?.pushViewController(vc, animated: true);
+       }
+    
     @objc func didYouKnowStaticText(){
         let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
         APIWrapper.sharedInstance.getRequest(TweakAndEatURLConstants.DAILYTIPS, sessionString: userSession, success:
@@ -700,10 +715,10 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
                     
                     self.promoAppLink = response["promoAppLink"] as! String
                     
-                    
                     self.imageADView.isUserInteractionEnabled = true;
                     if response.index(forKey: "promoImgUrl") != nil && response.index(forKey: "promoAppLink") != nil {
                         let promoImgUrl = response["promoImgUrl"] as! String
+                        print(promoImgUrl)
                         let promoAppLink = response["promoAppLink"] as! String
                         if promoImgUrl == "" || promoAppLink == "" {
                             self.imageADView.isHidden = true

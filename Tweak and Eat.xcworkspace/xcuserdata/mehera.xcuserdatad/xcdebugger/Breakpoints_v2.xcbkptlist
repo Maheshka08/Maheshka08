@@ -7,176 +7,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48"
+            uuid = "E3D5A44E-D254-450C-890F-BDBB076E20E9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "confirmCaptchaScheduleCall(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48 - f3088a900ce8b1ff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tweak_and_Eat.MoreInfoPremiumPackagesViewController.confirmCaptchaScheduleCall(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MoreInfoPremiumPackagesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "6644">
-               </Location>
-               <Location
-                  uuid = "8B9D57AD-D49D-4A72-A951-41B6D274BD48 - 38f2f1c5cbcdb986"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in Tweak_and_Eat.MoreInfoPremiumPackagesViewController.confirmCaptchaScheduleCall(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MoreInfoPremiumPackagesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "290"
-                  endingLineNumber = "290"
-                  offsetFromSymbolStart = "252">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FE16CCB1-15A0-4B0A-8665-1CB8679BDDDC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PopUpNotificationView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "moveToAnotherView(promoAppLink:)"
+            startingLineNumber = "6721"
+            endingLineNumber = "6721"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "49EDC00F-BA78-4C2F-881E-0C6D9BEE8BE9"
+            uuid = "09BECC64-8F41-4495-8219-524AB0B9B6E9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PopUpNotificationView.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "tappedOnPopUpDone()"
+            startingLineNumber = "6712"
+            endingLineNumber = "6712"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0D3FC09-9358-4E1C-A95B-DB982027C1FF"
+            uuid = "05FE62F8-D755-4827-A027-BC8ADFCC9B9D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PopUpNotificationView.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "moveToAnotherView(promoAppLink:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E0D3FC09-9358-4E1C-A95B-DB982027C1FF - 925fa86c773ca8c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tweak_and_Eat.PopUpNotificationView.moveToAnotherView(promoAppLink: Swift.String) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/PopUpNotificationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "188">
-               </Location>
-               <Location
-                  uuid = "E0D3FC09-9358-4E1C-A95B-DB982027C1FF - e057ee96d7ebf311"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Tweak_and_Eat.PopUpNotificationView.moveToAnotherView(promoAppLink: Swift.String) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/PopUpNotificationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "228">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ECB0B329-2902-40DC-843B-AA2658FD6487"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PopUpNotificationView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "showAvailablePremiumPackageVC(obj:)"
+            startingLineNumber = "1857"
+            endingLineNumber = "1857"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C0E61E4-31F9-4EDB-B72E-3BCE634AE576"
+            uuid = "DD61D03D-8191-4039-929F-92129EEF6CE9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/NotificationService.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
+            startingLineNumber = "6012"
+            endingLineNumber = "6012"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B82919A-28E0-4EBE-8340-C6AAA4443344"
+            uuid = "D6AF5A5B-E669-4DBE-99F3-E47D0CBCDF00"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/NotificationService.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
+            startingLineNumber = "6696"
+            endingLineNumber = "6696"
+            landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7FF81F8-F08A-4AC3-B9DA-B3DA1A50B328"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6705"
+            endingLineNumber = "6705"
+            landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8064C777-FD76-48E7-A700-CDDC5ABB48E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6764"
+            endingLineNumber = "6764"
+            landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "486A61A2-480E-4912-B638-82B6D574D68C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6728"
+            endingLineNumber = "6728"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

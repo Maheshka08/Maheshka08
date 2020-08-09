@@ -1049,7 +1049,21 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                   }
        }
     
+    func goToTAEClub() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                   let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                   let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                   navController?.pushViewController(vc, animated: true);
+       }
+    
     func goToDesiredVC(promoAppLink: String) {
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                
+            } else {
+                self.goToTAEClub()
+            }
+        }
         if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             
             

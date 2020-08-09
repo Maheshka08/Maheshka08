@@ -1123,7 +1123,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                   
                   print("failure")
                   if error?.code == -1011 {
-                      TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your payment was declined.");
+                      TweakAndEatUtils.AlertView.showAlert(view: self, message: "Could not schedule the call. Please try again...");
                       return
                   }
                   TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
