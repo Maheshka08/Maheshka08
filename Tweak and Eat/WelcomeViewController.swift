@@ -2557,29 +2557,16 @@ tappedOnTAEClubExpiryView()
             if  responseResult == "GOOD" {
                 
                 print("Sucess")
-                if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-                           self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-                       }
-                var labelsCount = 0
-                      if UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") != nil {
-                          labelsCount = UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") as! Int
-                      }
-                if self.countryCode == "91" {//IndWLIntusoe3uelxER
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil  {
-                    DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    }
-                    self.takephoto();
-                    }  else {
-                    self.getGlobalVariablesData()
-                    }
+//                if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+//                           self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+//                       }
+                 DispatchQueue.main.async {
+                                    MBProgressHUD.hide(for: self.view, animated: true);
+                                    }
+                
+                
 
-                } else {
-                    DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    }
                 self.takephoto();
-                }
                 
                 
             } else{
@@ -3340,46 +3327,46 @@ tappedOnTAEClubExpiryView()
     
     }
     
-    func getGlobalVariablesData() {
-        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-        }
-        Database.database().reference().child("GlobalVariables").child("Pages").child("GamifyingLevel0").child(self.countryCode).child("iOS").observe(DataEventType.value, with: { (snapshot) in
-                   
-                    if snapshot.childrenCount > 0 {
-                         self.sectionsForGamifyArray = []
-                                let dispatch_group1 = DispatchGroup();
-                                dispatch_group1.enter();
-                                   for obj in snapshot.children.allObjects as! [DataSnapshot] {
-                                    if obj.key == "Sections" {
-                                        let sectionsArray = obj.value as AnyObject as! NSArray
-                                        self.sectionsForGamifyArray = sectionsArray as AnyObject as! [[String : AnyObject]]
-                                        
-                                    }
-                               
-                        
-                    }
-                    
-                        dispatch_group1.leave();
-
-                        dispatch_group1.notify(queue: DispatchQueue.main) {
-                            MBProgressHUD.hide(for: self.view, animated: true);
-                            
-                            self.performSegue(withIdentifier: "gamify", sender: self)
-                        }
-                        
-                    } else {
-                        DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: self.view, animated: true);
-                        }
-                        self.takephoto();
-            }
-                   
-                    
-                   
-                    
-                })
-    }
+//    func getGlobalVariablesData() {
+//        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+//            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+//        }
+//        Database.database().reference().child("GlobalVariables").child("Pages").child("GamifyingLevel0").child(self.countryCode).child("iOS").observe(DataEventType.value, with: { (snapshot) in
+//
+//                    if snapshot.childrenCount > 0 {
+//                         self.sectionsForGamifyArray = []
+//                                let dispatch_group1 = DispatchGroup();
+//                                dispatch_group1.enter();
+//                                   for obj in snapshot.children.allObjects as! [DataSnapshot] {
+//                                    if obj.key == "Sections" {
+//                                        let sectionsArray = obj.value as AnyObject as! NSArray
+//                                        self.sectionsForGamifyArray = sectionsArray as AnyObject as! [[String : AnyObject]]
+//
+//                                    }
+//
+//
+//                    }
+//
+//                        dispatch_group1.leave();
+//
+//                        dispatch_group1.notify(queue: DispatchQueue.main) {
+//                            MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                            self.performSegue(withIdentifier: "gamify", sender: self)
+//                        }
+//
+//                    } else {
+//                        DispatchQueue.main.async {
+//                        MBProgressHUD.hide(for: self.view, animated: true);
+//                        }
+//                        self.takephoto();
+//            }
+//
+//
+//
+//
+//                })
+//    }
 
     @objc func getPremiumBtn() {
         //CLUBHOME1_RIGHT_BUTTON
@@ -6714,20 +6701,20 @@ self.floatingCallBtn.isHidden = false
               
                 
             }
-            if responseDic.index(forKey: "userLabelsCount") != nil {
-            let labelsCount = responseDic["userLabelsCount"] as! Int
-                UserDefaults.standard.set(labelsCount, forKey: "USER_LABELS_COUNT")
-                UserDefaults.standard.synchronize()
-
-                if labelsCount > 0 {
-                    floatingButtonArray.append(["pkgName": "Nutrition Labels" as AnyObject, "imgName": "nutritionLabels-icon" as AnyObject, "pkg": "-Qis3atRaproTlpr4zIs" as AnyObject])
-                    self.floatingCrownBtn.isHidden = false
-
-                    self.removePTPExpiryView()
-                   // self.getStaticDateForComparison(noDays: noDays)
-                } else {
-                }
-            }
+//            if responseDic.index(forKey: "userLabelsCount") != nil {
+//            let labelsCount = responseDic["userLabelsCount"] as! Int
+//                UserDefaults.standard.set(labelsCount, forKey: "USER_LABELS_COUNT")
+//                UserDefaults.standard.synchronize()
+//
+//                if labelsCount > 0 {
+//                    floatingButtonArray.append(["pkgName": "Nutrition Labels" as AnyObject, "imgName": "nutritionLabels-icon" as AnyObject, "pkg": "-Qis3atRaproTlpr4zIs" as AnyObject])
+//                    self.floatingCrownBtn.isHidden = false
+//
+//                    self.removePTPExpiryView()
+//                   // self.getStaticDateForComparison(noDays: noDays)
+//                } else {
+//                }
+//            }
             
             if self.countryCode == "91" {
                 if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil && UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil && UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil && UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {

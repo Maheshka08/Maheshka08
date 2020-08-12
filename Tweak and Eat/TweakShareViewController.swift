@@ -340,59 +340,21 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
             TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please select your meal type !")
             return
         }
-        if self.countryCode == "91" {
-                       self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
-                   } else if self.countryCode == "1" {
-                       self.ptpPackage = "-UsaAiBPxnaopT55GJxl"
-                   } else if self.countryCode == "65" {
-                       self.ptpPackage = "-SgnAiBPJlXfM3KzDWR8"
-                   } else if self.countryCode == "62" {
-                       self.ptpPackage = "-IdnAiBPLKMO5ePamQle"
-                   } else if self.countryCode == "60" {
-                       self.ptpPackage = "-MysAiBPyaX9TgFT1YOp"
-                   } else if self.countryCode == "63" {
-                       self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
-                   }
+
         parameterDict1["isRefill"] = isRefill as AnyObject
         parameterDict1["userComments"] = commentBox.text as AnyObject
         parameterDict1["refillComments"] = popUpTextView.text as AnyObject
         parameterDict1["mealType"] = self.mealTypeValue as AnyObject
-        if self.countryCode == "91" {
-            var tweakCount = 0
-                  if UserDefaults.standard.value(forKey: "TWEAK_COUNT") != nil {
-                   tweakCount = UserDefaults.standard.value(forKey: "TWEAK_COUNT") as! Int
-                  }
-                  var labelsCount = 0
-                  if UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") != nil {
-                      labelsCount = UserDefaults.standard.value(forKey: "USER_LABELS_COUNT") as! Int
-                  }
-                  
-                  if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || tweakCount > 50 {
-                      let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-                            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "ImageUploadingViewController") as! ImageUploadingViewController;
-                            clickViewController.uploadedImage = tweakImage  as UIImage;
-                            
-                        
-                            clickViewController.parameterDict = parameterDict1
-                            
-                            self.navigationController?.pushViewController(clickViewController, animated: true);
-                            dismiss(animated:true, completion:  nil);
-                   } else {
-                      
-                      self.getGlobalVariablesData()
-                  }
-        } else {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-                let clickViewController = storyBoard.instantiateViewController(withIdentifier: "ImageUploadingViewController") as! ImageUploadingViewController;
-                clickViewController.uploadedImage = tweakImage  as UIImage;
-                
-            
-                clickViewController.parameterDict = parameterDict1
-                
-                self.navigationController?.pushViewController(clickViewController, animated: true);
-                dismiss(animated:true, completion:  nil);
-            
-        }
+
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                       let clickViewController = storyBoard.instantiateViewController(withIdentifier: "ImageUploadingViewController") as! ImageUploadingViewController;
+                       clickViewController.uploadedImage = tweakImage  as UIImage;
+                       
+                   
+                       clickViewController.parameterDict = parameterDict1
+                       
+                       self.navigationController?.pushViewController(clickViewController, animated: true);
+                       dismiss(animated:true, completion:  nil);
       
       
         
@@ -420,39 +382,39 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
 
                }
     }
-    func getGlobalVariablesData() {
-        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-        }
-        Database.database().reference().child("GlobalVariables").child("Pages").child("GamifyingLevel1").child(self.countryCode).child("iOS").observe(DataEventType.value, with: { (snapshot) in
-                   
-                    if snapshot.childrenCount > 0 {
-                         self.sectionsForGamifyArray = []
-                                let dispatch_group1 = DispatchGroup();
-                                dispatch_group1.enter();
-                                   for obj in snapshot.children.allObjects as! [DataSnapshot] {
-                                    if obj.key == "Sections" {
-                                        let sectionsArray = obj.value as AnyObject as! NSArray
-                                        self.sectionsForGamifyArray = sectionsArray as AnyObject as! [[String : AnyObject]]
-                                        
-                                    }
-                               
-                        
-                    }
-                    
-                        dispatch_group1.leave();
-
-                        dispatch_group1.notify(queue: DispatchQueue.main) {
-                            self.performSegue(withIdentifier: "gamify", sender: self)
-                        }
-                        
-                    }
-                   
-                    
-                   
-                    
-                })
-    }
+//    func getGlobalVariablesData() {
+//        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+//            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+//        }
+//        Database.database().reference().child("GlobalVariables").child("Pages").child("GamifyingLevel1").child(self.countryCode).child("iOS").observe(DataEventType.value, with: { (snapshot) in
+//                   
+//                    if snapshot.childrenCount > 0 {
+//                         self.sectionsForGamifyArray = []
+//                                let dispatch_group1 = DispatchGroup();
+//                                dispatch_group1.enter();
+//                                   for obj in snapshot.children.allObjects as! [DataSnapshot] {
+//                                    if obj.key == "Sections" {
+//                                        let sectionsArray = obj.value as AnyObject as! NSArray
+//                                        self.sectionsForGamifyArray = sectionsArray as AnyObject as! [[String : AnyObject]]
+//                                        
+//                                    }
+//                               
+//                        
+//                    }
+//                    
+//                        dispatch_group1.leave();
+//
+//                        dispatch_group1.notify(queue: DispatchQueue.main) {
+//                            self.performSegue(withIdentifier: "gamify", sender: self)
+//                        }
+//                        
+//                    }
+//                   
+//                    
+//                   
+//                    
+//                })
+//    }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         performSegueToReturnBack()
