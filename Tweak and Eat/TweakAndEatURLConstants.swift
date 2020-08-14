@@ -124,10 +124,12 @@ struct TweakAndEatURLConstants {
     static let CALL_SCHEDULE_LANGUAGES = BASE_URL + "/api/master/callschlangs"
     static let CLUB_HOME1 = BASE_URL + "/api/content/clubhome1"
     static let CLUB_HOME2 = BASE_URL + "/api/content/clubhome2"
+    static let CLUB_HOME3 = BASE_URL + "/api/content/clubhome3"
     static let CLUB_SUB1 = BASE_URL + "/api/content/clubsub1"
     static let CLUB_SUB2 = BASE_URL + "/api/content/clubsub2"
     static let CLUB_SUB3 = BASE_URL + "/api/content/clubsub3"
     static let CLUB_SUB4 = BASE_URL + "/api/content/clubsub4"
+    static let CLUB_LANDING = BASE_URL + "/api/content/clublanding"
 
     
 }

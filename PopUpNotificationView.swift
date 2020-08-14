@@ -63,6 +63,7 @@ class PopUpNotificationView: UIView {
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.showAvailablePremiumPackageVC(obj: packageObj)
@@ -71,6 +72,7 @@ class PopUpNotificationView: UIView {
             }
         })
     }
+    
     func tappedOnPopUpDone() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
@@ -91,11 +93,12 @@ class PopUpNotificationView: UIView {
         }
         let promoAppLink = link //PP_PACKAGES
         if promoAppLink == "HOME" || promoAppLink == "" {
+            self.goToHomePage()
             
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
-                                        
+            
                       if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                           
+                         self.goToTAEClubMemPage()
                        } else {
                            self.goToTAEClub()
                        }
@@ -274,6 +277,7 @@ class PopUpNotificationView: UIView {
     @IBAction func doneTapped(_ sender: Any) {
         self.removeFromSuperview()
         if self.link == "HOME" || self.link == "" {
+            self.goToHomePage()
            return
         }
        tappedOnPopUpDone()
@@ -298,12 +302,29 @@ class PopUpNotificationView: UIView {
                 navController?.pushViewController(vc, animated: true);
     }
     
+    func goToHomePage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func goToTAEClub() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                 navController?.pushViewController(vc, animated: true);
     }
+    
+    func goToTAEClubMemPage() {
+          let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+          let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+       navController?.pushViewController(clickViewController!, animated: true);
+         
+      }
+
+    
     
     func showCaloriesVC() {
         //CaloriesLeftForTheDayController
@@ -317,7 +338,8 @@ class PopUpNotificationView: UIView {
     
     @IBAction func doneTappedOnSmallPopUp(_ sender: Any) {
         self.removeFromSuperview()
-        if link == "" {
+        if link == "HOME" || link == "" {
+            self.goToHomePage()
                } else if link == "CALS_LEFT_FS_POPUP" {
                    //UIView.setani
                   // self.performSegue(withIdentifier: "calorieMeter", sender: self)
@@ -328,7 +350,8 @@ class PopUpNotificationView: UIView {
                  self.playVideo()
                } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                
+                self.goToTAEClubMemPage()
+
             } else {
                 self.goToTAEClub()
             }

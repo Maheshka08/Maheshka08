@@ -426,6 +426,12 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.goToDesiredVC(promoAppLink: self.topBannerImageLink)
     }
+    func goToHomePage() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+           let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+          
+       }
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -448,6 +454,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "moreInfo", sender: packageObj)
@@ -456,7 +463,10 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
-        if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
+        if promoAppLink == "HOME" || promoAppLink == "" {
+            self.goToHomePage()
+            
+        } else if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             
             
             if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
@@ -570,8 +580,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
 
             }
-        }
-    }
+        }    }
           
        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            if self.topBannersDict.count > 0 {

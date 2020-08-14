@@ -87,6 +87,13 @@ class TimelinesDetailsViewController: UIViewController {
         }
     }
     
+    func goToHomePage() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+           let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+          
+       }
+    
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -109,6 +116,7 @@ class TimelinesDetailsViewController: UIViewController {
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "moreInfo", sender: packageObj)
@@ -120,11 +128,19 @@ class TimelinesDetailsViewController: UIViewController {
     
         self.goToDesiredVC(promoAppLink: self.promoAppLink)
     }
+    func goToTAEClubMemPage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
-        
-        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+        if promoAppLink == "HOME" || promoAppLink == "" {
+                   self.goToHomePage()
+                   
+               } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                
+                self.goToTAEClubMemPage()
             } else {
                 self.goToTAEClub()
             }
@@ -243,7 +259,7 @@ class TimelinesDetailsViewController: UIViewController {
                 
 
             }
-        }
+        } 
     }
     
     override func viewDidLoad() {
@@ -440,8 +456,9 @@ class TimelinesDetailsViewController: UIViewController {
                 
             }
         }
-        
-        if promoAppLink == "PP_LABELS" {
+        if promoAppLink == "HOME" || promoAppLink == "" {
+            self.goToHomePage()
+        } else if promoAppLink == "PP_LABELS" {
             self.performSegue(withIdentifier: "nutritionPack", sender: self)
         } else if promoAppLink == "-KyotHu4rPoL3YOsVxUu" {
             if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {

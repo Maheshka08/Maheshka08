@@ -152,8 +152,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.areYouSureLbl.layer.cornerRadius = 10
         self.calendarInnerView.layer.cornerRadius = 10
         self.calView.layer.cornerRadius = 10
-       // self.innerCalendarViewHeightConstant.constant = 560
-        //self.view.backgroundColor=Style.bgColor
+      
         self.areYouSureLbl.isHidden = true
         self.calendarOuterView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         self.calView.addSubview(calenderView)

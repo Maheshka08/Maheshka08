@@ -194,9 +194,11 @@ class ImageUploadingViewController: UIViewController {
                 
             }
         }
-       if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+        if promoAppLink == "HOME" || promoAppLink == "" {
+            self.goToHomePage()
+        } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                      
+                    self.goToTAEClubMemPage()
                   } else {
                       self.goToTAEClub()
                   }
@@ -459,7 +461,19 @@ class ImageUploadingViewController: UIViewController {
             popOverVC.packageID = pkgID
         }
     }
-    
+    func goToHomePage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
+    func goToTAEClubMemPage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
+
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -483,6 +497,7 @@ class ImageUploadingViewController: UIViewController {
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "premiumPackagesToMore", sender: packageObj)

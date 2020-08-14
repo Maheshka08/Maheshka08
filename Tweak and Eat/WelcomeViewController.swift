@@ -309,6 +309,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     @IBOutlet weak var premiumMemberBottomBtn: UIButton!
     @IBOutlet weak var premiumMemberTopBtn: UIButton!
+    @IBOutlet weak var  taeClubMemberTopButton: UIButton!
+    @IBOutlet weak var  taeClubMemberBottomButton: UIButton!
+    
     @IBOutlet weak var chatViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var popUpViewForPTP: UIView!
@@ -319,6 +322,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var ptpPhBtn1: UIButton!
     @IBOutlet weak var taeClubTrialPeriodExpiryViewLbl: UILabel!
     @IBOutlet weak var ptpPhBtn2: UIButton!
+    @IBOutlet weak var taeClubMemberTopView: UIView!
+    @IBOutlet weak var taeClubMemberBottomView: UIView!
+    @IBOutlet weak var taeClubMemberTopRightButton: UIButton!
+    @IBOutlet weak var taeClubMemberBottomRightButton: UIButton!
     
     @IBOutlet weak var topImageView: UIView!
     @IBOutlet weak var foodImageShadowView: UIView!
@@ -420,7 +427,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var fitBitSyncView: UIView!;
     @IBOutlet weak var tweakCountLbl: UILabel!;
     @IBOutlet weak var tweakStreakView: UIView!;
-    @IBOutlet weak var tweakAndEatClubMemberLabel: UILabel!
     @IBOutlet weak var adsImageView: UIImageView!;
     @objc var deviceInfo = UIDevice.current.modelName;
     @IBOutlet weak var kuwaitIconsView: UIView!;
@@ -570,6 +576,18 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var taeClubHome2Btn: UIButton!
     
+    
+    @IBAction func taeClubMemberButtonTapped(_ sender: Any) {
+        self.goToTAEClubMemPage()
+    }
+    func goToTAEClubMemPage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
+    
+    
     @IBAction func taeClubHome2BtnTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "taeClub", sender: self);
 
@@ -592,7 +610,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.smallScreenPopUp.isHidden = true
 
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                       
+                       self.goToTAEClubMemPage()
+
                    } else {
                        self.goToTAEClub()
                    }
@@ -1795,6 +1814,29 @@ tappedOnTAEClubExpiryView()
                      
                  }
              }
+        if UserDefaults.standard.value(forKey: "CLUBHOME3_LEFT_BUTTON") != nil {
+            DispatchQueue.main.async {
+          
+               self.taeClubMemberTopButton.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME3_LEFT_BUTTON") as! Data), for: .normal)
+               self.taeClubMemberBottomButton.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME3_LEFT_BUTTON") as! Data), for: .normal)
+               
+
+                
+                
+            }
+        }
+        if UserDefaults.standard.value(forKey: "CLUBHOME3_RIGHT_BUTTON") != nil {
+            DispatchQueue.main.async {
+          
+                self.taeClubMemberTopRightButton.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME3_RIGHT_BUTTON") as! Data), for: .normal)
+            
+               self.taeClubMemberBottomRightButton.setImage(UIImage(data: UserDefaults.standard.value(forKey: "CLUBHOME3_RIGHT_BUTTON") as! Data), for: .normal)
+               
+
+                
+                
+            }
+        }
         if UserDefaults.standard.value(forKey: "CLUBHOME2_TOP_BUTTON") != nil {
                        DispatchQueue.main.async {
                            
@@ -1815,7 +1857,6 @@ tappedOnTAEClubExpiryView()
         
         self.appVersionUpdateButton.layer.cornerRadius = 15
         self.appCheckVersionView.backgroundColor = UIColor.purple.withAlphaComponent(0.7)
-       // self.tweakAndEatClubMemberLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 15.0)
         if IS_iPHONE5 {
                   self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
 
@@ -2879,7 +2920,8 @@ tappedOnTAEClubExpiryView()
             self.popUpView.removeFromSuperview()
 
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                       
+                       self.goToTAEClubMemPage()
+
                    } else {
                        self.goToTAEClub()
                    }
@@ -3971,11 +4013,13 @@ tappedOnTAEClubExpiryView()
             }
         }
         let promoAppLink = link //PP_PACKAGES
+       
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
         if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-            
+            self.goToTAEClubMemPage()
+
         } else {
             self.goToTAEClub()
         }
@@ -4277,6 +4321,13 @@ tappedOnTAEClubExpiryView()
         }
     }
     
+    func goToHomePage() {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+         self.navigationController?.pushViewController(clickViewController!, animated: true)
+           
+        }
+ 
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -4300,6 +4351,7 @@ tappedOnTAEClubExpiryView()
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "fromAdsToMore", sender: packageObj)
@@ -5699,6 +5751,84 @@ tappedOnTAEClubExpiryView()
                   TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
               })
     }
+    func getClubHome3() {
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_HOME3, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+
+                     let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                    print(data)
+                      if data.count == 0 {
+                          
+                      } else {
+                        for dict in data {
+                            
+                        if dict["name"] as! String == "left_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME3_LEFT_BUTTON");
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.taeClubMemberBottomButton.setImage(image, for: .normal)
+                                                self.taeClubMemberTopButton.setImage(image, for: .normal)
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                } else if dict["name"] as! String == "right_btn" {
+                                    let urlString = dict["value"] as! String
+                                        let url = URL(string: urlString)
+                                    DispatchQueue.global(qos: .background).async {
+                                        // Call your background task
+                                        let data = try? Data(contentsOf: url!)
+                                        // UI Updates here for task complete.
+
+                                        if let imageData = data {
+                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME3_RIGHT_BUTTON");
+
+                                            let image = UIImage(data: imageData)
+                                            DispatchQueue.main.async {
+                                                
+                                                self.taeClubMemberTopRightButton.setImage(image, for: .normal)
+                                                self.taeClubMemberBottomRightButton.setImage(image, for: .normal)
+
+                                            }
+                                    }
+                                    
+
+                                        
+                                    }
+                                }
+                            
+                        }
+                      }
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
     
     func getClubHome1() {
         //MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -5710,15 +5840,7 @@ tappedOnTAEClubExpiryView()
                   let responseResult = responseDic["callStatus"] as! String;
                   if  responseResult == "GOOD" {
                       MBProgressHUD.hide(for: self.view, animated: true);
-//                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-//                        self.tweakandeatClubButtonView.isHidden = true
-//                        self.tweakandeatClubButtonViewBottom.isHidden = true
-//
-//                    } else {
-//                        self.tweakandeatClubButtonView.isHidden = false
-//                        self.tweakandeatClubButtonViewBottom.isHidden = false
-//
-//                    }
+
                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
                       if data.count == 0 {
                           
@@ -5819,6 +5941,9 @@ tappedOnTAEClubExpiryView()
                 
                 if data.count == 0 {
                     UserDefaults.standard.removeObject(forKey: "CALL_SCHEDULED")
+                    //UserDefaults.standard.removeObject(forKey: "CALL_SCHEDULED_FROM_CLUB")
+
+                    
                     self.floatingCallBtn.isHidden = true
                 } else {
                 
@@ -6724,7 +6849,7 @@ self.floatingCallBtn.isHidden = false
                     formatter.dateFormat = "yyyy-MM-dd"
                     let tenthAugDate = formatter.date(from: tenthAugDateStr)!
                     let fifteenthAugDate = formatter.date(from: fifteenthAugDateStr)!
-                    let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 5, to: crtDate)!
+                    let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 6, to: crtDate)!
 
                     if crtDate < tenthAugDate {
                         let currentDate = Date()
@@ -6788,9 +6913,17 @@ self.floatingCallBtn.isHidden = false
                                 }
 
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                self.tweakAndEatClubMemberLabel.isHidden = false
+                self.taeClubMemberTopButton.isHidden = false
+                self.taeClubMemberBottomButton.isHidden = false
+                self.taeClubMemberTopView.isHidden = false
+                self.taeClubMemberBottomView.isHidden = false
+                self.getClubHome3()
                           } else {
-                self.tweakAndEatClubMemberLabel.isHidden = true
+                self.taeClubMemberTopButton.isHidden = true
+                self.taeClubMemberBottomButton.isHidden = true
+                self.taeClubMemberTopView.isHidden = true
+                self.taeClubMemberBottomView.isHidden = true
+               
 
             }
             if self.countryCode == "91" {

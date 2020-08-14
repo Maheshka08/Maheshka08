@@ -175,6 +175,7 @@
 		8326169E2493802D0002B77C /* PopUpNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326169D2493802D0002B77C /* PopUpNotificationView.xib */; };
 		832616A0249380BD0002B77C /* PopUpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326169F249380BD0002B77C /* PopUpNotificationView.swift */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
+		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
 		83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */; };
 		83E7320224439B8300ACF0F5 /* PurchasedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */; };
@@ -530,6 +531,7 @@
 		8326169D2493802D0002B77C /* PopUpNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpNotificationView.xib; sourceTree = "<group>"; };
 		8326169F249380BD0002B77C /* PopUpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNotificationView.swift; sourceTree = "<group>"; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
 		83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePackagesTableViewCell.swift; sourceTree = "<group>"; };
 		83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPackagesViewController.swift; sourceTree = "<group>"; };
 		83EA2FC424A5D695009DDABA /* MyNutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNutritionView.swift; sourceTree = "<group>"; };
@@ -874,6 +876,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */,
 				8350FB0224E2A33200FA50C0 /* student.json */,
 				83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */,
 				83222C6C24DDF6E700A6E4E0 /* TAEClub3VCViewController.swift */,
@@ -1752,6 +1755,7 @@
 				732986D11FEBD45E006A364C /* ChatVC.swift in Sources */,
 				84B09A221FDAB2CF00B4FAE0 /* RecipeDetailsViewController.swift in Sources */,
 				5735D8361D79CEEB001DAF83 /* AFURLResponseSerialization.m in Sources */,
+				835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */,
 				84EF2D901DE6CA6700F340C5 /* TBL_DailyTips+CoreDataClass.swift in Sources */,
 				186051F223B1F6D800C9971A /* ScrollCell.swift in Sources */,
 				0499E893224B4EFD00E3A304 /* ImageSlideViewController.swift in Sources */,

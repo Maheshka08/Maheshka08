@@ -250,6 +250,13 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var myAiBPtn: UIButton!
    
     @IBOutlet weak var myTweakAndEatBtn: UIButton!
+    
+    func goToHomePage() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+           let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+          
+       }
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -273,6 +280,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
+                        self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "fromImmunityBoostToMore", sender: packageObj)
@@ -438,7 +446,12 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func vegAction(_ sender: Any) {
         self.getVegRecipes()
     }
-    
+    func goToTAEClubMemPage() {
+          let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+          let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+       self.navigationController?.pushViewController(clickViewController!, animated: true)
+         
+      }
     @IBAction func nonVegAction(_ sender: Any) {
          DispatchQueue.main.async {
         self.backButton.isHidden = false
@@ -1569,6 +1582,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.goToDesiredVC(promoAppLink: self.topBannerImageLink)
     }
+   
     func goToTAEClub() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
@@ -1577,9 +1591,14 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
+        if promoAppLink == "HOME" || promoAppLink == "" {
+            self.goToHomePage()
+            
+        }
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
-                
+                self.goToTAEClubMemPage()
+
             } else {
                 self.goToTAEClub()
             }
@@ -1698,8 +1717,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 
 
             }
-        }
-    }
+        }    }
     
     func moveToAnotherVC(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
