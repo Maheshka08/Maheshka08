@@ -55,7 +55,8 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     var presentYear = 0
     var todaysDate = 0
     var thirtyTHDay = 0
-    var firstWeekDayOfMonth = 0   //(Sunday-Saturday 1-7)
+    var firstWeekDayOfMonth = 0
+    var clubMemberExpDate = 0//(Sunday-Saturday 1-7)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -133,11 +134,12 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             let calcDate = indexPath.row-firstWeekDayOfMonth+2
             cell.isHidden=false
             cell.lbl.text="\(calcDate)"
+            let upperLimitDate = (self.clubMemberExpDate == 0) ? todaysDate : self.clubMemberExpDate
             if calcDate < todaysDate + 1 && currentYear == presentYear && currentMonthIndex == presentMonthIndex {
                 cell.isUserInteractionEnabled=false
                 cell.lbl.textColor = UIColor.lightGray
                 monthView.btnRight.isHidden = false
-            } else if indexPath.item > self.thirtyTHDay && currentYear == presentYear && currentMonthIndex != presentMonthIndex {
+            } else if indexPath.item > upperLimitDate + 1 && currentYear == presentYear && currentMonthIndex != presentMonthIndex {
                 cell.isUserInteractionEnabled=false
                 cell.lbl.textColor = UIColor.lightGray
                 monthView.btnRight.isHidden = true
@@ -186,6 +188,7 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func didChangeMonth(monthIndex: Int, year: Int) {
+        selectedDate = 0
         currentMonthIndex=monthIndex+1
         currentYear = year
         

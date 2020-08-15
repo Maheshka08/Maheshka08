@@ -70,6 +70,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
       @IBOutlet weak  var paySucessView: UIView!
       @IBOutlet weak  var usdAmtLabel: UILabel!
       @IBOutlet weak  var nutritionstDescLbl: UILabel!
+      var clubMembExpDate = 0
       var system = 0;
       var confirmationText = ""
       var cardImageString = "";
@@ -174,6 +175,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                return
            }
            self.captchaView.isHidden = false
+        self.captchInputTF.becomeFirstResponder()
            self.captchViewInfoLbl.text = self.confirmationText
            
 
@@ -202,7 +204,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                              
                          } else {
                              self.checkUserScheduleArray = data
-                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
+                         //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
                          }
                      }
                  }, failure : { error in
@@ -269,7 +271,6 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                           let image = UIImage(data: imageData)
                           DispatchQueue.main.async {
                                   self.scheduleCallButton.setBackgroundImage(image, for: .normal)
-                            self.scheduleCallButton.isHidden = false
                               
                               
                           }
@@ -319,7 +320,62 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    
+    func checkClubMemberSchedule() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CHECK_CLUB_MEMBER_SCHEDULE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                    let dateFormatter = DateFormatter()
+                                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                    if responseDic.index(forKey: "clubSubExpDttm") != nil {
+                                  let expDateStr =  responseDic["clubSubExpDttm"] as! String;
+                    let sepearatedDateArray = expDateStr.components(separatedBy: "T")
+                        print(sepearatedDateArray)
+                        let extractedDate = sepearatedDateArray[0]
+                        print(extractedDate)
+                        let dateArray = extractedDate.components(separatedBy: "-")
+                       // let onlyDate = dateArray.last!
+                        self.clubMembExpDate = Int(dateArray.last!)!
+                        
+                        
+                        
+                        
+                    }
+                    if data.count == 0 {
+                        self.scheduleCallButton.isHidden = false
+                        self.bottomImageView.isHidden = true
+                    } else {
+                        
+                        
+                       self.scheduleCallButton.isHidden = true
+                        self.bottomImageView.isHidden = false
+                        
+                       
+                    }
+                    self.clubLanding()
+
+                  } else if responseResult == "USER_NOT_CLUB_MEMBER" {
+                    self.scheduleCallButton.isHidden = true
+                    self.bottomImageView.isHidden = true
+                    self.clubLanding()
+                }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
     
     func clubLanding() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -332,7 +388,6 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                   if  responseResult == "GOOD" {
                       MBProgressHUD.hide(for: self.view, animated: true);
                       let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
-                  
                     self.updateUI(data: data)
 
                   }
@@ -362,7 +417,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                 let time = "\(self.timeSlotTextField.text?.replacingOccurrences(of: " AM", with: ":00").replacingOccurrences(of: " PM", with: ":00") ?? "")"
                 let timeSlot: String = year + "-" + month + "-" + date + " " + self.timeSlotTextField.text!
         let paramsDictionary = ["callDateTime": timeSlot, "lang": self.languageTextField.text!] as [String : AnyObject]
-                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.SCHEDULE_USER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
+                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.SCHEDULE_CLUB_MEMBER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
                     print(response!)
                     
                     let responseDic : [String:AnyObject] = response as! [String:AnyObject];
@@ -396,13 +451,52 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                         let scheduleDetails = ["callDateTime": callDateTime, "certNutText":certNutText, "userMsisdn": userMsisdn] as [String: AnyObject];
                         UserDefaults.standard.set(scheduleDetails, forKey: "CALL_SCHEDULED_FROM_CLUB");
                         UserDefaults.standard.synchronize()
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
+                       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
                                               let msisdnRange = certNutText.range(of: userMsisdn)
                                               let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
                                               certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
                                               certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
                                               self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
+                        self.scheduleCallButton.isHidden = true
+                        self.bottomImageView.isHidden = false
                        
+                    } else if responseResult == "USER_NOT_CLUB_MEMBER" {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                        self.scheduleCallButton.isHidden = true
+                        self.bottomImageView.isHidden = true
+                                            self.captchaView.isHidden = true
+                                            self.view.endEditing(true)
+                                            self.callSchedulePopup = (Bundle.main.loadNibNamed("UserCallSchedulePopUp", owner: self, options: nil)! as NSArray).firstObject as? UserCallSchedulePopUp;
+                                                                         self.callSchedulePopup.frame = CGRect(0, 0, self.view.frame.width, self.view.frame.height);
+                                                                                self.callSchedulePopup.userCallScheduleDelegate = self;
+                                                                                self.callSchedulePopup.beginning();
+                                            self.view.addSubview(self.callSchedulePopup)
+                                            self.callSchedulePopup.yourCallLabel.text = "Your CALL has been scheduled !"
+                                             let data = responseDic["data"] as! [String: AnyObject]
+                                            let callDateTime: String = data["callDateTime"] as! String
+                                            let stringValue = "When: " + callDateTime
+                                                                  let whenRange = stringValue.range(of: "When: ")
+                                                                  
+                                                                  let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
+                                                                  attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(whenRange!, in: stringValue))
+                                                                  attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSRange(whenRange!, in: stringValue))
+                                                                  
+
+                                                                 
+                                                                  self.callSchedulePopup.whenLbl.attributedText = attributedString
+                                            let userMsisdn = data["userMsisdn"] as! String
+                                            
+                                            let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn
+                                            let scheduleDetails = ["callDateTime": callDateTime, "certNutText":certNutText, "userMsisdn": userMsisdn] as [String: AnyObject];
+                                            UserDefaults.standard.set(scheduleDetails, forKey: "CALL_SCHEDULED_FROM_CLUB");
+                                            UserDefaults.standard.synchronize()
+                                           // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil);
+                                                                  let msisdnRange = certNutText.range(of: userMsisdn)
+                                                                  let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
+                                                                  certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
+                                                                  certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
+                                                                  self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
+                                            
                     }
                 }, failure : { error in
                     MBProgressHUD.hide(for: self.view, animated: true);
@@ -468,6 +562,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
       
         self.areYouSureLbl.isHidden = true
         self.calendarOuterView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        calenderView.clubMemberExpDate = self.clubMembExpDate
         self.calView.addSubview(calenderView)
         calenderView.topAnchor.constraint(equalTo: self.calView.topAnchor, constant: 10).isActive=true
         calenderView.rightAnchor.constraint(equalTo: self.calView.rightAnchor, constant: -12).isActive=true
@@ -540,6 +635,8 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = .groupTableViewBackground
+        self.title = "Tweak & Eat Club Member"
         self.captchaInnerView.layer.cornerRadius = 10
         self.refreshBtn.layer.cornerRadius = 10
         self.confirmCaptchaBtn.layer.cornerRadius = 10
@@ -552,7 +649,8 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
         self.timeSlotTextField.delegate = self
         self.timeSlotTextField.inputView = self.pickerView
         self.timeSlotTextField.inputAccessoryView = self.accessoryToolbar
-        clubLanding()
+        self.checkClubMemberSchedule()
+
     }
     
 
