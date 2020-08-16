@@ -64,7 +64,7 @@ class TweakAndEatFinalIntroScreen: UIView {
             if countryCode == "91"{
                     self.delegate.getClubHome1()
                    // self.delegate.getClubHome2()
-                           //self.getClub1Info()
+               // self.delegate.getClub1Info()
                            
                self.delegate.getNutritionistFBID()
                 self.delegate.getUserCallSchedueDetails()

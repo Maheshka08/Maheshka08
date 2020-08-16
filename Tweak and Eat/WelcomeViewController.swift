@@ -5615,104 +5615,7 @@ tappedOnTAEClubExpiryView()
         }
     }
     
-    func getClub1Info() {
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
 
-              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_SUB3, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
-                  print(response!)
-                  
-                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                  let responseResult = responseDic["callStatus"] as! String;
-                  if  responseResult == "GOOD" {
-                      MBProgressHUD.hide(for: self.view, animated: true);
-                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
-                    print(data)
-                      if data.count == 0 {
-                          
-                      } else {
-                        for dict in data {
-                            if dict["name"] as! String == "text1" {
-                                let htmlText = (dict["value"] as! String).replacingOccurrences(of: "<![CDATA[", with: "").replacingOccurrences(of: "]]>", with: "")
-                                let encodedData = htmlText.data(using: String.Encoding.utf8)!
-                                  var attributedString: NSAttributedString
-
-                                  do {
-                                      attributedString = try NSAttributedString(data: encodedData, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html,NSAttributedString.DocumentReadingOptionKey.characterEncoding:NSNumber(value: String.Encoding.utf8.rawValue)], documentAttributes: nil)
-                                      
-                                      self.taeClubTrialPeriodExpiryView.isHidden = false
-                                      self.taeClubTrialPeriodExpiryView.alpha = 0.8;
-
-                                      self.taeClubTrialPeriodExpiryViewLbl.attributedText = attributedString
-                                      self.taeClubTrialPeriodExpiryViewLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
-                                  } catch let error as NSError {
-                                      print(error.localizedDescription)
-                                  } catch {
-                                      print("error")
-                                  }
-                            }
-                                if dict["name"] as! String == "left_btn" {
-                                    let urlString = dict["value"] as! String
-                                        let url = URL(string: urlString)
-                                    DispatchQueue.global(qos: .background).async {
-                                        // Call your background task
-                                        let data = try? Data(contentsOf: url!)
-                                        // UI Updates here for task complete.
-
-                                        if let imageData = data {
-                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_LEFT_BUTTON");
-                                            let image = UIImage(data: imageData)
-                                            DispatchQueue.main.async {
-                                                
-                                                self.clubHome1LeftBth.setImage(image, for: .normal)
-                                                self.clubHome2LeftBth.setImage(image, for: .normal)
-                                                self.premiumMemberTopBtn.setImage(image, for: .normal)
-                                                self.premiumMemberBottomBtn.setImage(image, for: .normal)
-                                                
-                                            }
-                                    }
-                                    
-
-                                        
-                                    }
-                                } else if dict["name"] as! String == "right_btn" {
-                                    let urlString = dict["value"] as! String
-                                        let url = URL(string: urlString)
-                                    DispatchQueue.global(qos: .background).async {
-                                        // Call your background task
-                                        let data = try? Data(contentsOf: url!)
-                                        // UI Updates here for task complete.
-
-                                        if let imageData = data {
-                                            UserDefaults.standard.set(imageData, forKey: "CLUBHOME1_RIGHT_BUTTON");
-
-                                            let image = UIImage(data: imageData)
-                                            DispatchQueue.main.async {
-                                                
-                                                self.clubHome1RightBth.setImage(image, for: .normal)
-                                                self.clubHome2RightBth.setImage(image, for: .normal)
-                                                
-                                            }
-                                    }
-                                    
-
-                                        
-                                    }
-                                }
-                            
-                        }
-                      }
-                  }
-              }, failure : { error in
-                  MBProgressHUD.hide(for: self.view, animated: true);
-                  
-                  print("failure")
-                  if error?.code == -1011 {
-                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
-                      return
-                  }
-                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
-              })
-    }
     
     func getClubHome2() {
               APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CLUB_HOME2, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
@@ -5842,6 +5745,7 @@ tappedOnTAEClubExpiryView()
                                             DispatchQueue.main.async {
                                                 
                                                 self.clubHome1LeftBth.setImage(image, for: .normal)
+                                                self.clubHome2LeftBth.setImage(image, for: .normal)
                                                 self.premiumMemberTopBtn.setImage(image, for: .normal)
                                                 self.premiumMemberBottomBtn.setImage(image, for: .normal)
                                                 
@@ -5866,6 +5770,7 @@ tappedOnTAEClubExpiryView()
                                             DispatchQueue.main.async {
                                                 
                                                 self.clubHome1RightBth.setImage(image, for: .normal)
+                                                self.clubHome2RightBth.setImage(image, for: .normal)
                                                 
                                             }
                                     }
@@ -6624,11 +6529,13 @@ self.floatingCallBtn.isHidden = false
                     UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
                     UserDefaults.standard.synchronize()
                   self.tweakandeatClubButtonView.isHidden = true
-                    self.tweakandeatClubButtonViewBottom.isHidden = true
-                  self.taeClubTrialPeriodExpiryView.isHidden = true
+                                     self.tweakandeatClubButtonViewBottom.isHidden = true
+                                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                     self.taeClubTrialPeriodExpiryView.isHidden = true
 
 
                 } else {
+                    
                     UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
                 }
                 if responseDic["userTaeClubSubExpDttm"] is NSNull {

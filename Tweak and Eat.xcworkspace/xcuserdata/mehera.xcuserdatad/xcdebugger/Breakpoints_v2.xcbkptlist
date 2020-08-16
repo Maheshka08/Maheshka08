@@ -14,8 +14,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6721"
-            endingLineNumber = "6721"
+            startingLineNumber = "6628"
+            endingLineNumber = "6628"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6712"
-            endingLineNumber = "6712"
+            startingLineNumber = "6619"
+            endingLineNumber = "6619"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6012"
-            endingLineNumber = "6012"
+            startingLineNumber = "5917"
+            endingLineNumber = "5917"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6696"
-            endingLineNumber = "6696"
+            startingLineNumber = "6603"
+            endingLineNumber = "6603"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6705"
-            endingLineNumber = "6705"
+            startingLineNumber = "6612"
+            endingLineNumber = "6612"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6764"
-            endingLineNumber = "6764"
+            startingLineNumber = "6671"
+            endingLineNumber = "6671"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,9 +126,41 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6728"
-            endingLineNumber = "6728"
+            startingLineNumber = "6635"
+            endingLineNumber = "6635"
             landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2373176E-B1E0-464C-8B5B-41DE788FDC2D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6637"
+            endingLineNumber = "6637"
+            landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35ABAF1C-C1E7-4F3F-B096-9FEB8C4DEC28"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1771"
+            endingLineNumber = "1771"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
