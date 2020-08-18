@@ -1086,6 +1086,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             return
         }
         self.captchaView.isHidden = false
+        self.captchInputTF.becomeFirstResponder()
         self.captchViewInfoLbl.text = self.confirmationText
         
 

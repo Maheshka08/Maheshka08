@@ -279,6 +279,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var smallScreenPopUpBtn: UIButton!
  @IBOutlet weak var approxCalLeftForDayLabel: UILabel!
     @IBOutlet weak var floatingBtnHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var premiumMemberTopButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var premiumMemberBottomButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var premiumMemberTopButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var premiumMemberBottomButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var floatingButtonsView: UIView!
     @IBOutlet weak var floatingCrownBtn: UIButton!
     @IBOutlet weak var floatingTableView: UITableView!
@@ -900,6 +904,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         
                             
                        // self.myNutritionDetailsView.alpha = 0
+                       
                             self.outerChartView.alpha = 0
                             self.switchButton.alpha = 0
                         
@@ -987,6 +992,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func updateUIAccordingTOEachDevice() {
+        
         if self.goneUp == true {
                    return
                }
@@ -1789,6 +1795,13 @@ tappedOnTAEClubExpiryView()
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+            self.taeClubMemberBottomView.isHidden = false
+            self.taeClubMemberTopView.isHidden = false
+        } else {
+            
+        }
+       
         self.tweakandeatClubButtonView.isHidden = true
         self.tweakandeatClubButtonViewBottom.isHidden = true
         self.taeClubTrialPeriodExpiryView.isHidden = true
@@ -4351,7 +4364,7 @@ tappedOnTAEClubExpiryView()
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
                     if packageObj.count == 0 {
-                        self.goToHomePage()
+                        //self.goToHomePage()
                         return
                     }
                     self.performSegue(withIdentifier: "fromAdsToMore", sender: packageObj)
@@ -5723,19 +5736,22 @@ tappedOnTAEClubExpiryView()
                                     }
                                 }
                             if dict["name"] as! String == "random_promo" {
+                                 DispatchQueue.main.async {
                                 self.taeClubTrialPeriodExpiryView.isHidden = false
                                 self.taeClubTrialPeriodExpiryView.alpha = 0.8;
 
                                 self.taeClubTrialPeriodExpiryViewLbl.text = (dict["value"] as! String)
                                 self.taeClubTrialPeriodExpiryViewLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
-
+                                }
                             }
                             if dict["name"] as! String == "random_promo_link" {
+                                 DispatchQueue.main.async {
                                 self.taeClubTrialPeriodExpiryView.isHidden = false
                                 self.taeClubTrialPeriodExpiryView.alpha = 0.8;
 
+                                }
                                 self.randomPromoLink = (dict["value"] as! String)
-                                print("randomPromoLink: \(self.randomPromoLink)")
+
                             }
                         }
                       }
@@ -6040,6 +6056,13 @@ self.floatingCallBtn.isHidden = false
             
 
                 
+            }
+            if self.countryCode != "91" {
+                self.premiumMemberTopButtonWidthConstraint.constant = 320
+                self.premiumMemberBottomButtonWidthConstraint.constant = 320
+                self.premiumMemberBottomButtonHeightConstraint.constant = 45
+                self.premiumMemberTopButtonHeightConstraint.constant = 45
+
             }
             if self.countryCode == "91" {
                 self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
@@ -6765,7 +6788,7 @@ self.floatingCallBtn.isHidden = false
                     }
                 }
                 let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
-                //let userSubscribedToClub = 1
+                //let userSubscribedToClub = 0
                 
                 if userSubscribedToClub == 1 {
                     UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
@@ -6858,11 +6881,13 @@ self.floatingCallBtn.isHidden = false
                             self.tweakandeatClubButtonViewBottom.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                             self.taeClubTrialPeriodExpiryView.isHidden = true
+                            self.topImageView.isHidden = false
 
                         } else {
                             self.tweakandeatClubButtonView.isHidden = true
                             self.tweakandeatClubButtonViewBottom.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                            self.topImageView.isHidden = true
                             self.showTrialPeriodView()
 
                         }
@@ -6872,23 +6897,26 @@ self.floatingCallBtn.isHidden = false
                             self.tweakandeatClubButtonViewBottom.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                             self.taeClubTrialPeriodExpiryView.isHidden = true
+                            self.topImageView.isHidden = false
 
                         } else {
                             self.tweakandeatClubButtonView.isHidden = true
                             self.tweakandeatClubButtonViewBottom.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                            self.topImageView.isHidden = true
+                            
                             self.showTrialPeriodView()
 
                         }
                     }
                     
                     
-                } else if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {
+                } else if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
                     self.tweakandeatClubButtonView.isHidden = true
                     self.tweakandeatClubButtonViewBottom.isHidden = true
                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                     self.taeClubTrialPeriodExpiryView.isHidden = true
-
+                    self.topImageView.isHidden = false
                     self.removePTPExpiryView()
                                   } else {
                     //self.showTrialPeriodView()
