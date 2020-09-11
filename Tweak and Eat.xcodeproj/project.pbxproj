@@ -164,6 +164,7 @@
 		73DC7B621F2F405C00A16A05 /* ReportsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC7B611F2F405C00A16A05 /* ReportsTableViewCell.swift */; };
 		73EBF3771F370D730085E7BF /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EBF3761F370D730085E7BF /* LineChart.swift */; };
 		830C573424A922140062547D /* SwitchWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C573324A922140062547D /* SwitchWithText.swift */; };
+		831708D524FFE9AD00413723 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847545C21EB8ADAD0042D84A /* AdSupport.framework */; };
 		831F883924614AE600397143 /* GamifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F883824614AE600397143 /* GamifyViewController.swift */; };
 		831F883B24614CFC00397143 /* GamifyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F883A24614CFC00397143 /* GamifyTableCell.swift */; };
 		83222C6524DD8B4100A6E4E0 /* TAEClub1VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83222C6424DD8B4100A6E4E0 /* TAEClub1VCViewController.swift */; };
@@ -653,6 +654,7 @@
 				847545D11EB8AE190042D84A /* SystemConfiguration.framework in Frameworks */,
 				847545CF1EB8AE110042D84A /* StoreKit.framework in Frameworks */,
 				847545CD1EB8AE030042D84A /* MessageUI.framework in Frameworks */,
+				831708D524FFE9AD00413723 /* AdSupport.framework in Frameworks */,
 				847545C91EB8ADE40042D84A /* CoreTelephony.framework in Frameworks */,
 				847545C71EB8ADD40042D84A /* CoreGraphics.framework in Frameworks */,
 				847545C51EB8ADBD0042D84A /* AudioToolbox.framework in Frameworks */,
@@ -2025,7 +2027,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2036,7 +2038,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2062,7 +2064,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2073,7 +2075,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2101,13 +2103,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2133,13 +2135,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2156,13 +2158,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2180,13 +2182,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99004;
+				CURRENT_PROJECT_VERSION = 99007;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

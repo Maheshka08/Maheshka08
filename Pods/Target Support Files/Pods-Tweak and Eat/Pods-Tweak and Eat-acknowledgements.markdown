@@ -110,6 +110,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AppsFlyerFramework
+
+Copyright 2018 AppsFlyer Ltd. All rights reserved.
+
 ## FBSDKCoreKit
 
 Copyright (c) 2014-present, Facebook, Inc. All rights reserved.

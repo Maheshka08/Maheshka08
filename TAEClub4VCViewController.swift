@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import StoreKit
+import AppsFlyerLib
 
 class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate {
     
@@ -132,6 +133,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
     @objc var displayCurrency : String = "";
     @objc var pkgDescription : String = "";
     @objc var pkgDuration : String = "";
+    var packageName = ""
     @IBAction func club4DoneTapped(_ sender: Any) {
          self.navigationController?.popToRootViewController(animated: true)
     }
@@ -166,7 +168,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
         //91e841953e9f4d19976283cd2ee78992
         
         print(recieptString!)
-      
+
         
         APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
@@ -179,6 +181,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
             if  responseResult == "GOOD" {
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
+                      AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: "-ClubInd3gu7tfwko6Zx", AFEventParamCurrency: self.currency])
           self.paymentSuccessView.isHidden = false
                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
 

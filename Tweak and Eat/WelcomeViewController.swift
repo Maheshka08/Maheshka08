@@ -24,6 +24,7 @@ import CoreImage
 import HealthKit
 import Alamofire
 import CoreTelephony
+import AppsFlyerLib
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -591,6 +592,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
        
     }
     
+    @objc func goToMyTAE() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as? MyTweakAndEatVCViewController;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
+
     
     @IBAction func taeClubHome2BtnTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "taeClub", sender: self);
@@ -1934,8 +1942,10 @@ tappedOnTAEClubExpiryView()
         
         //self.link = "CHECK_THIS_OUT"
 //        self.smallScreenPopUpBtn.setTitle("PLAY VIDEO", for: .normal)
-//        self.dummyPopUp()
-//        self.link = "HOME"
+        //self.dummyPopUp()
+//        self.link = "-IndIWj1mSzQ1GDlBpUt"
+//        tappedOnPopUpDone()
+
     // self.link = "-MysRamadanwgtLoss99"
         //HOW_IT_WORKS
         self.minCalCountLabel.text = ""
@@ -2018,9 +2028,12 @@ tappedOnTAEClubExpiryView()
        // let msg = signature.html2String;
     //    print(msg)
      //   print( UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String)
-        
+      
          NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.swapViews(_:)), name: NSNotification.Name(rawValue: "SWAP_VIEW"), object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.getTrends), name: NSNotification.Name(rawValue: "GET_TRENDS"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.goToMyTAE), name: NSNotification.Name(rawValue: "MYTAEVC"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.decideToGotoTAEClub), name: NSNotification.Name(rawValue: "MYTAECLUB"), object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.takephoto), name: NSNotification.Name(rawValue: "CONTINUE_TAKING_PHOTO"), object: nil)
         //SHOW_CALL_FLOATING_BUTTON
         
@@ -2259,6 +2272,25 @@ tappedOnTAEClubExpiryView()
 //            }
 //        }
         //   razor()
+        if UserDefaults.standard.value(forKey: "MYTAECLUB") != nil {
+                  UserDefaults.standard.removeObject(forKey: "MYTAECLUB")
+                  self.decideToGotoTAEClub()
+              }
+              if UserDefaults.standard.value(forKey: "MYTAEVC") != nil {
+                  UserDefaults.standard.removeObject(forKey: "MYTAEVC")
+                  if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                      
+                      self.performSegue(withIdentifier: "myTweakAndEat", sender: "-IndIWj1mSzQ1GDlBpUt");
+                  } else {
+                      DispatchQueue.main.async {
+                      MBProgressHUD.showAdded(to: self.view, animated: true);
+                      }
+                      self.moveToAnotherView(promoAppLink: "-IndIWj1mSzQ1GDlBpUt")
+
+                      
+                      
+                  }
+              }
     }
     
     //    func razorpayApiCall() {
@@ -2924,6 +2956,20 @@ tappedOnTAEClubExpiryView()
                    clickViewController?.type = obj["type"] as! Int
                      self.navigationController?.pushViewController(clickViewController!, animated: true)
                }
+    }
+    
+    @objc func decideToGotoTAEClub() {
+         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                   self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if self.countryCode == "91" {
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                              self.goToTAEClubMemPage()
+
+                          } else {
+                              self.goToTAEClub()
+                          }
+        }
+        }
     }
     
     @objc func pressed(sender: UIButton!) {
@@ -6046,6 +6092,10 @@ self.floatingCallBtn.isHidden = false
                     let image = UIImage(data: imageData)
                     DispatchQueue.main.async {
                         if self.countryCode != "91" {
+                            if self.countryCode == "44" {
+                                self.premiumMemberBottomBtn.isHidden = true
+                                self.premiumMemberTopBtn.isHidden = true
+                            }
                             self.premiumMemberBottomBtn.setBackgroundImage(image, for: .normal)
                             self.premiumMemberTopBtn.setBackgroundImage(image, for: .normal)
                         }
@@ -7732,6 +7782,9 @@ self.floatingCallBtn.isHidden = false
                                             
                                             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                                                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                                               // if self.countryCode == "91" {
+                                                     AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [AFEventCompleteRegistration: "YES"])
+                                               // }
                                             }
                                             //last
                                              if (self.countryCode == "91") {
@@ -7754,6 +7807,7 @@ self.floatingCallBtn.isHidden = false
                                            // let eventName = "registration_successful" + "_" + country
                                             //print(eventName)
                                            // Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "user registration successful !!"])
+                                           
                                             
                                             self.getProfileData()
                                             

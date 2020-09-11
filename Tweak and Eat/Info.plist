@@ -31,6 +31,16 @@
 				<string>fb269853870748452</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tweakandeat</string>
+			</array>
+		</dict>
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
@@ -89,6 +99,8 @@
 	<string>"Tweak &amp; Eat" would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>"Tweak &amp; Eat" wants users to remind of tweaking their food plate.</string>
+	<key>Privacy - Tracking Usage Description</key>
+	<string>Please confirm IDFA collection</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>source-sans-pro.light.ttf</string>

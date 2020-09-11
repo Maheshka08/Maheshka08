@@ -46,6 +46,8 @@ class TweakAndEatFinalIntroScreen: UIView {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dispatch_group = DispatchGroup();
         dispatch_group.enter();
+//        UserDefaults.standard.set("44", forKey: "COUNTRY_CODE")
+//                          UserDefaults.standard.synchronize()
         self.delegate.homeInfoApiCalls()
         
         self.delegate.checkAppVersion()
@@ -59,6 +61,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         //self.delegate.checkUserPremiumMember()
         //self.delegate.checkUserPremiumMember1()
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+           
           let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             
             if countryCode == "91"{

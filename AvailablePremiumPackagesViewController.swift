@@ -537,6 +537,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     @IBOutlet weak var nextArrow: UILabel!;
     var cellTapped:Bool = true
     var currentRow = 0;
+
     func goToHomePage() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;

@@ -19,10 +19,49 @@ import FirebaseInstanceID
 import FacebookLogin
 import FacebookCore
 import FacebookShare
+import AppsFlyerLib
+//import AppTrackingTransparency
 let uiRealm = try! Realm()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate, AppsFlyerLibDelegate {
+    func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        print("onConversionDataSuccess data:")
+               for (key, value) in conversionInfo {
+                   print(key, ":", value)
+               }
+               if let status = conversionInfo["af_status"] as? String {
+                   if (status == "Non-organic") {
+                       if let sourceID = conversionInfo["media_source"],
+                           let campaign = conversionInfo["campaign"] {
+                           print("This is a Non-Organic install. Media source: \(sourceID)  Campaign: \(campaign)")
+                       }
+                   } else {
+                       print("This is an organic install.")
+                   }
+                   if let is_first_launch = conversionInfo["is_first_launch"] as? Bool,
+                       is_first_launch {
+                       print("First Launch")
+                   } else {
+                       print("Not First Launch")
+                   }
+               }
+    }
+    
+    func onConversionDataFail(_ error: Error) {
+        
+    }
+    func onAppOpenAttribution(_ attributionData: [AnyHashable: Any]) {
+           //Handle Deep Link Data
+           print("onAppOpenAttribution data:")
+           for (key, value) in attributionData {
+               print(key, ":",value)
+           }
+       }
+       func onAppOpenAttributionFailure(_ error: Error) {
+           print("\(error)")
+       }
+    
   
     
     @objc var notifView = UIView();
@@ -178,6 +217,35 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isAutoInitEnabled = true
         ApplicationDelegate.initializeSDK(nil)
+//        // 1 - Get AppsFlyer preferences from .plist file
+//              guard let propertiesPath = Bundle.main.path(forResource: "afdevkey_donotpush", ofType: "plist"),
+//                  let properties = NSDictionary(contentsOfFile: propertiesPath) as? [String:String] else {
+//                      fatalError("Cannot find `afdevkey_donotpush`")
+//              }
+//              guard let appsFlyerDevKey = properties["appsFlyerDevKey"],
+//                         let appleAppID = properties["appleAppID"] else {
+//                  fatalError("Cannot find `appsFlyerDevKey` or `appleAppID` key")
+//              }
+              // 2 - Replace 'appsFlyerDevKey', `appleAppID` with your DevKey, Apple App ID
+              AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
+              AppsFlyerLib.shared().appleAppID = "1267286348"
+              AppsFlyerLib.shared().delegate = self
+              //  Set isDebug to true to see AppsFlyer debug logs
+              AppsFlyerLib.shared().isDebug = true
+        // AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [AFEventCompleteRegistration: "YES"])
+        
+              // The following block is for applications wishing to collect IDFA.
+              // for iOS 14 and above - The user will be prompted for permission to collect IDFA.
+              //                        If permission granted, the IDFA will be collected by the SDK.
+              // for iOS 13 and below - The IDFA will be collected by the SDK. The user will NOT be prompted for permission.
+              if #available(iOS 14, *) {
+                  // Set a timeout for the SDK to wait for the IDFA collection before handling app launch
+                  AppsFlyerLib.shared().waitForAdvertisingIdentifier(withTimeoutInterval: 60)
+                  // Show the user the Apple IDFA consent dialog (AppTrackingTransparency)
+                  // Can be called in any place
+                 // ATTrackingManager.requestTrackingAuthorization { (status) in
+                 // }
+              }
         //AppEvents.logEvent(.init("fb_mobile_purchase"))
         
 //      ApplicationDelegate.shared.application(
@@ -594,8 +662,29 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         
         return true;
     }
+    func goToMyTweakAndEat() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as? MyTweakAndEatVCViewController;
+        self.window?.rootViewController = UINavigationController(rootViewController:clickViewController!)
+    }
+
     
     func goToHomePage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        self.window?.rootViewController = UINavigationController(rootViewController:clickViewController!)
+    }
+    
+    func goToHomePage(links: String) {
+        if links == "buy" {
+                  //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MYTAEVC"), object: nil)
+            UserDefaults.standard.setValue("YES", forKey: "MYTAEVC")
+                      } else if links == "club" {
+                          //MYTAECLUB
+               //           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MYTAECLUB"), object: nil)
+UserDefaults.standard.setValue("YES", forKey: "MYTAECLUB")
+                      }
+        UserDefaults.standard.synchronize()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
         self.window?.rootViewController = UINavigationController(rootViewController:clickViewController!)
@@ -798,6 +887,7 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         
         UserDefaults.standard.set(deviceTokenString, forKey: "deviceToken");
         Messaging.messaging().apnsToken = deviceToken
+       // AppsFlyerLib.shared().handlePushNotification(userInfo)
 
         print(deviceTokenString);
        // push?.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
@@ -951,8 +1041,28 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         let realm = try! Realm()
         return (realm.objects(MyProfileInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
-    func applicationDidBecomeActive(_ application: UIApplication) {
     
+    // Open Univerasal Links
+       // For Swift version < 4.2 replace function signature with the commented out code
+       // func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool { // this line for Swift < 4.2
+       func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+           AppsFlyerLib.shared().continue(userActivity, restorationHandler: nil)
+           return true
+       }
+//       // Open Deeplinks
+//       // Open URI-scheme for iOS 8 and below
+//       func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//           AppsFlyerLib.shared().handleOpen(url, sourceApplication: sourceApplication, withAnnotation: annotation)
+//           return true
+//       }
+       // Open URI-scheme for iOS 9 and above
+    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+           AppsFlyerLib.shared().handleOpen(url, options: options)
+           return true
+       }
+       // Report Push Notification attribution data for re-engagements
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        AppsFlyerLib.shared().start()
        UIApplication.shared.applicationIconBadgeNumber = 0
         if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
             if !showRegistration {
@@ -980,20 +1090,34 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
    
 
               
-        func application(
-            _ app: UIApplication,
-            open url: URL,
-            options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-        ) -> Bool {
-
-            ApplicationDelegate.shared.application(
-                app,
-                open: url,
-                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-            )
-
-        }
+//        func application(
+//            _ app: UIApplication,
+//            open url: URL,
+//            options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+//        ) -> Bool {
+//            if let scheme = url.scheme,
+//                   scheme.localizedCaseInsensitiveCompare("tweakandeat") == .orderedSame,
+//                   let view = url.host {
+//
+//                   var parameters: [String: String] = [:]
+//                   URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
+//                       parameters[$0.name] = $0.value
+//                   }
+//                   //redirect(to: view, with: parameters)
+//
+//                self.goToHomePage(links: url.host!)
+//
+//
+//               }
+//               return true
+//            ApplicationDelegate.shared.application(
+//                app,
+//                open: url,
+//                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//            )
+//
+//        }
 
 
         

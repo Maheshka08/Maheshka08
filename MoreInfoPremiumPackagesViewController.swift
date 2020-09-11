@@ -12,6 +12,7 @@ import FirebaseDatabase
 import StoreKit
 import Realm
 import RealmSwift
+import AppsFlyerLib
 
 enum MyTheme {
     case light
@@ -22,7 +23,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.callSchedulePopup.removeFromSuperview()
          self.title = self.navTitle
                self.calendarOuterView.isHidden = true
-        self.navigationItem.hidesBackButton = false
+        self.backBtn.isHidden = false
+//        self.navigationItem.hidesBackButton = false
     }
     
     @objc var callSchedulePopup : UserCallSchedulePopUp! = nil;
@@ -36,7 +38,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           v.translatesAutoresizingMaskIntoConstraints=false
           return v
       }()
-    
+    var packageName = ""
     var navTitle = ""
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var calendarInnerView: UIView!
@@ -83,6 +85,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var labelsPrice = "pkgPrice"
     var lables = "pkgDisplayDescription"
     var lableCount = "pkgDuration"
+    var enteredScreenTime = ""
     @IBOutlet weak var captchaInnerView: UIView!
     var timerForShowScrollIndicator: Timer?
     @IBOutlet weak var refreshBtn: UIButton!
@@ -145,6 +148,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @objc var pkgDuration : String = "";
     @objc var nutritionLabelPackagesArray = NSMutableArray();
     @objc var moreInfoPremiumPackagesArray = NSMutableArray()
+    var backBtn = UIButton()
     @objc var moreInfoPremiumPackagesRef : DatabaseReference!
     func showCalendarView() {
         self.calendarOuterView.isHidden = false
@@ -200,7 +204,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                    if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
                                        MBProgressHUD.hide(for: self.view, animated: true)
                                        self.timeSlotsArray = (response["data"] as AnyObject) as! [[String : AnyObject]]
-                                   self.navigationItem.hidesBackButton = true
+                                   //self.navigationItem.hidesBackButton = true
+                                    self.backBtn.isHidden = true
                                     self.showCalendarView()
                                    } else {
                                            MBProgressHUD.hide(for: self.view, animated: true)
@@ -247,7 +252,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         
     }
     @IBAction func callNutritionistBtn1Tapped(_ sender: Any) {
-        self.navigationItem.hidesBackButton = true
+        //self.navigationItem.hidesBackButton = true
+        self.backBtn.isHidden = true
         self.showCalendarView()
     }
     @IBAction func paymentSuccessOKTapped(_ sender: Any) {
@@ -602,7 +608,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 self.chooseSubScriptionPlanLbl.text = " " + totalDesc
 
             }
-            
+            self.packageName = (self.labelPriceDict[lables] as? String)!
             self.buyNowButton.isEnabled = true
             self.priceTableView.isHidden = true
             self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
@@ -726,6 +732,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
        
       
         print(jsonDict)
+       
         //91e841953e9f4d19976283cd2ee78992
         
         //print(recieptString!)
@@ -744,6 +751,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 responseResult = responseDic["CallStatus"] as! String
             }
             if  responseResult == "GOOD" {
+                 AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
                 let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
@@ -830,7 +838,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                             }
                                         if  responseResult == "GOOD" {
                                             MBProgressHUD.hide(for: self.view, animated: true);
-                                            self.navigationItem.hidesBackButton = true;
+                                       //     self.navigationItem.hidesBackButton = true;
+                                            self.backBtn.isHidden = true
                                             self.paySucessView.isHidden = false
                                             self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
                                             
@@ -852,7 +861,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                     })
                                     
                                 } else {
-                                    self.navigationItem.hidesBackButton = true;
+                                   // self.navigationItem.hidesBackButton = true;
+                                    self.backBtn.isHidden = true
                                     self.paySucessView.isHidden = false
                                     self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
                                     
@@ -916,7 +926,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                         }
                                         if  responseResult == "GOOD" {
                                             MBProgressHUD.hide(for: self.view, animated: true);
-                                            self.navigationItem.hidesBackButton = true;
+                                        //    self.navigationItem.hidesBackButton = true;
+                                            self.backBtn.isHidden = true
                                             self.paySucessView.isHidden = false
                                             self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
                                             
@@ -938,7 +949,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                     })
 
                                 } else {
-                                self.navigationItem.hidesBackButton = true;
+                                //self.navigationItem.hidesBackButton = true;
+                                    self.backBtn.isHidden = true
                                 self.paySucessView.isHidden = false
                                 self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
                                 
@@ -1096,7 +1108,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.title = self.navTitle
         self.timeSlotTextField.text = ""
         self.calendarOuterView.isHidden = true
-        self.navigationItem.hidesBackButton = false
+        //self.navigationItem.hidesBackButton = false
+        self.backBtn.isHidden = false
        }
     
     func getUserCallScheduleDetails() {
@@ -1160,11 +1173,62 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
      } while Set<Character>(result.characters).count < 4
      return result
     }
+    func findDateDiff(time1Str: String, time2Str: String) -> String {
+        let timeformatter = DateFormatter()
+        timeformatter.dateFormat = "hh:mm:ss a"
+
+        guard let time1 = timeformatter.date(from: time1Str),
+            let time2 = timeformatter.date(from: time2Str) else { return "" }
+
+        //You can directly use from here if you have two dates
+
+        let interval = time2.timeIntervalSince(time1)
+//        let hour = interval / 3600;
+      //  let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+        let seconds = interval.truncatingRemainder(dividingBy: 3600) / 60*60
+     //   let intervalInt = Int(interval)
+        //"\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes"
+        return "\(Int(seconds))"
+    }
 
     // USAGE
-    
+    @objc func action() {
+        self.navigationController?.popViewController(animated: true)
+
+        
+//        let timeformatter = DateFormatter()
+//        timeformatter.dateFormat = "hh:mm:ss a"
+//        let dateDiff = findDateDiff(time1Str: self.enteredScreenTime, time2Str: timeformatter.string(from: Date()))
+//        print(dateDiff)
+//        if (Int(dateDiff)! > 5) {
+//            self.callSchedulePopup = (Bundle.main.loadNibNamed("UserCallSchedulePopUp", owner: self, options: nil)! as NSArray).firstObject as? UserCallSchedulePopUp;
+//                                         self.callSchedulePopup.frame = CGRect(0, 0, self.view.frame.width, self.view.frame.height);
+//                                                self.callSchedulePopup.userCallScheduleDelegate = self;
+//                                                self.callSchedulePopup.beginning();
+//            self.callSchedulePopup.yourCallLabel.text = "My Tweak and Eat"
+//            self.callSchedulePopup.yourCallLabel.textAlignment = .center
+//            self.callSchedulePopup.okayButton.isHidden = false
+//            self.callSchedulePopup.whenLbl.text = "You have a discount!"
+//                                   self.callSchedulePopup.ourCerifiedNutritionistLbl.text = "15% on this package if you want to purchase in next 1 minute"
+//                                   
+//                                   self.view.addSubview(self.callSchedulePopup);
+//            
+//        } else {
+//
+//                   self.navigationController?.popViewController(animated: true)
+//        }
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let timeformatter = DateFormatter()
+               timeformatter.dateFormat = "hh:mm:ss a"
+        self.enteredScreenTime = timeformatter.string(from: Date())
+        self.navigationItem.hidesBackButton = true
+               backBtn.setImage(UIImage(named: "backIcon"), for: .normal)
+               backBtn.frame = CGRect(0, 0, 30, 30)
+               backBtn.addTarget(self, action: #selector(MoreInfoPremiumPackagesViewController.action), for: .touchUpInside);
+               self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: backBtn), animated: true);
         self.captchaInnerView.layer.cornerRadius = 10
         self.refreshBtn.layer.cornerRadius = 10
         self.confirmCaptchaBtn.layer.cornerRadius = 10

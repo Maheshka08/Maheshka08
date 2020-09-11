@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZC-Iw-qh4">
-                            <rect key="frame" x="23" y="227" width="329" height="213"/>
+                            <rect key="frame" x="23" y="229.5" width="329" height="208"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your CALL has been already scheduled." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy5-C7-cNV">
                                     <rect key="frame" x="8" y="28.5" width="313" height="19.5"/>
@@ -32,19 +32,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your CALL has been already scheduled." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8d-6T-XuL">
-                                    <rect key="frame" x="8" y="64" width="313" height="19"/>
+                                    <rect key="frame" x="8" y="64" width="313" height="16.5"/>
                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                     <color key="textColor" red="0.26914367080000001" green="0.52172404530000005" blue="0.50588411089999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your CALL has been already scheduled." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdY-As-FCI">
-                                    <rect key="frame" x="8" y="102" width="313" height="19"/>
+                                    <rect key="frame" x="8" y="99.5" width="313" height="16.5"/>
                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sb6-Bu-KI4">
-                                    <rect key="frame" x="199" y="147" width="110" height="38"/>
+                                    <rect key="frame" x="199" y="142" width="110" height="38"/>
                                     <color key="backgroundColor" red="0.50196078430000002" green="0.0" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="110" id="ay7-jd-8Mb"/>
@@ -58,9 +58,25 @@
                                         <action selector="closeBtnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="evv-7g-nBp"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-GJ-XsD">
+                                    <rect key="frame" x="18" y="142" width="110" height="38"/>
+                                    <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="110" id="VUI-ll-BLP"/>
+                                        <constraint firstAttribute="height" constant="38" id="nTt-aj-4A8"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="20"/>
+                                    <state key="normal" title="Okay">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="closeBtnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="b4e-iH-YJM"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
+                                <constraint firstItem="sb6-Bu-KI4" firstAttribute="bottom" secondItem="pAN-GJ-XsD" secondAttribute="bottom" id="6fV-rX-JVc"/>
                                 <constraint firstItem="sb6-Bu-KI4" firstAttribute="top" secondItem="rdY-As-FCI" secondAttribute="bottom" constant="26" id="A33-9d-wfU"/>
                                 <constraint firstItem="r8d-6T-XuL" firstAttribute="top" secondItem="Sy5-C7-cNV" secondAttribute="bottom" constant="16" id="H5J-PM-J5a"/>
                                 <constraint firstItem="rdY-As-FCI" firstAttribute="trailing" secondItem="r8d-6T-XuL" secondAttribute="trailing" id="Ja8-0B-M2z"/>
@@ -69,10 +85,12 @@
                                 <constraint firstItem="rdY-As-FCI" firstAttribute="leading" secondItem="r8d-6T-XuL" secondAttribute="leading" id="Vuw-d2-DmB"/>
                                 <constraint firstItem="rdY-As-FCI" firstAttribute="leading" secondItem="rZC-Iw-qh4" secondAttribute="leadingMargin" id="XxJ-QB-qHS"/>
                                 <constraint firstAttribute="trailing" secondItem="sb6-Bu-KI4" secondAttribute="trailing" constant="20" id="iz4-fw-T52"/>
+                                <constraint firstItem="sb6-Bu-KI4" firstAttribute="top" secondItem="pAN-GJ-XsD" secondAttribute="top" id="jXU-OE-FSz"/>
                                 <constraint firstAttribute="bottom" secondItem="sb6-Bu-KI4" secondAttribute="bottom" constant="28" id="kgt-NS-Cep"/>
                                 <constraint firstItem="rdY-As-FCI" firstAttribute="top" secondItem="r8d-6T-XuL" secondAttribute="bottom" constant="19" id="tBl-NU-eF5"/>
                                 <constraint firstItem="rdY-As-FCI" firstAttribute="leading" secondItem="Sy5-C7-cNV" secondAttribute="leading" id="uOE-dJ-9Ia"/>
                                 <constraint firstItem="Sy5-C7-cNV" firstAttribute="top" secondItem="rZC-Iw-qh4" secondAttribute="top" constant="28.5" id="uo0-3Z-pw7"/>
+                                <constraint firstItem="pAN-GJ-XsD" firstAttribute="leading" secondItem="rZC-Iw-qh4" secondAttribute="leading" constant="18" id="w3l-b1-5ie"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -96,6 +114,7 @@
             <connections>
                 <outlet property="closeBtn" destination="sb6-Bu-KI4" id="HMg-im-8iz"/>
                 <outlet property="innerView" destination="rZC-Iw-qh4" id="E1J-8U-I2a"/>
+                <outlet property="okayButton" destination="pAN-GJ-XsD" id="pXe-ll-PrU"/>
                 <outlet property="ourCerifiedNutritionistLbl" destination="rdY-As-FCI" id="IOc-cU-Bur"/>
                 <outlet property="outerView" destination="yZs-SQ-LOv" id="53H-6l-Uvg"/>
                 <outlet property="whenLbl" destination="r8d-6T-XuL" id="wlR-cD-HU2"/>

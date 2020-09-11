@@ -14,6 +14,7 @@ protocol UserCallSchedule {
 
 class UserCallSchedulePopUp: UIView {
 
+    @IBOutlet weak var okayButton: UIButton!
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var ourCerifiedNutritionistLbl: UILabel!
     @IBOutlet weak var whenLbl: UILabel!
@@ -30,6 +31,7 @@ class UserCallSchedulePopUp: UIView {
     */
     @objc func beginning() {
         self.closeBtn.layer.cornerRadius = 15
+        self.okayButton.layer.cornerRadius = 15
         self.innerView.layer.cornerRadius = 15
         self.outerView.backgroundColor = .clear
         self.backgroundColor = UIColor.black.withAlphaComponent(0.8)

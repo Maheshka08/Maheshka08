@@ -28,7 +28,7 @@ target 'Tweak and Eat' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-  
+  pod 'AppsFlyerFramework'
   
   # Pods for Tweak and Eat
     

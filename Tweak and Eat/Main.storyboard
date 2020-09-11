@@ -6966,13 +6966,13 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsf-U6-glR">
-                                        <rect key="frame" x="14" y="319" width="386" height="0.0"/>
+                                        <rect key="frame" x="14" y="317" width="386" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3G-YK-ea2">
-                                        <rect key="frame" x="60.5" y="341" width="293" height="21"/>
+                                        <rect key="frame" x="60.5" y="339" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="293" id="hj2-jW-4DC"/>
                                             <constraint firstAttribute="height" constant="21" id="qyU-93-VEX"/>
@@ -6995,7 +6995,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfF-DX-tAG">
-                                        <rect key="frame" x="22" y="283" width="370" height="21"/>
+                                        <rect key="frame" x="22" y="283" width="370" height="19"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7392,7 +7392,7 @@ Enjoy!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tuesday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpq-R7-paf">
-                                                    <rect key="frame" x="13" y="27" width="50" height="21"/>
+                                                    <rect key="frame" x="13" y="27" width="51" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="VVN-jK-gKG"/>
                                                         <constraint firstAttribute="height" constant="21" id="iyi-YD-fM8"/>
@@ -7449,7 +7449,7 @@ Enjoy!</string>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="friday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ1-Hv-K1c">
-                                                    <rect key="frame" x="364" y="26" width="35" height="21"/>
+                                                    <rect key="frame" x="363" y="26" width="36" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="HZE-Kc-aCn"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="xLG-iv-eke"/>
@@ -7661,7 +7661,7 @@ Enjoy!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Anusha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ys-Vs-vm8">
-                                <rect key="frame" x="26" y="98" width="363" height="21"/>
+                                <rect key="frame" x="26" y="54" width="363" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6pl-ls-4hl"/>
                                 </constraints>
@@ -7670,7 +7670,7 @@ Enjoy!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvf-KA-X1j">
-                                <rect key="frame" x="0.0" y="127" width="414" height="317"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="317"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLI-nw-tEt">
                                         <rect key="frame" x="8" y="29" width="398" height="238"/>
@@ -7715,7 +7715,7 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsP-kW-IVI">
-                                <rect key="frame" x="0.0" y="127" width="414" height="317"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="317"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbc-po-TSU">
                                         <rect key="frame" x="18" y="123" width="377" height="0.0"/>
@@ -7732,7 +7732,7 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Gw-Ib-H1a">
-                                <rect key="frame" x="7" y="388" width="400" height="112"/>
+                                <rect key="frame" x="7" y="344" width="400" height="112"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_of_the_day4" translatesAutoresizingMaskIntoConstraints="NO" id="Uqz-Dq-Z2O">
                                         <rect key="frame" x="0.0" y="0.0" width="139" height="28"/>
@@ -7950,7 +7950,7 @@ Once you are unsubscribed you will not have access to:
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORL-O1-8hf">
-                                <rect key="frame" x="0.0" y="127" width="414" height="254"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="254"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afT-Gj-z3l">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -8359,7 +8359,7 @@ Once you are unsubscribed you will not have access to:
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLE-6J-YEk">
-                                <rect key="frame" x="74.5" y="543" width="266" height="61"/>
+                                <rect key="frame" x="74.5" y="499" width="266" height="61"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-xP-OIY">
                                         <rect key="frame" x="0.0" y="0.0" width="266" height="45"/>
@@ -8391,7 +8391,7 @@ Once you are unsubscribed you will not have access to:
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQr-DI-r99">
-                                <rect key="frame" x="39.5" y="625" width="335" height="81"/>
+                                <rect key="frame" x="39.5" y="581" width="335" height="81"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-WQ-gEv">
                                         <rect key="frame" x="231" y="0.0" width="104" height="81"/>
@@ -8910,7 +8910,7 @@ Once you are unsubscribed you will not have access to:
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTm-2A-OhI">
-                                <rect key="frame" x="0.0" y="133" width="414" height="685"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="729"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" rowHeight="54" id="zqc-we-ADc" customClass="DietPlanCell" customModule="Tweak_and_Eat" customModuleProvider="target">
@@ -9001,7 +9001,7 @@ Once you are unsubscribed you will not have access to:
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyG-zp-25I">
-                                <rect key="frame" x="0.0" y="88" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7y-v7-UOk">
                                         <rect key="frame" x="154" y="7" width="106" height="21"/>
@@ -9543,7 +9543,7 @@ Once you are unsubscribed you will not have access to:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuv-wy-HaD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Production Environment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-il-ovk">
                                         <rect key="frame" x="16" y="34" width="317" height="21"/>
@@ -10294,10 +10294,10 @@ Once you are unsubscribed you will not have access to:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
-                                <rect key="frame" x="0.0" y="267" width="414" height="595"/>
+                                <rect key="frame" x="0.0" y="223" width="414" height="639"/>
                                 <subviews>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="593"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">AiDP – tweakyfai (our own AI platform) generated Diet Plans at just Rs.149.  (Compare that to an average of Five thousand rupees …yes…Rs.5000 being charged for a diet plan)!
 Now that’s INCREDIBLE VALUE! Get one, follow it and live the magic!
@@ -10320,7 +10320,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuQ-TF-6mG">
-                                <rect key="frame" x="0.0" y="266" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="222" width="414" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-RU-dGb">
                                         <rect key="frame" x="8" y="12" width="111" height="21"/>
@@ -10333,7 +10333,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-6a-m4O">
-                                        <rect key="frame" x="254" y="12" width="62" height="21"/>
+                                        <rect key="frame" x="257.5" y="12" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="Vsz-5d-5Zv"/>
                                         </constraints>
@@ -10342,7 +10342,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREMIUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-kF-2nJ">
-                                        <rect key="frame" x="333" y="12" width="75" height="21"/>
+                                        <rect key="frame" x="336.5" y="12" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -10362,18 +10362,18 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
-                                <rect key="frame" x="0.0" y="311" width="414" height="298"/>
+                                <rect key="frame" x="0.0" y="267" width="414" height="342"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="cqP-gB-zrd" customClass="MoreInfoPackageTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="17"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cqP-gB-zrd" id="U1e-zj-XZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="19.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-TC-XGP">
-                                                    <rect key="frame" x="8" y="0.0" width="271" height="19.5"/>
+                                                    <rect key="frame" x="8" y="0.0" width="271" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="177" id="QEP-Pr-5Hu"/>
                                                     </constraints>
@@ -10382,14 +10382,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-t9-LxV">
-                                                    <rect key="frame" x="287" y="-5.5" width="30" height="30.5"/>
+                                                    <rect key="frame" x="287" y="-6.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="EHu-rf-szI"/>
                                                         <constraint firstAttribute="height" constant="30" id="qyq-xc-82O"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-d4-u09">
-                                                    <rect key="frame" x="356" y="-5.5" width="30" height="30.5"/>
+                                                    <rect key="frame" x="356" y="-6.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="0vK-Sz-MC9"/>
                                                         <constraint firstAttribute="height" constant="30" id="DNz-1b-IdK"/>
@@ -10484,7 +10484,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCJ-bO-auo">
-                                <rect key="frame" x="10" y="98" width="394" height="158"/>
+                                <rect key="frame" x="10" y="54" width="394" height="158"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="158" id="taN-ei-Keb"/>
                                 </constraints>
@@ -10698,13 +10698,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-T1-7QS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-2i-4Z4">
                                         <rect key="frame" x="22" y="30" width="369" height="560"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THv-Vh-JWY">
-                                                <rect key="frame" x="41" y="317" width="200" height="34"/>
+                                                <rect key="frame" x="41" y="321.5" width="200" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="XXL-ks-3jx"/>
@@ -10714,7 +10714,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLease choose Language" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="REg-uY-U2Z">
-                                                <rect key="frame" x="41" y="367" width="220" height="34"/>
+                                                <rect key="frame" x="41" y="371.5" width="220" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Oz6-4Y-igk"/>
@@ -10724,37 +10724,37 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zx-cD-tuz">
-                                                <rect key="frame" x="41" y="367" width="256" height="34"/>
+                                                <rect key="frame" x="41" y="371.5" width="256" height="34"/>
                                                 <connections>
                                                     <action selector="languageBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="bz7-7L-l4W"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaS-Oh-fLG">
-                                                <rect key="frame" x="41" y="317" width="236" height="34"/>
+                                                <rect key="frame" x="41" y="321.5" width="236" height="34"/>
                                                 <connections>
                                                     <action selector="getTimeSlotsBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="G5I-qa-FbW"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="m0H-dv-oxR">
-                                                <rect key="frame" x="5" y="319" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="323.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0jI-uQ-hOI"/>
                                                     <constraint firstAttribute="width" constant="30" id="9u4-EZ-Ikc"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speak" translatesAutoresizingMaskIntoConstraints="NO" id="Go8-Qt-71m">
-                                                <rect key="frame" x="5" y="369" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="373.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0Tf-ww-mqm"/>
                                                     <constraint firstAttribute="width" constant="30" id="SJT-0Y-5RL"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-qM-FtK" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="369" height="301"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="305.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-zb-yPo">
-                                                <rect key="frame" x="18" y="415" width="333" height="40"/>
+                                                <rect key="frame" x="18" y="419.5" width="333" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -10796,21 +10796,21 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="9CB-OD-F6W">
-                                                <rect key="frame" x="271" y="369.5" width="28" height="29"/>
+                                                <rect key="frame" x="271" y="374" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="0r3-KZ-BJd"/>
                                                     <constraint firstAttribute="height" constant="29" id="h0K-uh-uGX"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-uG-voH">
-                                                <rect key="frame" x="249" y="319.5" width="28" height="29"/>
+                                                <rect key="frame" x="249" y="324" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="7ei-cB-kfs"/>
                                                     <constraint firstAttribute="width" constant="28" id="Cvp-Ca-XaY"/>
                                                 </constraints>
                                             </imageView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYa-V7-JUB">
-                                                <rect key="frame" x="41" y="406" width="220" height="153"/>
+                                                <rect key="frame" x="41" y="410.5" width="220" height="148.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="34" id="4Jc-rX-NaC">
@@ -10831,7 +10831,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="369" height="560"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-Jd-ipQ">
-                                                        <rect key="frame" x="39" y="19" width="291" height="280"/>
+                                                        <rect key="frame" x="39" y="19" width="291" height="273.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm to schedule the call" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDp-6i-p3h">
                                                                 <rect key="frame" x="10" y="10" width="268" height="20"/>
@@ -10846,7 +10846,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please enter the 4 digit code shown to complete the SCHEDULING CALL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-Mp-od1" userLabel="Please enter the 4 digit code shown to complete the SCHEDULING CALL">
-                                                                <rect key="frame" x="11.5" y="95" width="269" height="59.5"/>
+                                                                <rect key="frame" x="11.5" y="95" width="269" height="53"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -10864,7 +10864,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="4 Digit code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ksr-QP-TzD">
-                                                                <rect key="frame" x="27" y="162.5" width="237" height="35.5"/>
+                                                                <rect key="frame" x="27" y="156" width="237" height="35.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.3502984643" green="0.0" blue="0.5019912124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -10875,7 +10875,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJN-2z-FF9">
-                                                                <rect key="frame" x="12" y="225" width="99" height="35"/>
+                                                                <rect key="frame" x="12" y="218.5" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.66187959910000005" green="0.1941522956" blue="0.50982528920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="4uS-42-V4Y"/>
@@ -10887,7 +10887,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx3-IC-k0m">
-                                                                <rect key="frame" x="180" y="225" width="99" height="35"/>
+                                                                <rect key="frame" x="180" y="218.5" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="99" id="0eY-vU-1kY"/>
@@ -11066,13 +11066,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-hH-QTU">
-                                        <rect key="frame" x="14" y="319" width="386" height="0.0"/>
+                                        <rect key="frame" x="14" y="317" width="386" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABc-hF-VUF">
-                                        <rect key="frame" x="60.5" y="341" width="293" height="21"/>
+                                        <rect key="frame" x="60.5" y="339" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eEM-AP-6kL"/>
                                             <constraint firstAttribute="width" constant="293" id="yvF-0W-byi"/>
@@ -11096,7 +11096,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-9P-bxm">
-                                        <rect key="frame" x="22" y="283" width="370" height="21"/>
+                                        <rect key="frame" x="22" y="283" width="370" height="19"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -11249,7 +11249,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BC-uB-M1Q">
-                                <rect key="frame" x="55.5" y="530" width="303" height="46"/>
+                                <rect key="frame" x="55.5" y="486" width="303" height="46"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3D-Bn-1v7">
                                         <rect key="frame" x="8" y="3" width="40" height="40"/>
@@ -11285,7 +11285,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-FC-a1B">
-                                <rect key="frame" x="0.0" y="88" width="70" height="440"/>
+                                <rect key="frame" x="0.0" y="44" width="70" height="440"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="440" id="yq1-Y2-h6R"/>
@@ -11361,7 +11361,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XtK-aH-Kv7">
-                                <rect key="frame" x="68" y="88" width="346" height="440"/>
+                                <rect key="frame" x="68" y="44" width="346" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options that you can choose from:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="hdX-Do-PKy">
@@ -11374,14 +11374,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="OGS-yw-UPG" customClass="AiDPTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="346" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="58" width="346" height="15.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OGS-yw-UPG" id="3wU-Nj-0P9">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="17.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346" height="15.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klb-xX-nS3">
-                                                    <rect key="frame" x="11" y="0.0" width="336" height="17.5"/>
+                                                    <rect key="frame" x="11" y="0.0" width="336" height="15.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -11445,7 +11445,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
-                                        <rect key="frame" x="24.5" y="421" width="365" height="20"/>
+                                        <rect key="frame" x="28" y="422" width="358.5" height="18"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11670,10 +11670,10 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mw0-kv-3NC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tn-Ht-Qnu">
-                                        <rect key="frame" x="27.5" y="310.5" width="359" height="138"/>
+                                        <rect key="frame" x="27.5" y="332.5" width="359" height="138"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="359" id="csg-Pe-12J"/>
                                             <constraint firstAttribute="height" constant="138" id="lhW-7C-OvR"/>
@@ -11683,7 +11683,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I0-WT-EKb">
-                                        <rect key="frame" x="0.0" y="729" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="773" width="414" height="45"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Sww-SG-vAW"/>
@@ -11878,7 +11878,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <rect key="frame" x="5" y="258" width="329" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Er-jXe">
-                                                        <rect key="frame" x="8" y="3.5" width="20" height="18.5"/>
+                                                        <rect key="frame" x="8" y="4.5" width="20" height="16.5"/>
                                                         <color key="backgroundColor" red="0.0" green="0.41960784309999999" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="873-N7-VMF"/>
@@ -11888,7 +11888,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-0P-SJj">
-                                                        <rect key="frame" x="36" y="3" width="35" height="19.5"/>
+                                                        <rect key="frame" x="36" y="2" width="35" height="19.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="c5b-I4-9OC"/>
                                                         </constraints>
@@ -11897,7 +11897,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb3-pe-2gb">
-                                                        <rect key="frame" x="77" y="3" width="20" height="19.5"/>
+                                                        <rect key="frame" x="77" y="2" width="20" height="19.5"/>
                                                         <color key="backgroundColor" red="0.63921568630000003" green="0.1450980392" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="hPc-W4-l6D"/>
@@ -11907,7 +11907,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-fa-B5s">
-                                                        <rect key="frame" x="105" y="3" width="35" height="19.5"/>
+                                                        <rect key="frame" x="105" y="2" width="35" height="19.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="ANy-Qb-i1Y"/>
                                                         </constraints>
@@ -11916,7 +11916,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-e0-wRc">
-                                                        <rect key="frame" x="141" y="3" width="20" height="19.5"/>
+                                                        <rect key="frame" x="141" y="2" width="20" height="19.5"/>
                                                         <color key="backgroundColor" red="0.86666666670000003" green="0.41960784309999999" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="V41-qT-k12"/>
@@ -11926,7 +11926,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghY-Dk-XHW">
-                                                        <rect key="frame" x="169" y="3" width="41" height="19.5"/>
+                                                        <rect key="frame" x="169" y="2" width="41" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -12246,7 +12246,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmQ-QU-Z2n">
-                                        <rect key="frame" x="8" y="91" width="398" height="257.5"/>
+                                        <rect key="frame" x="8" y="91" width="398" height="210.5"/>
                                         <string key="text">Your reports will be updated every Saturday and you will be informed through a notification as soon as the Reports are updated.
 
 Your Reports will include your 'Last week's report on what you have consumed in terms of %carbs, protein, fiber and fat' and some comments from our certified nutritionist.
@@ -12464,14 +12464,14 @@ It will also include 'Recommendations for the coming week in terms of both % car
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="bE8-Ft-U7c">
-                                <rect key="frame" x="19.5" y="88" width="375" height="195"/>
+                                <rect key="frame" x="19.5" y="44" width="375" height="195"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="195" id="K6e-aC-vhd"/>
                                     <constraint firstAttribute="width" constant="375" id="Kpd-wA-PrX"/>
                                 </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jke-K7-hGu">
-                                <rect key="frame" x="0.0" y="423" width="414" height="57"/>
+                                <rect key="frame" x="0.0" y="379" width="414" height="57"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxxx-xxxx-xxxx-xxxx" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OB0-fi-Q6s">
                                         <rect key="frame" x="8" y="13" width="186.5" height="30"/>
@@ -12520,7 +12520,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rN-jq-FVZ">
-                                <rect key="frame" x="8" y="391" width="41.5" height="24"/>
+                                <rect key="frame" x="8" y="347" width="41.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="y9p-D1-NMD"/>
                                 </constraints>
@@ -12529,7 +12529,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your plan:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcy-Lf-HBo">
-                                <rect key="frame" x="8" y="286" width="182.5" height="24"/>
+                                <rect key="frame" x="8" y="242" width="182.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Vin-hO-ILo"/>
                                 </constraints>
@@ -12538,7 +12538,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-wI-5u3">
-                                <rect key="frame" x="0.0" y="318" width="414" height="57"/>
+                                <rect key="frame" x="0.0" y="274" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-jp-LIM">
                                         <rect key="frame" x="8" y="8" width="298" height="41"/>
@@ -12575,7 +12575,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wdZ-EV-9c7">
-                                <rect key="frame" x="8" y="377" width="398" height="108"/>
+                                <rect key="frame" x="8" y="333" width="398" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="dL7-If-FDn"/>
                                 </constraints>
@@ -12695,7 +12695,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ta7-Yk-O3n">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="377"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="333"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="AuX-gn-C9e">
@@ -13150,7 +13150,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WAR-NO-9Fk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="682"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o1Q-z3-V35">
                                     <size key="itemSize" width="375" height="484"/>
@@ -13160,7 +13160,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="HyC-yn-Xju" customClass="ScrollCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="77" width="375" height="484"/>
+                                        <rect key="frame" x="0.0" y="99" width="375" height="484"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
@@ -13294,10 +13294,10 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h92-k3-xnN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! Thank you for subscribing to Premium Tweak Pack." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujk-Fv-JyZ">
-                                        <rect key="frame" x="47" y="352" width="320" height="70"/>
+                                        <rect key="frame" x="47" y="378" width="320" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="lav-Y5-vk3"/>
                                         </constraints>
@@ -13306,7 +13306,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nw-3h-X7M">
-                                        <rect key="frame" x="0.0" y="725" width="414" height="49"/>
+                                        <rect key="frame" x="0.0" y="769" width="414" height="49"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="rbg-fS-TXA"/>
@@ -13320,7 +13320,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="voo-eq-EWE">
-                                        <rect key="frame" x="175" y="229" width="64" height="84"/>
+                                        <rect key="frame" x="175" y="255" width="64" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="Z4T-MV-hnL"/>
                                             <constraint firstAttribute="height" constant="84" id="dNi-hh-J12"/>
@@ -13941,20 +13941,20 @@ It will also include 'Recommendations for the coming week in terms of both % car
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZdS-nr-yHs"/>
+        <segue reference="SAn-PJ-tzn"/>
         <segue reference="Pf6-Bl-kGD"/>
-        <segue reference="lPI-KC-Cke"/>
-        <segue reference="8Io-NT-hdk"/>
-        <segue reference="zVF-by-iNH"/>
-        <segue reference="wAY-l1-OTQ"/>
-        <segue reference="lMP-CW-m2y"/>
+        <segue reference="2ws-5A-g0n"/>
+        <segue reference="UdS-dU-D7f"/>
+        <segue reference="Hq7-gK-IGU"/>
+        <segue reference="iqF-fL-dZd"/>
+        <segue reference="tRK-ok-v5w"/>
         <segue reference="lPw-O8-679"/>
         <segue reference="Yl1-aV-dl8"/>
         <segue reference="Zyf-gX-8GO"/>
-        <segue reference="6Z8-h3-4eg"/>
+        <segue reference="wE8-uh-716"/>
         <segue reference="2eF-Oz-vLq"/>
         <segue reference="5vE-qp-Xfk"/>
-        <segue reference="TAK-jC-ogl"/>
+        <segue reference="DdJ-Pv-0Tb"/>
         <segue reference="TTo-mK-CFO"/>
         <segue reference="OcY-kN-l00"/>
         <segue reference="uKn-Ey-94X"/>

@@ -1,6 +1,7 @@
 PODS:
   - AAInfographics (4.0.0)
   - Alamofire (4.6.0)
+  - AppsFlyerFramework (6.0.2)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -86,7 +87,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - OneSignal (2.13.0)
+  - OneSignal (2.15.3)
   - Protobuf (3.3.0)
   - razorpay-pod (1.1.5)
   - Realm (2.10.2):
@@ -98,6 +99,7 @@ PODS:
 DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire (~> 4.5)
+  - AppsFlyerFramework
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -115,6 +117,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppsFlyerFramework
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -151,6 +154,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AAInfographics: bbeed03caece4ee3b5e557d734967394e9bcdb11
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AppsFlyerFramework: 9e0cd7b807ccd375a87bef34fd50049f4c655eef
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -169,12 +173,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  OneSignal: 09c9fe1e7a097af5fda94e00c1598c3c945552b9
+  OneSignal: d85b81aa313ed8040522b884f556267883d652c2
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   razorpay-pod: 31dd24ddb70275d82be12527b45001f9bc9f1be2
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
 
-PODFILE CHECKSUM: cd6367427d257a93b8ced5c678fc424ea0cfb74b
+PODFILE CHECKSUM: 666118d762794147d3ea178a02fb3bbce00d2f48
 
 COCOAPODS: 1.9.1

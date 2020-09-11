@@ -692,8 +692,8 @@ class ImageUploadingViewController: UIViewController {
                         let promoAppLink = response["promoAppLink"] as! String
                         if promoImgUrl == "" || promoAppLink == "" {
                             self.imageADView.isHidden = true
-                            self.didYouKnowText.isHidden = false
-                            self.hereTipLabel.isHidden = false
+                            self.didYouKnowText.isHidden = true
+                            self.hereTipLabel.isHidden = true
                         } else {
                             self.imageADView.isHidden = false
                             self.didYouKnowText.isHidden = true
