@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarouselCollectionViewCell2" customModule="Tweak_and_Eat" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" reuseIdentifier="CarouselCollectionViewCell2" id="dAG-zg-RBN" customClass="CarouselCollectionViewCell2" customModule="Tweak_and_Eat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tS-lC-oho">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="0tS-lC-oho" firstAttribute="leading" secondItem="dAG-zg-RBN" secondAttribute="leading" id="4Vh-4i-Ja3"/>
+                <constraint firstAttribute="bottom" secondItem="0tS-lC-oho" secondAttribute="bottom" id="DRU-2x-X46"/>
+                <constraint firstAttribute="trailing" secondItem="0tS-lC-oho" secondAttribute="trailing" id="VUr-MW-hTb"/>
+                <constraint firstItem="0tS-lC-oho" firstAttribute="top" secondItem="dAG-zg-RBN" secondAttribute="top" id="XcA-hi-l2B"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="X9G-vA-MSu"/>
+            <connections>
+                <outlet property="btnImage" destination="0tS-lC-oho" id="Ang-Xc-xrk"/>
+            </connections>
+            <point key="canvasLocation" x="131.15942028985509" y="152.67857142857142"/>
+        </collectionViewCell>
+    </objects>
+</document>

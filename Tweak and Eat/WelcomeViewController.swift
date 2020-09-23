@@ -6078,42 +6078,51 @@ self.floatingCallBtn.isHidden = false
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
+        if self.countryCode == "44" {
+                                       self.premiumMemberBottomBtn.isHidden = true
+                                       self.premiumMemberTopBtn.isHidden = true
+                                   }
+        if self.countryCode != "91" {
+            
+            self.premiumMemberBottomBtn.setImage(UIImage.init(named: "tae_club_home_left_btn_1x"), for: .normal)
+            self.premiumMemberTopBtn.setImage(UIImage.init(named: "tae_club_home_left_btn_1x"), for: .normal)
+        }
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
-            DispatchQueue.global(qos: .background).async {
-                // Call your background task
-                let imgUrl = responseDic["homeBtnPremImage"] as AnyObject as! String
-                let data = try? Data(contentsOf: URL(string: imgUrl)!)
-                // UI Updates here for task complete.
-                UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
-                UserDefaults.standard.synchronize()
-                if let imageData = data {
-                    let image = UIImage(data: imageData)
-                    DispatchQueue.main.async {
-                        if self.countryCode != "91" {
-                            if self.countryCode == "44" {
-                                self.premiumMemberBottomBtn.isHidden = true
-                                self.premiumMemberTopBtn.isHidden = true
-                            }
-                            self.premiumMemberBottomBtn.setBackgroundImage(image, for: .normal)
-                            self.premiumMemberTopBtn.setBackgroundImage(image, for: .normal)
-                        }
-                        
-                        
-                    }
-            }
-            
-
-                
-            }
-            if self.countryCode != "91" {
-                self.premiumMemberTopButtonWidthConstraint.constant = 320
-                self.premiumMemberBottomButtonWidthConstraint.constant = 320
-                self.premiumMemberBottomButtonHeightConstraint.constant = 45
-                self.premiumMemberTopButtonHeightConstraint.constant = 45
-
-            }
+//            DispatchQueue.global(qos: .background).async {
+//                // Call your background task
+//                let imgUrl = responseDic["homeBtnPremImage"] as AnyObject as! String
+//                let data = try? Data(contentsOf: URL(string: imgUrl)!)
+//                // UI Updates here for task complete.
+//                UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
+//                UserDefaults.standard.synchronize()
+//                if let imageData = data {
+//                    let image = UIImage(data: imageData)
+//                    DispatchQueue.main.async {
+//                        if self.countryCode != "91" {
+//                            if self.countryCode == "44" {
+//                                self.premiumMemberBottomBtn.isHidden = true
+//                                self.premiumMemberTopBtn.isHidden = true
+//                            }
+//                            self.premiumMemberBottomBtn.setBackgroundImage(image, for: .normal)
+//                            self.premiumMemberTopBtn.setBackgroundImage(image, for: .normal)
+//                        }
+//
+//
+//                    }
+//            }
+//
+//
+//
+//            }
+//            if self.countryCode != "91" {
+//                self.premiumMemberTopButtonWidthConstraint.constant = 320
+//                self.premiumMemberBottomButtonWidthConstraint.constant = 320
+//                self.premiumMemberBottomButtonHeightConstraint.constant = 45
+//                self.premiumMemberTopButtonHeightConstraint.constant = 45
+//
+//            }
             if self.countryCode == "91" {
                 self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
             } else if self.countryCode == "1" {

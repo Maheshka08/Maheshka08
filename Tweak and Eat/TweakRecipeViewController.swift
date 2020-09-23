@@ -669,8 +669,8 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     func getTopBanners() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-        }
-     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+        }//AiDPwdvop1HU7fj8vfL
+     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
         MBProgressHUD.hide(for: self.view, animated: true);
 
          self.getVegRecipes()

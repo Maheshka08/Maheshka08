@@ -14,5 +14,6 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 #import <AssetsLibrary/ALAsset.h>
+#import "iCarousel.h"
 
 

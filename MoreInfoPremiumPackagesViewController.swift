@@ -13,12 +13,301 @@ import StoreKit
 import Realm
 import RealmSwift
 import AppsFlyerLib
+//Sample model
+struct Item {
+    var value: String = ""
+}
+private var carouselDataSource: CarouselDataSource<Item>?
+   private var carouselDataSource2: CarouselDataSource<Item>?
 
+  
 enum MyTheme {
     case light
     case dark
 }
-class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule {
+class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
+    var scrolledIndex: Int = 0
+    func cellTappedOnButton(_ cell: CarouselCollectionViewCell) {
+        selectedIndex = cell.myIndexPath.row;
+//        if self.carouselView1.indexPathForItem(at: CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y)) {
+//
+//        }
+        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
+        let index = self.carouselView1.indexPathForItem(at: center)
+        print(index ?? "index not found")
+//        for cell in self.carouselView1.visibleCells {
+//            let indexPath = self.carouselView1.indexPath(for: cell)
+//            print(indexPath)
+//            self.scrolledIndex = indexPath!.row
+//        }
+        if index?.row != selectedIndex {
+            DispatchQueue.main.async {
+                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+                                      self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+                          }
+            return
+        }
+                    self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
+                    self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+                    self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+                    self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+                    self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+                    self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+                    let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+                    let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+                    
+                    let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+                    let totalDesc: String = labels + amount + currency;
+        //            if self.featuresView.isHidden == false {
+        //            self.priceLabel.text = " " + totalDesc
+        //            } else {
+        //                self.chooseSubScriptionPlanLbl.text = " " + totalDesc
+        //
+        //            }
+                    self.packageName = (self.labelPriceDict[lables] as? String)!
+        //            self.buyNowButton.isEnabled = true
+        //            self.priceTableView.isHidden = true
+                    self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                           if (SKPaymentQueue.canMakePayments()) {
+                               self.buyNowButton.isEnabled = false
+                               let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                               let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                               productsRequest.delegate = self;
+                               productsRequest.start();
+                               print("Fetching Products");
+                           } else {
+                               print("can't make purchases");
+                           }
+
+    }
+    
+    
+    // MARK: - Properties
+      /// The list of promotionItems
+      public var items = [Item]() {
+          didSet {
+              updateDataSource()
+          }
+      }
+    public var items2 = [Item]() {
+        didSet {
+            updateDataSource2()
+        }
+    }
+      
+    // MARK: - Userdefined methods
+    /// Set up the data source variable with promotionItems
+    private func updateDataSource() {
+        carouselDataSource = CarouselDataSource(model: items, reuseIdentifier: "CarouselCollectionViewCell") { item, cell, myIndex in
+            guard let cell = cell as? CarouselCollectionViewCell else {
+                return
+            }
+            cell.buttonDelegate = self
+            cell.myIndexPath = myIndex
+            //cell.cellIndexPath = myIndex
+            
+            cell.populate(item: item)
+        }
+        
+        carouselView1.dataSource = carouselDataSource
+        carouselView1.delegate = self
+//        var ind = 0
+//              if self.items.count == 1 {
+//                  ind = 0
+//              } else if self.items.count >= 2 {
+//                  ind = 1
+//              }
+//        DispatchQueue.main.async {
+//             let indexPath = IndexPath(item: 1, section: 0)
+//                self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+//            }
+        DispatchQueue.main.async {
+                   self.carouselView1.reloadData()
+          //  self.scrolledIndex = 1
+            let indexPath = IndexPath(item: 1, section: 0)
+                           self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+               }
+        
+    }
+    
+    private func updateDataSource2() {
+        if IS_iPHONE5 || IS_iPHONE678 {
+                  // self.ratingsCarouselHeightConstraint.constant = 0
+            return
+    }
+        carouselDataSource2 = CarouselDataSource(model: items2, reuseIdentifier: "CarouselCollectionViewCell2") { item, cell, myIndex  in
+               guard let cell = cell as? CarouselCollectionViewCell2 else {
+                   return
+               }
+               cell.populate(item: item)
+           }
+           
+           carouselView2.dataSource = carouselDataSource2
+           carouselView2.delegate = self
+//        var ind = 0
+//        if self.items2.count == 1 {
+//            ind = 0
+//        } else if self.items2.count >= 2 {
+//            ind = 1
+//        }
+//
+        DispatchQueue.main.async {
+            self.carouselView2.reloadData()
+            let indexPath = IndexPath(item: 1, section: 0)
+                           self.carouselView2.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+        }
+//           DispatchQueue.main.async {
+//            let indexPath = IndexPath(item: 1 , section: 0)
+//                   self.carouselView2.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+//               }
+           
+       
+    }
+
+    
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        if carousel == self.packagesCarouselView {
+            
+         if self.packagesImagesArray.count > 0 {
+             return self.packagesImagesArray.count
+         }
+            
+        } else if carousel == self.ratingsCarouselView {
+            if self.userReviewsArray.count > 0 {
+                return self.userReviewsArray.count
+            }
+        }
+        return 0
+    }
+//    func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
+//        return carousel.itemWidth + 40
+//    }
+//    func carousel(_ carousel: iCarousel, itemTransformForOffset offset: CGFloat, baseTransform transform: CATransform3D) -> CATransform3D {
+//           let distance : Float = -300
+//           let z = fminf(1.0, fabsf(Float(offset))) * distance
+//           return CATransform3DTranslate(transform, offset * carousel.itemWidth, 0.0, CGFloat(z))
+//       }
+//    func carousel(_ carousel: iCarousel, itemTransformForOffset offset: CGFloat, baseTransform transform: CATransform3D) -> CATransform3D {
+//
+//        let centerItemZoom: CGFloat = 1.1
+//        let centerItemSpacing: CGFloat = 1.23
+//
+//        let spacing: CGFloat = self.carousel(carousel, valueFor: .spacing, withDefault: 0.90)
+//        let absClampedOffset = min(1.0, abs(offset))
+//        let clampedOffset = min(1.0, max(-1.0, offset))
+//        let scaleFactor = 1.0 + absClampedOffset * (1.0/centerItemZoom - 1.0)
+//        let offset = (scaleFactor * offset + scaleFactor * (centerItemSpacing - 1.0) * clampedOffset) * carousel.itemWidth * spacing
+//        var transform = CATransform3DTranslate(transform, offset, 0.0, -absClampedOffset)
+//        transform = CATransform3DScale(transform, scaleFactor, scaleFactor, 1.0)
+//
+//        return transform;
+//    }
+//    func carousel(_ _carousel: iCarousel?, itemTransformForOffset offset: CGFloat, baseTransform transform: CATransform3D) -> CATransform3D {
+//        let distance: CGFloat = 100.0 //number of pixels to move the items away from camera
+//        let z = CGFloat(-fminf(1.0, abs(Float(offset)))) * distance
+//        return CATransform3DTranslate(transform, offset * carousel.itemWidth, 0.0, z)
+//    }
+    func carousel(_ carousel: iCarousel, itemTransformForOffset offset: CGFloat, baseTransform transform: CATransform3D) -> CATransform3D {
+           let distance : Float = 100
+           let z = -fminf(1.0, fabsf(Float(offset))) * distance
+           return CATransform3DTranslate(transform, offset * carousel.itemWidth, 0.0, CGFloat(z))
+       }
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        if carousel == self.packagesCarouselView {
+        switch (option) {
+        case .spacing: return 1.06 // 8 points spacing
+            default: return value
+        }
+        } else if carousel == self.ratingsCarouselView {
+        switch (option) {
+        case .spacing: return 1.02 // 8 points spacing
+            default: return value
+        }
+        }
+        return 0
+    }
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        if carousel == self.packagesCarouselView {
+         let imageView: UIImageView
+
+           if view != nil {
+               imageView = view as! UIImageView
+           } else {
+            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 110, height: self.packagesCarouselView.frame.size.height))
+           }
+       let imgName:String = self.packagesImagesArray[index] as! String
+
+        imageView.sd_setImage(with: URL(string: imgName));
+            //imageView.clipsToBounds = true
+           return imageView
+        } else if carousel == self.ratingsCarouselView {
+         let imageView: UIImageView
+
+           if view != nil {
+               imageView = view as! UIImageView
+           } else {
+            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 80, height: self.ratingsCarouselView.frame.size.height))
+           }
+            let imgName:String = self.userReviewsArray[index] as! String
+
+            imageView.sd_setImage(with: URL(string: imgName));
+
+           return imageView
+        }
+        return UIView()
+//          let imageView: UIImageView
+//
+//                   if view != nil {
+//                       imageView = view as! UIImageView
+//                   } else {
+//                    imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 40, height: self.ratingsCarouselView.frame.size.height))
+//                   }
+//                let imgName = "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/v2/tae_title_001.png"
+//                  // imageView.image = UIImage(named: imgName)
+//        imageView.sd_setImage(with: URL(string: imgName));
+//                   return imageView
+    }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        if carousel == packagesCarouselView {
+            
+            selectedIndex = index;
+            self.labelPriceDict  = self.nutritionLabelPriceArray[index] as! [String : AnyObject];
+            self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+            self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+            self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+            self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+            self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+            let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+            let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+            
+            let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+            let totalDesc: String = labels + amount + currency;
+//            if self.featuresView.isHidden == false {
+//            self.priceLabel.text = " " + totalDesc
+//            } else {
+//                self.chooseSubScriptionPlanLbl.text = " " + totalDesc
+//
+//            }
+            self.packageName = (self.labelPriceDict[lables] as? String)!
+//            self.buyNowButton.isEnabled = true
+//            self.priceTableView.isHidden = true
+            self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+                   if (SKPaymentQueue.canMakePayments()) {
+                       self.buyNowButton.isEnabled = false
+                       let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                       let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                       productsRequest.delegate = self;
+                       productsRequest.start();
+                       print("Fetching Products");
+                   } else {
+                       print("can't make purchases");
+                   }
+        }
+    }
     func closeBtnTapped() {
         self.callSchedulePopup.removeFromSuperview()
          self.title = self.navTitle
@@ -38,8 +327,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           v.translatesAutoresizingMaskIntoConstraints=false
           return v
       }()
+    
+    @IBOutlet weak var carouselView2: CarouselCollectionView!
+    @IBOutlet weak var carouselView1: CarouselCollectionView!
     var packageName = ""
     var navTitle = ""
+    var packagesImagesArray = NSMutableArray()
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var calendarInnerView: UIView!
     @IBOutlet weak var languageTableView: UITableView!
@@ -64,21 +357,39 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var selectPlanView: UIView!
     var timeSlotsArray = [[String: AnyObject]]()
     var productPrice: NSDecimalNumber = NSDecimalNumber()
+    
+    @IBOutlet weak var noCommitmentLabel: UILabel!
+   
+    @IBOutlet weak var privacyPolicyBtn: UIButton!
+    @IBOutlet weak var termsofUseBtn: UIButton!
     @IBOutlet weak var buyNowButton: UIButton!;
     @IBOutlet weak var infoView: UIView!;
+    @IBOutlet weak var noCommitmentHeightConstraint: NSLayoutConstraint!
+     @IBOutlet weak var termsHeightConstraint: NSLayoutConstraint!
+     @IBOutlet weak var packagesCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var ratingsCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var timeSlotTextField: UITextField!
     @IBOutlet weak var languageTextField: UITextField!
     @IBOutlet weak var packageDescTextView: UITextView!;
     @IBOutlet weak var areYouSureLbl: UILabel!
     @IBOutlet weak var unSubscribeImgViewHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var callNutritionistBtn2HeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var carouselsView: UIView!
     @IBOutlet weak var ourNutritionistLbl: UILabel!
     @IBOutlet weak var callNutritionistBtn2: UIButton!
     var myProfile : Results<MyProfileInfo>?;
     @IBOutlet weak  var paySucessView: UIView!
     @IBOutlet weak  var usdAmtLabel: UILabel!
     @IBOutlet weak  var nutritionstDescLbl: UILabel!
+    var userReviewsArray = NSMutableArray()
+    
+    @IBOutlet weak var bottomImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ratingsCarouselView: iCarousel!
+    @IBOutlet weak var packagesCarouselView: iCarousel!
+    @IBOutlet weak var bottomImageView: UIImageView!
+    @IBOutlet weak var topImageView: UIImageView!
     var system = 0;
     var confirmationText = ""
     var cardImageString = "";
@@ -193,6 +504,24 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                       
                    
     }
+    
+    @IBAction func privacyPolicyBtnTapped(_ sender: Any) {
+        guard let url = URL(string: "http://www.tweakandeat.com/privacy-policy.html") else {
+                                            return
+                                        }
+                                       if UIApplication.shared.canOpenURL(url) {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                        }
+       }
+       @IBAction func termsOfUseBtnTapped(_ sender: Any) {
+        guard let url = URL(string: "http://www.tweakandeat.com/terms-of-use.html") else {
+                                            return
+                                        }
+                                       if UIApplication.shared.canOpenURL(url) {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                        }
+       }
+    
     func gettimeSlots() {
         self.timeSlotsArray = []
         MBProgressHUD.showAdded(to: self.view, animated: true);
@@ -1040,8 +1369,73 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
             }
             print(self.nutritionLabelPackagesArray);
+            for priceDict in self.nutritionLabelPriceArray {
+                let dict = priceDict as! [String: AnyObject]
+                if dict.index(forKey: "pkgImg") != nil {
+                   // self.packagesImagesArray.add(dict["pkgImg"] as! String)
+                    self.items.append(Item(value: dict["pkgImg"] as! String))
+                    
+                }
+            }
+            print(self.packagesImagesArray)
+            DispatchQueue.main.async {
+//                self.packagesCarouselView.reloadData()
+//                self.packagesCarouselView.scrollToItem(at: self.packagesImagesArray.count >= 2 ? 1: 0, animated: true)
+
+                       }
+            for packageDict in self.nutritionLabelPackagesArray {
+                let dict = packageDict as! [String: AnyObject]
+                for (key,val) in dict {
+                    if key == "titleImg" {
+                            let urlString = val as! String
+
+                          self.topImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+                                                                             // Your code inside completion block
+                            let ratio = image!.size.width / image!.size.height
+                            let newHeight = self.topImageView.frame.width / ratio
+                           self.topImageViewHeightConstraint.constant = newHeight
+                           self.view.layoutIfNeeded()
+//                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+//                                                      animations: {
+//
+//                                       }, completion: nil)
+
+
+                            }
+                    } else if key == "titleTwoImg" {
+                            let urlString = val as! String
+
+                          self.bottomImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+                                                                             // Your code inside completion block
+                            let ratio = image!.size.width / image!.size.height
+                            let newHeight = self.bottomImageView.frame.width / ratio
+                           self.bottomImageViewHeightConstraint.constant = newHeight
+                            self.view.layoutIfNeeded()
+                               
+
+                            }
+                    } else if key == "userReviews" {
+                        self.userReviewsArray = val as! NSMutableArray
+                        print(self.userReviewsArray)
+                       // self.ratingsCarouselView.scrollToItem(at: 1, animated: true)
+                        for imgUrl in self.userReviewsArray {
+                        self.items2.append(Item(value: imgUrl as! String))
+                        }
+
+                        
+                    }
+                }
+                }
+            DispatchQueue.main.async {
+//                            self.ratingsCarouselView.reloadData()
+//                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
+
+            }
+
+            }
+
         }
-    }
+    
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        let cellDict = self.moreInfoPremiumPackagesArray[indexPath.row] as! [String : AnyObject];
@@ -1219,8 +1613,59 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //        }
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+//        self.packagesCarouselView.removeFromSuperview()
+//        self.ratingsCarouselView.removeFromSuperview()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if countryCode == "91" {
+                self.carouselsView.isHidden = false
+            }
+        }
+        //self.packagesCarouselView.centerItemWhenSelected = true
+        let termsAttr : [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+     NSAttributedString.Key.foregroundColor : UIColor.blue,
+     NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
+        let attributeString = NSMutableAttributedString(string: "Terms of Use",
+                                                           attributes: termsAttr)
+        self.termsofUseBtn.setAttributedTitle(attributeString, for: .normal)
+        
+        let privacyAttr : [NSAttributedString.Key: Any] = [
+               NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor : UIColor.blue,
+            NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
+               let attributeString1 = NSMutableAttributedString(string: "Privacy Policy",
+                                                                  attributes: privacyAttr)
+               self.privacyPolicyBtn.setAttributedTitle(attributeString1, for: .normal)
+        self.noCommitmentLabel.font = UIFont(name: "QUESTRIAL-REGULAR", size: 18)
+        carouselView1.register(UINib(nibName: "CarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell")
+        carouselView2.register(UINib(nibName: "CarouselCollectionViewCell2", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell2")
+             //  self.items = [Item(value: "1"), Item(value: "2"), Item(value: "3"), Item(value: "4"), Item(value: "5")]
+        self.packagesCarouselHeightConstraint.constant = 164
+        if IS_iPHONE5 || IS_iPHONE678 {
+            self.ratingsCarouselHeightConstraint.constant = 0
+        } else if IS_iPHONE678P {
+            self.ratingsCarouselHeightConstraint.constant = 120
+            self.termsHeightConstraint.constant = 0
+            self.noCommitmentHeightConstraint.constant = 0
+            self.termsofUseBtn.isHidden = true
+            self.privacyPolicyBtn.isHidden = true
+
+        } else {
+            self.ratingsCarouselHeightConstraint.constant = 130
+        }
+//        self.ratingsCarouselView.dataSource = self
+//        self.ratingsCarouselView.delegate = self
+//        self.ratingsCarouselView.type = .linear
+//        self.packagesCarouselView.dataSource = self
+//        self.packagesCarouselView.delegate = self
+//        self.packagesCarouselView.type = .linear
         let timeformatter = DateFormatter()
                timeformatter.dateFormat = "hh:mm:ss a"
         self.enteredScreenTime = timeformatter.string(from: Date())
@@ -1708,6 +2153,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
       }
     }
 }
+
+
 // MARK: - UIPickerViewDataSource
 
 extension MoreInfoPremiumPackagesViewController: UIPickerViewDataSource {
@@ -1739,5 +2186,30 @@ extension MoreInfoPremiumPackagesViewController: UIPickerViewDelegate {
     let dict = self.timeSlotsArray[row];
     self.timeSlotTextField.text = (dict["ncts_timeslot"] as! String)
   }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MoreInfoPremiumPackagesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        print("Selected Item at index: \(indexPath.row)")
+        
+    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        for cell in self.carouselView1.visibleCells {
+//            let indexPath = self.carouselView1.indexPath(for: cell)
+//            print(indexPath)
+//            self.scrolledIndex = indexPath!.row
+//        }
+//    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        for cell in self.carouselView1.visibleCells {
+//            let indexPath = self.carouselView1.indexPath(for: cell)
+//            print(indexPath)
+//            self.scrolledIndex = indexPath!.row
+//        }
+//    }
+    
+    
 }
  

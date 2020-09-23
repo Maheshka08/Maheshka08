@@ -165,6 +165,18 @@
 		73EBF3771F370D730085E7BF /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EBF3761F370D730085E7BF /* LineChart.swift */; };
 		830C573424A922140062547D /* SwitchWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C573324A922140062547D /* SwitchWithText.swift */; };
 		831708D524FFE9AD00413723 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847545C21EB8ADAD0042D84A /* AdSupport.framework */; };
+		8317091D250B519400413723 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317091B250B519300413723 /* iCarousel.m */; };
+		83170921250BBEC400413723 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8317091E250BBEC300413723 /* CarouselCollectionViewCell.xib */; };
+		83170922250BBEC400413723 /* CarouselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8317091F250BBEC300413723 /* CarouselCollectionView.swift */; };
+		83170923250BBEC400413723 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170920250BBEC300413723 /* CarouselCollectionViewCell.swift */; };
+		83170929250BBEE700413723 /* CarouselAnimatedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170924250BBEE600413723 /* CarouselAnimatedFlowLayout.swift */; };
+		8317092A250BBEE700413723 /* CarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170925250BBEE600413723 /* CarouselFlowLayout.swift */; };
+		8317092B250BBEE700413723 /* CarouselConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170926250BBEE600413723 /* CarouselConfiguration.swift */; };
+		8317092C250BBEE700413723 /* CarouselDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170927250BBEE700413723 /* CarouselDataSource.swift */; };
+		8317092D250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170928250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift */; };
+		83170931250BCA1200413723 /* CarouselCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8317092E250BCA1100413723 /* CarouselCollectionViewCell2.swift */; };
+		83170932250BCA1200413723 /* CarouselCollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8317092F250BCA1200413723 /* CarouselCollectionViewCell2.xib */; };
+		83170935250BCA9D00413723 /* CarouselCollectionView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83170934250BCA9D00413723 /* CarouselCollectionView2.swift */; };
 		831F883924614AE600397143 /* GamifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F883824614AE600397143 /* GamifyViewController.swift */; };
 		831F883B24614CFC00397143 /* GamifyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F883A24614CFC00397143 /* GamifyTableCell.swift */; };
 		83222C6524DD8B4100A6E4E0 /* TAEClub1VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83222C6424DD8B4100A6E4E0 /* TAEClub1VCViewController.swift */; };
@@ -521,6 +533,19 @@
 		73DC7B611F2F405C00A16A05 /* ReportsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsTableViewCell.swift; sourceTree = "<group>"; };
 		73EBF3761F370D730085E7BF /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		830C573324A922140062547D /* SwitchWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchWithText.swift; sourceTree = "<group>"; };
+		8317091B250B519300413723 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		8317091C250B519400413723 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		8317091E250BBEC300413723 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		8317091F250BBEC300413723 /* CarouselCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCollectionView.swift; sourceTree = "<group>"; };
+		83170920250BBEC300413723 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		83170924250BBEE600413723 /* CarouselAnimatedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselAnimatedFlowLayout.swift; sourceTree = "<group>"; };
+		83170925250BBEE600413723 /* CarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselFlowLayout.swift; sourceTree = "<group>"; };
+		83170926250BBEE600413723 /* CarouselConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselConfiguration.swift; sourceTree = "<group>"; };
+		83170927250BBEE700413723 /* CarouselDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselDataSource.swift; sourceTree = "<group>"; };
+		83170928250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselNonAnimatedFlowLayout.swift; sourceTree = "<group>"; };
+		8317092E250BCA1100413723 /* CarouselCollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell2.swift; sourceTree = "<group>"; };
+		8317092F250BCA1200413723 /* CarouselCollectionViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselCollectionViewCell2.xib; sourceTree = "<group>"; };
+		83170934250BCA9D00413723 /* CarouselCollectionView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCollectionView2.swift; sourceTree = "<group>"; };
 		831F883824614AE600397143 /* GamifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifyViewController.swift; sourceTree = "<group>"; };
 		831F883A24614CFC00397143 /* GamifyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifyTableCell.swift; sourceTree = "<group>"; };
 		83222C6424DD8B4100A6E4E0 /* TAEClub1VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAEClub1VCViewController.swift; sourceTree = "<group>"; };
@@ -878,6 +903,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				8317091A250B517900413723 /* Carousel */,
 				835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */,
 				8350FB0224E2A33200FA50C0 /* student.json */,
 				83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */,
@@ -1083,6 +1109,26 @@
 				73D5C9AF1EC581510083A059 /* Info.plist */,
 			);
 			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		8317091A250B517900413723 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				8317091C250B519400413723 /* iCarousel.h */,
+				8317091B250B519300413723 /* iCarousel.m */,
+				8317091F250BBEC300413723 /* CarouselCollectionView.swift */,
+				83170934250BCA9D00413723 /* CarouselCollectionView2.swift */,
+				8317092E250BCA1100413723 /* CarouselCollectionViewCell2.swift */,
+				8317092F250BCA1200413723 /* CarouselCollectionViewCell2.xib */,
+				83170920250BBEC300413723 /* CarouselCollectionViewCell.swift */,
+				8317091E250BBEC300413723 /* CarouselCollectionViewCell.xib */,
+				83170924250BBEE600413723 /* CarouselAnimatedFlowLayout.swift */,
+				83170926250BBEE600413723 /* CarouselConfiguration.swift */,
+				83170927250BBEE700413723 /* CarouselDataSource.swift */,
+				83170925250BBEE600413723 /* CarouselFlowLayout.swift */,
+				83170928250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 		846D07471F271D3100902097 /* FirebaseModels */ = {
@@ -1547,8 +1593,10 @@
 				18F06EB9212C197100609B06 /* Localizable.strings in Resources */,
 				57C324971D9680450057B590 /* TweakAndEatRemindeCell.xib in Resources */,
 				83FE05D22465196600C3FC23 /* UserCallSchedulePopUp.xib in Resources */,
+				83170921250BBEC400413723 /* CarouselCollectionViewCell.xib in Resources */,
 				84B054A81EBF35E100263BC1 /* TimelineTableViewCell.xib in Resources */,
 				5720938B1D87AB7E007B8E53 /* SourceSansPro-Regular.ttf in Resources */,
+				83170932250BCA1200413723 /* CarouselCollectionViewCell2.xib in Resources */,
 				572093751D7D5BD2007B8E53 /* TweakAndEatOTPView.xib in Resources */,
 				846D074B1F27868E00902097 /* TweakPieChartView.xib in Resources */,
 				84DB23DF1F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */,
@@ -1669,10 +1717,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83170923250BBEC400413723 /* CarouselCollectionViewCell.swift in Sources */,
 				73281A4B21AFFBE900CECEC3 /* NutritionLabelsPaymentHistoryViewController.swift in Sources */,
 				5702E5E01D9D646100647A54 /* SDWebImageDecoder.m in Sources */,
 				83FE05D42465197C00C3FC23 /* UserCallSchedulePopUp.swift in Sources */,
 				5702E5E31D9D646100647A54 /* SDWebImageManager.m in Sources */,
+				8317092A250BBEE700413723 /* CarouselFlowLayout.swift in Sources */,
 				83FE05CE2463ECB200C3FC23 /* CalenderView.swift in Sources */,
 				84B09A1A1FDAB18100B4FAE0 /* TweakRecipeViewController.swift in Sources */,
 				57C324871D961C400057B590 /* Reachability.m in Sources */,
@@ -1686,11 +1736,13 @@
 				7364BDFC207743A900062F9A /* AddNewCardCell.swift in Sources */,
 				1878DA3323AD03C600F1FBAE /* MainPageScrollableTableViewController.swift in Sources */,
 				737D9C911F2F5A8400823448 /* PieChart.swift in Sources */,
+				8317092C250BBEE700413723 /* CarouselDataSource.swift in Sources */,
 				84C3F22620578F6B00D03371 /* FulfillmentVendors.swift in Sources */,
 				8490A84C1E63F1F8002DE7F8 /* MaxLengthTextField.swift in Sources */,
 				5702E5DC1D9D646100647A54 /* MKAnnotationView+WebCache.m in Sources */,
 				840A2E5E1F359AAF0073E5A5 /* ProfileViewController.swift in Sources */,
 				1878DA2D23AC975C00F1FBAE /* MainPageScrollTableViewCell.swift in Sources */,
+				83170935250BCA9D00413723 /* CarouselCollectionView2.swift in Sources */,
 				18FF673B213E427A00355F69 /* MoreInfoPackageTableViewCell.swift in Sources */,
 				18C63AED2289443A0053DDF4 /* StripePaymentGateway.swift in Sources */,
 				83222C6B24DDCAA800A6E4E0 /* TAEClub2TableViewCellRight.swift in Sources */,
@@ -1726,6 +1778,7 @@
 				84536C5D1DE2C1C5005FE31E /* Contacts.swift in Sources */,
 				848C6D961FB2D16800876229 /* TweakNotifyTableViewCell.swift in Sources */,
 				84EF2D911DE6CA6700F340C5 /* TBL_DailyTips+CoreDataProperties.swift in Sources */,
+				83170931250BCA1200413723 /* CarouselCollectionViewCell2.swift in Sources */,
 				732986DB1FEBDC9D006A364C /* Helper Files.swift in Sources */,
 				73AF11091FE25E5100C90E7E /* RecipeDetailsCell.swift in Sources */,
 				57C324961D9680450057B590 /* TweakAndEatRemindeCell.swift in Sources */,
@@ -1785,6 +1838,7 @@
 				18F1A99A20EA183C004FAC2D /* CheckBoxTableViewCell.swift in Sources */,
 				182A98FB23B47F8800A20783 /* WeightGraphTableCell.swift in Sources */,
 				5735D8411D79DB8A001DAF83 /* MBProgressHUD.m in Sources */,
+				83170922250BBEC400413723 /* CarouselCollectionView.swift in Sources */,
 				84820E231F29C78D0064346B /* TweakFeedsInfo.swift in Sources */,
 				18F1A99C20EA1896004FAC2D /* SwitchTableViewCell.swift in Sources */,
 				18743651213D4A920012A17E /* MoreInfoPremiumPackagesViewController.swift in Sources */,
@@ -1805,8 +1859,10 @@
 				5735D83B1D79CF7E001DAF83 /* APIWrapper.swift in Sources */,
 				5735D8301D79CEEB001DAF83 /* AFHTTPRequestOperationManager.m in Sources */,
 				732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */,
+				8317092D250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift in Sources */,
 				73EBF3771F370D730085E7BF /* LineChart.swift in Sources */,
 				84EF2D8B1DE6CA6700F340C5 /* TBL_Tweaks+CoreDataProperties.swift in Sources */,
+				8317091D250B519400413723 /* iCarousel.m in Sources */,
 				73B9DBC4203E83F900EBC0B0 /* ActivityTrackerViewController.swift in Sources */,
 				840A2E641F360EDC0073E5A5 /* MHAAddReadingsContainer.swift in Sources */,
 				180624082175B4D80084238E /* AiDPViewController.swift in Sources */,
@@ -1830,6 +1886,7 @@
 				041856B2224BB0D8008E2A7C /* PageControlCollectionViewCell.swift in Sources */,
 				84F287721F27C3D3004F7B18 /* TweakPieChartValues.swift in Sources */,
 				84B66E061F1F64DD008D1949 /* MyProfileInfo.swift in Sources */,
+				83170929250BBEE700413723 /* CarouselAnimatedFlowLayout.swift in Sources */,
 				1847CEEE20972BC30006F2F0 /* AvailablePremiumPackagesTableViewCell.swift in Sources */,
 				5702E5E41D9D646100647A54 /* SDWebImagePrefetcher.m in Sources */,
 				041856B4224BB200008E2A7C /* PageViewImageSlider.swift in Sources */,
@@ -1840,6 +1897,7 @@
 				5735D8381D79CEEB001DAF83 /* UIImage+animatedGIF.m in Sources */,
 				5735D8311D79CEEB001DAF83 /* AFHTTPSessionManager.m in Sources */,
 				73B9DBBC203C1A3000EBC0B0 /* Notifications.swift in Sources */,
+				8317092B250BBEE700413723 /* CarouselConfiguration.swift in Sources */,
 				5735D83D1D79D0DF001DAF83 /* TweakAndEatURLConstants.swift in Sources */,
 				832616A0249380BD0002B77C /* PopUpNotificationView.swift in Sources */,
 				57C3248D1D967C480057B590 /* TweakReminderViewController.swift in Sources */,
@@ -2027,7 +2085,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2064,7 +2122,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2103,7 +2161,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
@@ -2135,7 +2193,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
@@ -2158,7 +2216,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -2182,7 +2240,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99007;
+				CURRENT_PROJECT_VERSION = 99008;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
