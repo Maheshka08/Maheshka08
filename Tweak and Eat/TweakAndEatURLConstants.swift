@@ -132,7 +132,7 @@ struct TweakAndEatURLConstants {
     static let CLUB_LANDING = BASE_URL + "/api/content/clublanding"
     static let CHECK_CLUB_MEMBER_SCHEDULE = BASE_URL + "/api/callschedules/checkclubmemberschedule"
     static let SCHEDULE_CLUB_MEMBER_CALL = BASE_URL + "/api/callschedules/scheduleclubmembercall"
-
+    static let SAVE_FEEDBACK = BASE_URL + "/api/user/savefeedback"
     
 }
 

@@ -34,6 +34,13 @@ class SettingsTabBarController: UITabBarController {
        
         
     }
+    func goToFeedBackPage() {
+             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+             let clickViewController = storyBoard.instantiateViewController(withIdentifier: "FeedbackViewController") as? FeedbackViewController;
+          let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+          navController?.pushViewController(clickViewController!, animated: true);
+            
+         }
     
     @objc func addBackButton() {
         let backButton = UIButton(type: .custom)
@@ -42,6 +49,18 @@ class SettingsTabBarController: UITabBarController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
     
+    @objc func addFeedBackButton() {
+           let backButton = UIButton(type: .custom)
+           backButton.setImage(UIImage(named: "feedback_icon1"), for: .normal)
+           backButton.addTarget(self, action: #selector(self.feedBackButtonTapped(_:)), for: .touchUpInside)
+           self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: backButton)
+       }
+    
+    
+    @IBAction func feedBackButtonTapped(_ sender: UIButton) {
+        goToFeedBackPage()
+    }
+
     @IBAction func backAction(_ sender: UIButton) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
@@ -50,6 +69,7 @@ class SettingsTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addBackButton()
+        self.addFeedBackButton()
         guard let tabbaritem = tabBar.items else { return }
         
         tabbaritem[0].title = bundle.localizedString(forKey: "ideal_plate", value: nil, table: nil)

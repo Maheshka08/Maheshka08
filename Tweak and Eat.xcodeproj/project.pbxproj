@@ -190,6 +190,7 @@
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
+		83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */; };
 		83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */; };
 		83E7320224439B8300ACF0F5 /* PurchasedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */; };
 		83EA2FC524A5D695009DDABA /* MyNutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA2FC424A5D695009DDABA /* MyNutritionView.swift */; };
@@ -558,6 +559,7 @@
 		8326169F249380BD0002B77C /* PopUpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNotificationView.swift; sourceTree = "<group>"; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
+		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePackagesTableViewCell.swift; sourceTree = "<group>"; };
 		83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPackagesViewController.swift; sourceTree = "<group>"; };
 		83EA2FC424A5D695009DDABA /* MyNutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNutritionView.swift; sourceTree = "<group>"; };
@@ -903,6 +905,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */,
 				8317091A250B517900413723 /* Carousel */,
 				835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */,
 				8350FB0224E2A33200FA50C0 /* student.json */,
@@ -1847,6 +1850,7 @@
 				73B9DBBE203C1A8700EBC0B0 /* FitbitAPI.swift in Sources */,
 				5702E5E21D9D646100647A54 /* SDWebImageDownloaderOperation.m in Sources */,
 				57BED1461D749B780008CC4D /* AppDelegate.swift in Sources */,
+				83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */,
 				83EA2FC924A6049A009DDABA /* CircularProgressView.swift in Sources */,
 				1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell.swift in Sources */,
 				84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */,
