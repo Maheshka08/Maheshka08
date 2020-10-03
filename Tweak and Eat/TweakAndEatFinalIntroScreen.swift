@@ -15,6 +15,7 @@ import FirebaseMessaging
 
 class TweakAndEatFinalIntroScreen: UIView {
 
+    @IBOutlet weak var justTweakView: UIView!
     @IBOutlet var animationView: UIView!;
     @IBOutlet var logoView: UIView!;
     @IBOutlet var logoImageView: UIImageView!;
@@ -32,6 +33,9 @@ class TweakAndEatFinalIntroScreen: UIView {
     @IBOutlet weak var okBtn: UIButton!
     
     @objc func beginning() {
+        self.justTweakView.layer.cornerRadius = 10
+        self.justTweakView.layer.borderWidth = 2
+        self.justTweakView.layer.borderColor = UIColor.black.cgColor
         logoBorderView.clipsToBounds = true;
         logoBorderView.layer.cornerRadius = logoBorderView.frame.size.width / 2;
         animationView.clipsToBounds = true;

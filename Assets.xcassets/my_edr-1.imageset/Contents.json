@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "reload_icon.png",
+      "filename" : "my_edr@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "my_edr@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "my_edr@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,27 +24,31 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-dJ-2hG">
                     <rect key="frame" x="20" y="110" width="374" height="653.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's done!  But don't forget" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-wF-VRE">
-                            <rect key="frame" x="62" y="132" width="250" height="80"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-wF-VRE">
+                            <rect key="frame" x="62" y="118" width="250" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="250" id="VMO-Tn-gWe"/>
-                                <constraint firstAttribute="height" constant="80" id="p3H-Ac-Ngy"/>
-                                <constraint firstAttribute="width" constant="200" id="z89-db-f9V"/>
+                                <constraint firstAttribute="width" constant="250" id="Boy-eh-38x"/>
+                                <constraint firstAttribute="height" constant="30" id="UG4-yF-1fe"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="30"/>
-                            <color key="textColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="28"/>
+                            <color key="textColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="z89-db-f9V"/>
-                                </mask>
-                            </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweak &amp; Eat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dv-TA-o8d">
-                            <rect key="frame" x="103.5" y="108" width="167" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's done!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZw-C2-lPi">
+                            <rect key="frame" x="62" y="153" width="250" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="5Ne-Ca-DkF"/>
+                                <constraint firstAttribute="height" constant="30" id="oAZ-pg-P4g"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="28"/>
+                            <color key="textColor" red="0.39321953059999998" green="0.12741079929999999" blue="0.52551943059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweak &amp; Eat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dv-TA-o8d">
+                            <rect key="frame" x="103.5" y="108" width="167" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="167" id="Ua6-RY-Bx6"/>
-                                <constraint firstAttribute="height" constant="20" id="Z4O-fM-KUa"/>
+                                <constraint firstAttribute="height" id="Z4O-fM-KUa"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                             <color key="textColor" red="0.2784313725" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,33 +69,47 @@
                                 <action selector="onClickOfOkayWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="e8C-2P-siR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to take a photo of your next meal and send it to me!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo1-8s-POO">
-                            <rect key="frame" x="78" y="210" width="220" height="98"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="98" id="713-St-OWX"/>
-                                <constraint firstAttribute="width" constant="220" id="7YE-mb-XOL"/>
-                                <constraint firstAttribute="width" constant="170" id="VOi-vi-rW0"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
-                            <color key="textColor" red="0.2784313725" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't forget to take a photo of your next meal and tweak it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo1-8s-POO">
+                            <rect key="frame" x="30.5" y="191" width="313" height="41.5"/>
+                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="20"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="VOi-vi-rW0"/>
-                                </mask>
-                            </variation>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rh4-bU-ggr">
+                            <rect key="frame" x="8" y="271.5" width="358" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Tweak! Lose Weight &amp; Sustain it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-HW-gw5">
+                                    <rect key="frame" x="10" y="10" width="338" height="20"/>
+                                    <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="19"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hAR-HW-gw5" secondAttribute="trailing" constant="10" id="Fpa-Us-34z"/>
+                                <constraint firstItem="hAR-HW-gw5" firstAttribute="top" secondItem="Rh4-bU-ggr" secondAttribute="top" constant="10" id="UzM-AX-nMa"/>
+                                <constraint firstAttribute="bottom" secondItem="hAR-HW-gw5" secondAttribute="bottom" constant="10" id="X0y-i0-Jsd"/>
+                                <constraint firstItem="hAR-HW-gw5" firstAttribute="leading" secondItem="Rh4-bU-ggr" secondAttribute="leading" constant="10" id="cJt-oN-h1W"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="3bK-wF-VRE" firstAttribute="centerX" secondItem="tq4-dJ-2hG" secondAttribute="centerX" id="8OM-Tw-gyZ"/>
-                        <constraint firstItem="Oo1-8s-POO" firstAttribute="centerX" secondItem="tq4-dJ-2hG" secondAttribute="centerX" constant="1" id="998-wJ-wBG"/>
+                        <constraint firstAttribute="trailing" secondItem="Oo1-8s-POO" secondAttribute="trailing" constant="30.329999999999998" id="0fb-4S-Iee"/>
+                        <constraint firstItem="Oo1-8s-POO" firstAttribute="leading" secondItem="tq4-dJ-2hG" secondAttribute="leading" constant="30.670000000000002" id="1EK-9X-NyX"/>
+                        <constraint firstItem="3bK-wF-VRE" firstAttribute="centerX" secondItem="tq4-dJ-2hG" secondAttribute="centerX" id="9cp-h9-nWG"/>
                         <constraint firstItem="0dv-TA-o8d" firstAttribute="centerX" secondItem="tq4-dJ-2hG" secondAttribute="centerX" id="KMi-ao-CBC"/>
                         <constraint firstAttribute="trailing" secondItem="hyB-Gi-Zaa" secondAttribute="trailing" constant="5" id="R6b-iS-OBd"/>
                         <constraint firstAttribute="bottom" secondItem="hyB-Gi-Zaa" secondAttribute="bottom" constant="11" id="RrZ-vg-DNm"/>
                         <constraint firstItem="0dv-TA-o8d" firstAttribute="top" secondItem="tq4-dJ-2hG" secondAttribute="top" constant="108" id="TIc-iy-Usn"/>
-                        <constraint firstItem="3bK-wF-VRE" firstAttribute="top" secondItem="0dv-TA-o8d" secondAttribute="bottom" constant="4" id="ZaS-Ku-KDU"/>
-                        <constraint firstItem="Oo1-8s-POO" firstAttribute="top" secondItem="3bK-wF-VRE" secondAttribute="bottom" constant="-2" id="rWC-qL-E49"/>
+                        <constraint firstItem="Rh4-bU-ggr" firstAttribute="top" secondItem="Oo1-8s-POO" secondAttribute="bottom" constant="39" id="XVw-hq-m7D"/>
+                        <constraint firstItem="3bK-wF-VRE" firstAttribute="top" secondItem="0dv-TA-o8d" secondAttribute="bottom" constant="10" id="cGj-pj-WnI"/>
+                        <constraint firstAttribute="trailing" secondItem="Rh4-bU-ggr" secondAttribute="trailing" constant="8" id="cel-dD-zQR"/>
+                        <constraint firstItem="Oo1-8s-POO" firstAttribute="top" secondItem="eZw-C2-lPi" secondAttribute="bottom" constant="8" id="gfj-0f-Mps"/>
+                        <constraint firstItem="eZw-C2-lPi" firstAttribute="top" secondItem="3bK-wF-VRE" secondAttribute="bottom" constant="5" id="tPP-m4-7U1"/>
+                        <constraint firstItem="Rh4-bU-ggr" firstAttribute="leading" secondItem="tq4-dJ-2hG" secondAttribute="leading" constant="8" id="ufD-5Y-DBS"/>
+                        <constraint firstItem="eZw-C2-lPi" firstAttribute="centerX" secondItem="tq4-dJ-2hG" secondAttribute="centerX" id="yOy-8C-ouW"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMF-7B-H2P">
@@ -162,6 +178,7 @@
             </constraints>
             <connections>
                 <outlet property="animationView" destination="mMF-7B-H2P" id="WIe-Ip-5ye"/>
+                <outlet property="justTweakView" destination="Rh4-bU-ggr" id="dUo-SJ-gFI"/>
                 <outlet property="logoBorderView" destination="fFC-gr-kHa" id="ZVe-BL-l6M"/>
                 <outlet property="logoImageView" destination="Whc-h4-fJd" id="hBW-ot-bvA"/>
                 <outlet property="logoView" destination="iTc-bh-Vsa" id="08y-3t-I4U"/>
@@ -170,6 +187,7 @@
                 <outlet property="titleLabel" destination="3bK-wF-VRE" id="fVl-9V-Ad2"/>
                 <outlet property="welcomeLabel" destination="Ldg-Ls-x0U" id="kSt-p9-SBC"/>
             </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>

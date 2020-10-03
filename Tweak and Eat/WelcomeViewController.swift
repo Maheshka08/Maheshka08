@@ -321,13 +321,18 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var popUpViewForPTP: UIView!
     
+    @IBOutlet weak var tweakBeforeDefaultView: UIView!
     @IBOutlet weak var popUpPTPTextView: UITextView!
     @IBOutlet weak var popUPPTPImageView: UIImageView!
     @IBOutlet weak var taeClubTrialPeriodExpiryView: UIView!
     @IBOutlet weak var ptpPhBtn1: UIButton!
     @IBOutlet weak var taeClubTrialPeriodExpiryViewLbl: UILabel!
+    @IBOutlet weak var trendsButonViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var ptpPhBtn2: UIButton!
+    @IBOutlet weak var topButtonsDataViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var taeClubMemberTopView: UIView!
+    @IBOutlet weak var beforeTweakImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var beforeTweakImageView: UIImageView!
     @IBOutlet weak var taeClubMemberBottomView: UIView!
     @IBOutlet weak var taeClubMemberTopRightButton: UIButton!
     @IBOutlet weak var taeClubMemberBottomRightButton: UIButton!
@@ -362,7 +367,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var draggableImageView: UIImageView!
     private let maxDragPosition = UIScreen.main.bounds.size.height - 150
     @IBOutlet var swipeUpGesture: UISwipeGestureRecognizer!
-    
+    var draggableConstant: CGFloat = 0
     @IBOutlet weak var draggableContainerView: UIView!
     @IBOutlet var swipeDownGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var bottomButtonsView: UIView!
@@ -376,7 +381,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var myTrendsLabel: UILabel!
     
     @IBOutlet weak var chartView: UIView!
-    
+    var trialPeriodExpired = false
     var ptpPackage = ""
     var links = ""
     var counts = 0
@@ -394,7 +399,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var insidePopUpView = UIView();
     @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj");
     
-    
+    var showMyNutririonDetailsView = [Int]() {
+      didSet {
+            checkIfUserIsNewOrTrialPeriodExpired()
+        }
+    }
     @IBOutlet weak var startTweakingLabel: UILabel!
     @IBOutlet weak var trialPeriodExpiryTextLbl: UILabel!
     @IBOutlet weak var buyPkgsButton: UIButton!
@@ -431,7 +440,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var spinner: UIActivityIndicatorView!;
     @IBOutlet weak var fitBitSyncView: UIView!;
     @IBOutlet weak var tweakCountLbl: UILabel!;
-    @IBOutlet weak var tweakStreakView: UIView!;
+        @IBOutlet weak var tweakStreakView: UIView!;
+    @IBOutlet weak var refreshTweakBtn: UIButton!
     @IBOutlet weak var adsImageView: UIImageView!;
     @objc var deviceInfo = UIDevice.current.modelName;
     @IBOutlet weak var kuwaitIconsView: UIView!;
@@ -516,7 +526,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var userMsisdn : String = "";
     @objc var badgeCount: Int = 0;
     @objc var faceBox : UIView!;
-    
+    var tweakCount = 0
     @objc var selectedDate : String!;
     @objc let requestId = "Request ID";
     @objc let categoryId = "Category ID";
@@ -537,6 +547,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var roundImageView: UIImageView!;
     @IBOutlet var shadowView: UIView!;
     
+    @IBOutlet weak var cameraBtnHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cameraBtnWidthConstraint: NSLayoutConstraint!
     @objc var reachability : Reachability!;
     @objc var latitude : String = "0.0";
     @objc var longitude : String = "0.0";
@@ -897,7 +909,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     withDuration: 1,
                     animations: {
                             if IS_iPHONEXRXSMAX {
-                                self.draggableViewHeightConstraint.constant = UIScreen.main.bounds.size.height - self.foodImageView.frame.maxY - 44
+                                self.draggableViewHeightConstraint.constant = UIScreen.main.bounds.size.height - self.foodImageView.frame.maxY - 44 - 5
                             } else if IS_iPHONEXXS {
                                 self.draggableViewHeightConstraint.constant = 630
                             } else if IS_iPHONE678P {
@@ -912,7 +924,18 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         
                             
                        // self.myNutritionDetailsView.alpha = 0
-                       
+                        if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                            //self.tweakBeforeDefaultView.alpha = 1
+                            if self.trialPeriodExpired == false {
+                                self.tweakBeforeDefaultView.alpha = 0
+                            } else {
+                               // self.tweakBeforeDefaultView.alpha = 1
+                            }
+
+                        } else {
+                            self.tweakBeforeDefaultView.alpha = 0
+
+                        }
                             self.outerChartView.alpha = 0
                             self.switchButton.alpha = 0
                         
@@ -938,27 +961,41 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 UIView.animate(
                     withDuration: 1,
                     animations: {
+                        var minHeight:CGFloat = 0
+                        if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                            if self.trialPeriodExpired == true {
+                                minHeight = 70
+                            } else {
+                            minHeight = 190
+                            }
+                        } else {
+                            minHeight = 70
+                        }
                         if self.showGraph == false {
-                            if IS_iPHONEXRXSMAX {
-                                                           
-                                                           self.draggableViewHeightConstraint.constant = 300 - 86 + 30
-                                                       } else if IS_iPHONEXXS {
-                                                           self.draggableViewHeightConstraint.constant = 150 + 30
-                                                       } else if IS_iPHONE678P {
-                                                           self.draggableViewHeightConstraint.constant = 130
-                                                       } else if IS_iPHONE678 {
-                                                           self.draggableViewHeightConstraint.constant = 175 - 76
-                                                       } else if IS_iPHONE5 {
-                                                           self.draggableViewHeightConstraint.constant = 30
-                                                       } else {
-                                                           self.draggableViewHeightConstraint.constant = 43 - 86 + 30
-                                                       }
+//                            if IS_iPHONEXRXSMAX {
+//
+//                                                           self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + minHeight
+//                                                       } else if IS_iPHONEXXS {
+//                                let val: CGFloat = (UserDefaults.standard.value(forKey: "NEW_USER") != nil && self.trialPeriodExpired == false) ? 160 : 30
+//                                self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + val
+//                                                       } else if IS_iPHONE678P {
+//                                let val: CGFloat = (UserDefaults.standard.value(forKey: "NEW_USER") != nil && self.trialPeriodExpired == false) ? 110 : 50
+//                                self.draggableViewHeightConstraint.constant = self.draggableConstant
+//                                                       } else if IS_iPHONE678 {
+//                                                           self.draggableViewHeightConstraint.constant = 175 - 76
+//                                                       } else if IS_iPHONE5 {
+//                                                           self.draggableViewHeightConstraint.constant = 30
+//                                                       } else {
+//                                                           self.draggableViewHeightConstraint.constant = 43 - 86 + 30
+//                                                       }
+                             self.draggableViewHeightConstraint.constant = self.draggableConstant
+
                         } else  {
                             if IS_iPHONEXRXSMAX {
                                                            
-                                                           self.draggableViewHeightConstraint.constant = 300 - 86
+                                                           self.draggableViewHeightConstraint.constant = 300 - 86 + minHeight
                                                        } else if IS_iPHONEXXS {
-                                                           self.draggableViewHeightConstraint.constant = 150
+                                                           self.draggableViewHeightConstraint.constant = 150 + 30 + 20
                                                        } else if IS_iPHONE678P {
                                                            self.draggableViewHeightConstraint.constant = 130
                                                        } else if IS_iPHONE678 {
@@ -973,6 +1010,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                            // self.myNutritionDetailsView.alpha = 1
                         self.switchButton.alpha = 1
                             self.outerChartView.alpha = 1
+                        self.tweakBeforeDefaultView.alpha = 1
+//                        if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                            //self.tweakBeforeDefaultView.alpha = 1
+//
+//                        } else {
+//                            self.tweakBeforeDefaultView.alpha = 0
+//
+//                        }
 
                        
                             self.bottomBtnViewTopConstraint.constant = -108
@@ -1005,28 +1050,123 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    return
                }
                if (IS_iPHONE5 || IS_IPHONE4) {
-                   if self.showGraph == false {
-                       aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
-                                  self.chatViewHeightConstraint.constant = 140
-                                  self.monthBtnTrailingConstraint.constant = 30;
-                                  self.draggableViewHeightConstraint.constant = 30
-                   } else {
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
-                   self.chatViewHeightConstraint.constant = 140
-                   self.draggableViewHeightConstraint.constant = 30
-                   
-                   }
-                   self.foodImageShadowViewHeightConstraint.constant = 113
-                   self.monthBtnTrailingConstraint.constant = 0;
-                self.taeClubViewTopConstraint.constant = 2
+                                    if self.showGraph == false {
+                                       
+                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                                         if self.trialPeriodExpired == true {
+                                             self.taeClubViewTopConstraint.constant = 55
 
+                                              aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+
+                                             self.chatViewHeightConstraint.constant = 140
+                                              self.draggableViewHeightConstraint.constant = 30
+                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                                             self.trendButtonsView.isHidden = false
+                                             self.topButtonsDataView.isHidden = false
+                                             self.minCalCountLabel.stopBlink()
+                                             self.beforeTweakImageViewHeightConstraint.constant = 0
+                                             self.topButtonsDataViewHeightConstraint.constant = 63
+                                             if (self.myNutritionDetailsView != nil) {
+                                                 self.myNutritionDetailsView.isHidden = false
+                                             }
+
+                                         } else {
+                                             self.chatViewHeightConstraint.constant = 0
+                                             aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                                             self.draggableViewHeightConstraint.constant = 30 + 100
+                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                                             self.taeClubViewTopConstraint.constant = 55
+                                         }
+                                        
+
+                                     } else {
+                                         self.taeClubViewTopConstraint.constant = 55
+
+                                          aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+
+                                        self.chatViewHeightConstraint.constant = 140
+                                         self.draggableViewHeightConstraint.constant = 30
+                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                                     }
+                                     self.monthBtnTrailingConstraint.constant = 30;
+
+                                    } else {
+                 //                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+                 //                   self.chatViewHeightConstraint.constant = 200
+                 //
+                 //                   self.draggableViewHeightConstraint.constant = 150
+                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                                      aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+
+                                         self.chatViewHeightConstraint.constant = 0
+                                      self.draggableViewHeightConstraint.constant = 30
+                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+
+                                     } else {
+                                        self.chatViewHeightConstraint.constant = 140
+                 aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+                                      self.draggableViewHeightConstraint.constant = 30
+                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                                     }
+                                     
+                                     self.monthBtnTrailingConstraint.constant = 30;
+                                    }
+                self.monthBtnTrailingConstraint.constant = 30;
+                self.taeClubViewTopConstraint.constant = 55
+                self.draggableConstant = self.draggableViewHeightConstraint.constant
                } else if IS_iPHONE678P {
                    
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-                   self.chatViewHeightConstraint.constant = 170
-                   self.draggableViewHeightConstraint.constant = 130
+                   
                    self.monthBtnTrailingConstraint.constant = 50;
-                self.taeClubViewTopConstraint.constant = 20
+                self.taeClubViewTopConstraint.constant = 55
+                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                    if self.trialPeriodExpired == true {
+                        self.taeClubViewTopConstraint.constant = 55
+
+                         aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+
+                        self.chatViewHeightConstraint.constant = 170
+                         self.draggableViewHeightConstraint.constant = 130 + 50
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        self.trendButtonsView.isHidden = false
+                        self.topButtonsDataView.isHidden = false
+                        self.minCalCountLabel.stopBlink()
+                        self.beforeTweakImageViewHeightConstraint.constant = 0
+                        self.topButtonsDataViewHeightConstraint.constant = 63
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = false
+//                        }
+
+                    } else {
+                        self.chatViewHeightConstraint.constant = 0
+                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                                               self.draggableViewHeightConstraint.constant = 130 + 50 + 110
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        self.taeClubViewTopConstraint.constant = 55
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = true
+//                        }
+                    }
+                   
+
+                } else {
+                    self.taeClubViewTopConstraint.constant = 55
+
+                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+
+                   self.chatViewHeightConstraint.constant = 170
+                    self.draggableViewHeightConstraint.constant = 130 + 50
+                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                }
+
+                
+                
 
                    
                } else if IS_iPHONE678 {
@@ -1034,40 +1174,176 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
                    self.chatViewHeightConstraint.constant = 160
                    self.draggableViewHeightConstraint.constant = 175 - 76
-                   self.foodImageShadowViewHeightConstraint.constant = 113
+                //   self.foodImageShadowViewHeightConstraint.constant = 113
                    self.premiumTweakPackBtnTopConstraint.constant = 8
                    self.monthBtnTrailingConstraint.constant = 30;
-                self.taeClubViewTopConstraint.constant = 15
+                self.taeClubViewTopConstraint.constant = 55
+                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                    if self.trialPeriodExpired == true {
+                        self.taeClubViewTopConstraint.constant = 55
 
+                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+
+                        self.chatViewHeightConstraint.constant = 160
+                         self.draggableViewHeightConstraint.constant = 175 - 76
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        self.trendButtonsView.isHidden = false
+                        self.topButtonsDataView.isHidden = false
+                        self.minCalCountLabel.stopBlink()
+                        self.beforeTweakImageViewHeightConstraint.constant = 0
+                        self.topButtonsDataViewHeightConstraint.constant = 63
+                        if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionDetailsView.isHidden = false
+                        }
+
+                    } else {
+                        self.chatViewHeightConstraint.constant = 0
+                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                                               self.draggableViewHeightConstraint.constant = 175 - 76 + 130
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        self.taeClubViewTopConstraint.constant = 55
+                    }
+                   
+
+                } else {
+                    self.taeClubViewTopConstraint.constant = 55
+
+                    aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+
+                   self.chatViewHeightConstraint.constant = 160
+                    self.draggableViewHeightConstraint.constant = 175 - 76
+                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                }
+
+                self.draggableConstant = self.draggableViewHeightConstraint.constant
                    
                } else if IS_iPHONEXXS {
                    if self.showGraph == false {
-                       aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 170)
-                                  self.chatViewHeightConstraint.constant = 170
-                                  self.monthBtnTrailingConstraint.constant = 30;
-                                  self.draggableViewHeightConstraint.constant = 150 + 30
+                      
+                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                        if self.trialPeriodExpired == true {
+                            self.taeClubViewTopConstraint.constant = 55
+
+                             aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+
+                            self.chatViewHeightConstraint.constant = 160
+                             self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+                            self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                            self.trendButtonsView.isHidden = false
+                            self.topButtonsDataView.isHidden = false
+                            self.minCalCountLabel.stopBlink()
+                            self.beforeTweakImageViewHeightConstraint.constant = 0
+                            self.topButtonsDataViewHeightConstraint.constant = 63
+                            if (self.myNutritionDetailsView != nil) {
+                                self.myNutritionDetailsView.isHidden = false
+                            }
+
+                        } else {
+                            self.chatViewHeightConstraint.constant = 0
+                            aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                            self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 160
+                            self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                            self.taeClubViewTopConstraint.constant = 55
+                        }
+                       
+
+                    } else {
+                        self.taeClubViewTopConstraint.constant = 55
+
+                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 170)
+
+                       self.chatViewHeightConstraint.constant = 170
+                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 30
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                    }
+                    self.monthBtnTrailingConstraint.constant = 30;
+
                    } else {
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
-                   self.chatViewHeightConstraint.constant = 200
-                   self.monthBtnTrailingConstraint.constant = 30;
-                   self.draggableViewHeightConstraint.constant = 150
+//                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+//                   self.chatViewHeightConstraint.constant = 200
+//
+//                   self.draggableViewHeightConstraint.constant = 150
+                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                     aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+
+                        self.chatViewHeightConstraint.constant = 0
+                     self.draggableViewHeightConstraint.constant = 150 + 30
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+
+                    } else {
+                       self.chatViewHeightConstraint.constant = 200
+aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+                     self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                    }
+                    
+                    self.monthBtnTrailingConstraint.constant = 30;
                    }
-                   self.taeClubViewTopConstraint.constant = 21
+                self.taeClubViewTopConstraint.constant = 55
+
 
                } else if IS_iPHONEXRXSMAX {
-                self.taeClubViewTopConstraint.constant = 27
                    if self.showGraph == false {
-                       aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                        if self.trialPeriodExpired == true {
+                            self.taeClubViewTopConstraint.constant = 55
+
+                             aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+
+                            self.chatViewHeightConstraint.constant = 170
+                             self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
+                            self.trendButtonsView.isHidden = false
+                            self.topButtonsDataView.isHidden = false
+                            self.minCalCountLabel.stopBlink()
+                            self.beforeTweakImageViewHeightConstraint.constant = 0
+                            self.topButtonsDataViewHeightConstraint.constant = 63
+                            if (self.myNutritionDetailsView != nil) {
+                                self.myNutritionDetailsView.isHidden = false
+                            }
+
+                        } else {
+                            self.chatViewHeightConstraint.constant = 0
+                                                   aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                                                   self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 190
+                                                   self.taeClubViewTopConstraint.constant = 55
+                        }
+                       
+
+                    } else {
+                        self.taeClubViewTopConstraint.constant = 55
+
+                        aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+
                        self.chatViewHeightConstraint.constant = 170
+                        self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
+
+                    }
+                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+
                        self.monthBtnTrailingConstraint.constant = 50;
-                       self.draggableViewHeightConstraint.constant = 300 - 86 + 30
                    } else {
                    
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
-                   self.chatViewHeightConstraint.constant = 200
-                   self.monthBtnTrailingConstraint.constant = 50;
-                   self.draggableViewHeightConstraint.constant = 300 - 86
+                   if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                    aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+
+                       self.chatViewHeightConstraint.constant = 0
+                    self.draggableViewHeightConstraint.constant = 300 - 86 + 190
+
+                   } else {
+                      self.chatViewHeightConstraint.constant = 200
+                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
+                    self.draggableViewHeightConstraint.constant = 300 - 86 + 70
                    }
+                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+
+                    self.monthBtnTrailingConstraint.constant = 50;
+                                      }
                    
                }
         self.view.layoutIfNeeded()
@@ -1135,7 +1411,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }, failure : { error in
             
-            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+          //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
             
         })
     }
@@ -1510,7 +1786,12 @@ tappedOnTAEClubExpiryView()
                        }
        
         } else {
-            self.showMyNutritionDetails()
+//            if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                               } else {
+//                                              self.showMyNutritionDetails()
+//
+//                               }
+             self.showMyNutritionDetails()
         }
     }
     
@@ -1654,8 +1935,15 @@ tappedOnTAEClubExpiryView()
         self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
         self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
         self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
-        self.outerChartView.addSubview(self.myNutritionDetailsView)
-            self.topImageView.alpha = 1
+//            if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//self.myNutritionDetailsView.isHidden = true
+//            } else {
+//                self.myNutritionDetailsView.isHidden = false
+//            }
+            self.outerChartView.addSubview(self.myNutritionDetailsView)
+            self.showMyNutririonDetailsView.append(1)
+
+self.topImageView.alpha = 1
             self.outerChartView.alpha = 1
             self.myNutritionDetailsView.updateSwitchUI(bool: false)
        
@@ -1795,14 +2083,82 @@ tappedOnTAEClubExpiryView()
             if error?.code == -1011 {
                            
                        } else {
-                           TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+                         //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
                        }
                    }
         }
     }
+    
+    func checkIfUserIsNewOrTrialPeriodExpired() {
+        
+        if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+            self.trendButtonsView.isHidden = true
+            self.topButtonsDataView.isHidden = true
+            self.beforeTweakImageViewHeightConstraint.constant = 110
+            self.topButtonsDataViewHeightConstraint.constant = 0
+            self.startTweakingView.isHidden = true
+            self.trialPeriodExpiryView.isHidden = true
+            if self.trialPeriodExpired == false {
+            self.taeClubTrialPeriodExpiryView.isHidden = true
+            taeClubTrialPeriodExpiryViewLbl.isHidden = true
+            } else {
+                self.taeClubTrialPeriodExpiryView.isHidden = false
+                taeClubTrialPeriodExpiryViewLbl.isHidden = false
+            }
+            if IS_iPHONE5 {
+                self.refreshTweakBtn.isHidden = true
+                self.cameraBtnWidthConstraint.constant = 70
+                self.cameraBtnHeightConstraint.constant = 70
+            }
+            self.minCalCountLabel.startBlink()
+             if (self.myNutritionDetailsView != nil) {
+                           if self.tweakCount > 0 {
+                               self.myNutritionDetailsView.isHidden = false
+
+                           } else {
+                               self.myNutritionDetailsView.isHidden = true
+
+                           }
+                       }
+        } else {
+            self.trendButtonsView.isHidden = false
+            self.topButtonsDataView.isHidden = false
+            self.minCalCountLabel.stopBlink()
+            self.beforeTweakImageViewHeightConstraint.constant = 0
+            self.topButtonsDataViewHeightConstraint.constant = 63
+                        if IS_iPHONE5 {
+                           self.refreshTweakBtn.isHidden = true
+                           self.cameraBtnWidthConstraint.constant = 70
+                           self.cameraBtnHeightConstraint.constant = 70
+            } else {
+                self.cameraBtnWidthConstraint.constant = 90
+                self.cameraBtnHeightConstraint.constant = 90
+
+            }
+            if (self.myNutritionDetailsView != nil) {
+                if self.tweakCount > 0 {
+                    self.myNutritionDetailsView.isHidden = false
+
+                } else {
+                    self.myNutritionDetailsView.isHidden = true
+
+                }
+            }
+        }
+        self.updateUIAccordingTOEachDevice()
+
+    }
+    
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        
+        //UserDefaults.standard.set("YES", forKey: "NEW_USER")
+        
+        self.tweakStreakCountButton.setImage(UIImage.init(named: "my_tweak_streak.png"), for: .normal)
+
+        //self.checkIfUserIsNewOrTrialPeriodExpired()
+               // UserDefaults.standard.synchronize()
         if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
             self.taeClubMemberBottomView.isHidden = false
             self.taeClubMemberTopView.isHidden = false
@@ -1902,7 +2258,6 @@ tappedOnTAEClubExpiryView()
         self.loadingView.backgroundColor = UIColor.white
         self.loadingView.isHidden = true
         self.outerChartView.addSubview(self.loadingView)
-       // self.showMyNutritionDetails()myNutritionViewLast10TweaksTableView
         self.dataBtnName = "todaysData"
         self.dataBtnName = "weeksData"
         self.dataBtnName = "monthsData"
@@ -2048,7 +2403,7 @@ tappedOnTAEClubExpiryView()
 
        // self.bottomButtonsView.isHidden = true
        
-        self.roundImageView.image = UIImage.init(named: "defaultRecipe.jpg")
+      //  self.roundImageView.image = UIImage.init(named: "defaultRecipe.jpg")
      
         }
         self.chartView.addSubview(aaChartView)
@@ -2072,12 +2427,12 @@ tappedOnTAEClubExpiryView()
         self.innerDragMenuView.addGestureRecognizer(swipeDownForInnerDragMenuView)
         
         //self.foodImageView.layer.cornerRadius = 30.0
-        self.foodImageShadowView.layer.cornerRadius = 30.0
-        self.roundImageView.layer.borderColor = UIColor.gray.cgColor
-       // self.roundImageView.layer.borderWidth = 1.0
-        self.roundImageView.clipsToBounds = true
-        self.roundImageView.layer.cornerRadius = 30.0
-        self.roundImageView.clipsToBounds = true
+      //  self.foodImageShadowView.layer.cornerRadius = 30.0
+//        //self.roundImageView.layer.borderColor = UIColor.gray.cgColor
+//       // self.roundImageView.layer.borderWidth = 1.0
+//        self.roundImageView.clipsToBounds = true
+//        self.roundImageView.layer.cornerRadius = 30.0
+//        self.roundImageView.clipsToBounds = true
         
         self.minimumHeight = self.draggableView.frame.height
         self.minimumFrame = self.draggableView.frame
@@ -2113,7 +2468,24 @@ tappedOnTAEClubExpiryView()
 //        showPopupFromAppLaunchWhenTappedNotification(aps: apsDict)
 //                }
 //        }
-        
+        var type = 0
+        var tweakID: NSNumber = 0
+        if userInfo.index(forKey: "aps") != nil {
+            let apsInfo = userInfo["aps"] as AnyObject as! [String: AnyObject]
+            if apsInfo.index(forKey: "type") != nil {
+                type = apsInfo["type"] as AnyObject as! Int
+            }
+            if type == 4 {
+            if apsInfo.index(forKey: "tweakId") != nil {
+            tweakID = apsInfo["tweakId"] as! NSNumber
+                UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
+                UserDefaults.standard.removeObject(forKey: "PUSHWHENKILLED")
+            self.pushToTimeLines()
+                
+        }
+            }
+            
+        }
         if userInfo.index(forKey: "custom") != nil {
             let insideInfo = userInfo["custom"] as! [String: AnyObject]
             if insideInfo.index(forKey: "a") != nil {
@@ -2185,7 +2557,7 @@ tappedOnTAEClubExpiryView()
         formatter.dateFormat = "yyyy-MM-dd"
         
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.pushToTimeLines), name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)
-        self.tweakStreakLbl.textAlignment = .center
+       // self.tweakStreakLbl.textAlignment = .center
         
         self.tweakFeedsRef = Database.database().reference().child("TweakFeeds");
         
@@ -2234,8 +2606,8 @@ tappedOnTAEClubExpiryView()
         self.tweakReactView.layer.cornerRadius = 5.0;
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.checkTweakable));
-        cameraTweakLabel.isUserInteractionEnabled = true;
-        cameraTweakLabel.addGestureRecognizer(tapGestureRecognizer);
+      //  cameraTweakLabel.isUserInteractionEnabled = true;
+      //  cameraTweakLabel.addGestureRecognizer(tapGestureRecognizer);
         
         self.reachability = Reachability.forInternetConnection();
         self.reachability.startNotifier();
@@ -2573,12 +2945,26 @@ tappedOnTAEClubExpiryView()
     
     @IBAction func tweakStreakInfo(_ sender: Any) {
         var streakString = ""
-        if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil) {
-           streakString = TweakAndEatConstants.TWEAK_STREAK
-        //  }
-          } else if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil) {
+//        if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil) {
+//           streakString = TweakAndEatConstants.TWEAK_STREAK
+//        //  }
+//          } else if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil) {
+//            streakString = TweakAndEatConstants.TWEAK_TOTAL
+//          }
+        if self.tweakStreakCountButton.currentImage == UIImage.init(named: "my_tweak_streak.png") {
+            streakString = TweakAndEatConstants.TWEAK_STREAK
+            DispatchQueue.main.async {
+                self.tweakCountLbl.text = self.totalTweakCount
+                self.tweakStreakCountButton.setImage(UIImage.init(named: "my_tweak_total.png"), for: .normal)
+            }
+        } else {
+            
+          DispatchQueue.main.async {
+            self.tweakCountLbl.text = self.tweakStreakCount
             streakString = TweakAndEatConstants.TWEAK_TOTAL
-          }
+                self.tweakStreakCountButton.setImage(UIImage.init(named: "my_tweak_streak.png"), for: .normal)
+            }
+        }
         DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
         }
@@ -2605,6 +2991,7 @@ tappedOnTAEClubExpiryView()
                                 let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NutritionistPopViewController") as! NutritionistPopViewController;
                                 self.addChild(popOverVC);
                                 popOverVC.viewController = self
+                                //popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                                 popOverVC.popUp1 = true
                                 popOverVC.tweakText = firstObj.html2String
                                 self.view.addSubview(popOverVC.view);
@@ -3297,7 +3684,7 @@ tappedOnTAEClubExpiryView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        roundImageView.contentMode = UIView.ContentMode.scaleAspectFill;
+    //    roundImageView.contentMode = UIView.ContentMode.scaleAspectFill;
         if UserDefaults.standard.value(forKey: "GET_TREND_CALORIES") != nil {
                    let calArray = UserDefaults.standard.value(forKey: "GET_TREND_CALORIES")
            
@@ -3355,12 +3742,12 @@ tappedOnTAEClubExpiryView()
         self.title = bundle.localizedString(forKey: "app_name", value: nil, table: nil);
         DispatchQueue.main.async {
             
-        self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
+      //  self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
         self.tweakWallLabel.text = self.bundle.localizedString(forKey: "tweak_wall", value: nil, table: nil);
         
-        self.checkThisOutLabel.text = self.bundle.localizedString(forKey: "check_this_out", value: nil, table: nil);
+      //  self.checkThisOutLabel.text = self.bundle.localizedString(forKey: "check_this_out", value: nil, table: nil);
         
-        self.cameraTweakLabel.text = self.bundle.localizedString(forKey: "camera_click_text", value: nil, table: nil);
+      //  self.cameraTweakLabel.text = self.bundle.localizedString(forKey: "camera_click_text", value: nil, table: nil);
         
         self.recipeWallLabel.text = self.bundle.localizedString(forKey: "recipe_wall", value: nil, table: nil);
         
@@ -5010,7 +5397,7 @@ tappedOnTAEClubExpiryView()
         self.view.isUserInteractionEnabled = true
      
         DispatchQueue.main.async {
-            self.roundImageView.image = UIImage.init(named: "defaultRecipe.jpg")
+            //self.roundImageView.image = UIImage.init(named: "defaultRecipe.jpg")
         }
         
         let dictionary1 = Bundle.main.infoDictionary!;
@@ -5810,7 +6197,7 @@ tappedOnTAEClubExpiryView()
                      // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
                       return
                   }
-                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+                 // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
               })
     }
     func getClubHome3() {
@@ -5888,7 +6275,7 @@ tappedOnTAEClubExpiryView()
                      // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
                       return
                   }
-                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+                 // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
               })
     }
     
@@ -5969,7 +6356,7 @@ tappedOnTAEClubExpiryView()
                      // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
                       return
                   }
-                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+                 // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
               })
     }
     
@@ -6062,10 +6449,10 @@ self.floatingCallBtn.isHidden = false
             
             print("failure")
             if error?.code == -1011 {
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+           //     TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
                 return
             }
-            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+          //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
         })
         }
         }
@@ -6090,6 +6477,8 @@ self.floatingCallBtn.isHidden = false
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
+            self.tweakCount = responseDic["tweakTotal"] as! Int
+
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
 //                let imgUrl = responseDic["homeBtnPremImage"] as AnyObject as! String
@@ -6123,6 +6512,7 @@ self.floatingCallBtn.isHidden = false
 //                self.premiumMemberTopButtonHeightConstraint.constant = 45
 //
 //            }
+            
             if self.countryCode == "91" {
                 self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
             } else if self.countryCode == "1" {
@@ -6922,7 +7312,8 @@ self.floatingCallBtn.isHidden = false
 //                } else {
 //                }
 //            }
-            
+            //UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
+
             if self.countryCode == "91" {
                 if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil && UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil && UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil && UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {
                     let tenthAugDateStr = "2020-08-10"
@@ -6932,7 +7323,10 @@ self.floatingCallBtn.isHidden = false
                     let tenthAugDate = formatter.date(from: tenthAugDateStr)!
                     let fifteenthAugDate = formatter.date(from: fifteenthAugDateStr)!
                     let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 6, to: crtDate)!
-
+                    //let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: -6, to: Date())!
+                    //UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                    //UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                   
                     if crtDate < tenthAugDate {
                         let currentDate = Date()
                         if currentDate < fifteenthAugDate {
@@ -6941,6 +7335,14 @@ self.floatingCallBtn.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                             self.taeClubTrialPeriodExpiryView.isHidden = true
                             self.topImageView.isHidden = false
+                            self.trialPeriodExpired = false
+                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                                UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            } else {
+                            UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                            }
 
                         } else {
                             self.tweakandeatClubButtonView.isHidden = true
@@ -6948,6 +7350,14 @@ self.floatingCallBtn.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
                             self.topImageView.isHidden = true
                             self.showTrialPeriodView()
+                            self.trialPeriodExpired = true
+                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                                UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            } else {
+                                UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            }
 
                         }
                     } else  {
@@ -6957,6 +7367,14 @@ self.floatingCallBtn.isHidden = false
                             self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                             self.taeClubTrialPeriodExpiryView.isHidden = true
                             self.topImageView.isHidden = false
+                            self.trialPeriodExpired = false
+                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                                UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            } else {
+                            UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                            }
 
                         } else {
                             self.tweakandeatClubButtonView.isHidden = true
@@ -6965,6 +7383,23 @@ self.floatingCallBtn.isHidden = false
                             self.topImageView.isHidden = true
                             
                             self.showTrialPeriodView()
+                            self.trialPeriodExpired = true
+//                            let randomNum = Int.random(in: 1...2)
+//                                               if randomNum == 1 {
+//                                                   UserDefaults.standard.set("YES", forKey: "NEW_USER")
+//                                                   self.checkIfUserIsNewOrTrialPeriodExpired()
+//                                               } else {
+//                                                   UserDefaults.standard.removeObject(forKey: "NEW_USER")
+//                                                   self.checkIfUserIsNewOrTrialPeriodExpired()
+//                                               }
+                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                                UserDefaults.standard.removeObject(forKey: "NEW_USER")
+
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            } else {
+                                UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                self.checkIfUserIsNewOrTrialPeriodExpired()
+                            }
 
                         }
                     }
@@ -6976,6 +7411,14 @@ self.floatingCallBtn.isHidden = false
                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
                     self.taeClubTrialPeriodExpiryView.isHidden = true
                     self.topImageView.isHidden = false
+                    self.trialPeriodExpired = false
+                    if (responseDic["tweakTotal"] as! Int) > 0 {
+                        UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                        self.checkIfUserIsNewOrTrialPeriodExpired()
+                    } else {
+                        UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                        self.checkIfUserIsNewOrTrialPeriodExpired()
+                    }
                     self.removePTPExpiryView()
                                   } else {
                     //self.showTrialPeriodView()
@@ -6988,6 +7431,13 @@ self.floatingCallBtn.isHidden = false
                                                       } else {
                                                       self.getStaticDateForComparison(noDays: noDays)
                                                       }
+                if (responseDic["tweakTotal"] as! Int) > 0 {
+                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                } else {
+                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                }
                                 } else  {
                     
                                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
@@ -6997,6 +7447,13 @@ self.floatingCallBtn.isHidden = false
                                 } else {
                                 self.getStaticDateForComparison(noDays: noDays)
                                 }
+                if (responseDic["tweakTotal"] as! Int) > 0 {
+                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                } else {
+                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                }
                                 }
 
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
@@ -7030,10 +7487,9 @@ self.floatingCallBtn.isHidden = false
             
             self.tweakCountLbl.text = String(tweakStreakCountValue)
             self.tweakStreakCount = String(tweakStreakCountValue)
-            self.totalTweakCount = String(responseDic["tweakTotal"] as! Int)
             UserDefaults.standard.set(responseDic["tweakTotal"] as! Int, forKey: "TWEAK_COUNT")
             UserDefaults.standard.synchronize()
-            self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
+           // self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
             //   }
             self.showBadge()
             UserDefaults.standard.setValue(responseDic["userStatus"], forKey: "userStatusInfo")
@@ -7077,7 +7533,7 @@ self.floatingCallBtn.isHidden = false
 
                     
                     
-                     self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String), placeholderImage: UIImage.init(named: "defaultRecipe.jpg"))
+                    // self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String), placeholderImage: UIImage.init(named: "defaultRecipe.jpg"))
                     self.foodImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String), placeholderImage: UIImage.init(named: "defaultRecipe.jpg"))
                 }
                 
@@ -7253,7 +7709,7 @@ self.floatingCallBtn.isHidden = false
                 MBProgressHUD.hide(for: self.view, animated: true);
                 }
                 
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+                //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
             }
         }
     }
@@ -7533,8 +7989,8 @@ self.floatingCallBtn.isHidden = false
         tweakFinalView.delegate = self;
         tweakFinalView.beginning();
         self.view.addSubview(self.tweakFinalView);
-        self.tweakFinalView.titleLabel.text = bundle.localizedString(forKey: "register_finished_1", value: nil, table: nil)
-        self.tweakFinalView.takePhotoOfNextMeal.text = bundle.localizedString(forKey: "register_finished_2", value: nil, table: nil)
+//        self.tweakFinalView.titleLabel.text = bundle.localizedString(forKey: "register_finished_1", value: nil, table: nil)
+//        self.tweakFinalView.takePhotoOfNextMeal.text = bundle.localizedString(forKey: "register_finished_2", value: nil, table: nil)
         self.tweakFinalView.okBtn.setTitle(bundle.localizedString(forKey: "ok", value: nil, table: nil), for: .normal)
         self.tweakTermsServiceView.removeFromSuperview();
         // pieChartView.removeFromSuperview();
@@ -8453,19 +8909,29 @@ self.floatingCallBtn.isHidden = false
     }
     
     @IBAction func refreshTweakCountTapped(_ sender: Any) {
-        if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil) {
-          //  DispatchQueue.main.async {
-            self.tweakCountLbl.text = self.totalTweakCount
+//        if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil) {
+//          //  DispatchQueue.main.async {
+//            self.tweakCountLbl.text = self.totalTweakCount
+//
+//            self.tweakStreakLbl.text =  self.bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil)
+//      //  }
+//        } else if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil) {
+//           // DispatchQueue.main.async {
+//            self.tweakCountLbl.text = self.tweakStreakCount
+//
+//            self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
+//           // }
+//        }
+        
+        if self.tweakStreakCountButton.currentImage == UIImage.init(named: "my_tweak_streak.png") {
+                        self.tweakCountLbl.text = self.tweakStreakCount
             
-            self.tweakStreakLbl.text =  self.bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil)
-      //  }
-        } else if self.tweakStreakLbl.text == bundle.localizedString(forKey: "my_tweak_total", value: nil, table: nil) {
-           // DispatchQueue.main.async {
-            self.tweakCountLbl.text = self.tweakStreakCount
-            
-            self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
-           // }
+        } else {
+                      self.tweakCountLbl.text = self.totalTweakCount
+
         }
+
+        
     }
     
     @objc func getCountryPhonceCode (_ country : String) -> String {

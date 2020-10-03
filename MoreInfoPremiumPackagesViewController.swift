@@ -1080,6 +1080,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 responseResult = responseDic["CallStatus"] as! String
             }
             if  responseResult == "GOOD" {
+                //IndIWj1mSzQ1GDlBpUt
                  AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
@@ -1621,6 +1622,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //IndIWj1mSzQ1GDlBpUt
+//        AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "Tweak & Eat India - Quarterly", AFEventParamContentId: self.packageId, AFEventParamCurrency: "INR"])
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if countryCode == "91" {

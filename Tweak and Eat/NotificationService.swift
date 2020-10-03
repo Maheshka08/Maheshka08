@@ -186,6 +186,7 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                 var imgUrlString = "https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20180906_01.png"
                 var link = ""
                 var type = 0
+                var tweakID: NSNumber = 0
                 if userInfo.index(forKey: "aps") != nil {
                     let apsInfo = userInfo["aps"] as AnyObject as! [String: AnyObject]
                     if apsInfo.index(forKey: "msg") != nil {
@@ -198,7 +199,9 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                         imgUrlString = apsInfo["img"] as! String
 
                     }
-
+                   if apsInfo.index(forKey: "tweakId") != nil {
+    tweakID = apsInfo["tweakId"] as! NSNumber
+                    }
                     
                     if apsInfo.index(forKey: "type") != nil {
                         type = apsInfo["type"] as AnyObject as! Int
@@ -227,6 +230,13 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                     self.popUpView.showUIForSmallPopUp(imgUrlString: imgUrlString, msg: msg.html2String.replacingOccurrences(of: "\\", with: ""), link: link, type: type)
                            UIApplication.shared.keyWindow?.addSubview(self.popUpView)
 
+                } else if type == 4 {
+                    
+
+                        UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)
+                    
+                    
                 } else {
                 if navController?.topViewController is MyWallViewController {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: data)

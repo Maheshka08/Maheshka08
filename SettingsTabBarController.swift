@@ -51,7 +51,7 @@ class SettingsTabBarController: UITabBarController {
     
     @objc func addFeedBackButton() {
            let backButton = UIButton(type: .custom)
-           backButton.setImage(UIImage(named: "feedback_icon1"), for: .normal)
+           backButton.setImage(UIImage(named: "feedback_icon"), for: .normal)
            backButton.addTarget(self, action: #selector(self.feedBackButtonTapped(_:)), for: .touchUpInside)
            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: backButton)
        }
