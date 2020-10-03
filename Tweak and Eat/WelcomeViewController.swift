@@ -377,7 +377,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var draggableView: UIView!
     let dataPoints = [0,400,150,280,140,290,110,300,460,0]
     private var foodImageFrame: CGRect!
-    
+    var flashCounter = 0
+
     @IBOutlet weak var myTrendsLabel: UILabel!
     
     @IBOutlet weak var chartView: UIView!
@@ -2111,6 +2112,7 @@ self.topImageView.alpha = 1
                 self.cameraBtnHeightConstraint.constant = 70
             }
             self.minCalCountLabel.startBlink()
+            //self.runTimerFor5Seconds(label: self.minCalCountLabel)
              if (self.myNutritionDetailsView != nil) {
                            if self.tweakCount > 0 {
                                self.myNutritionDetailsView.isHidden = false
@@ -2147,6 +2149,27 @@ self.topImageView.alpha = 1
         }
         self.updateUIAccordingTOEachDevice()
 
+    }
+    
+    func runTimerFor5Seconds(label: UILabel) {
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire(timer:)), userInfo: ["counter": 5, "label": label], repeats: true)
+
+    }
+    
+    @objc func fire(timer: Timer) {
+        if  let userInfo = timer.userInfo as? [String: AnyObject] {
+            flashCounter = userInfo["counter"] as! Int
+        let lbl = userInfo["label"] as! UILabel
+        while flashCounter <= 5 {
+            flashCounter -= 1
+            lbl.startBlink()
+            if flashCounter == 0 {
+                timer.invalidate()
+                lbl.stopBlink()
+                
+            }
+        }
+        }
     }
     
     override func viewDidLoad() {
