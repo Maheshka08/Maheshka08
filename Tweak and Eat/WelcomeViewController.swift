@@ -1207,6 +1207,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.topButtonsDataViewHeightConstraint.constant = 63
                         if (self.myNutritionDetailsView != nil) {
                             self.myNutritionDetailsView.isHidden = false
+                            //self.switchButton.isHidden = true
                         }
 
                     } else {
@@ -6661,9 +6662,9 @@ self.floatingCallBtn.isHidden = false
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
-            //self.tweakCount = responseDic["tweakTotal"] as! Int
+            self.tweakCount = responseDic["tweakTotal"] as! Int
             //self.tweakCount = 1
-            self.tweakCount = Int.random(in: 0...1)
+            //self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
