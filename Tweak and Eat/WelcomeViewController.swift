@@ -6550,7 +6550,7 @@ self.floatingCallBtn.isHidden = false
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
             self.tweakCount = responseDic["tweakTotal"] as! Int
-            self.tweakCount = 0
+            //self.tweakCount = 0
 //            self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
