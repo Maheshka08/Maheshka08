@@ -1595,8 +1595,8 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             self.goToHomePage()
             
         }
-        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
-            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 
             } else {

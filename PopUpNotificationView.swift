@@ -95,9 +95,9 @@ class PopUpNotificationView: UIView {
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
-            
-                      if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+            //ClubIdn4hd8flchs9Vy
+                      if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                          self.goToTAEClubMemPage()
                        } else {
                            self.goToTAEClub()
@@ -348,8 +348,8 @@ class PopUpNotificationView: UIView {
                } else if link == "HOW_IT_WORKS" {
                    
                  self.playVideo()
-               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
-            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 
             } else {

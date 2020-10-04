@@ -631,10 +631,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             self.smallScreenPopUp.isHidden = true
             self.playVideo()
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.smallScreenPopUp.isHidden = true
 
-                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                        self.goToTAEClubMemPage()
 
                    } else {
@@ -1139,9 +1139,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.minCalCountLabel.stopBlink()
                         self.beforeTweakImageViewHeightConstraint.constant = 0
                         self.topButtonsDataViewHeightConstraint.constant = 63
-//                        if (self.myNutritionDetailsView != nil) {
-//                            self.myNutritionDetailsView.isHidden = false
-//                        }
+                        if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionDetailsView.isHidden = false
+                        }
 
                     } else {
                         self.chatViewHeightConstraint.constant = 0
@@ -1149,9 +1149,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                                self.draggableViewHeightConstraint.constant = 130 + 50 + 110
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
                         self.taeClubViewTopConstraint.constant = 55
-//                        if (self.myNutritionDetailsView != nil) {
-//                            self.myNutritionDetailsView.isHidden = true
-//                        }
+                        if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionDetailsView.isHidden = true
+                        }
                     }
                    
 
@@ -2111,8 +2111,11 @@ self.topImageView.alpha = 1
                 self.cameraBtnWidthConstraint.constant = 70
                 self.cameraBtnHeightConstraint.constant = 70
             }
-            self.minCalCountLabel.startBlink()
+//            if self.flashCounter == 0 {
+                self.minCalCountLabel.startBlink()
+
             //self.runTimerFor5Seconds(label: self.minCalCountLabel)
+          //  }
              if (self.myNutritionDetailsView != nil) {
                            if self.tweakCount > 0 {
                                self.myNutritionDetailsView.isHidden = false
@@ -2152,7 +2155,8 @@ self.topImageView.alpha = 1
     }
     
     func runTimerFor5Seconds(label: UILabel) {
-        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire(timer:)), userInfo: ["counter": 5, "label": label], repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fire(timer:)), userInfo: ["counter": 5, "label": label], repeats: false)
+        label.startBlink()
 
     }
     
@@ -2162,10 +2166,10 @@ self.topImageView.alpha = 1
         let lbl = userInfo["label"] as! UILabel
         while flashCounter <= 5 {
             flashCounter -= 1
-            lbl.startBlink()
             if flashCounter == 0 {
                 timer.invalidate()
                 lbl.stopBlink()
+                
                 
             }
         }
@@ -2182,7 +2186,7 @@ self.topImageView.alpha = 1
 
         //self.checkIfUserIsNewOrTrialPeriodExpired()
                // UserDefaults.standard.synchronize()
-        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
             self.taeClubMemberBottomView.isHidden = false
             self.taeClubMemberTopView.isHidden = false
         } else {
@@ -3372,7 +3376,7 @@ self.topImageView.alpha = 1
          if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if self.countryCode == "91" {
-        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                               self.goToTAEClubMemPage()
 
                           } else {
@@ -3385,10 +3389,10 @@ self.topImageView.alpha = 1
     @objc func pressed(sender: UIButton!) {
         if (link == "" || link == "HOME") {
             self.popUpView.removeFromSuperview()
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.popUpView.removeFromSuperview()
 
-                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                        self.goToTAEClubMemPage()
 
                    } else {
@@ -4144,7 +4148,7 @@ self.topImageView.alpha = 1
         }
         let promoAppLink = self.randomPromoLink //PP_PACKAGES
         // || promoAppLink == "-IndClub3gu7tfwko6Zx"
-        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
+        if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             self.performSegue(withIdentifier: "taeClub", sender: self);
 
         } else if promoAppLink == "PP_PACKAGES" {
@@ -4485,8 +4489,8 @@ self.topImageView.alpha = 1
        
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" {
-        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+        if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
             self.goToTAEClubMemPage()
 
         } else {
@@ -6809,9 +6813,59 @@ self.floatingCallBtn.isHidden = false
 
                     }
                     
-                }
+                } //-ClubIdn4hd8flchs9Vy
+                  let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
+                  //let userSubscribedToClub = 0
+                  
+                  if userSubscribedToClub == 1 {
+                      UserDefaults.standard.set("-ClubIdn4hd8flchs9Vy", forKey: "-ClubIdn4hd8flchs9Vy")
+                      UserDefaults.standard.synchronize()
+                    self.tweakandeatClubButtonView.isHidden = true
+                                       self.tweakandeatClubButtonViewBottom.isHidden = true
+                                       self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                       self.taeClubTrialPeriodExpiryView.isHidden = true
 
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil {
+
+                  } else {
+                      
+                      UserDefaults.standard.removeObject(forKey: "-ClubIdn4hd8flchs9Vy")
+                  }
+                  if responseDic["userTaeClubSubExpDttm"] is NSNull {
+                //      UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
+                  } else {
+                  let dateFormatter = DateFormatter()
+                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                  let expDateStr =  responseDic["userTaeClubSubExpDttm"] as! String;
+                  let expDate = dateFormatter.date(from: expDateStr);
+                  
+                  let currentDate = Date();
+                  if expDate! < currentDate {
+                      UserDefaults.standard.removeObject(forKey: "-ClubIdn4hd8flchs9Vy")
+                      if userSubscribedToClub == 1 {
+                      UserDefaults.standard.set("-ClubIdn4hd8flchs9Vy", forKey: "-ClubIdn4hd8flchs9Vy")
+                      UserDefaults.standard.synchronize()
+
+                      } else {
+                          UserDefaults.standard.removeObject(forKey: "-ClubIdn4hd8flchs9Vy")
+                          //self.tweakandeatClubButtonView.isHidden = false
+
+                      }
+
+
+                  } else {
+                      if userSubscribedToClub == 1 {
+                      UserDefaults.standard.set("-ClubIdn4hd8flchs9Vy", forKey: "-ClubIdn4hd8flchs9Vy")
+                      UserDefaults.standard.synchronize()
+
+                      } else {
+                          UserDefaults.standard.removeObject(forKey: "-ClubIdn4hd8flchs9Vy")
+                          //self.tweakandeatClubButtonView.isHidden = false
+
+                      }
+                      }
+                  }
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                     self.removePTPExpiryView()
                 } else {
                     self.getStaticDateForComparison(noDays: noDays)
@@ -7446,7 +7500,109 @@ self.floatingCallBtn.isHidden = false
                                   } else {
                     //self.showTrialPeriodView()
                                   }
-            } else if self.countryCode == "60" {
+            } else if self.countryCode == "62" {
+                            if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") == nil && UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil {
+                                let tenthAugDateStr = "2020-08-10"
+                                let fifteenthAugDateStr = "2020-08-16"
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy-MM-dd"
+                                let tenthAugDate = formatter.date(from: tenthAugDateStr)!
+                                let fifteenthAugDate = formatter.date(from: fifteenthAugDateStr)!
+                                let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 6, to: crtDate)!
+                                //let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: -6, to: Date())!
+                                //UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                //UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                               
+                                if crtDate < tenthAugDate {
+                                    let currentDate = Date()
+                                    if currentDate < fifteenthAugDate {
+                                        self.tweakandeatClubButtonView.isHidden = false
+                                        self.tweakandeatClubButtonViewBottom.isHidden = false
+                                        self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                        self.taeClubTrialPeriodExpiryView.isHidden = true
+                                        self.topImageView.isHidden = false
+                                        self.trialPeriodExpired = false
+                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                            UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        } else {
+                                        UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                        self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        }
+
+                                    } else {
+                                        self.tweakandeatClubButtonView.isHidden = true
+                                        self.tweakandeatClubButtonViewBottom.isHidden = false
+                                        self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                                        self.topImageView.isHidden = true
+                                        self.showTrialPeriodView()
+                                        self.trialPeriodExpired = true
+                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                            UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        } else {
+                                            UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        }
+
+                                    }
+                                } else  {
+                                    if sixDaysAfterCrtDttm > Date() {
+                                        self.tweakandeatClubButtonView.isHidden = false
+                                        self.tweakandeatClubButtonViewBottom.isHidden = false
+                                        self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                        self.taeClubTrialPeriodExpiryView.isHidden = true
+                                        self.topImageView.isHidden = false
+                                        self.trialPeriodExpired = false
+                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                            UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        } else {
+                                        UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                        self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        }
+
+                                    } else {
+                                        self.tweakandeatClubButtonView.isHidden = true
+                                        self.tweakandeatClubButtonViewBottom.isHidden = false
+                                        self.tweakAndEatCLubExpiryViewWithButtons.isHidden = false
+                                        self.topImageView.isHidden = true
+                                        
+                                        self.showTrialPeriodView()
+                                        self.trialPeriodExpired = true
+            
+                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                            UserDefaults.standard.removeObject(forKey: "NEW_USER")
+
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        } else {
+                                            UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                            self.checkIfUserIsNewOrTrialPeriodExpired()
+                                        }
+
+                                    }
+                                }
+                                
+                                
+                            } else if UserDefaults.standard.value(forKey: self.ptpPackage) == nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") == nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil  {
+                                self.tweakandeatClubButtonView.isHidden = true
+                                self.tweakandeatClubButtonViewBottom.isHidden = true
+                                self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                self.taeClubTrialPeriodExpiryView.isHidden = true
+                                self.topImageView.isHidden = false
+                                self.trialPeriodExpired = false
+                                if (responseDic["tweakTotal"] as! Int) > 0 {
+                                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                                } else {
+                                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                                }
+                                self.removePTPExpiryView()
+                                              } else {
+                                //self.showTrialPeriodView()
+                                              }
+                        } else if self.countryCode == "60" {
                                     //UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil
                                     if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
 
@@ -7454,13 +7610,13 @@ self.floatingCallBtn.isHidden = false
                                                       } else {
                                                       self.getStaticDateForComparison(noDays: noDays)
                                                       }
-                if (responseDic["tweakTotal"] as! Int) > 0 {
-                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
-                    self.checkIfUserIsNewOrTrialPeriodExpired()
-                } else {
-                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
-                    self.checkIfUserIsNewOrTrialPeriodExpired()
-                }
+//                if (responseDic["tweakTotal"] as! Int) > 0 {
+//                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+//                    self.checkIfUserIsNewOrTrialPeriodExpired()
+//                } else {
+//                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+//                    self.checkIfUserIsNewOrTrialPeriodExpired()
+//                }
                                 } else  {
                     
                                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
@@ -7470,16 +7626,16 @@ self.floatingCallBtn.isHidden = false
                                 } else {
                                 self.getStaticDateForComparison(noDays: noDays)
                                 }
-                if (responseDic["tweakTotal"] as! Int) > 0 {
-                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
-                    self.checkIfUserIsNewOrTrialPeriodExpired()
-                } else {
-                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
-                    self.checkIfUserIsNewOrTrialPeriodExpired()
-                }
+//                if (responseDic["tweakTotal"] as! Int) > 0 {
+//                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+//                    self.checkIfUserIsNewOrTrialPeriodExpired()
+//                } else {
+//                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+//                    self.checkIfUserIsNewOrTrialPeriodExpired()
+//                }
                                 }
 
-            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil{
                 self.taeClubMemberTopButton.isHidden = false
                 self.taeClubMemberBottomButton.isHidden = false
                 self.taeClubMemberTopView.isHidden = false
@@ -7493,7 +7649,7 @@ self.floatingCallBtn.isHidden = false
                
 
             }
-            if self.countryCode == "91" {
+            if self.countryCode == "91" || self.countryCode == "62" {
              self.getClubHome1()
             // self.getClubHome2()
              //self.getClub1Info()
@@ -7506,7 +7662,8 @@ self.floatingCallBtn.isHidden = false
             }
             
             let tweakStreakCountValue = responseDic["tweakStreak"] as! Int
-            //     DispatchQueue.main.async {
+            //     DispatchQueue.main.async { tweakTotal
+            self.totalTweakCount =  String(responseDic["tweakTotal"] as! Int)
             
             self.tweakCountLbl.text = String(tweakStreakCountValue)
             self.tweakStreakCount = String(tweakStreakCountValue)
@@ -8605,7 +8762,7 @@ self.floatingCallBtn.isHidden = false
             for (key,val) in self.timeZoneAbbreviations {
                 let localTimeZone = val
                 if localTimeZone == self.localTimeZoneName {
-                    let tweakImageParams : [String : String] = ["fromOs" : "IOS", "lat" : self.latitude, "lng" : self.longitude, "newImage" : imgBase64, "userLocalTime" : date, "userLocalTimezone" : key ];
+                    let tweakImageParams : [String : String] = ["fromOs" : "IOS", "lat" : self.latitude, "lng" : self.longitude, "newImage" : imgBase64, "userLocalTime" : date, "userLocalTimezone" : key, "fbNotify": "1" ];
                     // “userLocalTime”: “2019-06-17 14:00:00",
                     //“userLocalTimezone”: “IST”
                     DispatchQueue.main.async() {
@@ -8622,7 +8779,7 @@ self.floatingCallBtn.isHidden = false
                 }
             }
             
-            let tweakImageParams : [String : String] = ["fromOs" : "IOS", "lat" : self.latitude, "lng" : self.longitude, "newImage" : imgBase64, "userLocalTime" : date, "userLocalTimezone" : "" ];
+            let tweakImageParams : [String : String] = ["fromOs" : "IOS", "lat" : self.latitude, "lng" : self.longitude, "newImage" : imgBase64, "userLocalTime" : date, "userLocalTimezone" : "", "fbNotify": "1" ];
             // “userLocalTime”: “2019-06-17 14:00:00",
             //“userLocalTimezone”: “IST”
             DispatchQueue.main.async() {

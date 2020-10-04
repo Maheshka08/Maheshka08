@@ -78,6 +78,9 @@ class TweakAndEatFinalIntroScreen: UIView {
                 //self.delegate.getPremiumBtn()
             } else if countryCode == "63" {
                 self.delegate.setUpPhilippinesView()
+            } else if countryCode == "62" {
+                self.delegate.getClubHome1()
+
             }
         }
         dispatch_group.leave();

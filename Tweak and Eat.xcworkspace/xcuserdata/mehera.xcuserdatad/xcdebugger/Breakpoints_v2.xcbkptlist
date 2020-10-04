@@ -7,32 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CD70A4CB-32E0-413B-8F36-505EAAEBCA86"
+            uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            filePath = "Tweak and Eat/ImageUploadingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2115"
-            endingLineNumber = "2115"
-            landmarkName = "checkIfUserIsNewOrTrialPeriodExpired()"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9 - 5f60918c020b5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tweak_and_Eat.ImageUploadingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/ImageUploadingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "565"
+                  endingLineNumber = "565"
+                  offsetFromSymbolStart = "9548">
+               </Location>
+               <Location
+                  uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9 - ab31e5bdc27d591a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in Tweak_and_Eat.ImageUploadingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/ImageUploadingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "566"
+                  endingLineNumber = "566"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B8CBA998-811D-4E28-AA41-30EC5C8B5ECE"
+            uuid = "4447027C-CFF2-45D0-B1F1-42AB30D2D33A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2163"
-            endingLineNumber = "2163"
-            landmarkName = "fire(timer:)"
+            startingLineNumber = "7669"
+            endingLineNumber = "7669"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

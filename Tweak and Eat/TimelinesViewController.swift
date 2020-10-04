@@ -1076,8 +1076,8 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         if promoAppLink == "HOME" || promoAppLink == "" {
                    self.goToHomePage()
                    
-               } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" {
-            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+               } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 
             } else {

@@ -134,6 +134,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
     @objc var pkgDescription : String = "";
     @objc var pkgDuration : String = "";
     var packageName = ""
+    var packageID = ""
     @IBAction func club4DoneTapped(_ sender: Any) {
          self.navigationController?.popToRootViewController(animated: true)
     }
@@ -163,7 +164,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
         var jsonDict = [String: AnyObject]()
         
         let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  "-ClubInd3gu7tfwko6Zx"
+        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageID
             , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
         //91e841953e9f4d19976283cd2ee78992
         
@@ -181,7 +182,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
             if  responseResult == "GOOD" {
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
-                      AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: "-ClubInd3gu7tfwko6Zx", AFEventParamCurrency: self.currency])
+                      AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
           self.paymentSuccessView.isHidden = false
                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
 
@@ -245,6 +246,13 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                   countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
               }
+
+            if self.countryCode == "91" {
+                self.packageID = "-ClubInd3gu7tfwko6Zx"
+            } else if self.countryCode == "62" {
+                self.packageID = "-ClubIdn4hd8flchs9Vy"
+
+            }
         self.submitBtn.isEnabled = false
         // Do any additional setup after loading the view.
         path = Bundle.main.path(forResource: "en", ofType: "lproj");
@@ -315,7 +323,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
         // MBProgressHUD.showAdded(to: self.view, animated: true);
         
         
-        Database.database().reference().child("PremiumPackageDetailsiOS").child("-ClubInd3gu7tfwko6Zx").observe(DataEventType.value, with: { (snapshot) in
+        Database.database().reference().child("PremiumPackageDetailsiOS").child(self.packageID).observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             self.ptpPackagesArray = NSMutableArray();
