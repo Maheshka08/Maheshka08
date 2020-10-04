@@ -1115,6 +1115,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                              self.draggableConstant = self.draggableViewHeightConstraint.constant
 
                                              self.taeClubViewTopConstraint.constant = 55
+                                            if (self.myNutritionDetailsView != nil) {
+                                                self.myNutritionDetailsView.isHidden = true
+                                                self.switchButton.alpha = 0
+
+                                            }
                                          }
                                         
 
@@ -1126,6 +1131,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                         self.chatViewHeightConstraint.constant = 140
                                          self.draggableViewHeightConstraint.constant = 30
                                          self.draggableConstant = self.draggableViewHeightConstraint.constant
+                                        if (self.myNutritionDetailsView != nil) {
+                                            self.switchButton.alpha = 1
+
+                                            if self.showGraph == true {
+                                                self.myNutritionDetailsView.isHidden = true
+                                            } else {
+                                            self.myNutritionDetailsView.isHidden = false
+                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
+                                            }
+                                        }
 
                                      }
                                      self.monthBtnTrailingConstraint.constant = 30;
@@ -1141,6 +1156,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                          self.chatViewHeightConstraint.constant = 0
                                       self.draggableViewHeightConstraint.constant = 30
                                          self.draggableConstant = self.draggableViewHeightConstraint.constant
+                                        if (self.myNutritionDetailsView != nil) {
+                                            self.myNutritionDetailsView.isHidden = true
+                                            self.switchButton.alpha = 0
+
+                                        }
 
 
                                      } else {
@@ -1148,6 +1168,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                  aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
                                       self.draggableViewHeightConstraint.constant = 30
                                          self.draggableConstant = self.draggableViewHeightConstraint.constant
+                                        if (self.myNutritionDetailsView != nil) {
+                                            self.switchButton.alpha = 1
+
+                                            if self.showGraph == true {
+                                                self.myNutritionDetailsView.isHidden = true
+                                            } else {
+                                            self.myNutritionDetailsView.isHidden = false
+                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
+                                            }
+                                        }
 
                                      }
                                      
@@ -1187,6 +1217,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.taeClubViewTopConstraint.constant = 55
                         if (self.myNutritionDetailsView != nil) {
                             self.myNutritionDetailsView.isHidden = true
+                            self.switchButton.alpha = 0
                         }
                     }
                    
@@ -1195,14 +1226,20 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     self.taeClubViewTopConstraint.constant = 55
 
                     aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-                    
-
+                    self.beforeTweakImageViewHeightConstraint.constant = 0
+                    self.topButtonsDataViewHeightConstraint.constant = 63
                    self.chatViewHeightConstraint.constant = 170
                     self.draggableViewHeightConstraint.constant = 130 + 50
                     self.draggableConstant = self.draggableViewHeightConstraint.constant
                     if (self.myNutritionDetailsView != nil) {
-                        self.myNutritionDetailsView.isHidden = false
+                        self.switchButton.alpha = 1
 
+                        if self.showGraph == true {
+                            self.myNutritionDetailsView.isHidden = true
+                        } else {
+                        self.myNutritionDetailsView.isHidden = false
+                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+                        }
                     }
                 }
 
@@ -1245,6 +1282,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.taeClubViewTopConstraint.constant = 55
                         if (self.myNutritionDetailsView != nil) {
                             self.myNutritionDetailsView.isHidden = true
+                            self.switchButton.alpha = 0
                         }
                     }
                    
@@ -1257,7 +1295,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                    self.chatViewHeightConstraint.constant = 160
                     self.draggableViewHeightConstraint.constant = 175 - 76
                     self.draggableConstant = self.draggableViewHeightConstraint.constant
+                    if (self.myNutritionDetailsView != nil) {
+                        self.switchButton.alpha = 1
 
+                        if self.showGraph == true {
+                            self.myNutritionDetailsView.isHidden = true
+                        } else {
+                        self.myNutritionDetailsView.isHidden = false
+                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160 + 63)
+                        }
+                    }
                 }
 
                 self.draggableConstant = self.draggableViewHeightConstraint.constant
@@ -1293,6 +1340,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.taeClubViewTopConstraint.constant = 55
                             if (self.myNutritionDetailsView != nil) {
                                 self.myNutritionDetailsView.isHidden = true
+                                self.switchButton.alpha = 0
                             }
                         }
                        
@@ -1305,7 +1353,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                        self.chatViewHeightConstraint.constant = 170
                         self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 30
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        if (self.myNutritionDetailsView != nil) {
+                            self.switchButton.alpha = 1
 
+                            if self.showGraph == true {
+                                self.myNutritionDetailsView.isHidden = true
+                            } else {
+                            self.myNutritionDetailsView.isHidden = false
+                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+                            }
+                        }
                     }
                     self.monthBtnTrailingConstraint.constant = 30;
 
@@ -1320,6 +1377,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.chatViewHeightConstraint.constant = 0
                      self.draggableViewHeightConstraint.constant = 150 + 30
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionDetailsView.isHidden = true
+                            self.switchButton.alpha = 0
+                        }
 
 
                     } else {
@@ -1327,7 +1388,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
                      self.draggableViewHeightConstraint.constant = 150 + 30 + 20
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+                        if (self.myNutritionDetailsView != nil) {
+                                                   self.switchButton.alpha = 1
 
+                                                   if self.showGraph == true {
+                                                       self.myNutritionDetailsView.isHidden = true
+                                                   } else {
+                                                   self.myNutritionDetailsView.isHidden = false
+                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+                                                   }
+                                               }
                     }
                     
                     self.monthBtnTrailingConstraint.constant = 30;
@@ -1359,9 +1429,11 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
                                                    aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                                                    self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 190
                                                    self.taeClubViewTopConstraint.constant = 55
-                            if (self.myNutritionDetailsView != nil) {
+                                                   if (self.myNutritionDetailsView != nil) {
                                 self.myNutritionDetailsView.isHidden = true
+                                self.switchButton.alpha = 0
                             }
+
                         }
                        
 
@@ -1372,7 +1444,16 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
 
                        self.chatViewHeightConstraint.constant = 170
                         self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
+                        if (self.myNutritionDetailsView != nil) {
+                                                   self.switchButton.alpha = 1
 
+                                                   if self.showGraph == true {
+                                                       self.myNutritionDetailsView.isHidden = true
+                                                   } else {
+                                                   self.myNutritionDetailsView.isHidden = false
+                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+                                                   }
+                                               }
                     }
                     self.draggableConstant = self.draggableViewHeightConstraint.constant
 
@@ -1384,14 +1465,28 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
 
                        self.chatViewHeightConstraint.constant = 0
                     self.draggableViewHeightConstraint.constant = 300 - 86 + 190
+                    if (self.myNutritionDetailsView != nil) {
+                        self.myNutritionDetailsView.isHidden = true
+                        self.switchButton.alpha = 0
+                    }
 
                    } else {
                       self.chatViewHeightConstraint.constant = 200
                     aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
                     self.draggableViewHeightConstraint.constant = 300 - 86 + 70
+                    if (self.myNutritionDetailsView != nil) {
+                                                              self.switchButton.alpha = 1
+
+                                                              if self.showGraph == true {
+                                                                  self.myNutritionDetailsView.isHidden = true
+                                                              } else {
+                                                              self.myNutritionDetailsView.isHidden = false
+                                                              self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200 + 63)
+                                                              }
+                                                          }
                    }
                     self.draggableConstant = self.draggableViewHeightConstraint.constant
-
+               
                     self.monthBtnTrailingConstraint.constant = 50;
                                       }
                    
@@ -2159,7 +2254,11 @@ self.topImageView.alpha = 1
                 self.refreshTweakBtn.isHidden = true
                 self.cameraBtnWidthConstraint.constant = 70
                 self.cameraBtnHeightConstraint.constant = 70
-            }
+            } else {
+                           self.cameraBtnWidthConstraint.constant = 110
+                           self.cameraBtnHeightConstraint.constant = 110
+
+                       }
 //            if self.flashCounter == 0 {
                 self.minCalCountLabel.startBlink()
 
@@ -2182,6 +2281,7 @@ self.topImageView.alpha = 1
             self.trendButtonsView.isHidden = false
             self.topButtonsDataView.isHidden = false
             self.minCalCountLabel.stopBlink()
+            //self.startTweakingView.isHidden = false
             self.beforeTweakImageViewHeightConstraint.constant = 0
             self.topButtonsDataViewHeightConstraint.constant = 63
                         if IS_iPHONE5 {
@@ -2200,7 +2300,7 @@ self.topImageView.alpha = 1
 
 
                 } else {
-                    self.myNutritionDetailsView.isHidden = true
+                    self.myNutritionDetailsView.isHidden = false
                   //  self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
                 }
@@ -5299,6 +5399,7 @@ self.topImageView.alpha = 1
     
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
+       // getTrends()
        // dummyNavigation()
        // UIApplication.shared.addObserver(self, forKeyPath: "applicationIconBadgeNumber", options: .new, context: nil)
         UserDefaults.standard.set("WELCOME_VIEW", forKey: "SWAP_SWITCH_VIEW")
@@ -6560,9 +6661,9 @@ self.floatingCallBtn.isHidden = false
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
-            self.tweakCount = responseDic["tweakTotal"] as! Int
+            //self.tweakCount = responseDic["tweakTotal"] as! Int
             //self.tweakCount = 1
-            //self.tweakCount = Int.random(in: 0...1)
+            self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
