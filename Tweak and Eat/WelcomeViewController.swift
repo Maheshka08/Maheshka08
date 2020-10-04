@@ -2168,7 +2168,7 @@ self.topImageView.alpha = 1
              if (self.myNutritionDetailsView != nil) {
                            if self.tweakCount > 0 {
                                self.myNutritionDetailsView.isHidden = false
-                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
+                         //   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
 
                            } else {
@@ -2196,7 +2196,7 @@ self.topImageView.alpha = 1
             if (self.myNutritionDetailsView != nil) {
                 if self.tweakCount > 0 {
                     self.myNutritionDetailsView.isHidden = false
-                    self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
+                   // self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
 
                 } else {
@@ -6560,9 +6560,9 @@ self.floatingCallBtn.isHidden = false
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
-//            self.tweakCount = responseDic["tweakTotal"] as! Int
+            self.tweakCount = responseDic["tweakTotal"] as! Int
             //self.tweakCount = 1
-            self.tweakCount = Int.random(in: 0...1)
+            //self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
