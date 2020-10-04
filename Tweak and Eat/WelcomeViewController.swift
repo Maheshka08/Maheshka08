@@ -1195,11 +1195,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     self.taeClubViewTopConstraint.constant = 55
 
                     aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+                    
 
                    self.chatViewHeightConstraint.constant = 170
                     self.draggableViewHeightConstraint.constant = 130 + 50
                     self.draggableConstant = self.draggableViewHeightConstraint.constant
+                    if (self.myNutritionDetailsView != nil) {
+                        self.myNutritionDetailsView.isHidden = false
 
+                    }
                 }
 
                 
@@ -2164,9 +2168,13 @@ self.topImageView.alpha = 1
              if (self.myNutritionDetailsView != nil) {
                            if self.tweakCount > 0 {
                                self.myNutritionDetailsView.isHidden = false
+                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
+
 
                            } else {
-                               self.myNutritionDetailsView.isHidden = true
+                            
+                     self.myNutritionDetailsView.isHidden = true
+                      //      self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
                            }
                        }
@@ -2188,9 +2196,12 @@ self.topImageView.alpha = 1
             if (self.myNutritionDetailsView != nil) {
                 if self.tweakCount > 0 {
                     self.myNutritionDetailsView.isHidden = false
+                    self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
+
 
                 } else {
                     self.myNutritionDetailsView.isHidden = true
+                  //  self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
                 }
             }
@@ -3420,7 +3431,7 @@ self.topImageView.alpha = 1
     @objc func decideToGotoTAEClub() {
          if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-            if self.countryCode == "91" {
+            if self.countryCode == "91" || self.countryCode == "62" {
         if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                               self.goToTAEClubMemPage()
 
@@ -6159,7 +6170,7 @@ self.topImageView.alpha = 1
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
-        if self.countryCode == "91" {
+        if self.countryCode == "91" || self.countryCode == "62" {
             self.getClubHome2()
         } else {
         DispatchQueue.main.async {
@@ -6541,7 +6552,7 @@ self.floatingCallBtn.isHidden = false
                                        self.premiumMemberBottomBtn.isHidden = true
                                        self.premiumMemberTopBtn.isHidden = true
                                    }
-        if self.countryCode != "91" {
+        if self.countryCode != "91" || self.countryCode != "62" {
             
             self.premiumMemberBottomBtn.setImage(UIImage.init(named: "tae_club_home_left_btn_1x"), for: .normal)
             self.premiumMemberTopBtn.setImage(UIImage.init(named: "tae_club_home_left_btn_1x"), for: .normal)
@@ -6549,9 +6560,9 @@ self.floatingCallBtn.isHidden = false
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOMEINFO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
-            self.tweakCount = responseDic["tweakTotal"] as! Int
-            //self.tweakCount = 0
-//            self.tweakCount = Int.random(in: 0...1)
+//            self.tweakCount = responseDic["tweakTotal"] as! Int
+            //self.tweakCount = 1
+            self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
