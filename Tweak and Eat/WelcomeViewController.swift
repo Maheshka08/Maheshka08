@@ -399,7 +399,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var fromCrown = false;
     @objc var insidePopUpView = UIView();
     @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj");
-    
+    var isLoaded = false
     var showMyNutririonDetailsView = [Int]() {
       didSet {
             checkIfUserIsNewOrTrialPeriodExpired()
@@ -1041,7 +1041,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews();
+        if self.isLoaded == false {
         self.updateUIAccordingTOEachDevice()
+        }
        
     }
     
@@ -1203,6 +1205,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                                                self.draggableViewHeightConstraint.constant = 175 - 76 + 130
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
                         self.taeClubViewTopConstraint.constant = 55
+                        if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionDetailsView.isHidden = true
+                        }
                     }
                    
 
@@ -1248,6 +1253,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.draggableConstant = self.draggableViewHeightConstraint.constant
 
                             self.taeClubViewTopConstraint.constant = 55
+                            if (self.myNutritionDetailsView != nil) {
+                                self.myNutritionDetailsView.isHidden = true
+                            }
                         }
                        
 
@@ -1313,6 +1321,9 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
                                                    aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                                                    self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 190
                                                    self.taeClubViewTopConstraint.constant = 55
+                            if (self.myNutritionDetailsView != nil) {
+                                self.myNutritionDetailsView.isHidden = true
+                            }
                         }
                        
 
@@ -1349,7 +1360,7 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
                }
         self.view.layoutIfNeeded()
         self.loadingView.frame = CGRect(x: self.outerChartView.frame.origin.x, y: self.outerChartView.frame.origin.y, width: self.outerChartView.frame.size.width, height: self.chartView.frame.maxY)
-
+        self.isLoaded = true
     }
     
     @objc func pushToTimeLines() {
@@ -6505,6 +6516,8 @@ self.floatingCallBtn.isHidden = false
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
             self.tweakCount = responseDic["tweakTotal"] as! Int
+//            self.tweakCount = 0
+//            self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
 //                // Call your background task
@@ -7413,7 +7426,7 @@ self.floatingCallBtn.isHidden = false
                             self.taeClubTrialPeriodExpiryView.isHidden = true
                             self.topImageView.isHidden = false
                             self.trialPeriodExpired = false
-                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                            if (self.tweakCount > 0) {
                                 UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                 self.checkIfUserIsNewOrTrialPeriodExpired()
                             } else {
@@ -7428,7 +7441,7 @@ self.floatingCallBtn.isHidden = false
                             self.topImageView.isHidden = true
                             self.showTrialPeriodView()
                             self.trialPeriodExpired = true
-                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                            if self.tweakCount > 0 {
                                 UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                 self.checkIfUserIsNewOrTrialPeriodExpired()
                             } else {
@@ -7445,7 +7458,7 @@ self.floatingCallBtn.isHidden = false
                             self.taeClubTrialPeriodExpiryView.isHidden = true
                             self.topImageView.isHidden = false
                             self.trialPeriodExpired = false
-                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                            if self.tweakCount > 0 {
                                 UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                 self.checkIfUserIsNewOrTrialPeriodExpired()
                             } else {
@@ -7469,7 +7482,7 @@ self.floatingCallBtn.isHidden = false
 //                                                   UserDefaults.standard.removeObject(forKey: "NEW_USER")
 //                                                   self.checkIfUserIsNewOrTrialPeriodExpired()
 //                                               }
-                            if (responseDic["tweakTotal"] as! Int) > 0 {
+                            if self.tweakCount > 0 {
                                 UserDefaults.standard.removeObject(forKey: "NEW_USER")
 
                                 self.checkIfUserIsNewOrTrialPeriodExpired()
@@ -7522,7 +7535,7 @@ self.floatingCallBtn.isHidden = false
                                         self.taeClubTrialPeriodExpiryView.isHidden = true
                                         self.topImageView.isHidden = false
                                         self.trialPeriodExpired = false
-                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                        if self.tweakCount > 0 {
                                             UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                             self.checkIfUserIsNewOrTrialPeriodExpired()
                                         } else {
@@ -7537,7 +7550,7 @@ self.floatingCallBtn.isHidden = false
                                         self.topImageView.isHidden = true
                                         self.showTrialPeriodView()
                                         self.trialPeriodExpired = true
-                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                        if self.tweakCount > 0 {
                                             UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                             self.checkIfUserIsNewOrTrialPeriodExpired()
                                         } else {
@@ -7554,7 +7567,7 @@ self.floatingCallBtn.isHidden = false
                                         self.taeClubTrialPeriodExpiryView.isHidden = true
                                         self.topImageView.isHidden = false
                                         self.trialPeriodExpired = false
-                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                        if self.tweakCount > 0 {
                                             UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                             self.checkIfUserIsNewOrTrialPeriodExpired()
                                         } else {
@@ -7571,7 +7584,7 @@ self.floatingCallBtn.isHidden = false
                                         self.showTrialPeriodView()
                                         self.trialPeriodExpired = true
             
-                                        if (responseDic["tweakTotal"] as! Int) > 0 {
+                                        if self.tweakCount > 0 {
                                             UserDefaults.standard.removeObject(forKey: "NEW_USER")
 
                                             self.checkIfUserIsNewOrTrialPeriodExpired()
@@ -7591,7 +7604,7 @@ self.floatingCallBtn.isHidden = false
                                 self.taeClubTrialPeriodExpiryView.isHidden = true
                                 self.topImageView.isHidden = false
                                 self.trialPeriodExpired = false
-                                if (responseDic["tweakTotal"] as! Int) > 0 {
+                                if self.tweakCount > 0 {
                                     UserDefaults.standard.removeObject(forKey: "NEW_USER")
                                     self.checkIfUserIsNewOrTrialPeriodExpired()
                                 } else {

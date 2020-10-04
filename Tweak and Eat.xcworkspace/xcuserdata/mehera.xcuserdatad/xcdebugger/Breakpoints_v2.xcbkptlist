@@ -7,64 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/ImageUploadingViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9 - 5f60918c020b5c0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tweak_and_Eat.ImageUploadingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/ImageUploadingViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "565"
-                  endingLineNumber = "565"
-                  offsetFromSymbolStart = "9548">
-               </Location>
-               <Location
-                  uuid = "E9FA8877-1325-474C-B171-718EA41CDEC9 - ab31e5bdc27d591a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in Tweak_and_Eat.ImageUploadingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/ImageUploadingViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "566"
-                  endingLineNumber = "566"
-                  offsetFromSymbolStart = "128">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4447027C-CFF2-45D0-B1F1-42AB30D2D33A"
+            uuid = "04C849D1-565A-400E-9745-6BDC547CCD0E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7669"
-            endingLineNumber = "7669"
-            landmarkName = "homeInfoApiCalls()"
+            startingLineNumber = "1144"
+            endingLineNumber = "1144"
+            landmarkName = "updateUIAccordingTOEachDevice()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78A3C124-3754-46C0-9774-812937EE2F2C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1149"
+            endingLineNumber = "1149"
+            landmarkName = "updateUIAccordingTOEachDevice()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
