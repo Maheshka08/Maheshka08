@@ -389,6 +389,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
 
                     self.club4ImageView.sd_setImage(with: URL(string: urlString.replacingOccurrences(of: "tae_club_sub4_bg", with: "tae_club_sub4_bg_ios"))) { (image, error, cache, url) in
                                                                        // Your code inside completion block
+                        if image != nil {
                       let ratio = image!.size.width / image!.size.height
                       let newHeight = self.club4ImageView.frame.width / ratio
                      
@@ -400,6 +401,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
 
 
                       }
+                    }
               }
               if dict["name"] as! String == "title" {
                   self.title = (dict["value"] as! String)
