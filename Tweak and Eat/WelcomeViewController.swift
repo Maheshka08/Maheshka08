@@ -7788,13 +7788,13 @@ self.floatingCallBtn.isHidden = false
                                                       } else {
                                                       self.getStaticDateForComparison(noDays: noDays)
                                                       }
-//                if (responseDic["tweakTotal"] as! Int) > 0 {
-//                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
-//                    self.checkIfUserIsNewOrTrialPeriodExpired()
-//                } else {
-//                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
-//                    self.checkIfUserIsNewOrTrialPeriodExpired()
-//                }
+                if (responseDic["tweakTotal"] as! Int) > 0 {
+                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                } else {
+                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                }
                                 } else  {
                     
                                 if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
@@ -7804,13 +7804,13 @@ self.floatingCallBtn.isHidden = false
                                 } else {
                                 self.getStaticDateForComparison(noDays: noDays)
                                 }
-//                if (responseDic["tweakTotal"] as! Int) > 0 {
-//                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
-//                    self.checkIfUserIsNewOrTrialPeriodExpired()
-//                } else {
-//                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
-//                    self.checkIfUserIsNewOrTrialPeriodExpired()
-//                }
+                if (responseDic["tweakTotal"] as! Int) > 0 {
+                    UserDefaults.standard.removeObject(forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                } else {
+                    UserDefaults.standard.set("YES", forKey: "NEW_USER")
+                    self.checkIfUserIsNewOrTrialPeriodExpired()
+                }
                                 }
 
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OrkneyMedium.otf">
+        <array key="OrkneyMedium.ttf">
             <string>Orkney-Medium</string>
         </array>
         <array key="OrkneyRegular.ttf">
@@ -443,7 +443,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium Tweak Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcW-Yh-n1X">
-                                                            <rect key="frame" x="18" y="17.5" width="196" height="23.5"/>
+                                                            <rect key="frame" x="18" y="17.5" width="196" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="196" id="7Vc-yl-0Dc"/>
                                                             </constraints>
@@ -687,7 +687,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to tweak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlZ-Jd-cGA">
-                                                <rect key="frame" x="152" y="63" width="110" height="30.5"/>
+                                                <rect key="frame" x="152" y="63" width="110" height="13.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="ZC1-8V-ABM"/>
@@ -732,7 +732,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq6-bS-lsC">
-                                                        <rect key="frame" x="9" y="5" width="123" height="19"/>
+                                                        <rect key="frame" x="23" y="5" width="117" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="p1S-t1-zgS"/>
                                                         </constraints>
@@ -745,7 +745,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWf-hH-SHW">
-                                                        <rect key="frame" x="153" y="5" width="54" height="19"/>
+                                                        <rect key="frame" x="161" y="5" width="51" height="19"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                         <state key="normal" title=" TODAY ">
                                                             <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -755,7 +755,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-qw-sxQ">
-                                                        <rect key="frame" x="227" y="5" width="48" height="19"/>
+                                                        <rect key="frame" x="232" y="5" width="46" height="19"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                         <state key="normal" title=" WEEK ">
                                                             <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -765,7 +765,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4EK-HQ-UQo">
-                                                        <rect key="frame" x="295" y="5" width="59" height="19"/>
+                                                        <rect key="frame" x="298" y="5" width="56" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="4IX-7K-3MR"/>
                                                         </constraints>
@@ -778,21 +778,21 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-G1-x4a">
-                                                        <rect key="frame" x="142" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="150" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buY-N0-soo">
-                                                        <rect key="frame" x="214" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="219" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bo-PQ-ELu">
-                                                        <rect key="frame" x="284" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="287" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="eFs-n4-8oG"/>
@@ -915,7 +915,7 @@
                                                 <rect key="frame" x="0.0" y="63" width="414" height="39"/>
                                                 <subviews>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-3Q-WG4">
-                                                        <rect key="frame" x="350" y="4" width="56" height="30"/>
+                                                        <rect key="frame" x="350" y="4" width="56" height="16.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="56" id="V6m-WR-Wjq"/>
@@ -929,7 +929,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-2v-FT8">
-                                                        <rect key="frame" x="299" y="4" width="46" height="30"/>
+                                                        <rect key="frame" x="299" y="4" width="46" height="16.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="46" id="edp-43-cF3"/>
@@ -943,7 +943,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="932-EV-JTQ">
-                                                        <rect key="frame" x="243" y="4" width="51" height="30"/>
+                                                        <rect key="frame" x="243" y="4" width="51" height="16.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="51" id="n3c-Qz-bae"/>
@@ -957,7 +957,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tb-PJ-u3B">
-                                                        <rect key="frame" x="173" y="4" width="65" height="30"/>
+                                                        <rect key="frame" x="173" y="4" width="65" height="16"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="65" id="gxw-o8-2cy"/>
@@ -1285,7 +1285,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNM-KH-kHg">
-                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
+                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1303,7 +1303,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv9-b9-aPX">
-                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
+                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1321,7 +1321,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaV-wR-Sxz">
-                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
+                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
