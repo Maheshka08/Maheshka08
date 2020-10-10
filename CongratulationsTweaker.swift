@@ -19,6 +19,8 @@ class CongratulationsTweaker: UIView {
     @IBOutlet weak var review2Bg: UIImageView!
     @IBOutlet weak var screenOneBg: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var backgroudView: UIView!
+
     @objc var delegate : WelcomeViewController! = nil;
     
     @objc func beginning() {

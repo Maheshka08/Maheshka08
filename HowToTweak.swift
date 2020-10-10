@@ -51,13 +51,13 @@ class HowToTweak: UIView {
        }
     
     @IBAction func previouBtnTapped(_ sender: Any) {
-        self.backgroudView.removeFromSuperview()
+        //self.backgroudView.removeFromSuperview()
         self.removeFromSuperview()
         self.delegate.showCongratulationsTweakerView()
         
     }
     @IBAction func letsTweakBtnTapped(_ sender: Any) {
-        self.backgroudView.removeFromSuperview()
+        //self.backgroudView.removeFromSuperview()
 
         if delegate.infoIconTapped == true {
             self.delegate.resignHowToTweakScreen()

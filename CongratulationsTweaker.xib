@@ -37,6 +37,11 @@
                         <constraint firstAttribute="height" id="EWF-K4-4hK"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-9e-9w0">
+                    <rect key="frame" x="87" y="384" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_1" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-Rh-6qi">
                     <rect key="frame" x="16" y="309" width="382" height="0.0"/>
                     <constraints>
@@ -61,6 +66,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backgroudView" destination="nBZ-9e-9w0" id="Rff-md-rfO"/>
                 <outlet property="nextBtn" destination="uhx-XF-Dty" id="Kp8-zB-SsH"/>
                 <outlet property="nextBtnTopConstraint" destination="WP3-rp-Cyr" id="VpM-r8-cNC"/>
                 <outlet property="review1Bg" destination="uVs-Av-fAT" id="Soe-6j-w2l"/>

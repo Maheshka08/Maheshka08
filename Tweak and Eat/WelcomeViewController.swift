@@ -8525,12 +8525,11 @@ self.floatingCallBtn.isHidden = false
                                         self.view.layoutIfNeeded()
                         }, completion: { _ in
                             if !IS_iPHONE5 {
-                            let backgroudView = UIView()
-                            backgroudView.backgroundColor = #colorLiteral(red: 0.8037554622, green: 0.1748961508, blue: 0.4208399057, alpha: 1)
-                            backgroudView.layer.cornerRadius = 5
-                            backgroudView.frame = CGRect(x: self.congratulationsTweakerView.screenOneBg.frame.origin.x + 0.5, y: self.congratulationsTweakerView.screenOneBg.frame.maxY - 20, width: self.congratulationsTweakerView.screenOneBg.frame.width - 1  , height: self.congratulationsTweakerView.nextBtn.frame.minY - self.congratulationsTweakerView.screenOneBg.frame.maxY - 20)
-                            self.view.bringSubviewToFront(self.congratulationsTweakerView.screenOneBg)
-                            self.view.addSubview(backgroudView)
+                            
+                                self.congratulationsTweakerView.backgroudView.backgroundColor = #colorLiteral(red: 0.8037554622, green: 0.1748961508, blue: 0.4208399057, alpha: 1)
+                                self.congratulationsTweakerView.backgroudView.layer.cornerRadius = 5
+                                self.congratulationsTweakerView.backgroudView.frame = CGRect(x: self.congratulationsTweakerView.screenOneBg.frame.origin.x + 0.5, y: self.congratulationsTweakerView.screenOneBg.frame.maxY - 20, width: self.congratulationsTweakerView.screenOneBg.frame.width - 1  , height: self.congratulationsTweakerView.nextBtn.frame.minY - self.congratulationsTweakerView.screenOneBg.frame.maxY - 20)
+                            //self.view.bringSubviewToFront(self.congratulationsTweakerView.screenOneBg)
                             }
                             
                             self.congratulationsTweakerView.review1Bg.sd_setImage(with: URL(string: self.congratsTweakerReview1Str)) { (image, error, cache, url) in
