@@ -51,6 +51,7 @@ class HowToTweak: UIView {
        }
     
     @IBAction func previouBtnTapped(_ sender: Any) {
+        self.removeFromSuperview()
         self.delegate.showCongratulationsTweakerView()
         
     }
