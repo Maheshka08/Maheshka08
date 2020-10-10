@@ -1960,7 +1960,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="xwC-a3-qVp">
                                 <view key="customView" contentMode="scaleToFill" id="diT-ul-yns">
-                                    <rect key="frame" x="154.5" y="5.5" width="33" height="33"/>
+                                    <rect key="frame" x="214.5" y="5.5" width="33" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7A-ni-0dx">
@@ -7048,13 +7048,13 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsf-U6-glR">
-                                        <rect key="frame" x="14" y="319" width="386" height="0.0"/>
+                                        <rect key="frame" x="14" y="317" width="386" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3G-YK-ea2">
-                                        <rect key="frame" x="60.5" y="341" width="293" height="21"/>
+                                        <rect key="frame" x="60.5" y="339" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="293" id="hj2-jW-4DC"/>
                                             <constraint firstAttribute="height" constant="21" id="qyU-93-VEX"/>
@@ -7077,7 +7077,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfF-DX-tAG">
-                                        <rect key="frame" x="22" y="283" width="370" height="21"/>
+                                        <rect key="frame" x="22" y="283" width="370" height="19"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -14200,14 +14200,14 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="XZU-cD-eyU"/>
         <segue reference="zVF-by-iNH"/>
         <segue reference="wAY-l1-OTQ"/>
-        <segue reference="jL2-Eu-VrY"/>
+        <segue reference="EMu-ga-oPP"/>
         <segue reference="lPw-O8-679"/>
         <segue reference="Yl1-aV-dl8"/>
         <segue reference="Zyf-gX-8GO"/>
-        <segue reference="IPc-oa-i3a"/>
+        <segue reference="cfl-VC-5nb"/>
         <segue reference="cfW-e7-Ff1"/>
         <segue reference="5vE-qp-Xfk"/>
-        <segue reference="Npq-p8-1E4"/>
+        <segue reference="KNN-17-uDp"/>
         <segue reference="TTo-mK-CFO"/>
         <segue reference="OcY-kN-l00"/>
         <segue reference="uKn-Ey-94X"/>

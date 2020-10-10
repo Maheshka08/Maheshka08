@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D324EAEE-669A-4CF3-B402-BD3C736B66E8"
+            uuid = "D10BCD98-D336-4B1C-91BF-3A5528791BAB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HowToTweak.swift"
+            filePath = "Tweak and Eat/TimelinesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "letsTweakBtnTapped(_:)"
+            startingLineNumber = "1192"
+            endingLineNumber = "1192"
+            landmarkName = "bannerClicked()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "27D88DAF-7D9E-4992-8501-6EED698ECA1A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyWallViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "bannerClicked()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

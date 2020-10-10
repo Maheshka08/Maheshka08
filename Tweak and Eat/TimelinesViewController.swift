@@ -1185,6 +1185,8 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         }
     }
     
+    
+    
     @objc func bannerClicked() {
         
         self.goToDesiredVC(promoAppLink: self.topBannerImageLink)

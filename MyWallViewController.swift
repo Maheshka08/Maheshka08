@@ -462,11 +462,32 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
     }
+    
+    func goToTAEClubMemPage() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+       
+    }
+    
+    func goToTAEClub() {
+           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                   let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+                   let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                   navController?.pushViewController(vc, animated: true);
+       }
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
-        } else if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
+        } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+                       self.goToTAEClubMemPage()
+
+                   } else {
+                       self.goToTAEClub()
+                   }
+               } else if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             
             
             if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
@@ -482,7 +503,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             
-        } else if promoAppLink == "-IndWLIntusoe3uelxER" {
+        } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+
+                          if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+                              self.goToTAEClubMemPage()
+
+                          } else {
+                              self.goToTAEClub()
+                          }
+               } else if promoAppLink == "-IndWLIntusoe3uelxER" {
             
             
             if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
