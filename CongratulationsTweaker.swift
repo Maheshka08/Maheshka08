@@ -38,7 +38,8 @@ class CongratulationsTweaker: UIView {
 
     }
     @IBAction func nextBtnTapped(_ sender: Any) {
-        
+        self.removeFromSuperview()
+        self.delegate.showHowToTweakScreen()
     }
     
 }

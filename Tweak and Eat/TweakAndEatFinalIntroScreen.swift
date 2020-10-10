@@ -67,7 +67,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
            
           let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-            
+            self.delegate.setUpInfoBarButton()
             if countryCode == "91"{
                     self.delegate.getClubHome1()
                    // self.delegate.getClubHome2()

@@ -443,7 +443,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium Tweak Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcW-Yh-n1X">
-                                                            <rect key="frame" x="18" y="17.5" width="196" height="21"/>
+                                                            <rect key="frame" x="18" y="17.5" width="196" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="196" id="7Vc-yl-0Dc"/>
                                                             </constraints>
@@ -687,7 +687,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to tweak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlZ-Jd-cGA">
-                                                <rect key="frame" x="152" y="63" width="110" height="13.5"/>
+                                                <rect key="frame" x="152" y="63" width="110" height="30.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="ZC1-8V-ABM"/>
@@ -732,7 +732,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq6-bS-lsC">
-                                                        <rect key="frame" x="23" y="5" width="117" height="19"/>
+                                                        <rect key="frame" x="9" y="5" width="123" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="p1S-t1-zgS"/>
                                                         </constraints>
@@ -745,7 +745,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWf-hH-SHW">
-                                                        <rect key="frame" x="161" y="5" width="51" height="19"/>
+                                                        <rect key="frame" x="153" y="5" width="54" height="19"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                         <state key="normal" title=" TODAY ">
                                                             <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -755,7 +755,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-qw-sxQ">
-                                                        <rect key="frame" x="232" y="5" width="46" height="19"/>
+                                                        <rect key="frame" x="227" y="5" width="48" height="19"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                         <state key="normal" title=" WEEK ">
                                                             <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -765,7 +765,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4EK-HQ-UQo">
-                                                        <rect key="frame" x="298" y="5" width="56" height="19"/>
+                                                        <rect key="frame" x="295" y="5" width="59" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="4IX-7K-3MR"/>
                                                         </constraints>
@@ -778,21 +778,21 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-G1-x4a">
-                                                        <rect key="frame" x="150" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="142" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buY-N0-soo">
-                                                        <rect key="frame" x="219" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="214" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bo-PQ-ELu">
-                                                        <rect key="frame" x="287" y="7" width="1" height="15"/>
+                                                        <rect key="frame" x="284" y="7" width="1" height="15"/>
                                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="eFs-n4-8oG"/>
@@ -915,7 +915,7 @@
                                                 <rect key="frame" x="0.0" y="63" width="414" height="39"/>
                                                 <subviews>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-3Q-WG4">
-                                                        <rect key="frame" x="350" y="4" width="56" height="16.5"/>
+                                                        <rect key="frame" x="350" y="4" width="56" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="56" id="V6m-WR-Wjq"/>
@@ -929,7 +929,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-2v-FT8">
-                                                        <rect key="frame" x="299" y="4" width="46" height="16.5"/>
+                                                        <rect key="frame" x="299" y="4" width="46" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="46" id="edp-43-cF3"/>
@@ -943,7 +943,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="932-EV-JTQ">
-                                                        <rect key="frame" x="243" y="4" width="51" height="16.5"/>
+                                                        <rect key="frame" x="243" y="4" width="51" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="51" id="n3c-Qz-bae"/>
@@ -957,7 +957,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tb-PJ-u3B">
-                                                        <rect key="frame" x="173" y="4" width="65" height="16"/>
+                                                        <rect key="frame" x="173" y="4" width="65" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="65" id="gxw-o8-2cy"/>
@@ -1285,7 +1285,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNM-KH-kHg">
-                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
+                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1303,7 +1303,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv9-b9-aPX">
-                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
+                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1321,7 +1321,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaV-wR-Sxz">
-                                                <rect key="frame" x="8" y="94" width="398" height="35.5"/>
+                                                <rect key="frame" x="8" y="91.5" width="398" height="40"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1952,15 +1952,15 @@
                                     <action selector="videoPlayAction:" destination="BYZ-38-t0r" id="Jr5-oU-GAW"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" image="crownIcon" id="zlL-do-BiI">
-                                <color key="tintColor" red="0.99377578496932983" green="0.61436605836011826" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <barButtonItem image="InfoBtn" id="3fv-Z9-s3i">
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="premiumIconBarButtonTapped:" destination="BYZ-38-t0r" id="IaA-gy-ksZ"/>
+                                    <action selector="infoIconBarButtonTapped:" destination="BYZ-38-t0r" id="MjC-Jd-Qav"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem style="plain" id="xwC-a3-qVp">
                                 <view key="customView" contentMode="scaleToFill" id="diT-ul-yns">
-                                    <rect key="frame" x="209.5" y="5.5" width="33" height="33"/>
+                                    <rect key="frame" x="154.5" y="5.5" width="33" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7A-ni-0dx">
@@ -2026,6 +2026,7 @@
                         <outlet property="floatingTableView" destination="Gel-Ow-D88" id="9CN-xY-53T"/>
                         <outlet property="foodImageView" destination="LY4-6a-ULU" id="vNz-pe-KR4"/>
                         <outlet property="iconsView" destination="MTX-zG-1lh" id="8xz-Ud-APQ"/>
+                        <outlet property="infoIconBarButton" destination="3fv-Z9-s3i" id="l6y-Hp-IwV"/>
                         <outlet property="innerDragMenuView" destination="2yk-HX-fX3" id="heg-dY-3dQ"/>
                         <outlet property="last10TweaksBtn" destination="Yq6-bS-lsC" id="bQq-DE-YH7"/>
                         <outlet property="mealTypeLabel" destination="vW9-tM-GJV" id="nPy-Lc-anD"/>
@@ -2057,7 +2058,6 @@
                         <outlet property="popUPPTPImageView" destination="2hb-Fp-aBS" id="xRn-N9-MlP"/>
                         <outlet property="popUpPTPTextView" destination="ljc-cJ-m0V" id="IKQ-vC-uT9"/>
                         <outlet property="popUpViewForPTP" destination="Fjw-Mg-5gL" id="KXB-2i-0Ub"/>
-                        <outlet property="premiumIconBarButton" destination="zlL-do-BiI" id="wQM-fg-Hgj"/>
                         <outlet property="premiumMember" destination="Jki-D5-d8j" id="p5H-KZ-7Xz"/>
                         <outlet property="premiumMemberBottomBtn" destination="vCu-wz-e3P" id="HyF-s2-dXa"/>
                         <outlet property="premiumMemberBottomButtonHeightConstraint" destination="8bv-AF-w8m" id="xRq-Hi-EgQ"/>
@@ -6207,33 +6207,33 @@ Enjoy!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmW-8X-iLW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2Pm-8b-Vvj"/>
                                 </constraints>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DgT-ns-PHA">
-                                <rect key="frame" x="0.0" y="88" width="414" height="731"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="412"/>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" rowHeight="306" id="S6o-7q-IjK" customClass="RecipeWallTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="306"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="306"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S6o-7q-IjK" id="sZr-fe-inn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="306"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAK-jv-my5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="306"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dFQ-Sz-501">
-                                                            <rect key="frame" x="2" y="2" width="410" height="200"/>
+                                                            <rect key="frame" x="2" y="2" width="371" height="200"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="200" id="hsc-Xx-lK0"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-8E-iWI">
-                                                            <rect key="frame" x="8" y="210" width="398" height="15"/>
+                                                            <rect key="frame" x="8" y="210" width="359" height="15"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -6248,13 +6248,13 @@ Enjoy!</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories: 106.5 kcal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h06-Hd-cBx">
-                                                            <rect key="frame" x="170" y="234" width="234" height="17.5"/>
+                                                            <rect key="frame" x="170" y="234" width="195" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-Cp-sme">
-                                                            <rect key="frame" x="0.0" y="258.5" width="414" height="47.5"/>
+                                                            <rect key="frame" x="0.0" y="258.5" width="375" height="47.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYB-Vd-GWd">
                                                                     <rect key="frame" x="16.5" y="6" width="35" height="35.5"/>
@@ -6270,13 +6270,13 @@ Enjoy!</string>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-X1-YZ4">
-                                                                    <rect key="frame" x="56.5" y="6" width="103.5" height="35.5"/>
+                                                                    <rect key="frame" x="56.5" y="6" width="84" height="35.5"/>
                                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ing-a8-Vfg">
-                                                                    <rect key="frame" x="297" y="8" width="30" height="29.5"/>
+                                                                    <rect key="frame" x="277.5" y="8" width="30" height="29.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="gnZ-Hf-iD5"/>
                                                                     </constraints>
@@ -6286,13 +6286,13 @@ Enjoy!</string>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ui-4z-UoB">
-                                                                    <rect key="frame" x="335" y="13" width="71" height="20"/>
+                                                                    <rect key="frame" x="315.5" y="13" width="51.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo9-hC-yOw">
-                                                                    <rect key="frame" x="200" y="6" width="14" height="35.5"/>
+                                                                    <rect key="frame" x="180.5" y="6" width="14" height="35.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="14" id="hQh-RF-1HI"/>
                                                                     </constraints>
@@ -6323,7 +6323,7 @@ Enjoy!</string>
                                                             </constraints>
                                                         </view>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-Dn-gKN">
-                                                            <rect key="frame" x="295" y="141" width="50" height="50"/>
+                                                            <rect key="frame" x="256" y="141" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="Vcc-zx-Jig"/>
                                                             </constraints>
@@ -6333,7 +6333,7 @@ Enjoy!</string>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gK-8y-gUv">
-                                                            <rect key="frame" x="353" y="141" width="50" height="50"/>
+                                                            <rect key="frame" x="314" y="141" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="bKz-nX-9y9"/>
                                                             </constraints>
@@ -6343,20 +6343,20 @@ Enjoy!</string>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKj-dr-XEE">
-                                                            <rect key="frame" x="242" y="141" width="45" height="50"/>
+                                                            <rect key="frame" x="203" y="141" width="45" height="50"/>
                                                             <state key="normal" image="buy_hotpot_icon"/>
                                                             <connections>
                                                                 <action selector="buyHotPotIconTapped:" destination="S6o-7q-IjK" eventType="touchUpInside" id="0gS-y1-DMK"/>
                                                             </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sv1-Ng-IwA">
-                                                            <rect key="frame" x="353" y="141" width="50" height="50"/>
+                                                            <rect key="frame" x="314" y="141" width="50" height="50"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vrh-vb-Z6r">
-                                                            <rect key="frame" x="295" y="141" width="50" height="50"/>
+                                                            <rect key="frame" x="256" y="141" width="50" height="50"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-camera-24" translatesAutoresizingMaskIntoConstraints="NO" id="3Q4-fn-bgg">
-                                                            <rect key="frame" x="366" y="8" width="40" height="36"/>
+                                                            <rect key="frame" x="327" y="8" width="40" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="UK0-85-RBo"/>
                                                                 <constraint firstAttribute="width" constant="40" id="toW-qJ-AaU"/>
@@ -6437,16 +6437,16 @@ Enjoy!</string>
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHN-Ih-IUp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Yummy healthy recipes will be up soon! until then check out our recipes from other countries." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-yx-zpb">
-                                        <rect key="frame" x="8" y="398" width="398" height="66.5"/>
+                                        <rect key="frame" x="8" y="238.5" width="359" height="66.5"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-72-HtZ">
-                                        <rect key="frame" x="0.0" y="817" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="498" width="375" height="45"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="WEX-Kl-ezs"/>
@@ -6472,10 +6472,10 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMC-oz-ueu">
-                                <rect key="frame" x="0.0" y="819" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="500" width="375" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHy-DT-Xzq">
-                                        <rect key="frame" x="0.0" y="0.0" width="136.5" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="43"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <state key="normal" title="Veg">
@@ -6486,7 +6486,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVk-6N-iSh">
-                                        <rect key="frame" x="138.5" y="0.0" width="137" height="43"/>
+                                        <rect key="frame" x="125.5" y="0.0" width="124" height="43"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <state key="normal" title="Non-Veg">
@@ -6497,7 +6497,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-Wd-mfW">
-                                        <rect key="frame" x="277.5" y="0.0" width="136.5" height="43"/>
+                                        <rect key="frame" x="251.5" y="0.0" width="123.5" height="43"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <state key="normal" title="Immunity Booster">
@@ -6528,17 +6528,17 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7S-9f-mPC">
-                                <rect key="frame" x="0.0" y="486" width="414" height="376"/>
+                                <rect key="frame" x="0.0" y="486" width="375" height="57"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqZ-q7-pHF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="163" id="uKb-Ld-GGr"/>
                                         </constraints>
                                     </pickerView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHo-20-QGE">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <items>
                                             <barButtonItem title="Done" id="Piw-Jc-WBp">
                                                 <color key="tintColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -6556,7 +6556,7 @@ Enjoy!</string>
                                         </items>
                                     </toolbar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbO-rB-svS">
-                                        <rect key="frame" x="0.0" y="156" width="414" height="49"/>
+                                        <rect key="frame" x="0.0" y="156" width="375" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="a9n-U9-AH1"/>
                                         </constraints>
@@ -6582,10 +6582,10 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GqH-Ck-44o">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="819"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tn3-ep-IG9">
-                                        <rect key="frame" x="0.0" y="7" width="414" height="21"/>
+                                        <rect key="frame" x="0.0" y="7" width="375" height="21"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="5v1-8c-3m7"/>
@@ -6595,25 +6595,25 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csx-0c-Tyi">
-                                        <rect key="frame" x="13" y="36" width="387" height="398"/>
+                                        <rect key="frame" x="13" y="36" width="348" height="79"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GoJ-w8-coI">
-                                                <rect key="frame" x="8" y="6" width="120" height="189.5"/>
+                                                <rect key="frame" x="8" y="6" width="120" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="VLI-y6-KvW"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4vI-9P-78b">
-                                                <rect key="frame" x="8" y="203.5" width="120" height="189.5"/>
+                                                <rect key="frame" x="8" y="44" width="120" height="30"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jr-za-vJX">
-                                                <rect key="frame" x="136" y="6" width="243" height="0.0"/>
+                                                <rect key="frame" x="136" y="6" width="204" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-8n-6yD">
-                                                <rect key="frame" x="136" y="12" width="243" height="21"/>
+                                                <rect key="frame" x="136" y="12" width="204" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="452-hR-Yes"/>
                                                 </constraints>
@@ -6622,7 +6622,7 @@ Enjoy!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jno-iI-eK6">
-                                                <rect key="frame" x="20" y="199.5" width="347" height="1"/>
+                                                <rect key="frame" x="20" y="40" width="308" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="6zK-Bx-6MJ"/>
@@ -6632,13 +6632,13 @@ Enjoy!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFY-Ls-FPg">
-                                                <rect key="frame" x="136" y="203.5" width="243" height="0.0"/>
+                                                <rect key="frame" x="136" y="44" width="204" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhd-s5-KsV">
-                                                <rect key="frame" x="136" y="209.5" width="243" height="21"/>
+                                                <rect key="frame" x="136" y="50" width="204" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Mpm-5D-pRT"/>
                                                 </constraints>
@@ -6647,13 +6647,13 @@ Enjoy!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAd-x6-77f">
-                                                <rect key="frame" x="8" y="6" width="371" height="189.5"/>
+                                                <rect key="frame" x="8" y="6" width="332" height="30"/>
                                                 <connections>
                                                     <action selector="sampleRecipe1Tapped:" destination="YoB-TK-eF4" eventType="touchUpInside" id="cKi-FZ-IwG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymS-BQ-9Rc">
-                                                <rect key="frame" x="8" y="203.5" width="371" height="189.5"/>
+                                                <rect key="frame" x="8" y="44" width="332" height="30"/>
                                                 <connections>
                                                     <action selector="sampleRecipe2Tapped:" destination="YoB-TK-eF4" eventType="touchUpInside" id="6UA-rg-0KA"/>
                                                 </connections>
@@ -6694,13 +6694,13 @@ Enjoy!</string>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fkX-Co-udh">
-                                        <rect key="frame" x="13" y="439" width="387" height="290"/>
+                                        <rect key="frame" x="13" y="120" width="348" height="290"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="290" id="ptr-23-Gtf"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLICK HERE TO SUBSCRIBE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5s-oz-2QP">
-                                        <rect key="frame" x="0.0" y="739" width="414" height="19"/>
+                                        <rect key="frame" x="0.0" y="420" width="375" height="19"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="fhe-c2-SDZ"/>
@@ -6710,7 +6710,7 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXP-9K-a2H">
-                                        <rect key="frame" x="23" y="765" width="150" height="45"/>
+                                        <rect key="frame" x="23" y="446" width="150" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="I3G-wg-EYt"/>
                                             <constraint firstAttribute="width" constant="150" id="M4w-HY-YYU"/>
@@ -6724,7 +6724,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhP-2h-406">
-                                        <rect key="frame" x="203" y="765" width="150" height="45"/>
+                                        <rect key="frame" x="203" y="446" width="150" height="45"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6734,7 +6734,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-LH-3KR">
-                                        <rect key="frame" x="132" y="764" width="150" height="45"/>
+                                        <rect key="frame" x="112.5" y="445" width="150" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="CKD-iu-bNq"/>
                                         </constraints>
@@ -7268,7 +7268,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="336" width="414" height="526"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="UGj-U6-IOd">
-                                    <rect key="frame" x="0.0" y="94.5" width="414" height="125"/>
+                                    <rect key="frame" x="0.0" y="92.5" width="414" height="125"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-EL-Kgu">
@@ -7302,14 +7302,14 @@ Enjoy!</string>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="zBb-Sk-gG9" customClass="RecipeDetailsCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="21"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="19"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBb-Sk-gG9" id="DXW-R6-ePA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-nU-i2e">
-                                                    <rect key="frame" x="11" y="0.0" width="392" height="21"/>
+                                                    <rect key="frame" x="11" y="0.0" width="392" height="19"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -8038,7 +8038,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-hU-6pJ">
-                                                <rect key="frame" x="39" y="5" width="123" height="19"/>
+                                                <rect key="frame" x="53" y="5" width="117" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Vzk-rY-CbR"/>
                                                 </constraints>
@@ -8052,7 +8052,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-fb-JSz">
-                                                <rect key="frame" x="183" y="5" width="54" height="19"/>
+                                                <rect key="frame" x="191" y="5" width="51" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" TODAY ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8063,7 +8063,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubl-VC-c2N">
-                                                <rect key="frame" x="257" y="5" width="48" height="19"/>
+                                                <rect key="frame" x="262" y="5" width="46" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" WEEK ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8074,7 +8074,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-YK-k7V">
-                                                <rect key="frame" x="325" y="5" width="59" height="19"/>
+                                                <rect key="frame" x="328" y="5" width="56" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="9ga-bM-dJx"/>
                                                 </constraints>
@@ -8088,21 +8088,21 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-E9-AVf">
-                                                <rect key="frame" x="172" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="180" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-V5-NFN">
-                                                <rect key="frame" x="244" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="249" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFz-N1-ccK">
-                                                <rect key="frame" x="314" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="317" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="8Y5-iH-Jie"/>
@@ -8273,7 +8273,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="63" width="414" height="39"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-Mt-DTX">
-                                                <rect key="frame" x="350" y="4" width="56" height="30"/>
+                                                <rect key="frame" x="350" y="4" width="56" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="FHm-is-ghV"/>
@@ -8287,7 +8287,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq1-kg-58W">
-                                                <rect key="frame" x="299" y="4" width="46" height="30"/>
+                                                <rect key="frame" x="299" y="4" width="46" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="GtJ-Ec-LSM"/>
@@ -8301,7 +8301,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-m0-R5m">
-                                                <rect key="frame" x="243" y="4" width="51" height="30"/>
+                                                <rect key="frame" x="243" y="4" width="51" height="16.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="Z1o-fl-lLO"/>
@@ -8315,7 +8315,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aER-aK-x1t">
-                                                <rect key="frame" x="173" y="4" width="65" height="30"/>
+                                                <rect key="frame" x="173" y="4" width="65" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="ouc-ga-7cf"/>
@@ -8329,7 +8329,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Carbs Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlK-Gy-Qzv">
-                                                <rect key="frame" x="8" y="4" width="85.5" height="13"/>
+                                                <rect key="frame" x="8" y="4" width="84" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="9bJ-Ju-Sd9"/>
                                                 </constraints>
@@ -10371,15 +10371,15 @@ Once you are unsubscribed you will not have access to:
         <scene sceneID="Gu1-wY-72F">
             <objects>
                 <viewController id="8rF-T1-Xhw" customClass="MoreInfoPremiumPackagesViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="xd8-fO-0Ej">
+                    <view key="view" contentMode="scaleToFill" id="xd8-fO-0Ej">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
-                                <rect key="frame" x="0.0" y="267" width="375" height="595"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
+                                <rect key="frame" x="0.0" y="267" width="414" height="595"/>
                                 <subviews>
-                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="593"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">AiDP – tweakyfai (our own AI platform) generated Diet Plans at just Rs.149.  (Compare that to an average of Five thousand rupees …yes…Rs.5000 being charged for a diet plan)!
 Now that’s INCREDIBLE VALUE! Get one, follow it and live the magic!
@@ -10402,7 +10402,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuQ-TF-6mG">
-                                <rect key="frame" x="0.0" y="266" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="266" width="414" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-RU-dGb">
                                         <rect key="frame" x="8" y="12" width="111" height="21"/>
@@ -10415,7 +10415,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-6a-m4O">
-                                        <rect key="frame" x="215" y="12" width="62" height="21"/>
+                                        <rect key="frame" x="254" y="12" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="Vsz-5d-5Zv"/>
                                         </constraints>
@@ -10424,7 +10424,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREMIUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-kF-2nJ">
-                                        <rect key="frame" x="294" y="12" width="75" height="21"/>
+                                        <rect key="frame" x="333" y="12" width="75" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -10443,19 +10443,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="aK2-kF-2nJ" secondAttribute="trailing" constant="6" id="ssd-lv-DaJ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
-                                <rect key="frame" x="0.0" y="311" width="375" height="298"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
+                                <rect key="frame" x="0.0" y="311" width="414" height="298"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="cqP-gB-zrd" customClass="MoreInfoPackageTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="19.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cqP-gB-zrd" id="U1e-zj-XZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-TC-XGP">
-                                                    <rect key="frame" x="8" y="0.0" width="232" height="19.5"/>
+                                                    <rect key="frame" x="8" y="0.0" width="271" height="19.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="177" id="QEP-Pr-5Hu"/>
                                                     </constraints>
@@ -10464,14 +10464,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-t9-LxV">
-                                                    <rect key="frame" x="248" y="-5.5" width="30" height="30.5"/>
+                                                    <rect key="frame" x="287" y="-5.5" width="30" height="30.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="EHu-rf-szI"/>
                                                         <constraint firstAttribute="height" constant="30" id="qyq-xc-82O"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-d4-u09">
-                                                    <rect key="frame" x="317" y="-5.5" width="30" height="30.5"/>
+                                                    <rect key="frame" x="356" y="-5.5" width="30" height="30.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="0vK-Sz-MC9"/>
                                                         <constraint firstAttribute="height" constant="30" id="DNz-1b-IdK"/>
@@ -10502,11 +10502,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="TvT-Sc-u8O"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-xM-8Fv">
-                                <rect key="frame" x="30" y="618" width="315" height="45"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-xM-8Fv">
+                                <rect key="frame" x="30" y="618" width="354" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please choose a  subscription plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lf-Vn-01q">
-                                        <rect key="frame" x="8" y="4" width="238" height="37"/>
+                                        <rect key="frame" x="8" y="4" width="277" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="vrb-fd-sts"/>
                                         </constraints>
@@ -10515,7 +10515,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJw-ot-fcE">
-                                        <rect key="frame" x="254" y="0.0" width="56" height="45"/>
+                                        <rect key="frame" x="293" y="0.0" width="56" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="IBS-aw-EHW"/>
                                             <constraint firstAttribute="height" constant="45" id="vaI-Oh-G3J"/>
@@ -10537,8 +10537,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="1lf-Vn-01q" firstAttribute="leading" secondItem="JzL-xM-8Fv" secondAttribute="leading" constant="8" id="zq2-dn-nfy"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-CF-64T">
-                                <rect key="frame" x="30" y="673" width="315" height="46"/>
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-CF-64T">
+                                <rect key="frame" x="30" y="673" width="354" height="46"/>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="mTG-PC-iN9"/>
@@ -10551,8 +10551,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <action selector="buyTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="w9z-v1-hJg"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-VA-aSQ">
-                                <rect key="frame" x="20" y="730" width="335" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-VA-aSQ">
+                                <rect key="frame" x="20" y="730" width="374" height="128"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Ot9-3j-SfP"/>
@@ -10566,19 +10566,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCJ-bO-auo">
-                                <rect key="frame" x="10" y="98" width="355" height="158"/>
+                                <rect key="frame" x="10" y="98" width="394" height="158"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="158" id="taN-ei-Keb"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Em-f1-DYs">
-                                <rect key="frame" x="0.0" y="613" width="375" height="0.0"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Em-f1-DYs">
+                                <rect key="frame" x="0.0" y="613" width="414" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2Cm-J5-3qV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-8L-ErT">
-                                <rect key="frame" x="27.5" y="613" width="320" height="0.0"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-8L-ErT">
+                                <rect key="frame" x="47" y="613" width="320" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Mr9-di-Wwp"/>
                                 </constraints>
@@ -10587,11 +10587,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <action selector="callNutritionistBtn1Tapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Y6b-cr-SUF"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJe-W0-VgJ">
-                                <rect key="frame" x="10" y="613" width="355" height="0.0"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJe-W0-VgJ">
+                                <rect key="frame" x="10" y="613" width="394" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KB-2t-bcB">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -10606,14 +10606,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="9KB-2t-bcB" firstAttribute="top" secondItem="GJe-W0-VgJ" secondAttribute="top" id="sYs-oo-V2e"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-d6-6kK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="862"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-d6-6kK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-ly-0gM">
-                                        <rect key="frame" x="0.0" y="2" width="375" height="860"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-ly-0gM">
+                                        <rect key="frame" x="0.0" y="2" width="414" height="860"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR5-tQ-Ttz">
-                                                <rect key="frame" x="10" y="8" width="355" height="21"/>
+                                                <rect key="frame" x="10" y="8" width="394" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="zRm-Vk-Qwb"/>
                                                 </constraints>
@@ -10622,13 +10622,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjK-Ux-sAA">
-                                                <rect key="frame" x="10" y="34" width="355" height="0.0"/>
+                                                <rect key="frame" x="10" y="34" width="394" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.22560176253318787" green="0.61159390211105347" blue="0.58418112993240356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  What you get:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMF-iv-JaO">
-                                                <rect key="frame" x="0.0" y="40" width="375" height="29"/>
+                                                <rect key="frame" x="0.0" y="40" width="414" height="29"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="WAw-XG-Bcn"/>
@@ -10637,17 +10637,17 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-4I-ABp">
-                                                <rect key="frame" x="6" y="69" width="363" height="522"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-4I-ABp">
+                                                <rect key="frame" x="6" y="69" width="402" height="522"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-YF-qOl">
-                                                <rect key="frame" x="30" y="652" width="315" height="45"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-YF-qOl">
+                                                <rect key="frame" x="30" y="652" width="354" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please choose a  subscription plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUp-Ff-Z2q">
-                                                        <rect key="frame" x="8" y="4" width="238" height="37"/>
+                                                        <rect key="frame" x="8" y="4" width="277" height="37"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="37" id="wlD-oh-vh2"/>
                                                         </constraints>
@@ -10656,7 +10656,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAZ-QS-km7">
-                                                        <rect key="frame" x="254" y="0.0" width="56" height="45"/>
+                                                        <rect key="frame" x="293" y="0.0" width="56" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="3Vl-Kl-BfR"/>
                                                             <constraint firstAttribute="width" constant="56" id="5By-kg-7Wo"/>
@@ -10678,8 +10678,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <constraint firstAttribute="height" constant="45" id="u2g-D2-9b7"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-Rb-vY1">
-                                                <rect key="frame" x="30" y="706" width="315" height="46"/>
+                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-Rb-vY1">
+                                                <rect key="frame" x="30" y="706" width="354" height="46"/>
                                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="nbp-1K-pRI"/>
@@ -10692,8 +10692,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <action selector="buyTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Gjv-jE-oOw"/>
                                                 </connections>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H7O-YD-OSc">
-                                                <rect key="frame" x="20" y="760" width="335" height="92"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H7O-YD-OSc">
+                                                <rect key="frame" x="20" y="760" width="374" height="92"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="92" id="fzK-8z-Le7"/>
@@ -10706,8 +10706,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="cOo-2O-zH9"/>
                                                 </connections>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-us-78n">
-                                                <rect key="frame" x="27.5" y="599" width="320" height="45"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-us-78n">
+                                                <rect key="frame" x="47" y="599" width="320" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="9DW-t5-kZE"/>
                                                     <constraint firstAttribute="width" constant="320" id="qQM-SR-SyM"/>
@@ -10718,11 +10718,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <action selector="callNutritionistBtn2Tapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Z6B-JE-Pdp"/>
                                                 </connections>
                                             </button>
-                                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpM-F0-KQC">
-                                                <rect key="frame" x="10" y="599" width="355" height="45"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpM-F0-KQC">
+                                                <rect key="frame" x="10" y="599" width="394" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrM-vL-VC1">
-                                                        <rect key="frame" x="10" y="10" width="335" height="25"/>
+                                                        <rect key="frame" x="10" y="10" width="374" height="25"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -10779,11 +10779,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="q2K-ly-0gM" firstAttribute="top" secondItem="oMu-d6-6kK" secondAttribute="top" constant="2" id="xL7-5O-4Iu"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-Kv-pMb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-Kv-pMb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X06-xj-Abk">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="eUc-VZ-SF1"/>
@@ -10793,20 +10793,20 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBA-ec-oZb">
-                                        <rect key="frame" x="0.0" y="10" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="Ydt-uR-PnL"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDa-ey-gCL" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="194"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="194"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="194" id="tFI-l2-TdL"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3fR-J2-e6x" customClass="CarouselCollectionView" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="194"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="194"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cwu-Ld-LoJ">
                                             <size key="itemSize" width="128" height="128"/>
@@ -10826,20 +10826,20 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </cells>
                                     </collectionView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mSc-pU-Eee">
-                                        <rect key="frame" x="0.0" y="244" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="244" width="414" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="BW7-Ri-VDJ"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR5-om-ikV" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="264" width="375" height="154"/>
+                                        <rect key="frame" x="0.0" y="264" width="414" height="154"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="154" id="mcK-jI-Twu"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L1Q-4c-0RQ" customClass="CarouselCollectionView2" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="264" width="375" height="154"/>
+                                        <rect key="frame" x="0.0" y="264" width="414" height="154"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xi2-DR-S6v">
                                             <size key="itemSize" width="128" height="128"/>
@@ -10858,8 +10858,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89k-Sk-ZIh">
-                                        <rect key="frame" x="20" y="816" width="135" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89k-Sk-ZIh">
+                                        <rect key="frame" x="20" y="816" width="154.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="cq9-Qj-67U"/>
                                         </constraints>
@@ -10871,8 +10871,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                             <action selector="termsOfUseBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="QsC-AK-hgB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-7B-fvF">
-                                        <rect key="frame" x="220" y="816" width="135" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-7B-fvF">
+                                        <rect key="frame" x="239.5" y="816" width="154.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Privacy Policy">
                                             <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -10881,8 +10881,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                             <action selector="privacyPolicyBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="MW9-r1-VAb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No commitment. Cancel anytime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kw4-be-ZTC">
-                                        <rect key="frame" x="10" y="859" width="355" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No commitment. Cancel anytime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kw4-be-ZTC">
+                                        <rect key="frame" x="10" y="859" width="394" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="24N-jU-8PO"/>
                                         </constraints>
@@ -10930,11 +10930,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="L1Q-4c-0RQ" firstAttribute="trailing" secondItem="TR5-om-ikV" secondAttribute="trailing" id="zgD-Hy-ulo"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-T1-7QS">
-                                <rect key="frame" x="0.0" y="88" width="375" height="774"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-T1-7QS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-2i-4Z4">
-                                        <rect key="frame" x="22" y="30" width="330" height="560"/>
+                                        <rect key="frame" x="22" y="30" width="369" height="560"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THv-Vh-JWY">
                                                 <rect key="frame" x="41" y="317" width="200" height="34"/>
@@ -10983,17 +10983,17 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-qM-FtK" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="330" height="301"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="301"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-zb-yPo">
-                                                <rect key="frame" x="18" y="415" width="294" height="40"/>
+                                                <rect key="frame" x="18" y="415" width="333" height="40"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to fix a call at 5/05/2020 9:15 AM?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGD-2U-RAR">
-                                                <rect key="frame" x="18" y="506" width="294" height="0.0"/>
+                                                <rect key="frame" x="18" y="506" width="333" height="0.0"/>
                                                 <color key="backgroundColor" red="0.84258264299999996" green="0.99554067850000005" blue="0.74898362159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="9qf-KO-t5A"/>
@@ -11003,7 +11003,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CN-Th-iye">
-                                                <rect key="frame" x="53" y="506" width="122" height="35"/>
+                                                <rect key="frame" x="92" y="506" width="122" height="35"/>
                                                 <color key="backgroundColor" red="0.66187959910000005" green="0.1941522956" blue="0.50982528920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <state key="normal" title="Cancel">
@@ -11014,7 +11014,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbf-ar-FDX">
-                                                <rect key="frame" x="192" y="506" width="122" height="35"/>
+                                                <rect key="frame" x="231" y="506" width="122" height="35"/>
                                                 <color key="backgroundColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="ei8-jD-Hi0"/>
@@ -11061,10 +11061,10 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </tableView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-Uo-Y1Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="330" height="560"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="560"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-Jd-ipQ">
-                                                        <rect key="frame" x="19.5" y="19" width="291" height="280"/>
+                                                        <rect key="frame" x="39" y="19" width="291" height="280"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm to schedule the call" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDp-6i-p3h">
                                                                 <rect key="frame" x="10" y="10" width="268" height="20"/>
@@ -11240,18 +11240,18 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="tCS-2i-4Z4" secondAttribute="trailing" constant="23" id="ztl-XO-OYq"/>
                                 </constraints>
                             </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-GI-pu9">
-                                <rect key="frame" x="0.0" y="604" width="375" height="258"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-GI-pu9">
+                                <rect key="frame" x="0.0" y="604" width="414" height="258"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="258" id="gS7-v2-SoO"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pricesCell" id="vy2-o6-Pqv">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vy2-o6-Pqv" id="04v-fu-i1g">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11262,18 +11262,18 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="yZv-0N-xme"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HUZ-sa-uxe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUZ-sa-uxe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="kMk-mn-3mZ">
-                                        <rect key="frame" x="155.5" y="77" width="64" height="84"/>
+                                        <rect key="frame" x="175" y="77" width="64" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="G2t-gW-Zim"/>
                                             <constraint firstAttribute="height" constant="84" id="Tnl-js-Cv4"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONGRATULATIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORk-QS-uov">
-                                        <rect key="frame" x="63.5" y="180" width="248" height="21"/>
+                                        <rect key="frame" x="83" y="180" width="248" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="6ps-wg-wis"/>
                                             <constraint firstAttribute="width" constant="248" id="Xez-kf-qyP"/>
@@ -11283,7 +11283,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Payment is Successful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-ed-G0U">
-                                        <rect key="frame" x="69" y="225" width="237" height="22"/>
+                                        <rect key="frame" x="88.5" y="225" width="237" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="237" id="GRd-DA-TRn"/>
                                             <constraint firstAttribute="height" constant="22" id="lij-Dh-hj0"/>
@@ -11293,19 +11293,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnX-5M-V7M">
-                                        <rect key="frame" x="8" y="275" width="359" height="0.0"/>
+                                        <rect key="frame" x="8" y="275" width="398" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-hH-QTU">
-                                        <rect key="frame" x="14" y="319" width="347" height="0.0"/>
+                                        <rect key="frame" x="14" y="319" width="386" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABc-hF-VUF">
-                                        <rect key="frame" x="41" y="341" width="293" height="21"/>
+                                        <rect key="frame" x="60.5" y="341" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eEM-AP-6kL"/>
                                             <constraint firstAttribute="width" constant="293" id="yvF-0W-byi"/>
@@ -11314,8 +11314,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-tm-xvk">
-                                        <rect key="frame" x="0.0" y="848" width="375" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-tm-xvk">
+                                        <rect key="frame" x="0.0" y="848" width="414" height="48"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="dUz-v7-sxd"/>
@@ -11329,7 +11329,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-9P-bxm">
-                                        <rect key="frame" x="22" y="283" width="331" height="21"/>
+                                        <rect key="frame" x="22" y="283" width="370" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -14258,7 +14258,6 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <image name="connectedIcon" width="30" height="30"/>
         <image name="contact_icon" width="72" height="72"/>
         <image name="cook" width="85" height="85"/>
-        <image name="crownIcon" width="30" height="30"/>
         <image name="crownstar-btn" width="50" height="50"/>
         <image name="defaultRecipe" width="688" height="688"/>
         <image name="disconnect_icon" width="30" height="30"/>

@@ -306,7 +306,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var mealTypeView: UIView!
     var dataBtnName = "lastTenData"
     var sectionsForGamifyArray = [[String: AnyObject]]()
-    
+    var infoIconTapped = false
     @IBOutlet weak var philippinesPTPView1: UIView!
     @IBOutlet weak var philippinesPTPView2: UIView!
     @IBOutlet weak var buyMoreBtn1: UIButton!
@@ -340,6 +340,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var topImageView: UIView!
     @IBOutlet weak var foodImageShadowView: UIView!
     @IBOutlet weak var protienButton: UIButton!
+    @IBOutlet weak var infoIconBarButton: UIBarButtonItem!
     @IBOutlet weak var fatButton: UIButton!
     @IBOutlet weak var caloriesButton: UIButton!
     @IBOutlet weak var carbsButton: UIButton!
@@ -492,6 +493,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @objc var tweakView : TweakAnimationWelcomeView! = nil;
     @objc var congratulationsTweakerView : CongratulationsTweaker! = nil;
+    @objc var howToTweakView : HowToTweak! = nil;
+
     @objc var tweakTextView : TweakAndEatWelcomeScreen! = nil;
     @objc var tweakOTPView : TweakAndEatOTPView! = nil;
     @objc var tweakOptionView : TweakAndEatOptionsView! = nil;
@@ -512,6 +515,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     var congratsTweakerBgStr = ""
     var congratsTweakerReview1Str = ""
     var congratsTweakerReview2Str = ""
+    
+    var howToTweakBgStr = ""
+    var step1Str = ""
+    var step2Str = ""
+    var step3Str = ""
+    var youAreDoneStr = ""
+
+
     @objc var weightFieldArray = [String]();
     @objc var heightFieldArray =  [String]();
     @objc var bmi : String = "";
@@ -1957,6 +1968,12 @@ tappedOnTAEClubExpiryView()
         }
     }
     
+    @IBAction func infoIconBarButtonTapped(_ sender: Any) {
+        self.infoIconTapped = true
+        showHowToTweakScreen()
+
+        
+    }
     func getMealTypes(tblView: UITableView) {
         APIWrapper.sharedInstance.getMealTypes({ (responceDic : AnyObject!) -> (Void) in
             if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
@@ -2753,11 +2770,11 @@ self.topImageView.alpha = 1
         self.tweakBubbleImageView.isHidden = true
         self.tweakReactView.isHidden = true
         self.adsImageView.isUserInteractionEnabled = false
-        self.premiumIconBarButton.isEnabled = false
-           self.premiumIconBarButton.tintColor = .white
+        //self.premiumIconBarButton.isEnabled = false
+           //self.premiumIconBarButton.tintColor = .white
         self.premiumMember.isUserInteractionEnabled = true
         if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
-            self.premiumIconBarButton.isEnabled = true
+            //self.premiumIconBarButton.isEnabled = true
             self.premiumMember.isHidden = true
         }
         }
@@ -3273,7 +3290,7 @@ self.topImageView.alpha = 1
             DispatchQueue.main.async {
                 MBProgressHUD.hide(for: self.view, animated: true);
                 }
-            self.premiumIconBarButton.isEnabled = true;
+            //self.premiumIconBarButton.isEnabled = true;
             let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
             
             let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
@@ -4151,7 +4168,7 @@ self.topImageView.alpha = 1
 ////                            self.adsImageView.isHidden = true
 ////                            self.premiumMember.isHidden = true
 ////                            self.iconsView.isHidden = false
-////                            self.premiumIconBarButton.isEnabled = false
+////                            //self.premiumIconBarButton.isEnabled = false
 ////                            self.menuButtonsView.isHidden = true
 ////                            }
 ////
@@ -4165,7 +4182,7 @@ self.topImageView.alpha = 1
 //                                self.menuButtonsView.isHidden = false
 //                            //self.premiumMember.isHidden = false
 //                            self.premiumMember.isUserInteractionEnabled = true
-//                            self.premiumIconBarButton.isEnabled = false
+//                            //self.premiumIconBarButton.isEnabled = false
 //                            self.iconsView.isHidden = true
 //                            }
 //                            //self.menuButtonsView.isHidden = false
@@ -4191,7 +4208,7 @@ self.topImageView.alpha = 1
 //                            self.adsImageView.isHidden = true
 //                            self.premiumMember.isHidden = true
 //                            //self.premiumMember.isUserInteractionEnabled = false
-//                            self.premiumIconBarButton.isEnabled = false
+//                            //self.premiumIconBarButton.isEnabled = false
 //                            self.iconsView.isHidden = true
 //                            self.menuButtonsView.isHidden = false
 //                        }
@@ -4204,7 +4221,7 @@ self.topImageView.alpha = 1
 //                        self.adsImageView.isHidden = true
 //                        self.premiumMember.isHidden = true
 //                       // self.premiumMember.isUserInteractionEnabled = false
-//                        self.premiumIconBarButton.isEnabled = false
+//                        //self.premiumIconBarButton.isEnabled = false
 //                        self.iconsView.isHidden = true
 //                        self.menuButtonsView.isHidden = false
 //                        }
@@ -4258,12 +4275,12 @@ self.topImageView.alpha = 1
 //                        let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray
 //                        if self.premiumPackagesArray.count == pkgsArray.count {
 //                            self.randomMessages.stopBlink()
-//                            self.premiumIconBarButton.isEnabled = true
+//                            //self.premiumIconBarButton.isEnabled = true
 //                            self.premiumMember.isHidden = true
 //                        }  else {
 //                            self.randomMessages.startBlink()
 //
-//                            self.premiumIconBarButton.isEnabled = true
+//                            //self.premiumIconBarButton.isEnabled = true
 //                            // self.premiumMember.isHidden = false
 //
 //                        }
@@ -4271,7 +4288,7 @@ self.topImageView.alpha = 1
 //
 //
 //                        self.randomMessages.startBlink()
-//                        self.premiumIconBarButton.isEnabled = false
+//                        //self.premiumIconBarButton.isEnabled = false
 //                        //self.premiumMember.isHidden = false
 //                    }
 //                    self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnAdsImageView))
@@ -4287,7 +4304,7 @@ self.topImageView.alpha = 1
 //                        self.adsImageView.isHidden = true
 //                        //self.premiumMember.isHidden = false
 //                        self.premiumMember.isUserInteractionEnabled = true
-//                        self.premiumIconBarButton.isEnabled = false
+//                        //self.premiumIconBarButton.isEnabled = false
 //                        self.iconsView.isHidden = true
 //                            self.menuButtonsView.isHidden = false
 //                        }
@@ -5429,8 +5446,19 @@ self.topImageView.alpha = 1
         }
     }
     func setUpInfoBarButton() {
-        let infoBarButton = UIBarButtonItem(image: UIImage(named: "info-icon"), style: .plain, target: self, action: #selector(self.infoIconClick))
-        self.navigationItem.rightBarButtonItem  = infoBarButton
+        
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+        countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                if countryCode == "91" {
+
+                } else {
+                    self.infoIconBarButton.isEnabled = false
+                    self.infoIconBarButton.tintColor = .white
+            }
+        }
+
+//        let infoBarButton = UIBarButtonItem(image: UIImage(named: "info-icon"), style: .plain, target: self, action: #selector(self.infoIconClick))
+//        self.navigationItem.rightBarButtonItem  = infoBarButton
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
@@ -5461,11 +5489,11 @@ self.topImageView.alpha = 1
         let dictionary = Bundle.main.infoDictionary!;
         let version = dictionary["CFBundleShortVersionString"] as! String;
         
-       
+       self.setUpInfoBarButton()
+
                 if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                     if countryCode == "91" {
-                        self.setUpInfoBarButton()
                     }
         }
        
@@ -5520,7 +5548,7 @@ self.topImageView.alpha = 1
 //                    self.adsImageView.isHidden = true
 //                    self.premiumMember.isHidden = true
 //                    self.iconsView.isHidden = false
-//                    self.premiumIconBarButton.isEnabled = false
+//                    //self.premiumIconBarButton.isEnabled = false
 //                    self.menuButtonsView.isHidden = true
 //
 //                    } else if (self.countryCode == "1" || self.countryCode == "60" || self.countryCode == "65" || self.countryCode == "62" ) {
@@ -5529,7 +5557,7 @@ self.topImageView.alpha = 1
 //                    self.adsImageView.isHidden = true
 //                    //self.premiumMember.isHidden = false
 //                    self.premiumMember.isUserInteractionEnabled = true
-//                    self.premiumIconBarButton.isEnabled = false
+//                    //self.premiumIconBarButton.isEnabled = false
 //                    self.iconsView.isHidden = true
 //                    //self.menuButtonsView.isHidden = false
 //
@@ -5550,7 +5578,7 @@ self.topImageView.alpha = 1
 //                    self.adsImageView.isHidden = true
 //                    self.premiumMember.isHidden = true
 //                    //self.premiumMember.isUserInteractionEnabled = false
-//                    self.premiumIconBarButton.isEnabled = false
+//                    //self.premiumIconBarButton.isEnabled = false
 //                    self.iconsView.isHidden = true
 //                    self.menuButtonsView.isHidden = false
 //                }
@@ -5784,7 +5812,7 @@ self.topImageView.alpha = 1
             }
         }) { (error : NSError!) -> (Void) in
             print("Error in reminders");
-            self.premiumIconBarButton.isEnabled = true;
+            ////self.premiumIconBarButton.isEnabled = true;
             let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
             
             let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
@@ -5859,7 +5887,7 @@ self.topImageView.alpha = 1
         }) { (error : NSError!) -> (Void) in
             //error
             print("error")
-            self.premiumIconBarButton.isEnabled = true;
+            //self.premiumIconBarButton.isEnabled = true;
 //            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
 //
 //            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
@@ -6214,6 +6242,10 @@ self.topImageView.alpha = 1
     
     @objc func tappedOnStartTweakingView() {
         self.checkTweakable()
+    }
+    
+    func removeBarButtonItem() {
+        //self.navigationItem.rightBarButtonItems
     }
     
     func removePTPExpiryView() {
@@ -8319,7 +8351,8 @@ self.floatingCallBtn.isHidden = false
             }) { (error : NSError!) -> (Void) in
                 //error
                 TweakAndEatUtils.hideMBProgressHUD();
-                self.premiumIconBarButton.isEnabled = true; let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+                //self.premiumIconBarButton.isEnabled = true;
+                let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
                 
                 let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
@@ -8367,15 +8400,26 @@ self.floatingCallBtn.isHidden = false
     
     @objc func switchToSeventhScreen() {
        //seventhScreen
-        self.tweakFinalView = (Bundle.main.loadNibNamed("TweakAndEatFinalIntroScreen", owner: self, options: nil)! as NSArray).firstObject as! TweakAndEatFinalIntroScreen;
-        tweakFinalView.frame = self.view.frame;
-        tweakFinalView.delegate = self;
-        tweakFinalView.beginning();
-        self.view.addSubview(self.tweakFinalView);
-//        self.tweakFinalView.titleLabel.text = bundle.localizedString(forKey: "register_finished_1", value: nil, table: nil)
-//        self.tweakFinalView.takePhotoOfNextMeal.text = bundle.localizedString(forKey: "register_finished_2", value: nil, table: nil)
-        self.tweakFinalView.okBtn.setTitle(bundle.localizedString(forKey: "ok", value: nil, table: nil), for: .normal)
-        self.tweakTermsServiceView.removeFromSuperview();
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+         
+        let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if countryCode == "91" {
+                self.tweakTermsServiceView.removeFromSuperview();
+                self.showCongratulationsTweakerView()
+
+            } else {
+                self.tweakFinalView = (Bundle.main.loadNibNamed("TweakAndEatFinalIntroScreen", owner: self, options: nil)! as NSArray).firstObject as! TweakAndEatFinalIntroScreen;
+                        tweakFinalView.frame = self.view.frame;
+                        tweakFinalView.delegate = self;
+                        tweakFinalView.beginning();
+                        self.view.addSubview(self.tweakFinalView);
+                //        self.tweakFinalView.titleLabel.text = bundle.localizedString(forKey: "register_finished_1", value: nil, table: nil)
+                //        self.tweakFinalView.takePhotoOfNextMeal.text = bundle.localizedString(forKey: "register_finished_2", value: nil, table: nil)
+                        self.tweakFinalView.okBtn.setTitle(bundle.localizedString(forKey: "ok", value: nil, table: nil), for: .normal)
+                        self.tweakTermsServiceView.removeFromSuperview();
+            }
+        }
+        
         // pieChartView.removeFromSuperview();
         
     }
@@ -8431,6 +8475,21 @@ self.floatingCallBtn.isHidden = false
         
     }
     
+    func removeHowToTweak() {
+        self.howToTweakView.removeFromSuperview()
+    }
+    
+    func showHowToTweakScreen() {
+                self.navigationController?.isNavigationBarHidden = true;
+
+        howToTweakView = (Bundle.main.loadNibNamed("HowToTweak", owner: self, options: nil)! as NSArray).firstObject as? HowToTweak;
+               howToTweakView.frame = self.view.frame;
+               howToTweakView.delegate = self;
+               self.view.addSubview(howToTweakView);
+               howToTweakView.beginning();
+               self.getIntroSlide2()
+    }
+    
     func updateUIForSlide1(data: [[String: AnyObject]] ) {
         
                 if data.count == 0 {
@@ -8465,12 +8524,14 @@ self.floatingCallBtn.isHidden = false
 
                                         self.view.layoutIfNeeded()
                         }, completion: { _ in
+                            if !IS_iPHONE5 {
                             let backgroudView = UIView()
-                            backgroudView.backgroundColor = #colorLiteral(red: 0.7910400033, green: 0.1721766889, blue: 0.4128819108, alpha: 1)
+                            backgroudView.backgroundColor = #colorLiteral(red: 0.8037554622, green: 0.1748961508, blue: 0.4208399057, alpha: 1)
                             backgroudView.layer.cornerRadius = 5
                             backgroudView.frame = CGRect(x: self.congratulationsTweakerView.screenOneBg.frame.origin.x + 0.5, y: self.congratulationsTweakerView.screenOneBg.frame.maxY - 20, width: self.congratulationsTweakerView.screenOneBg.frame.width - 1  , height: self.congratulationsTweakerView.nextBtn.frame.minY - self.congratulationsTweakerView.screenOneBg.frame.maxY - 20)
                             self.view.bringSubviewToFront(self.congratulationsTweakerView.screenOneBg)
                             self.view.addSubview(backgroudView)
+                            }
                             
                             self.congratulationsTweakerView.review1Bg.sd_setImage(with: URL(string: self.congratsTweakerReview1Str)) { (image, error, cache, url) in
                                 // Your code inside completion block
@@ -8511,6 +8572,135 @@ self.floatingCallBtn.isHidden = false
                 }
             }
     
+    func updateUIForSlide2(data: [[String: AnyObject]] ) {
+        
+        if data.count == 0 {
+            
+        } else {
+            for dict in data {
+                
+                if dict["name"] as! String == "bg" {
+                    self.howToTweakBgStr = dict["value"] as! String
+                    
+                }
+                if dict["name"] as! String == "step1" {
+                    self.step1Str = dict["value"] as! String
+                    
+                    
+                }
+                if dict["name"] as! String == "step2" {
+                    self.step2Str = dict["value"] as! String
+                    
+                }
+                if dict["name"] as! String == "step3" {
+                    self.step3Str = dict["value"] as! String
+                    
+                }
+                if dict["name"] as! String == "text1" {
+                    self.youAreDoneStr = dict["value"] as! String
+                    
+                }
+                
+            }
+            self.howToTweakView.screenOneBg.sd_setImage(with: URL(string: self.howToTweakBgStr)) { (image, error, cache, url) in
+                // Your code inside completion block
+                let ratio = image!.size.width / image!.size.height
+                let newHeight = self.howToTweakView.screenOneBg.frame.width / ratio
+                
+                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                               animations: {
+                                self.howToTweakView.screenOneBgHeighgtConstraint.constant = newHeight
+                                
+                                
+                                self.view.layoutIfNeeded()
+                }, completion: { _ in
+                    if !IS_iPHONE5 {
+                    
+                    self.howToTweakView.backgroudView.backgroundColor = #colorLiteral(red: 0.5112051368, green: 0.1630825996, blue: 0.6293783188, alpha: 1)
+                    self.howToTweakView.backgroudView.layer.cornerRadius = 5
+                        self.howToTweakView.backgroudView.frame = CGRect(x: self.howToTweakView.screenOneBg.frame.origin.x + 0.5, y: self.howToTweakView.screenOneBg.frame.maxY - 20, width: self.howToTweakView.screenOneBg.frame.width - 1  , height: self.howToTweakView.letsTweakBtn.frame.minY - self.howToTweakView.screenOneBg.frame.maxY - 20)
+                       // self.view.bringSubviewToFront(self.howToTweakView.screenOneBg)
+                        //self.view.bringSubviewToFront(self.howToTweakView.youAreDoneBg)
+
+                       // self.view.addSubview(self.howToTweakView.backgroudView);
+                        
+
+                    }
+                    
+                    self.howToTweakView.step1Bg.sd_setImage(with: URL(string: self.step1Str)) { (image, error, cache, url) in
+                        // Your code inside completion block
+                        let ratio = image!.size.width / image!.size.height
+                        let newHeight = self.howToTweakView.step1Bg.frame.width / ratio
+                        
+                        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                       animations: {
+                                        self.howToTweakView.step1BgHeightConstraint.constant = newHeight
+                                        self.view.layoutIfNeeded()
+                        }, completion: { _ in
+                            self.howToTweakView.step2Bg.sd_setImage(with: URL(string: self.step2Str)) { (image, error, cache, url) in
+                                // Your code inside completion block
+                                let ratio = image!.size.width / image!.size.height
+                                let newHeight = self.howToTweakView.step2Bg.frame.width / ratio
+                                
+                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                               animations: {
+                                                self.howToTweakView.step2BgHeightConstraint.constant = newHeight
+                                                self.view.layoutIfNeeded()
+                                }, completion: { _ in
+                                    self.howToTweakView.step3Bg.sd_setImage(with: URL(string: self.step3Str)) { (image, error, cache, url) in
+                                        // Your code inside completion block
+                                        let ratio = image!.size.width / image!.size.height
+                                        let newHeight = self.howToTweakView.step3Bg.frame.width / ratio
+                                        
+                                        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                                       animations: {
+                                                        self.howToTweakView.step3BgHeightConstraint.constant = newHeight
+                                                        self.view.layoutIfNeeded()
+                                        }, completion: { _ in
+                                            self.howToTweakView.youAreDoneBg.sd_setImage(with: URL(string: self.youAreDoneStr)) { (image, error, cache, url) in
+                                                // Your code inside completion block
+                                                let ratio = image!.size.width / image!.size.height
+                                                let newHeight = self.howToTweakView.youAreDoneBg.frame.width / ratio
+                                                
+                                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                                               animations: {
+                                                                self.howToTweakView.youAreDoneBgHeightConstraint.constant = newHeight
+                                                                self.view.layoutIfNeeded()
+                                                }, completion: { _ in
+                                                    if self.infoIconTapped == true {
+                                                    self.howToTweakView.previousBtn.isHidden = true
+                                                    } else {
+                                                        self.howToTweakView.previousBtn.isHidden = false
+
+                                                    }
+                                                    self.howToTweakView.letsTweakBtn.isHidden = false
+                                                    self.navigationController?.navigationBar.isHidden = false
+                                                })
+                                                
+                                                
+                                            }
+                                        })
+                                        
+                                        
+                                    }
+                                })
+                                
+                                
+                            }
+                        })
+                        
+                        
+                    }
+                    
+                })
+                
+                
+            }
+            
+            
+        }
+    }
+    
     
    @objc func getIntroSlide1() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -8538,6 +8728,33 @@ self.floatingCallBtn.isHidden = false
                   //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
               })
     }
+    
+    @objc func getIntroSlide2() {
+         MBProgressHUD.showAdded(to: self.view, animated: true)
+
+               APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.INTRO_SLIDE2, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                   print(response!)
+                   
+                   let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                   let responseResult = responseDic["callStatus"] as! String;
+                   if  responseResult == "GOOD" {
+                       MBProgressHUD.hide(for: self.view, animated: true);
+                       let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                   
+                     self.updateUIForSlide2(data: data)
+
+                   }
+               }, failure : { error in
+                   MBProgressHUD.hide(for: self.view, animated: true);
+                   
+                   print("failure")
+                   if error?.code == -1011 {
+                      // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                       return
+                   }
+                   //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+               })
+     }
     
     @objc func switchToSeventhScreen1() {
 
@@ -8880,6 +9097,15 @@ self.floatingCallBtn.isHidden = false
             self.addReminders();
             TweakAndEatUtils.hideMBProgressHUD();
         }
+    }
+    
+    @objc func resignHowToTweakScreen() {
+        //self.tweakView.refreshView.isHidden = true
+        self.howToTweakView.removeFromSuperview();
+        
+        self.tabBarController?.tabBar.isHidden = false;
+        self.navigationController?.isNavigationBarHidden = false;
+        UserDefaults.standard.setValue(false, forKey: "showRegistration");
     }
     
     @objc func resignRegistrationScreen() {
@@ -9814,7 +10040,7 @@ self.floatingCallBtn.isHidden = false
     }
     
     @IBAction func premiumIconBarButtonTapped(_ sender: Any) {
-        self.premiumIconBarButton.isEnabled = false
+        ////self.premiumIconBarButton.isEnabled = false
         fromCrown = true
         self.performSegue(withIdentifier: "buyPackages", sender: self)
         

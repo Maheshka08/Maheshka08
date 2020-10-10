@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VPK-dx-VmI" customClass="HowToTweak" customModule="Tweak_and_Eat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="screen_one_bg" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-yn-Ku8">
+                    <rect key="frame" x="10" y="54" width="394" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="URf-PK-lfC"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGr-do-6uE">
+                    <rect key="frame" x="252" y="815" width="146" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="146" id="KTn-hz-5fS"/>
+                        <constraint firstAttribute="height" constant="36" id="Ss5-Lf-iMi"/>
+                    </constraints>
+                    <state key="normal" image="lets_tweak_btn"/>
+                    <connections>
+                        <action selector="letsTweakBtnTapped:" destination="VPK-dx-VmI" eventType="touchUpInside" id="DDY-ic-OQh"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_1" translatesAutoresizingMaskIntoConstraints="NO" id="h1T-m0-tv4">
+                    <rect key="frame" x="16" y="174" width="382" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="p2O-Ds-YXG"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_1" translatesAutoresizingMaskIntoConstraints="NO" id="esO-az-SUR">
+                    <rect key="frame" x="16" y="179" width="382" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="oMr-fc-z1J"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_1" translatesAutoresizingMaskIntoConstraints="NO" id="ShT-fk-ljr">
+                    <rect key="frame" x="16" y="184" width="382" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="ECF-u7-Eci"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RgZ-bm-Lso">
+                    <rect key="frame" x="87" y="384" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_1" translatesAutoresizingMaskIntoConstraints="NO" id="Hrc-wh-o5t">
+                    <rect key="frame" x="16" y="189" width="382" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="nfE-cy-xi4"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCl-tf-H8D">
+                    <rect key="frame" x="20" y="815" width="127" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="127" id="2B6-Ha-KIW"/>
+                        <constraint firstAttribute="height" constant="36" id="Zyn-Cb-MSZ"/>
+                    </constraints>
+                    <state key="normal" image="previous_btn"/>
+                    <connections>
+                        <action selector="previouBtnTapped:" destination="VPK-dx-VmI" eventType="touchUpInside" id="Khg-e9-egS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Hrc-wh-o5t" firstAttribute="trailing" secondItem="ShT-fk-ljr" secondAttribute="trailing" id="4GC-cM-b13"/>
+                <constraint firstItem="ShT-fk-ljr" firstAttribute="trailing" secondItem="esO-az-SUR" secondAttribute="trailing" id="5eb-bc-aqU"/>
+                <constraint firstItem="uGr-do-6uE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mpj-yn-Ku8" secondAttribute="bottom" constant="20" id="7Tu-Jm-pdD"/>
+                <constraint firstItem="iRN-ak-WOP" firstAttribute="bottom" secondItem="uGr-do-6uE" secondAttribute="bottom" constant="11" id="7xV-1R-6P1"/>
+                <constraint firstItem="qCl-tf-H8D" firstAttribute="bottom" secondItem="iRN-ak-WOP" secondAttribute="bottom" constant="-11" id="EvO-iD-kSg"/>
+                <constraint firstItem="uGr-do-6uE" firstAttribute="top" secondItem="qCl-tf-H8D" secondAttribute="top" id="GdL-bX-qfA"/>
+                <constraint firstItem="esO-az-SUR" firstAttribute="trailing" secondItem="h1T-m0-tv4" secondAttribute="trailing" id="I0T-qz-ZaN"/>
+                <constraint firstItem="uGr-do-6uE" firstAttribute="bottom" secondItem="qCl-tf-H8D" secondAttribute="bottom" id="Mie-WC-Kdh"/>
+                <constraint firstItem="qCl-tf-H8D" firstAttribute="leading" secondItem="iRN-ak-WOP" secondAttribute="leading" constant="20" id="XOJ-w1-cfe"/>
+                <constraint firstItem="Hrc-wh-o5t" firstAttribute="top" secondItem="ShT-fk-ljr" secondAttribute="bottom" constant="5" id="YNr-mZ-Irw"/>
+                <constraint firstAttribute="trailing" secondItem="mpj-yn-Ku8" secondAttribute="trailing" constant="10" id="ZrM-Qa-BQB"/>
+                <constraint firstItem="ShT-fk-ljr" firstAttribute="top" secondItem="esO-az-SUR" secondAttribute="bottom" constant="5" id="c3P-eK-SET"/>
+                <constraint firstItem="iRN-ak-WOP" firstAttribute="trailing" secondItem="uGr-do-6uE" secondAttribute="trailing" constant="16" id="dMm-Kq-fba"/>
+                <constraint firstItem="h1T-m0-tv4" firstAttribute="top" secondItem="iRN-ak-WOP" secondAttribute="top" constant="130" id="eID-h1-Z89"/>
+                <constraint firstItem="h1T-m0-tv4" firstAttribute="leading" secondItem="iRN-ak-WOP" secondAttribute="leading" constant="16" id="fji-Bj-cMy"/>
+                <constraint firstItem="mpj-yn-Ku8" firstAttribute="top" secondItem="iRN-ak-WOP" secondAttribute="top" constant="10" id="gcj-03-Dkz"/>
+                <constraint firstItem="esO-az-SUR" firstAttribute="leading" secondItem="h1T-m0-tv4" secondAttribute="leading" id="hrZ-eI-Z5a"/>
+                <constraint firstItem="esO-az-SUR" firstAttribute="top" secondItem="h1T-m0-tv4" secondAttribute="bottom" constant="5" id="luJ-En-Ma0"/>
+                <constraint firstItem="Hrc-wh-o5t" firstAttribute="leading" secondItem="ShT-fk-ljr" secondAttribute="leading" id="pRN-8f-jVK"/>
+                <constraint firstItem="mpj-yn-Ku8" firstAttribute="leading" secondItem="iRN-ak-WOP" secondAttribute="leading" constant="10" id="vrn-TD-pj0"/>
+                <constraint firstItem="iRN-ak-WOP" firstAttribute="trailing" secondItem="h1T-m0-tv4" secondAttribute="trailing" constant="16" id="wBE-2X-Msj"/>
+                <constraint firstItem="ShT-fk-ljr" firstAttribute="leading" secondItem="esO-az-SUR" secondAttribute="leading" id="yZY-4V-0Qh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="iRN-ak-WOP"/>
+            <connections>
+                <outlet property="backgroudView" destination="RgZ-bm-Lso" id="apu-Ac-mtw"/>
+                <outlet property="letsTweakBtn" destination="uGr-do-6uE" id="Jv5-sm-FUE"/>
+                <outlet property="letsTweakBtnTopConstraint" destination="7Tu-Jm-pdD" id="Lm9-Za-igg"/>
+                <outlet property="previousBtn" destination="qCl-tf-H8D" id="N8w-r6-4Vf"/>
+                <outlet property="review1TopConstraint" destination="eID-h1-Z89" id="qdv-gU-1Hu"/>
+                <outlet property="screenOneBg" destination="mpj-yn-Ku8" id="WhI-HP-yNG"/>
+                <outlet property="screenOneBgHeighgtConstraint" destination="URf-PK-lfC" id="YMd-iI-aCi"/>
+                <outlet property="step1Bg" destination="h1T-m0-tv4" id="RYh-XX-vgy"/>
+                <outlet property="step1BgHeightConstraint" destination="p2O-Ds-YXG" id="xXh-GB-nJz"/>
+                <outlet property="step2Bg" destination="esO-az-SUR" id="xAQ-jF-C2j"/>
+                <outlet property="step2BgHeightConstraint" destination="oMr-fc-z1J" id="UCw-Sc-1iL"/>
+                <outlet property="step3Bg" destination="ShT-fk-ljr" id="fVR-gn-T7F"/>
+                <outlet property="step3BgHeightConstraint" destination="ECF-u7-Eci" id="WFM-H9-ZRE"/>
+                <outlet property="youAreDoneBg" destination="Hrc-wh-o5t" id="foV-1D-Ny1"/>
+                <outlet property="youAreDoneBgHeightConstraint" destination="nfE-cy-xi4" id="k7k-iY-QPc"/>
+                <outlet property="youAreDoneTopConstraint" destination="YNr-mZ-Irw" id="6qg-JA-Wco"/>
+            </connections>
+            <point key="canvasLocation" x="136.23188405797103" y="85.044642857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="lets_tweak_btn" width="319" height="70"/>
+        <image name="previous_btn" width="244" height="70"/>
+        <image name="review_1" width="634" height="196"/>
+        <image name="screen_one_bg" width="674" height="1027"/>
+    </resources>
+</document>
