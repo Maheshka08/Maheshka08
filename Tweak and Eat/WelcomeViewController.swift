@@ -1115,7 +1115,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
                                              self.trendButtonsView.isHidden = false
                                              self.topButtonsDataView.isHidden = false
-                                             self.minCalCountLabel.stopBlink()
+                                             //self.minCalCountLabel.stopBlink()
                                              self.beforeTweakImageViewHeightConstraint.constant = 0
                                              self.topButtonsDataViewHeightConstraint.constant = 63
                                              if (self.myNutritionDetailsView != nil) {
@@ -1216,7 +1216,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
                         self.trendButtonsView.isHidden = false
                         self.topButtonsDataView.isHidden = false
-                        self.minCalCountLabel.stopBlink()
+                        //self.minCalCountLabel.stopBlink()
                         self.beforeTweakImageViewHeightConstraint.constant = 0
                         self.topButtonsDataViewHeightConstraint.constant = 63
                         if (self.myNutritionDetailsView != nil) {
@@ -1282,7 +1282,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.draggableConstant = self.draggableViewHeightConstraint.constant
                         self.trendButtonsView.isHidden = false
                         self.topButtonsDataView.isHidden = false
-                        self.minCalCountLabel.stopBlink()
+                        //self.minCalCountLabel.stopBlink()
                         self.beforeTweakImageViewHeightConstraint.constant = 0
                         self.topButtonsDataViewHeightConstraint.constant = 63
                         if (self.myNutritionDetailsView != nil) {
@@ -1339,7 +1339,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
                             self.trendButtonsView.isHidden = false
                             self.topButtonsDataView.isHidden = false
-                            self.minCalCountLabel.stopBlink()
+                            //self.minCalCountLabel.stopBlink()
                             self.beforeTweakImageViewHeightConstraint.constant = 0
                             self.topButtonsDataViewHeightConstraint.constant = 63
                             if (self.myNutritionDetailsView != nil) {
@@ -1432,7 +1432,7 @@ aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
                              self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
                             self.trendButtonsView.isHidden = false
                             self.topButtonsDataView.isHidden = false
-                            self.minCalCountLabel.stopBlink()
+                            //self.minCalCountLabel.stopBlink()
                             self.beforeTweakImageViewHeightConstraint.constant = 0
                             self.topButtonsDataViewHeightConstraint.constant = 63
                             if (self.myNutritionDetailsView != nil) {
@@ -8968,7 +8968,8 @@ self.floatingCallBtn.isHidden = false
                                     Auth.auth().signIn(withEmail: firebaseUserName, password: firebasePassword) { (user, error) in
                                         
                                         if error == nil {
-                                            
+                                            UserDefaults.standard.setValue(false, forKey: "showRegistration");
+
                                             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                                                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                                                // if self.countryCode == "91" {
