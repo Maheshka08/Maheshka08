@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4F3C6FFD-87B6-4355-8AE9-C621A4767E04"
+            uuid = "0DDE8146-5F37-4F3B-A835-7424089984BB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2260"
-            endingLineNumber = "2260"
-            landmarkName = "checkIfUserIsNewOrTrialPeriodExpired()"
+            startingLineNumber = "8472"
+            endingLineNumber = "8472"
+            landmarkName = "updateUIForSlide1(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

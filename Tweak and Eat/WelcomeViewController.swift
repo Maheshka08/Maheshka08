@@ -491,6 +491,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var premiumBtnRef : DatabaseReference!;
     
     @objc var tweakView : TweakAnimationWelcomeView! = nil;
+    @objc var congratulationsTweakerView : CongratulationsTweaker! = nil;
     @objc var tweakTextView : TweakAndEatWelcomeScreen! = nil;
     @objc var tweakOTPView : TweakAndEatOTPView! = nil;
     @objc var tweakOptionView : TweakAndEatOptionsView! = nil;
@@ -508,7 +509,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var checkPremiumUserCount:Int = 0;
     
     @objc var pickOption = [["2 feet", "3 feet", "4 feet","5 feet", "6 feet", "7 feet","8 feet"], ["0 inch","1 inch", "2 inches", "3 inches", "4 inches","5 inches", "6 inches", "7 inches","8 inches","9 inches", "10 inches", "11 inches"]];
-    
+    var congratsTweakerBgStr = ""
+    var congratsTweakerReview1Str = ""
+    var congratsTweakerReview2Str = ""
     @objc var weightFieldArray = [String]();
     @objc var heightFieldArray =  [String]();
     @objc var bmi : String = "";
@@ -2345,6 +2348,20 @@ self.topImageView.alpha = 1
         }
     }
     
+    func showCongratulationsTweakerView() {
+        self.navigationController?.isNavigationBarHidden = true;
+        
+        congratulationsTweakerView = (Bundle.main.loadNibNamed("CongratulationsTweaker", owner: self, options: nil)! as NSArray).firstObject as? CongratulationsTweaker;
+        congratulationsTweakerView.frame = self.view.frame;
+        congratulationsTweakerView.delegate = self;
+        self.view.addSubview(congratulationsTweakerView);
+        congratulationsTweakerView.beginning();
+        self.getIntroSlide1()
+    }
+    
+    @objc func infoIconClick() {
+        showCongratulationsTweakerView()
+    }
     override func viewDidLoad() {
 
         super.viewDidLoad();
@@ -3606,6 +3623,8 @@ self.topImageView.alpha = 1
         self.tweakOTPView.resendButton.setTitle(self.bundle.localizedString(forKey: "button_resend", value: nil, table: nil), for: .normal)
         }
     }
+    
+    
     
     @objc func getStaticText(lang: String) {
         let showRegistration : Bool?  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool;
@@ -5409,7 +5428,10 @@ self.topImageView.alpha = 1
             
         }
     }
-    
+    func setUpInfoBarButton() {
+        let infoBarButton = UIBarButtonItem(image: UIImage(named: "info-icon"), style: .plain, target: self, action: #selector(self.infoIconClick))
+        self.navigationItem.rightBarButtonItem  = infoBarButton
+    }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
        // getTrends()
@@ -5442,6 +5464,9 @@ self.topImageView.alpha = 1
        
                 if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                    if countryCode == "91" {
+                        self.setUpInfoBarButton()
+                    }
         }
        
       setUpPhilippinesView()
@@ -8388,6 +8413,131 @@ self.floatingCallBtn.isHidden = false
         }
         
     }
+    func getAttributedString(htmlText: String) -> NSAttributedString {
+        let encodedData = htmlText.data(using: String.Encoding.utf8)!
+                           var attributedString: NSAttributedString
+
+                           do {
+                               attributedString = try NSAttributedString(data: encodedData, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html,NSAttributedString.DocumentReadingOptionKey.characterEncoding:NSNumber(value: String.Encoding.utf8.rawValue)], documentAttributes: nil)
+                           
+                             return attributedString
+
+                           } catch let error as NSError {
+                               print(error.localizedDescription)
+                           } catch {
+                               print("error")
+                           }
+        return NSAttributedString()
+        
+    }
+    
+    func updateUIForSlide1(data: [[String: AnyObject]] ) {
+        
+                if data.count == 0 {
+                    
+                } else {
+                  for dict in data {
+
+                        if dict["name"] as! String == "bg" {
+                            self.congratsTweakerBgStr = dict["value"] as! String
+
+                    }
+                        if dict["name"] as! String == "rev1" {
+                            self.congratsTweakerReview1Str = dict["value"] as! String
+
+
+                    }
+                        if dict["name"] as! String == "rev2" {
+                            self.congratsTweakerReview2Str = dict["value"] as! String
+
+                    }
+                    
+                  }
+                    self.congratulationsTweakerView.screenOneBg.sd_setImage(with: URL(string: self.congratsTweakerBgStr)) { (image, error, cache, url) in
+                        // Your code inside completion block
+                        let ratio = image!.size.width / image!.size.height
+                        let newHeight = self.congratulationsTweakerView.screenOneBg.frame.width / ratio
+                        
+                        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                       animations: {
+                                        self.congratulationsTweakerView.screenOneBgHeighgtConstraint.constant = newHeight
+                                       
+
+                                        self.view.layoutIfNeeded()
+                        }, completion: { _ in
+                            let backgroudView = UIView()
+                            backgroudView.backgroundColor = #colorLiteral(red: 0.7910400033, green: 0.1721766889, blue: 0.4128819108, alpha: 1)
+                            backgroudView.layer.cornerRadius = 5
+                            backgroudView.frame = CGRect(x: self.congratulationsTweakerView.screenOneBg.frame.origin.x + 0.5, y: self.congratulationsTweakerView.screenOneBg.frame.maxY - 20, width: self.congratulationsTweakerView.screenOneBg.frame.width - 1  , height: self.congratulationsTweakerView.nextBtn.frame.minY - self.congratulationsTweakerView.screenOneBg.frame.maxY - 20)
+                            self.view.bringSubviewToFront(self.congratulationsTweakerView.screenOneBg)
+                            self.view.addSubview(backgroudView)
+                            
+                            self.congratulationsTweakerView.review1Bg.sd_setImage(with: URL(string: self.congratsTweakerReview1Str)) { (image, error, cache, url) in
+                                // Your code inside completion block
+                                let ratio = image!.size.width / image!.size.height
+                                let newHeight = self.congratulationsTweakerView.review1Bg.frame.width / ratio
+                                
+                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                               animations: {
+                                                self.congratulationsTweakerView.review1HeightConstraint.constant = newHeight
+                                                self.view.layoutIfNeeded()
+                                }, completion: { _ in
+                                    self.congratulationsTweakerView.review2Bg.sd_setImage(with: URL(string: self.congratsTweakerReview2Str)) { (image, error, cache, url) in
+                                        // Your code inside completion block
+                                        let ratio = image!.size.width / image!.size.height
+                                        let newHeight = self.congratulationsTweakerView.review2Bg.frame.width / ratio
+                                        
+                                        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                                       animations: {
+                                                        self.congratulationsTweakerView.review2HeightConstraint.constant = newHeight
+                                                        self.view.layoutIfNeeded()
+                                        }, completion: { _ in
+                                            self.congratulationsTweakerView.nextBtn.isHidden = false
+                                        })
+                                        
+                                        
+                                    }
+                                })
+                                
+                                
+                            }
+                            
+                        })
+                        
+                        
+                    }
+
+                    
+                }
+            }
+    
+    
+   @objc func getIntroSlide1() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.INTRO_SLIDE1, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                  
+                    self.updateUIForSlide1(data: data)
+
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
     
     @objc func switchToSeventhScreen1() {
 
@@ -8606,7 +8756,7 @@ self.floatingCallBtn.isHidden = false
                                             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                                                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                                                // if self.countryCode == "91" {
-                                                     AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [AFEventCompleteRegistration: "YES"])
+                                                AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [ AFEventParamRegistrationMethod: "YES"])
                                                // }
                                             }
                                             //last

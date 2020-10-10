@@ -214,33 +214,34 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+        //        // 1 - Get AppsFlyer preferences from .plist file
+        //              guard let propertiesPath = Bundle.main.path(forResource: "afdevkey_donotpush", ofType: "plist"),
+        //                  let properties = NSDictionary(contentsOfFile: propertiesPath) as? [String:String] else {
+        //                      fatalError("Cannot find `afdevkey_donotpush`")
+        //              }
+        //              guard let appsFlyerDevKey = properties["appsFlyerDevKey"],
+        //                         let appleAppID = properties["appleAppID"] else {
+        //                  fatalError("Cannot find `appsFlyerDevKey` or `appleAppID` key")
+        //              }
+                      // 2 - Replace 'appsFlyerDevKey', `appleAppID` with your DevKey, Apple App ID
+
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isAutoInitEnabled = true
         ApplicationDelegate.initializeSDK(nil)
-//        // 1 - Get AppsFlyer preferences from .plist file
-//              guard let propertiesPath = Bundle.main.path(forResource: "afdevkey_donotpush", ofType: "plist"),
-//                  let properties = NSDictionary(contentsOfFile: propertiesPath) as? [String:String] else {
-//                      fatalError("Cannot find `afdevkey_donotpush`")
-//              }
-//              guard let appsFlyerDevKey = properties["appsFlyerDevKey"],
-//                         let appleAppID = properties["appleAppID"] else {
-//                  fatalError("Cannot find `appsFlyerDevKey` or `appleAppID` key")
-//              }
-              // 2 - Replace 'appsFlyerDevKey', `appleAppID` with your DevKey, Apple App ID
-              AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
-              AppsFlyerLib.shared().appleAppID = "1267286348"
-              AppsFlyerLib.shared().delegate = self
-              //  Set isDebug to true to see AppsFlyer debug logs
-              AppsFlyerLib.shared().isDebug = true
+        AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
+        AppsFlyerLib.shared().appleAppID = "1267286348"
+        AppsFlyerLib.shared().delegate = self
+        //  Set isDebug to true to see AppsFlyer debug logs
+        AppsFlyerLib.shared().isDebug = true
         // AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [AFEventCompleteRegistration: "YES"])
         
-              // The following block is for applications wishing to collect IDFA.
-              // for iOS 14 and above - The user will be prompted for permission to collect IDFA.
-              //                        If permission granted, the IDFA will be collected by the SDK.
-              // for iOS 13 and below - The IDFA will be collected by the SDK. The user will NOT be prompted for permission.
-              if #available(iOS 14, *) {
-                  // Set a timeout for the SDK to wait for the IDFA collection before handling app launch
-                  AppsFlyerLib.shared().waitForAdvertisingIdentifier(withTimeoutInterval: 60)
+        // The following block is for applications wishing to collect IDFA.
+        // for iOS 14 and above - The user will be prompted for permission to collect IDFA.
+        //                        If permission granted, the IDFA will be collected by the SDK.
+        // for iOS 13 and below - The IDFA will be collected by the SDK. The user will NOT be prompted for permission.
+        if #available(iOS 14, *) {
+            // Set a timeout for the SDK to wait for the IDFA collection before handling app launch
+            AppsFlyerLib.shared().waitForAdvertisingIdentifier(withTimeoutInterval: 60)
                   // Show the user the Apple IDFA consent dialog (AppTrackingTransparency)
                   // Can be called in any place
                  // ATTrackingManager.requestTrackingAuthorization { (status) in

@@ -187,6 +187,8 @@
 		83222C6F24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */; };
 		8326169E2493802D0002B77C /* PopUpNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326169D2493802D0002B77C /* PopUpNotificationView.xib */; };
 		832616A0249380BD0002B77C /* PopUpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326169F249380BD0002B77C /* PopUpNotificationView.swift */; };
+		83360CB5253199CF0006BD63 /* CongratulationsTweaker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83360CB4253199CF0006BD63 /* CongratulationsTweaker.xib */; };
+		83360CB72531AD290006BD63 /* CongratulationsTweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
@@ -557,6 +559,8 @@
 		83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAEClub4VCViewController.swift; sourceTree = "<group>"; };
 		8326169D2493802D0002B77C /* PopUpNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpNotificationView.xib; sourceTree = "<group>"; };
 		8326169F249380BD0002B77C /* PopUpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNotificationView.swift; sourceTree = "<group>"; };
+		83360CB4253199CF0006BD63 /* CongratulationsTweaker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CongratulationsTweaker.xib; sourceTree = "<group>"; };
+		83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsTweaker.swift; sourceTree = "<group>"; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
 		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
@@ -905,6 +909,8 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */,
+				83360CB4253199CF0006BD63 /* CongratulationsTweaker.xib */,
 				83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */,
 				8317091A250B517900413723 /* Carousel */,
 				835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */,
@@ -1587,6 +1593,7 @@
 				5783F1B61D991DDD0097ADBC /* source-sans-pro.light.ttf in Resources */,
 				5783F1B41D991DDD0097ADBC /* source-sans-pro.black.ttf in Resources */,
 				736BE55820D4D6D5001C4580 /* ringback.wav in Resources */,
+				83360CB5253199CF0006BD63 /* CongratulationsTweaker.xib in Resources */,
 				5783F1B71D991DDD0097ADBC /* source-sans-pro.semibold.ttf in Resources */,
 				5720938C1D87AB7E007B8E53 /* SourceSansPro-Semibold.ttf in Resources */,
 				73B9DBB9203AB8F100EBC0B0 /* Main.storyboard in Resources */,
@@ -1791,6 +1798,7 @@
 				572093771D7F0AEC007B8E53 /* TweakAndEatOptionsView.swift in Sources */,
 				84EF2D8C1DE6CA6700F340C5 /* TBL_Contacts+CoreDataClass.swift in Sources */,
 				573A1D6B1DA2CBB7007E2A85 /* TimelinesDetailsViewController.swift in Sources */,
+				83360CB72531AD290006BD63 /* CongratulationsTweaker.swift in Sources */,
 				732986DD1FED0F49006A364C /* NutritionChat.swift in Sources */,
 				18F1A99820EA02B7004FAC2D /* TextAreaTableViewCell.swift in Sources */,
 				83222C6724DDC45700A6E4E0 /* TAEClub2VCViewController.swift in Sources */,
