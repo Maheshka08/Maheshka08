@@ -107,7 +107,7 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
                     
                     self.weightTableView.isHidden = false
                     self.weightTableView.reloadData()
-                    self.updateChart(backGroundCol: "#168c7a", data: self.weightsArray as! [Any], name: "Weight", colorTheme: ["#FFFFFF"], title: "Weight Readings for the last 7 days")
+                    self.updateChart(backGroundCol: "#168c7a", data: self.weightsArray.reversed() as! [Any], name: "Weight", colorTheme: ["#FFFFFF"], title: "Your Last 7 Weight Readings")
                     
                     
                 }
