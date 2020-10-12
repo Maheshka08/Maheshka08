@@ -1754,14 +1754,10 @@ tappedOnTAEClubExpiryView()
         
     }
     @objc func setupNavigationTitle() {
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.7, height: 44))
-        lbl.text = "Tweak & Eat"
-        lbl.textColor = UIColor(red: 89/255, green: 21/255, blue: 112/255, alpha: 1.0);
-        lbl.textAlignment = .left
-        lbl.font = UIFont(name: "QUESTRIAL-REGULAR", size: 17)
-
-        navigationItem.titleView = lbl
-
+         let titleImg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.7, height: 44))
+               titleImg.image = UIImage.init(named: "TweakAndEatTitleImage")
+               titleImg.contentMode = .scaleAspectFit
+               navigationItem.titleView = titleImg
     }
     
     func loadJson(filename fileName: String) -> [String: AnyObject]? {
