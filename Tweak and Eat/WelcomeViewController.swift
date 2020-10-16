@@ -2028,9 +2028,10 @@ tappedOnTAEClubExpiryView()
     
     func dummyNavigation() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-           let clickViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as? MyWallViewController;
-        clickViewController?.feedId = "-M94QfGUXWBPjgHSz0Cr"
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+        clickViewController?.fromPopUpScreen = true
         self.navigationController?.pushViewController(clickViewController!, animated: true)
+        
     }
     
     func dummyPopUp() {
@@ -3224,14 +3225,15 @@ self.topImageView.alpha = 1
                             if val as! String == streakString {
                                 let firstObj = dict[TweakAndEatConstants.STATIC_VALUE] as AnyObject as! String
                                 print(firstObj.html2String)
-                                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NutritionistPopViewController") as! NutritionistPopViewController;
-                                self.addChild(popOverVC);
-                                popOverVC.viewController = self
-                                //popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-                                popOverVC.popUp1 = true
-                                popOverVC.tweakText = firstObj.html2String
-                                self.view.addSubview(popOverVC.view);
-                                popOverVC.didMove(toParent: self);
+                                TweakAndEatUtils.AlertView.showAlert(view: self, message: firstObj.html2String)
+//                                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NutritionistPopViewController") as! NutritionistPopViewController;
+//                                self.addChild(popOverVC);
+//                                popOverVC.viewController = self
+//                                //popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//                                popOverVC.popUp1 = true
+//                                popOverVC.tweakText = firstObj.html2String
+//                                self.view.addSubview(popOverVC.view);
+//                                popOverVC.didMove(toParent: self);
                             }
                         }
                     }
@@ -5475,7 +5477,10 @@ self.topImageView.alpha = 1
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
        // getTrends()
-       // dummyNavigation()
+//        DispatchQueue.main.sync {
+           // dummyNavigation()
+//
+//        }
        // UIApplication.shared.addObserver(self, forKeyPath: "applicationIconBadgeNumber", options: .new, context: nil)
         UserDefaults.standard.set("WELCOME_VIEW", forKey: "SWAP_SWITCH_VIEW")
         UserDefaults.standard.synchronize()
