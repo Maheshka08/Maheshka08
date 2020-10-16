@@ -476,10 +476,21 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                    let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                    navController?.pushViewController(vc, animated: true);
        }
+    
+    func goToPurchaseTAEClubScreen() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+        clickViewController?.fromPopUpScreen = true
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+
+    }
+    
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
+        } else if promoAppLink == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                        self.goToTAEClubMemPage()
@@ -503,6 +514,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             
+        } else if promoAppLink == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
 
                           if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {

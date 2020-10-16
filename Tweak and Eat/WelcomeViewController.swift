@@ -645,6 +645,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             self.smallScreenPopUp.isHidden = true
             self.playVideo()
+        } else if link == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.smallScreenPopUp.isHidden = true
 
@@ -660,7 +662,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    
+    func goToPurchaseTAEClubScreen() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+        clickViewController?.fromPopUpScreen = true
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+
+    }
     @IBAction func floatingCrownBtnTapped(_ sender: Any) {
         if self.floatingCrownBtn.currentImage != UIImage.init(named: "cancel-btn") {
             DispatchQueue.main.async {
@@ -2373,7 +2381,9 @@ self.topImageView.alpha = 1
     }
     
     @objc func infoIconClick() {
-        showCongratulationsTweakerView()
+        //showCongratulationsTweakerView()
+        self.dummyPopUp()
+
     }
     override func viewDidLoad() {
 
@@ -2521,7 +2531,7 @@ self.topImageView.alpha = 1
         
         self.smallScreenPopUp.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
-        //self.link = "CHECK_THIS_OUT"
+        //self.link = "CLUB_PURCHASE"
 //        self.smallScreenPopUpBtn.setTitle("PLAY VIDEO", for: .normal)
         //self.dummyPopUp()
 //        self.link = "-IndIWj1mSzQ1GDlBpUt"
@@ -3588,6 +3598,8 @@ self.topImageView.alpha = 1
     @objc func pressed(sender: UIButton!) {
         if (link == "" || link == "HOME") {
             self.popUpView.removeFromSuperview()
+        } else if link == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.popUpView.removeFromSuperview()
 
@@ -4352,6 +4364,8 @@ self.topImageView.alpha = 1
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             self.performSegue(withIdentifier: "taeClub", sender: self);
 
+        } else if promoAppLink == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
         } else if promoAppLink == "PP_LABELS" {
@@ -4690,6 +4704,8 @@ self.topImageView.alpha = 1
        
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
+        } else if promoAppLink == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
         if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
             self.goToTAEClubMemPage()

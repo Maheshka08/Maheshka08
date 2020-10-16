@@ -124,6 +124,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
     @IBOutlet weak var showPurchasedView: UIView!
     @IBOutlet weak var paymentSuccessView: UIView!
     var cardImageString = "";
+    var fromPopUpScreen = false
     @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj");
     @objc var bundle = Bundle();
     var labelsPrice = "pkgRecurPrice"
@@ -141,6 +142,10 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
     
     @IBAction func club4SubmitTapped(_ sender: Any) {
        // self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
+    func purchaseIAP() {
         self.navigationItem.hidesBackButton = true
         MBProgressHUD.showAdded(to: self.view, animated: true);
                  SKPaymentQueue.default().add(self)
@@ -312,6 +317,9 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
                            self.currency = "\(ptpPriceDict["currency"] as AnyObject as! String)";
                 }
                 self.submitBtn.isEnabled = true
+                if self.fromPopUpScreen == true {
+                    self.purchaseIAP()
+                }
 
             }
             

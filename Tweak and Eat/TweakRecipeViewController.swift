@@ -452,6 +452,14 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
        self.navigationController?.pushViewController(clickViewController!, animated: true)
          
       }
+    
+    func goToPurchaseTAEClubScreen() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+        clickViewController?.fromPopUpScreen = true
+        self.navigationController?.pushViewController(clickViewController!, animated: true)
+
+    }
     @IBAction func nonVegAction(_ sender: Any) {
          DispatchQueue.main.async {
         self.backButton.isHidden = false
@@ -1595,6 +1603,9 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             self.goToHomePage()
             
         }
+         if promoAppLink == "CLUB_PURCHASE" {
+           self.goToPurchaseTAEClubScreen()
+       }
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()

@@ -95,6 +95,8 @@ class PopUpNotificationView: UIView {
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
+        } else if link == "CLUB_PURCHASE" {
+            self.goToPurchaseTAEClubScreen()
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             //ClubIdn4hd8flchs9Vy
                       if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
@@ -323,6 +325,14 @@ class PopUpNotificationView: UIView {
        navController?.pushViewController(clickViewController!, animated: true);
          
       }
+    
+    func goToPurchaseTAEClubScreen() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+        clickViewController?.fromPopUpScreen = true
+     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+     navController?.pushViewController(clickViewController!, animated: true);
+    }
 
     
     
@@ -348,7 +358,9 @@ class PopUpNotificationView: UIView {
                } else if link == "HOW_IT_WORKS" {
                    
                  self.playVideo()
-               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+               } else if link == "CLUB_PURCHASE" {
+                self.goToPurchaseTAEClubScreen()
+            } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 
