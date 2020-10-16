@@ -2381,8 +2381,8 @@ self.topImageView.alpha = 1
     }
     
     @objc func infoIconClick() {
-        //showCongratulationsTweakerView()
-        self.dummyPopUp()
+        showCongratulationsTweakerView()
+        //self.dummyPopUp()
 
     }
     override func viewDidLoad() {
