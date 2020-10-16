@@ -24,6 +24,9 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, MFMailCompos
         self.setupUI()
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func sendFeedBack() {
         if feedbackTextView.text == "" {
@@ -44,6 +47,9 @@ return
                              MBProgressHUD.hide(for: self.view, animated: true);
                             self.feedbackTextView.text = ""
                             self.view.endEditing(true)
+                            DispatchQueue.main.async {
+                                self.countLabel.text = "\(                            self.feedbackTextView.text.count)/\(NUMBER_OF_CHAR)"
+                            }
                             TweakAndEatUtils.AlertView.showAlert(view: self, message: "Thank you for your feedback!")
 
                          }
