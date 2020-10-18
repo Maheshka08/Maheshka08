@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D4F1DD27-6185-4DDA-9112-1281760FB1E6"
+            uuid = "D8EBDAFE-98C1-4E40-814C-C7C16E1B3FA9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            filePath = "AvailablePremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8899"
-            endingLineNumber = "8899"
-            landmarkName = "switchToSeventhScreen1()"
+            startingLineNumber = "847"
+            endingLineNumber = "847"
+            landmarkName = "getPremiumPackagesApi2()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

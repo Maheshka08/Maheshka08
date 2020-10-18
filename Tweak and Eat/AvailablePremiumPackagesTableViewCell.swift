@@ -32,6 +32,7 @@ class AvailablePremiumPackagesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var howToSubVideoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var expandableView: UIView!;
+    @IBOutlet weak var packageImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var expandableViewHeightConstraint: NSLayoutConstraint!;
     
     @objc var isExpanded:Bool = false
@@ -62,7 +63,7 @@ class AvailablePremiumPackagesTableViewCell: UITableViewCell {
         tapped.numberOfTapsRequired = 1;
         self.packageImageView?.addGestureRecognizer(tapped);
         //self.expandViewHeightConstraint.constant = 0;
-        //self.packageImageView.contentMode = .scaleAspectFit
+        //self.packageImageView.contentMode = .scaleToFill
       //  self.purchasedLbl.isHidden = true;
 
         // Initialization code

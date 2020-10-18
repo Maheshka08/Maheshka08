@@ -553,6 +553,13 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+//         DispatchQueue.main.async {
+//        self.tableView.reloadData()
+//        }
         self.navigationItem.hidesBackButton = true
         let btn1 = UIButton()
         btn1.setImage(UIImage(named: "backIcon"), for: .normal)
@@ -731,29 +738,29 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
         self.performSegue(withIdentifier: "packages", sender: self);
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let cellDictionary = self.premiumPackagesApiArray[indexPath.row]
-        if cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" &&  cellDictionary.mppc_fb_id != self.ptpPackage  && cellDictionary.mppc_fb_id != "-IndAiBPtmMrS4VPnwmD" && cellDictionary.mppc_fb_id != "-IdnAiBPLKMO5ePamQle" && cellDictionary.mppc_fb_id != "-SgnAiBPJlXfM3KzDWR8" && cellDictionary.mppc_fb_id != "-MysAiBPyaX9TgFT1YOp" && cellDictionary.mppc_fb_id != "-PhyAiBPcYLiSYlqhjbI" && cellDictionary.mppc_fb_id != "-UsaAiBPxnaopT55GJxl" && cellDictionary.mppc_fb_id != "-MysRamadanwgtLoss99" && cellDictionary.mppc_fb_id != "-IndWLIntusoe3uelxER" && cellDictionary.mppc_fb_id != "-AiDPwdvop1HU7fj8vfL" && cellDictionary.mppc_fb_id != "-IndIWj1mSzQ1GDlBpUt" && self.fromCrown == false {//
-            if indexPath.row == self.currentRow {
-
-                return 216
-            } else {
-                return 216
-
-            }
-          
-        } else {
-
-            if self.fromCrown == false {
-                return 176
-
-            }
-            return 156
-
-        }
-         // return 176
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        let cellDictionary = self.premiumPackagesApiArray[indexPath.row]
+//        if cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" &&  cellDictionary.mppc_fb_id != self.ptpPackage  && cellDictionary.mppc_fb_id != "-IndAiBPtmMrS4VPnwmD" && cellDictionary.mppc_fb_id != "-IdnAiBPLKMO5ePamQle" && cellDictionary.mppc_fb_id != "-SgnAiBPJlXfM3KzDWR8" && cellDictionary.mppc_fb_id != "-MysAiBPyaX9TgFT1YOp" && cellDictionary.mppc_fb_id != "-PhyAiBPcYLiSYlqhjbI" && cellDictionary.mppc_fb_id != "-UsaAiBPxnaopT55GJxl" && cellDictionary.mppc_fb_id != "-MysRamadanwgtLoss99" && cellDictionary.mppc_fb_id != "-IndWLIntusoe3uelxER" && cellDictionary.mppc_fb_id != "-AiDPwdvop1HU7fj8vfL" && cellDictionary.mppc_fb_id != "-IndIWj1mSzQ1GDlBpUt" && self.fromCrown == false {//
+//            if indexPath.row == self.currentRow {
+//
+//                return 216
+//            } else {
+//                return 216
+//
+//            }
+//          
+//        } else {
+//
+//            if self.fromCrown == false {
+//                return 176
+//
+//            }
+//            return 156
+//
+//        }
+//         // return 176
+//    }
     
     func getPackageDetails<T>(packageObj: [String: AnyObject], val: String, type: T.Type) -> AnyObject {
         if (packageObj.index(forKey: val) != nil) {
@@ -837,7 +844,9 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
 //                        let hardCodedPkg = PremiumPackages(mppc_fb_id: "-IndWLIntusoe3uelxER", pp_image_ba: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_img_banner_ios: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_name: "Intermittent Fasting Weight Loss", isCellTapped: false)
 //                        self.premiumPackagesApiArray.insert(hardCodedPkg, at: 0)
                        // }
+                         DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        }
                         if self.fromHomePopups == true {
                             if let indexPathRow = self.premiumPackagesApiArray.index(where: {$0.mppc_fb_id == self.packageID}) {
                                 self.currentRow = indexPathRow
@@ -1029,9 +1038,23 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.premiumPackagesApiArray.count;
+        
+        if self.premiumPackagesApiArray.count > 0 {
+            return self.premiumPackagesApiArray.count
+        }
+        return 0;
     }
   
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if self.premiumPackagesApiArray.count > 0 {
+//            let indexPath = IndexPath(row: indexPath.row, section: 0)
+//        let cell = tableView.cellForRow(at: indexPath) as! AvailablePremiumPackagesTableViewCell
+//
+//        return CGFloat(cell.packageImageViewHeightConstraint.constant)
+//        }
+//        return 0
+//    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! AvailablePremiumPackagesTableViewCell;
@@ -1045,11 +1068,39 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
             if language == "BA" {
                 let imageUrlBA = cellDictionary.pp_image_ba;
-                cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA));
+                cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
+                                                                   // Your code inside completion block
+                    if image != nil {
+                  let ratio = image!.size.width / image!.size.height
+                        let newHeight = cell.packageImageView.frame.width / ratio
+                        cell.packageImageViewHeightConstraint.constant = newHeight
+                        cell.layoutIfNeeded()
+                        UIView.performWithoutAnimation {
+                            tableView.beginUpdates()
+                            tableView.endUpdates()
+                        }
+
+
+                  }
+                }
                 
             } else {
                 let imageUrlEN = cellDictionary.mppc_img_banner_ios;
-                cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN));
+                cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN)) { (image, error, cache, url) in
+                                                                   // Your code inside completion block
+                    if image != nil {
+                  let ratio = image!.size.width / image!.size.height
+                        let newHeight = cell.packageImageView.frame.width / ratio
+                        cell.packageImageViewHeightConstraint.constant = newHeight
+                        cell.layoutIfNeeded()
+                        UIView.performWithoutAnimation {
+                            tableView.beginUpdates()
+                            tableView.endUpdates()
+                        }
+
+
+                  }
+                }
             }
         }
         if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" {
@@ -1089,7 +1140,6 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
 //            cell.howToSubscribeVideoBtn.isHidden = true
 //        }
         }
-      
         return cell;
         
     }
