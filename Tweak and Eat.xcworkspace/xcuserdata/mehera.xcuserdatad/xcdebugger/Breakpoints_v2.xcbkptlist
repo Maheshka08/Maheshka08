@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D8EBDAFE-98C1-4E40-814C-C7C16E1B3FA9"
+            uuid = "70EAFCEE-2212-4201-86B3-710F9E732608"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
-            landmarkName = "getPremiumPackagesApi2()"
+            startingLineNumber = "1397"
+            endingLineNumber = "1397"
+            landmarkName = "packagLabelSelections()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
