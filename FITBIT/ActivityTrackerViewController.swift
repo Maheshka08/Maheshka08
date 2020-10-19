@@ -24,6 +24,7 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
             self.chartSelectedLabel.text = "No Readings..."
         }
     }
+    var backBtn = UIButton()
     var xLabelsArray = [String]()
     @objc var stepsDictionary = [String:AnyObject]()
     @objc var floorsDictionary = [String:AnyObject]()
@@ -167,6 +168,11 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+                      backBtn.setImage(UIImage(named: "backIcon"), for: .normal)
+                      backBtn.frame = CGRect(0, 0, 30, 30)
+                      backBtn.addTarget(self, action: #selector(ActivityTrackerViewController.action), for: .touchUpInside);
+                      self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: backBtn), animated: true);
         self.aaChartView.addSubview(self.aaChartV)
 
         lineChart.backgroundColor = UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
@@ -283,6 +289,10 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
     @objc func refreshData1() {
         self.chartSelectedLabel.text = "Please tap on the graph to see the readings...";
       //  showChartView();
+    }
+    
+    @objc func action() {
+    self.navigationController?.popViewController(animated: true)
     }
     
     @objc func showChartView() {
