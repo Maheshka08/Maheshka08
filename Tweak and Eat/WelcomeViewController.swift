@@ -973,22 +973,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             minHeight = 70
                         }
                         if self.showGraph == false {
-//                            if IS_iPHONEXRXSMAX {
-//
-//                                                           self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + minHeight
-//                                                       } else if IS_iPHONEXXS {
-//                                let val: CGFloat = (UserDefaults.standard.value(forKey: "NEW_USER") != nil && self.trialPeriodExpired == false) ? 160 : 30
-//                                self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + val
-//                                                       } else if IS_iPHONE678P {
-//                                let val: CGFloat = (UserDefaults.standard.value(forKey: "NEW_USER") != nil && self.trialPeriodExpired == false) ? 110 : 50
-//                                self.draggableViewHeightConstraint.constant = self.draggableConstant
-//                                                       } else if IS_iPHONE678 {
-//                                                           self.draggableViewHeightConstraint.constant = 175 - 76
-//                                                       } else if IS_iPHONE5 {
-//                                                           self.draggableViewHeightConstraint.constant = 30
-//                                                       } else {
-//                                                           self.draggableViewHeightConstraint.constant = 43 - 86 + 30
-//                                                       }
                              self.draggableViewHeightConstraint.constant = self.draggableConstant
 
                         } else  {
@@ -1012,15 +996,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.switchButton.alpha = 1
                             self.outerChartView.alpha = 1
                         self.tweakBeforeDefaultView.alpha = 1
-//                        if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-//                            //self.tweakBeforeDefaultView.alpha = 1
-//
-//                        } else {
-//                            self.tweakBeforeDefaultView.alpha = 0
-//
-//                        }
 
-                       
                             self.bottomBtnViewTopConstraint.constant = -108
 
                             self.view.layoutIfNeeded()
@@ -1036,7 +1012,65 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
 
-  
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+
+                    if self.goneUp == false {
+             return
+         }
+        
+         DispatchQueue.main.async {
+             UIView.animate(
+                 withDuration: 1,
+                 animations: {
+                     var minHeight:CGFloat = 0
+                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+                         if self.trialPeriodExpired == true {
+                             minHeight = 70
+                         } else {
+                         minHeight = 190
+                         }
+                     } else {
+                         minHeight = 70
+                     }
+                     if self.showGraph == false {
+                          self.draggableViewHeightConstraint.constant = self.draggableConstant
+
+                     } else  {
+                         if IS_iPHONEXRXSMAX {
+                                                        
+                                                        self.draggableViewHeightConstraint.constant = 300 - 86 + minHeight
+                                                    } else if IS_iPHONEXXS {
+                                                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+                                                    } else if IS_iPHONE678P {
+                                                        self.draggableViewHeightConstraint.constant = 130
+                                                    } else if IS_iPHONE678 {
+                                                        self.draggableViewHeightConstraint.constant = 175 - 76
+                                                    } else if IS_iPHONE5 {
+                                                        self.draggableViewHeightConstraint.constant = 30
+                                                    } else {
+                                                        self.draggableViewHeightConstraint.constant = 43 - 86
+                                                    }
+                     }
+                        
+                        // self.myNutritionDetailsView.alpha = 1
+                     self.switchButton.alpha = 1
+                         self.outerChartView.alpha = 1
+                     self.tweakBeforeDefaultView.alpha = 1
+
+                         self.bottomBtnViewTopConstraint.constant = -108
+
+                         self.view.layoutIfNeeded()
+                         
+                         
+         },  completion: {(_ completed: Bool) -> Void in
+             self.goneUp = false
+             //self.outerChartView.alpha = 1
+
+         })
+         }
+
+    }
     
     override func viewDidLayoutSubviews() {
         
@@ -6516,7 +6550,7 @@ self.floatingCallBtn.isHidden = false
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             print(responseDic)
             self.tweakCount = responseDic["tweakTotal"] as! Int
-//            self.tweakCount = 0
+            self.tweakCount = 0
 //            self.tweakCount = Int.random(in: 0...1)
 
 //            DispatchQueue.global(qos: .background).async {
