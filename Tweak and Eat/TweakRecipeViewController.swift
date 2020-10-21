@@ -1620,15 +1620,29 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
          if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
-           self.goToPurchaseTAEClubScreen()
-       }
+             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+               self.goToTAEClubMemPage()
+             } else {
+                 self.goToPurchaseTAEClubScreen()
+             }
+         }
         if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
-                  if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
-                  self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
-                  } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
-                  self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
-                  }
-              }
+            if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+                if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                 self.performSegue(withIdentifier: "myTweakAndEat", sender: "-IndIWj1mSzQ1GDlBpUt");
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+                }
+            } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                 self.performSegue(withIdentifier: "myTweakAndEat", sender: "-IndWLIntusoe3uelxER");
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+                }
+            }
+        }
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()

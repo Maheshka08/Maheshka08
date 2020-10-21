@@ -112,12 +112,26 @@ class PopUpNotificationView: UIView {
             
         } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
             if link == "MYTAE_PUR_IND_OP_3M" {
+                if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
             self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                }
             } else if link == "WLIF_PUR_IND_OP_3M" {
+                if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
             self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                }
             }
         } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
-            self.goToPurchaseTAEClubScreen()
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+              self.goToTAEClubMemPage()
+            } else {
+                self.goToPurchaseTAEClubScreen()
+            }
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             //MYTAE_PUR_IND_OP_3M
                       if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
@@ -380,14 +394,28 @@ class PopUpNotificationView: UIView {
                    
                  self.playVideo()
                } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
-                          if link == "MYTAE_PUR_IND_OP_3M" {
-                          self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
-                          } else if link == "WLIF_PUR_IND_OP_3M" {
-                          self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
-                          }
-                      } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
-                self.goToPurchaseTAEClubScreen()
-            } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+                   if link == "MYTAE_PUR_IND_OP_3M" {
+                       if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                        self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
+                           //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                       } else {
+                   self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                       }
+                   } else if link == "WLIF_PUR_IND_OP_3M" {
+                       if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                        self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
+                           //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                       } else {
+                   self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                       }
+                   }
+               } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
+                   if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+                     self.goToTAEClubMemPage()
+                   } else {
+                       self.goToPurchaseTAEClubScreen()
+                   }
+               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 

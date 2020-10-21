@@ -736,6 +736,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     MBProgressHUD.hide(for: self.view, animated: true);
                     
                     print("Purchased Failed");
+                   // print(transaction)
+                    print(trans.error?.localizedDescription as Any)
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: trans.error?.localizedDescription as Any as! String + ". Please try again later.")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
                     
