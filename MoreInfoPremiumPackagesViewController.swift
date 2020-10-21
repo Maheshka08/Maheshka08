@@ -26,6 +26,7 @@ enum MyTheme {
     case dark
 }
 class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
+    var identifierFromPopUp = ""
     var scrolledIndex: Int = 0
     func cellTappedOnButton(_ cell: CarouselCollectionViewCell) {
         selectedIndex = cell.myIndexPath.row;
@@ -58,15 +59,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     
                     let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
                     let totalDesc: String = labels + amount + currency;
-        //            if self.featuresView.isHidden == false {
-        //            self.priceLabel.text = " " + totalDesc
-        //            } else {
-        //                self.chooseSubScriptionPlanLbl.text = " " + totalDesc
-        //
-        //            }
+       
                     self.packageName = (self.labelPriceDict[lables] as? String)!
-        //            self.buyNowButton.isEnabled = true
-        //            self.priceTableView.isHidden = true
+       
                     self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
                     MBProgressHUD.showAdded(to: self.view, animated: true);
                            if (SKPaymentQueue.canMakePayments()) {
@@ -1428,6 +1423,28 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
                 }
             DispatchQueue.main.async {
+
+//            if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
+//                //MYTAE_IND_QUATERLY
+//                if self.nutritionLabelPriceArray.count > 0 {
+//                    for dict in self.nutritionLabelPriceArray {
+//                        let recurPriceDict = dict as! [String: AnyObject]
+//                        if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_QUATERLY" {
+//                            self.startPurchase(identifier: "MYTAE_IND_QUATERLY", dict: recurPriceDict)
+//                        }
+//                    }
+//                }
+//            } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_3M" {
+//                //WL_INT_IND_QUATERLY
+//                if self.nutritionLabelPriceArray.count > 0 {
+//                    for dict in self.nutritionLabelPriceArray {
+//                        let recurPriceDict = dict as! [String: AnyObject]
+//                        if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_QUATERLY" {
+//                            self.startPurchase(identifier: "WL_INT_IND_QUATERLY", dict: recurPriceDict)
+//                        }
+//                    }
+//                }
+//            }
 //                            self.ratingsCarouselView.reloadData()
 //                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
 
@@ -1437,6 +1454,34 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
         }
     
+    func startPurchase(identifier: String, dict: [String : AnyObject]) {
+        self.labelPriceDict  = dict;
+                           self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+                           self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+                           self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+                           self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+                           self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+                           let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+                           let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+                           
+                           let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+                           let totalDesc: String = labels + amount + currency;
+              
+                           self.packageName = (self.labelPriceDict[lables] as? String)!
+              
+                           self.productIdentifier = identifier
+                           MBProgressHUD.showAdded(to: self.view, animated: true);
+                                  if (SKPaymentQueue.canMakePayments()) {
+                                      self.buyNowButton.isEnabled = false
+                                      let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                                      let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                                      productsRequest.delegate = self;
+                                      productsRequest.start();
+                                      print("Fetching Products");
+                                  } else {
+                                      print("can't make purchases");
+                                  }
+    }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        let cellDict = self.moreInfoPremiumPackagesArray[indexPath.row] as! [String : AnyObject];

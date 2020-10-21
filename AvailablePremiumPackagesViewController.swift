@@ -33,7 +33,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     @IBOutlet weak  var paySucessView: UIView!
     @IBOutlet weak  var usdAmtLabel: UILabel!
     @IBOutlet weak  var nutritionstDescLbl: UILabel!
-    
+    var identifierFromPopUp = ""
     func cellTappedOnHowToSubscribeVideo(_ cell: AvailablePremiumPackagesTableViewCell) {
         
         self.myIndex = cell.cellIndexPath
@@ -658,7 +658,10 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
             
 
         } else if segue.identifier == "moreInfo" {
+            
+        
             let popOverVC = segue.destination as! MoreInfoPremiumPackagesViewController;
+            popOverVC.identifierFromPopUp = self.identifierFromPopUp
             let cellD =  self.premiumPackagesApiArray[currentRow]
             if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
                 let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
@@ -852,6 +855,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                                 self.currentRow = indexPathRow
                                // self.cellTapped = false
                             }
+                            
                             self.performSegue(withIdentifier: "moreInfo", sender: self)
 
                         
@@ -1139,6 +1143,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
 //            cell.packagesView.backgroundColor = .clear
 //            cell.howToSubscribeVideoBtn.isHidden = true
 //        }
+            
         }
         return cell;
         

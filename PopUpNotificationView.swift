@@ -28,7 +28,15 @@ class PopUpNotificationView: UIView {
         
     }
     
-    
+    func goToBuyScreen(packageID: String, identifier: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+        vc.packageID = packageID
+        vc.identifierFromPopUp = identifier
+         vc.fromHomePopups = true
+                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                       navController?.pushViewController(vc, animated: true);
+    }
     
     func showAvailablePremiumPackageVC(obj: [String : AnyObject]) {
         //AvailablePremiumPackagesViewController
@@ -95,10 +103,16 @@ class PopUpNotificationView: UIView {
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
-        } else if link == "CLUB_PURCHASE" {
+        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+            if link == "MYTAE_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+            } else if link == "WLIF_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+            }
+        } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
-            //ClubIdn4hd8flchs9Vy
+            //MYTAE_PUR_IND_OP_3M
                       if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                          self.goToTAEClubMemPage()
                        } else {
@@ -358,7 +372,13 @@ class PopUpNotificationView: UIView {
                } else if link == "HOW_IT_WORKS" {
                    
                  self.playVideo()
-               } else if link == "CLUB_PURCHASE" {
+               } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+                          if link == "MYTAE_PUR_IND_OP_3M" {
+                          self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                          } else if link == "WLIF_PUR_IND_OP_3M" {
+                          self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                          }
+                      } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
                 self.goToPurchaseTAEClubScreen()
             } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {

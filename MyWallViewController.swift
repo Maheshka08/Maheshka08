@@ -485,13 +485,29 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
+    func goToBuyScreen(packageID: String, identifier: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+        vc.packageID = packageID
+        vc.identifierFromPopUp = identifier
+         vc.fromHomePopups = true
+                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                       navController?.pushViewController(vc, animated: true);
+    }
+    
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
-        } else if promoAppLink == "CLUB_PURCHASE" {
+        } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
-        } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+        } else if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                   if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+                   } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+                   }
+               } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                        self.goToTAEClubMemPage()
 
@@ -514,9 +530,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             
-        } else if promoAppLink == "CLUB_PURCHASE" {
+        } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PURCHASE" {
             self.goToPurchaseTAEClubScreen()
-        } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
+        } else if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                   if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+                   } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+                   }
+               } else if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
 
                           if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                               self.goToTAEClubMemPage()

@@ -631,7 +631,17 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.performSegue(withIdentifier: "taeClub", sender: self);
 
     }
-    
+    func goToBuyScreen(packageID: String, identifier: String) {
+       // DispatchQueue.main.async {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+            vc.packageID = packageID
+            vc.identifierFromPopUp = identifier
+             vc.fromHomePopups = true
+            self.navigationController?.pushViewController(vc, animated: true)
+       // }
+
+    }
     @IBAction func smallScreenPopUpDoneTapped(_ sender: Any) {
         if (link == "" || link == "HOME") {
             self.smallScreenPopUp.isHidden = true
@@ -645,9 +655,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             self.smallScreenPopUp.isHidden = true
             self.playVideo()
-        } else if link == "CLUB_PURCHASE" {
+        } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+                   if link == "MYTAE_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                   } else if link == "WLIF_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                   }
+               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.smallScreenPopUp.isHidden = true
 
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
@@ -2032,6 +2048,10 @@ tappedOnTAEClubExpiryView()
         clickViewController?.fromPopUpScreen = true
         self.navigationController?.pushViewController(clickViewController!, animated: true)
         
+    }
+    
+    func dummyNav2(packageIDs: String, identifier: String) {
+        self.goToBuyScreen(packageID: packageIDs, identifier: identifier)
     }
     
     func dummyPopUp() {
@@ -3600,9 +3620,15 @@ self.topImageView.alpha = 1
     @objc func pressed(sender: UIButton!) {
         if (link == "" || link == "HOME") {
             self.popUpView.removeFromSuperview()
-        } else if link == "CLUB_PURCHASE" {
+        } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+                   if link == "MYTAE_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                   } else if link == "WLIF_PUR_IND_OP_3M" {
+                   self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                   }
+               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             self.popUpView.removeFromSuperview()
 
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
@@ -4366,7 +4392,13 @@ self.topImageView.alpha = 1
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             self.performSegue(withIdentifier: "taeClub", sender: self);
 
-        } else if promoAppLink == "CLUB_PURCHASE" {
+        } else if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
+            if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+            } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+            }
+        } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
         } else if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
@@ -4706,8 +4738,14 @@ self.topImageView.alpha = 1
        
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
-        } else if promoAppLink == "CLUB_PURCHASE" {
+        } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             self.goToPurchaseTAEClubScreen()
+        } else if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
+            if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+            } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+            }
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
         if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
             self.goToTAEClubMemPage()
@@ -5481,6 +5519,7 @@ self.topImageView.alpha = 1
            // dummyNavigation()
 //
 //        }
+        
        // UIApplication.shared.addObserver(self, forKeyPath: "applicationIconBadgeNumber", options: .new, context: nil)
         UserDefaults.standard.set("WELCOME_VIEW", forKey: "SWAP_SWITCH_VIEW")
         UserDefaults.standard.synchronize()
@@ -8047,7 +8086,13 @@ self.floatingCallBtn.isHidden = false
                 }
         })
         
-        
+        let randomInt = Int.random(in: 0...1)
+        if randomInt == 0 {
+            self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
+        } else {
+            self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
+
+        }
         
     }
     

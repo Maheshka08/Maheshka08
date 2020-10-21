@@ -1580,6 +1580,15 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             
         })
     }
+    func goToBuyScreen(packageID: String, identifier: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+        vc.packageID = packageID
+        vc.identifierFromPopUp = identifier
+         vc.fromHomePopups = true
+                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                       navController?.pushViewController(vc, animated: true);
+    }
     
     @objc func incrementID() -> Int {
         let realm = try! Realm();
@@ -1603,9 +1612,16 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             self.goToHomePage()
             
         }
-         if promoAppLink == "CLUB_PURCHASE" {
+         if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
            self.goToPurchaseTAEClubScreen()
        }
+        if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                  if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
+                  self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: promoAppLink)
+                  } else if promoAppLink == "WLIF_PUR_IND_OP_3M" {
+                  self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
+                  }
+              }
         if promoAppLink == "CLUB_SUBSCRIPTION" || promoAppLink == "-ClubInd3gu7tfwko6Zx" || promoAppLink == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
