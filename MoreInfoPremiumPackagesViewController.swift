@@ -1423,34 +1423,37 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
                 }
             DispatchQueue.main.async {
-
-//            if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
-//                //MYTAE_IND_QUATERLY
-//                if self.nutritionLabelPriceArray.count > 0 {
-//                    for dict in self.nutritionLabelPriceArray {
-//                        let recurPriceDict = dict as! [String: AnyObject]
-//                        if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_QUATERLY" {
-//                            self.startPurchase(identifier: "MYTAE_IND_QUATERLY", dict: recurPriceDict)
-//                        }
-//                    }
-//                }
-//            } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_3M" {
-//                //WL_INT_IND_QUATERLY
-//                if self.nutritionLabelPriceArray.count > 0 {
-//                    for dict in self.nutritionLabelPriceArray {
-//                        let recurPriceDict = dict as! [String: AnyObject]
-//                        if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_QUATERLY" {
-//                            self.startPurchase(identifier: "WL_INT_IND_QUATERLY", dict: recurPriceDict)
-//                        }
-//                    }
-//                }
-//            }
-//                            self.ratingsCarouselView.reloadData()
-//                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
+                self.ratingsCarouselView.reloadData()
+                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
+                if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
+                    UserDefaults.standard.removeObject(forKey: "POP_UP_IDENTIFIERS")
+            if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
+                //MYTAE_IND_QUATERLY
+                if self.nutritionLabelPriceArray.count > 0 {
+                    for dict in self.nutritionLabelPriceArray {
+                        let recurPriceDict = dict as! [String: AnyObject]
+                        if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_QUARTERLY" {
+                            self.startPurchase(identifier: "MYTAE_IND_QUARTERLY", dict: recurPriceDict)
+                        }
+                    }
+                }
+            } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_3M" {
+                //WL_INT_IND_QUATERLY
+                if self.nutritionLabelPriceArray.count > 0 {
+                    for dict in self.nutritionLabelPriceArray {
+                        let recurPriceDict = dict as! [String: AnyObject]
+                        if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_QUATERLY" {
+                            self.startPurchase(identifier: "WL_INT_IND_QUATERLY", dict: recurPriceDict)
+                        }
+                    }
+                }
+            }
+                            
 
             }
 
             }
+        }
 
         }
     

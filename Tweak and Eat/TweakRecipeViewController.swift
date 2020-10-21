@@ -1581,14 +1581,21 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     func goToBuyScreen(packageID: String, identifier: String) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
-        vc.packageID = packageID
-        vc.identifierFromPopUp = identifier
-         vc.fromHomePopups = true
-                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                       navController?.pushViewController(vc, animated: true);
-    }
+            UserDefaults.standard.set(identifier, forKey: "POP_UP_IDENTIFIERS")
+            UserDefaults.standard.synchronize()
+            DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                                  }
+                                  self.moveToAnotherView(promoAppLink: packageID)
+
+    //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+    //                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+    //        vc.packageID = packageID
+    //        vc.identifierFromPopUp = identifier
+    //         vc.fromHomePopups = true
+    //                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+    //                       navController?.pushViewController(vc, animated: true);
+        }
     
     @objc func incrementID() -> Int {
         let realm = try! Realm();

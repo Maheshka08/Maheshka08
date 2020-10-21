@@ -142,7 +142,7 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
     
     @IBAction func club4SubmitTapped(_ sender: Any) {
        // self.navigationController?.popToRootViewController(animated: true)
-        
+        purchaseIAP()
     }
     
     func purchaseIAP() {

@@ -632,16 +632,21 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     }
     func goToBuyScreen(packageID: String, identifier: String) {
-       // DispatchQueue.main.async {
-                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-            let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
-            vc.packageID = packageID
-            vc.identifierFromPopUp = identifier
-             vc.fromHomePopups = true
-            self.navigationController?.pushViewController(vc, animated: true)
-       // }
+            UserDefaults.standard.set(identifier, forKey: "POP_UP_IDENTIFIERS")
+            UserDefaults.standard.synchronize()
+            DispatchQueue.main.async {
+                                  MBProgressHUD.showAdded(to: self.view, animated: true);
+                                  }
+                                  self.moveToAnotherView(promoAppLink: packageID)
 
-    }
+    //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+    //                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+    //        vc.packageID = packageID
+    //        vc.identifierFromPopUp = identifier
+    //         vc.fromHomePopups = true
+    //                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+    //                       navController?.pushViewController(vc, animated: true);
+        }
     @IBAction func smallScreenPopUpDoneTapped(_ sender: Any) {
         if (link == "" || link == "HOME") {
             self.smallScreenPopUp.isHidden = true
@@ -2043,10 +2048,12 @@ tappedOnTAEClubExpiryView()
     }
     
     func dummyNavigation() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
-        clickViewController?.fromPopUpScreen = true
-        self.navigationController?.pushViewController(clickViewController!, animated: true)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
+//        clickViewController?.fromPopUpScreen = true
+//        self.navigationController?.pushViewController(clickViewController!, animated: true)
+       // self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
+self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
         
     }
     
@@ -5516,7 +5523,7 @@ self.topImageView.alpha = 1
         super.viewWillAppear(true)
        // getTrends()
 //        DispatchQueue.main.sync {
-           // dummyNavigation()
+       //    dummyNavigation()
 //
 //        }
         
@@ -8086,13 +8093,19 @@ self.floatingCallBtn.isHidden = false
                 }
         })
         
-        let randomInt = Int.random(in: 0...1)
-        if randomInt == 0 {
-            self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
-        } else {
-            self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
-
-        }
+//        let randomInt = Int.random(in: 0...1)
+//        if randomInt == 0 {
+//            //DispatchQueue.main.async {
+//                            self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
+//
+//           // }
+//        } else {
+//           // DispatchQueue.main.async {
+//                            self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
+//
+//            //}
+//
+//        }
         
     }
     

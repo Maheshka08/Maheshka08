@@ -661,6 +661,9 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
             
         
             let popOverVC = segue.destination as! MoreInfoPremiumPackagesViewController;
+            if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
+                self.identifierFromPopUp = UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") as! String
+            }
             popOverVC.identifierFromPopUp = self.identifierFromPopUp
             let cellD =  self.premiumPackagesApiArray[currentRow]
             if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
