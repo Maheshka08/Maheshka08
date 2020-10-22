@@ -26,6 +26,10 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, MFMailCompos
     }
     
     func sendFeedBack() {
+        if feedbackTextView.text == "" {
+            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please enter your feedback and continue!")
+return
+        }
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
         APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.SAVE_FEEDBACK, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: ["feedBack": self.feedbackTextView.text] as [String: AnyObject], success: { response in
