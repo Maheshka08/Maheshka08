@@ -12,7 +12,7 @@ import FirebaseDatabase
 import StoreKit
 import Realm
 import RealmSwift
-import AppsFlyerLib
+import Branch
 //Sample model
 struct Item {
     var value: String = ""
@@ -1079,7 +1079,17 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             }
             if  responseResult == "GOOD" {
                 //IndIWj1mSzQ1GDlBpUt
-                 AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
+                 //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
+                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+                    Branch.getInstance().setIdentity(msisdn)
+
+                }
+                let event = BranchEvent.customEvent(withName: "purchase")
+                event.eventDescription = "User completed payment."
+                event.customData["packageID"] = self.packageId
+                event.customData["currency"] = self.currency
+                event.logEvent()
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
                 let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
@@ -1675,6 +1685,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         super.viewDidLoad()
         //IndIWj1mSzQ1GDlBpUt
 //        AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "Tweak & Eat India - Quarterly", AFEventParamContentId: self.packageId, AFEventParamCurrency: "INR"])
+//        if UserDefaults.standard.value(forKey: "msisdn") != nil {
+//         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+//            Branch.getInstance().setIdentity(msisdn)
+//
+//        }
+//        let event = BranchEvent.customEvent(withName: "purchase")
+//        event.eventDescription = "User completed payment."
+//        event.customData["packageID"] = self.packageId
+//        event.customData["currency"] = self.currency
+//        event.logEvent()
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if countryCode == "91" {

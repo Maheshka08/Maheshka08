@@ -4,6 +4,13 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks: 2w3s1.app.link</string>
+		<string>applinks: 2w3s1-alternate.app.link</string>
+		<string>applinks: 2w3s1.test-app.link</string>
+		<string>applinks:nspd1-alternate.test-app.link</string>
+	</array>
 	<key>com.apple.developer.healthkit</key>
 	<true/>
 	<key>com.apple.developer.healthkit.access</key>

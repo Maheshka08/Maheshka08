@@ -22,13 +22,22 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.purpleteal.tweakeatapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tweakandeat</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.purpleteal.tweakeatapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>purpleteal</string>
-				<string>fb269853870748452</string>
 			</array>
 		</dict>
 		<dict>
@@ -37,11 +46,8 @@
 			<key>CFBundleURLName</key>
 			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tweakandeat</string>
-			</array>
+			<array/>
 		</dict>
-		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -57,11 +63,6 @@
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>purpleteal://</string>
-		<string>com.purpleteal.tweakeatapp</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -179,5 +180,14 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>branch_key</key>
+	<string>key_live_cmGW0lv3ZK3ZVdejX3gJSpeaywmw8Osj</string>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>tweakandeatapp.app.link</string>
+		<string>tweakandeatapp-alternate.app.link</string>
+		<string>tweakandeatapp.test-app.link</string>
+		<string>tweakandeatapp-alternate.test-app.link</string>
+	</array>
 </dict>
 </plist>

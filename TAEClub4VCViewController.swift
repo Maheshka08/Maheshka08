@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import StoreKit
-import AppsFlyerLib
+import Branch
 
 class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate {
     
@@ -187,7 +187,17 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
             if  responseResult == "GOOD" {
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
-                      AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+                      //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+                    Branch.getInstance().setIdentity(msisdn)
+
+                }
+                let event = BranchEvent.customEvent(withName: "purchase")
+                event.eventDescription = "User completed payment."
+                event.customData["packageID"] = self.packageId
+                event.customData["currency"] = self.currency
+                event.logEvent()
           self.paymentSuccessView.isHidden = false
                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
 

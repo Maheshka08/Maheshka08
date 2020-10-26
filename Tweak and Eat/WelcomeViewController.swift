@@ -24,7 +24,7 @@ import CoreImage
 import HealthKit
 import Alamofire
 import CoreTelephony
-import AppsFlyerLib
+import Branch
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -2434,6 +2434,11 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
+            link = UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") as! String
+            UserDefaults.standard.removeObject(forKey: "FROM_DEEP_LINKS")
+            self.tappedOnPopUpDone()
+        }
         self.refreshTweakBtn.isHidden = true
         //UserDefaults.standard.set("YES", forKey: "NEW_USER")
         
@@ -2736,6 +2741,7 @@ self.topImageView.alpha = 1
     //UserDefaults.standard.removeObject(forKey: "PUSHWHENKILLED")
        if  UserDefaults.standard.value(forKey: "PUSHWHENKILLED") != nil {
         print(UserDefaults.standard.value(forKey: "PUSHWHENKILLED")!)
+       // TweakAndEatUtils.AlertView.showAlert(view: self, message: "yeah")
         let userInfo = UserDefaults.standard.value(forKey: "PUSHWHENKILLED")! as! [String: AnyObject]
 //        if userinfo.index(forKey: "custom") != nil {
 //            let insideInfo = userinfo["custom"] as! [String: AnyObject]
@@ -4768,6 +4774,7 @@ self.topImageView.alpha = 1
     }
     
     @objc func tappedOnPopUpDone() {
+        
         if self.countryCode == "91" {
             self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
         } else if self.countryCode == "1" {
@@ -4798,6 +4805,10 @@ self.topImageView.alpha = 1
        
         if promoAppLink == "PP_PACKAGES" {
             self.performSegue(withIdentifier: "buyPackages", sender: self);
+        } else if promoAppLink == "TWEAK_WALL" {
+            self.goToTweakWall()
+        } else if promoAppLink == "RECIPE_WALL" {
+            self.goToRecipeWall()
         } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
@@ -5130,7 +5141,21 @@ self.topImageView.alpha = 1
             let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
          self.navigationController?.pushViewController(clickViewController!, animated: true)
            
+        }//
+    
+    func goToRecipeWall() {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakRecipeViewController") as? TweakRecipeViewController;
+         self.navigationController?.pushViewController(clickViewController!, animated: true)
+           
         }
+    func goToTweakWall() {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as? MyWallViewController;
+         self.navigationController?.pushViewController(clickViewController!, animated: true)
+           
+        }
+ 
  
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
@@ -9115,7 +9140,18 @@ self.floatingCallBtn.isHidden = false
                                             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                                                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                                                // if self.countryCode == "91" {
-                                                AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [ AFEventParamRegistrationMethod: "YES"])
+//                                                AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [ AFEventParamRegistrationMethod: "YES"])
+                                                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                                                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+                                                    Branch.getInstance().setIdentity(msisdn)
+
+                                                }
+                                                let event = BranchEvent.standardEvent(.completeRegistration)
+                                                event.eventDescription = "User completed registration."
+                                                event.logEvent()
+
+                                                //BranchEvent.standardEvent(.completeRegistration).logEvent()
+                                                
                                                // }
                                             }
                                             //last

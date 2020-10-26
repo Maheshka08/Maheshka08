@@ -19,12 +19,12 @@ import FirebaseInstanceID
 import FacebookLogin
 import FacebookCore
 import FacebookShare
-import AppsFlyerLib
+import Branch
 //import AppTrackingTransparency
 let uiRealm = try! Realm()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate, AppsFlyerLibDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate {
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
         print("onConversionDataSuccess data:")
                for (key, value) in conversionInfo {
@@ -209,6 +209,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // self.goToHomePage()
         //UIApplication.shared.applicationIconBadgeNumber = 1
+        // if you are using the TEST key
+         //Branch.setUseTestBranchKey(true)
+         Branch.getInstance().enableLogging()
+        //Branch.getInstance().validateSDKIntegration()
+         // listener for Branch Deep Link data
+         Branch.getInstance().initSession(launchOptions: launchOptions) { (params, error) in
+              // do stuff with deep link data (nav to page, display content, etc)
+             print(params as? [String: AnyObject] ?? {})
+//            UserDefaults.standard.set(params, forKey: "PUSHWHENKILLED")
+//            UserDefaults.standard.synchronize()
+            if params!.index(forKey: "goToLandingPage") != nil {
+                self.goToHomePage(links: params!["goToLandingPage"]! as! String)
+            }
+            
+         }
+//        if UserDefaults.standard.value(forKey: "UUID") == nil {
+//                        UserDefaults.standard.set("YES", forKey: "UUID")
+//                        UserDefaults.standard.synchronize()
+//        
+//        }
 AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         ApplicationDelegate.shared.application(
             application,
@@ -227,26 +247,26 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
 
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isAutoInitEnabled = true
-        ApplicationDelegate.initializeSDK(nil)
-        AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
-        AppsFlyerLib.shared().appleAppID = "1267286348"
-        AppsFlyerLib.shared().delegate = self
-        //  Set isDebug to true to see AppsFlyer debug logs
-        AppsFlyerLib.shared().isDebug = true
+//        ApplicationDelegate.initializeSDK(nil)
+//        AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
+//        AppsFlyerLib.shared().appleAppID = "1267286348"
+//        AppsFlyerLib.shared().delegate = self
+//        //  Set isDebug to true to see AppsFlyer debug logs
+//        AppsFlyerLib.shared().isDebug = true
         // AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [AFEventCompleteRegistration: "YES"])
         
         // The following block is for applications wishing to collect IDFA.
         // for iOS 14 and above - The user will be prompted for permission to collect IDFA.
         //                        If permission granted, the IDFA will be collected by the SDK.
         // for iOS 13 and below - The IDFA will be collected by the SDK. The user will NOT be prompted for permission.
-        if #available(iOS 14, *) {
-            // Set a timeout for the SDK to wait for the IDFA collection before handling app launch
-            AppsFlyerLib.shared().waitForAdvertisingIdentifier(withTimeoutInterval: 60)
-                  // Show the user the Apple IDFA consent dialog (AppTrackingTransparency)
-                  // Can be called in any place
-                 // ATTrackingManager.requestTrackingAuthorization { (status) in
-                 // }
-              }
+//        if #available(iOS 14, *) {
+//            // Set a timeout for the SDK to wait for the IDFA collection before handling app launch
+//            AppsFlyerLib.shared().waitForAdvertisingIdentifier(withTimeoutInterval: 60)
+//                  // Show the user the Apple IDFA consent dialog (AppTrackingTransparency)
+//                  // Can be called in any place
+//                 // ATTrackingManager.requestTrackingAuthorization { (status) in
+//                 // }
+//              }
         //AppEvents.logEvent(.init("fb_mobile_purchase"))
         
 //      ApplicationDelegate.shared.application(
@@ -675,16 +695,16 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
         self.window?.rootViewController = UINavigationController(rootViewController:clickViewController!)
     }
+    func goToTAEClub() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
+        self.window?.rootViewController = UINavigationController(rootViewController:vc)
+
+    }
+   
     
     func goToHomePage(links: String) {
-        if links == "buy" {
-                  //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MYTAEVC"), object: nil)
-            UserDefaults.standard.setValue("YES", forKey: "MYTAEVC")
-                      } else if links == "club" {
-                          //MYTAECLUB
-               //           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MYTAECLUB"), object: nil)
-UserDefaults.standard.setValue("YES", forKey: "MYTAECLUB")
-                      }
+        UserDefaults.standard.setValue(links, forKey: "FROM_DEEP_LINKS")
         UserDefaults.standard.synchronize()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
@@ -899,11 +919,13 @@ UserDefaults.standard.setValue("YES", forKey: "MYTAECLUB")
         print("Failed to register:", error);
     }
     
-    func application(_: UIApplication, didReceiveRemoteNotification: [AnyHashable : Any], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
+    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler: (UIBackgroundFetchResult) -> Void) {
         
         //print("content" + "\(userInfo)");
         //  Converted with Swiftify v1.0.6472 - https://objectivec2swift.com/
         //push?.application(application, didReceiveRemoteNotification: userInfo)
+        Branch.getInstance().handlePushNotification(userInfo)
+
      //   UIApplication.shared.applicationIconBadgeNumber = 1
         fetchCompletionHandler(UIBackgroundFetchResult.newData);
         let state = UIApplication.shared.applicationState
@@ -1046,10 +1068,11 @@ UserDefaults.standard.setValue("YES", forKey: "MYTAECLUB")
     // Open Univerasal Links
        // For Swift version < 4.2 replace function signature with the commented out code
        // func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool { // this line for Swift < 4.2
-       func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-           AppsFlyerLib.shared().continue(userActivity, restorationHandler: nil)
-           return true
-       }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+      // handler for Universal Links
+        return Branch.getInstance().continue(userActivity)
+    }
 //       // Open Deeplinks
 //       // Open URI-scheme for iOS 8 and below
 //       func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -1057,13 +1080,17 @@ UserDefaults.standard.setValue("YES", forKey: "MYTAECLUB")
 //           return true
 //       }
        // Open URI-scheme for iOS 9 and above
-    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-           AppsFlyerLib.shared().handleOpen(url, options: options)
-           return true
-       }
+//    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//           AppsFlyerLib.shared().handleOpen(url, options: options)
+//           return true
+//       }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return Branch.getInstance().application(app, open: url, options: options)
+    }
        // Report Push Notification attribution data for re-engagements
     func applicationDidBecomeActive(_ application: UIApplication) {
-        AppsFlyerLib.shared().start()
+     //   AppsFlyerLib.shared().start()
        UIApplication.shared.applicationIconBadgeNumber = 0
         if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
             if !showRegistration {

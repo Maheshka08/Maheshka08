@@ -7,48 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F4D19FB8-8191-4E1D-8BD3-F9E11E7B6E9F"
+            uuid = "8791E00D-D215-4E73-8C8D-A89AB3533BDE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
-            landmarkName = "buyProduct(product:)"
+            startingLineNumber = "2440"
+            endingLineNumber = "2440"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "465F6588-B8DE-4A88-8BC3-F15035D41D11"
+            uuid = "80CCB5A5-1E1E-467E-B558-6C688EFF002D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            filePath = "Tweak and Eat/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "722"
-            endingLineNumber = "722"
-            landmarkName = "paymentQueue(_:updatedTransactions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3AAB4703-3CCD-4D3B-BB46-F7AAF3345B5A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "738"
-            endingLineNumber = "738"
-            landmarkName = "paymentQueue(_:updatedTransactions:)"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

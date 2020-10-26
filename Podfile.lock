@@ -1,7 +1,7 @@
 PODS:
   - AAInfographics (4.0.0)
   - Alamofire (4.6.0)
-  - AppsFlyerFramework (6.0.2)
+  - Branch (0.35.1)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -99,7 +99,7 @@ PODS:
 DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire (~> 4.5)
-  - AppsFlyerFramework
+  - Branch
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -117,7 +117,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AppsFlyerFramework
+    - Branch
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -154,7 +154,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AAInfographics: bbeed03caece4ee3b5e557d734967394e9bcdb11
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  AppsFlyerFramework: 9e0cd7b807ccd375a87bef34fd50049f4c655eef
+  Branch: 43863eab4c2339a58fa552f2f277139c3839dfb4
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -179,6 +179,6 @@ SPEC CHECKSUMS:
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
 
-PODFILE CHECKSUM: 666118d762794147d3ea178a02fb3bbce00d2f48
+PODFILE CHECKSUM: 53b5cba1550eb1cf46c1fc2b51d28e42457adc68
 
 COCOAPODS: 1.9.1

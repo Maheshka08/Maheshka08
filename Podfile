@@ -14,6 +14,7 @@ end
 target 'Tweak and Eat' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  pod 'Branch'
   pod 'OneSignal', '>= 2.11.2', '< 3.0'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   pod 'Firebase'
@@ -28,7 +29,6 @@ target 'Tweak and Eat' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-  pod 'AppsFlyerFramework'
   
   # Pods for Tweak and Eat
     
