@@ -14,8 +14,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2440"
-            endingLineNumber = "2440"
+            startingLineNumber = "2442"
+            endingLineNumber = "2442"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "80CCB5A5-1E1E-467E-B558-6C688EFF002D"
+            uuid = "DD83466B-17F4-4FDA-81F3-A6259355DEFC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AppDelegate.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "1715"
+            endingLineNumber = "1715"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

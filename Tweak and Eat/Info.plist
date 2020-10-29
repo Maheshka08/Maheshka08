@@ -42,11 +42,13 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>None</string>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>com.purpleteal.tweakeatapp</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>fb1608652672644833</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

@@ -29,7 +29,7 @@ target 'Tweak and Eat' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-  
+  pod 'RNCryptor'
   # Pods for Tweak and Eat
     
 end

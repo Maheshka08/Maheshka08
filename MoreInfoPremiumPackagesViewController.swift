@@ -13,6 +13,9 @@ import StoreKit
 import Realm
 import RealmSwift
 import Branch
+import RNCryptor
+import FacebookCore
+
 //Sample model
 struct Item {
     var value: String = ""
@@ -1080,11 +1083,21 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             if  responseResult == "GOOD" {
                 //IndIWj1mSzQ1GDlBpUt
                  //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
+//                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+//                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+//                    Branch.getInstance().setIdentity(msisdn)
+//
+//                }
                 if UserDefaults.standard.value(forKey: "msisdn") != nil {
                  let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-                    Branch.getInstance().setIdentity(msisdn)
+                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+                    let password = "sFdebvQawU9uZJ"
+                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 
                 }
+                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+
                 let event = BranchEvent.customEvent(withName: "purchase")
                 event.eventDescription = "User completed payment."
                 event.customData["packageID"] = self.packageId
@@ -1684,12 +1697,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         //IndIWj1mSzQ1GDlBpUt
-//        AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "Tweak & Eat India - Quarterly", AFEventParamContentId: self.packageId, AFEventParamCurrency: "INR"])
 //        if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-//            Branch.getInstance().setIdentity(msisdn)
+//            let data: NSData = msisdn.data(using: .utf8)! as NSData
+//            let password = "sFdebvQawU9uZJ"
+//            let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+//            Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 //
 //        }
+//        AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+//
 //        let event = BranchEvent.customEvent(withName: "purchase")
 //        event.eventDescription = "User completed payment."
 //        event.customData["packageID"] = self.packageId

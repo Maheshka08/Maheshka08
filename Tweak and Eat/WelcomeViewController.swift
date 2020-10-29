@@ -25,6 +25,8 @@ import HealthKit
 import Alamofire
 import CoreTelephony
 import Branch
+import FacebookCore
+import RNCryptor
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -9143,9 +9145,14 @@ self.floatingCallBtn.isHidden = false
 //                                                AppsFlyerLib.shared().logEvent("af_complete_registration", withValues: [ AFEventParamRegistrationMethod: "YES"])
                                                 if UserDefaults.standard.value(forKey: "msisdn") != nil {
                                                  let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-                                                    Branch.getInstance().setIdentity(msisdn)
+                                                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+                                                    let password = "sFdebvQawU9uZJ"
+                                                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+                                                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 
                                                 }
+                                                AppEvents.logEvent(.completedRegistration)
+
                                                 let event = BranchEvent.standardEvent(.completeRegistration)
                                                 event.eventDescription = "User completed registration."
                                                 event.logEvent()

@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import StoreKit
 import Branch
+import RNCryptor
+import FacebookCore
 
 class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate {
     
@@ -188,11 +190,20 @@ class TAEClub4VCViewController: UIViewController, SKProductsRequestDelegate, SKP
                 MBProgressHUD.hide(for: self.view, animated: true);
                 print("in-app done")
                       //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+//                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+//                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+//                    Branch.getInstance().setIdentity(msisdn)
+//
+//                }
                 if UserDefaults.standard.value(forKey: "msisdn") != nil {
                  let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-                    Branch.getInstance().setIdentity(msisdn)
+                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+                    let password = "sFdebvQawU9uZJ"
+                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 
                 }
+                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
                 let event = BranchEvent.customEvent(withName: "purchase")
                 event.eventDescription = "User completed payment."
                 event.customData["packageID"] = self.packageId

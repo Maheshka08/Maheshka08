@@ -20,6 +20,7 @@ import FacebookLogin
 import FacebookCore
 import FacebookShare
 import Branch
+import RNCryptor
 //import AppTrackingTransparency
 let uiRealm = try! Realm()
 
@@ -205,6 +206,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
             return false
         }
     }
+    func encryptMessage(message: String, encryptionKey: String) throws -> String {
+            let messageData = message.data(using: .utf8)!
+            let cipherData = RNCryptor.encrypt(data: messageData, withPassword: encryptionKey)
+            return cipherData.base64EncodedString()
+        }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // self.goToHomePage()
@@ -224,11 +230,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
             }
             
          }
-//        if UserDefaults.standard.value(forKey: "UUID") == nil {
-//                        UserDefaults.standard.set("YES", forKey: "UUID")
-//                        UserDefaults.standard.synchronize()
-//        
-//        }
+        
+        
+
 AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         ApplicationDelegate.shared.application(
             application,
@@ -247,7 +251,7 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
 
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isAutoInitEnabled = true
-//        ApplicationDelegate.initializeSDK(nil)
+        ApplicationDelegate.initializeSDK(nil)
 //        AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
 //        AppsFlyerLib.shared().appleAppID = "1267286348"
 //        AppsFlyerLib.shared().delegate = self
@@ -1086,11 +1090,23 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
 //       }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return Branch.getInstance().application(app, open: url, options: options)
+        if Branch.getInstance().application(app, open: url, options: options) {
+            return true
+
+        }
+        return ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
     }
        // Report Push Notification attribution data for re-engagements
     func applicationDidBecomeActive(_ application: UIApplication) {
      //   AppsFlyerLib.shared().start()
+        //AppEventsLogger.activate(application)
+
        UIApplication.shared.applicationIconBadgeNumber = 0
         if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
             if !showRegistration {
