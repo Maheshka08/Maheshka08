@@ -237,6 +237,13 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)
                     
                     
+                } else if type == 5 {
+                    let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                           self.popUpView = (Bundle.main.loadNibNamed("PopUpNotificationView", owner: self, options: nil)! as NSArray).firstObject as? PopUpNotificationView;
+                           self.popUpView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                        self.popUpView.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
+                    self.popUpView.showUIForSmallPopUp(imgUrlString: imgUrlString, msg: msg.html2String.replacingOccurrences(of: "\\", with: ""), link: link, type: type)
+                           UIApplication.shared.keyWindow?.addSubview(self.popUpView)
                 } else {
                 if navController?.topViewController is MyWallViewController {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: data)
