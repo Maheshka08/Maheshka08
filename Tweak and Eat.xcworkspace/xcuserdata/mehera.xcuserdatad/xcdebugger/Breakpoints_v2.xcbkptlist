@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "310FF76E-BB42-477F-9270-BFC87C97127E"
+            uuid = "B4A7C33E-A405-4D5A-AD1E-B4F2661F38F3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1485"
-            endingLineNumber = "1485"
-            landmarkName = "updateUIAccordingTOEachDevice()"
+            startingLineNumber = "971"
+            endingLineNumber = "971"
+            landmarkName = "handleSwipeView(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

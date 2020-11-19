@@ -611,8 +611,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var taeClubHome2Btn: UIButton!
     @IBOutlet weak var myNutritionView: UIView!
     @IBOutlet weak var approxCalLeftView: UIView!
+    @IBOutlet weak var topBgImageView: UIImageView!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var topViewTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var tapToTweakView: UIView!
     
     
     @IBAction func taeClubMemberButtonTapped(_ sender: Any) {
@@ -960,6 +964,53 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
+    }
+    
+    @IBAction func handleSwipeView(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        if gestureRecognizer.direction == .up {
+            DispatchQueue.main.async {
+                UIView.animate(
+                    withDuration: 1,
+                    animations: {
+                        self.topViewHeightConstraint.constant = 0
+                        self.outerChartView.isHidden = true
+                        self.myNutritionView.alpha = 0
+                        self.approxCalLeftView.isHidden = true
+
+                            self.view.layoutIfNeeded()
+                    //last
+                            
+            },  completion: {(_ completed: Bool) -> Void in
+                self.topImageView.contentMode = .scaleToFill
+
+                self.goneUp = true
+                
+            })
+            }
+        } else {
+            DispatchQueue.main.async {
+                UIView.animate(
+                    withDuration: 1,
+                    animations: {
+                        self.topViewHeightConstraint.constant = 302
+                        self.myNutritionView.alpha = 1
+                        self.outerChartView.isHidden = true
+
+
+                            self.view.layoutIfNeeded()
+                    //last
+                            
+            },  completion: {(_ completed: Bool) -> Void in
+                self.goneUp = false
+                self.outerChartView.isHidden = false
+                self.approxCalLeftView.isHidden = false
+
+
+
+                
+            })
+            }
+        }
     }
     
     @IBAction func handleSwipe(_ gestureRecognizer: UISwipeGestureRecognizer) {
@@ -2453,9 +2504,7 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
-//        self.myNutritionView.layer.cornerRadius = 10
-//        self.outerChartView.layer.cornerRadius = 10
-//        self.topButtonsDataView.layer.cornerRadius = 10
+        self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
 
 
         if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
@@ -2736,6 +2785,15 @@ self.topImageView.alpha = 1
         
         self.innerDragMenuView.addGestureRecognizer(swipeUpForInnerDragMenuView)
         self.innerDragMenuView.addGestureRecognizer(swipeDownForInnerDragMenuView)
+        
+        let swipeUpView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeView(_:)))
+        let swipeDownView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeView(_:)))
+        
+        swipeUpView.direction = .up
+        swipeDownView.direction = .down
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(swipeUpView)
+        self.view.addGestureRecognizer(swipeDownView)
         
         //self.foodImageView.layer.cornerRadius = 30.0
       //  self.foodImageShadowView.layer.cornerRadius = 30.0

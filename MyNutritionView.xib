@@ -191,7 +191,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="oWm-KK-qSa"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.94955641031265259" green="0.96522217988967896" blue="0.98114579916000366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="B7g-p8-XLt" firstAttribute="width" secondItem="jvX-XE-ljB" secondAttribute="width" id="0Il-Db-yfs"/>
                 <constraint firstItem="jvX-XE-ljB" firstAttribute="top" secondItem="ReI-O6-iqz" secondAttribute="bottom" constant="19" id="127-c6-UkN"/>
