@@ -118,7 +118,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         self.myNutritionViewSelectYourMealTableView.isHidden = true
-        self.myNutritionViewLast10TweaksTableView.frame = CGRect(x: self.myNutritionDetailsView.last10TweaksView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 180)
+        self.myNutritionViewLast10TweaksTableView.frame = CGRect(x: self.myNutritionDetailsView.last10TweaksView.frame.minX + 20, y: self.myNutritionDetailsView.frame.maxY + 90, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 180)
                self.myNutritionViewLast10TweaksTableView.delegate = self
                self.myNutritionViewLast10TweaksTableView.dataSource = self
                self.view.addSubview(self.myNutritionViewLast10TweaksTableView)
@@ -135,7 +135,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         self.myNutritionViewLast10TweaksTableView.isHidden = true
-        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX, y: self.myNutritionDetailsView.frame.maxY, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 260)
+        self.myNutritionViewSelectYourMealTableView.frame = CGRect(x: self.myNutritionDetailsView.selectYourMealView.frame.minX + 20, y: self.myNutritionDetailsView.frame.maxY + 90, width: self.myNutritionDetailsView.selectYourMealView.frame.width, height: 260)
         self.myNutritionViewSelectYourMealTableView.delegate = self
         self.myNutritionViewSelectYourMealTableView.dataSource = self
         self.view.addSubview(self.myNutritionViewSelectYourMealTableView)
@@ -609,6 +609,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var personalisedServicesBtn: UIButton!
     
     @IBOutlet weak var taeClubHome2Btn: UIButton!
+    @IBOutlet weak var myNutritionView: UIView!
+    @IBOutlet weak var approxCalLeftView: UIView!
+    
+    
     
     
     @IBAction func taeClubMemberButtonTapped(_ sender: Any) {
@@ -1138,423 +1142,432 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews();
+        self.myNutritionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        self.outerChartView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        self.topButtonsDataView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        self.approxCalLeftView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+
+        if (self.myNutritionDetailsView != nil) {
+            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: self.myNutritionView.frame.height)
+        }
         if self.isLoaded == false {
-        self.updateUIAccordingTOEachDevice()
+      //  self.updateUIAccordingTOEachDevice()
         }
        
     }
     
     func updateUIAccordingTOEachDevice() {
-        
-        if self.goneUp == true {
-                   return
-               }
-               if (IS_iPHONE5 || IS_IPHONE4) {
-                                    if self.showGraph == false {
-                                       
-                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                                         if self.trialPeriodExpired == true {
-                                             self.taeClubViewTopConstraint.constant = 55
-
-                                              aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
-
-                                             self.chatViewHeightConstraint.constant = 140
-                                              self.draggableViewHeightConstraint.constant = 30
-                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
-
-                                             self.trendButtonsView.isHidden = false
-                                             self.topButtonsDataView.isHidden = false
-                                             //self.minCalCountLabel.stopBlink()
-                                             self.beforeTweakImageViewHeightConstraint.constant = 0
-                                             self.topButtonsDataViewHeightConstraint.constant = 63
-                                             if (self.myNutritionDetailsView != nil) {
-                                                 self.myNutritionDetailsView.isHidden = false
-                                             }
-
-                                         } else {
-                                             self.chatViewHeightConstraint.constant = 0
-                                             aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                                             self.draggableViewHeightConstraint.constant = 30 + 100
-                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
-
-                                             self.taeClubViewTopConstraint.constant = 55
-                                            if (self.myNutritionDetailsView != nil) {
-                                                self.myNutritionDetailsView.isHidden = true
-                                                self.switchButton.alpha = 0
-
-                                            }
-                                         }
-                                        
-
-                                     } else {
-                                         self.taeClubViewTopConstraint.constant = 55
-
-                                          aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
-
-                                        self.chatViewHeightConstraint.constant = 140
-                                         self.draggableViewHeightConstraint.constant = 30
-                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
-                                        if (self.myNutritionDetailsView != nil) {
-                                            self.switchButton.alpha = 1
-
-                                            if self.showGraph == true {
-                                                self.myNutritionDetailsView.isHidden = true
-                                            } else {
-                                            self.myNutritionDetailsView.isHidden = false
-                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
-                                            }
-                                        }
-
-                                     }
-                                     self.monthBtnTrailingConstraint.constant = 30;
-
-                                    } else {
-                 //                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
-                 //                   self.chatViewHeightConstraint.constant = 200
-                 //
-                 //                   self.draggableViewHeightConstraint.constant = 150
-                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                                      aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-
-                                         self.chatViewHeightConstraint.constant = 0
-                                      self.draggableViewHeightConstraint.constant = 30
-                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
-                                        if (self.myNutritionDetailsView != nil) {
-                                            self.myNutritionDetailsView.isHidden = true
-                                            self.switchButton.alpha = 0
-
-                                        }
-
-
-                                     } else {
-                                        self.chatViewHeightConstraint.constant = 140
-                 aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
-                                      self.draggableViewHeightConstraint.constant = 30
-                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
-                                        if (self.myNutritionDetailsView != nil) {
-                                            self.switchButton.alpha = 1
-
-                                            if self.showGraph == true {
-                                                self.myNutritionDetailsView.isHidden = true
-                                            } else {
-                                            self.myNutritionDetailsView.isHidden = false
-                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
-                                            }
-                                        }
-
-                                     }
-                                     
-                                     self.monthBtnTrailingConstraint.constant = 30;
-                                    }
-                self.monthBtnTrailingConstraint.constant = 30;
-                self.taeClubViewTopConstraint.constant = 55
-                self.draggableConstant = self.draggableViewHeightConstraint.constant
-               } else if IS_iPHONE678P {
-                   
-                   
-                   self.monthBtnTrailingConstraint.constant = 50;
-                self.taeClubViewTopConstraint.constant = 55
-                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                    if self.trialPeriodExpired == true {
-                        self.taeClubViewTopConstraint.constant = 55
-
-                         aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-
-                        self.chatViewHeightConstraint.constant = 170
-                         self.draggableViewHeightConstraint.constant = 130 + 50
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        self.trendButtonsView.isHidden = false
-                        self.topButtonsDataView.isHidden = false
-                        //self.minCalCountLabel.stopBlink()
-                        self.beforeTweakImageViewHeightConstraint.constant = 0
-                        self.topButtonsDataViewHeightConstraint.constant = 63
-                        if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionDetailsView.isHidden = false
-                            //self.switchButton.isHidden = true
-                        }
-
-                    } else {
-                        self.chatViewHeightConstraint.constant = 0
-                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                                               self.draggableViewHeightConstraint.constant = 130 + 50 + 110
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        self.taeClubViewTopConstraint.constant = 55
-                        if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionDetailsView.isHidden = true
-                            self.switchButton.alpha = 0
-                        }
-                    }
-                   
-
-                } else {
-                    self.taeClubViewTopConstraint.constant = 55
-
-                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-                    self.beforeTweakImageViewHeightConstraint.constant = 0
-                    self.topButtonsDataViewHeightConstraint.constant = 63
-                   self.chatViewHeightConstraint.constant = 170
-                    self.draggableViewHeightConstraint.constant = 130 + 50
-                    self.draggableConstant = self.draggableViewHeightConstraint.constant
-                    if (self.myNutritionDetailsView != nil) {
-                        self.switchButton.alpha = 1
-
-                        if self.showGraph == true {
-                            self.myNutritionDetailsView.isHidden = true
-                        } else {
-                        self.myNutritionDetailsView.isHidden = false
-                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
-                        }
-                    }
-                }
-
-                
-                
-
-                   
-               } else if IS_iPHONE678 {
-                   
-                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
-                   self.chatViewHeightConstraint.constant = 160
-                   self.draggableViewHeightConstraint.constant = 175 - 76
-                //   self.foodImageShadowViewHeightConstraint.constant = 113
-                   self.premiumTweakPackBtnTopConstraint.constant = 8
-                   self.monthBtnTrailingConstraint.constant = 30;
-                self.taeClubViewTopConstraint.constant = 55
-                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                    if self.trialPeriodExpired == true {
-                        self.taeClubViewTopConstraint.constant = 55
-
-                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
-
-                        self.chatViewHeightConstraint.constant = 160
-                         self.draggableViewHeightConstraint.constant = 175 - 76
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        self.trendButtonsView.isHidden = false
-                        self.topButtonsDataView.isHidden = false
-                        //self.minCalCountLabel.stopBlink()
-                        self.beforeTweakImageViewHeightConstraint.constant = 0
-                        self.topButtonsDataViewHeightConstraint.constant = 63
-                        if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionDetailsView.isHidden = false
-                        }
-
-                    } else {
-                        self.chatViewHeightConstraint.constant = 0
-                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                                               self.draggableViewHeightConstraint.constant = 175 - 76 + 130
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        self.taeClubViewTopConstraint.constant = 55
-                        if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionDetailsView.isHidden = true
-                            self.switchButton.alpha = 0
-                        }
-                    }
-                   
-
-                } else {
-                    self.taeClubViewTopConstraint.constant = 55
-
-                    aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
-
-                   self.chatViewHeightConstraint.constant = 160
-                    self.draggableViewHeightConstraint.constant = 175 - 76
-                    self.draggableConstant = self.draggableViewHeightConstraint.constant
-                    if (self.myNutritionDetailsView != nil) {
-                        self.switchButton.alpha = 1
-
-                        if self.showGraph == true {
-                            self.myNutritionDetailsView.isHidden = true
-                        } else {
-                        self.myNutritionDetailsView.isHidden = false
-                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160 + 63)
-                        }
-                    }
-                }
-
-                self.draggableConstant = self.draggableViewHeightConstraint.constant
-                   
-               } else if IS_iPHONEXXS {
-                   if self.showGraph == false {
-                      
-                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                        if self.trialPeriodExpired == true {
-                            self.taeClubViewTopConstraint.constant = 55
-
-                             aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
-
-                            self.chatViewHeightConstraint.constant = 160
-                             self.draggableViewHeightConstraint.constant = 150 + 30 + 20
-                            self.draggableConstant = self.draggableViewHeightConstraint.constant
-
-                            self.trendButtonsView.isHidden = false
-                            self.topButtonsDataView.isHidden = false
-                            //self.minCalCountLabel.stopBlink()
-                            self.beforeTweakImageViewHeightConstraint.constant = 0
-                            self.topButtonsDataViewHeightConstraint.constant = 63
-                            if (self.myNutritionDetailsView != nil) {
-                                self.myNutritionDetailsView.isHidden = false
-                            }
-
-                        } else {
-                            self.chatViewHeightConstraint.constant = 0
-                            aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                            self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 160
-                            self.draggableConstant = self.draggableViewHeightConstraint.constant
-
-                            self.taeClubViewTopConstraint.constant = 55
-                            if (self.myNutritionDetailsView != nil) {
-                                self.myNutritionDetailsView.isHidden = true
-                                self.switchButton.alpha = 0
-                            }
-                        }
-                       
-
-                    } else {
-                        self.taeClubViewTopConstraint.constant = 55
-
-                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 170)
-
-                       self.chatViewHeightConstraint.constant = 170
-                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 30
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        if (self.myNutritionDetailsView != nil) {
-                            self.switchButton.alpha = 1
-
-                            if self.showGraph == true {
-                                self.myNutritionDetailsView.isHidden = true
-                            } else {
-                            self.myNutritionDetailsView.isHidden = false
-                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
-                            }
-                        }
-                    }
-                    self.monthBtnTrailingConstraint.constant = 30;
-
-                   } else {
-//                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
-//                   self.chatViewHeightConstraint.constant = 200
 //
-//                   self.draggableViewHeightConstraint.constant = 150
-                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                     aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-
-                        self.chatViewHeightConstraint.constant = 0
-                     self.draggableViewHeightConstraint.constant = 150 + 30
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionDetailsView.isHidden = true
-                            self.switchButton.alpha = 0
-                        }
-
-
-                    } else {
-                       self.chatViewHeightConstraint.constant = 200
-aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
-                     self.draggableViewHeightConstraint.constant = 150 + 30 + 20
-                        self.draggableConstant = self.draggableViewHeightConstraint.constant
-                        if (self.myNutritionDetailsView != nil) {
-                                                   self.switchButton.alpha = 1
-
-                                                   if self.showGraph == true {
-                                                       self.myNutritionDetailsView.isHidden = true
-                                                   } else {
-                                                   self.myNutritionDetailsView.isHidden = false
-                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
-                                                   }
-                                               }
-                    }
-                    
-                    self.monthBtnTrailingConstraint.constant = 30;
-                   }
-                self.taeClubViewTopConstraint.constant = 55
-
-
-               } else if IS_iPHONEXRXSMAX {
-                   if self.showGraph == false {
-                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                        if self.trialPeriodExpired == true {
-                            self.taeClubViewTopConstraint.constant = 55
-
-                             aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-
-                            self.chatViewHeightConstraint.constant = 170
-                             self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
-                            self.trendButtonsView.isHidden = false
-                            self.topButtonsDataView.isHidden = false
-                            //self.minCalCountLabel.stopBlink()
-                            self.beforeTweakImageViewHeightConstraint.constant = 0
-                            self.topButtonsDataViewHeightConstraint.constant = 63
-                            if (self.myNutritionDetailsView != nil) {
-                                self.myNutritionDetailsView.isHidden = false
-                            }
-
-                        } else {
-                            self.chatViewHeightConstraint.constant = 0
-                                                   aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                                                   self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 190
-                                                   self.taeClubViewTopConstraint.constant = 55
-                                                   if (self.myNutritionDetailsView != nil) {
-                                self.myNutritionDetailsView.isHidden = true
-                                self.switchButton.alpha = 0
-                            }
-
-                        }
-                       
-
-                    } else {
-                        self.taeClubViewTopConstraint.constant = 55
-
-                        aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
-
-                       self.chatViewHeightConstraint.constant = 170
-                        self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
-                        if (self.myNutritionDetailsView != nil) {
-                                                   self.switchButton.alpha = 1
-
-                                                   if self.showGraph == true {
-                                                       self.myNutritionDetailsView.isHidden = true
-                                                   } else {
-                                                   self.myNutritionDetailsView.isHidden = false
-                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
-                                                   }
-                                               }
-                    }
-                    self.draggableConstant = self.draggableViewHeightConstraint.constant
-
-                       self.monthBtnTrailingConstraint.constant = 50;
-                   } else {
-                   
-                   if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                    aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-
-                       self.chatViewHeightConstraint.constant = 0
-                    self.draggableViewHeightConstraint.constant = 300 - 86 + 190
-                    if (self.myNutritionDetailsView != nil) {
-                        self.myNutritionDetailsView.isHidden = true
-                        self.switchButton.alpha = 0
-                    }
-
-                   } else {
-                      self.chatViewHeightConstraint.constant = 200
-                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
-                    self.draggableViewHeightConstraint.constant = 300 - 86 + 70
-                    if (self.myNutritionDetailsView != nil) {
-                                                              self.switchButton.alpha = 1
-
-                                                              if self.showGraph == true {
-                                                                  self.myNutritionDetailsView.isHidden = true
-                                                              } else {
-                                                              self.myNutritionDetailsView.isHidden = false
-                                                              self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200 + 63)
-                                                              }
-                                                          }
-                   }
-                    self.draggableConstant = self.draggableViewHeightConstraint.constant
-               
-                    self.monthBtnTrailingConstraint.constant = 50;
-                                      }
-                   
-               }
+//        if self.goneUp == true {
+//                   return
+//               }
+//               if (IS_iPHONE5 || IS_IPHONE4) {
+//                                    if self.showGraph == false {
+//
+//                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                                         if self.trialPeriodExpired == true {
+//                                             self.taeClubViewTopConstraint.constant = 55
+//
+//                                              aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+//
+//                                             self.chatViewHeightConstraint.constant = 140
+//                                              self.draggableViewHeightConstraint.constant = 30
+//                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                                             self.trendButtonsView.isHidden = false
+//                                             self.topButtonsDataView.isHidden = false
+//                                             //self.minCalCountLabel.stopBlink()
+//                                             self.beforeTweakImageViewHeightConstraint.constant = 0
+//                                             self.topButtonsDataViewHeightConstraint.constant = 63
+//                                             if (self.myNutritionDetailsView != nil) {
+//                                                 self.myNutritionDetailsView.isHidden = false
+//                                             }
+//
+//                                         } else {
+//                                             self.chatViewHeightConstraint.constant = 0
+//                                             aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//                                             self.draggableViewHeightConstraint.constant = 30 + 100
+//                                             self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                                             self.taeClubViewTopConstraint.constant = 55
+//                                            if (self.myNutritionDetailsView != nil) {
+//                                                self.myNutritionDetailsView.isHidden = true
+//                                                self.switchButton.alpha = 0
+//
+//                                            }
+//                                         }
+//
+//
+//                                     } else {
+//                                         self.taeClubViewTopConstraint.constant = 55
+//
+//                                          aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+//
+//                                        self.chatViewHeightConstraint.constant = 140
+//                                         self.draggableViewHeightConstraint.constant = 30
+//                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                                        if (self.myNutritionDetailsView != nil) {
+//                                            self.switchButton.alpha = 1
+//
+//                                            if self.showGraph == true {
+//                                                self.myNutritionDetailsView.isHidden = true
+//                                            } else {
+//                                            self.myNutritionDetailsView.isHidden = false
+//                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
+//                                            }
+//                                        }
+//
+//                                     }
+//                                     self.monthBtnTrailingConstraint.constant = 30;
+//
+//                                    } else {
+//                 //                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+//                 //                   self.chatViewHeightConstraint.constant = 200
+//                 //
+//                 //                   self.draggableViewHeightConstraint.constant = 150
+//                                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                                      aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//
+//                                         self.chatViewHeightConstraint.constant = 0
+//                                      self.draggableViewHeightConstraint.constant = 30
+//                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                                        if (self.myNutritionDetailsView != nil) {
+//                                            self.myNutritionDetailsView.isHidden = true
+//                                            self.switchButton.alpha = 0
+//
+//                                        }
+//
+//
+//                                     } else {
+//                                        self.chatViewHeightConstraint.constant = 140
+//                 aaChartView.frame = CGRect(x: 0, y: 0, width: 320, height: 140)
+//                                      self.draggableViewHeightConstraint.constant = 30
+//                                         self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                                        if (self.myNutritionDetailsView != nil) {
+//                                            self.switchButton.alpha = 1
+//
+//                                            if self.showGraph == true {
+//                                                self.myNutritionDetailsView.isHidden = true
+//                                            } else {
+//                                            self.myNutritionDetailsView.isHidden = false
+//                                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 140 + 63)
+//                                            }
+//                                        }
+//
+//                                     }
+//
+//                                     self.monthBtnTrailingConstraint.constant = 30;
+//                                    }
+//                self.monthBtnTrailingConstraint.constant = 30;
+//                self.taeClubViewTopConstraint.constant = 55
+//                self.draggableConstant = self.draggableViewHeightConstraint.constant
+//               } else if IS_iPHONE678P {
+//
+//
+//                   self.monthBtnTrailingConstraint.constant = 50;
+//                self.taeClubViewTopConstraint.constant = 55
+//                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                    if self.trialPeriodExpired == true {
+//                        self.taeClubViewTopConstraint.constant = 55
+//
+//                         aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+//
+//                        self.chatViewHeightConstraint.constant = 170
+//                         self.draggableViewHeightConstraint.constant = 130 + 50
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        self.trendButtonsView.isHidden = false
+//                        self.topButtonsDataView.isHidden = false
+//                        //self.minCalCountLabel.stopBlink()
+//                        self.beforeTweakImageViewHeightConstraint.constant = 0
+//                        self.topButtonsDataViewHeightConstraint.constant = 63
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = false
+//                            //self.switchButton.isHidden = true
+//                        }
+//
+//                    } else {
+//                        self.chatViewHeightConstraint.constant = 0
+//                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//                                               self.draggableViewHeightConstraint.constant = 130 + 50 + 110
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        self.taeClubViewTopConstraint.constant = 55
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = true
+//                            self.switchButton.alpha = 0
+//                        }
+//                    }
+//
+//
+//                } else {
+//                    self.taeClubViewTopConstraint.constant = 55
+//
+//                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+//                    self.beforeTweakImageViewHeightConstraint.constant = 0
+//                    self.topButtonsDataViewHeightConstraint.constant = 63
+//                   self.chatViewHeightConstraint.constant = 170
+//                    self.draggableViewHeightConstraint.constant = 130 + 50
+//                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.switchButton.alpha = 1
+//
+//                        if self.showGraph == true {
+//                            self.myNutritionDetailsView.isHidden = true
+//                        } else {
+//                        self.myNutritionDetailsView.isHidden = false
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+//                        }
+//                    }
+//                }
+//
+//
+//
+//
+//
+//               } else if IS_iPHONE678 {
+//
+//                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+//                   self.chatViewHeightConstraint.constant = 160
+//                   self.draggableViewHeightConstraint.constant = 175 - 76
+//                //   self.foodImageShadowViewHeightConstraint.constant = 113
+//                   self.premiumTweakPackBtnTopConstraint.constant = 8
+//                   self.monthBtnTrailingConstraint.constant = 30;
+//                self.taeClubViewTopConstraint.constant = 55
+//                if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                    if self.trialPeriodExpired == true {
+//                        self.taeClubViewTopConstraint.constant = 55
+//
+//                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+//
+//                        self.chatViewHeightConstraint.constant = 160
+//                         self.draggableViewHeightConstraint.constant = 175 - 76
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        self.trendButtonsView.isHidden = false
+//                        self.topButtonsDataView.isHidden = false
+//                        //self.minCalCountLabel.stopBlink()
+//                        self.beforeTweakImageViewHeightConstraint.constant = 0
+//                        self.topButtonsDataViewHeightConstraint.constant = 63
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = false
+//                        }
+//
+//                    } else {
+//                        self.chatViewHeightConstraint.constant = 0
+//                                               aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//                                               self.draggableViewHeightConstraint.constant = 175 - 76 + 130
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        self.taeClubViewTopConstraint.constant = 55
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = true
+//                            self.switchButton.alpha = 0
+//                        }
+//                    }
+//
+//
+//                } else {
+//                    self.taeClubViewTopConstraint.constant = 55
+//
+//                    aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+//
+//                   self.chatViewHeightConstraint.constant = 160
+//                    self.draggableViewHeightConstraint.constant = 175 - 76
+//                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.switchButton.alpha = 1
+//
+//                        if self.showGraph == true {
+//                            self.myNutritionDetailsView.isHidden = true
+//                        } else {
+//                        self.myNutritionDetailsView.isHidden = false
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160 + 63)
+//                        }
+//                    }
+//                }
+//
+//                self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//               } else if IS_iPHONEXXS {
+//                   if self.showGraph == false {
+//
+//                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                        if self.trialPeriodExpired == true {
+//                            self.taeClubViewTopConstraint.constant = 55
+//
+//                             aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 160)
+//
+//                            self.chatViewHeightConstraint.constant = 160
+//                             self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+//                            self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                            self.trendButtonsView.isHidden = false
+//                            self.topButtonsDataView.isHidden = false
+//                            //self.minCalCountLabel.stopBlink()
+//                            self.beforeTweakImageViewHeightConstraint.constant = 0
+//                            self.topButtonsDataViewHeightConstraint.constant = 63
+//                            if (self.myNutritionDetailsView != nil) {
+//                                self.myNutritionDetailsView.isHidden = false
+//                            }
+//
+//                        } else {
+//                            self.chatViewHeightConstraint.constant = 0
+//                            aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//                            self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 160
+//                            self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                            self.taeClubViewTopConstraint.constant = 55
+//                            if (self.myNutritionDetailsView != nil) {
+//                                self.myNutritionDetailsView.isHidden = true
+//                                self.switchButton.alpha = 0
+//                            }
+//                        }
+//
+//
+//                    } else {
+//                        self.taeClubViewTopConstraint.constant = 55
+//
+//                         aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 170)
+//
+//                       self.chatViewHeightConstraint.constant = 170
+//                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20 + 30
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.switchButton.alpha = 1
+//
+//                            if self.showGraph == true {
+//                                self.myNutritionDetailsView.isHidden = true
+//                            } else {
+//                            self.myNutritionDetailsView.isHidden = false
+//                            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+//                            }
+//                        }
+//                    }
+//                    self.monthBtnTrailingConstraint.constant = 30;
+//
+//                   } else {
+////                   aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+////                   self.chatViewHeightConstraint.constant = 200
+////
+////                   self.draggableViewHeightConstraint.constant = 150
+//                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                     aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//
+//                        self.chatViewHeightConstraint.constant = 0
+//                     self.draggableViewHeightConstraint.constant = 150 + 30
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        if (self.myNutritionDetailsView != nil) {
+//                            self.myNutritionDetailsView.isHidden = true
+//                            self.switchButton.alpha = 0
+//                        }
+//
+//
+//                    } else {
+//                       self.chatViewHeightConstraint.constant = 200
+//aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
+//                     self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+//                        self.draggableConstant = self.draggableViewHeightConstraint.constant
+//                        if (self.myNutritionDetailsView != nil) {
+//                                                   self.switchButton.alpha = 1
+//
+//                                                   if self.showGraph == true {
+//                                                       self.myNutritionDetailsView.isHidden = true
+//                                                   } else {
+//                                                   self.myNutritionDetailsView.isHidden = false
+//                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+//                                                   }
+//                                               }
+//                    }
+//
+//                    self.monthBtnTrailingConstraint.constant = 30;
+//                   }
+//                self.taeClubViewTopConstraint.constant = 55
+//
+//
+//               } else if IS_iPHONEXRXSMAX {
+//                   if self.showGraph == false {
+//                    if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                        if self.trialPeriodExpired == true {
+//                            self.taeClubViewTopConstraint.constant = 55
+//
+//                             aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+//
+//                            self.chatViewHeightConstraint.constant = 170
+//                             self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
+//                            self.trendButtonsView.isHidden = false
+//                            self.topButtonsDataView.isHidden = false
+//                            //self.minCalCountLabel.stopBlink()
+//                            self.beforeTweakImageViewHeightConstraint.constant = 0
+//                            self.topButtonsDataViewHeightConstraint.constant = 63
+//                            if (self.myNutritionDetailsView != nil) {
+//                                self.myNutritionDetailsView.isHidden = false
+//                            }
+//
+//                        } else {
+//                            self.chatViewHeightConstraint.constant = 0
+//                                                   aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//                                                   self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 190
+//                                                   self.taeClubViewTopConstraint.constant = 55
+//                                                   if (self.myNutritionDetailsView != nil) {
+//                                self.myNutritionDetailsView.isHidden = true
+//                                self.switchButton.alpha = 0
+//                            }
+//
+//                        }
+//
+//
+//                    } else {
+//                        self.taeClubViewTopConstraint.constant = 55
+//
+//                        aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+//
+//                       self.chatViewHeightConstraint.constant = 170
+//                        self.draggableViewHeightConstraint.constant = 300 - 86 + 30 + 70
+//                        if (self.myNutritionDetailsView != nil) {
+//                                                   self.switchButton.alpha = 1
+//
+//                                                   if self.showGraph == true {
+//                                                       self.myNutritionDetailsView.isHidden = true
+//                                                   } else {
+//                                                   self.myNutritionDetailsView.isHidden = false
+//                                                   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 170 + 63)
+//                                                   }
+//                                               }
+//                    }
+//                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                       self.monthBtnTrailingConstraint.constant = 50;
+//                   } else {
+//
+//                   if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                    aaChartView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//
+//                       self.chatViewHeightConstraint.constant = 0
+//                    self.draggableViewHeightConstraint.constant = 300 - 86 + 190
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionDetailsView.isHidden = true
+//                        self.switchButton.alpha = 0
+//                    }
+//
+//                   } else {
+//                      self.chatViewHeightConstraint.constant = 200
+//                    aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
+//                    self.draggableViewHeightConstraint.constant = 300 - 86 + 70
+//                    if (self.myNutritionDetailsView != nil) {
+//                                                              self.switchButton.alpha = 1
+//
+//                                                              if self.showGraph == true {
+//                                                                  self.myNutritionDetailsView.isHidden = true
+//                                                              } else {
+//                                                              self.myNutritionDetailsView.isHidden = false
+//                                                              self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200 + 63)
+//                                                              }
+//                                                          }
+//                   }
+//                    self.draggableConstant = self.draggableViewHeightConstraint.constant
+//
+//                    self.monthBtnTrailingConstraint.constant = 50;
+//                                      }
+//
+//               }
+        aaChartView.frame = CGRect(x: 0, y: 0, width: self.chartView.frame.width, height: self.chartView.frame.height)
         self.view.layoutIfNeeded()
         self.loadingView.frame = CGRect(x: self.outerChartView.frame.origin.x, y: self.outerChartView.frame.origin.y, width: self.outerChartView.frame.size.width, height: self.chartView.frame.maxY)
         self.isLoaded = true
@@ -2160,7 +2173,9 @@ tappedOnTAEClubExpiryView()
     func showMyNutritionDetails() {
         if (self.myNutritionDetailsView == nil) {
         self.myNutritionDetailsView = (Bundle.main.loadNibNamed("MyNutritionView", owner: self, options: nil)! as NSArray).firstObject as? MyNutritionView;
-            self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
+           // self.myNutritionDetailsView.frame = self.myNutritionView.frame
+            self.myNutritionDetailsView.layer.cornerRadius = 10
+
         self.myNutritionDetailsView.delegate = self
         self.myNutritionViewSelectYourMealTableView.backgroundColor = UIColor.groupTableViewBackground
         self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
@@ -2171,7 +2186,9 @@ tappedOnTAEClubExpiryView()
 //            } else {
 //                self.myNutritionDetailsView.isHidden = false
 //            }
-            self.outerChartView.addSubview(self.myNutritionDetailsView)
+            self.myNutritionView.addSubview(self.myNutritionDetailsView)
+           // self.myNutritionDetailsView.translatesAutoresizingMaskIntoConstraints = true
+           // self.myNutritionDetailsView.layoutIfNeeded()
             self.showMyNutririonDetailsView.append(1)
 
 self.topImageView.alpha = 1
@@ -2436,6 +2453,11 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
+//        self.myNutritionView.layer.cornerRadius = 10
+//        self.outerChartView.layer.cornerRadius = 10
+//        self.topButtonsDataView.layer.cornerRadius = 10
+
+
         if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
             link = UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") as! String
             UserDefaults.standard.removeObject(forKey: "FROM_DEEP_LINKS")
@@ -2540,8 +2562,8 @@ self.topImageView.alpha = 1
         self.topImageView.alpha = 0
         self.outerChartView.alpha = 0
         
-        self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 100, y: self.mealTypeView.frame.minY + 2.5, width: 90, height: 30))
-        self.view.addSubview(self.switchButton)
+        self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 140, y: self.mealTypeView.frame.minY + 2.5, width: 90, height: 30))
+        self.outerChartView.addSubview(self.switchButton)
         self.switchButton.isHidden = true
 
         self.loadingView.backgroundColor = UIColor.white
@@ -3564,7 +3586,7 @@ self.topImageView.alpha = 1
                     if (self.myNutritionDetailsView != nil) {
                         self.myNutritionViewLast10TweaksTableView.isHidden = true
                         self.myNutritionViewSelectYourMealTableView.isHidden = true
-                        self.myNutritionDetailsView.isHidden = true
+                        self.myNutritionView.isHidden = true
                         self.switchButton.isHidden = false
                         self.showGraph = true
                         //self.myNutritionDetailsView.switchButton.setStatus(bool)
@@ -3576,7 +3598,7 @@ self.topImageView.alpha = 1
                     if (self.myNutritionDetailsView != nil) {
                         self.mealTypeTableView.isHidden = true
                         self.switchButton.isHidden = true
-                                   self.myNutritionDetailsView.isHidden = false
+                                   self.myNutritionView.isHidden = false
                                    self.showGraph = false
                          self.myNutritionDetailsView.switchButton.setStatus(false)
                                    self.setDefaultDataBtns(name: self.dataBtnName)
@@ -5615,6 +5637,7 @@ self.topImageView.alpha = 1
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true;
        // getTrends()
 //        DispatchQueue.main.sync {
           // dummyNavigation()
@@ -5637,7 +5660,7 @@ self.topImageView.alpha = 1
 //               self.link = "CALS_LEFT_FS_POPUP"
       //  print(UserDefaults.standard.value(forKey: "NOTIFICATIONWHENAPPKILLED"))
        // self.getNutritionistFBID()
-//self.navigationController?.isNavigationBarHidden = false
+//self.navigationController?.isNavigationBarHidden = true;
       //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_RECIPES_AND_TWEAKS"), object: nil);
       //  self.draggableView.translatesAutoresizingMaskIntoConstraints = false
 //self.draggableContainerView.layoutIfNeeded()
@@ -9289,7 +9312,7 @@ self.floatingCallBtn.isHidden = false
         self.howToTweakView.removeFromSuperview();
         
         self.tabBarController?.tabBar.isHidden = false;
-        self.navigationController?.isNavigationBarHidden = false;
+        self.navigationController?.isNavigationBarHidden = true;
         UserDefaults.standard.setValue(false, forKey: "showRegistration");
     }
     
@@ -9298,7 +9321,7 @@ self.floatingCallBtn.isHidden = false
         self.tweakFinalView.removeFromSuperview();
         
         self.tabBarController?.tabBar.isHidden = false;
-        self.navigationController?.isNavigationBarHidden = false;
+        self.navigationController?.isNavigationBarHidden = true;
         UserDefaults.standard.setValue(false, forKey: "showRegistration");
     }
     
