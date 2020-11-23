@@ -931,6 +931,9 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+        self.navigationController?.navigationItem.setHidesBackButton(true, animated: false)
         if IS_iPHONE5 {
             self.approxCalLeftForDayLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 13.0)
 
@@ -1089,10 +1092,10 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
        // self.getLabelsPerc()
         self.didYouKnowStaticText()
         
-        let btn1 = UIButton()
-        btn1.setImage(UIImage(named: "backIcon"), for: .normal)
-        btn1.frame = CGRect(0, 0, 30, 30)
-        btn1.addTarget(self, action: #selector(MyTweakAndEatVCViewController.action), for: .touchUpInside);        self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: btn1), animated: true);
+//        let btn1 = UIButton()
+//        btn1.setImage(UIImage(named: "backIcon"), for: .normal)
+//        btn1.frame = CGRect(0, 0, 30, 30)
+//        btn1.addTarget(self, action: #selector(MyTweakAndEatVCViewController.action), for: .touchUpInside);        self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: btn1), animated: true);
        // self.showLineChartView(nutritionVal: "calories")
         // Do any additional setup after loading the view.
         

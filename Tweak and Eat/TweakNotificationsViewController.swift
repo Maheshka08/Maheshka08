@@ -46,7 +46,7 @@ class TweakNotificationsViewController: UIViewController, UITableViewDelegate,  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         bundle = Bundle.init(path: path!)! as Bundle
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
