@@ -166,6 +166,7 @@
 		830C573424A922140062547D /* SwitchWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C573324A922140062547D /* SwitchWithText.swift */; };
 		830CC1F82541ADDA00517C8B /* Tweak and Eat.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 73D5C9B71EC584BC0083A059 /* Tweak and Eat.entitlements */; };
 		830CC1FA2541B31A00517C8B /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830CC1F92541B31A00517C8B /* Branch.framework */; };
+		8315CDD4256773D30061006C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8315CDD3256773D30061006C /* Alamofire.framework */; };
 		831708D524FFE9AD00413723 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847545C21EB8ADAD0042D84A /* AdSupport.framework */; };
 		8317091D250B519400413723 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317091B250B519300413723 /* iCarousel.m */; };
 		83170921250BBEC400413723 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8317091E250BBEC300413723 /* CarouselCollectionViewCell.xib */; };
@@ -541,6 +542,7 @@
 		73EBF3761F370D730085E7BF /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		830C573324A922140062547D /* SwitchWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchWithText.swift; sourceTree = "<group>"; };
 		830CC1F92541B31A00517C8B /* Branch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Branch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8315CDD3256773D30061006C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8317091B250B519300413723 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		8317091C250B519400413723 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		8317091E250BBEC300413723 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8315CDD4256773D30061006C /* Alamofire.framework in Frameworks */,
 				830CC1FA2541B31A00517C8B /* Branch.framework in Frameworks */,
 				18F41CFD241BC37900695AE3 /* MBCircularProgressBar.framework in Frameworks */,
 				1878DA2523AC918300F1FBAE /* AAInfographics.framework in Frameworks */,
@@ -1171,6 +1174,7 @@
 		847545B91EB8AD3E0042D84A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8315CDD3256773D30061006C /* Alamofire.framework */,
 				830CC1F92541B31A00517C8B /* Branch.framework */,
 				18F41CFC241BC37900695AE3 /* MBCircularProgressBar.framework */,
 				1878DA2423AC918300F1FBAE /* AAInfographics.framework */,

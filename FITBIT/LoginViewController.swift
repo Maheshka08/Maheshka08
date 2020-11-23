@@ -210,6 +210,7 @@ self.updateChart(backGroundCol: "#168c7a", data: [] as [Any], name: "Weight", co
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.weightTableView.isHidden = true
         self.weightReadings = uiRealm.objects(WeightInfo.self)
         chartSelectedLbl.isHidden = true

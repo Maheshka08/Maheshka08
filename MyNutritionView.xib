@@ -39,15 +39,15 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7g-p8-XLt" customClass="CircularProgressView" customModule="Tweak_and_Eat" customModuleProvider="target">
                     <rect key="frame" x="116.5" y="62" width="80" height="80"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3A-rP-qZu" customClass="CircularProgressView" customModule="Tweak_and_Eat" customModuleProvider="target">
                     <rect key="frame" x="218" y="62" width="80" height="80"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-gZ-aYK" customClass="CircularProgressView" customModule="Tweak_and_Eat" customModuleProvider="target">
                     <rect key="frame" x="319.5" y="62" width="80" height="80"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5Y-pt-9dZ">
                     <rect key="frame" x="15" y="170.5" width="80" height="27"/>
@@ -89,16 +89,16 @@
                     <rect key="frame" x="0.0" y="211" width="414" height="48"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhi-jJ-7Hy">
-                            <rect key="frame" x="16" y="8" width="187" height="33"/>
+                            <rect key="frame" x="10" y="8" width="193" height="33"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 10 Tweaks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2n-NN-5t3">
-                                    <rect key="frame" x="10" y="0.0" width="144" height="33"/>
+                                    <rect key="frame" x="10" y="0.0" width="150" height="33"/>
                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="vu9-wN-IxP">
-                                    <rect key="frame" x="162" y="0.0" width="25" height="33"/>
+                                    <rect key="frame" x="168" y="0.0" width="25" height="33"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="25" id="QcW-ML-e17"/>
@@ -106,7 +106,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV0-Ko-tJM">
-                                    <rect key="frame" x="0.0" y="0.0" width="187" height="33"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="193" height="33"/>
                                     <connections>
                                         <action selector="last10TweaksTapped:" destination="gJ4-VX-h0L" eventType="touchUpInside" id="aPV-9r-TC6"/>
                                     </connections>
@@ -129,16 +129,16 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7e-7p-GV1">
-                            <rect key="frame" x="211" y="8" width="187" height="33"/>
+                            <rect key="frame" x="211" y="8" width="193" height="33"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noF-ZM-tbA">
-                                    <rect key="frame" x="10" y="0.0" width="144" height="33"/>
+                                    <rect key="frame" x="10" y="0.0" width="150" height="33"/>
                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="FiP-hB-tTh">
-                                    <rect key="frame" x="162" y="0.0" width="25" height="33"/>
+                                    <rect key="frame" x="168" y="0.0" width="25" height="33"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="25" id="IRP-dc-2ZR"/>
@@ -146,7 +146,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fx-vJ-zD1">
-                                    <rect key="frame" x="0.0" y="0.0" width="187" height="33"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="193" height="33"/>
                                     <connections>
                                         <action selector="selectYourMealTapped:" destination="gJ4-VX-h0L" eventType="touchUpInside" id="ZXW-RU-rpE"/>
                                     </connections>
@@ -173,8 +173,8 @@
                     <constraints>
                         <constraint firstItem="w7e-7p-GV1" firstAttribute="leading" secondItem="Zhi-jJ-7Hy" secondAttribute="trailing" constant="8" id="6nC-4s-1uM"/>
                         <constraint firstItem="Zhi-jJ-7Hy" firstAttribute="top" secondItem="bt7-If-iiu" secondAttribute="top" constant="8" id="Goq-cT-P0j"/>
-                        <constraint firstItem="Zhi-jJ-7Hy" firstAttribute="leading" secondItem="bt7-If-iiu" secondAttribute="leading" constant="16" id="IfI-OG-ykl"/>
-                        <constraint firstAttribute="trailing" secondItem="w7e-7p-GV1" secondAttribute="trailing" constant="16" id="Jcn-qd-fUb"/>
+                        <constraint firstItem="Zhi-jJ-7Hy" firstAttribute="leading" secondItem="bt7-If-iiu" secondAttribute="leading" constant="10" id="IfI-OG-ykl"/>
+                        <constraint firstAttribute="trailing" secondItem="w7e-7p-GV1" secondAttribute="trailing" constant="10" id="Jcn-qd-fUb"/>
                         <constraint firstItem="w7e-7p-GV1" firstAttribute="bottom" secondItem="Zhi-jJ-7Hy" secondAttribute="bottom" id="KdP-Ws-uGk"/>
                         <constraint firstItem="w7e-7p-GV1" firstAttribute="top" secondItem="Zhi-jJ-7Hy" secondAttribute="top" id="LU8-Ed-NJK"/>
                         <constraint firstAttribute="height" constant="48" id="SOV-xz-nak"/>
@@ -191,7 +191,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="oWm-KK-qSa"/>
-            <color key="backgroundColor" red="0.94955641031265259" green="0.96522217988967896" blue="0.98114579916000366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="B7g-p8-XLt" firstAttribute="width" secondItem="jvX-XE-ljB" secondAttribute="width" id="0Il-Db-yfs"/>
                 <constraint firstItem="jvX-XE-ljB" firstAttribute="top" secondItem="ReI-O6-iqz" secondAttribute="bottom" constant="19" id="127-c6-UkN"/>

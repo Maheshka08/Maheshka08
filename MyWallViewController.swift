@@ -135,6 +135,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MyWallViewController.goToDesiredPage(_:)), name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: nil);
         self.tweakFeedsArray = [TweakWall]()
         self.addBackButton()

@@ -641,6 +641,8 @@ self.setUpUI()                                                                  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
        self.getAllDetails()
         
     }

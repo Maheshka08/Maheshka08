@@ -32,7 +32,8 @@ class AboutAppViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         bundle = Bundle.init(path: path!)! as Bundle
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
            let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String

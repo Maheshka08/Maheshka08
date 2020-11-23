@@ -38,6 +38,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //        }
         let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
         let index = self.carouselView1.indexPathForItem(at: center)
+
         print(index ?? "index not found")
 //        for cell in self.carouselView1.visibleCells {
 //            let indexPath = self.carouselView1.indexPath(for: cell)
@@ -123,7 +124,15 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         DispatchQueue.main.async {
                    self.carouselView1.reloadData()
           //  self.scrolledIndex = 1
-            let indexPath = IndexPath(item: 1, section: 0)
+            if self.items.count == 1 {
+                self.pageControl.currentPage = 0
+
+            } else if self.items.count > 1 {
+                self.pageControl.currentPage = 1
+
+            }
+
+            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
                            self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
                }
         
@@ -366,6 +375,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
      @IBOutlet weak var termsHeightConstraint: NSLayoutConstraint!
      @IBOutlet weak var packagesCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var ratingsCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var timeSlotTextField: UITextField!
     @IBOutlet weak var languageTextField: UITextField!
@@ -435,6 +447,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         return accessoryToolbar
       }
     }
+    
     @objc var smallImage : String = ""
     @objc var price : String = ""
     @objc var name : String = ""
@@ -459,6 +472,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @objc var moreInfoPremiumPackagesArray = NSMutableArray()
     var backBtn = UIButton()
     @objc var moreInfoPremiumPackagesRef : DatabaseReference!
+    
+    @IBOutlet weak var premiumSubView: UIView!
     func showCalendarView() {
         self.calendarOuterView.isHidden = false
         self.title = "SCHEDULE YOUR CALL"
@@ -1369,6 +1384,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         //        }
     }
     
+    @IBAction func backAction(_ sender: UIButton) {
+        let _ = self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
     @objc func packagLabelSelections() {
         if self.nutritionLabelPackagesArray.count > 0 {
             
@@ -1399,6 +1419,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     
                 }
             }
+            self.pageControl.numberOfPages = self.items.count
             print(self.packagesImagesArray)
             DispatchQueue.main.async {
 //                self.packagesCarouselView.reloadData()
@@ -1408,7 +1429,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             for packageDict in self.nutritionLabelPackagesArray {
                 let dict = packageDict as! [String: AnyObject]
                 for (key,val) in dict {
-                    if key == "titleImg" {
+                    if key == "titleTwoImg" {
+                        //self.topImageViewHeightConstraint.constant = 191
+
                             let urlString = val as! String
 
                           self.topImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
@@ -1424,7 +1447,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
 
                             }
-                    } else if key == "titleTwoImg" {
+                    } else if key == "titleImg" {
                             let urlString = val as! String
 
                           self.bottomImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
@@ -1696,6 +1719,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.premiumSubView.layer.cornerRadius = 10
         //IndIWj1mSzQ1GDlBpUt
 //        if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
@@ -2285,6 +2309,12 @@ extension MoreInfoPremiumPackagesViewController: UICollectionViewDelegate {
         let item = items[indexPath.row]
         print("Selected Item at index: \(indexPath.row)")
         
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
+        let index = self.carouselView1.indexPathForItem(at: center)
+        self.pageControl.currentPage = Int(index!.row)
     }
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        for cell in self.carouselView1.visibleCells {

@@ -550,6 +550,11 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                    self.navigationController?.popToRootViewController(animated: true)
 
     }
+    
+    @IBAction func backAction(_ sender: UIButton) {
+        let _ = self.navigationController?.popToRootViewController(animated: true)
+        
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad();

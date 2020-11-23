@@ -833,6 +833,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.immunityBoosterBtn.setTitle("Immunity\nBooster", for: .normal)
         self.immunityBoosterBtn.titleLabel?.textAlignment = .center
        // recipeWallTableView.reloadData()

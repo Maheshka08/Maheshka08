@@ -618,7 +618,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var tapToTweakView: UIView!
     
+    @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var subscribeNowButtonView: UIView!
+    
+    
+    @IBOutlet weak var scrollContainerView: UIView!
     @IBAction func taeClubMemberButtonTapped(_ sender: Any) {
         self.goToTAEClubMemPage()
     }
@@ -968,6 +973,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func handleSwipeView(_ gestureRecognizer: UISwipeGestureRecognizer) {
         if gestureRecognizer.direction == .up {
+            if self.goneUp == true {
+                return
+            }
             DispatchQueue.main.async {
                 UIView.animate(
                     withDuration: 1,
@@ -976,18 +984,22 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.outerChartView.isHidden = true
                         self.myNutritionView.alpha = 0
                         self.approxCalLeftView.isHidden = true
+                        self.containerViewBottomConstraint.constant = 110
+                        self.topBgImageView.contentMode = .scaleToFill
 
                             self.view.layoutIfNeeded()
                     //last
                             
             },  completion: {(_ completed: Bool) -> Void in
-                self.topImageView.contentMode = .scaleToFill
 
                 self.goneUp = true
                 
             })
             }
         } else {
+            if self.goneUp == false {
+                return
+            }
             DispatchQueue.main.async {
                 UIView.animate(
                     withDuration: 1,
@@ -995,7 +1007,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.topViewHeightConstraint.constant = 302
                         self.myNutritionView.alpha = 1
                         self.outerChartView.isHidden = true
-
+                        self.containerViewBottomConstraint.constant = 0
+                        self.topBgImageView.contentMode = .scaleAspectFill
 
                             self.view.layoutIfNeeded()
                     //last
@@ -2504,7 +2517,12 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
-        self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        self.subscribeNowButtonView.layer.cornerRadius = 10
+        self.menuButtonsView.layer.cornerRadius = 10
+        self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.85)
+        self.startTweakingView.layer.cornerRadius = 10
+        self.trialPeriodExpiryView.layer.cornerRadius = 10
+        self.taeClubTrialPeriodExpiryView.layer.cornerRadius = 10
 
 
         if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
@@ -2794,6 +2812,15 @@ self.topImageView.alpha = 1
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(swipeUpView)
         self.view.addGestureRecognizer(swipeDownView)
+        //scrollContainerView
+//        self.scrollContainerView.isUserInteractionEnabled = true
+//        let swipeUpContainerView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeView(_:)))
+//        //let swipeDownView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeView(_:)))
+//        
+//        swipeUpContainerView.direction = .up
+//       /// swipeDownView.direction = .down
+//        self.scrollContainerView.addGestureRecognizer(swipeUpContainerView)
+//        
         
         //self.foodImageView.layer.cornerRadius = 30.0
       //  self.foodImageShadowView.layer.cornerRadius = 30.0
@@ -3000,6 +3027,7 @@ self.topImageView.alpha = 1
         
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.reachabilityChanged(notification:)), name: NSNotification.Name.reachabilityChanged, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.badgeCountChanged(notification:)), name: NSNotification.Name(rawValue: "BADGECOUNT"), object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.scrollHome(notification:)), name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: nil);
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
             self.getStaticText(lang: language)
@@ -3466,7 +3494,63 @@ self.topImageView.alpha = 1
         
         self.showBadge()
     }
+    @objc func scrollHome(notification : NSNotification) {
+        let notify = notification.object as! Bool
+        self.goneUp = notify
+        self.scrollHomeScreen()
+    }
     
+    @objc func scrollHomeScreen() {
+        if self.goneUp == false {
+        
+        DispatchQueue.main.async {
+            UIView.animate(
+                withDuration: 1,
+                animations: {
+                    self.topViewHeightConstraint.constant = 0
+                    self.outerChartView.isHidden = true
+                    self.myNutritionView.alpha = 0
+                    self.approxCalLeftView.isHidden = true
+                    self.containerViewBottomConstraint.constant = 110
+                    self.topBgImageView.contentMode = .scaleToFill
+                        self.view.layoutIfNeeded()
+                //last
+                        
+        },  completion: {(_ completed: Bool) -> Void in
+            self.topImageView.contentMode = .scaleToFill
+
+            self.goneUp = true
+            
+        })
+        }
+        } else {
+            DispatchQueue.main.async {
+                UIView.animate(
+                    withDuration: 1,
+                    animations: {
+                        self.topViewHeightConstraint.constant = 302
+                        self.myNutritionView.alpha = 1
+                        self.outerChartView.isHidden = true
+                        self.containerViewBottomConstraint.constant = 0
+                        self.topBgImageView.contentMode = .scaleAspectFill
+
+                            self.view.layoutIfNeeded()
+                    //last
+                            
+            },  completion: {(_ completed: Bool) -> Void in
+                self.goneUp = false
+                self.outerChartView.isHidden = false
+                self.approxCalLeftView.isHidden = false
+
+
+
+                
+            })
+            }
+
+        }
+
+    }
     
     @objc func languageSelected(lang: String) {
         if lang == "BA" {
@@ -5696,6 +5780,9 @@ self.topImageView.alpha = 1
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true;
+//        if  self.containerViewBottomConstraint.constant == 110 {
+//            self.goneUp = true
+//        }
        // getTrends()
 //        DispatchQueue.main.sync {
           // dummyNavigation()

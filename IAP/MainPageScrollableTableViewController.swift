@@ -18,7 +18,7 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
     @IBOutlet weak var collectionView1: UICollectionView!
     let sectionHeaderTitleArray = ["Our recipes for the week","Latest greatest from the Tweak Wall"]
     var tweakFeedsArray = [TweakWall]()
-
+    var pullControl = UIRefreshControl()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -51,17 +51,20 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
                 self.goToRecipeWall(title: (cellDict["recp_id"] as AnyObject as? String)!)
             }
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
     }
    override func  tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let returnedView = UIView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:28)) //set these values as necessary
-        returnedView.backgroundColor = UIColor.groupTableViewBackground
+    returnedView.backgroundColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 239.0/255.0, alpha: 1.0)
         
         let label = UILabel(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:28))
         label.text = "  " + self.sectionHeaderTitleArray[section]
     label.textColor =  UIColor(red: 89/255, green: 21/255, blue: 112/255, alpha: 1.0);
-    label.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
-
+    label.font = UIFont(name:"QUESTRIAL-REGULAR", size: 16.0)
+    let imgView = UIImageView(frame: CGRect(x: tableView.frame.size.width - 26, y: 2, width: 24, height: 24))
+    imgView.image = UIImage.init(named: "arrow")
         returnedView.addSubview(label)
+    returnedView.addSubview(imgView)
         
         return returnedView
     }
@@ -263,9 +266,68 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
             })
         }
     }
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == 1 {
+//            return 50
+//
+//        }
+//        return 0
+//    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // example code
+        if decelerate {
+            if(scrollView.contentOffset.y < 0) {
+               // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+            } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: false)
+            }
+
+        }
+}
+//    override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+//        if(scrollView.contentOffset.y < 0) {
+//           // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+//            print("reached end")
+//
+//        }
+//        print("reached end")
+//
+//    }
+    
+  
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+//            //you reached end of the table
+//            print("reached end")
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+//            return
+//        } else if (scrollView.contentOffset.y <= 0){
+//            //reach top
+//            print("reached top")
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: false)
+//            return
+//        }
+//    }
+    @objc func refresh(_ sender: Any) {
+        //  your code to reload tableView
+        print("refreshing...")
+        self.pullControl.endRefreshing()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
+
+        self.tableView.backgroundColor = .clear
+        //self.pullControl.tintColor = .clear
+        pullControl.attributedTitle = NSAttributedString(string: "Pull down to Collapse..")
+       // pullControl.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
+
+        self.pullControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(pullControl)
+
         NotificationCenter.default.addObserver(self, selector: #selector(MainPageScrollableTableViewController.getRecipesAndTweakWall), name: NSNotification.Name(rawValue: "GET_RECIPES_AND_TWEAKS"), object: nil)
         self.getRecipesAndTweakWall();
     }
