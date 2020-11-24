@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "170DF970F00FFDFC5E44412E37AA91F4"
-               BuildableName = "OneSignal-iOS10.3"
-               BlueprintName = "OneSignal-iOS10.3"
+               BlueprintIdentifier = "2C0C7A40625CA39E77F887E2ECAB3C5F"
+               BuildableName = "OneSignal-iOS11.0"
+               BlueprintName = "OneSignal-iOS11.0"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
