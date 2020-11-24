@@ -91,7 +91,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
       }
     public var items2 = [Item]() {
         didSet {
-            updateDataSource2()
+        //    updateDataSource2()
         }
     }
       
@@ -365,6 +365,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var timeSlotsArray = [[String: AnyObject]]()
     var productPrice: NSDecimalNumber = NSDecimalNumber()
     
+    @IBOutlet weak var scrollViewImageView: UIImageView!
     @IBOutlet weak var noCommitmentLabel: UILabel!
    
     @IBOutlet weak var privacyPolicyBtn: UIButton!
@@ -404,6 +405,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var confirmationText = ""
     var cardImageString = "";
     var labelsPrice = "pkgPrice"
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     var lables = "pkgDisplayDescription"
     var lableCount = "pkgDuration"
     var enteredScreenTime = ""
@@ -1385,7 +1387,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func backAction(_ sender: UIButton) {
-        let _ = self.navigationController?.popToRootViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -1449,12 +1451,14 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                             }
                     } else if key == "titleImg" {
                             let urlString = val as! String
-
-                          self.bottomImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+                        bottomImageView.isHidden = true
+                          self.scrollViewImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
                                                                              // Your code inside completion block
                             let ratio = image!.size.width / image!.size.height
-                            let newHeight = self.bottomImageView.frame.width / ratio
+                            let newHeight = self.scrollViewImageView.frame.width / ratio
                            self.bottomImageViewHeightConstraint.constant = newHeight
+                            self.scrollViewHeight.constant = newHeight
+
                             self.view.layoutIfNeeded()
                                
 
@@ -1767,10 +1771,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.ratingsCarouselHeightConstraint.constant = 0
         } else if IS_iPHONE678P {
             self.ratingsCarouselHeightConstraint.constant = 120
-            self.termsHeightConstraint.constant = 0
-            self.noCommitmentHeightConstraint.constant = 0
-            self.termsofUseBtn.isHidden = true
-            self.privacyPolicyBtn.isHidden = true
+//            self.termsHeightConstraint.constant = 0
+//            self.noCommitmentHeightConstraint.constant = 0
+//            self.termsofUseBtn.isHidden = true
+//            self.privacyPolicyBtn.isHidden = true
 
         } else {
             self.ratingsCarouselHeightConstraint.constant = 130

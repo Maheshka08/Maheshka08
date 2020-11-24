@@ -23,7 +23,7 @@ target 'Tweak and Eat' do
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  pod 'Alamofire', '~> 4.5'
+  pod 'Alamofire'
   pod 'razorpay-pod'
   pod "MBCircularProgressBar"
   pod 'FacebookCore'

@@ -878,13 +878,13 @@ self.updateChart(backGroundCol: "#168c7a", data: [] as [Any], name: "Weight", co
         
         let base64 = base64String("\(clientID):\(clientSecret)");
         
-        let headers = [
+        let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Basic \(base64)"
         ]
         let parameters = ["token": token]
         
-        Alamofire.request("https://api.fitbit.com/oauth2/revoke", method: .post, parameters: parameters, encoding:  URLEncoding.httpBody, headers: headers).responseJSON { (response:DataResponse<Any>) in
+        AF.request("https://api.fitbit.com/oauth2/revoke", method: .post, parameters: parameters, encoding:  URLEncoding.httpBody, headers: headers).responseJSON { (response:AFDataResponse<Any>) in
             
             switch(response.result) {
             case.success(let data):
