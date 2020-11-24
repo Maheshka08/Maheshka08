@@ -986,6 +986,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.approxCalLeftView.isHidden = true
                         self.containerViewBottomConstraint.constant = 110
                         self.topBgImageView.contentMode = .scaleToFill
+                        self.startTweakingView.isHidden = true
+                        self.trialPeriodExpiryView.isHidden = true
+                        self.taeClubTrialPeriodExpiryView.isHidden = true
 
                             self.view.layoutIfNeeded()
                     //last
@@ -1009,6 +1012,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.outerChartView.isHidden = true
                         self.containerViewBottomConstraint.constant = 0
                         self.topBgImageView.contentMode = .scaleAspectFill
+                        self.startTweakingView.isHidden = false
+                        self.trialPeriodExpiryView.isHidden = false
+                        self.taeClubTrialPeriodExpiryView.isHidden = false
 
                             self.view.layoutIfNeeded()
                     //last
