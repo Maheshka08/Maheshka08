@@ -385,6 +385,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var packageDescTextView: UITextView!;
     @IBOutlet weak var areYouSureLbl: UILabel!
     @IBOutlet weak var unSubscribeImgViewHeightContraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buyNowBtton: UIButton!
     @IBOutlet weak var callNutritionistBtn2HeightContraint: NSLayoutConstraint!
     @IBOutlet weak var carouselsView: UIView!
     @IBOutlet weak var ourNutritionistLbl: UILabel!
@@ -520,6 +522,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                    
     }
     
+    @IBAction func buyNowBttnTapped(_ sender: Any) {
+        
+    }
     @IBAction func privacyPolicyBtnTapped(_ sender: Any) {
         guard let url = URL(string: "http://www.tweakandeat.com/privacy-policy.html") else {
                                             return
@@ -1413,6 +1418,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
             }
             print(self.nutritionLabelPackagesArray);
+            if self.packageId != "-ClubInd3gu7tfwko6Zx" && self.packageId != "-ClubIdn4hd8flchs9Vy" {
             for priceDict in self.nutritionLabelPriceArray {
                 let dict = priceDict as! [String: AnyObject]
                 if dict.index(forKey: "pkgImg") != nil {
@@ -1422,34 +1428,38 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
             }
             self.pageControl.numberOfPages = self.items.count
-            print(self.packagesImagesArray)
+            }
+            //print(self.packagesImagesArray)
             DispatchQueue.main.async {
 //                self.packagesCarouselView.reloadData()
 //                self.packagesCarouselView.scrollToItem(at: self.packagesImagesArray.count >= 2 ? 1: 0, animated: true)
 
                        }
+            
+            
             for packageDict in self.nutritionLabelPackagesArray {
                 let dict = packageDict as! [String: AnyObject]
                 for (key,val) in dict {
-                    if key == "titleTwoImg" {
-                        //self.topImageViewHeightConstraint.constant = 191
-
-                            let urlString = val as! String
-
-                          self.topImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
-                                                                             // Your code inside completion block
-                            let ratio = image!.size.width / image!.size.height
-                            let newHeight = self.topImageView.frame.width / ratio
-                           self.topImageViewHeightConstraint.constant = newHeight
-                           self.view.layoutIfNeeded()
-//                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
-//                                                      animations: {
+//                    if key == "titleTwoImgg" {
+//                        //self.topImageViewHeightConstraint.constant = 191
+//                    //    self.topImageView.contentMode = .scaleAspectFit
+//                            let urlString = val as! String
 //
-//                                       }, completion: nil)
-
-
-                            }
-                    } else if key == "titleImg" {
+//                          self.topImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+//                                                                             // Your code inside completion block
+//                            let ratio = image!.size.width / image!.size.height
+//                            let newHeight = self.topImageView.frame.width / ratio
+//                           self.topImageViewHeightConstraint.constant = newHeight
+//                           self.view.layoutIfNeeded()
+////                                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+////                                                      animations: {
+////
+////                                       }, completion: nil)
+//
+//
+//                            }
+//                    } else
+                    if key == "imgPopUp" {
                             let urlString = val as! String
                         bottomImageView.isHidden = true
                           self.scrollViewImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
@@ -1766,7 +1776,20 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         carouselView1.register(UINib(nibName: "CarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell")
         carouselView2.register(UINib(nibName: "CarouselCollectionViewCell2", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell2")
              //  self.items = [Item(value: "1"), Item(value: "2"), Item(value: "3"), Item(value: "4"), Item(value: "5")]
+        if self.packageId == "-ClubInd3gu7tfwko6Zx" || self.packageId == "-ClubIdn4hd8flchs9Vy" {
+            self.packagesCarouselHeightConstraint.constant = 90
+            self.buyNowBtton.isHidden = false
+            self.packagesCarouselView.isHidden = true
+            self.carouselView1.isHidden = true
+            self.pageControl.isHidden = true
+
+        } else {
+            self.pageControl.isHidden = false
+            self.buyNowBtton.isHidden = true
+            self.packagesCarouselView.isHidden = false
+            self.carouselView1.isHidden = false
         self.packagesCarouselHeightConstraint.constant = 164
+        }
         if IS_iPHONE5 || IS_iPHONE678 {
             self.ratingsCarouselHeightConstraint.constant = 0
         } else if IS_iPHONE678P {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "nutrition_labels_Included_for_all@1x.png",
+      "filename" : "tick_icon@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "nutrition_labels_Included_for_all@2x.png",
+      "filename" : "tick_icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "nutrition_labels_Included_for_all@3x.png",
+      "filename" : "tick_icon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

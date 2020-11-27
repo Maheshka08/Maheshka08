@@ -288,6 +288,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var premiumMemberBottomButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var floatingButtonsView: UIView!
     @IBOutlet weak var floatingCrownBtn: UIButton!
+    @IBOutlet weak var tapToTweakButton: UIButton!
     @IBOutlet weak var floatingTableView: UITableView!
     @IBOutlet weak var caloriesInfoViewOkBtn: UIButton!
     @IBOutlet weak var caloriesInfoLabel: UILabel!
@@ -986,9 +987,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.approxCalLeftView.isHidden = true
                         self.containerViewBottomConstraint.constant = 110
                         self.topBgImageView.contentMode = .scaleToFill
-                        self.startTweakingView.isHidden = true
-                        self.trialPeriodExpiryView.isHidden = true
-                        self.taeClubTrialPeriodExpiryView.isHidden = true
 
                             self.view.layoutIfNeeded()
                     //last
@@ -1012,9 +1010,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.outerChartView.isHidden = true
                         self.containerViewBottomConstraint.constant = 0
                         self.topBgImageView.contentMode = .scaleAspectFill
-                        self.startTweakingView.isHidden = false
-                        self.trialPeriodExpiryView.isHidden = false
-                        self.taeClubTrialPeriodExpiryView.isHidden = false
+//                        self.startTweakingView.isHidden = false
+//                        self.trialPeriodExpiryView.isHidden = false
+//                        self.taeClubTrialPeriodExpiryView.isHidden = false
 
                             self.view.layoutIfNeeded()
                     //last
@@ -2523,6 +2521,7 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        self.tapToTweakButton.flash()
         self.subscribeNowButtonView.layer.cornerRadius = 10
         self.menuButtonsView.layer.cornerRadius = 10
         self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.85)

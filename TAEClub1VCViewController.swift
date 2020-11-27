@@ -18,7 +18,7 @@ class TAEClub1VCViewController: UIViewController {
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         // Do any additional setup after loading the view.
         
 //        if UserDefaults.standard.value(forKey: "TAE_CLUB1_DATA") != nil {

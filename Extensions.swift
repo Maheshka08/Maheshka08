@@ -156,6 +156,21 @@ extension UIView {
     }
 }
 
+extension UIButton {
+
+    func flash() {
+
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.5
+        flash.fromValue = 1
+        flash.toValue = 0.1
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = 5
+
+        layer.add(flash, forKey: nil)
+    }
+}
 extension UIView {
     
     // Example use: myView.addBorder(toSide: .Left, withColor: UIColor.redColor().CGColor, andThickness: 1.0)
