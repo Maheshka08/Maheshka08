@@ -134,14 +134,38 @@ class PopUpNotificationView: UIView {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
             } else {
-                self.goToPurchaseTAEClubScreen()
+                if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                }
+                if self.countryCode == "91" {
+                self.goToBuyScreen(packageID: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
+                } else {
+                    self.goToPurchaseTAEClubScreen()
+
+                }
+                
+
             }
         } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             //MYTAE_PUR_IND_OP_3M
                       if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                          self.goToTAEClubMemPage()
                        } else {
-                           self.goToTAEClub()
+                           //self.goToTAEClub()
+                        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                        }
+                        if self.countryCode == "91" {
+                            DispatchQueue.main.async {
+                            MBProgressHUD.showAdded(to: self, animated: true);
+                            }
+                            self.moveToAnotherView(promoAppLink: "-ClubInd3gu7tfwko6Zx")
+                        } else {
+                            DispatchQueue.main.async {
+                            MBProgressHUD.showAdded(to: self, animated: true);
+                            }
+                            self.moveToAnotherView(promoAppLink: "-ClubIdn4hd8flchs9Vy")
+                        }
                        }
         } else if promoAppLink == "PP_PACKAGES" {
           //  self.performSegue(withIdentifier: "buyPackages", sender: self);
@@ -417,14 +441,38 @@ class PopUpNotificationView: UIView {
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                      self.goToTAEClubMemPage()
                    } else {
-                       self.goToPurchaseTAEClubScreen()
-                   }
+                    if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                        self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                    }
+                    if self.countryCode == "91" {
+                    self.goToBuyScreen(packageID: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
+                    } else {
+                        self.goToPurchaseTAEClubScreen()
+
+                    }
+                    
+
+                }
                } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                 self.goToTAEClubMemPage()
 
             } else {
-                self.goToTAEClub()
+                //self.goToTAEClub()
+             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+             }
+             if self.countryCode == "91" {
+                 DispatchQueue.main.async {
+                 MBProgressHUD.showAdded(to: self, animated: true);
+                 }
+                 self.moveToAnotherView(promoAppLink: "-ClubInd3gu7tfwko6Zx")
+             } else {
+                 DispatchQueue.main.async {
+                 MBProgressHUD.showAdded(to: self, animated: true);
+                 }
+                 self.moveToAnotherView(promoAppLink: "-ClubIdn4hd8flchs9Vy")
+             }
             }
                 } else {
                    tappedOnPopUpDone()

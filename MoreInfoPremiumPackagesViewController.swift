@@ -1532,7 +1532,6 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
             }
             print(self.nutritionLabelPackagesArray);
-            if self.packageId != "-ClubInd3gu7tfwko6Zx" && self.packageId != "-ClubIdn4hd8flchs9Vy" {
             for priceDict in self.nutritionLabelPriceArray {
                 let dict = priceDict as! [String: AnyObject]
                 if dict.index(forKey: "pkgImg") != nil {
@@ -1542,7 +1541,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
             }
             self.pageControl.numberOfPages = self.items.count
-            }
+            
             //print(self.packagesImagesArray)
             DispatchQueue.main.async {
 //                self.packagesCarouselView.reloadData()
@@ -1600,8 +1599,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
                 }
             DispatchQueue.main.async {
-                self.ratingsCarouselView.reloadData()
-                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
+//                self.ratingsCarouselView.reloadData()
+//                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
                 if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
                     UserDefaults.standard.removeObject(forKey: "POP_UP_IDENTIFIERS")
             if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
@@ -1624,7 +1623,17 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                         }
                     }
                 }
-            }
+            } else if self.identifierFromPopUp == "CLUB_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "TAECLUB_IND_MONTHLY" {
+                                self.startPurchase(identifier: "TAECLUB_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                }
                             
 
             }
