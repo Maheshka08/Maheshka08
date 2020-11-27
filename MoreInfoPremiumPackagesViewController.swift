@@ -50,6 +50,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 let indexPath = IndexPath(item: self.selectedIndex, section: 0)
                                       self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
                           }
+            self.pageControl.currentPage = self.selectedIndex
+
             return
         }
                     self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
@@ -368,6 +370,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var scrollViewImageView: UIImageView!
     @IBOutlet weak var noCommitmentLabel: UILabel!
    
+    @IBOutlet weak var crossBtn: UIButton!
     @IBOutlet weak var privacyPolicyBtn: UIButton!
     @IBOutlet weak var termsofUseBtn: UIButton!
     @IBOutlet weak var buyNowButton: UIButton!;
@@ -476,8 +479,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @objc var moreInfoPremiumPackagesArray = NSMutableArray()
     var backBtn = UIButton()
     @objc var moreInfoPremiumPackagesRef : DatabaseReference!
-    
+    @IBOutlet weak var imgScrollView: UIScrollView!
+    @IBOutlet weak var moreInfoView: UIView!
+    @IBOutlet weak var clubPaymentSuccessView: UIView!
     @IBOutlet weak var premiumSubView: UIView!
+    @IBOutlet weak var clubSuccesDoneBtn: UIButton!
     func showCalendarView() {
         self.calendarOuterView.isHidden = false
         self.title = "SCHEDULE YOUR CALL"
@@ -522,8 +528,48 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                    
     }
     
-    @IBAction func buyNowBttnTapped(_ sender: Any) {
+    @IBAction func crossBtnTapped(_ sender: Any) {
+        let _ = self.navigationController?.popViewController(animated: false)
+
         
+    }
+    @IBAction func clubSuccessDoneTapped(_ sender: Any) {
+        let _ = self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func buyNowBttnTapped(_ sender: Any) {
+        if self.nutritionLabelPriceArray.count > 0 {
+        self.labelPriceDict  = self.nutritionLabelPriceArray[0] as! [String : AnyObject];
+        self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+        self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+        self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+        self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+        self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+        let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+        let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+        
+        let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+        let totalDesc: String = labels + amount + currency;
+
+        self.packageName = (self.labelPriceDict[lables] as? String)!
+
+        self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+        purchaseIAP()
+        }
+    }
+    func purchaseIAP() {
+        self.navigationItem.hidesBackButton = true
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+                 SKPaymentQueue.default().add(self)
+                 if (SKPaymentQueue.canMakePayments()) {
+                     let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                     let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                     productsRequest.delegate = self;
+                     productsRequest.start();
+                     print("Fetching Products");
+                 } else {
+                     print("can't make purchases");
+                    self.navigationItem.hidesBackButton = false
+                 }
     }
     @IBAction func privacyPolicyBtnTapped(_ sender: Any) {
         guard let url = URL(string: "http://www.tweakandeat.com/privacy-policy.html") else {
@@ -750,7 +796,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 case .purchased:
                     print("Product Purchased")
                     //Do unlocking etc stuff here in case of new purchase
+                    if self.packageId != "-ClubInd3gu7tfwko6Zx" && self.packageId != "-ClubIdn4hd8flchs9Vy" {
+                        self.receiptValidation()
+                    } else {
                     self.recptValidation()
+                    }
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     MBProgressHUD.hide(for: self.view, animated: true);
                     SKPaymentQueue.default().remove(self)
@@ -1057,6 +1107,70 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         let milliseconds: Int64 = Int64(dateToConvert.timeIntervalSince1970 * 1000)
         let strTimeStamp: String = "\(milliseconds)"
         return strTimeStamp
+    }
+    
+    func receiptValidation() {
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        
+        let receiptFileURL = Bundle.main.appStoreReceiptURL
+        let receiptData = try? Data(contentsOf: receiptFileURL!)
+        var jsonDict = [String: AnyObject]()
+        
+        let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId
+            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+        //91e841953e9f4d19976283cd2ee78992
+        
+        print(recieptString!)
+
+        
+        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
+            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
+            var responseResult = ""
+            if responseDic.index(forKey: "callStatus") != nil {
+                responseResult = responseDic["callStatus"] as! String
+            } else if responseDic.index(forKey: "CallStatus") != nil {
+                responseResult = responseDic["CallStatus"] as! String
+            }
+            if  responseResult == "GOOD" {
+                MBProgressHUD.hide(for: self.view, animated: true);
+                print("in-app done")
+                      //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+//                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+//                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+//                    Branch.getInstance().setIdentity(msisdn)
+//
+//                }
+                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+                    let password = "sFdebvQawU9uZJ"
+                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
+
+                }
+                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+                let event = BranchEvent.customEvent(withName: "purchase")
+                event.eventDescription = "User completed payment."
+                event.customData["packageID"] = self.packageId
+                event.customData["currency"] = self.currency
+                event.logEvent()
+          self.clubPaymentSuccessView.isHidden = false
+                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
+
+            }
+        }, failure : { error in
+            self.navigationItem.hidesBackButton = false
+            MBProgressHUD.hide(for: self.view, animated: true);
+            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+            
+            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        })
+        
+        
+  
     }
     
     func recptValidation() {
@@ -1392,7 +1506,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func backAction(_ sender: UIButton) {
-        let _ = self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: false)
         
     }
     
@@ -1459,7 +1573,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //
 //                            }
 //                    } else
-                    if key == "imgPopUp" {
+                    if key == "imgPopup" {
                             let urlString = val as! String
                         bottomImageView.isHidden = true
                           self.scrollViewImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
@@ -1733,7 +1847,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.premiumSubView.layer.cornerRadius = 10
+        self.premiumSubView.layer.cornerRadius = 15
+//        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)
+        self.imgScrollView.layer.cornerRadius = 15
+        
         //IndIWj1mSzQ1GDlBpUt
 //        if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
