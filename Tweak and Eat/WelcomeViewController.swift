@@ -7715,7 +7715,7 @@ self.floatingCallBtn.isHidden = false
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
                     UserDefaults.standard.synchronize()
-                        UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
+                     //   UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
 
                     floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
                     self.floatingCrownBtn.isHidden = false

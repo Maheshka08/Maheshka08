@@ -1890,12 +1890,14 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if countryCode == "91" {
-                self.carouselsView.isHidden = false
+                self.carouselsView.isHidden = true
                 self.moreInfoView.isHidden = false
                 self.featuresView.isHidden = true
-                self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                //self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
 
             } else {
+                self.packagesCarouselView.isHidden = true
+                self.carouselView1.isHidden = true
                 self.moreInfoView.isHidden = true
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
             }
@@ -1931,8 +1933,17 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         } else {
             self.pageControl.isHidden = false
             self.buyNowBtton.isHidden = true
-            self.packagesCarouselView.isHidden = false
-            self.carouselView1.isHidden = false
+            if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                if countryCode == "91" {
+                    self.packagesCarouselView.isHidden = false
+                    self.carouselView1.isHidden = false
+                } else {
+                    self.packagesCarouselView.isHidden = true
+                    self.carouselView1.isHidden = true
+                }
+            }
+            
         self.packagesCarouselHeightConstraint.constant = 164
         }
         if IS_iPHONE5 || IS_iPHONE678 {
@@ -2150,7 +2161,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             
             if  self.packageId == "-IndIWj1mSzQ1GDlBpUt" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-IndAiBPtmMrS4VPnwmD" || self.packageId == "-UsaAiBPxnaopT55GJxl" || self.packageId == "-SgnAiBPJlXfM3KzDWR8" || self.packageId == "-IdnAiBPLKMO5ePamQle" || self.packageId == "-MysAiBPyaX9TgFT1YOp" || self.packageId == "-PhyAiBPcYLiSYlqhjbI" || self.packageId == "-MysRamadanwgtLoss99" || self.packageId == "-IndWLIntusoe3uelxER" {
                 labelsPrice = "pkgRecurPrice"
-                self.featuresView.isHidden = false
+               // self.featuresView.isHidden = false
                 self.getPackageDetails()
             } else  {
                 self.featuresView.isHidden = true
