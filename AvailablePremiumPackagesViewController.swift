@@ -717,9 +717,9 @@ return
             popOverVC.name = self.name;
             popOverVC.packageId = cellD.mppc_fb_id;
             let transition: CATransition = CATransition()
-            transition.duration = 0.7
-              transition.type = CATransitionType.reveal
-            transition.subtype = .fromTop
+            transition.duration = 0.8
+              transition.type = CATransitionType.fade
+            transition.subtype = .fromLeft
               navigationController?.view.layer.add(transition, forKey: nil)
 
         } else if segue.identifier == "AiDP" {

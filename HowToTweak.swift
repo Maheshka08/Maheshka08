@@ -74,10 +74,10 @@ class HowToTweak: UIView {
                     self.delegate.setUpUI()
                     self.delegate.getTrends()
                     self.delegate.showButtonsView()
-                    
+            self.delegate.getAdDetails()
+
                     appDelegate.getAnnouncements()
                     
-                    self.delegate.showButtonsView()
                     //self.delegate.checkUserPremiumMember()
                     //self.delegate.checkUserPremiumMember1()
                     if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {

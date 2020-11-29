@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import WebKit
+class WebViewController: UIViewController {
 
-class WebViewController: UIViewController, UIWebViewDelegate {
-
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet var webView: WKWebView!
     @objc var urlString: String = ""
     @objc var navigationTitle: String = ""
     override func viewDidLoad() {
@@ -19,24 +19,11 @@ class WebViewController: UIViewController, UIWebViewDelegate {
        
         if let url = URL(string: self.urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)   {
             let request = URLRequest(url: url as URL)
-            webView.loadRequest(request)
+            webView.load(request)
         }       
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-    }
-    
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error)
-    {
-        MBProgressHUD.hide(for: self.view, animated: true)
-        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again !!")
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView)
-    {
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -366,7 +366,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var selectPlanView: UIView!
     var timeSlotsArray = [[String: AnyObject]]()
     var productPrice: NSDecimalNumber = NSDecimalNumber()
-    
+    @IBOutlet weak var bckBtn: UIButton!
     @IBOutlet weak var scrollViewImageView: UIImageView!
     @IBOutlet weak var noCommitmentLabel: UILabel!
    
@@ -531,8 +531,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBAction func crossBtnTapped(_ sender: Any) {
         let transition: CATransition = CATransition()
         transition.duration = 0.7
-          transition.type = CATransitionType.reveal
-        transition.subtype = .fromBottom
+          transition.type = CATransitionType.fade
+        transition.subtype = .fromRight
           navigationController?.view.layer.add(transition, forKey: nil)
         let _ = self.navigationController?.popViewController(animated: true)
 
@@ -796,6 +796,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 // self.dismissPurchaseBtn.isEnabled = true
                 // self.restorePurchaseBtn.isEnabled = true
                 self.buyNowButton.isEnabled = true
+//                self.carouselView1.isUserInteractionEnabled = true
+//                self.bckBtn.isHidden = false
                 
                 switch trans.transactionState {
                 case .purchased:
@@ -1512,9 +1514,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     @IBAction func backAction(_ sender: UIButton) {
         let transition: CATransition = CATransition()
-        transition.duration = 0.8
-          transition.type = CATransitionType.reveal
-        transition.subtype = .fromBottom
+        transition.duration = 0.7
+          transition.type = CATransitionType.fade
+        transition.subtype = .fromRight
           navigationController?.view.layer.add(transition, forKey: nil)
 
         let _ = self.navigationController?.popViewController(animated: true)
@@ -1613,6 +1615,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //                self.ratingsCarouselView.reloadData()
 //                self.ratingsCarouselView.scrollToItem(at: self.userReviewsArray.count >= 2 ? 1: 0, animated: true)
                 if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
+//                    self.carouselView1.isUserInteractionEnabled = false
+//                    self.bckBtn.isHidden = true
+                    
                     UserDefaults.standard.removeObject(forKey: "POP_UP_IDENTIFIERS")
             if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
                 //MYTAE_IND_QUATERLY
@@ -1670,7 +1675,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                            self.packageName = (self.labelPriceDict[lables] as? String)!
               
                            self.productIdentifier = identifier
-                           MBProgressHUD.showAdded(to: self.view, animated: true);
+        DispatchQueue.main.async {
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+
+        }
                                   if (SKPaymentQueue.canMakePayments()) {
                                       self.buyNowButton.isEnabled = false
                                       let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -2497,7 +2505,7 @@ extension MoreInfoPremiumPackagesViewController: UICollectionViewDelegate {
         //let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
         let index = self.carouselView1.indexPathForItem(at: center)
-        if self.featuresView.isHidden == false {
+        if self.moreInfoView.isHidden == false {
         self.pageControl.currentPage = Int(index!.row)
         }
     }

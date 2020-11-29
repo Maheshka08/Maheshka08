@@ -1014,7 +1014,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     animations: { [self] in
                         //self.upperMainView.alpha = 0
                         self.topViewHeightConstraint.constant = 0
+                        if self.showGraph == false {
                         self.outerChartView.isHidden = true
+                        } else {
+                            self.outerChartView.alpha = 0
+
+                        }
                         self.myNutritionView.alpha = 0
                         self.outerViewHeightConstraint.constant = 0
 
@@ -1026,7 +1031,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         }
                         if self.trialPeriodExpired == true {
                         self.taeClubTrialPeriodExpiryView.isHidden = true
-                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+                            self.trialPeriodExpiryView.isHidden = true
+                            self.trialPeriodExpiryTextLbl.isHidden = true
                         }
                             self.view.layoutIfNeeded()
                     //last
@@ -1051,11 +1058,19 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         if self.trialPeriodExpired == true {
                         self.taeClubTrialPeriodExpiryView.isHidden = false
                             self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+                            self.trialPeriodExpiryView.isHidden = false
+                            self.trialPeriodExpiryTextLbl.isHidden = false
+
                         }
                         self.outerViewHeightConstraint.constant = 237
                         self.topViewHeightConstraint.constant = 302
                         self.myNutritionView.alpha = 1
+                        if self.showGraph == false {
                         self.outerChartView.isHidden = true
+                        } else {
+                            self.outerChartView.alpha = 1
+
+                        }
                         //if (self.myNutritionDetailsView != nil) {
                             self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
                       //  }
@@ -1070,7 +1085,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             
             },  completion: {(_ completed: Bool) -> Void in
                 self.goneUp = false
+                if self.showGraph == false {
                 self.outerChartView.isHidden = false
+                }
                 self.approxCalLeftView.isHidden = false
 
 
@@ -1743,6 +1760,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let responseResult = status["callStatus"] as! String
             if  responseResult == "GOOD" {
               //  self.getAdDetails()
+                print("yahooooo")
             }
             
         }, failureBlock: { (error : NSError!) -> (Void) in
@@ -2248,10 +2266,10 @@ tappedOnTAEClubExpiryView()
 //        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
 //        clickViewController?.fromPopUpScreen = true
 //        self.navigationController?.pushViewController(clickViewController!, animated: true)
-        self.dummyNav2(packageIDs: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
+        //self.dummyNav2(packageIDs: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
 
         //self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
-//self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
+self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
         
     }
     
@@ -3610,36 +3628,42 @@ self.topImageView.alpha = 1
     @objc func scrollHomeScreen() {
         if self.goneUp == false {
         
-        DispatchQueue.main.async {
-            UIView.animate(
-                withDuration: 1,
-                animations: {
-                    self.topViewHeightConstraint.constant = 0
-                    self.outerChartView.isHidden = true
-                    self.myNutritionView.alpha = 0
-                    self.outerViewHeightConstraint.constant = 0
+            DispatchQueue.main.async {
+                UIView.animate(
+                    withDuration: 1,
+                    animations: { [self] in
+                        //self.upperMainView.alpha = 0
+                        self.topViewHeightConstraint.constant = 0
+                        if self.showGraph == false {
+                        self.outerChartView.isHidden = true
+                        } else {
+                            self.outerChartView.alpha = 0
 
-                    self.approxCalLeftView.isHidden = true
-                    self.containerViewBottomConstraint.constant = 110
-                    self.topBgImageView.contentMode = .scaleToFill
-                    if self.totalTweakCount == "0" {
-                        self.startTweakingView.isHidden = true
-                    }
-                    if self.trialPeriodExpired == true {
-                    self.taeClubTrialPeriodExpiryView.isHidden = true
+                        }
+                        self.myNutritionView.alpha = 0
+                        self.outerViewHeightConstraint.constant = 0
+
+                        self.approxCalLeftView.isHidden = true
+                        self.containerViewBottomConstraint.constant = 110
+                        self.topBgImageView.contentMode = .scaleToFill
+                        if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = true
+                        }
+                        if self.trialPeriodExpired == true {
+                        self.taeClubTrialPeriodExpiryView.isHidden = true
                         self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
-                    }
+                            self.trialPeriodExpiryView.isHidden = true
+                            self.trialPeriodExpiryTextLbl.isHidden = true
+                        }
+                            self.view.layoutIfNeeded()
+                    //last
+                            
+            },  completion: {(_ completed: Bool) -> Void in
 
-                        self.view.layoutIfNeeded()
-                //last
-                        
-        },  completion: {(_ completed: Bool) -> Void in
-            self.topImageView.contentMode = .scaleToFill
-
-            self.goneUp = true
-            
-        })
-        }
+                self.goneUp = true
+                
+            })
+            }
         } else {
             DispatchQueue.main.async {
                 UIView.animate(
@@ -3651,23 +3675,36 @@ self.topImageView.alpha = 1
                         if self.trialPeriodExpired == true {
                         self.taeClubTrialPeriodExpiryView.isHidden = false
                             self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+                            self.trialPeriodExpiryView.isHidden = false
+                            self.trialPeriodExpiryTextLbl.isHidden = false
+
                         }
                         self.outerViewHeightConstraint.constant = 237
                         self.topViewHeightConstraint.constant = 302
                         self.myNutritionView.alpha = 1
+                        if self.showGraph == false {
                         self.outerChartView.isHidden = true
+                        } else {
+                            self.outerChartView.alpha = 1
+
+                        }
                         //if (self.myNutritionDetailsView != nil) {
                             self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
                       //  }
                         self.containerViewBottomConstraint.constant = 0
                         self.topBgImageView.contentMode = .scaleAspectFill
+//                        self.startTweakingView.isHidden = false
+//                        self.trialPeriodExpiryView.isHidden = false
+//                        self.taeClubTrialPeriodExpiryView.isHidden = false
 
                             self.view.layoutIfNeeded()
                     //last
                             
             },  completion: {(_ completed: Bool) -> Void in
                 self.goneUp = false
+                if self.showGraph == false {
                 self.outerChartView.isHidden = false
+                }
                 self.approxCalLeftView.isHidden = false
 
 
@@ -5991,7 +6028,7 @@ self.topImageView.alpha = 1
 //        }
        // getTrends()
 //        DispatchQueue.main.sync {
-        //   dummyNavigation()
+         //  dummyNavigation()
 //
 //        }
         
@@ -6882,7 +6919,7 @@ self.topImageView.alpha = 1
             self.navigationBarTimerViewButton.isHidden = true
             self.trialPeriodExpiryView.isHidden = false
             self.trialPeriodExpiryView.isUserInteractionEnabled = true
-            
+            self.trialPeriodExpired = true
             self.trialPeriodExpiryTextLbl.text = "Your trial period is completed.\n(Continue to use base service for free)\n\nClick here to subscribe now.";
             self.trialPeriodExpiryTextLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
 
