@@ -235,13 +235,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.floatingButtonsView.isHidden = true
             self.floatingCrownBtn.setImage(UIImage.init(named: "crownstar-btn"), for: .normal)
             let cellDict = self.floatingButtonsArray[indexPath.row];
-            if (cellDict["pkgName"] as! String) != "Nutrition Labels" {
+            if (cellDict["pkgName"] as! String) != "Tweak & Eat Club" {
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: (cellDict["pkg"] as! String))
             } else {
                 //floatingToNutrition
-                self.performSegue(withIdentifier: "floatingToNutrition", sender: (cellDict["pkg"] as! String))
+                //self.performSegue(withIdentifier: "floatingToNutrition", sender: (cellDict["pkg"] as! String))
+                self.goToTAEClubMemPage()
 
             }
+            
         } else if tableView == self.myNutritionViewLast10TweaksTableView {
             
             let data = self.dataBtnArray[indexPath.row];
@@ -340,6 +342,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var taeClubMemberTopRightButton: UIButton!
     @IBOutlet weak var taeClubMemberBottomRightButton: UIButton!
     
+    @IBOutlet weak var menuBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageView: UIView!
     @IBOutlet weak var foodImageShadowView: UIView!
     @IBOutlet weak var protienButton: UIButton!
@@ -1269,7 +1272,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         if self.isLoaded == false {
       //  self.updateUIAccordingTOEachDevice()
         }
-       
+        if IS_iPHONE678P {
+            self.menuBtnHeightConstraint.constant = 50
+        } else if IS_iPHONE678 {
+            self.menuBtnHeightConstraint.constant = 40.5
+        } else if IS_iPHONE5 {
+            self.menuBtnHeightConstraint.constant = 26.5
+        }
     }
     
     func updateUIAccordingTOEachDevice() {
@@ -1753,7 +1762,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 let data = self.getPromoResponse["data"] as! [String: AnyObject]
                 if data.count > 0 {
                 DispatchQueue.main.async {
-                    
+                    if (data["@mhp_img"] is NSNull) {
+                        return
+                    }
                     
                     let promoImgUrl = data["@mhp_img"] as! String
                     self.randomPromoLink = data["@mhp_link"] as! String
@@ -7612,7 +7623,8 @@ self.floatingCallBtn.isHidden = false
                       if userSubscribedToClub == 1 {
                       UserDefaults.standard.set("-ClubIdn4hd8flchs9Vy", forKey: "-ClubIdn4hd8flchs9Vy")
                       UserDefaults.standard.synchronize()
-
+                        floatingButtonArray.append(["pkgName": "Tweak & Eat Club" as AnyObject, "imgName": "tweak-and-eat-club-member-btn" as AnyObject, "pkg": "-ClubIdn4hd8flchs9Vy" as AnyObject])
+                        self.floatingCrownBtn.isHidden = false
                       } else {
                           UserDefaults.standard.removeObject(forKey: "-ClubIdn4hd8flchs9Vy")
                           //self.tweakandeatClubButtonView.isHidden = false
@@ -7703,6 +7715,8 @@ self.floatingCallBtn.isHidden = false
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
                     UserDefaults.standard.synchronize()
+                        UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
+
                     floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
                     self.floatingCrownBtn.isHidden = false
                     } else {
@@ -7781,7 +7795,7 @@ self.floatingCallBtn.isHidden = false
                 if userSubscribed == 1 {
                     UserDefaults.standard.set("-MalAXk7gLyR3BNMusfi", forKey: "-MalAXk7gLyR3BNMusfi")
                     UserDefaults.standard.synchronize()
-                   
+
 
                 } else {
                     UserDefaults.standard.removeObject(forKey: "-MalAXk7gLyR3BNMusfi")
@@ -8109,6 +8123,8 @@ self.floatingCallBtn.isHidden = false
 
                 } else {
                     if userSubscribedToClub == 1 {
+                        floatingButtonArray.append(["pkgName": "Tweak & Eat Club" as AnyObject, "imgName": "tweak-and-eat-club-member-btn" as AnyObject, "pkg": "-ClubInd3gu7tfwko6Zx" as AnyObject])
+                        self.floatingCrownBtn.isHidden = false
                     UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
                     UserDefaults.standard.synchronize()
 
@@ -8473,7 +8489,9 @@ self.floatingCallBtn.isHidden = false
                     // self.roundImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String), placeholderImage: UIImage.init(named: "defaultRecipe.jpg"))
                     self.foodImageView.sd_setImage(with: URL(string: responseDic["homeImage"] as! String), placeholderImage: UIImage.init(named: "defaultRecipe.jpg"))
                 }
-                
+                if self.trialPeriodExpired == true {
+                    self.tapToTweakView.isHidden = true
+                }
                
                 
                

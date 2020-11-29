@@ -65,6 +65,7 @@ class NutritionLabelViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         DispatchQueue.main.async {
             self.labelCountView.layer.cornerRadius = 10
 

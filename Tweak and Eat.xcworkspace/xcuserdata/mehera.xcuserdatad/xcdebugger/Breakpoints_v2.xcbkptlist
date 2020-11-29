@@ -7,81 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DF92ED0F-32AA-495E-B93D-466A294125A4"
+            uuid = "C63C0FD9-E004-4250-98BF-79574EA6F9B7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1736"
-            endingLineNumber = "1736"
-            landmarkName = "tapOnPromoAd(mhp_id:)"
+            startingLineNumber = "2489"
+            endingLineNumber = "2489"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "019AEA65-5CBA-4402-BE45-9C73A04321A6"
+            uuid = "7583BAEE-48F9-4C92-A00A-894A7C98A713"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1742"
-            endingLineNumber = "1742"
-            landmarkName = "tapOnPromoAd(mhp_id:)"
+            startingLineNumber = "904"
+            endingLineNumber = "904"
+            landmarkName = "dropDownTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7A460B35-5817-439A-AE0D-3D654AF7E01E"
+            uuid = "1B41F361-912B-4236-A045-A8A48D9CA72F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1731"
-            endingLineNumber = "1731"
-            landmarkName = "tapOnPromoAd(mhp_id:)"
+            startingLineNumber = "2153"
+            endingLineNumber = "2153"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7A460B35-5817-439A-AE0D-3D654AF7E01E - 67308b43fdc80e74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tweak_and_Eat.WelcomeViewController.tapOnPromoAd(mhp_id: Swift.Int) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/WelcomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1731"
-                  endingLineNumber = "1731"
-                  offsetFromSymbolStart = "276">
-               </Location>
-               <Location
-                  uuid = "7A460B35-5817-439A-AE0D-3D654AF7E01E - 9b063b6ae8d7b70d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in Tweak_and_Eat.WelcomeViewController.tapOnPromoAd(mhp_id: Swift.Int) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/WelcomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1733"
-                  endingLineNumber = "1733"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50EA2B80-68D7-487D-AF5C-27775EAD6377"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2156"
+            endingLineNumber = "2156"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

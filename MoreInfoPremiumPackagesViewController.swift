@@ -1891,6 +1891,13 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if countryCode == "91" {
                 self.carouselsView.isHidden = false
+                self.moreInfoView.isHidden = false
+                self.featuresView.isHidden = true
+                self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+
+            } else {
+                self.moreInfoView.isHidden = true
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
             }
         }
         //self.packagesCarouselView.centerItemWhenSelected = true
@@ -2479,7 +2486,9 @@ extension MoreInfoPremiumPackagesViewController: UICollectionViewDelegate {
         //let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
         let index = self.carouselView1.indexPathForItem(at: center)
+        if self.featuresView.isHidden == false {
         self.pageControl.currentPage = Int(index!.row)
+        }
     }
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        for cell in self.carouselView1.visibleCells {
