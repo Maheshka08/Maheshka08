@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "tweakandeat_logo@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tweakandeat_logo.png",
+      "filename" : "tweakandeat_logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "tweakandeat_logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

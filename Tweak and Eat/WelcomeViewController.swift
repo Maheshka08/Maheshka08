@@ -2621,7 +2621,7 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
-        self.tapToTweakButton.flash()
+        //self.tapToTweakButton.flash()
         self.subscribeNowButtonView.layer.cornerRadius = 10
         self.menuButtonsView.layer.cornerRadius = 10
         self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.85)

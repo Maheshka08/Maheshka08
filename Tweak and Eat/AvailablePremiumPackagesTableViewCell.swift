@@ -16,7 +16,6 @@ class AvailablePremiumPackagesTableViewCell: UITableViewCell {
     @IBOutlet weak var purchasedLbl: UIView!
     @IBOutlet weak var tickMarkImageView: UIImageView!
     
-    @IBOutlet weak var moreInfoView: UIView!
     @IBOutlet weak var packagesView: UIView!
     @objc var cellIndexPath : Int = 0;
     @objc var myIndexPath : IndexPath!;
@@ -56,8 +55,7 @@ class AvailablePremiumPackagesTableViewCell: UITableViewCell {
         super.awakeFromNib();
         self.tickMarkImageView.isHidden = true
         self.packagesView.layer.cornerRadius = 15
-          self.moreInfoView.layer.cornerRadius = 15
-        self.moreInfoView.isHidden = true
+        self.packagesView.backgroundColor = .clear
         self.packageImageView.isUserInteractionEnabled = true;
         let tapped:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnImage));
         tapped.numberOfTapsRequired = 1;

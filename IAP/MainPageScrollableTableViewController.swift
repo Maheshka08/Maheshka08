@@ -61,7 +61,7 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
         label.text = "  " + self.sectionHeaderTitleArray[section]
     label.textColor =  UIColor(red: 89/255, green: 21/255, blue: 112/255, alpha: 1.0);
     label.font = UIFont(name:"QUESTRIAL-REGULAR", size: 16.0)
-    let imgView = UIImageView(frame: CGRect(x: tableView.frame.size.width - 26, y: 2, width: 24, height: 24))
+    let imgView = UIImageView(frame: CGRect(x: tableView.frame.size.width - 18, y: 4, width: 14, height: 20))
     imgView.image = UIImage.init(named: "arrow")
         returnedView.addSubview(label)
     returnedView.addSubview(imgView)
