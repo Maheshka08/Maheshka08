@@ -1102,33 +1102,18 @@ return
 //        return 0
 //    }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if self.premiumPackagesApiArray.count > 0 {
-//        if section == self.premiumPackagesApiArray.count - 1 {
-//            let imgv = UIImageView(frame: CGRect(x: 20, y: 20, width: self.tableView.frame.size.width - 40, height: 60))
-//            imgv.image = UIImage.init(named: "nutrition_labels_Included_for_all")
-//            return imgv
-//        }
-//        }
-//        return nil
-        let footeriew = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80))
-        let imgv = UIImageView(frame: CGRect(x: 10, y: 10, width: self.tableView.frame.size.width - 20, height: 60))
-        imgv.image = UIImage.init(named: "nutrition_labels_Included_for_all")
-        imgv.contentMode = .scaleAspectFit
-        footeriew.addSubview(imgv)
-        return footeriew
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if self.premiumPackagesApiArray.count > 0 {
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footeriew = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80))
+//        let imgv = UIImageView(frame: CGRect(x: 10, y: 10, width: self.tableView.frame.size.width - 20, height: 60))
+//        imgv.image = UIImage.init(named: "nutrition_labels_Included_for_all")
+//        imgv.contentMode = .scaleAspectFit
+//        footeriew.addSubview(imgv)
+//        return footeriew
+//    }
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //
-//        if section == self.premiumPackagesApiArray.count - 1 {
-//            return 80
-//        } else {
-//            return 28
-//        }
-//        }
-          return 80
-    }
+//          return 80
+//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! AvailablePremiumPackagesTableViewCell;
@@ -1186,39 +1171,39 @@ return
         }
     }
       //  cell.moreInfoView.isHidden = true
-        if self.fromCrown == true {
-            cell.howToSubVideoHeightConstraint.constant = 0
-            cell.packagesView.backgroundColor = .clear
-        } else {
-       // if self.countryCode == "91" {
-             if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" && cellDictionary.mppc_fb_id != self.ptpPackage && cellDictionary.mppc_fb_id != "-IndAiBPtmMrS4VPnwmD" && cellDictionary.mppc_fb_id != "-IdnAiBPLKMO5ePamQle" && cellDictionary.mppc_fb_id != "-SgnAiBPJlXfM3KzDWR8" && cellDictionary.mppc_fb_id != "-MysAiBPyaX9TgFT1YOp" && cellDictionary.mppc_fb_id != "-PhyAiBPcYLiSYlqhjbI" && cellDictionary.mppc_fb_id != "-UsaAiBPxnaopT55GJxl" && cellDictionary.mppc_fb_id != "-MysRamadanwgtLoss99" && cellDictionary.mppc_fb_id != "-IndWLIntusoe3uelxER" && cellDictionary.mppc_fb_id != "-AiDPwdvop1HU7fj8vfL" && cellDictionary.mppc_fb_id != "-IndIWj1mSzQ1GDlBpUt" {
-              
-//                cell.moreInfoView.isHidden = true
-//                cell.howToSubscribeVideoBtn.isHidden = false
-//            cell.howToSubVideoHeightConstraint.constant = 46
-//            cell.howToSubscribeVideoBtn.tintColor = .purple
-//            cell.packagesView.backgroundColor = .white
-                cell.howToSubVideoHeightConstraint.constant = 0
-                cell.howToSubscribeVideoBtn.tintColor = .clear
-                cell.packagesView.backgroundColor = .clear
-                cell.howToSubscribeVideoBtn.isHidden = true
-             }  else {
-              
-               // cell.moreInfoView.isHidden = true
-                cell.howToSubVideoHeightConstraint.constant = 0
-                cell.howToSubscribeVideoBtn.tintColor = .clear
-                cell.packagesView.backgroundColor = .clear
-                cell.howToSubscribeVideoBtn.isHidden = true
-            }
-//        } else {
-//            cell.moreInfoView.isHidden = true
+//        if self.fromCrown == true {
 //            cell.howToSubVideoHeightConstraint.constant = 0
-//            cell.howToSubscribeVideoBtn.tintColor = .clear
 //            cell.packagesView.backgroundColor = .clear
-//            cell.howToSubscribeVideoBtn.isHidden = true
+//        } else {
+//       // if self.countryCode == "91" {
+//             if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" && cellDictionary.mppc_fb_id != self.ptpPackage && cellDictionary.mppc_fb_id != "-IndAiBPtmMrS4VPnwmD" && cellDictionary.mppc_fb_id != "-IdnAiBPLKMO5ePamQle" && cellDictionary.mppc_fb_id != "-SgnAiBPJlXfM3KzDWR8" && cellDictionary.mppc_fb_id != "-MysAiBPyaX9TgFT1YOp" && cellDictionary.mppc_fb_id != "-PhyAiBPcYLiSYlqhjbI" && cellDictionary.mppc_fb_id != "-UsaAiBPxnaopT55GJxl" && cellDictionary.mppc_fb_id != "-MysRamadanwgtLoss99" && cellDictionary.mppc_fb_id != "-IndWLIntusoe3uelxER" && cellDictionary.mppc_fb_id != "-AiDPwdvop1HU7fj8vfL" && cellDictionary.mppc_fb_id != "-IndIWj1mSzQ1GDlBpUt" {
+//              
+////                cell.moreInfoView.isHidden = true
+////                cell.howToSubscribeVideoBtn.isHidden = false
+////            cell.howToSubVideoHeightConstraint.constant = 46
+////            cell.howToSubscribeVideoBtn.tintColor = .purple
+////            cell.packagesView.backgroundColor = .white
+//                cell.howToSubVideoHeightConstraint.constant = 0
+//                cell.howToSubscribeVideoBtn.tintColor = .clear
+//                cell.packagesView.backgroundColor = .clear
+//                cell.howToSubscribeVideoBtn.isHidden = true
+//             }  else {
+//              
+//               // cell.moreInfoView.isHidden = true
+//                cell.howToSubVideoHeightConstraint.constant = 0
+//                cell.howToSubscribeVideoBtn.tintColor = .clear
+//                cell.packagesView.backgroundColor = .clear
+//                cell.howToSubscribeVideoBtn.isHidden = true
+//            }
+////        } else {
+////            cell.moreInfoView.isHidden = true
+////            cell.howToSubVideoHeightConstraint.constant = 0
+////            cell.howToSubscribeVideoBtn.tintColor = .clear
+////            cell.packagesView.backgroundColor = .clear
+////            cell.howToSubscribeVideoBtn.isHidden = true
+////        }
+//            
 //        }
-            
-        }
         return cell;
         
     }
