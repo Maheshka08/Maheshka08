@@ -318,8 +318,6 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
-
         self.tableView.backgroundColor = .clear
         //self.pullControl.tintColor = .clear
         pullControl.attributedTitle = NSAttributedString(string: "Pull down to Collapse..")

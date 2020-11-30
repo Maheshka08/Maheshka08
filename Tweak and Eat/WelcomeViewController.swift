@@ -594,6 +594,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var tweakandeatClubButtonViewBottom: UIView!
     @IBOutlet weak var tweakAndEatCLubExpiryViewWithButtons: UIView!
     @IBOutlet weak var smallScreenPopupImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var upperViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var randomMessages: UILabel!;
     @IBOutlet weak var tweakStreakLbl: UILabel!;
     @IBOutlet weak var cameraTweakLabel: UILabel!;
@@ -1012,20 +1013,27 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 UIView.animate(
                     withDuration: 1,
                     animations: { [self] in
-                        //self.upperMainView.alpha = 0
-                        self.topViewHeightConstraint.constant = 0
-                        if self.showGraph == false {
-                        self.outerChartView.isHidden = true
-                        } else {
-                            self.outerChartView.alpha = 0
-
-                        }
-                        self.myNutritionView.alpha = 0
-                        self.outerViewHeightConstraint.constant = 0
-
-                        self.approxCalLeftView.isHidden = true
-                        self.containerViewBottomConstraint.constant = 110
+                        self.upperMainView.alpha = 0
+                        self.upperViewTopConstraint.constant = -302
                         self.topBgImageView.contentMode = .scaleToFill
+                        self.containerViewBottomConstraint.constant = 110
+//                        self.topViewHeightConstraint.constant = 0
+//                        if self.showGraph == false {
+//                        self.outerChartView.isHidden = true
+//                        } else {
+//                            self.outerChartView.alpha = 0
+//
+//                        }
+//                        self.outerViewHeightConstraint.constant = 0
+//                        if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//
+//                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//                            self.outerChartView.frame = self.myNutritionView.frame
+//                        }
+//                        self.approxCalLeftView.isHidden = true
+//                        self.containerViewBottomConstraint.constant = 110
+//                        self.topBgImageView.contentMode = .scaleToFill
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = true
                         }
@@ -1052,6 +1060,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 UIView.animate(
                     withDuration: 1,
                     animations: {
+                        self.upperMainView.alpha = 1
+                        self.upperViewTopConstraint.constant = 0
+                        self.topBgImageView.contentMode = .scaleAspectFill
+                        self.containerViewBottomConstraint.constant = 0
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = false
                         }
@@ -1062,33 +1074,40 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.trialPeriodExpiryTextLbl.isHidden = false
 
                         }
-                        self.outerViewHeightConstraint.constant = 237
-                        self.topViewHeightConstraint.constant = 302
-                        self.myNutritionView.alpha = 1
-                        if self.showGraph == false {
-                        self.outerChartView.isHidden = true
-                        } else {
-                            self.outerChartView.alpha = 1
-
-                        }
-                        //if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
-                      //  }
-                        self.containerViewBottomConstraint.constant = 0
-                        self.topBgImageView.contentMode = .scaleAspectFill
-//                        self.startTweakingView.isHidden = false
-//                        self.trialPeriodExpiryView.isHidden = false
-//                        self.taeClubTrialPeriodExpiryView.isHidden = false
+//                        self.outerViewHeightConstraint.constant = 237
+//                        self.topViewHeightConstraint.constant = 302
+//                        self.myNutritionView.alpha = 1
+//                        if self.showGraph == false {
+//                        self.outerChartView.isHidden = true
+//                        } else {
+//                            self.outerChartView.alpha = 1
+//
+//                        }
+//                        if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//
+//                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//                            self.outerChartView.frame = self.myNutritionView.frame
+//
+//                        }
+//                        self.containerViewBottomConstraint.constant = 0
+//                        self.topBgImageView.contentMode = .scaleAspectFill
+////                        self.startTweakingView.isHidden = false
+////                        self.trialPeriodExpiryView.isHidden = false
+////                        self.taeClubTrialPeriodExpiryView.isHidden = false
 
                             self.view.layoutIfNeeded()
                     //last
                             
             },  completion: {(_ completed: Bool) -> Void in
                 self.goneUp = false
-                if self.showGraph == false {
-                self.outerChartView.isHidden = false
-                }
-                self.approxCalLeftView.isHidden = false
+//                if self.showGraph == false {
+//                self.outerChartView.isHidden = false
+//                } else {
+//                    self.outerChartView.isHidden = false
+//
+//                }
+//                self.approxCalLeftView.isHidden = false
 
 
 
@@ -1217,61 +1236,64 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        if self.goneUp == true {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+        }
 
-                    if self.goneUp == false {
-             return
-         }
-        
-         DispatchQueue.main.async {
-             UIView.animate(
-                 withDuration: 1,
-                 animations: {
-                     var minHeight:CGFloat = 0
-                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
-                         if self.trialPeriodExpired == true {
-                             minHeight = 70
-                         } else {
-                         minHeight = 190
-                         }
-                     } else {
-                         minHeight = 70
-                     }
-                     if self.showGraph == false {
-                          self.draggableViewHeightConstraint.constant = self.draggableConstant
-
-                     } else  {
-                         if IS_iPHONEXRXSMAX {
-                                                        
-                                                        self.draggableViewHeightConstraint.constant = 300 - 86 + minHeight
-                                                    } else if IS_iPHONEXXS {
-                                                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20
-                                                    } else if IS_iPHONE678P {
-                                                        self.draggableViewHeightConstraint.constant = 130
-                                                    } else if IS_iPHONE678 {
-                                                        self.draggableViewHeightConstraint.constant = 175 - 76
-                                                    } else if IS_iPHONE5 {
-                                                        self.draggableViewHeightConstraint.constant = 30
-                                                    } else {
-                                                        self.draggableViewHeightConstraint.constant = 43 - 86
-                                                    }
-                     }
-                        
-                        // self.myNutritionDetailsView.alpha = 1
-                     self.switchButton.alpha = 1
-                         self.outerChartView.alpha = 1
-                     self.tweakBeforeDefaultView.alpha = 1
-
-                         self.bottomBtnViewTopConstraint.constant = -108
-
-                         self.view.layoutIfNeeded()
-                         
-                         
-         },  completion: {(_ completed: Bool) -> Void in
-             self.goneUp = false
-             //self.outerChartView.alpha = 1
-
-         })
-         }
+//                    if self.goneUp == false {
+//             return
+//         }
+//
+//         DispatchQueue.main.async {
+//             UIView.animate(
+//                 withDuration: 1,
+//                 animations: {
+//                     var minHeight:CGFloat = 0
+//                     if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
+//                         if self.trialPeriodExpired == true {
+//                             minHeight = 70
+//                         } else {
+//                         minHeight = 190
+//                         }
+//                     } else {
+//                         minHeight = 70
+//                     }
+//                     if self.showGraph == false {
+//                          self.draggableViewHeightConstraint.constant = self.draggableConstant
+//
+//                     } else  {
+//                         if IS_iPHONEXRXSMAX {
+//
+//                                                        self.draggableViewHeightConstraint.constant = 300 - 86 + minHeight
+//                                                    } else if IS_iPHONEXXS {
+//                                                        self.draggableViewHeightConstraint.constant = 150 + 30 + 20
+//                                                    } else if IS_iPHONE678P {
+//                                                        self.draggableViewHeightConstraint.constant = 130
+//                                                    } else if IS_iPHONE678 {
+//                                                        self.draggableViewHeightConstraint.constant = 175 - 76
+//                                                    } else if IS_iPHONE5 {
+//                                                        self.draggableViewHeightConstraint.constant = 30
+//                                                    } else {
+//                                                        self.draggableViewHeightConstraint.constant = 43 - 86
+//                                                    }
+//                     }
+//
+//                        // self.myNutritionDetailsView.alpha = 1
+//                     self.switchButton.alpha = 1
+//                         self.outerChartView.alpha = 1
+//                     self.tweakBeforeDefaultView.alpha = 1
+//
+//                         self.bottomBtnViewTopConstraint.constant = -108
+//
+//                         self.view.layoutIfNeeded()
+//
+//
+//         },  completion: {(_ completed: Bool) -> Void in
+//             self.goneUp = false
+//             //self.outerChartView.alpha = 1
+//
+//         })
+//         }
 
     }
     
@@ -2640,6 +2662,9 @@ self.topImageView.alpha = 1
 
         super.viewDidLoad();
         //self.tapToTweakButton.flash()
+      //  self.scrollContainerView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
+        
+
         self.subscribeNowButtonView.layer.cornerRadius = 10
         self.menuButtonsView.layer.cornerRadius = 10
         self.tapToTweakView.backgroundColor = UIColor.black.withAlphaComponent(0.85)
@@ -3632,20 +3657,29 @@ self.topImageView.alpha = 1
                 UIView.animate(
                     withDuration: 1,
                     animations: { [self] in
-                        //self.upperMainView.alpha = 0
-                        self.topViewHeightConstraint.constant = 0
-                        if self.showGraph == false {
-                        self.outerChartView.isHidden = true
-                        } else {
-                            self.outerChartView.alpha = 0
-
-                        }
-                        self.myNutritionView.alpha = 0
-                        self.outerViewHeightConstraint.constant = 0
-
-                        self.approxCalLeftView.isHidden = true
-                        self.containerViewBottomConstraint.constant = 110
+                        self.upperMainView.alpha = 0
+                        self.upperViewTopConstraint.constant = -302
                         self.topBgImageView.contentMode = .scaleToFill
+                        self.containerViewBottomConstraint.constant = 110
+//                        self.topViewHeightConstraint.constant = 0
+//                        if self.showGraph == false {
+//                        self.outerChartView.isHidden = true
+//                        } else {
+//                            self.outerChartView.alpha = 0
+//
+//                        }
+//                        self.myNutritionView.alpha = 0
+//                        self.outerViewHeightConstraint.constant = 0
+//                        if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//
+//                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//                            self.outerChartView.frame = self.myNutritionView.frame
+//
+//                        }
+//                        self.approxCalLeftView.isHidden = true
+//                        self.containerViewBottomConstraint.constant = 110
+//                        self.topBgImageView.contentMode = .scaleToFill
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = true
                         }
@@ -3669,6 +3703,10 @@ self.topImageView.alpha = 1
                 UIView.animate(
                     withDuration: 1,
                     animations: {
+                        self.upperMainView.alpha = 1
+                        self.upperViewTopConstraint.constant = 0
+                        self.topBgImageView.contentMode = .scaleAspectFill
+                        self.containerViewBottomConstraint.constant = 0
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = false
                         }
@@ -3679,33 +3717,40 @@ self.topImageView.alpha = 1
                             self.trialPeriodExpiryTextLbl.isHidden = false
 
                         }
-                        self.outerViewHeightConstraint.constant = 237
-                        self.topViewHeightConstraint.constant = 302
-                        self.myNutritionView.alpha = 1
-                        if self.showGraph == false {
-                        self.outerChartView.isHidden = true
-                        } else {
-                            self.outerChartView.alpha = 1
-
-                        }
-                        //if (self.myNutritionDetailsView != nil) {
-                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
-                      //  }
-                        self.containerViewBottomConstraint.constant = 0
-                        self.topBgImageView.contentMode = .scaleAspectFill
-//                        self.startTweakingView.isHidden = false
-//                        self.trialPeriodExpiryView.isHidden = false
-//                        self.taeClubTrialPeriodExpiryView.isHidden = false
+//                        self.outerViewHeightConstraint.constant = 237
+//                        self.topViewHeightConstraint.constant = 302
+//                        self.myNutritionView.alpha = 1
+//                        if self.showGraph == false {
+//                        self.outerChartView.isHidden = true
+//                        } else {
+//                            self.outerChartView.alpha = 1
+//
+//                        }
+//                        if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//
+//                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+//                            self.outerChartView.frame = self.myNutritionView.frame
+//
+//                        }
+//                        self.containerViewBottomConstraint.constant = 0
+//                        self.topBgImageView.contentMode = .scaleAspectFill
+////                        self.startTweakingView.isHidden = false
+////                        self.trialPeriodExpiryView.isHidden = false
+////                        self.taeClubTrialPeriodExpiryView.isHidden = false
 
                             self.view.layoutIfNeeded()
                     //last
                             
             },  completion: {(_ completed: Bool) -> Void in
                 self.goneUp = false
-                if self.showGraph == false {
-                self.outerChartView.isHidden = false
-                }
-                self.approxCalLeftView.isHidden = false
+//                if self.showGraph == false {
+//                self.outerChartView.isHidden = false
+//                } else {
+//                    self.outerChartView.isHidden = false
+//
+//                }
+//                self.approxCalLeftView.isHidden = false
 
 
 
@@ -4353,13 +4398,13 @@ self.topImageView.alpha = 1
         super.touchesBegan(touches, with: event);
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        if self.goneUp == true {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
-        }
-
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(true)
+//        if self.goneUp == true {
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+//        }
+//
+//    }
     override func viewDidAppear(_ animated: Bool) {
     //    roundImageView.contentMode = UIView.ContentMode.scaleAspectFill;
         if UserDefaults.standard.value(forKey: "GET_TREND_CALORIES") != nil {

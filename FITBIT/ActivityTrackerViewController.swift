@@ -168,6 +168,7 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = true
                       backBtn.setImage(UIImage(named: "backIcon"), for: .normal)
                       backBtn.frame = CGRect(0, 0, 30, 30)

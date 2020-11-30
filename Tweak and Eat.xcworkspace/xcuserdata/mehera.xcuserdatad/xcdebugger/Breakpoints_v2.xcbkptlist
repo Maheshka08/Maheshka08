@@ -7,64 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6E09726-6EDB-44C6-9783-BFA8E30CB89A"
+            uuid = "2AFB9EFB-CDF4-4046-8A80-CD716C0CBEF3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1781"
-            endingLineNumber = "1781"
-            landmarkName = "getAdDetails()"
+            startingLineNumber = "1086"
+            endingLineNumber = "1086"
+            landmarkName = "handleSwipeView(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F609AF33-F7D7-4ACE-AF49-84B2D3FAFC76"
+            uuid = "1EE25C09-543C-4725-A883-327A6A1F41D8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1817"
-            endingLineNumber = "1817"
-            landmarkName = "getAdDetails()"
+            startingLineNumber = "1080"
+            endingLineNumber = "1080"
+            landmarkName = "handleSwipeView(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A625299D-B6AB-4917-A83A-FCEEDCD77766"
+            uuid = "E343F798-783E-4DEC-93C0-EFAC54A61C4D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1768"
-            endingLineNumber = "1768"
-            landmarkName = "tapOnPromoAd(mhp_id:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F7511A84-B216-41EC-982F-5423D0D15485"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1759"
-            endingLineNumber = "1759"
-            landmarkName = "tapOnPromoAd(mhp_id:)"
+            startingLineNumber = "1028"
+            endingLineNumber = "1028"
+            landmarkName = "handleSwipeView(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
