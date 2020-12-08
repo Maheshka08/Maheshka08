@@ -131,6 +131,7 @@ class PopUpNotificationView: UIView {
                 }
             }
         } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
+            
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
             } else {

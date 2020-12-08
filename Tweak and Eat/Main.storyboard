@@ -1748,7 +1748,7 @@
                                                     <constraint firstAttribute="width" constant="269" id="FU5-C7-YwX"/>
                                                     <constraint firstAttribute="height" constant="74" id="x3v-pS-aw1"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="subscribe_now_btn"/>
+                                                <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="goPremiumTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rsd-lR-6yt"/>
                                                 </connections>
@@ -2316,6 +2316,7 @@
                         <outlet property="spinner" destination="Jia-8X-TVL" id="ztN-Iz-09M"/>
                         <outlet property="startTweakingLabel" destination="fNM-KH-kHg" id="PQb-Gg-lId"/>
                         <outlet property="startTweakingView" destination="3Bl-cu-1Ij" id="ika-Q7-obr"/>
+                        <outlet property="subscribeNowButton" destination="7nz-vY-hv4" id="fE5-t8-JdE"/>
                         <outlet property="subscribeNowButtonView" destination="ctY-du-V3w" id="VeE-cE-lxu"/>
                         <outlet property="subscribeToPTPNowLblHeightConstraint" destination="rbx-tF-GA0" id="9L9-XZ-3D8"/>
                         <outlet property="taeClubHome2Btn" destination="tYz-nW-Lke" id="QLW-IZ-agK"/>
@@ -7444,20 +7445,20 @@ Enjoy!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipepic" translatesAutoresizingMaskIntoConstraints="NO" id="kKx-E0-XE0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="204"/>
+                                <rect key="frame" x="0.0" y="44" width="966" height="204"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="Fu2-yq-bk6"/>
                                     <constraint firstAttribute="width" constant="320" id="iXI-jc-lhL"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-iQ-SpF">
-                                <rect key="frame" x="344" y="154" width="60.666666666666686" height="50"/>
+                                <rect key="frame" x="758" y="154" width="198.66666666666663" height="50"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4jC-om-7uk">
-                                <rect key="frame" x="272.66666666666669" y="154" width="60.333333333333314" height="50"/>
+                                <rect key="frame" x="548.66666666666663" y="154" width="198.33333333333337" height="50"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2X-DA-BVt">
-                                <rect key="frame" x="0.0" y="248" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="248" width="966" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARBS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUI-dA-AXi">
                                         <rect key="frame" x="25" y="3" width="83" height="28"/>
@@ -7480,7 +7481,7 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COOKING TIME " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-Uw-Dmb">
-                                        <rect key="frame" x="163" y="3" width="88" height="28"/>
+                                        <rect key="frame" x="439" y="3" width="88" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="88" id="7Da-8N-mWZ"/>
                                             <constraint firstAttribute="height" constant="28" id="bbB-9s-dc1"/>
@@ -7490,7 +7491,7 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-hV-mIb">
-                                        <rect key="frame" x="179.66666666666663" y="25" width="55" height="21"/>
+                                        <rect key="frame" x="455.66666666666663" y="25" width="55" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="4go-e9-3vG"/>
                                             <constraint firstAttribute="height" constant="21" id="UHm-HS-xga"/>
@@ -7500,7 +7501,7 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREP TIME " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHQ-yz-e5a">
-                                        <rect key="frame" x="313" y="1" width="97" height="30"/>
+                                        <rect key="frame" x="865" y="1" width="97" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="97" id="Xkm-6m-xI8"/>
                                             <constraint firstAttribute="height" constant="30" id="pnX-wG-1s7"/>
@@ -7510,7 +7511,7 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-U0-Vsk">
-                                        <rect key="frame" x="332" y="25" width="57" height="21"/>
+                                        <rect key="frame" x="884" y="25" width="57" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Oxg-e1-DbA"/>
                                             <constraint firstAttribute="width" constant="57" id="scD-eq-qVh"/>
@@ -7539,10 +7540,10 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFQ-rW-wXR">
-                                <rect key="frame" x="0.0" y="209" width="414" height="38"/>
+                                <rect key="frame" x="0.0" y="209" width="966" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-f2-d3l">
-                                        <rect key="frame" x="10" y="8" width="404" height="21"/>
+                                        <rect key="frame" x="10" y="8" width="956" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -7557,14 +7558,14 @@ Enjoy!</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CeS-Bd-MwB">
-                                <rect key="frame" x="0.0" y="292" width="414" height="570"/>
+                                <rect key="frame" x="0.0" y="292" width="966" height="570"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="UGj-U6-IOd">
-                                    <rect key="frame" x="0.0" y="94.333332061767578" width="414" height="125"/>
+                                    <rect key="frame" x="0.0" y="94.333332061767578" width="966" height="125"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-EL-Kgu">
-                                            <rect key="frame" x="81" y="13" width="252" height="43"/>
+                                            <rect key="frame" x="81" y="13" width="804" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="43" id="gFE-Nr-a6P"/>
                                             </constraints>
@@ -7574,7 +7575,7 @@ Enjoy!</string>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt8-Nc-Jou">
-                                            <rect key="frame" x="81" y="64" width="252" height="43"/>
+                                            <rect key="frame" x="81" y="64" width="804" height="43"/>
                                             <state key="normal" title="Button" image="buy_diy_kit_btn"/>
                                             <connections>
                                                 <action selector="buyDIYBtn2Tapped:" destination="23Y-7b-AQL" eventType="touchUpInside" id="b0z-yK-Jb4"/>
@@ -7594,14 +7595,14 @@ Enjoy!</string>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="zBb-Sk-gG9" customClass="RecipeDetailsCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="21"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="966" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBb-Sk-gG9" id="DXW-R6-ePA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="966" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-nU-i2e">
-                                                    <rect key="frame" x="11" y="0.0" width="392" height="21"/>
+                                                    <rect key="frame" x="11" y="0.0" width="944" height="21"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -7622,7 +7623,7 @@ Enjoy!</string>
                                 </prototypes>
                             </tableView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqb-Bh-gxA">
-                                <rect key="frame" x="236" y="60" width="158" height="43"/>
+                                <rect key="frame" x="788" y="60" width="158" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Jv6-WF-Ged"/>
                                     <constraint firstAttribute="width" constant="158" id="LnE-fc-K6n"/>
@@ -7633,7 +7634,7 @@ Enjoy!</string>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmD-Xs-7wf">
-                                <rect key="frame" x="236" y="111" width="158" height="43"/>
+                                <rect key="frame" x="788" y="111" width="158" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="NC5-uI-vw4"/>
                                     <constraint firstAttribute="width" constant="158" id="mov-Xd-Du6"/>
@@ -7644,7 +7645,7 @@ Enjoy!</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAp-dA-cby">
-                                <rect key="frame" x="175" y="108" width="64" height="64"/>
+                                <rect key="frame" x="451" y="108" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="A6u-4D-HeG"/>
                                     <constraint firstAttribute="width" constant="64" id="bWC-8J-LAG"/>
@@ -10187,11 +10188,11 @@ Once you are unsubscribed you will not have access to:
         <scene sceneID="CCu-LB-aSC">
             <objects>
                 <viewController storyboardIdentifier="NutritionLabelViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tiG-8e-hWb" customClass="NutritionLabelViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0I3-Mz-n9h">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="0I3-Mz-n9h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ul5-c4-NT4">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ul5-c4-NT4">
                                 <rect key="frame" x="10" y="756" width="394" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your pack" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-l3-tyg">
@@ -10201,7 +10202,7 @@ Once you are unsubscribed you will not have access to:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im2-Rg-C8d">
-                                        <rect key="frame" x="339" y="5.6666666666666288" width="35" height="35"/>
+                                        <rect key="frame" x="339" y="5.3333333333333428" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="UzZ-hy-R3j"/>
                                             <constraint firstAttribute="height" constant="35" id="c0a-Zk-cLO"/>
@@ -10223,13 +10224,13 @@ Once you are unsubscribed you will not have access to:
                                     <constraint firstAttribute="height" constant="46" id="iDr-s8-vGI"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nutrition-labels-img01" translatesAutoresizingMaskIntoConstraints="NO" id="G4u-7D-MME">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="nutrition-labels-img01" translatesAutoresizingMaskIntoConstraints="NO" id="G4u-7D-MME">
                                 <rect key="frame" x="10" y="205" width="394" height="146"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="146" id="KFQ-dz-OVV"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Package Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-mN-ooT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Package Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-mN-ooT">
                                 <rect key="frame" x="10" y="369" width="394" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -10239,7 +10240,7 @@ Once you are unsubscribed you will not have access to:
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCD-Iy-wHL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCD-Iy-wHL">
                                 <rect key="frame" x="10" y="423" width="394" height="195"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -10248,11 +10249,11 @@ Once you are unsubscribed you will not have access to:
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zru-2u-SJY">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zru-2u-SJY">
                                 <rect key="frame" x="47" y="636" width="320" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFc-D9-dg9">
-                                        <rect key="frame" x="248" y="29.666666666666686" width="52" height="18"/>
+                                        <rect key="frame" x="248" y="29.333333333333343" width="52" height="18"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="1R7-pD-8Ey"/>
@@ -10283,7 +10284,7 @@ Once you are unsubscribed you will not have access to:
                                     <constraint firstAttribute="width" constant="320" id="z6Y-MD-eg6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-C3-evE">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-C3-evE">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -10297,7 +10298,7 @@ Once you are unsubscribed you will not have access to:
                                     <action selector="buyNowTapped:" destination="tiG-8e-hWb" eventType="touchUpInside" id="QIU-NF-FS1"/>
                                 </connections>
                             </button>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQi-WJ-vDE">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQi-WJ-vDE">
                                 <rect key="frame" x="0.0" y="361" width="414" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -10312,7 +10313,7 @@ Once you are unsubscribed you will not have access to:
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-fj-LIF">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-fj-LIF">
                                 <rect key="frame" x="10" y="369" width="394" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
@@ -10668,10 +10669,10 @@ Once you are unsubscribed you will not have access to:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
-                                <rect key="frame" x="0.0" y="223" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="65" width="414" height="797"/>
                                 <subviews>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="795"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">AiDP – tweakyfai (our own AI platform) generated Diet Plans at just Rs.149.  (Compare that to an average of Five thousand rupees …yes…Rs.5000 being charged for a diet plan)!
 Now that’s INCREDIBLE VALUE! Get one, follow it and live the magic!
@@ -10694,7 +10695,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuQ-TF-6mG">
-                                <rect key="frame" x="0.0" y="222" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-RU-dGb">
                                         <rect key="frame" x="8" y="12" width="111" height="21"/>
@@ -10736,7 +10737,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
-                                <rect key="frame" x="0.0" y="267" width="414" height="342"/>
+                                <rect key="frame" x="0.0" y="109" width="414" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="cqP-gB-zrd" customClass="MoreInfoPackageTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
@@ -10809,9 +10810,9 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCJ-bO-auo">
-                                <rect key="frame" x="10" y="54" width="394" height="158"/>
+                                <rect key="frame" x="10" y="54" width="394" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="158" id="taN-ei-Keb"/>
+                                    <constraint firstAttribute="height" id="taN-ei-Keb"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Em-f1-DYs">
@@ -11975,6 +11976,7 @@ Enjoy!</string>
                         <outlet property="scrollViewImageView" destination="T6p-zM-mzQ" id="U7N-49-6CT"/>
                         <outlet property="selectPlanView" destination="gsf-YF-qOl" id="Q4K-RK-PyY"/>
                         <outlet property="smallImageView" destination="aCJ-bO-auo" id="8BB-3l-dgm"/>
+                        <outlet property="smallImageViewHeightConstraint" destination="taN-ei-Keb" id="Lk9-cg-niJ"/>
                         <outlet property="termsHeightConstraint" destination="cq9-Qj-67U" id="oOZ-oA-aiI"/>
                         <outlet property="termsofUseBtn" destination="89k-Sk-ZIh" id="fQa-dY-Tvj"/>
                         <outlet property="timeSlotTextField" destination="THv-Vh-JWY" id="KE9-cb-Ii5"/>
@@ -14710,11 +14712,11 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="XZU-cD-eyU"/>
         <segue reference="gJ1-a1-Za0"/>
         <segue reference="wAY-l1-OTQ"/>
-        <segue reference="lMP-CW-m2y"/>
+        <segue reference="yqf-tj-sTU"/>
         <segue reference="lPw-O8-679"/>
         <segue reference="Yl1-aV-dl8"/>
         <segue reference="Zyf-gX-8GO"/>
-        <segue reference="6Z8-h3-4eg"/>
+        <segue reference="gcd-dv-aAH"/>
         <segue reference="cfW-e7-Ff1"/>
         <segue reference="5vE-qp-Xfk"/>
         <segue reference="Npq-p8-1E4"/>
@@ -14836,7 +14838,6 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <image name="share_icon_hover" width="100" height="100"/>
         <image name="speak" width="48" height="48"/>
         <image name="steps_icon" width="55" height="55"/>
-        <image name="subscribe_now_btn" width="390" height="106"/>
         <image name="tae_bubble_bg" width="349" height="105"/>
         <image name="tae_en_howitworks_img" width="480" height="802"/>
         <image name="tae_icon_bubble" width="181" height="116"/>

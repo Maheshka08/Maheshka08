@@ -280,7 +280,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     var loadingView = UIView()
 //    var tweaksArray = NSMutableArray()
 //    var tweakFeedsArray = [TweakWall]()
-    
+    var mhpId = 0
     @IBOutlet weak var smallScreenPopUpBtn: UIButton!
  @IBOutlet weak var approxCalLeftForDayLabel: UILabel!
     @IBOutlet weak var floatingBtnHeightConstraint: NSLayoutConstraint!
@@ -539,7 +539,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet var tweakReactView: UIView!;
     @IBOutlet weak var streakTextView: UIView!;
-    
+    @IBOutlet weak var subscribeNowButton: UIButton!
     @IBOutlet weak var appVersionUpdateButton: UIButton!
     @IBOutlet weak var appCheckVersionView: UIView!
     @IBOutlet weak var subscribeToPTPNowLblHeightConstraint: NSLayoutConstraint!
@@ -607,7 +607,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var carbsArray = NSMutableArray();
     @objc var fatssArray = NSMutableArray();
     @objc var proteinArray = NSMutableArray()
-    
+    var clubPackageSubscribed = ""
     @IBOutlet weak var clubHome1LeftBth: UIButton!
     @IBOutlet weak var clubHome1RightBth: UIButton!
     @IBOutlet weak var clubHome2LeftBth: UIButton!
@@ -1808,7 +1808,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     
                     let promoImgUrl = data["@mhp_img"] as! String
                     self.randomPromoLink = data["@mhp_link"] as! String
-                    let mhp_id = data["@mhp_id"] as! Int
+                    self.mhpId = data["@mhp_id"] as! Int
+
 
 
                         self.adsImageView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
@@ -1828,8 +1829,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
                           }
                         }
-                    self.tapOnPromoAd(mhp_id: mhp_id)
-
                 }
 
                 }
@@ -1996,8 +1995,7 @@ if dictionary.index(forKey: "weeksData") != nil {
     
     //tappedOnTAEClubTrialPeriodExpiryView
     @objc func tappedOnTAEClubTrialPeriodExpiryView() {
-        
-tappedOnTAEClubExpiryView()
+        tappedOnTAEClubExpiryView()
     }
     @objc func tappedOntrialPeriodExpiryView() {
         
@@ -2671,7 +2669,7 @@ self.topImageView.alpha = 1
         self.startTweakingView.layer.cornerRadius = 10
         self.trialPeriodExpiryView.layer.cornerRadius = 10
         self.taeClubTrialPeriodExpiryView.layer.cornerRadius = 10
-        self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnTAEClubExpiryView))
+        self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnNewAdImageView))
         self.adsImageViewTapped.numberOfTapsRequired = 1
         self.adsImageView?.addGestureRecognizer(self.adsImageViewTapped)
 
@@ -4811,6 +4809,10 @@ self.topImageView.alpha = 1
         })
     }
     
+    @objc func tappedOnNewAdImageView() {
+        self.tapOnPromoAd(mhp_id: self.mhpId)
+        self.tappedOnTAEClubExpiryView()
+    }
     @objc func tappedOnTAEClubExpiryView() {
         if self.countryCode == "91" {
             self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
@@ -7327,11 +7329,50 @@ self.floatingCallBtn.isHidden = false
 
     }
     
+    func setupSubscribeNowButton() {
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+//            if self.countryCode == "91" {
+//                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+//            } else if self.countryCode == "62" {
+//                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+//            } else if self.countryCode == "1" {
+//                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+//            } else if self.countryCode == "65" {
+//                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+//            } else if self.countryCode == "60" {
+//                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+//            }
+            if self.countryCode == "91" {
+            if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+            self.subscribeNowButton.setImage(UIImage.init(named: "upgrade_now_btn"), for: .normal)
+        } else {
+            self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+
+        }
+            } else {
+                self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+
+            }
+        }
+    }
+    
     @objc func homeInfoApiCalls() {
         
        var floatingButtonArray = [[String: AnyObject]]()
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        }
+        if self.countryCode == "91" {
+            self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+        } else if self.countryCode == "62" {
+            self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+        } else if self.countryCode == "1" {
+            self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+        } else if self.countryCode == "65" {
+            self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+        } else if self.countryCode == "60" {
+            self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
         }
         if self.countryCode == "44" {
                                        self.premiumMemberBottomBtn.isHidden = true
@@ -7557,12 +7598,64 @@ self.floatingCallBtn.isHidden = false
                     }
                     }
             }
+                let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
+                //let userSubscribedToClub = 0
                 
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil {
+                if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubSGNPbeleu8beyKn", forKey: "-ClubSGNPbeleu8beyKn")
+                    UserDefaults.standard.synchronize()
+                  self.tweakandeatClubButtonView.isHidden = true
+                                     self.tweakandeatClubButtonViewBottom.isHidden = true
+                                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                     self.taeClubTrialPeriodExpiryView.isHidden = true
+
+
+                } else {
+                    
+                    UserDefaults.standard.removeObject(forKey: "-ClubSGNPbeleu8beyKn")
+                }
+                if responseDic["userTaeClubSubExpDttm"] is NSNull {
+              //      UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
+                } else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                let expDateStr =  responseDic["userTaeClubSubExpDttm"] as! String;
+                let expDate = dateFormatter.date(from: expDateStr);
+                
+                let currentDate = Date();
+                if expDate! < currentDate {
+                    UserDefaults.standard.removeObject(forKey: "-ClubSGNPbeleu8beyKn")
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubSGNPbeleu8beyKn", forKey: "-ClubSGNPbeleu8beyKn")
+                    UserDefaults.standard.synchronize()
+
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubSGNPbeleu8beyKn")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+
+
+                } else {
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubSGNPbeleu8beyKn", forKey: "-ClubSGNPbeleu8beyKn")
+                    UserDefaults.standard.synchronize()
+                      floatingButtonArray.append(["pkgName": "Tweak & Eat Club" as AnyObject, "imgName": "tweak-and-eat-club-member-btn" as AnyObject, "pkg": "-ClubSGNPbeleu8beyKn" as AnyObject])
+                      self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubSGNPbeleu8beyKn")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+                    }
+                }
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
                     self.removePTPExpiryView()
                 } else {
                     self.getStaticDateForComparison(noDays: noDays)
                 }
+                
             }
             
             if self.countryCode == "62" {
@@ -7817,7 +7910,59 @@ self.floatingCallBtn.isHidden = false
                     }
                     }
                 }
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil {
+                let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
+                //let userSubscribedToClub = 0
+                
+                if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubUSA4tg6cvdhizQn", forKey: "-ClubUSA4tg6cvdhizQn")
+                    UserDefaults.standard.synchronize()
+                  self.tweakandeatClubButtonView.isHidden = true
+                                     self.tweakandeatClubButtonViewBottom.isHidden = true
+                                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                     self.taeClubTrialPeriodExpiryView.isHidden = true
+
+
+                } else {
+                    
+                    UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
+                }
+                if responseDic["userTaeClubSubExpDttm"] is NSNull {
+              //      UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
+                } else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                let expDateStr =  responseDic["userTaeClubSubExpDttm"] as! String;
+                let expDate = dateFormatter.date(from: expDateStr);
+                
+                let currentDate = Date();
+                if expDate! < currentDate {
+                    UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubUSA4tg6cvdhizQn", forKey: "-ClubUSA4tg6cvdhizQn")
+                    UserDefaults.standard.synchronize()
+
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+
+
+                } else {
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubUSA4tg6cvdhizQn", forKey: "-ClubUSA4tg6cvdhizQn")
+                    UserDefaults.standard.synchronize()
+                      floatingButtonArray.append(["pkgName": "Tweak & Eat Club" as AnyObject, "imgName": "tweak-and-eat-club-member-btn" as AnyObject, "pkg": "-ClubUSA4tg6cvdhizQn" as AnyObject])
+                      self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+                    }
+                }
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
                     self.removePTPExpiryView()
                 } else {
                     self.getStaticDateForComparison(noDays: noDays)
@@ -7960,7 +8105,59 @@ self.floatingCallBtn.isHidden = false
                     }
                     }
                 }
-                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil  {
+                let userSubscribedToClub = responseDic["userTaeClubSub"] as! Int
+                //let userSubscribedToClub = 0
+                
+                if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubMYSheke8ebdjoWs", forKey: "-ClubMYSheke8ebdjoWs")
+                    UserDefaults.standard.synchronize()
+                  self.tweakandeatClubButtonView.isHidden = true
+                                     self.tweakandeatClubButtonViewBottom.isHidden = true
+                                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
+                                     self.taeClubTrialPeriodExpiryView.isHidden = true
+
+
+                } else {
+                    
+                    UserDefaults.standard.removeObject(forKey: "-ClubMYSheke8ebdjoWs")
+                }
+                if responseDic["userTaeClubSubExpDttm"] is NSNull {
+              //      UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+
+                } else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                let expDateStr =  responseDic["userTaeClubSubExpDttm"] as! String;
+                let expDate = dateFormatter.date(from: expDateStr);
+                
+                let currentDate = Date();
+                if expDate! < currentDate {
+                    UserDefaults.standard.removeObject(forKey: "-ClubMYSheke8ebdjoWs")
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubMYSheke8ebdjoWs", forKey: "-ClubMYSheke8ebdjoWs")
+                    UserDefaults.standard.synchronize()
+
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubMYSheke8ebdjoWs")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+
+
+                } else {
+                    if userSubscribedToClub == 1 {
+                    UserDefaults.standard.set("-ClubMYSheke8ebdjoWs", forKey: "-ClubMYSheke8ebdjoWs")
+                    UserDefaults.standard.synchronize()
+                      floatingButtonArray.append(["pkgName": "Tweak & Eat Club" as AnyObject, "imgName": "tweak-and-eat-club-member-btn" as AnyObject, "pkg": "-ClubMYSheke8ebdjoWs" as AnyObject])
+                      self.floatingCrownBtn.isHidden = false
+                    } else {
+                        UserDefaults.standard.removeObject(forKey: "-ClubMYSheke8ebdjoWs")
+                        //self.tweakandeatClubButtonView.isHidden = false
+
+                    }
+                    }
+                }
+                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil  || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
                     
                     self.removePTPExpiryView()
                 } else {
@@ -8502,6 +8699,7 @@ self.floatingCallBtn.isHidden = false
                
 
             }
+            self.setupSubscribeNowButton()
             if self.countryCode == "91" {
              self.getClubHome1()
             // self.getClubHome2()

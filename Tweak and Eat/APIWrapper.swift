@@ -125,6 +125,9 @@ class APIWrapper: AFHTTPSessionManager {
     @objc func getPremiumPackages2(sessionString : String, successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
         self.postRequestWithHeaders(TweakAndEatURLConstants.GET_PREMIUM_PACKAGES_BY_COUNTRY, userSession: sessionString, success: successBlock, failure: failureBlock)
     }
+    @objc func getPremiumPackages5(sessionString : String, successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
+        self.postRequestWithHeaders(TweakAndEatURLConstants.GET_PREMIUM_PACKAGES_BY_COUNTRY5, userSession: sessionString, success: successBlock, failure: failureBlock)
+    }
     
     @objc func updateFitnessData(sessionString : String, successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
         self.postRequestWithHeaders(TweakAndEatURLConstants.UPDATE_FITNESS_DATA, userSession: sessionString, success: successBlock, failure: failureBlock)

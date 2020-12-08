@@ -425,8 +425,8 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                                 }
                                 return
 
-                            } else if (cellDictionary.mppc_fb_id == "-ClubInd3gu7tfwko6Zx" || cellDictionary.mppc_fb_id == "-ClubIdn4hd8flchs9Vy") {
-                                if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+                            } else if (cellDictionary.mppc_fb_id == self.clubPackageSubscribed) {
+                                if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
                                    self.goToTAEClubMemPage()
                                     return
                                  } else {
@@ -566,7 +566,7 @@ return
     @IBOutlet weak var nextArrow: UILabel!;
     var cellTapped:Bool = true
     var currentRow = 0;
-
+    var clubPackageSubscribed = ""
     func goToHomePage() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
@@ -628,6 +628,21 @@ return
         } else if self.countryCode == "63" {
             self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
         }
+//        if self.countryCode == "91" {
+//            self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+//        } else if self.countryCode == "62" {
+//            self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+//        } else if self.countryCode == "1" {
+//            self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+//        } else if self.countryCode == "65" {
+//            self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+//        } else if self.countryCode == "60" {
+//            self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+//        }
+//        if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+//            self.imgPopup = "imgClubPopup"
+//        }
+       
         self.myProfile = uiRealm.objects(MyProfileInfo.self);
 
        
@@ -653,7 +668,27 @@ return
         }
         self.title = "Premium Packs";
         if self.fromCrown == false {
-            getPremiumPackagesApi2();
+            if self.countryCode == "91" {
+                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+            } else if self.countryCode == "62" {
+                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+            } else if self.countryCode == "1" {
+                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+            } else if self.countryCode == "65" {
+                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+            } else if self.countryCode == "60" {
+                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+            }
+            if self.countryCode == "91" {
+            if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+                getPremiumPackagesApi5()
+            } else {
+                getPremiumPackagesApi2();
+
+            }
+            } else {
+                getPremiumPackagesApi2();
+            }
         } else {
         self.getPremiumPackagesApi();
         }
@@ -824,6 +859,106 @@ return
             return 0 as AnyObject
         }
         return AnyObject.self as AnyObject
+    }
+    
+    @objc func getPremiumPackagesApi5() {
+        let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        
+        APIWrapper.sharedInstance.getPremiumPackages5(sessionString: userSession, successBlock: { (responceDic : AnyObject!) -> (Void) in
+            
+            if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                let response : [String:AnyObject] = responceDic as! [String:AnyObject];
+                print(response)
+                let responseResult = response["callStatus"] as! String
+                if  responseResult == "GOOD" {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                    
+                    self.pkgIdsArray = NSMutableArray()
+                    //packs
+                    if self.fromCrown == true {
+                        self.title = "My Premium Packages";
+                        if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+                            if UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") != nil {
+                                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray;
+                                for pkgID in pkgsArray {
+                                    let pkgDict = pkgID as! [String: AnyObject];
+                                    let pkgIDs = pkgDict["premium_pack_id"] as! String;
+                                    self.pkgIdsArray.add(pkgIDs)
+                                }
+                                let packs =  response["packs"] as AnyObject as! NSArray
+
+                                for pkgs in packs {
+                                    let packsDict = pkgs as! [String: AnyObject]
+                                    let packageID =  packsDict["mppc_fb_id"] as AnyObject as! String
+                                    if (self.pkgIdsArray.contains(packageID)){
+                                        let pkgObj = PremiumPackages(mppc_fb_id: self.getPackageDetails(packageObj: packsDict, val: "mppc_fb_id", type: String.self) as! String, pp_image_ba: self.getPackageDetails(packageObj: packsDict, val: "pp_image_ba", type: String.self) as! String, mppc_img_banner_ios: self.getPackageDetails(packageObj: packsDict, val: "mppc_img_banner_ios", type: String.self) as! String, mppc_name: self.getPackageDetails(packageObj: packsDict, val: "mppc_name", type: String.self) as! String, isCellTapped: false)
+                                        self.premiumPackagesApiArray.append(pkgObj)
+                                        
+                                    }
+                                }
+                                self.tableView.reloadData()
+                                
+                            }
+                        }
+                        
+                    } else {
+                        
+                        if UserDefaults.standard.value(forKey: "PREMIUM_MEMBER") != nil {
+                            if UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") != nil {
+                                let pkgsArray = UserDefaults.standard.value(forKey: "PREMIUM_PACKAGES") as! NSArray;
+                                for pkgID in pkgsArray {
+                                    let pkgDict = pkgID as! [String: AnyObject];
+                                    let pkgIDs = pkgDict["premium_pack_id"] as! String;
+                                    self.pkgIdsArray.add(pkgIDs)
+                                }
+                            }
+                        }
+                        let packs =  response["packs"] as AnyObject as! NSArray
+                        for packsDict in packs {
+                            let packsDict = packsDict as AnyObject as! [String: AnyObject]
+                            let pkgObj = PremiumPackages(mppc_fb_id: self.getPackageDetails(packageObj: packsDict, val: "mppc_fb_id", type: String.self) as! String, pp_image_ba: self.getPackageDetails(packageObj: packsDict, val: "pp_image_ba", type: String.self) as! String, mppc_img_banner_ios: self.getPackageDetails(packageObj: packsDict, val: "mppc_img_banner_ios", type: String.self) as! String, mppc_name: self.getPackageDetails(packageObj: packsDict, val: "mppc_name", type: String.self) as! String, isCellTapped: false)
+                            self.premiumPackagesApiArray.append(pkgObj)
+                        }
+                        //let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
+//                        if msisdn == "6010000001" {
+//                        let hardCodedPkg = PremiumPackages(mppc_fb_id: "-IndWLIntusoe3uelxER", pp_image_ba: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_img_banner_ios: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_name: "Intermittent Fasting Weight Loss", isCellTapped: false)
+//                        self.premiumPackagesApiArray.insert(hardCodedPkg, at: 0)
+                       // }
+                         DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        }
+                        if self.fromHomePopups == true {
+                            if let indexPathRow = self.premiumPackagesApiArray.index(where: {$0.mppc_fb_id == self.packageID}) {
+                                self.currentRow = indexPathRow
+                               // self.cellTapped = false
+                            }
+                            
+                            self.performSegue(withIdentifier: "moreInfo", sender: self)
+
+                        
+
+                        }
+                        
+                        
+
+                        
+                    }
+                    
+                    
+                    
+                    print(self.premiumPackagesApiArray)
+                }
+                
+            }
+        }) { (error : NSError!) -> (Void) in
+            MBProgressHUD.hide(for: self.view, animated: true);
+            if error?.code == -1011 {
+                
+            } else {
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+            }
+        }
     }
     
     @objc func getPremiumPackagesApi2() {

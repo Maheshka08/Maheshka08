@@ -1445,15 +1445,18 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         if segue.identifier == "chat" {
             let destination = segue.destination as! ChatVC;
             destination.fromPackages = true;
-            if UserDefaults.standard.value(forKey: "AIDP_EXP_DATE") != nil {
-                           let start = Date()
-                           let end = UserDefaults.standard.value(forKey: "AIDP_EXP_DATE")
-                           let diff = calculateDaysBetweenTwoDates(start: start, end: end as! Date)
-                           if diff < 22 {
-                            destination.hideBottomMessageBox = true
-                            //2020-07-14T05:22:06.000Z
+            if countryCode == "91" {
+                if UserDefaults.standard.value(forKey: "AIDP_EXP_DATE") != nil {
+                               let start = Date()
+                               let end = UserDefaults.standard.value(forKey: "AIDP_EXP_DATE")
+                               let diff = calculateDaysBetweenTwoDates(start: start, end: end as! Date)
+                               if diff < 22 {
+                                destination.hideBottomMessageBox = true
+                                //2020-07-14T05:22:06.000Z
+                               }
                            }
-                       }
+            }
+           
             if countryCode == "1" {
                 if self.packageID == self.ptpPackage {
                     destination.chatID = self.ptpPackage

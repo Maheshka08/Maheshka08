@@ -117,6 +117,8 @@ struct TweakAndEatURLConstants {
     static let AIBP_REGISTRATION = BASE_URL + "/api/payments/indsubregistration"
     static let HOMERECIPES = BASE_URL + "/api/user/homerecipes"
     static let GET_PREMIUM_PACKAGES_BY_COUNTRY = BASE_URL + "/api/user/getpremiumpackagesbycountry4"
+    static let GET_PREMIUM_PACKAGES_BY_COUNTRY5 = BASE_URL + "/api/user/getpremiumpackagesbycountry5"
+
     static  let GET_TWEAK_LABELS = BASE_URL + "/api/user/tweaklabels"
     static let GET_ALL_TIMESLOTS = BASE_URL + "/api/callschedules/getalltimeslots"
     static let CHECK_USER_SCHEDULE = BASE_URL + "/api/callschedules/checkuserschedule"

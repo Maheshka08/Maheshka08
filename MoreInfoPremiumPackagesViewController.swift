@@ -54,6 +54,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
+        SKPaymentQueue.default().add(self)
+
                     self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
                     self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
                     self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
@@ -69,7 +71,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     self.packageName = (self.labelPriceDict[lables] as? String)!
        
                     self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
-                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                     DispatchQueue.main.async {
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
                            if (SKPaymentQueue.canMakePayments()) {
                                self.buyNowButton.isEnabled = false
                                let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -80,6 +84,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                            } else {
                                print("can't make purchases");
                            }
+        
+        
 
     }
     
@@ -304,7 +310,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //            self.buyNowButton.isEnabled = true
 //            self.priceTableView.isHidden = true
             self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
-            MBProgressHUD.showAdded(to: self.view, animated: true);
+             DispatchQueue.main.async {
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
                    if (SKPaymentQueue.canMakePayments()) {
                        self.buyNowButton.isEnabled = false
                        let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -409,7 +417,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var system = 0;
     var confirmationText = ""
     var cardImageString = "";
-    var labelsPrice = "pkgPrice"
+    var imgPopup = "imgPopup"
+    var labelsPrice = "pkgRecurPrice"
+    var pkgImg = "pkgImg"
+    var clubPackageSubscribed = ""
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     var lables = "pkgDisplayDescription"
     var lableCount = "pkgDuration"
@@ -563,7 +574,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     func purchaseIAP() {
         self.navigationItem.hidesBackButton = true
+        DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
                  SKPaymentQueue.default().add(self)
                  if (SKPaymentQueue.canMakePayments()) {
                      let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -595,7 +608,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     func gettimeSlots() {
         self.timeSlotsArray = []
+         DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
                            
                                       APIWrapper.sharedInstance.getTimeSlots({ (responceDic : AnyObject!) -> (Void) in
                                if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
@@ -698,7 +713,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     let responseResult = responseDic["callStatus"] as! String;
                     if  responseResult == "GOOD" {
                        
-                        MBProgressHUD.hide(for: self.view, animated: true);
+                         DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                         self.captchaView.isHidden = true
                         self.view.endEditing(true)
                         self.callSchedulePopup = (Bundle.main.loadNibNamed("UserCallSchedulePopUp", owner: self, options: nil)! as NSArray).firstObject as? UserCallSchedulePopUp;
@@ -770,7 +787,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         //                }
                     }
                 }, failure : { error in
+                     DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                }
                     
                     print("failure")
                     if error?.code == -1011 {
@@ -802,25 +821,35 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 switch trans.transactionState {
                 case .purchased:
                     print("Product Purchased")
-                    //Do unlocking etc stuff here in case of new purchase
-                    if self.packageId == "-ClubInd3gu7tfwko6Zx" || self.packageId == "-ClubIdn4hd8flchs9Vy" {
+                    //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+                    if self.packageId == self.clubPackageSubscribed {
                         self.receiptValidation()
                     } else {
                     self.recptValidation()
                     }
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    DispatchQueue.main.async {
+
+                     DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                }
+                    }
                     SKPaymentQueue.default().remove(self)
                     
                     
                     break;
                 case .failed:
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    
+                   
                     print("Purchased Failed");
                    // print(transaction)
-                    print(trans.error?.localizedDescription as Any)
-                    TweakAndEatUtils.AlertView.showAlert(view: self, message: trans.error?.localizedDescription as Any as! String + ". Please try again later.")
+                   // print(trans.error?.localizedDescription as Any)
+                    DispatchQueue.main.async {
+
+                      
+                        MBProgressHUD.hide(for: self.view, animated: true);
+
+                    }
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: trans.error?.localizedDescription as Any as! String)
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
                     
@@ -828,8 +857,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 case .restored:
                     print("Already Purchased")
                     //Do unlocking etc stuff here in case of restor
+                    DispatchQueue.main.async {
+
                     MBProgressHUD.hide(for: self.view, animated: true);
-                    
+                    }
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
                     
@@ -1099,11 +1130,15 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                        // self.smallImageView.sd_setImage(with: URL(string:tempDict["imgSmall"] as! String));
 
                     }
+                     DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
+                }
                 }
                 
             } else {
-                MBProgressHUD.hide(for: self.view, animated: true);
+                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                 
             }
         })
@@ -1117,7 +1152,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     func receiptValidation() {
+         DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
         
         let receiptFileURL = Bundle.main.appStoreReceiptURL
         let receiptData = try? Data(contentsOf: receiptFileURL!)
@@ -1140,7 +1177,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 responseResult = responseDic["CallStatus"] as! String
             }
             if  responseResult == "GOOD" {
-                MBProgressHUD.hide(for: self.view, animated: true);
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                 print("in-app done")
                       //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
 //                if UserDefaults.standard.value(forKey: "msisdn") != nil {
@@ -1168,7 +1207,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             }
         }, failure : { error in
             self.navigationItem.hidesBackButton = false
-            MBProgressHUD.hide(for: self.view, animated: true);
+             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
             let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
             
             let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
@@ -1181,7 +1222,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     func recptValidation() {
-        MBProgressHUD.showAdded(to: self.view, animated: true);
+        DispatchQueue.main.async {
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+
+        }
         
        var url = ""
         var jsonDict = [String: AnyObject]()
@@ -1213,7 +1257,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         //        UserDefaults.standard.synchronize()
         //
         
-        MBProgressHUD.showAdded(to: self.view, animated: true);
+      //  MBProgressHUD.showAdded(to: self.view, animated: true);
         APIWrapper.sharedInstance.postReceiptData(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
             var responseDic : [String:AnyObject] = response as! [String:AnyObject];
             var responseResult = ""
@@ -1246,7 +1290,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 event.customData["packageID"] = self.packageId
                 event.customData["currency"] = self.currency
                 event.logEvent()
-                MBProgressHUD.hide(for: self.view, animated: true);
+                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                 print("in-app done")
                 let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
                 let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
@@ -1331,7 +1377,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                                 responseResult = responseDic["CallStatus"] as! String
                                             }
                                         if  responseResult == "GOOD" {
-                                            MBProgressHUD.hide(for: self.view, animated: true);
+                                             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                        //     self.navigationItem.hidesBackButton = true;
                                             self.backBtn.isHidden = true
                                             self.paySucessView.isHidden = false
@@ -1344,12 +1392,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                             msg;
                                             
                                         } else{
-                                            MBProgressHUD.hide(for: self.view, animated: true);
+                                             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                         }
                                     }, failure : { error in
                                         //  print(error?.description)
                                         //            self.getQuestionsFromFB()
-                                        MBProgressHUD.hide(for: self.view, animated: true);
+                                         DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                         TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
                                         
                                     })
@@ -1366,11 +1418,15 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                     self.nutritionstDescLbl.text =
                                     msg;
                                 }
-                                MBProgressHUD.hide(for: self.view, animated: true);
+                                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                 
                                 
                             } else {
-                                MBProgressHUD.hide(for: self.view, animated: true);
+                                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                 
                             }
                         })
@@ -1419,7 +1475,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                             responseResult = responseDic["CallStatus"] as! String
                                         }
                                         if  responseResult == "GOOD" {
-                                            MBProgressHUD.hide(for: self.view, animated: true);
+                                             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                         //    self.navigationItem.hidesBackButton = true;
                                             self.backBtn.isHidden = true
                                             self.paySucessView.isHidden = false
@@ -1432,12 +1490,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                             msg;
                                             
                                         } else{
-                                            MBProgressHUD.hide(for: self.view, animated: true);
+                                             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                         }
                                     }, failure : { error in
                                         //  print(error?.description)
                                         //            self.getQuestionsFromFB()
-                                        MBProgressHUD.hide(for: self.view, animated: true);
+                                         DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                         TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
                                         
                                     })
@@ -1454,11 +1516,15 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                 self.nutritionstDescLbl.text =
                                 msg;
                                 }
-                                MBProgressHUD.hide(for: self.view, animated: true);
+                                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                 
                                 
                             } else {
-                                MBProgressHUD.hide(for: self.view, animated: true);
+                                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                                 
                             }
                         })
@@ -1473,7 +1539,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
             }
         }, failure : { error in
-            MBProgressHUD.hide(for: self.view, animated: true);
+             DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
             if error!.code == -1011 {
                 self.navigationController?.popViewController(animated: true)
                 return
@@ -1547,9 +1615,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             print(self.nutritionLabelPackagesArray);
             for priceDict in self.nutritionLabelPriceArray {
                 let dict = priceDict as! [String: AnyObject]
-                if dict.index(forKey: "pkgImg") != nil {
+                if dict.index(forKey: pkgImg) != nil {
                    // self.packagesImagesArray.add(dict["pkgImg"] as! String)
-                    self.items.append(Item(value: dict["pkgImg"] as! String))
+                    self.items.append(Item(value: dict[pkgImg] as! String))
                     
                 }
             }
@@ -1585,7 +1653,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //
 //                            }
 //                    } else
-                    if key == "imgPopup" {
+                    if key == self.imgPopup {
                             let urlString = val as! String
                         bottomImageView.isHidden = true
                           self.scrollViewImageView.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
@@ -1701,6 +1769,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
     @IBOutlet weak var moreInfoTableView: UITableView!
     @IBOutlet weak var smallImageView: UIImageView!
+    @IBOutlet weak var smallImageViewHeightConstraint: NSLayoutConstraint!
     @objc func showScrollIndicatorsInContacts() {
         UIView.animate(withDuration: 0.001) {
             self.moreInfoTableView.flashScrollIndicators()
@@ -1770,7 +1839,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                   let responseResult = responseDic["callStatus"] as! String;
                   if  responseResult == "GOOD" {
                       self.checkUserScheduleArray = []
-                      MBProgressHUD.hide(for: self.view, animated: true);
+                       DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                       let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
                       if data.count == 0 {
                           
@@ -1780,7 +1851,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                       }
                   }
               }, failure : { error in
-                  MBProgressHUD.hide(for: self.view, animated: true);
+                   DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                   
                   print("failure")
                   if error?.code == -1011 {
@@ -1875,6 +1948,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         self.premiumSubView.layer.cornerRadius = 15
 //        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)
         self.imgScrollView.layer.cornerRadius = 15
@@ -1897,18 +1972,34 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //        event.logEvent()
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-            if countryCode == "91" {
+            if self.countryCode == "91" {
+                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+            } else if self.countryCode == "62" {
+                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+            } else if self.countryCode == "1" {
+                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+            } else if self.countryCode == "65" {
+                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+            } else if self.countryCode == "60" {
+                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+            }
+            if self.packageId == self.clubPackageSubscribed {
                 self.carouselsView.isHidden = true
                 self.moreInfoView.isHidden = false
                 self.featuresView.isHidden = true
                 //self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-
             } else {
-                self.packagesCarouselView.isHidden = true
-                self.carouselView1.isHidden = true
-                self.moreInfoView.isHidden = true
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                self.carouselsView.isHidden = false
+                self.moreInfoView.isHidden = false
+                self.packagesCarouselView.isHidden = false
             }
+//            } else {
+//                self.packagesCarouselView.isHidden = true
+//                self.carouselView1.isHidden = true
+//                self.moreInfoView.isHidden = true
+//                self.navigationController?.setNavigationBarHidden(false, animated: true)
+//            }
+           
         }
         //self.packagesCarouselView.centerItemWhenSelected = true
         let termsAttr : [NSAttributedString.Key: Any] = [
@@ -1930,26 +2021,37 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         carouselView1.register(UINib(nibName: "CarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell")
         carouselView2.register(UINib(nibName: "CarouselCollectionViewCell2", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell2")
              //  self.items = [Item(value: "1"), Item(value: "2"), Item(value: "3"), Item(value: "4"), Item(value: "5")]
-        if self.packageId == "-ClubInd3gu7tfwko6Zx" || self.packageId == "-ClubIdn4hd8flchs9Vy" {
+//        if self.countryCode == "91" {
+//            self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+//        } else if self.countryCode == "62" {
+//            self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+//        } else if self.countryCode == "1" {
+//            self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+//        } else if self.countryCode == "65" {
+//            self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+//        } else if self.countryCode == "60" {
+//            self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+//        }
+
+        if self.packageId == self.clubPackageSubscribed {
             self.packagesCarouselHeightConstraint.constant = 90
             self.buyNowBtton.isHidden = false
             self.packagesCarouselView.isHidden = true
             self.carouselView1.isHidden = true
             self.pageControl.isHidden = true
-            labelsPrice = "pkgRecurPrice"
 
         } else {
             self.pageControl.isHidden = false
             self.buyNowBtton.isHidden = true
             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-                if countryCode == "91" {
-                    self.packagesCarouselView.isHidden = false
-                    self.carouselView1.isHidden = false
-                } else {
-                    self.packagesCarouselView.isHidden = true
-                    self.carouselView1.isHidden = true
-                }
+//                if countryCode == "91" {
+//                    self.packagesCarouselView.isHidden = false
+//                    self.carouselView1.isHidden = false
+//                } else {
+//                    self.packagesCarouselView.isHidden = true
+//                    self.carouselView1.isHidden = true
+//                }
             }
             
         self.packagesCarouselHeightConstraint.constant = 164
@@ -2161,45 +2263,84 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             }
 
         }
-        self.smallImageView.sd_setImage(with: URL(string: self.smallImage));
+        self.smallImageView.sd_setImage(with: URL(string: self.smallImage)) { (image, error, cache, url) in
+                                                           // Your code inside completion block
+          let ratio = image!.size.width / image!.size.height
+          let newHeight = self.smallImageView.frame.width / ratio
+          self.smallImageViewHeightConstraint.constant = newHeight
+
+          self.view.layoutIfNeeded()
+             
+
+          }
 
         self.infoView.isHidden = true;
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             
-            if  self.packageId == "-IndIWj1mSzQ1GDlBpUt" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-IndAiBPtmMrS4VPnwmD" || self.packageId == "-UsaAiBPxnaopT55GJxl" || self.packageId == "-SgnAiBPJlXfM3KzDWR8" || self.packageId == "-IdnAiBPLKMO5ePamQle" || self.packageId == "-MysAiBPyaX9TgFT1YOp" || self.packageId == "-PhyAiBPcYLiSYlqhjbI" || self.packageId == "-MysRamadanwgtLoss99" || self.packageId == "-IndWLIntusoe3uelxER" {
-                labelsPrice = "pkgRecurPrice"
-               // self.featuresView.isHidden = false
-                self.getPackageDetails()
-            } else  {
-                self.featuresView.isHidden = true
-                MBProgressHUD.showAdded(to: self.view, animated: true)
+            if  countryCode == "91" {
+               // labelsPrice = "pkgRecurPrice"
+             
+                if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+                    self.imgPopup = "imgClubPopup"
+                    self.labelsPrice = "pkgRecurClubPrice"
+                } else {
+                    labelsPrice = "pkgRecurPrice"
 
-                APIWrapper.sharedInstance.getDifferencesForUSA(type: self.packageId, { (responceDic : AnyObject!) -> (Void) in
-                    if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
-                        let response : [String:AnyObject] = responceDic as! [String:AnyObject];
-                        
-                        if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
-                            let responseArray  = response[TweakAndEatConstants.DATA] as! NSArray;
-                            print(responseArray)
-                            self.moreInfoPremiumPackagesArray = responseArray.mutableCopy() as! NSMutableArray
-                            
-                            self.moreInfoTableView.reloadData();
-              //TweakAndEatUtils.hideMBProgressHUD();
-                            
-                            self.getMyTweakAndEatDetails()
-                        }
-                    } else {
-                        //error
-                        TweakAndEatUtils.hideMBProgressHUD();
-                    }
-                }) { (error : NSError!) -> (Void) in
-                    //error
-                    TweakAndEatUtils.hideMBProgressHUD();
-                    TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again..")
-                 
+                }
+               // self.featuresView.isHidden = false
+                //self.getPackageDetails()
+                
+            } else {
+                if self.packageId == self.clubPackageSubscribed {
+                    labelsPrice = "pkgRecurPrice"
+
+                } else {
+                labelsPrice = "pkgPrice"
                 }
             }
+            self.getMyTweakAndEatDetails()
+
+//            } else  {
+////                if self.packageId == self.clubPackageSubscribed {
+////                    self.packagesCarouselHeightConstraint.constant = 90
+////                    self.buyNowBtton.isHidden = false
+////                    self.packagesCarouselView.isHidden = true
+////                    self.carouselView1.isHidden = true
+////                    self.pageControl.isHidden = true
+////
+////                } else {
+////
+////                }
+//                labelsPrice = "pkgPrice"
+//                self.featuresView.isHidden = true
+//                MBProgressHUD.showAdded(to: self.view, animated: true)
+//
+//                APIWrapper.sharedInstance.getDifferencesForUSA(type: self.packageId, { (responceDic : AnyObject!) -> (Void) in
+//                    if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+//                        let response : [String:AnyObject] = responceDic as! [String:AnyObject];
+//
+//                        if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
+//                            let responseArray  = response[TweakAndEatConstants.DATA] as! NSArray;
+//                            print(responseArray)
+//                            self.moreInfoPremiumPackagesArray = responseArray.mutableCopy() as! NSMutableArray
+//
+//                            self.moreInfoTableView.reloadData();
+//              //TweakAndEatUtils.hideMBProgressHUD();
+//
+//                            self.getMyTweakAndEatDetails()
+//                        }
+//                    } else {
+//                        //error
+//                        TweakAndEatUtils.hideMBProgressHUD();
+//                    }
+//                }) { (error : NSError!) -> (Void) in
+//                    //error
+//                    TweakAndEatUtils.hideMBProgressHUD();
+//                    TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again..")
+//
+//                }
+//            }
 //            else {
 //                // packageId = "-KyotHu4rPoL3YOsVxUu"
 //                if packageId == "-KyotHu4rPoL3YOsVxUu" {
@@ -2298,7 +2439,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 return
             }
         }
+         DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
         if (SKPaymentQueue.canMakePayments()) {
             self.buyNowButton.isEnabled = false
             let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -2318,7 +2461,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @objc func getFirebaseData() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        DispatchQueue.main.async {
+       MBProgressHUD.showAdded(to: self.view, animated: true);
+       }
         moreInfoPremiumPackagesRef.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
@@ -2338,13 +2483,17 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     dispatch_group.notify(queue: DispatchQueue.main) {
                         print(self.moreInfoPremiumPackagesArray);
 
-                        MBProgressHUD.hide(for: self.view, animated: true);
+                         DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
                         
                         self.moreInfoTableView.reloadData();
                         
                     }
                   } else {
-                     MBProgressHUD.hide(for: self.view, animated: true);
+                      DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
               }
         })
     }
