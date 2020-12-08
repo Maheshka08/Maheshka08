@@ -587,6 +587,7 @@ return
     override func viewDidLoad() {
         
         super.viewDidLoad();
+      //  UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         self.tableView.delegate = self

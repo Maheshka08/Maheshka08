@@ -1983,16 +1983,19 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             } else if self.countryCode == "60" {
                 self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
             }
-            if self.packageId == self.clubPackageSubscribed {
-                self.carouselsView.isHidden = true
-                self.moreInfoView.isHidden = false
-                self.featuresView.isHidden = true
-                //self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-            } else {
-                self.carouselsView.isHidden = false
-                self.moreInfoView.isHidden = false
-                self.packagesCarouselView.isHidden = false
-            }
+            self.carouselsView.isHidden = false
+            self.moreInfoView.isHidden = false
+            self.packagesCarouselView.isHidden = false
+//            if self.packageId == self.clubPackageSubscribed {
+//                self.carouselsView.isHidden = true
+//                self.moreInfoView.isHidden = false
+//                self.featuresView.isHidden = true
+//                //self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+//            } else {
+//                self.carouselsView.isHidden = false
+//                self.moreInfoView.isHidden = false
+//                self.packagesCarouselView.isHidden = false
+//            }
 //            } else {
 //                self.packagesCarouselView.isHidden = true
 //                self.carouselView1.isHidden = true
@@ -2033,29 +2036,29 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //            self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
 //        }
 
-        if self.packageId == self.clubPackageSubscribed {
-            self.packagesCarouselHeightConstraint.constant = 90
-            self.buyNowBtton.isHidden = false
-            self.packagesCarouselView.isHidden = true
-            self.carouselView1.isHidden = true
-            self.pageControl.isHidden = true
-
-        } else {
-            self.pageControl.isHidden = false
-            self.buyNowBtton.isHidden = true
-            if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-                self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-//                if countryCode == "91" {
-//                    self.packagesCarouselView.isHidden = false
-//                    self.carouselView1.isHidden = false
-//                } else {
-//                    self.packagesCarouselView.isHidden = true
-//                    self.carouselView1.isHidden = true
-//                }
-            }
-            
+//        if self.packageId == self.clubPackageSubscribed {
+//            self.packagesCarouselHeightConstraint.constant = 90
+//            self.buyNowBtton.isHidden = false
+//            self.packagesCarouselView.isHidden = true
+//            self.carouselView1.isHidden = true
+//            self.pageControl.isHidden = true
+//
+//        } else {
+//            self.pageControl.isHidden = false
+//            self.buyNowBtton.isHidden = true
+//            if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+//                self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+////                if countryCode == "91" {
+////                    self.packagesCarouselView.isHidden = false
+////                    self.carouselView1.isHidden = false
+////                } else {
+////                    self.packagesCarouselView.isHidden = true
+////                    self.carouselView1.isHidden = true
+////                }
+//            }
+//
         self.packagesCarouselHeightConstraint.constant = 164
-        }
+//        }
         if IS_iPHONE5 || IS_iPHONE678 {
             self.ratingsCarouselHeightConstraint.constant = 0
         } else if IS_iPHONE678P {

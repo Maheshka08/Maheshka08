@@ -110,6 +110,18 @@ class PopUpNotificationView: UIView {
         } else if self.countryCode == "63" {
             self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
         }
+        var clubPackageSubscribed = ""
+        if self.countryCode == "91" {
+            clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+        } else if self.countryCode == "62" {
+            clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+        } else if self.countryCode == "1" {
+            clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+        } else if self.countryCode == "65" {
+            clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+        } else if self.countryCode == "60" {
+            clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+        }
         let promoAppLink = link //PP_PACKAGES
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
@@ -147,27 +159,15 @@ class PopUpNotificationView: UIView {
                 
 
             }
-        } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
+        } else if link == "CLUB_SUBSCRIPTION" || link == clubPackageSubscribed {
             //MYTAE_PUR_IND_OP_3M
-                      if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+                      if UserDefaults.standard.value(forKey: clubPackageSubscribed) != nil {
                          self.goToTAEClubMemPage()
                        } else {
-                           //self.goToTAEClub()
-                        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-                            self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                        DispatchQueue.main.async {
+                        MBProgressHUD.showAdded(to: self, animated: true);
                         }
-                        if self.countryCode == "91" {
-                            DispatchQueue.main.async {
-                            MBProgressHUD.showAdded(to: self, animated: true);
-                            }
-                            self.moveToAnotherView(promoAppLink: "-ClubInd3gu7tfwko6Zx")
-                        } else {
-                            DispatchQueue.main.async {
-                            MBProgressHUD.showAdded(to: self, animated: true);
-                            }
-                            self.moveToAnotherView(promoAppLink: "-ClubIdn4hd8flchs9Vy")
-                        }
-                       }
+                        self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
         } else if promoAppLink == "PP_PACKAGES" {
           //  self.performSegue(withIdentifier: "buyPackages", sender: self);
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -412,6 +412,21 @@ class PopUpNotificationView: UIView {
     
     @IBAction func doneTappedOnSmallPopUp(_ sender: Any) {
         self.removeFromSuperview()
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                   self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        }
+        var clubPackageSubscribed = ""
+        if self.countryCode == "91" {
+            clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+        } else if self.countryCode == "62" {
+            clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+        } else if self.countryCode == "1" {
+            clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+        } else if self.countryCode == "65" {
+            clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+        } else if self.countryCode == "60" {
+            clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+        }
         if link == "HOME" || link == "" {
             self.goToHomePage()
                } else if link == "CALS_LEFT_FS_POPUP" {
@@ -454,28 +469,16 @@ class PopUpNotificationView: UIView {
                     
 
                 }
-               } else if link == "CLUB_SUBSCRIPTION" || link == "-ClubInd3gu7tfwko6Zx" || link == "-ClubIdn4hd8flchs9Vy" {
-            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
-                self.goToTAEClubMemPage()
-
+               } else if link == "CLUB_SUBSCRIPTION" || link == clubPackageSubscribed {
+                //MYTAE_PUR_IND_OP_3M
+                          if UserDefaults.standard.value(forKey: clubPackageSubscribed) != nil {
+                             self.goToTAEClubMemPage()
+                           } else {
+                            DispatchQueue.main.async {
+                            MBProgressHUD.showAdded(to: self, animated: true);
+                            }
+                            self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
             } else {
-                //self.goToTAEClub()
-             if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-                 self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-             }
-             if self.countryCode == "91" {
-                 DispatchQueue.main.async {
-                 MBProgressHUD.showAdded(to: self, animated: true);
-                 }
-                 self.moveToAnotherView(promoAppLink: "-ClubInd3gu7tfwko6Zx")
-             } else {
-                 DispatchQueue.main.async {
-                 MBProgressHUD.showAdded(to: self, animated: true);
-                 }
-                 self.moveToAnotherView(promoAppLink: "-ClubIdn4hd8flchs9Vy")
-             }
-            }
-                } else {
                    tappedOnPopUpDone()
                }
 //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
