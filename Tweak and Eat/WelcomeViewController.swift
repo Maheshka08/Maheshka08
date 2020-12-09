@@ -1999,22 +1999,23 @@ if dictionary.index(forKey: "weeksData") != nil {
         tappedOnTAEClubExpiryView()
     }
     @objc func tappedOntrialPeriodExpiryView() {
-        
+        self.performSegue(withIdentifier: "buyPackages", sender: self);
+
         //self.performSegue(withIdentifier: "premiumTweakPack", sender: self)
-               if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-                  self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-           if self.countryCode == "62" {
-       if UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
-                             self.goToTAEClubMemPage()
-
-                         } else {
-                             self.goToTAEClub()
-                         }
-           } else {
-               self.performSegue(withIdentifier: "buyPackages", sender: self);
-
-           }
-       }
+//               if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+//                  self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+//           if self.countryCode == "62" {
+//       if UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+//                             self.goToTAEClubMemPage()
+//
+//                         } else {
+//                             self.goToTAEClub()
+//                         }
+//           } else {
+//               self.performSegue(withIdentifier: "buyPackages", sender: self);
+//
+//           }
+//       }
         
     }
     @objc func setupNavigationTitle() {
@@ -2290,7 +2291,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         //self.dummyNav2(packageIDs: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
 
         //self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
-self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
+self.dummyNav2(packageIDs: "-MzqlVh6nXsZ2TCdAbOp", identifier: "WLIF_PUR_IND_OP_3M")
         
     }
     
@@ -2662,12 +2663,28 @@ self.topImageView.alpha = 1
         super.viewDidLoad();
         //self.tapToTweakButton.flash()
       //  self.scrollContainerView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        
+            if self.countryCode == "91" {
+                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+            } else if self.countryCode == "62" {
+                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+            } else if self.countryCode == "1" {
+                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+            } else if self.countryCode == "65" {
+                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+            } else if self.countryCode == "60" {
+                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+            }
+        }
         if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
         self.subscribeNowButton.setImage(UIImage.init(named: "upgrade_now_btn"), for: .normal)
     } else {
         self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
 
     }
+        
 
         self.subscribeNowButtonView.layer.cornerRadius = 10
         self.menuButtonsView.layer.cornerRadius = 10
@@ -7065,7 +7082,7 @@ self.topImageView.alpha = 1
                                 self.taeClubTrialPeriodExpiryView.alpha = 0.8;
 
                                 }
-                                self.randomPromoLink = (dict["value"] as! String)
+                               // self.randomPromoLink = (dict["value"] as! String)
 
                             }
                         }

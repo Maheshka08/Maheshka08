@@ -1728,8 +1728,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         }
     
     func startPurchase(identifier: String, dict: [String : AnyObject]) {
+
+        DispatchQueue.global().async() { [self] in
+
         self.labelPriceDict  = dict;
-                           self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+            self.pkgDescription = "\(self.labelPriceDict["pkgDescription"] as AnyObject as! String)";
                            self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
                            self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
                            self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
@@ -1743,10 +1746,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                            self.packageName = (self.labelPriceDict[lables] as? String)!
               
                            self.productIdentifier = identifier
-        DispatchQueue.main.async {
-            MBProgressHUD.showAdded(to: self.view, animated: true);
-
-        }
+       
                                   if (SKPaymentQueue.canMakePayments()) {
                                       self.buyNowButton.isEnabled = false
                                       let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
@@ -1757,6 +1757,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                   } else {
                                       print("can't make purchases");
                                   }
+            DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+
+            }
+            
+        }
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

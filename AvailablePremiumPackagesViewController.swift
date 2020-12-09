@@ -933,9 +933,26 @@ return
                             if let indexPathRow = self.premiumPackagesApiArray.index(where: {$0.mppc_fb_id == self.packageID}) {
                                 self.currentRow = indexPathRow
                                // self.cellTapped = false
+                                if (self.packageID == self.clubPackageSubscribed) {
+                                    if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
+                                       self.goToTAEClubMemPage()
+                                        return
+                                     } else {
+                                        // self.goToTAEClub()
+                                        self.performSegue(withIdentifier: "moreInfo", sender: self);
+    return
+                                     }
+                                } else {
+                                if UserDefaults.standard.value(forKey: self.packageID) != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: self.packageID);
+
+                                } else  {
+
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+                            }
                             }
                             
-                            self.performSegue(withIdentifier: "moreInfo", sender: self)
 
                         
 
@@ -1033,9 +1050,26 @@ return
                             if let indexPathRow = self.premiumPackagesApiArray.index(where: {$0.mppc_fb_id == self.packageID}) {
                                 self.currentRow = indexPathRow
                                // self.cellTapped = false
+                                if (self.packageID == self.clubPackageSubscribed) {
+                                    if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
+                                       self.goToTAEClubMemPage()
+                                        return
+                                     } else {
+                                        // self.goToTAEClub()
+                                        self.performSegue(withIdentifier: "moreInfo", sender: self);
+    return
+                                     }
+                                } else {
+                                if UserDefaults.standard.value(forKey: self.packageID) != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: self.packageID);
+
+                                } else  {
+
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+                            }
                             }
                             
-                            self.performSegue(withIdentifier: "moreInfo", sender: self)
 
                         
 
