@@ -80,7 +80,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
                   endingLineNumber = "74"
-                  offsetFromSymbolStart = "7688">
+                  offsetFromSymbolStart = "9467">
                </Location>
                <Location
                   uuid = "7196426A-43E8-4E10-B22F-A81792F0A7AC - e8a122c00345678a"
@@ -95,7 +95,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "42">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -132,7 +132,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "CACFF78E-ADF7-4E58-99C8-1E46ABB3ABB8 - 149b2a2a7b620685"
+                  uuid = "CACFF78E-ADF7-4E58-99C8-1E46ABB3ABB8 - 149b2a2a7b6206a6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -142,12 +142,12 @@
                   urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/WelcomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1797"
-                  endingLineNumber = "1797"
-                  offsetFromSymbolStart = "80">
+                  startingLineNumber = "1798"
+                  endingLineNumber = "1798"
+                  offsetFromSymbolStart = "68">
                </Location>
                <Location
-                  uuid = "CACFF78E-ADF7-4E58-99C8-1E46ABB3ABB8 - 2061dc237f2f0a7d"
+                  uuid = "CACFF78E-ADF7-4E58-99C8-1E46ABB3ABB8 - 2061dc237f2f0a1c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -157,9 +157,9 @@
                   urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/WelcomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1798"
-                  endingLineNumber = "1798"
-                  offsetFromSymbolStart = "348">
+                  startingLineNumber = "1799"
+                  endingLineNumber = "1799"
+                  offsetFromSymbolStart = "208">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -289,6 +289,22 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC6B55B0-F790-4200-A9B0-8FB684855346"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "cellTappedOnButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

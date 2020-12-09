@@ -2662,7 +2662,12 @@ self.topImageView.alpha = 1
         super.viewDidLoad();
         //self.tapToTweakButton.flash()
       //  self.scrollContainerView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
-        
+        if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+        self.subscribeNowButton.setImage(UIImage.init(named: "upgrade_now_btn"), for: .normal)
+    } else {
+        self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+
+    }
 
         self.subscribeNowButtonView.layer.cornerRadius = 10
         self.menuButtonsView.layer.cornerRadius = 10
