@@ -740,7 +740,7 @@ return
             if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
                 let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
                 if language == "BA" {
-                    popOverVC.smallImage = cellD.pp_image_ba
+                    popOverVC.smallImage = cellD.mppc_img_banner_ios
 
                 } else {
             popOverVC.smallImage = cellD.mppc_img_banner_ios
@@ -1296,7 +1296,7 @@ return
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
             if language == "BA" {
-                let imageUrlBA = cellDictionary.pp_image_ba;
+                let imageUrlBA = cellDictionary.mppc_img_banner_ios;
                 cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
                                                                    // Your code inside completion block
                     if image != nil {

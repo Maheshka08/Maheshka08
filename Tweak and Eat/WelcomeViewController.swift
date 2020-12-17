@@ -7361,17 +7361,7 @@ self.floatingCallBtn.isHidden = false
     func setupSubscribeNowButton() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-//            if self.countryCode == "91" {
-//                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
-//            } else if self.countryCode == "62" {
-//                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
-//            } else if self.countryCode == "1" {
-//                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
-//            } else if self.countryCode == "65" {
-//                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
-//            } else if self.countryCode == "60" {
-//                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
-//            }
+
             if self.countryCode == "91" {
             if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
             self.subscribeNowButton.setImage(UIImage.init(named: "upgrade_now_btn"), for: .normal)
@@ -7380,8 +7370,21 @@ self.floatingCallBtn.isHidden = false
 
         }
             } else {
-                self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+                if self.countryCode == "62" {
+                    if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+                        let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
+                        if language == "BA" {
+                            self.subscribeNowButton.setImage(UIImage.init(named: "LANGGANAN_SEKARANG_BTN"), for: .normal)
 
+                        } else {
+                            self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+
+                        }
+                        
+                    }
+                } else {
+                self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+                }
             }
         }
     }
@@ -9854,8 +9857,11 @@ self.floatingCallBtn.isHidden = false
                                                // }
                                             }
                                             //last
+                                            AppEvents.logEvent(.completedRegistration, parameters: ["country": self.countryCode])
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
+                                                
+                                                AppEvents.logEvent(.completedRegistration)
                                             } else if (self.countryCode == "1") {
                                                Analytics.logEvent("TAE_REG_SUCCESS_USA", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                             } else if (self.countryCode == "62") {
@@ -10807,17 +10813,19 @@ self.floatingCallBtn.isHidden = false
 //        }
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-            if self.countryCode == "62" {
-        if UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
-                              self.goToTAEClubMemPage()
+        //if self.countryCode == "62" {
+//        if UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+//                              self.goToTAEClubMemPage()
+//
+//                          } else {
+//                              self.goToTAEClub()
+//                          }
+//            } else {
+//                self.performSegue(withIdentifier: "buyPackages", sender: self);
+//
+//            }
+            self.performSegue(withIdentifier: "buyPackages", sender: self);
 
-                          } else {
-                              self.goToTAEClub()
-                          }
-            } else {
-                self.performSegue(withIdentifier: "buyPackages", sender: self);
-
-            }
         }
 
         

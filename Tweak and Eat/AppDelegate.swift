@@ -21,6 +21,7 @@ import FacebookCore
 import FacebookShare
 import Branch
 import RNCryptor
+import FBSDKCoreKit
 //import AppTrackingTransparency
 let uiRealm = try! Realm()
 
@@ -250,8 +251,10 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
                       // 2 - Replace 'appsFlyerDevKey', `appleAppID` with your DevKey, Apple App ID
 
         Settings.isAutoLogAppEventsEnabled = true
+        Settings.isAdvertiserIDCollectionEnabled = true
         Settings.isAutoInitEnabled = true
         ApplicationDelegate.initializeSDK(nil)
+
 //        AppsFlyerLib.shared().appsFlyerDevKey = "K2xRtd4P275hKHPwSofe9h"
 //        AppsFlyerLib.shared().appleAppID = "1267286348"
 //        AppsFlyerLib.shared().delegate = self

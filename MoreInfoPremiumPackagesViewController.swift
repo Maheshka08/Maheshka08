@@ -54,6 +54,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
+        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
+            Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-IndWLIntusoe3uelxER" {
+            Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+            Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
+            Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        }
+      
         SKPaymentQueue.default().add(self)
 
                     self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
