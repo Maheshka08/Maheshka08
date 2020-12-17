@@ -529,7 +529,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func crossBtnTapped(_ sender: Any) {
-        let _ = self.navigationController?.popViewController(animated: false)
+        let _ = self.navigationController?.popViewController(animated: true)
 
         
     }
@@ -1049,9 +1049,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                         if !((packageObj?["activeCountries"] as AnyObject) is NSNull) {
                           
                         self.nutritionLabelPackagesArray.add(packageObj!);
-                            DispatchQueue.global(qos: .userInitiated).async {
+                            //DispatchQueue.global(qos: .userInitiated).async {
                                 self.packagLabelSelections();
-                            }
+                           // }
                             
                         } else {
                             TweakAndEatUtils.AlertView.showAlert(view: self, message: "There is no package available. Please try again later!!");
@@ -1506,7 +1506,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func backAction(_ sender: UIButton) {
-        let _ = self.navigationController?.popViewController(animated: false)
+        let _ = self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -1908,6 +1908,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.packagesCarouselView.isHidden = true
             self.carouselView1.isHidden = true
             self.pageControl.isHidden = true
+            labelsPrice = "pkgRecurPrice"
 
         } else {
             self.pageControl.isHidden = false

@@ -51,7 +51,7 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
                 self.goToRecipeWall(title: (cellDict["recp_id"] as AnyObject as? String)!)
             }
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+      //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
     }
    override func  tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let returnedView = UIView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:28)) //set these values as necessary

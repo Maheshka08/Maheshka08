@@ -449,6 +449,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var refreshTweakBtn: UIButton!
     @IBOutlet weak var adsImageView: UIImageView!;
     @objc var deviceInfo = UIDevice.current.modelName;
+    @IBOutlet weak var outerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var kuwaitIconsView: UIView!;
     
     @IBOutlet weak var startTweakingView: UIView!
@@ -472,6 +473,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var shadowImageTopConstraint: NSLayoutConstraint!;
     @IBOutlet var ButtonTopConstraint: NSLayoutConstraint!;
     
+    @IBOutlet weak var upperMainView: UIView!
     @IBOutlet weak var premiumBtnTopConstraint: NSLayoutConstraint!;
     @IBOutlet weak var premiumMember: UIButton!;
     
@@ -1004,14 +1006,23 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             DispatchQueue.main.async {
                 UIView.animate(
                     withDuration: 1,
-                    animations: {
+                    animations: { [self] in
+                        //self.upperMainView.alpha = 0
                         self.topViewHeightConstraint.constant = 0
                         self.outerChartView.isHidden = true
                         self.myNutritionView.alpha = 0
+                        self.outerViewHeightConstraint.constant = 0
+
                         self.approxCalLeftView.isHidden = true
                         self.containerViewBottomConstraint.constant = 110
                         self.topBgImageView.contentMode = .scaleToFill
-
+                        if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = true
+                        }
+                        if self.trialPeriodExpired == true {
+                        self.taeClubTrialPeriodExpiryView.isHidden = true
+                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+                        }
                             self.view.layoutIfNeeded()
                     //last
                             
@@ -1029,9 +1040,20 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 UIView.animate(
                     withDuration: 1,
                     animations: {
+                        if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = false
+                        }
+                        if self.trialPeriodExpired == true {
+                        self.taeClubTrialPeriodExpiryView.isHidden = false
+                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+                        }
+                        self.outerViewHeightConstraint.constant = 237
                         self.topViewHeightConstraint.constant = 302
                         self.myNutritionView.alpha = 1
                         self.outerChartView.isHidden = true
+                        //if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+                      //  }
                         self.containerViewBottomConstraint.constant = 0
                         self.topBgImageView.contentMode = .scaleAspectFill
 //                        self.startTweakingView.isHidden = false
@@ -1238,7 +1260,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.outerChartView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
         self.topButtonsDataView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
         self.approxCalLeftView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
-
+        self.view.layoutIfNeeded()
         if (self.myNutritionDetailsView != nil) {
             self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: self.myNutritionView.frame.height)
         }
@@ -2177,7 +2199,9 @@ tappedOnTAEClubExpiryView()
 //        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
 //        clickViewController?.fromPopUpScreen = true
 //        self.navigationController?.pushViewController(clickViewController!, animated: true)
-        self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
+        self.dummyNav2(packageIDs: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
+
+        //self.dummyNav2(packageIDs: "-IndIWj1mSzQ1GDlBpUt", identifier: "MYTAE_PUR_IND_OP_3M")
 //self.dummyNav2(packageIDs: "-IndWLIntusoe3uelxER", identifier: "WLIF_PUR_IND_OP_3M")
         
     }
@@ -2455,7 +2479,7 @@ self.topImageView.alpha = 1
 
                        }
 //            if self.flashCounter == 0 {
-                self.minCalCountLabel.startBlink()
+               // self.minCalCountLabel.startBlink()
 
             //self.runTimerFor5Seconds(label: self.minCalCountLabel)
           //  }
@@ -2464,10 +2488,13 @@ self.topImageView.alpha = 1
                                self.myNutritionDetailsView.isHidden = false
                          //   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
-
+                            self.startTweakingView.isHidden = true
                            } else {
-                            
-                     self.myNutritionDetailsView.isHidden = true
+                            self.startTweakingView.isHidden = false;
+                            self.startTweakingLabel.alpha = 1.0
+                            self.startTweakingView.alpha = 0.8
+                            self.startTweakingLabel.text = "Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!";
+                    // self.myNutritionDetailsView.isHidden = true
                       //      self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
                            }
@@ -3539,9 +3566,19 @@ self.topImageView.alpha = 1
                     self.topViewHeightConstraint.constant = 0
                     self.outerChartView.isHidden = true
                     self.myNutritionView.alpha = 0
+                    self.outerViewHeightConstraint.constant = 0
+
                     self.approxCalLeftView.isHidden = true
                     self.containerViewBottomConstraint.constant = 110
                     self.topBgImageView.contentMode = .scaleToFill
+                    if self.totalTweakCount == "0" {
+                        self.startTweakingView.isHidden = true
+                    }
+                    if self.trialPeriodExpired == true {
+                    self.taeClubTrialPeriodExpiryView.isHidden = true
+                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+                    }
+
                         self.view.layoutIfNeeded()
                 //last
                         
@@ -3557,9 +3594,20 @@ self.topImageView.alpha = 1
                 UIView.animate(
                     withDuration: 1,
                     animations: {
+                        if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = false
+                        }
+                        if self.trialPeriodExpired == true {
+                        self.taeClubTrialPeriodExpiryView.isHidden = false
+                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+                        }
+                        self.outerViewHeightConstraint.constant = 237
                         self.topViewHeightConstraint.constant = 302
                         self.myNutritionView.alpha = 1
                         self.outerChartView.isHidden = true
+                        //if (self.myNutritionDetailsView != nil) {
+                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
+                      //  }
                         self.containerViewBottomConstraint.constant = 0
                         self.topBgImageView.contentMode = .scaleAspectFill
 
@@ -4217,6 +4265,11 @@ self.topImageView.alpha = 1
         super.touchesBegan(touches, with: event);
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+
+    }
     override func viewDidAppear(_ animated: Bool) {
     //    roundImageView.contentMode = UIView.ContentMode.scaleAspectFill;
         if UserDefaults.standard.value(forKey: "GET_TREND_CALORIES") != nil {
@@ -5885,7 +5938,7 @@ self.topImageView.alpha = 1
 //        }
        // getTrends()
 //        DispatchQueue.main.sync {
-          // dummyNavigation()
+           dummyNavigation()
 //
 //        }
         

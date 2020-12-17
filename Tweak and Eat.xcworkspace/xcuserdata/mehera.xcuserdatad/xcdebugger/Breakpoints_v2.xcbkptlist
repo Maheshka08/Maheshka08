@@ -7,48 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "917B81E6-8130-4ADB-9F9D-97DF98287DE6"
+            uuid = "F8FF011C-C73E-4F9B-9FCC-4D79BCD78ABA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
-            landmarkName = "buyNowBttnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3882CB1F-78E4-4AE8-B7B0-5D051675BC64"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1519"
-            endingLineNumber = "1519"
-            landmarkName = "packagLabelSelections()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "889D140F-E201-46B2-98AF-C0A7A80ADA60"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1535"
-            endingLineNumber = "1535"
-            landmarkName = "packagLabelSelections()"
+            startingLineNumber = "1043"
+            endingLineNumber = "1043"
+            landmarkName = "handleSwipeView(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
