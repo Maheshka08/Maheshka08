@@ -440,6 +440,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var totalCMS : String = "";
     var myNutritionViewSelectYourMealTableView = UITableView()
     var myNutritionViewLast10TweaksTableView = UITableView()
+    
+    @IBOutlet weak var adsImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var myTweakEatView: UIView!
     @IBOutlet weak var iconsView: UIView!;
     @IBOutlet weak var spinner: UIActivityIndicatorView!;
@@ -1730,19 +1732,34 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let responseResult = self.getPromoResponse["callStatus"] as! String
             if  responseResult == "GOOD" {
                 print("Sucess")
+                let data = self.getPromoResponse["callStatus"] as! [String: AnyObject]
+                if data.count > 0 {
                 DispatchQueue.main.async {
                     
-                    self.adsImageView.isUserInteractionEnabled = true;
                     
-                    let promoImgUrl = self.getPromoResponse["promoImgUrl"] as! String
-                    let promoAppLink = self.getPromoResponse["promoAppLink"] as! String
-                    if promoImgUrl == "" || promoAppLink == "" {
-                        self.adsImageView.isHidden = true
-                        self.tweakBubbleImageView.isHidden = false
-                        self.tweakReactView.isHidden = false
-                    } else {
-                        self.adsImageView.sd_setImage(with: URL(string: promoImgUrl))
-                    }
+                    let promoImgUrl = self.getPromoResponse["@mhp_img"] as! String
+                    self.randomPromoLink = self.getPromoResponse["@mhp_link"] as! String
+                
+
+                        self.adsImageView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
+                                                                           // Your code inside completion block
+                            self.adsImageView.isUserInteractionEnabled = true;
+
+                            if image != nil {
+                          let ratio = image!.size.width / image!.size.height
+                          let newHeight = self.adsImageView.frame.width / ratio
+                         
+                              UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                                    animations: {
+                                                     self.adsImageViewHeightConstraint.constant = newHeight
+                                                      self.view.layoutIfNeeded()
+                                     }, completion: nil)
+
+
+                          }
+                        }
+                    
+                }
                 }
             }
         }, failure : { error in
@@ -2579,7 +2596,9 @@ self.topImageView.alpha = 1
         self.startTweakingView.layer.cornerRadius = 10
         self.trialPeriodExpiryView.layer.cornerRadius = 10
         self.taeClubTrialPeriodExpiryView.layer.cornerRadius = 10
-
+        self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnTAEClubExpiryView))
+        self.adsImageViewTapped.numberOfTapsRequired = 1
+        self.adsImageView?.addGestureRecognizer(self.adsImageViewTapped)
 
         if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
             link = UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") as! String
@@ -4646,10 +4665,7 @@ self.topImageView.alpha = 1
 //                        //self.premiumIconBarButton.isEnabled = false
 //                        //self.premiumMember.isHidden = false
 //                    }
-//                    self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnAdsImageView))
-//                    self.adsImageViewTapped.numberOfTapsRequired = 1
-//                    self.adsImageView?.addGestureRecognizer(self.adsImageViewTapped)
-//                   // self.getAdDetails()
+                 
 //                    if (self.countryCode == "1" || self.countryCode == "60" || self.countryCode == "65" || self.countryCode == "62") {
 //                        DispatchQueue.main.async {
 //
@@ -5933,12 +5949,15 @@ self.topImageView.alpha = 1
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true;
+        if UserDefaults.standard.value(forKey: "userSession") != nil {
+            self.getAdDetails()
+        }
 //        if  self.containerViewBottomConstraint.constant == 110 {
 //            self.goneUp = true
 //        }
        // getTrends()
 //        DispatchQueue.main.sync {
-           dummyNavigation()
+        //   dummyNavigation()
 //
 //        }
         
@@ -8377,9 +8396,11 @@ self.floatingCallBtn.isHidden = false
             let tweakStreakCountValue = responseDic["tweakStreak"] as! Int
             //     DispatchQueue.main.async { tweakTotal
             self.totalTweakCount =  String(responseDic["tweakTotal"] as! Int)
-            
+
             self.tweakCountLbl.text = String(tweakStreakCountValue)
             self.tweakStreakCount = String(tweakStreakCountValue)
+            
+
             UserDefaults.standard.set(responseDic["tweakTotal"] as! Int, forKey: "TWEAK_COUNT")
             UserDefaults.standard.synchronize()
            // self.tweakStreakLbl.text = self.bundle.localizedString(forKey: "my_tweak_streak", value: nil, table: nil)
