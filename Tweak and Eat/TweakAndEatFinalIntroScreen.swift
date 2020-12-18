@@ -62,6 +62,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         appDelegate.getAnnouncements()
         
         self.delegate.showButtonsView()
+        self.delegate.tapOnPromoAd()
         //self.delegate.checkUserPremiumMember()
         //self.delegate.checkUserPremiumMember1()
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {

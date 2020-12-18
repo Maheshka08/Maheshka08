@@ -1726,6 +1726,20 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         return
     }
     
+    @objc func tapOnPromoAd() {
+        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.GET_HOME_PROMO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+            let status = response as! [String:AnyObject];
+            let responseResult = status["callStatus"] as! String
+            if  responseResult == "GOOD" {
+                self.getAdDetails()
+            }
+        }, failure : { error in
+            
+          //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
+            
+        })
+    }
+    
     @objc func getAdDetails() {
         APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.GET_HOME_PROMO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             self.getPromoResponse = response as! [String:AnyObject];
@@ -5952,7 +5966,7 @@ self.topImageView.alpha = 1
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true;
         if UserDefaults.standard.value(forKey: "userSession") != nil {
-            self.getAdDetails()
+            self.tapOnPromoAd()
         }
 //        if  self.containerViewBottomConstraint.constant == 110 {
 //            self.goneUp = true

@@ -90,6 +90,7 @@ struct TweakAndEatURLConstants {
     static let LABEL_DETAILS : String = BASE_URL + "/api/user/labeldetails"
     static let LABEL_TRANSACTIONS : String = BASE_URL + "/api/user/labeltransactions"
     static let GET_HOME_PROMO : String = BASE_URL + "/api/user/gethomepromo"
+    static let HOME_PROMO_CLICK : String = BASE_URL + "/api/user/gethomepromoclick"
     static let LABEL_PERC = BASE_URL + "/api/user/labelsrecentten"
     static let GET_DIFFERENCES_BY_CODE_USA = BASE_URL + "/api/master/diffsbycode/%@"
     static let GOALS_BY_LANG = BASE_URL + "/api/master/goalsbylang/EN"
