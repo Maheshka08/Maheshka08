@@ -1727,14 +1727,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @objc func tapOnPromoAd() {
-        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.GET_HOME_PROMO, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOME_PROMO_CLICK, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
             let status = response as! [String:AnyObject];
             let responseResult = status["callStatus"] as! String
             if  responseResult == "GOOD" {
                 self.getAdDetails()
             }
         }, failure : { error in
-            
+            print(error?.localizedDescription)
           //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
             
         })
@@ -1746,6 +1746,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let responseResult = self.getPromoResponse["callStatus"] as! String
             if  responseResult == "GOOD" {
                 print("Sucess")
+                self.tapOnPromoAd()
                 let data = self.getPromoResponse["data"] as! [String: AnyObject]
                 if data.count > 0 {
                 DispatchQueue.main.async {
@@ -5966,7 +5967,7 @@ self.topImageView.alpha = 1
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true;
         if UserDefaults.standard.value(forKey: "userSession") != nil {
-            self.tapOnPromoAd()
+            self.getAdDetails()
         }
 //        if  self.containerViewBottomConstraint.constant == 110 {
 //            self.goneUp = true
