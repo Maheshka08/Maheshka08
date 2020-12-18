@@ -1726,18 +1726,22 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         return
     }
     
-    @objc func tapOnPromoAd() {
-        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.HOME_PROMO_CLICK, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
-            let status = response as! [String:AnyObject];
+    @objc func tapOnPromoAd(mhp_id: Int) {
+        let param = ["pid": mhp_id]
+        APIWrapper.sharedInstance.homePromoClick(param as NSDictionary, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, successBlock: {(responseDic : AnyObject!) -> (Void) in
+
+            let status = responseDic as! [String:AnyObject];
             let responseResult = status["callStatus"] as! String
             if  responseResult == "GOOD" {
-                self.getAdDetails()
+              //  self.getAdDetails()
             }
-        }, failure : { error in
-            print(error?.localizedDescription)
-          //  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !!")
             
+        }, failureBlock: { (error : NSError!) -> (Void) in
+            //error
+            print("error");
+          
         })
+        
     }
     
     @objc func getAdDetails() {
@@ -1746,7 +1750,6 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let responseResult = self.getPromoResponse["callStatus"] as! String
             if  responseResult == "GOOD" {
                 print("Sucess")
-                self.tapOnPromoAd()
                 let data = self.getPromoResponse["data"] as! [String: AnyObject]
                 if data.count > 0 {
                 DispatchQueue.main.async {
@@ -1754,7 +1757,8 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     
                     let promoImgUrl = data["@mhp_img"] as! String
                     self.randomPromoLink = data["@mhp_link"] as! String
-                
+                    let mhp_id = data["@mhp_id"] as! Int
+
 
                         self.adsImageView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
                                                                            // Your code inside completion block
@@ -1773,8 +1777,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
                           }
                         }
-                    
+                    self.tapOnPromoAd(mhp_id: mhp_id)
+
                 }
+
                 }
             }
         }, failure : { error in

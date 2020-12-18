@@ -529,6 +529,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func crossBtnTapped(_ sender: Any) {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.7
+          transition.type = CATransitionType.reveal
+        transition.subtype = .fromBottom
+          navigationController?.view.layer.add(transition, forKey: nil)
         let _ = self.navigationController?.popViewController(animated: true)
 
         
@@ -796,7 +801,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 case .purchased:
                     print("Product Purchased")
                     //Do unlocking etc stuff here in case of new purchase
-                    if self.packageId != "-ClubInd3gu7tfwko6Zx" && self.packageId != "-ClubIdn4hd8flchs9Vy" {
+                    if self.packageId == "-ClubInd3gu7tfwko6Zx" && self.packageId == "-ClubIdn4hd8flchs9Vy" {
                         self.receiptValidation()
                     } else {
                     self.recptValidation()
@@ -1506,6 +1511,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction func backAction(_ sender: UIButton) {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.8
+          transition.type = CATransitionType.reveal
+        transition.subtype = .fromBottom
+          navigationController?.view.layer.add(transition, forKey: nil)
+
         let _ = self.navigationController?.popViewController(animated: true)
         
     }

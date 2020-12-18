@@ -165,6 +165,19 @@ class APIWrapper: AFHTTPSessionManager {
         
     }
     
+    @objc func homePromoClick(_ parameters : NSDictionary,userSession : String, successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
+        
+        self.requestSerializer = AFJSONRequestSerializer()
+        self.requestSerializer.setValue(userSession, forHTTPHeaderField: "Authorization")
+        
+        self.post(TweakAndEatURLConstants.HOME_PROMO_CLICK, parameters: parameters, success: { (dataTask : URLSessionDataTask?, object : Any?) in
+            successBlock(object as AnyObject)
+        }) { (dataTask : URLSessionDataTask?, error : Error?) in
+            failureBlock(error as NSError!)
+        }
+        
+    }
+    
     @objc func push_Wall_Notification(_ parameters : NSDictionary, successBlock : @escaping ((AnyObject!)->(Void)), failureBlock : @escaping ((NSError!)->(Void))) {
         
         self.put(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, parameters: parameters, success: { (dataTask : URLSessionDataTask?, object : Any?) in
