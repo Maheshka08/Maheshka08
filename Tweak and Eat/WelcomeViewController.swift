@@ -1732,13 +1732,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let responseResult = self.getPromoResponse["callStatus"] as! String
             if  responseResult == "GOOD" {
                 print("Sucess")
-                let data = self.getPromoResponse["callStatus"] as! [String: AnyObject]
+                let data = self.getPromoResponse["data"] as! [String: AnyObject]
                 if data.count > 0 {
                 DispatchQueue.main.async {
                     
                     
-                    let promoImgUrl = self.getPromoResponse["@mhp_img"] as! String
-                    self.randomPromoLink = self.getPromoResponse["@mhp_link"] as! String
+                    let promoImgUrl = data["@mhp_img"] as! String
+                    self.randomPromoLink = data["@mhp_link"] as! String
                 
 
                         self.adsImageView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
@@ -4286,7 +4286,9 @@ self.topImageView.alpha = 1
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
+        if self.goneUp == true {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_HOME_SCREEN"), object: true)
+        }
 
     }
     override func viewDidAppear(_ animated: Bool) {
