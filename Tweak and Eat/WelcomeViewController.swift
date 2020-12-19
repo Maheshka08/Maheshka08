@@ -9846,7 +9846,7 @@ self.floatingCallBtn.isHidden = false
                                                     Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 
                                                 }
-                                                AppEvents.logEvent(.completedRegistration)
+//AppEvents.logEvent(.completedRegistration)
 
                                                 let event = BranchEvent.standardEvent(.completeRegistration)
                                                 event.eventDescription = "User completed registration."
