@@ -85,7 +85,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; would like access to help take photos of food plates so we can help you tweak it</string>
+	<string>"Tweak &amp; Eat" would like access to help take photos of food plates so we can help you tweak it</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Tweak and Eat wants to access your health data to send to our nutritionists</string>
 	<key>NSHealthUpdateUsageDescription</key>
@@ -93,17 +93,17 @@
 	<key>NSLocalizedDescription</key>
 	<string>$(PRODUCT_NAME) local location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
+	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
+	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; would like access the device&apos;s microphone to make and receive calls</string>
+	<string>"Tweak &amp; Eat" would like access the device's microphone to make and receive calls</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; needs permission to save photos.</string>
+	<string>"Tweak &amp; Eat" needs permission to save photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
+	<string>"Tweak &amp; Eat" would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>&quot;Tweak &amp; Eat&quot; wants users to remind of tweaking their food plate.</string>
+	<string>"Tweak &amp; Eat" wants users to remind of tweaking their food plate.</string>
 	<key>Privacy - Tracking Usage Description</key>
 	<string>Please confirm IDFA collection</string>
 	<key>UIAppFonts</key>

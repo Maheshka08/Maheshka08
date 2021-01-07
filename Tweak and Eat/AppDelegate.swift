@@ -1109,6 +1109,7 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
     func applicationDidBecomeActive(_ application: UIApplication) {
      //   AppsFlyerLib.shared().start()
         //AppEventsLogger.activate(application)
+        AppEvents.activateApp()
 
        UIApplication.shared.applicationIconBadgeNumber = 0
         if let showRegistration : Bool  = UserDefaults.standard.value(forKey: "showRegistration") as? Bool {
