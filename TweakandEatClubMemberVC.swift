@@ -15,7 +15,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                  self.calendarOuterView.isHidden = true
           self.navigationItem.hidesBackButton = false
       }
-      
+      var packageID = ""
       @objc var callSchedulePopup : UserCallSchedulePopUp! = nil;
       @objc var API_KEY = "rzp_live_dFMdQLcE5x9q86";
       @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj");
@@ -319,6 +319,62 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
           }
         }
     }
+    func checkNCPSchedule() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.CHECK_NCP_SCHEDULE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+//                    let dateFormatter = DateFormatter()
+//                                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+//                    if responseDic.index(forKey: "ncpc_call_date") != nil {
+//                                  let expDateStr =  responseDic["ncpc_call_date"] as! String;
+//                    let sepearatedDateArray = expDateStr.components(separatedBy: "T")
+//                        print(sepearatedDateArray)
+//                        let extractedDate = sepearatedDateArray[0]
+//                        print(extractedDate)
+//                        let dateArray = extractedDate.components(separatedBy: "-")
+//                       // let onlyDate = dateArray.last!
+//                        self.clubMembExpDate = Int(dateArray.last!)!
+//
+//
+//
+//
+//                    }
+                    if data.count == 0 {
+                        self.scheduleCallButton.isHidden = false
+                        self.bottomImageView.isHidden = true
+                    } else {
+                        
+                        
+                       self.scheduleCallButton.isHidden = true
+                        self.bottomImageView.isHidden = false
+                        
+                       
+                    }
+                    self.ncpLanding()
+
+                  } else if responseResult == "USER_NOT_NC_PACKAGE_USER" {
+                    self.scheduleCallButton.isHidden = true
+                    self.bottomImageView.isHidden = true
+                    self.ncpLanding()
+                }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
     
     func checkClubMemberSchedule() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -377,6 +433,32 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
               })
     }
     
+    func ncpLanding() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+              APIWrapper.sharedInstance.postRequestWithHeaderMethodWithOutParameters(TweakAndEatURLConstants.NCP_LANDING, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                  print(response!)
+                  
+                  let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                  let responseResult = responseDic["callStatus"] as! String;
+                  if  responseResult == "GOOD" {
+                      MBProgressHUD.hide(for: self.view, animated: true);
+                      let data = responseDic["data"] as AnyObject as! [[String: AnyObject]]
+                    self.updateUI(data: data)
+
+                  }
+              }, failure : { error in
+                  MBProgressHUD.hide(for: self.view, animated: true);
+                  
+                  print("failure")
+                  if error?.code == -1011 {
+                     // TweakAndEatUtils.AlertView.showAlert(view: self, message: "Some error occurred. Please try again...");
+                      return
+                  }
+                  TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection appears to be offline.");
+              })
+    }
+    
     func clubLanding() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
@@ -417,7 +499,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                 let time = "\(self.timeSlotTextField.text?.replacingOccurrences(of: " AM", with: ":00").replacingOccurrences(of: " PM", with: ":00") ?? "")"
                 let timeSlot: String = year + "-" + month + "-" + date + " " + self.timeSlotTextField.text!
         let paramsDictionary = ["callDateTime": timeSlot, "lang": self.languageTextField.text!] as [String : AnyObject]
-                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.SCHEDULE_CLUB_MEMBER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
+        APIWrapper.sharedInstance.postRequestWithHeaderMethod(self.packageID == "-NcInd5BosUcUeeQ9Q32" ? TweakAndEatURLConstants.NCP_CALL_SCHEDULE : TweakAndEatURLConstants.SCHEDULE_CLUB_MEMBER_CALL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: paramsDictionary , success: { response in
                     print(response!)
                     
                     let responseDic : [String:AnyObject] = response as! [String:AnyObject];
@@ -562,7 +644,9 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
       
         self.areYouSureLbl.isHidden = true
         self.calendarOuterView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        if self.packageID != "-NcInd5BosUcUeeQ9Q32" {
         calenderView.clubMemberExpDate = self.clubMembExpDate
+        }
         self.calView.addSubview(calenderView)
         calenderView.topAnchor.constraint(equalTo: self.calView.topAnchor, constant: 10).isActive=true
         calenderView.rightAnchor.constraint(equalTo: self.calView.rightAnchor, constant: -12).isActive=true
@@ -650,7 +734,11 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
         self.timeSlotTextField.delegate = self
         self.timeSlotTextField.inputView = self.pickerView
         self.timeSlotTextField.inputAccessoryView = self.accessoryToolbar
+        if self.packageID == "-NcInd5BosUcUeeQ9Q32" {
+            
+        } else {
         self.checkClubMemberSchedule()
+        }
 
     }
     

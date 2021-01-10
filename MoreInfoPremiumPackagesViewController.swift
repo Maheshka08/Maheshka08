@@ -505,6 +505,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var clubPaymentSuccessView: UIView!
     @IBOutlet weak var premiumSubView: UIView!
     @IBOutlet weak var clubSuccesDoneBtn: UIButton!
+    @IBOutlet weak var congratulationsLabel: UILabel!
     func showCalendarView() {
         self.calendarOuterView.isHidden = false
         self.title = "SCHEDULE YOUR CALL"
@@ -834,9 +835,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
                     if self.packageId == self.clubPackageSubscribed {
                         self.receiptValidation()
+                    } else if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
+                        self.sendNCPdetails(transactionID: trans.transactionIdentifier ?? "")
                     } else {
                     self.recptValidation()
                     }
+                    print(trans.transactionIdentifier ?? "")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     DispatchQueue.main.async {
 
@@ -1230,7 +1234,69 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         
   
     }
-    
+    func sendNCPdetails(transactionID: String) {
+        DispatchQueue.main.async {
+       MBProgressHUD.showAdded(to: self.view, animated: true);
+       }
+       
+       
+          
+       var jsonDict = [String: AnyObject]()
+       
+       jsonDict = ["paymentId" : transactionID as AnyObject, "pkgId":  self.packageId
+                   , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "paySource": "APPLEPAY"] as [String : AnyObject]
+       //91e841953e9f4d19976283cd2ee78992
+       
+
+       
+       APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.NCP_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
+           var responseDic : [String:AnyObject] = response as! [String:AnyObject];
+           var responseResult = ""
+           if responseDic.index(forKey: "callStatus") != nil {
+               responseResult = responseDic["callStatus"] as! String
+           } else if responseDic.index(forKey: "CallStatus") != nil {
+               responseResult = responseDic["CallStatus"] as! String
+           }
+           if  responseResult == "GOOD" {
+               DispatchQueue.main.async {
+                   MBProgressHUD.hide(for: self.view, animated: true);
+               }
+               print("in-app done")
+            
+               if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+                   let data: NSData = msisdn.data(using: .utf8)! as NSData
+                   let password = "sFdebvQawU9uZJ"
+                   let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+                   Branch.getInstance().setIdentity(cipherData.base64EncodedString())
+
+               }
+               AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+               let event = BranchEvent.customEvent(withName: "purchase")
+               event.eventDescription = "User completed payment."
+               event.customData["packageID"] = self.packageId
+               event.customData["currency"] = self.currency
+               event.logEvent()
+         self.clubPaymentSuccessView.isHidden = false
+            self.congratulationsLabel.text = "Thank you for choosing Nutritionist Consult Package.\nEnjoy!"
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
+
+           }
+       }, failure : { error in
+           self.navigationItem.hidesBackButton = false
+            DispatchQueue.main.async {
+                   MBProgressHUD.hide(for: self.view, animated: true);
+               }
+           let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+           
+           let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+           alertController.addAction(defaultAction)
+           self.present(alertController, animated: true, completion: nil)
+       })
+       
+       
+ 
+   }
     func recptValidation() {
         DispatchQueue.main.async {
             MBProgressHUD.showAdded(to: self.view, animated: true);

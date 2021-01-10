@@ -243,6 +243,14 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
        self.navigationController?.pushViewController(clickViewController!, animated: true)
          
       }
+    
+    func goToNutritonConsultantScreen(packageID: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+        clickViewController?.packageID = packageID
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+    }
+    
     @objc func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
         
         let milliseconds: Int64 = Int64(dateToConvert.timeIntervalSince1970 * 1000)
@@ -428,6 +436,15 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                             } else if (cellDictionary.mppc_fb_id == self.clubPackageSubscribed) {
                                 if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
                                    self.goToTAEClubMemPage()
+                                    return
+                                 } else {
+                                    // self.goToTAEClub()
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+return
+                                 }
+                            } else if (cellDictionary.mppc_fb_id == "-NcInd5BosUcUeeQ9Q32") {
+                                if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil  {
+                                    self.goToNutritonConsultantScreen(packageID: cellDictionary.mppc_fb_id)
                                     return
                                  } else {
                                     // self.goToTAEClub()
@@ -1040,7 +1057,7 @@ return
                         }
                         //let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
 //                        if msisdn == "6010000001" {
-//                        let hardCodedPkg = PremiumPackages(mppc_fb_id: "-IndWLIntusoe3uelxER", pp_image_ba: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_img_banner_ios: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_name: "Intermittent Fasting Weight Loss", isCellTapped: false)
+//                        let hardCodedPkg = PremiumPackages(mppc_fb_id: "-NcInd5BosUcUeeQ9Q32", pp_image_ba: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_img_banner_ios: "https://tweakandeatpremiumpacks.s3.ap-south-1.amazonaws.com/wlint/wlint_ind_002.png", mppc_name: "NCP", isCellTapped: false)
 //                        self.premiumPackagesApiArray.insert(hardCodedPkg, at: 0)
                        // }
                          DispatchQueue.main.async {

@@ -235,8 +235,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.floatingButtonsView.isHidden = true
             self.floatingCrownBtn.setImage(UIImage.init(named: "crownstar-btn"), for: .normal)
             let cellDict = self.floatingButtonsArray[indexPath.row];
-            if (cellDict["pkgName"] as! String) != "Tweak & Eat Club" {
+            if (cellDict["pkgName"] as! String) != "Tweak & Eat Club" || (cellDict["pkgName"] as! String) != "-NcInd5BosUcUeeQ9Q32" {
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: (cellDict["pkg"] as! String))
+            } else if (cellDict["pkgName"] as! String) == "-NcInd5BosUcUeeQ9Q32" {
+                self.goToNutritonConsultantScreen(packageID: (cellDict["pkgName"] as! String))
+
             } else {
                 //floatingToNutrition
                 //self.performSegue(withIdentifier: "floatingToNutrition", sender: (cellDict["pkg"] as! String))
@@ -257,7 +260,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     }
     
-    
+    func goToNutritonConsultantScreen(packageID: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+        clickViewController?.packageID = packageID
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+    }
     
     enum PackageName :String {
         case AiDP
@@ -8731,6 +8739,22 @@ self.floatingCallBtn.isHidden = false
                
 
             }
+            let userNcPkgSub = responseDic["userNcPkgSub"] as! Int
+            //let userSubscribedToClub = 0
+            
+            if userNcPkgSub == 1 {
+                UserDefaults.standard.set("-NcInd5BosUcUeeQ9Q32", forKey: "-NcInd5BosUcUeeQ9Q32")
+                UserDefaults.standard.synchronize()
+                floatingButtonArray.append(["pkgName": "Nutritionist Consultant" as AnyObject, "imgName": "Nutritionist Consultant" as AnyObject, "pkg": "-NcInd5BosUcUeeQ9Q32" as AnyObject])
+                self.floatingCrownBtn.isHidden = false
+            
+
+
+            } else {
+                
+                UserDefaults.standard.removeObject(forKey: "-NcInd5BosUcUeeQ9Q32")
+            }
+
             self.setupSubscribeNowButton()
             if self.countryCode == "91" {
              self.getClubHome1()

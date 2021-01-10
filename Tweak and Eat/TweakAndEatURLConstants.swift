@@ -112,12 +112,13 @@ struct TweakAndEatURLConstants {
     static let MY_TANDE_PKG_DETAILS = BASE_URL + "/api/user/mytaepkgdetailsind"
 
     static let IAP_INDIA_SUBSCRIBE = BASE_URL + "/api/payments/mytaeindaplpaysubscribe"
+    static let NCP_SUBSCRIBE = BASE_URL + "/api/otpservices/otppackage"
     static let SGN_AiDP_CONTENT = BASE_URL + "/api/payments/myaidpcontentsgn"
     static let IDN_AiDP_CONTENT = BASE_URL + "/api/payments/myaidpcontentidn"
     static let AIBP_REGISTRATION = BASE_URL + "/api/payments/indsubregistration"
     static let HOMERECIPES = BASE_URL + "/api/user/homerecipes"
-    static let GET_PREMIUM_PACKAGES_BY_COUNTRY = BASE_URL + "/api/user/getpremiumpackagesbycountry4"
-    static let GET_PREMIUM_PACKAGES_BY_COUNTRY5 = BASE_URL + "/api/user/getpremiumpackagesbycountry5"
+    static let GET_PREMIUM_PACKAGES_BY_COUNTRY = BASE_URL + "/api/user/getppkgsbycountry101"
+    static let GET_PREMIUM_PACKAGES_BY_COUNTRY5 = BASE_URL + "/api/user/getppkgsbycountry102"
 
     static  let GET_TWEAK_LABELS = BASE_URL + "/api/user/tweaklabels"
     static let GET_ALL_TIMESLOTS = BASE_URL + "/api/callschedules/getalltimeslots"
@@ -138,6 +139,9 @@ struct TweakAndEatURLConstants {
     static let SAVE_FEEDBACK = BASE_URL + "/api/user/savefeedback"
     static let INTRO_SLIDE1 = BASE_URL + "/api/content/introslide1"
     static let INTRO_SLIDE2 = BASE_URL + "/api/content/introslide2"
+    static let CHECK_NCP_SCHEDULE = BASE_URL + "/api/callschedules/checkncpkgschedule"
+    static let NCP_LANDING = BASE_URL + "/api/content/ncpkglanding"
+    static let NCP_CALL_SCHEDULE = BASE_URL + "/api/callschedules/schedulencpkgcall"
     
     
     
