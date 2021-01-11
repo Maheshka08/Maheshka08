@@ -721,7 +721,15 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .groupTableViewBackground
-        self.title = "Tweak & Eat Club Member"
+        if self.packageID == "-NcInd5BosUcUeeQ9Q32" {
+            self.title = "Nutritionist Consultant"
+            self.navTitle = "Nutritionist Consultant"
+
+        } else {
+            self.title = "Tweak & Eat Club Member"
+            self.navTitle = "Tweak & Eat Club Member"
+
+        }
         self.captchaInnerView.layer.cornerRadius = 10
         self.refreshBtn.layer.cornerRadius = 10
         self.confirmCaptchaBtn.layer.cornerRadius = 10
@@ -735,7 +743,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
         self.timeSlotTextField.inputView = self.pickerView
         self.timeSlotTextField.inputAccessoryView = self.accessoryToolbar
         if self.packageID == "-NcInd5BosUcUeeQ9Q32" {
-            
+            self.checkNCPSchedule()
         } else {
         self.checkClubMemberSchedule()
         }

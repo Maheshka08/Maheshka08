@@ -235,10 +235,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.floatingButtonsView.isHidden = true
             self.floatingCrownBtn.setImage(UIImage.init(named: "crownstar-btn"), for: .normal)
             let cellDict = self.floatingButtonsArray[indexPath.row];
-            if (cellDict["pkgName"] as! String) != "Tweak & Eat Club" || (cellDict["pkgName"] as! String) != "-NcInd5BosUcUeeQ9Q32" {
+            if (cellDict["pkgName"] as! String) != "Tweak & Eat Club" && (cellDict["pkg"] as! String) != "-NcInd5BosUcUeeQ9Q32" {
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: (cellDict["pkg"] as! String))
-            } else if (cellDict["pkgName"] as! String) == "-NcInd5BosUcUeeQ9Q32" {
-                self.goToNutritonConsultantScreen(packageID: (cellDict["pkgName"] as! String))
+            } else if (cellDict["pkg"] as! String) == "-NcInd5BosUcUeeQ9Q32" {
+                self.goToNutritonConsultantScreen(packageID: (cellDict["pkg"] as! String))
 
             } else {
                 //floatingToNutrition
