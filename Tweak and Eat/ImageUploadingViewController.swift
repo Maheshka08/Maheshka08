@@ -85,6 +85,13 @@ class ImageUploadingViewController: UIViewController {
         let version = dictionary["CFBundleShortVersionString"] as! String
         return version
     }
+    func goToNutritonConsultantScreen(packageID: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+        clickViewController?.packageID = packageID
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
     
     @objc func getPremiumPackagesArray() {
         Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
@@ -268,6 +275,21 @@ class ImageUploadingViewController: UIViewController {
                             MBProgressHUD.showAdded(to: self.view, animated: true);
                         }
                         self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
+        } else if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
+            
+            
+            if UserDefaults.standard.value(forKey: promoAppLink) != nil {
+                self.goToNutritonConsultantScreen(packageID: promoAppLink)
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
         } else if promoAppLink == "PP_LABELS" {
             self.performSegue(withIdentifier: "nutritionPack", sender: promoAppLink)
         } else  if promoAppLink == "PP_PACKAGES" {

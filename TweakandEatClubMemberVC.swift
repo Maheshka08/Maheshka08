@@ -81,7 +81,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
       var timerForShowScrollIndicator: Timer?
       @IBOutlet weak var refreshBtn: UIButton!
       @IBOutlet weak var captchInputTF: UITextField!
-      
+    @IBOutlet weak var scheduleLabel: UILabel!
       @IBOutlet weak var confirmCaptchaBtn: UIButton!
       
       @IBOutlet weak var captchaGeneratorTF: UITextField!
@@ -346,12 +346,42 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
 //
 //
 //                    }
-                    if data.count == 0 {
+                   
+                        if data.count == 0 {
                         self.scheduleCallButton.isHidden = false
                         self.bottomImageView.isHidden = true
                     } else {
                         
+                        let info = data.first
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+                        if (info?["ncpc_call_date"] is NSNull) {
+                           return
+                        }
+                        let expDateStr =  info?["ncpc_call_date"] as? String
+                        //let expDateStr =  "2019-07-24T17:19:43.000Z"
+                        let expDate = dateFormatter.date(from: expDateStr!);
+                        dateFormatter.dateFormat = "EEEE, MMM dd yyyy 'at' hh:mm a"
+                        let formattedDate = dateFormatter.string(from: expDate!)
+                        let stringValue = "When: " + formattedDate
+                               let whenRange = stringValue.range(of: "When:")
+                               let atRange = stringValue.range(of: "at")
                         
+                               let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
+                               attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(whenRange!, in: stringValue))
+                               attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSRange(whenRange!, in: stringValue))
+                               attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(atRange!, in: stringValue))
+
+                              
+                               
+                               let userMsisdn = info?["ncpc_usr_msisdn"] as! String
+                               let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number " + userMsisdn
+                               let msisdnRange = certNutText.range(of: userMsisdn)
+                               let certAttrStr: NSMutableAttributedString = NSMutableAttributedString(string: certNutText)
+                               certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
+                               certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
+                        self.scheduleLabel.isHidden = false
+                        self.scheduleLabel.text = certNutText + " on " + formattedDate + "."
                        self.scheduleCallButton.isHidden = true
                         self.bottomImageView.isHidden = false
                         
@@ -529,7 +559,7 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                                               self.callSchedulePopup.whenLbl.attributedText = attributedString
                         let userMsisdn = data["userMsisdn"] as! String
                         
-                        let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number: " + userMsisdn
+                        let certNutText = "Our Certified Nutritionist will be calling you on your registered mobile number " + userMsisdn
                         let scheduleDetails = ["callDateTime": callDateTime, "certNutText":certNutText, "userMsisdn": userMsisdn] as [String: AnyObject];
                         UserDefaults.standard.set(scheduleDetails, forKey: "CALL_SCHEDULED_FROM_CLUB");
                         UserDefaults.standard.synchronize()
@@ -539,6 +569,8 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                                               certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
                                               certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
                                               self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
+                        self.scheduleLabel.isHidden = false
+                        self.scheduleLabel.text = certNutText + " on " + callDateTime + "."
                         self.scheduleCallButton.isHidden = true
                         self.bottomImageView.isHidden = false
                        
@@ -718,7 +750,12 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        scheduleLabel.numberOfLines = 0
+        scheduleLabel.font = UIFont(name:"QUESTRIAL-REGULAR", size: 17.0)
 
+//        self.scheduleLabel.layer.cornerRadius = 5
+//        self.scheduleLabel.layer.borderWidth = 1
+//        self.scheduleLabel.layer.borderColor = UIColor.darkGray.cgColor
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .groupTableViewBackground
         if self.packageID == "-NcInd5BosUcUeeQ9Q32" {

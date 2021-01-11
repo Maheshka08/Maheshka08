@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OrkneyMedium.ttf">
+        <array key="OrkneyMedium.otf">
             <string>Orkney-Medium</string>
         </array>
         <array key="OrkneyRegular.ttf">
@@ -11217,7 +11217,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                     <constraint firstAttribute="height" id="z7T-aU-f3J"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6E-0L-VvO">
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6E-0L-VvO">
                                                                 <rect key="frame" x="334" y="0.0" width="40" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="ki9-Nd-eER"/>
@@ -14175,6 +14175,12 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                     <constraint firstAttribute="height" id="S17-8y-hAe"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzq-0V-ddX">
+                                <rect key="frame" x="47" y="124" width="320" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnK-pg-gQF">
                                 <rect key="frame" x="47" y="124" width="320" height="60"/>
                                 <constraints>
@@ -14524,6 +14530,8 @@ It will also include 'Recommendations for the coming week in terms of both % car
                         <viewLayoutGuide key="safeArea" id="Js2-GF-dPJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wzq-0V-ddX" firstAttribute="top" secondItem="NnK-pg-gQF" secondAttribute="top" id="5rX-6c-xrk"/>
+                            <constraint firstItem="wzq-0V-ddX" firstAttribute="leading" secondItem="NnK-pg-gQF" secondAttribute="leading" id="6es-HA-bSo"/>
                             <constraint firstAttribute="trailing" secondItem="NPu-dU-pog" secondAttribute="trailing" constant="20" id="8bh-4K-OLt"/>
                             <constraint firstItem="yXJ-9M-IQ4" firstAttribute="leading" secondItem="Js2-GF-dPJ" secondAttribute="leading" id="Io6-xv-HfX"/>
                             <constraint firstItem="5MB-9w-KMl" firstAttribute="trailing" secondItem="str-P1-uo4" secondAttribute="trailing" id="Iz0-jQ-Wpe"/>
@@ -14532,6 +14540,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                             <constraint firstItem="NnK-pg-gQF" firstAttribute="centerX" secondItem="Js2-GF-dPJ" secondAttribute="centerX" id="PUR-yw-K3k"/>
                             <constraint firstItem="Js2-GF-dPJ" firstAttribute="trailing" secondItem="yXJ-9M-IQ4" secondAttribute="trailing" id="S7P-BE-AVj"/>
                             <constraint firstItem="NPu-dU-pog" firstAttribute="leading" secondItem="5Jr-Fd-aA7" secondAttribute="leading" constant="20" id="VzO-jT-38O"/>
+                            <constraint firstItem="wzq-0V-ddX" firstAttribute="trailing" secondItem="NnK-pg-gQF" secondAttribute="trailing" id="cfl-s9-KWl"/>
                             <constraint firstItem="5MB-9w-KMl" firstAttribute="top" secondItem="NnK-pg-gQF" secondAttribute="top" id="hH4-Sl-68m"/>
                             <constraint firstItem="str-P1-uo4" firstAttribute="top" secondItem="5MB-9w-KMl" secondAttribute="top" id="hJX-2D-t1Y"/>
                             <constraint firstItem="5MB-9w-KMl" firstAttribute="leading" secondItem="NPu-dU-pog" secondAttribute="leading" id="jou-b6-q0f"/>
@@ -14562,6 +14571,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                         <outlet property="refreshBtn" destination="vrj-HH-hbd" id="QBF-bA-KMV"/>
                         <outlet property="scheduleBtn" destination="IVu-3D-Ckj" id="JkI-nv-SgO"/>
                         <outlet property="scheduleCallButton" destination="NnK-pg-gQF" id="iR3-JB-Mqu"/>
+                        <outlet property="scheduleLabel" destination="wzq-0V-ddX" id="ReQ-hu-Phe"/>
                         <outlet property="timeSlotTextField" destination="OtK-tI-gds" id="VNX-cX-mGP"/>
                         <outlet property="topImageView" destination="NPu-dU-pog" id="Jo1-gr-k6s"/>
                         <outlet property="topImageViewHeightConstraint" destination="S17-8y-hAe" id="Hs4-da-j2j"/>

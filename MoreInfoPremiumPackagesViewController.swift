@@ -1278,7 +1278,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                event.customData["currency"] = self.currency
                event.logEvent()
          self.clubPaymentSuccessView.isHidden = false
-            self.congratulationsLabel.text = "Thank you for choosing Nutritionist Consult Package.\nEnjoy!"
+            self.congratulationsLabel.text = "Thank you for your purchase!\nPlease go ahead & fix the appointment to talk to our senior Nutritionist!"
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
 
            }
@@ -2103,6 +2103,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                                                   attributes: privacyAttr)
                self.privacyPolicyBtn.setAttributedTitle(attributeString1, for: .normal)
         self.noCommitmentLabel.font = UIFont(name: "QUESTRIAL-REGULAR", size: 18)
+        if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
+            self.privacyPolicyBtn.isHidden = true
+            self.noCommitmentLabel.isHidden = true
+            self.termsofUseBtn.isHidden = true
+        }
         carouselView1.register(UINib(nibName: "CarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell")
         carouselView2.register(UINib(nibName: "CarouselCollectionViewCell2", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell2")
              //  self.items = [Item(value: "1"), Item(value: "2"), Item(value: "3"), Item(value: "4"), Item(value: "5")]

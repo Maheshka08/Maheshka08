@@ -959,6 +959,15 @@ return
                                         self.performSegue(withIdentifier: "moreInfo", sender: self);
     return
                                      }
+                                } else if (self.packageID == "-NcInd5BosUcUeeQ9Q32") {
+                                    if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil  {
+                                        self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
+                                        return
+                                     } else {
+                                        // self.goToTAEClub()
+                                        self.performSegue(withIdentifier: "moreInfo", sender: self);
+    return
+                                     }
                                 } else {
                                 if UserDefaults.standard.value(forKey: self.packageID) != nil {
                                     self.performSegue(withIdentifier: "myTweakAndEat", sender: self.packageID);
@@ -995,6 +1004,8 @@ return
             }
         }
     }
+    
+   
     
     @objc func getPremiumPackagesApi2() {
         let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
@@ -1070,6 +1081,15 @@ return
                                 if (self.packageID == self.clubPackageSubscribed) {
                                     if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
                                        self.goToTAEClubMemPage()
+                                        return
+                                     } else {
+                                        // self.goToTAEClub()
+                                        self.performSegue(withIdentifier: "moreInfo", sender: self);
+    return
+                                     }
+                                } else if (self.packageID == "-NcInd5BosUcUeeQ9Q32") {
+                                    if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil  {
+                                        self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
                                         return
                                      } else {
                                         // self.goToTAEClub()

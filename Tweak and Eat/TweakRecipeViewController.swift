@@ -1614,6 +1614,13 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                 navController?.pushViewController(vc, animated: true);
     }
+    func goToNutritonConsultantScreen(packageID: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+        clickViewController?.packageID = packageID
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
     
     func goToDesiredVC(promoAppLink: String) {//IndWLIntusoe3uelxER
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
@@ -1678,6 +1685,22 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                             MBProgressHUD.showAdded(to: self.view, animated: true);
                         }
                         self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
+        }
+        if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
+            
+            
+            if UserDefaults.standard.value(forKey: promoAppLink) != nil {
+                self.goToNutritonConsultantScreen(packageID: promoAppLink)
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
         }
         if promoAppLink == "-IndIWj1mSzQ1GDlBpUt" {
             

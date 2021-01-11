@@ -91,6 +91,13 @@ class PopUpNotificationView: UIView {
             }
         })
     }
+    func goToNutritonConsultantScreen(packageID: String) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
+        clickViewController?.packageID = packageID
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
     
     func tappedOnPopUpDone() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
@@ -168,6 +175,21 @@ class PopUpNotificationView: UIView {
                         MBProgressHUD.showAdded(to: self, animated: true);
                         }
                         self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
+        } else if link == "-NcInd5BosUcUeeQ9Q32" {
+            
+            
+            if UserDefaults.standard.value(forKey: link) != nil {
+                self.goToNutritonConsultantScreen(packageID: promoAppLink)
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
         } else if promoAppLink == "PP_PACKAGES" {
           //  self.performSegue(withIdentifier: "buyPackages", sender: self);
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -181,6 +203,21 @@ class PopUpNotificationView: UIView {
             self.showNutritionLabels(promoLink: promoAppLink)
         }else if promoAppLink == "CHECK_THIS_OUT" {
            // self.performSegue(withIdentifier: "checkThisOut", sender: self)
+        } else if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
+            
+            
+            if UserDefaults.standard.value(forKey: promoAppLink) != nil {
+                self.goToNutritonConsultantScreen(packageID: promoAppLink)
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
         } else if promoAppLink == self.link {
                    
                    
@@ -478,6 +515,21 @@ class PopUpNotificationView: UIView {
                             MBProgressHUD.showAdded(to: self, animated: true);
                             }
                             self.moveToAnotherView(promoAppLink: clubPackageSubscribed)                       }
+            } else if link == "-NcInd5BosUcUeeQ9Q32" {
+                
+                
+                if UserDefaults.standard.value(forKey: link) != nil {
+                    self.goToNutritonConsultantScreen(packageID: link)
+                } else {
+                    DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self, animated: true);
+                    }
+                    self.moveToAnotherView(promoAppLink: link)
+
+                    
+                    
+                }
+                
             } else {
                    tappedOnPopUpDone()
                }
