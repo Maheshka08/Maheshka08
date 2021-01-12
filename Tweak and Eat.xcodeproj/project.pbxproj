@@ -196,6 +196,12 @@
 		83360CBD2531EAC40006BD63 /* HowToTweak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83360CBC2531EAC40006BD63 /* HowToTweak.xib */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
+		8375DB1525AD681000C978E5 /* AskSiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */; };
+		8375DB1625AD681000C978E5 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1425AD681000C978E5 /* MessageResponse.swift */; };
+		8375DB3025AD6A7D00C978E5 /* ImageReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */; };
+		8375DB3125AD6A7D00C978E5 /* TextSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */; };
+		8375DB3225AD6A7D00C978E5 /* ButtonReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */; };
+		8375DB3325AD6A7D00C978E5 /* TextReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
 		83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */; };
 		83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */; };
@@ -572,6 +578,12 @@
 		83360CBC2531EAC40006BD63 /* HowToTweak.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToTweak.xib; sourceTree = "<group>"; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
+		8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskSiaViewController.swift; sourceTree = "<group>"; };
+		8375DB1425AD681000C978E5 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReceiverCell.swift; sourceTree = "<group>"; };
+		8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSenderCell.swift; sourceTree = "<group>"; };
+		8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonReceiverCell.swift; sourceTree = "<group>"; };
+		8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReceiverCell.swift; sourceTree = "<group>"; };
 		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePackagesTableViewCell.swift; sourceTree = "<group>"; };
 		83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPackagesViewController.swift; sourceTree = "<group>"; };
@@ -920,6 +932,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				8375DB1225AD67FE00C978E5 /* SIA */,
 				83360CBC2531EAC40006BD63 /* HowToTweak.xib */,
 				83360CB82531EA6C0006BD63 /* HowToTweak.swift */,
 				83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */,
@@ -1151,6 +1164,19 @@
 				83170928250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift */,
 			);
 			path = Carousel;
+			sourceTree = "<group>";
+		};
+		8375DB1225AD67FE00C978E5 /* SIA */ = {
+			isa = PBXGroup;
+			children = (
+				8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */,
+				8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */,
+				8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */,
+				8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */,
+				8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */,
+				8375DB1425AD681000C978E5 /* MessageResponse.swift */,
+			);
+			path = SIA;
 			sourceTree = "<group>";
 		};
 		846D07471F271D3100902097 /* FirebaseModels */ = {
@@ -1774,6 +1800,7 @@
 				5702E5DC1D9D646100647A54 /* MKAnnotationView+WebCache.m in Sources */,
 				840A2E5E1F359AAF0073E5A5 /* ProfileViewController.swift in Sources */,
 				1878DA2D23AC975C00F1FBAE /* MainPageScrollTableViewCell.swift in Sources */,
+				8375DB1625AD681000C978E5 /* MessageResponse.swift in Sources */,
 				83170935250BCA9D00413723 /* CarouselCollectionView2.swift in Sources */,
 				18FF673B213E427A00355F69 /* MoreInfoPackageTableViewCell.swift in Sources */,
 				18C63AED2289443A0053DDF4 /* StripePaymentGateway.swift in Sources */,
@@ -1830,6 +1857,7 @@
 				73B9DBC1203C1DB000EBC0B0 /* LoginViewController.swift in Sources */,
 				84EF2DD31DE705C900F340C5 /* DatabaseController.swift in Sources */,
 				831F883924614AE600397143 /* GamifyViewController.swift in Sources */,
+				8375DB3325AD6A7D00C978E5 /* TextReceiverCell.swift in Sources */,
 				84C8064A1F162A96009F19FE /* TweakShareViewController.swift in Sources */,
 				84B882E8203E874B00A392EA /* FitbitDeviceInfo.swift in Sources */,
 				732986CE1FEBD45E006A364C /* Message.swift in Sources */,
@@ -1882,6 +1910,7 @@
 				57BED1461D749B780008CC4D /* AppDelegate.swift in Sources */,
 				83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */,
 				83EA2FC924A6049A009DDABA /* CircularProgressView.swift in Sources */,
+				8375DB3125AD6A7D00C978E5 /* TextSenderCell.swift in Sources */,
 				1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell.swift in Sources */,
 				84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */,
 				5702E5AF1D9CAAF100647A54 /* TimelinesViewController.swift in Sources */,
@@ -1892,6 +1921,8 @@
 				73B9DBC2203C1DB000EBC0B0 /* AuthenticationController.swift in Sources */,
 				5735D83B1D79CF7E001DAF83 /* APIWrapper.swift in Sources */,
 				5735D8301D79CEEB001DAF83 /* AFHTTPRequestOperationManager.m in Sources */,
+				8375DB1525AD681000C978E5 /* AskSiaViewController.swift in Sources */,
+				8375DB3025AD6A7D00C978E5 /* ImageReceiverCell.swift in Sources */,
 				732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */,
 				8317092D250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift in Sources */,
 				73EBF3771F370D730085E7BF /* LineChart.swift in Sources */,
@@ -1934,6 +1965,7 @@
 				8317092B250BBEE700413723 /* CarouselConfiguration.swift in Sources */,
 				5735D83D1D79D0DF001DAF83 /* TweakAndEatURLConstants.swift in Sources */,
 				832616A0249380BD0002B77C /* PopUpNotificationView.swift in Sources */,
+				8375DB3225AD6A7D00C978E5 /* ButtonReceiverCell.swift in Sources */,
 				57C3248D1D967C480057B590 /* TweakReminderViewController.swift in Sources */,
 				1809E0E621901FD000D5CDA0 /* NutritionLabelViewController.swift in Sources */,
 				83EA2FC524A5D695009DDABA /* MyNutritionView.swift in Sources */,

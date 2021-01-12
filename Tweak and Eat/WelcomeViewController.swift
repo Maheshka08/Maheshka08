@@ -644,6 +644,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func taeClubMemberButtonTapped(_ sender: Any) {
         self.goToTAEClubMemPage()
     }
+    @IBAction func askSiaTapped(_ sender: Any) {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "AskSiaViewController") as? AskSiaViewController;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+    }
     func goToTAEClubMemPage() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
@@ -724,6 +730,19 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
                 
 
+            }
+        } else  if link == "NCP_PUR_IND_OP" {
+            if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+        self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
+            }
+        } else if link == "MYAIDP_PUR_IND_OP_3M" {
+            if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+
+            } else {
+        self.goToBuyScreen(packageID: "-AiDPwdvop1HU7fj8vfL", identifier: link)
             }
         } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
             self.smallScreenPopUp.isHidden = true

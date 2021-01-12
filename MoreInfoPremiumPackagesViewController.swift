@@ -1793,8 +1793,27 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                             }
                         }
                     }
+                } else if self.identifierFromPopUp == "MYAIDP_PUR_IND_OP_3M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYAIDP_IND_QUARTERLY" {
+                                self.startPurchase(identifier: "MYAIDP_IND_QUARTERLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "NCP_PUR_IND_OP" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "NCP_IND_ONETIME" {
+                                self.startPurchase(identifier: "NCP_IND_ONETIME", dict: recurPriceDict)
+                            }
+                        }
+                    }
                 }
-                            
 
             }
 

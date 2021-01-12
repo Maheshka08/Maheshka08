@@ -548,6 +548,19 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
 
             }
+        }else if promoAppLink == "NCP_PUR_IND_OP" {
+            if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+        self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: promoAppLink)
+            }
+        } else if promoAppLink == "MYAIDP_PUR_IND_OP_3M" {
+            if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+
+            } else {
+        self.goToBuyScreen(packageID: "-AiDPwdvop1HU7fj8vfL", identifier: promoAppLink)
+            }
         } else if promoAppLink == "MYTAE_PUR_IND_OP_3M" || promoAppLink == "WLIF_PUR_IND_OP_3M" {
             if promoAppLink == "MYTAE_PUR_IND_OP_3M" {
                 if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
