@@ -1832,13 +1832,13 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.price = "\(self.labelPriceDict["transPayment"] as AnyObject as! Double)";
             self.priceInDouble = self.labelPriceDict["transPayment"] as AnyObject as! Double;
             self.currency = "\(self.labelPriceDict["currency"] as AnyObject as! String)";
-                           let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+            let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
             let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
                            
                            let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
                            let totalDesc: String = labels + amount + currency;
               
-                           self.packageName = (self.labelPriceDict[lables] as? String)!
+            self.packageName = (self.labelPriceDict[self.lables] as? String)!
               
                            self.productIdentifier = identifier
        
