@@ -273,7 +273,22 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             return dict
         }
        // print(self.botMessages)
-        self.getMessages(siaId: jsonDict.siac_id)
+        OperationQueue.main.addOperation({
+            self.botTable.reloadData()
+            self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
+        })
+        self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
+        OperationQueue.main.addOperation({
+            self.botTable.reloadData()
+            self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
+        })
+      
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // your code here
+            self.getMessages(siaId: jsonDict.siac_id)
+        }
+
+        
 //        OperationQueue.main.addOperation({
 //            self.botTable.reloadData()
 //        })
@@ -339,6 +354,11 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
                 
               
                 return cell
+            } else if siac_type == "DOTS" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DOTSRECEIVER") as! ChatTypingIndicatorCell
+                let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "dots", withExtension: "gif")!)
+                cell.cellImageView.image = UIImage.gifImageWithData(imageData!)
+                return cell
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TEXTSENDER") as! TextSenderCell
@@ -377,14 +397,23 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.botTable.separatorStyle = .none
         self.botTable.estimatedRowHeight = 75
         self.botTable.rowHeight = UITableView.automaticDimension
-        getLatestLoans()
+        self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
+        OperationQueue.main.addOperation({
+            self.botTable.reloadData()
+            self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // your code here
+            self.getLatestLoans()
+
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
     }
-    func getMessages(siaId: Int) {
+   @objc func getMessages(siaId: Int) {
         guard let loanUrl = URL(string: "https://www.tweakandeat.com:5009/api/content/siappkgcontent/\(siaId)") else {
             return
         }
@@ -407,13 +436,16 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
      
             // Parse JSON data
             if let data = data {
+                if self.botMessages.count > 0 {
+                    self.botMessages.removeLast()
+                }
                 let botMessage: [BOTMessages] = self.parseJsonData(data: data)
                 self.botMessages += botMessage
                 print(self.botMessages)
                 // Reload table view
                 OperationQueue.main.addOperation({
                     self.botTable.reloadData()
-                    self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: false)
+                    self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
                 })
             }
         })
@@ -443,6 +475,9 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
      
             // Parse JSON data
             if let data = data {
+                if self.botMessages.count > 0 {
+                    self.botMessages.removeLast()
+                }
                 self.botMessages = self.parseJsonData(data: data)
                 print(self.botMessages)
                 // Reload table view

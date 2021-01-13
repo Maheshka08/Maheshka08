@@ -202,6 +202,9 @@
 		8375DB3125AD6A7D00C978E5 /* TextSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */; };
 		8375DB3225AD6A7D00C978E5 /* ButtonReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */; };
 		8375DB3325AD6A7D00C978E5 /* TextReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */; };
+		83AD092325AED2550089C23D /* ChatTypingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */; };
+		83AD092A25AED7140089C23D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */; };
+		83AD094725AEE1AE0089C23D /* dots.gif in Resources */ = {isa = PBXBuildFile; fileRef = 83AD094625AEE1AD0089C23D /* dots.gif */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
 		83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */; };
 		83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */; };
@@ -584,6 +587,9 @@
 		8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSenderCell.swift; sourceTree = "<group>"; };
 		8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonReceiverCell.swift; sourceTree = "<group>"; };
 		8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReceiverCell.swift; sourceTree = "<group>"; };
+		83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTypingIndicatorCell.swift; sourceTree = "<group>"; };
+		83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		83AD094625AEE1AD0089C23D /* dots.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dots.gif; sourceTree = "<group>"; };
 		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePackagesTableViewCell.swift; sourceTree = "<group>"; };
 		83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPackagesViewController.swift; sourceTree = "<group>"; };
@@ -1169,12 +1175,15 @@
 		8375DB1225AD67FE00C978E5 /* SIA */ = {
 			isa = PBXGroup;
 			children = (
+				83AD094625AEE1AD0089C23D /* dots.gif */,
+				83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */,
 				8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */,
 				8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */,
 				8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */,
 				8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */,
 				8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */,
 				8375DB1425AD681000C978E5 /* MessageResponse.swift */,
+				83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */,
 			);
 			path = SIA;
 			sourceTree = "<group>";
@@ -1620,6 +1629,7 @@
 				84272D9C1F4EFE9300236362 /* OrkneyLight.otf in Resources */,
 				84272D9D1F4EFE9300236362 /* OrkneyLight.ttf in Resources */,
 				845628A91F584A8800AF85D9 /* AwesomePopUpSound.mp3 in Resources */,
+				83AD094725AEE1AE0089C23D /* dots.gif in Resources */,
 				84272D9E1F4EFE9300236362 /* OrkneyMedium.otf in Resources */,
 				84272D9F1F4EFE9300236362 /* OrkneyMedium.ttf in Resources */,
 				83EA2FC724A5F577009DDABA /* MyNutritionView.xib in Resources */,
@@ -1902,6 +1912,7 @@
 				83170922250BBEC400413723 /* CarouselCollectionView.swift in Sources */,
 				84820E231F29C78D0064346B /* TweakFeedsInfo.swift in Sources */,
 				18F1A99C20EA1896004FAC2D /* SwitchTableViewCell.swift in Sources */,
+				83AD092325AED2550089C23D /* ChatTypingIndicatorCell.swift in Sources */,
 				18743651213D4A920012A17E /* MoreInfoPremiumPackagesViewController.swift in Sources */,
 				84B882E6203E84AF00A392EA /* MyFitbitTableViewCell.swift in Sources */,
 				84AD652E1F18C496007067DB /* TweakMyWallTableViewCell.swift in Sources */,
@@ -1929,6 +1940,7 @@
 				84EF2D8B1DE6CA6700F340C5 /* TBL_Tweaks+CoreDataProperties.swift in Sources */,
 				8317091D250B519400413723 /* iCarousel.m in Sources */,
 				73B9DBC4203E83F900EBC0B0 /* ActivityTrackerViewController.swift in Sources */,
+				83AD092A25AED7140089C23D /* iOSDevCenters+GIF.swift in Sources */,
 				840A2E641F360EDC0073E5A5 /* MHAAddReadingsContainer.swift in Sources */,
 				180624082175B4D80084238E /* AiDPViewController.swift in Sources */,
 				735DD66E20AC30B7009B4B6F /* UserPackagesNutritionChat.swift in Sources */,

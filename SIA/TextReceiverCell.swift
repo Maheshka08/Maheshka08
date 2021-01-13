@@ -25,7 +25,7 @@ class TextReceiverCell: UITableViewCell {
         self.messageTextView.font = UIFont(name:"QUESTRIAL-REGULAR", size: 17.0)
         self.messageTextView.layer.cornerRadius = 5
         self.messageTextView.adjustUITextViewHeight()
-        self.textViewWidthConstraint.constant = self.frame.size.width - 100
+        self.textViewWidthConstraint.constant = UIScreen.main.bounds.size.width - 100
         self.layoutIfNeeded()
     }
 
