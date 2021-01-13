@@ -255,7 +255,20 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
       
     }
     @IBAction func cancelTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let refreshAlert = UIAlertController(title: "Close Chat", message: "Are you sure, you want to close the chat?", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (action: UIAlertAction!) in
+                    print("Handle Ok logic here")
+            self.navigationController?.popViewController(animated: true)
+
+           }))
+
+        refreshAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+                    print("Handle Cancel Logic here")
+                    refreshAlert .dismiss(animated: true, completion: nil)
+           }))
+
+            self.present(refreshAlert, animated: true, completion: nil)
     }
     func cellTappedOnButton(_ cell: ButtonReceiverCell) {
         if self.botMessages[cell.cellIndexPath.row].userInteraction == false {
@@ -277,11 +290,16 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             self.botTable.reloadData()
             self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
         })
-        self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
-        OperationQueue.main.addOperation({
-            self.botTable.reloadData()
-            self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
-        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // your code here
+            self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
+            OperationQueue.main.addOperation({
+                self.botTable.reloadData()
+                self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
+            })
+        }
+       
       
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // your code here
@@ -363,6 +381,10 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TEXTSENDER") as! TextSenderCell
             cell.messageTextView.text = self.botMessages[indexPath.row].siac_text
+            if self.botMessages[indexPath.row].siac_text.count < 60 {
+                cell.messageTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+
+            }
             return cell
         }
         

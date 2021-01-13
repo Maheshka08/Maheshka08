@@ -22,7 +22,7 @@ class ButtonReceiverCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.messageTextView.font = UIFont(name:"QUESTRIAL-REGULAR", size: 17.0)
-        self.messageTextView.layer.cornerRadius = 5
+        self.messageTextView.layer.cornerRadius = 20
         self.messageTextView.adjustUITextViewHeight()
         self.messageTextView.layer.borderWidth = 1.0
         self.messageTextView.layer.borderColor = UIColor.darkGray.cgColor
