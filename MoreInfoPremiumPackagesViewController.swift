@@ -1828,12 +1828,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
         self.labelPriceDict  = dict;
             self.pkgDescription = "\(self.labelPriceDict["pkgDescription"] as AnyObject as! String)";
-                           self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
-                           self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
-                           self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
-                           self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+            self.pkgDuration = self.labelPriceDict["pkgDuration"] as AnyObject as! String;
+            self.price = "\(self.labelPriceDict["transPayment"] as AnyObject as! Double)";
+            self.priceInDouble = self.labelPriceDict["transPayment"] as AnyObject as! Double;
+            self.currency = "\(self.labelPriceDict["currency"] as AnyObject as! String)";
                            let labels =  (self.labelPriceDict[lables] as? String)! + " ("
-                           let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+            let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
                            
                            let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
                            let totalDesc: String = labels + amount + currency;
