@@ -21,6 +21,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .clear
     }
     @IBAction func btnAction(_ sender: Any) {
                    if let delegate = buttonDelegate {

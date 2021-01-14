@@ -143,6 +143,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                    self.carouselView1.reloadData()
           //  self.scrolledIndex = 1
             if self.items.count == 1 {
+            //    self.packagesCarouselHeightConstraint.constant = 164
+
                 self.pageControl.currentPage = 0
 
             } else if self.items.count > 1 {
@@ -1824,7 +1826,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     func startPurchase(identifier: String, dict: [String : AnyObject]) {
 
-        DispatchQueue.global().async() { [self] in
+        DispatchQueue.global().async() { 
 
         self.labelPriceDict  = dict;
             self.pkgDescription = "\(self.labelPriceDict["pkgDescription"] as AnyObject as! String)";
@@ -2163,7 +2165,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 ////                }
 //            }
 //
-        self.packagesCarouselHeightConstraint.constant = 164
+        self.packagesCarouselHeightConstraint.constant = 184
 //        }
         if IS_iPHONE5 || IS_iPHONE678 {
             self.ratingsCarouselHeightConstraint.constant = 0
