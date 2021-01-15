@@ -143,8 +143,6 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                    self.carouselView1.reloadData()
           //  self.scrolledIndex = 1
             if self.items.count == 1 {
-            //    self.packagesCarouselHeightConstraint.constant = 164
-
                 self.pageControl.currentPage = 0
 
             } else if self.items.count > 1 {
@@ -1826,7 +1824,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     func startPurchase(identifier: String, dict: [String : AnyObject]) {
 
-        DispatchQueue.global().async() { 
+        DispatchQueue.global().async() { [self] in
 
         self.labelPriceDict  = dict;
             self.pkgDescription = "\(self.labelPriceDict["pkgDescription"] as AnyObject as! String)";
@@ -1845,7 +1843,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                            self.productIdentifier = identifier
        
                                   if (SKPaymentQueue.canMakePayments()) {
-                                      self.buyNowButton.isEnabled = false
+                                     // self.buyNowButton.isEnabled = false
                                       let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
                                       let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
                                       productsRequest.delegate = self;
