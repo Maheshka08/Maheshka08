@@ -348,11 +348,11 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
 //                }
                 
                 if self.botMessages[indexPath.row].buttonIsHighlighted == true {
-                    cell.cellButton.backgroundColor = UIColor.purple
-                    cell.cellButton.setTitleColor(.white, for: .normal)
+                    cell.messageTextView.backgroundColor = UIColor.purple
+                    cell.messageTextView.textColor = .white
                 } else {
-                    cell.cellButton.backgroundColor = UIColor.clear
-                    cell.cellButton.setTitleColor(.black, for: .normal)
+                    cell.messageTextView.backgroundColor = UIColor.init(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+                    cell.messageTextView.textColor = .black
 
                 }
                 cell.messageTextView.text = self.botMessages[indexPath.row].siac_text
