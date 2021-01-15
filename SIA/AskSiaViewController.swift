@@ -351,7 +351,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
                     cell.messageTextView.backgroundColor = UIColor.purple
                     cell.messageTextView.textColor = .white
                 } else {
-                    cell.messageTextView.backgroundColor = UIColor.init(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+                    cell.messageTextView.backgroundColor = UIColor.init(red: 230.0/255.0, green: 254.0/255.0, blue: 254.0/255.0, alpha: 1.0)
                     cell.messageTextView.textColor = .black
 
                 }
@@ -414,7 +414,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             return UITableView.automaticDimension
 
         }
-        return (self.botMessages[indexPath.row].siac_text.count < 60 || self.botMessages[indexPath.row].siac_ans_text.count < 60) ? 75 : UITableView.automaticDimension
+        return (self.botMessages[indexPath.row].siac_text.count < 60) ? 75 : UITableView.automaticDimension
     }
     
     @IBOutlet weak var botTable: UITableView!
@@ -533,7 +533,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             if jsonResult!["callStatus"] as! String == "GOOD" {
             let data = jsonResult?["data"] as! [AnyObject]
             for jsonDict in data {
-                let botMessage = BOTMessages(siac_id: jsonDict["siac_id"] as! Int, siac_code: jsonDict["siac_code"] as! String, siac_lang: jsonDict["siac_lang"] as! String, siac_text: (jsonDict["siac_text"] as! String).html2String, siac_pid: jsonDict["siac_pid"] as! Int, siac_order: jsonDict["siac_order"] as! Int, siac_type: jsonDict["siac_type"] as! String, siac_img_url: jsonDict["siac_img_url"] as! String, siac_link: jsonDict["siac_link"] as! String, siac_ans_text: (jsonDict["siac_ans_text"] is NSNull) ? "" : jsonDict["siac_ans_text"] as! String)
+                let botMessage = BOTMessages(siac_id: (jsonDict["siac_id"] is NSNull) ? 0 : jsonDict["siac_id"] as! Int, siac_code: (jsonDict["siac_code"] is NSNull) ? "" : jsonDict["siac_code"] as! String, siac_lang: (jsonDict["siac_lang"] is NSNull) ? "" : jsonDict["siac_lang"] as! String, siac_text: (jsonDict["siac_text"] is NSNull) ? "" : (jsonDict["siac_text"] as! String).html2String, siac_pid: (jsonDict["siac_pid"] is NSNull) ? 0 : jsonDict["siac_pid"] as! Int, siac_order: (jsonDict["siac_order"] is NSNull) ? 0 : jsonDict["siac_order"] as! Int, siac_type: (jsonDict["siac_type"] is NSNull) ? "" : jsonDict["siac_type"] as! String, siac_img_url: (jsonDict["siac_img_url"] is NSNull) ? "" : jsonDict["siac_img_url"] as! String, siac_link: (jsonDict["siac_link"] is NSNull) ? "" : jsonDict["siac_link"] as! String, siac_ans_text: (jsonDict["siac_ans_text"] is NSNull) ? "" : jsonDict["siac_ans_text"] as! String)
                 
                 messages.append(botMessage)
             }

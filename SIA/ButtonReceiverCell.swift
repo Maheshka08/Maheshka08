@@ -27,6 +27,7 @@ class ButtonReceiverCell: UITableViewCell {
         self.cellButton.layer.cornerRadius = 20
         self.messageTextView.layer.borderWidth = 1.0
         self.messageTextView.layer.borderColor = UIColor.darkGray.cgColor
+        self.messageTextView.backgroundColor = UIColor.init(red: 230.0/255.0, green: 254.0/255.0, blue: 254.0/255.0, alpha: 1.0)
         self.messageTextView.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
 
     }
