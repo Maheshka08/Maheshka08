@@ -22,7 +22,7 @@ class CarouselCollectionView: UICollectionView {
         
         /// Setting up the carousel flow layout
         let carouselFlowLayout = CarouselAnimatedFlowLayout()
-        carouselFlowLayout.cellOffset = 36.0
+        carouselFlowLayout.cellOffset = 40.0
         carouselFlowLayout.minLineSpacing = 6.0
         /// Zoom Level -- `10%`
         carouselFlowLayout.zoomLevel = 0.88
@@ -30,3 +30,17 @@ class CarouselCollectionView: UICollectionView {
         self.collectionViewLayout = carouselFlowLayout
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

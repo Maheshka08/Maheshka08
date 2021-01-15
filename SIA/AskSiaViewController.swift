@@ -276,8 +276,8 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         print(self.botMessages[cell.cellIndexPath.row])
         let jsonDict = self.botMessages[cell.cellIndexPath.row]
-       
-        self.botMessages.append(BOTMessages(siac_id: jsonDict.siac_id, siac_code: jsonDict.siac_code, siac_lang: jsonDict.siac_lang, siac_text: jsonDict.siac_text, siac_pid: jsonDict.siac_pid, siac_order: jsonDict.siac_order, siac_type: jsonDict.siac_type, siac_img_url: jsonDict.siac_img_url, siac_link: jsonDict.siac_link, cellType: "SENDER"))
+        self.botMessages[cell.cellIndexPath.row].buttonIsHighlighted = true
+        self.botMessages.append(BOTMessages(siac_id: jsonDict.siac_id, siac_code: jsonDict.siac_code, siac_lang: jsonDict.siac_lang, siac_text: jsonDict.siac_text, siac_pid: jsonDict.siac_pid, siac_order: jsonDict.siac_order, siac_type: jsonDict.siac_type, siac_img_url: jsonDict.siac_img_url, siac_link: jsonDict.siac_link, siac_ans_text: jsonDict.siac_ans_text, cellType: "SENDER"))
         self.botMessages = botMessages.map { (dict) -> BOTMessages in
             // dict is immutable, so you need a mutable shadow copy:
             var dict = dict
@@ -293,7 +293,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // your code here
-            self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
+            self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: "", siac_ans_text: jsonDict.siac_ans_text))
             OperationQueue.main.addOperation({
                 self.botTable.reloadData()
                 self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
@@ -340,10 +340,19 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BUTTONRECEIVER") as! ButtonReceiverCell
                 cell.btnReceiverDelegate = self
                 cell.cellIndexPath = indexPath
-                if indexPath.row > self.botMessages.count {
-                    cell.cellButton.isUserInteractionEnabled = false
+//                if indexPath.row > self.botMessages.count {
+//                    cell.cellButton.isUserInteractionEnabled = false
+//                } else {
+//                    cell.cellButton.isUserInteractionEnabled = true
+//
+//                }
+                
+                if self.botMessages[indexPath.row].buttonIsHighlighted == true {
+                    cell.cellButton.backgroundColor = UIColor.purple
+                    cell.cellButton.setTitleColor(.white, for: .normal)
                 } else {
-                    cell.cellButton.isUserInteractionEnabled = true
+                    cell.cellButton.backgroundColor = UIColor.clear
+                    cell.cellButton.setTitleColor(.black, for: .normal)
 
                 }
                 cell.messageTextView.text = self.botMessages[indexPath.row].siac_text
@@ -380,8 +389,8 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TEXTSENDER") as! TextSenderCell
-            cell.messageTextView.text = self.botMessages[indexPath.row].siac_text
-            if self.botMessages[indexPath.row].siac_text.count < 60 {
+            cell.messageTextView.text = self.botMessages[indexPath.row].siac_ans_text
+            if self.botMessages[indexPath.row].siac_ans_text.count < 60 {
                 cell.messageTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
 
             }
@@ -405,7 +414,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             return UITableView.automaticDimension
 
         }
-        return self.botMessages[indexPath.row].siac_text.count < 60 ? 75 : UITableView.automaticDimension
+        return (self.botMessages[indexPath.row].siac_text.count < 60 || self.botMessages[indexPath.row].siac_ans_text.count < 60) ? 75 : UITableView.automaticDimension
     }
     
     @IBOutlet weak var botTable: UITableView!
@@ -419,7 +428,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.botTable.separatorStyle = .none
         self.botTable.estimatedRowHeight = 75
         self.botTable.rowHeight = UITableView.automaticDimension
-        self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: ""))
+        self.botMessages.append(BOTMessages(siac_id: 1, siac_code: "", siac_lang: "", siac_text: "", siac_pid: 1, siac_order: 1, siac_type: "DOTS", siac_img_url: "", siac_link: "", siac_ans_text: ""))
         OperationQueue.main.addOperation({
             self.botTable.reloadData()
             self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
@@ -524,7 +533,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             if jsonResult!["callStatus"] as! String == "GOOD" {
             let data = jsonResult?["data"] as! [AnyObject]
             for jsonDict in data {
-                let botMessage = BOTMessages(siac_id: jsonDict["siac_id"] as! Int, siac_code: jsonDict["siac_code"] as! String, siac_lang: jsonDict["siac_lang"] as! String, siac_text: (jsonDict["siac_text"] as! String).html2String, siac_pid: jsonDict["siac_pid"] as! Int, siac_order: jsonDict["siac_order"] as! Int, siac_type: jsonDict["siac_type"] as! String, siac_img_url: jsonDict["siac_img_url"] as! String, siac_link: jsonDict["siac_link"] as! String)
+                let botMessage = BOTMessages(siac_id: jsonDict["siac_id"] as! Int, siac_code: jsonDict["siac_code"] as! String, siac_lang: jsonDict["siac_lang"] as! String, siac_text: (jsonDict["siac_text"] as! String).html2String, siac_pid: jsonDict["siac_pid"] as! Int, siac_order: jsonDict["siac_order"] as! Int, siac_type: jsonDict["siac_type"] as! String, siac_img_url: jsonDict["siac_img_url"] as! String, siac_link: jsonDict["siac_link"] as! String, siac_ans_text: (jsonDict["siac_ans_text"] is NSNull) ? "" : jsonDict["siac_ans_text"] as! String)
                 
                 messages.append(botMessage)
             }

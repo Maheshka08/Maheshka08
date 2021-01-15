@@ -7572,7 +7572,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="292" width="414" height="570"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="UGj-U6-IOd">
-                                    <rect key="frame" x="0.0" y="94.333332061767578" width="414" height="125"/>
+                                    <rect key="frame" x="0.0" y="91.999998092651367" width="414" height="125"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-EL-Kgu">
@@ -7606,14 +7606,14 @@ Enjoy!</string>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="zBb-Sk-gG9" customClass="RecipeDetailsCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="21"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="18.666666030883789"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBb-Sk-gG9" id="DXW-R6-ePA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="18.666666030883789"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-nU-i2e">
-                                                    <rect key="frame" x="11" y="0.0" width="392" height="21"/>
+                                                    <rect key="frame" x="11" y="0.0" width="392" height="18.666666666666668"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -8342,7 +8342,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-hU-6pJ">
-                                                <rect key="frame" x="39" y="5" width="123" height="19"/>
+                                                <rect key="frame" x="53" y="5" width="117" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Vzk-rY-CbR"/>
                                                 </constraints>
@@ -8356,7 +8356,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-fb-JSz">
-                                                <rect key="frame" x="183" y="5" width="54" height="19"/>
+                                                <rect key="frame" x="191" y="5" width="51" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" TODAY ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8367,7 +8367,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubl-VC-c2N">
-                                                <rect key="frame" x="257" y="5" width="48" height="19"/>
+                                                <rect key="frame" x="262" y="5" width="46" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" WEEK ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8378,7 +8378,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-YK-k7V">
-                                                <rect key="frame" x="325" y="5" width="59" height="19"/>
+                                                <rect key="frame" x="328" y="5" width="56" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="9ga-bM-dJx"/>
                                                 </constraints>
@@ -8392,21 +8392,21 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-E9-AVf">
-                                                <rect key="frame" x="172" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="180" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-V5-NFN">
-                                                <rect key="frame" x="244" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="249" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFz-N1-ccK">
-                                                <rect key="frame" x="314" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="317" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="8Y5-iH-Jie"/>
@@ -8577,7 +8577,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="63" width="414" height="39"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-Mt-DTX">
-                                                <rect key="frame" x="350" y="4" width="56" height="30"/>
+                                                <rect key="frame" x="350" y="4" width="56" height="16.333333333333332"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="FHm-is-ghV"/>
@@ -8591,7 +8591,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq1-kg-58W">
-                                                <rect key="frame" x="299" y="4" width="46" height="30"/>
+                                                <rect key="frame" x="299" y="4" width="46" height="16.333333333333332"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="GtJ-Ec-LSM"/>
@@ -8605,7 +8605,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-m0-R5m">
-                                                <rect key="frame" x="243" y="4" width="51" height="30"/>
+                                                <rect key="frame" x="243" y="4" width="51" height="16.333333333333332"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="Z1o-fl-lLO"/>
@@ -8619,7 +8619,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aER-aK-x1t">
-                                                <rect key="frame" x="173" y="4" width="65" height="30"/>
+                                                <rect key="frame" x="173" y="4" width="65" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="ouc-ga-7cf"/>
@@ -8633,7 +8633,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Carbs Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlK-Gy-Qzv">
-                                                <rect key="frame" x="8" y="4" width="85.333333333333329" height="13"/>
+                                                <rect key="frame" x="8" y="4" width="84" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="9bJ-Ju-Sd9"/>
                                                 </constraints>

@@ -22,8 +22,10 @@ struct BOTMessages: Codable {
     var siac_type: String
     var siac_img_url: String
     var siac_link: String
+    var siac_ans_text: String
     var cellType = "RECEIVER"
     var userInteraction = true
+    var buttonIsHighlighted = false
 }
 
 
