@@ -451,7 +451,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @objc var totalCMS : String = "";
     var myNutritionViewSelectYourMealTableView = UITableView()
     var myNutritionViewLast10TweaksTableView = UITableView()
-    
+    @IBOutlet weak var askSiaButton: UIButton!
     @IBOutlet weak var adsImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var myTweakEatView: UIView!
     @IBOutlet weak var iconsView: UIView!;
@@ -6194,6 +6194,17 @@ self.topImageView.alpha = 1
 //        let infoBarButton = UIBarButtonItem(image: UIImage(named: "info-icon"), style: .plain, target: self, action: #selector(self.infoIconClick))
 //        self.navigationItem.rightBarButtonItem  = infoBarButton
     }
+    
+    func setupSiaButton() {
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+    countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if countryCode == "91" {
+                self.askSiaButton.isHidden = false
+            } else {
+                self.askSiaButton.isHidden = true
+            }
+}
+    }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true;
@@ -6239,6 +6250,9 @@ self.topImageView.alpha = 1
                 if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                     if countryCode == "91" {
+                        self.askSiaButton.isHidden = false
+                    } else {
+                        self.askSiaButton.isHidden = true
                     }
         }
        

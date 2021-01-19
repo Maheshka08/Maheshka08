@@ -569,7 +569,11 @@ class TweakandEatClubMemberVC: UIViewController, UITableViewDataSource, UITableV
                                               certAttrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple, range: NSRange(msisdnRange!, in: certNutText))
                                               certAttrStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(msisdnRange!, in: certNutText))
                                               self.callSchedulePopup.ourCerifiedNutritionistLbl.attributedText = certAttrStr
+                        if self.packageID == "-NcInd5BosUcUeeQ9Q32" {
                         self.scheduleLabel.isHidden = false
+                        } else {
+                            self.scheduleLabel.isHidden = true
+                        }
                         self.scheduleLabel.text = certNutText + " on " + callDateTime + "."
                         self.scheduleCallButton.isHidden = true
                         self.bottomImageView.isHidden = false

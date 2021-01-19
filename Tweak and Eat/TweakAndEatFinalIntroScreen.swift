@@ -60,7 +60,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         self.delegate.showButtonsView()
         
         appDelegate.getAnnouncements()
-        
+        self.delegate.setupSiaButton()
         self.delegate.getAdDetails()
         //self.delegate.checkUserPremiumMember()
         //self.delegate.checkUserPremiumMember1()

@@ -76,11 +76,20 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
        
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+       
+
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.commentBox.tintColor = UIColor.black
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
         self.commentBox.becomeFirstResponder()
+        }
+
+        
         self.checkBoxBtn.layer.borderWidth = 4
         self.checkBoxBtn.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -193,7 +202,13 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == commentBox{
-            self.commentsViewBottomConstant.constant = -255
+           // DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                  animations: {
+                                    self.commentsViewBottomConstant.constant = -255
+
+                   }, completion: nil)
+           // }
         }
         else if textView == popUpTextView{
            // self.nutritionTopConstraint.constant = -120

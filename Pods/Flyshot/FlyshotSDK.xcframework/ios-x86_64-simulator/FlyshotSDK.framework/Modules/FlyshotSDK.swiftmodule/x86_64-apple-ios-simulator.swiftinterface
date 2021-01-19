@@ -1,0 +1,260 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyshotSDK
+import AdSupport
+@_exported import FlyshotSDK
+import Foundation
+import Photos
+import PhotosUI
+import Security
+import StoreKit
+import Swift
+import UIKit
+import UserNotifications
+import WebKit
+extension String {
+  public func escape() -> Swift.String?
+  public func unescape() -> Swift.String?
+  public func ellipsize(maxLength: Swift.Int) -> Swift.String
+  public var asURL: Foundation.URL? {
+    get
+  }
+  public func stringByTrimmingLeadingCharactersInSet(_ set: Foundation.CharacterSet) -> Swift.String
+  public func stringSplitWithNewline() -> Swift.String
+  public static func contentsOfFileWithResourceName(_ name: Swift.String, ofType type: Swift.String, fromBundle bundle: Foundation.Bundle, encoding: Swift.String.Encoding, error: Foundation.NSErrorPointer) -> Swift.String?
+  public func remove(_ string: Swift.String?) -> Swift.String
+  public func replaceFirstOccurrence(of original: Swift.String, with replacement: Swift.String) -> Swift.String
+  public func isEmptyOrWhitespace() -> Swift.Bool
+}
+public enum FlyshotError : Swift.Error {
+  case serverError(code: Swift.Int, message: Swift.String)
+  case jsonSerialization
+  case actionCompatibility
+  case sdkInitilization
+  case activeCampaignAvailability
+  case campignEventState
+  case inappropriateCustomEvent
+  case inappropriateProductId
+  case customEventNameState
+  case userRequirements
+  case inAppAvailability
+  case inAppPurchase(productId: Swift.String)
+  case unknown
+}
+extension FlyshotError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@objc public enum CampaignStatus : Swift.Int {
+  case notFound
+  case found
+  case redeemed
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class AppInfo {
+  public static var sdkBundle: Foundation.Bundle {
+    get
+  }
+  public static var displayName: Swift.String {
+    get
+  }
+  public static var appVersion: Swift.String {
+    get
+  }
+  public static var buildNumber: Swift.String {
+    get
+  }
+  public static var majorAppVersion: Swift.String {
+    get
+  }
+  public static var sharedContainerIdentifier: Swift.String {
+    get
+  }
+  public static func keychainAccessGroupWithPrefix(_ prefix: Swift.String) -> Swift.String
+  public static var baseBundleIdentifier: Swift.String {
+    get
+  }
+  public static var whatsNewTopic: Swift.String? {
+    get
+  }
+  public static var isApplication: Swift.Bool {
+    get
+  }
+  public static var webserverPort: Swift.Int
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class PromoCampaign : ObjectiveC.NSObject {
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var promotionTile: Swift.String {
+    get
+  }
+  @objc public var applicationName: Swift.String {
+    get
+  }
+  @objc public var content: [FlyshotSDK.Post] {
+    get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class Post : ObjectiveC.NSObject {
+  @objc public var creatorHandle: Swift.String {
+    get
+  }
+  @objc public var creatorName: Swift.String {
+    get
+  }
+  @objc public var imageURL: Foundation.URL? {
+    get
+  }
+  @objc public var thumbnailURL: Foundation.URL? {
+    get
+  }
+  @objc public var postLink: Foundation.URL? {
+    get
+  }
+  @objc public var caption: Swift.String {
+    get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct LaunchArguments {
+  public static let Test: Swift.String
+  public static let SkipIntro: Swift.String
+  public static let SkipWhatsNew: Swift.String
+  public static let SkipETPCoverSheet: Swift.String
+  public static let ClearProfile: Swift.String
+  public static let StageServer: Swift.String
+  public static let DeviceName: Swift.String
+  public static let ServerPort: Swift.String
+  public static let LoadDatabasePrefix: Swift.String
+}
+@_hasMissingDesignatedInitializers open class UserAgent {
+  public static let uaBitSafari: Swift.String
+  public static let uaBitMobile: Swift.String
+  public static let uaBitFx: Swift.String
+  public static let product: Swift.String
+  public static let platform: Swift.String
+  public static let platformDetails: Swift.String
+  public static let uaBitGoogleIpad: Swift.String
+  public static var syncUserAgent: Swift.String {
+    get
+  }
+  public static var tokenServerClientUserAgent: Swift.String {
+    get
+  }
+  public static var fxaUserAgent: Swift.String {
+    get
+  }
+  public static var defaultClientUserAgent: Swift.String {
+    get
+  }
+  public static func isDesktop(ua: Swift.String) -> Swift.Bool
+  public static func desktopUserAgent() -> Swift.String
+  public static func mobileUserAgent() -> Swift.String
+  public static func oppositeUserAgent(domain: Swift.String) -> Swift.String
+  public static func getUserAgent(domain: Swift.String, platform: FlyshotSDK.UserAgentPlatform) -> Swift.String
+  public static func getUserAgent(domain: Swift.String = "") -> Swift.String
+  @objc deinit
+}
+public enum UserAgentPlatform {
+  case Desktop
+  case Mobile
+  public static func == (a: FlyshotSDK.UserAgentPlatform, b: FlyshotSDK.UserAgentPlatform) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct CustomUserAgentConstant {
+  public static let mobileUserAgent: [Swift.String : Swift.String]
+  public static let desktopUserAgent: [Swift.String : Swift.String]
+}
+public struct UserAgentBuilder {
+  public func userAgent() -> Swift.String
+  public func clone(product: Swift.String? = nil, systemInfo: Swift.String? = nil, platform: Swift.String? = nil, platformDetails: Swift.String? = nil, extensions: Swift.String? = nil) -> Swift.String
+  public static func defaultMobileUserAgent() -> FlyshotSDK.UserAgentBuilder
+  public static func defaultDesktopUserAgent() -> FlyshotSDK.UserAgentBuilder
+}
+@_hasMissingDesignatedInitializers open class DeviceInfo {
+  public static var specificModelName: Swift.String {
+    get
+  }
+  open class func defaultClientName() -> Swift.String
+  open class func deviceModel() -> Swift.String
+  open class func isSimulator() -> Swift.Bool
+  open class func isBlurSupported() -> Swift.Bool
+  open class func screenSizeOrientationIndependent() -> CoreGraphics.CGSize
+  @objc deinit
+}
+@objc public protocol FlyshotDelegate : AnyObject {
+  @objc func allowFlyshotPurchase(productIdentifier: Swift.String) -> Swift.Bool
+  @objc func flyshotPurchase(paymentQueue: StoreKit.SKPaymentQueue, updatedTransactions transactions: [StoreKit.SKPaymentTransaction])
+  @objc func flyshotCampaignDetected(productId: Swift.String?)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class Flyshot : ObjectiveC.NSObject {
+  @objc public static let shared: FlyshotSDK.Flyshot
+  @objc public static let test: FlyshotSDK.TestManager
+  @objc weak public var delegate: FlyshotSDK.FlyshotDelegate?
+  @objc public var appsflyerId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var isExistingUser: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public func initialize(sdkToken: Swift.String, onSuccess: @escaping () -> Swift.Void, onFailure: @escaping (Swift.Error) -> Swift.Void)
+  @objc public func start()
+  @objc public func isFlyshotUser() -> Swift.Bool
+  @objc public func isEligibleForDiscount(productId: Swift.String? = nil) -> Swift.Bool
+  @objc public func isEligibleForDiscount() -> Swift.Bool
+  @objc public func isEligibleForReward(productId: Swift.String? = nil) -> Swift.Bool
+  @objc public func isEligibleForReward() -> Swift.Bool
+  @objc public func isEligibleForPromo(productId: Swift.String? = nil) -> Swift.Bool
+  @objc public func isCampaignActive(productId: Swift.String? = nil) -> Swift.Bool
+  @objc public func isEligibleForPromo() -> Swift.Bool
+  @available(*, unavailable, message: "Use upload instead")
+  @objc public func scan(onComplete: @escaping (Swift.Bool) -> Swift.Void, onFailure: ((Swift.Error) -> Swift.Void))
+  @objc public func upload(onSuccess: @escaping (FlyshotSDK.CampaignStatus) -> Swift.Void, onFailure: @escaping (Swift.Error) -> Swift.Void)
+  @available(iOS, unavailable, message: "Use content instead")
+  @objc public func getActiveCampaign(onSuccess: ((FlyshotSDK.PromoCampaign?) -> Swift.Void)? = nil, onFailure: ((Swift.Error) -> Swift.Void)? = nil)
+  @objc public func getContent(onSuccess: (([FlyshotSDK.Post]) -> Swift.Void)? = nil, onFailure: ((Swift.Error) -> Swift.Void)? = nil)
+  @objc public func requestPromoBanner()
+  @objc public func sendConversionEvent(amount: Swift.Double, currencyCode: Swift.String?, productId: Swift.String?, onSuccess: @escaping (() -> Swift.Void), onFailure: @escaping ((Swift.Error) -> Swift.Void))
+  @objc public func sendConversionEvent(amount: Swift.Double, currencyCode: Swift.String?, productId: Swift.String?)
+  @objc public func sendConversionEvent(amount: Swift.Double, currencyCode: Swift.String?, onSuccess: @escaping (() -> Swift.Void), onFailure: @escaping ((Swift.Error) -> Swift.Void))
+  @objc public func sendConversionEvent(amount: Swift.Double, currencyCode: Swift.String?)
+  @objc public func sendConversionEvent(amount: Swift.Double, onSuccess: @escaping (() -> Swift.Void), onFailure: @escaping ((Swift.Error) -> Swift.Void))
+  @objc public func sendConversionEvent(amount: Swift.Double)
+  @objc public func sendCustomEvent(name: Swift.String, onSuccess: (() -> Swift.Void)? = nil, onFailure: ((Swift.Error) -> Swift.Void)? = nil)
+  @objc public func sendCustomEvent(name: Swift.String)
+  @objc public func sendEvent(name: Swift.String, onSuccess: (() -> Swift.Void)? = nil, onFailure: ((Swift.Error) -> Swift.Void)? = nil)
+  @objc public func sendEvent(name: Swift.String)
+  @objc public func sendSignUpEvent(onSuccess: (() -> Swift.Void)? = nil, onFailure: ((Swift.Error) -> Swift.Void)? = nil)
+  @objc public func sendSignUpEvent()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class TestManager : ObjectiveC.NSObject {
+  @objc public var campaignRedeemTest: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public func clearCampaignData()
+  @objc public func clearUserData()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension FlyshotSDK.CampaignStatus : Swift.Equatable {}
+extension FlyshotSDK.CampaignStatus : Swift.Hashable {}
+extension FlyshotSDK.CampaignStatus : Swift.RawRepresentable {}
+extension FlyshotSDK.UserAgentPlatform : Swift.Equatable {}
+extension FlyshotSDK.UserAgentPlatform : Swift.Hashable {}

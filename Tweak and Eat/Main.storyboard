@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OrkneyMedium.otf">
+        <array key="OrkneyMedium.ttf">
             <string>Orkney-Medium</string>
         </array>
-        <array key="OrkneyRegular.ttf">
+        <array key="OrkneyRegular.otf">
             <string>Orkney-Regular</string>
         </array>
         <array key="QUESTRIAL-REGULAR.TTF">
@@ -1760,7 +1760,7 @@
                                             <constraint firstAttribute="height" constant="75" id="bJ4-ig-Uhh"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cys-m5-vZb">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cys-m5-vZb">
                                         <rect key="frame" x="313" y="409.66666666666669" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="TYO-32-YDb"/>
@@ -2229,6 +2229,7 @@
                         <outlet property="appVersionUpdateButton" destination="qCh-WT-4Ar" id="4XO-we-9uW"/>
                         <outlet property="approxCalLeftForDayLabel" destination="cBl-US-iqh" id="We9-hl-CUH"/>
                         <outlet property="approxCalLeftView" destination="1zK-h7-vXQ" id="bl0-D4-xZ1"/>
+                        <outlet property="askSiaButton" destination="cys-m5-vZb" id="xMk-4k-NFj"/>
                         <outlet property="beforeTweakImageView" destination="yi3-If-Lld" id="BOE-MB-sUY"/>
                         <outlet property="beforeTweakImageViewHeightConstraint" destination="XdD-aa-Ajj" id="gAf-NA-Tj3"/>
                         <outlet property="bottomBtnViewTopConstraint" destination="4wd-WN-idx" id="Omy-4B-0js"/>
@@ -12013,7 +12014,7 @@ Enjoy!</string>
         <scene sceneID="OAQ-SO-xrY">
             <objects>
                 <viewController id="SQ6-ib-YyC" customClass="AiDPViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Kc-Tw-oaX">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="7Kc-Tw-oaX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -12175,10 +12176,10 @@ Enjoy!</string>
                                     <outlet property="delegate" destination="SQ6-ib-YyC" id="a4v-lA-OSh"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
                                 <rect key="frame" x="-400" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
                                         <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -12210,11 +12211,11 @@ Enjoy!</string>
                                     <constraint firstItem="psZ-EU-PJH" firstAttribute="top" secondItem="Due-Nx-Cu3" secondAttribute="top" constant="36" id="pVv-3C-6yB"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
-                                        <rect key="frame" x="28" y="422.33333333333331" width="358.33333333333331" height="17.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
+                                        <rect key="frame" x="28" y="422.33333333333326" width="358.33333333333331" height="17.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -14237,7 +14238,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                         <rect key="frame" x="22" y="30" width="369" height="738"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-tI-gds">
-                                                <rect key="frame" x="41" y="499.66666666666663" width="239" height="34"/>
+                                                <rect key="frame" x="41" y="550.66666666666663" width="239" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="mGJ-BQ-5Sc"/>
@@ -14246,7 +14247,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLease choose Language" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bV-eO-wS1">
-                                                <rect key="frame" x="41" y="549.66666666666663" width="259" height="34"/>
+                                                <rect key="frame" x="41" y="600.66666666666663" width="259" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="uBz-Tz-bQ3"/>
@@ -14255,37 +14256,37 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYN-XL-UVh">
-                                                <rect key="frame" x="41" y="549.66666666666663" width="295" height="34"/>
+                                                <rect key="frame" x="41" y="600.66666666666663" width="295" height="34"/>
                                                 <connections>
                                                     <action selector="languageBtnTapped:" destination="fln-oG-sxT" eventType="touchUpInside" id="jrh-p0-6f2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-FN-tof">
-                                                <rect key="frame" x="41" y="499.66666666666663" width="275" height="34"/>
+                                                <rect key="frame" x="41" y="550.66666666666663" width="275" height="34"/>
                                                 <connections>
                                                     <action selector="getTimeSlotsBtnTapped:" destination="fln-oG-sxT" eventType="touchUpInside" id="SRF-WG-QFf"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="7cN-Mv-307">
-                                                <rect key="frame" x="5" y="501.66666666666663" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="552.66666666666663" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Cx5-oN-UrQ"/>
                                                     <constraint firstAttribute="width" constant="30" id="zEb-Ed-qz8"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speak" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-vx-gME">
-                                                <rect key="frame" x="5" y="551.66666666666663" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="602.66666666666663" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="EYZ-PS-65m"/>
                                                     <constraint firstAttribute="width" constant="30" id="uK7-tk-hSJ"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbX-Tl-DUB" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="369" height="483.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="534.66666666666663"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxg-yn-OLH">
-                                                <rect key="frame" x="18" y="597.66666666666663" width="333" height="35.333333333333371"/>
+                                                <rect key="frame" x="18" y="648.66666666666663" width="333" height="35.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -14327,21 +14328,21 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xsj-mF-PSb">
-                                                <rect key="frame" x="310" y="552.33333333333337" width="28" height="29"/>
+                                                <rect key="frame" x="310" y="603.33333333333337" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="8TD-hp-Rny"/>
                                                     <constraint firstAttribute="height" constant="29" id="Bq4-Bk-CSH"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-1G-BwZ">
-                                                <rect key="frame" x="288" y="502.33333333333337" width="28" height="29"/>
+                                                <rect key="frame" x="288" y="553.33333333333337" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="UfG-Uk-g2U"/>
                                                     <constraint firstAttribute="width" constant="28" id="eQQ-Bd-bK8"/>
                                                 </constraints>
                                             </imageView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XUk-sc-lu0">
-                                                <rect key="frame" x="41" y="588.66666666666663" width="295" height="148.33333333333337"/>
+                                                <rect key="frame" x="41" y="639.66666666666663" width="295" height="97.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="34" id="upZ-sk-y62">
@@ -14492,7 +14493,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                             <constraint firstItem="Xsj-mF-PSb" firstAttribute="trailing" secondItem="kYN-XL-UVh" secondAttribute="trailing" constant="2" id="Bbb-o9-pr2"/>
                                             <constraint firstItem="kYN-XL-UVh" firstAttribute="trailing" secondItem="XUk-sc-lu0" secondAttribute="trailing" id="BlF-Wa-yKE"/>
                                             <constraint firstItem="fNj-vx-gME" firstAttribute="trailing" secondItem="7cN-Mv-307" secondAttribute="trailing" id="CVm-B7-XsB"/>
-                                            <constraint firstItem="clh-yg-djz" firstAttribute="top" secondItem="Oxg-yn-OLH" secondAttribute="bottom" constant="51" id="DlW-Ez-bl0"/>
+                                            <constraint firstItem="clh-yg-djz" firstAttribute="top" secondItem="Oxg-yn-OLH" secondAttribute="bottom" id="DlW-Ez-bl0"/>
                                             <constraint firstItem="IVu-3D-Ckj" firstAttribute="width" secondItem="Ax5-Uu-EOx" secondAttribute="width" id="EVR-ZQ-JWW"/>
                                             <constraint firstItem="GbX-Tl-DUB" firstAttribute="top" secondItem="OCC-oW-7p2" secondAttribute="top" id="HAs-cN-LWE"/>
                                             <constraint firstItem="EdI-1G-BwZ" firstAttribute="trailing" secondItem="jvt-FN-tof" secondAttribute="trailing" id="HuJ-JS-lxW"/>
@@ -15034,17 +15035,17 @@ It will also include 'Recommendations for the coming week in terms of both % car
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="ZxD-4P-ZEp"/>
+        <segue reference="L3b-DM-3HI"/>
         <segue reference="Pf6-Bl-kGD"/>
-        <segue reference="wN5-ei-u57"/>
-        <segue reference="KN2-Gy-7ip"/>
-        <segue reference="NUj-2a-Gdt"/>
-        <segue reference="xXj-fr-1VY"/>
-        <segue reference="Zlh-ve-yAp"/>
+        <segue reference="lPI-KC-Cke"/>
+        <segue reference="8Io-NT-hdk"/>
+        <segue reference="zVF-by-iNH"/>
+        <segue reference="wAY-l1-OTQ"/>
+        <segue reference="lMP-CW-m2y"/>
         <segue reference="H2E-CF-Hc1"/>
         <segue reference="Yl1-aV-dl8"/>
         <segue reference="Zyf-gX-8GO"/>
-        <segue reference="W27-H4-Tga"/>
+        <segue reference="IPc-oa-i3a"/>
         <segue reference="cfW-e7-Ff1"/>
         <segue reference="5vE-qp-Xfk"/>
         <segue reference="Npq-p8-1E4"/>

@@ -68,6 +68,7 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - Flyshot (4.0.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
+  - Flyshot
   - MBCircularProgressBar
   - OneSignal (< 3.0, >= 2.11.2)
   - razorpay-pod
@@ -134,6 +136,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
+    - Flyshot
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - MBCircularProgressBar
@@ -172,6 +175,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
+  Flyshot: a89f06010c84e9abcd46ce9db2bc849912f3b78d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
@@ -183,6 +187,6 @@ SPEC CHECKSUMS:
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
 
-PODFILE CHECKSUM: 81ed43082a423f120b1efe1e58822621d456f037
+PODFILE CHECKSUM: bfa77b98549ffd5991d8afb2d19b5bd127377937
 
 COCOAPODS: 1.9.1

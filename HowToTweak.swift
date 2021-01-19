@@ -75,7 +75,7 @@ class HowToTweak: UIView {
                     self.delegate.getTrends()
                     self.delegate.showButtonsView()
             self.delegate.getAdDetails()
-
+            self.delegate.setupSiaButton()
                     appDelegate.getAnnouncements()
                     
                     //self.delegate.checkUserPremiumMember()

@@ -154,17 +154,35 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell=collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor=UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        let lbl = cell?.subviews[1] as! UILabel
-        self.selectedDate = Int(lbl.text!)!
+        let cellViews: [UIView] = cell!.subviews
+        for view in cellViews {
+            if view.isKind(of: UILabel.self) {
+                let lbl = view as! UILabel
+                self.selectedDate = Int(lbl.text!)!
+                lbl.textColor = UIColor.white
+
+            }
+        }
+      //  let lbl = cell?.subviews[0] as! UILabel
+        //self.selectedDate = Int(lbl.text!)!
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DATE_SELECTED"), object: nil);
-        lbl.textColor=UIColor.white
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell=collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor=UIColor.clear
-        let lbl = cell?.subviews[1] as! UILabel
-        lbl.textColor = Style.activeCellLblColor
+//        let lbl = cell?.subviews[0] as! UILabel
+//        lbl.textColor = Style.activeCellLblColor
+        let cellViews: [UIView] = cell!.subviews
+        for view in cellViews {
+            if view.isKind(of: UILabel.self) {
+                let lbl = view as! UILabel
+                self.selectedDate = Int(lbl.text!)!
+                lbl.textColor = Style.activeCellLblColor
+
+            }
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

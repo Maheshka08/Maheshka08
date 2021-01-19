@@ -1,0 +1,12 @@
+
+framework module FlyshotSDK {
+	module Private {
+		header "OpenCVWrapper.h"
+	}
+    export *
+}
+
+module FlyshotSDK.Swift {
+    header "FlyshotSDK-Swift.h"
+    requires objc
+}

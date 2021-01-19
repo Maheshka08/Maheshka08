@@ -30,6 +30,7 @@ target 'Tweak and Eat' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'RNCryptor'
+  pod 'Flyshot'
   # Pods for Tweak and Eat
     
 end

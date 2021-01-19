@@ -15,6 +15,7 @@ import RealmSwift
 import Branch
 import RNCryptor
 import FacebookCore
+//import FlyshotSDK
 
 //Sample model
 struct Item {
@@ -28,6 +29,25 @@ enum MyTheme {
     case light
     case dark
 }
+//extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
+//   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
+//   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
+//   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//      // implement logic to process Flyshot IAP transactions
+//      // normally you would check for transactionState and mark the product as purchased in your database store
+//   }
+//
+//   // Flyshot will rely on this method before invoking any in-app purchase
+//   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
+//      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
+//       return true
+//   }
+//
+//   // This method will be invoked as a callback when Flyshot campaign was detected
+//   func flyshotCampaignDetected(productId: String?) {
+//      // Optional: implement custom logic here with productId related to current campaign
+//   }
+//}
 class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
     var identifierFromPopUp = ""
     var scrolledIndex: Int = 0
@@ -85,7 +105,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         MBProgressHUD.showAdded(to: self.view, animated: true);
         }
                            if (SKPaymentQueue.canMakePayments()) {
-                               self.buyNowButton.isEnabled = false
+                               //self.buyNowButton.isEnabled = false
                                let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
                                let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
                                productsRequest.delegate = self;
