@@ -53,86 +53,71 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var scrolledIndex: Int = 0
     func cellTappedOnButton(_ cell: CarouselCollectionViewCell) {
         
-        Flyshot.shared.upload(onSuccess: { (status) in
-            print(status)
-            if status == .found {
-                print("yes")
-            } else if status == .notFound {
-                print("not found")
-            } else if status == .redeemed {
-                print("redeemed")
-            }
-           // status enum:
-           //   notFound (notify the user that no active promos were found)
-           //   found (close the Promo Banner if "status == .found")
-           //   redeemed (notify the user that campaign was already redeemed)
-        }, onFailure: { (error) in
-           // Handle error
-        })
-//        selectedIndex = cell.myIndexPath.row;
-////        if self.carouselView1.indexPathForItem(at: CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y)) {
-////
-////        }
-//        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
-//        let index = self.carouselView1.indexPathForItem(at: center)
+       
+        selectedIndex = cell.myIndexPath.row;
+//        if self.carouselView1.indexPathForItem(at: CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y)) {
 //
-//        print(index ?? "index not found")
-////        for cell in self.carouselView1.visibleCells {
-////            let indexPath = self.carouselView1.indexPath(for: cell)
-////            print(indexPath)
-////            self.scrolledIndex = indexPath!.row
-////        }
-//        if index?.row != selectedIndex {
-//            DispatchQueue.main.async {
-//                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-//                                      self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-//                          }
-//            self.pageControl.currentPage = self.selectedIndex
-//
-//            return
 //        }
-//        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
-//            Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-//        } else if self.packageId == "-IndWLIntusoe3uelxER" {
-//            Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-//        } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-//            Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-//        } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
-//            Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
+        let index = self.carouselView1.indexPathForItem(at: center)
+
+        print(index ?? "index not found")
+//        for cell in self.carouselView1.visibleCells {
+//            let indexPath = self.carouselView1.indexPath(for: cell)
+//            print(indexPath)
+//            self.scrolledIndex = indexPath!.row
 //        }
-//
-//        SKPaymentQueue.default().add(self)
-//
-//                    self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
-//                    self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
-//                    self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
-//                    self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
-//                    self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
-//                    self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
-//                    let labels =  (self.labelPriceDict[lables] as? String)! + " ("
-//                    let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
-//
-//                    let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
-//                    let totalDesc: String = labels + amount + currency;
-//
-//                    self.packageName = (self.labelPriceDict[lables] as? String)!
-//
-//                    self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
-//                     DispatchQueue.main.async {
-//        MBProgressHUD.showAdded(to: self.view, animated: true);
-//        }
-//                           if (SKPaymentQueue.canMakePayments()) {
-//                               //self.buyNowButton.isEnabled = false
-//                               let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
-//                               let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
-//                               productsRequest.delegate = self;
-//                               productsRequest.start();
-//                               print("Fetching Products");
-//                           } else {
-//                               print("can't make purchases");
-//                           }
-//
-//
+        if index?.row != selectedIndex {
+            DispatchQueue.main.async {
+                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+                                      self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+                          }
+            self.pageControl.currentPage = self.selectedIndex
+
+            return
+        }
+        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
+            Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-IndWLIntusoe3uelxER" {
+            Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+            Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
+            Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+        }
+
+        SKPaymentQueue.default().add(self)
+
+                    self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
+                    self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+                    self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+                    self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+                    self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+                    self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+                    let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+                    let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+
+                    let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+                    let totalDesc: String = labels + amount + currency;
+
+                    self.packageName = (self.labelPriceDict[lables] as? String)!
+
+                    self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+                     DispatchQueue.main.async {
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        }
+                           if (SKPaymentQueue.canMakePayments()) {
+                               //self.buyNowButton.isEnabled = false
+                               let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                               let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                               productsRequest.delegate = self;
+                               productsRequest.start();
+                               print("Fetching Products");
+                           } else {
+                               print("can't make purchases");
+                           }
+
+
 
     }
     
@@ -435,7 +420,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
      @IBOutlet weak var packagesCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
     
-    
+    @IBOutlet weak var referralCodeBtn: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var ratingsCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var timeSlotTextField: UITextField!
@@ -653,6 +638,26 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
        }
+    
+    @IBAction func referralCodeBtnTapped(_ sender: Any) {
+        Flyshot.shared.upload(onSuccess: { (status) in
+            print(status)
+            if status == .found {
+                print("yes")
+            } else if status == .notFound {
+                print("not found")
+            } else if status == .redeemed {
+                print("redeemed")
+            }
+           // status enum:
+           //   notFound (notify the user that no active promos were found)
+           //   found (close the Promo Banner if "status == .found")
+           //   redeemed (notify the user that campaign was already redeemed)
+        }, onFailure: { (error) in
+           // Handle error
+        })
+        
+    }
     
     func gettimeSlots() {
         self.timeSlotsArray = []
@@ -2120,6 +2125,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //        event.customData["packageID"] = self.packageId
 //        event.customData["currency"] = self.currency
 //        event.logEvent()
+        self.referralCodeBtn.isHidden = true
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if self.countryCode == "91" {
@@ -2128,6 +2134,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
             } else if self.countryCode == "1" {
                 self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+                self.referralCodeBtn.isHidden = false
             } else if self.countryCode == "65" {
                 self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
             } else if self.countryCode == "60" {
@@ -2164,12 +2171,19 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.termsofUseBtn.setAttributedTitle(attributeString, for: .normal)
         
         let privacyAttr : [NSAttributedString.Key: Any] = [
-               NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+            NSAttributedString.Key.font : UIFont(name: "QUESTRIAL-REGULAR", size: 18)!,
             NSAttributedString.Key.foregroundColor : UIColor.blue,
             NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
                let attributeString1 = NSMutableAttributedString(string: "Privacy Policy",
                                                                   attributes: privacyAttr)
                self.privacyPolicyBtn.setAttributedTitle(attributeString1, for: .normal)
+        let referralCodeBtnAttr : [NSAttributedString.Key: Any] = [
+               NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor : UIColor.blue,
+            NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
+               let attributeString2 = NSMutableAttributedString(string: "REFERRAL CODE",
+                                                                  attributes: referralCodeBtnAttr)
+               self.referralCodeBtn.setAttributedTitle(attributeString2, for: .normal)
         self.noCommitmentLabel.font = UIFont(name: "QUESTRIAL-REGULAR", size: 18)
         if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
             self.privacyPolicyBtn.isHidden = true
