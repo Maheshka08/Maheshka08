@@ -22,7 +22,7 @@ import FacebookShare
 import Branch
 import RNCryptor
 import FBSDKCoreKit
-//import FlyshotSDK
+import FlyshotSDK
 //import AppTrackingTransparency
 let uiRealm = try! Realm()
 
@@ -219,16 +219,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         //UIApplication.shared.applicationIconBadgeNumber = 1
         // if you are using the TEST key
          //Branch.setUseTestBranchKey(true)
-//        Flyshot.shared.initialize(sdkToken: "fl_test_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lclV1aWQiOiI4ZjE0Mzc3MC1mZTk4LTQ4ZWEtOGJmZS1lNjUzZDk5Mjc4N2EiLCJhcHBsaWNhdGlvblV1aWQiOiIyYzRlNjBlNC1iZmJlLTRlMmItYjYzYi1kMjhjY2U5YzIyY2YiLCJ1dWlkIjoiMDYwMTZmNzEtYzYwYS00MjNjLTgyZDktNjJhNTZiMzkzMjJiIn0.XdAbRo-qhjuRio6Lk0hGxcwY0-eAuZiP9SfdV0gk2lE", onSuccess: {
-//           // SDK is ready for use
-//        }, onFailure: { (error) in
-//           // Handle error
-//        })
+
+        Flyshot.shared.initialize(sdkToken: "fl_test_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lclV1aWQiOiI4ZjE0Mzc3MC1mZTk4LTQ4ZWEtOGJmZS1lNjUzZDk5Mjc4N2EiLCJhcHBsaWNhdGlvblV1aWQiOiIyYzRlNjBlNC1iZmJlLTRlMmItYjYzYi1kMjhjY2U5YzIyY2YiLCJ1dWlkIjoiMDYwMTZmNzEtYzYwYS00MjNjLTgyZDktNjJhNTZiMzkzMjJiIn0.XdAbRo-qhjuRio6Lk0hGxcwY0-eAuZiP9SfdV0gk2lE", onSuccess: {
+           // SDK is ready for use
+        }, onFailure: { (error) in
+           // Handle error
+        })
          Branch.getInstance().enableLogging()
         //Branch.getInstance().validateSDKIntegration()
          // listener for Branch Deep Link data
          Branch.getInstance().initSession(launchOptions: launchOptions) { (params, error) in
-              // do stuff with deep link data (nav to page, display content, etc)
+              // do stuff with deep link data (nav to pagye, display content, etc)
              print(params as? [String: AnyObject] ?? {})
 //            UserDefaults.standard.set(params, forKey: "PUSHWHENKILLED")
 //            UserDefaults.standard.synchronize()

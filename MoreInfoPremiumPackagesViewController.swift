@@ -15,7 +15,7 @@ import RealmSwift
 import Branch
 import RNCryptor
 import FacebookCore
-//import FlyshotSDK
+import FlyshotSDK
 
 //Sample model
 struct Item {
@@ -29,93 +29,110 @@ enum MyTheme {
     case light
     case dark
 }
-//extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
-//   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
-//   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
-//   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-//      // implement logic to process Flyshot IAP transactions
-//      // normally you would check for transactionState and mark the product as purchased in your database store
-//   }
-//
-//   // Flyshot will rely on this method before invoking any in-app purchase
-//   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
-//      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
-//       return true
-//   }
-//
-//   // This method will be invoked as a callback when Flyshot campaign was detected
-//   func flyshotCampaignDetected(productId: String?) {
-//      // Optional: implement custom logic here with productId related to current campaign
-//   }
-//}
+extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
+   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
+   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
+   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+      // implement logic to process Flyshot IAP transactions
+      // normally you would check for transactionState and mark the product as purchased in your database store
+   }
+
+   // Flyshot will rely on this method before invoking any in-app purchase
+   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
+      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
+       return true
+   }
+
+   // This method will be invoked as a callback when Flyshot campaign was detected
+   func flyshotCampaignDetected(productId: String?) {
+      // Optional: implement custom logic here with productId related to current campaign
+   }
+}
 class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
     var identifierFromPopUp = ""
     var scrolledIndex: Int = 0
     func cellTappedOnButton(_ cell: CarouselCollectionViewCell) {
-        selectedIndex = cell.myIndexPath.row;
-//        if self.carouselView1.indexPathForItem(at: CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y)) {
+        
+        Flyshot.shared.upload(onSuccess: { (status) in
+            print(status)
+            if status == .found {
+                print("yes")
+            } else if status == .notFound {
+                print("not found")
+            } else if status == .redeemed {
+                print("redeemed")
+            }
+           // status enum:
+           //   notFound (notify the user that no active promos were found)
+           //   found (close the Promo Banner if "status == .found")
+           //   redeemed (notify the user that campaign was already redeemed)
+        }, onFailure: { (error) in
+           // Handle error
+        })
+//        selectedIndex = cell.myIndexPath.row;
+////        if self.carouselView1.indexPathForItem(at: CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y)) {
+////
+////        }
+//        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
+//        let index = self.carouselView1.indexPathForItem(at: center)
 //
+//        print(index ?? "index not found")
+////        for cell in self.carouselView1.visibleCells {
+////            let indexPath = self.carouselView1.indexPath(for: cell)
+////            print(indexPath)
+////            self.scrolledIndex = indexPath!.row
+////        }
+//        if index?.row != selectedIndex {
+//            DispatchQueue.main.async {
+//                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+//                                      self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+//                          }
+//            self.pageControl.currentPage = self.selectedIndex
+//
+//            return
 //        }
-        let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
-        let index = self.carouselView1.indexPathForItem(at: center)
-
-        print(index ?? "index not found")
-//        for cell in self.carouselView1.visibleCells {
-//            let indexPath = self.carouselView1.indexPath(for: cell)
-//            print(indexPath)
-//            self.scrolledIndex = indexPath!.row
+//        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
+//            Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+//        } else if self.packageId == "-IndWLIntusoe3uelxER" {
+//            Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+//        } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+//            Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+//        } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
+//            Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
 //        }
-        if index?.row != selectedIndex {
-            DispatchQueue.main.async {
-                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-                                      self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-                          }
-            self.pageControl.currentPage = self.selectedIndex
-
-            return
-        }
-        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
-            Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-        } else if self.packageId == "-IndWLIntusoe3uelxER" {
-            Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-        } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-            Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-        } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
-            Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
-        }
-      
-        SKPaymentQueue.default().add(self)
-
-                    self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
-                    self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
-                    self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
-                    self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
-                    self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
-                    self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
-                    let labels =  (self.labelPriceDict[lables] as? String)! + " ("
-                    let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
-                    
-                    let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
-                    let totalDesc: String = labels + amount + currency;
-       
-                    self.packageName = (self.labelPriceDict[lables] as? String)!
-       
-                    self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
-                     DispatchQueue.main.async {
-        MBProgressHUD.showAdded(to: self.view, animated: true);
-        }
-                           if (SKPaymentQueue.canMakePayments()) {
-                               //self.buyNowButton.isEnabled = false
-                               let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
-                               let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
-                               productsRequest.delegate = self;
-                               productsRequest.start();
-                               print("Fetching Products");
-                           } else {
-                               print("can't make purchases");
-                           }
-        
-        
+//
+//        SKPaymentQueue.default().add(self)
+//
+//                    self.labelPriceDict  = self.nutritionLabelPriceArray[cell.myIndexPath.row] as! [String : AnyObject];
+//                    self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+//                    self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+//                    self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+//                    self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+//                    self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+//                    let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+//                    let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+//
+//                    let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+//                    let totalDesc: String = labels + amount + currency;
+//
+//                    self.packageName = (self.labelPriceDict[lables] as? String)!
+//
+//                    self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+//                     DispatchQueue.main.async {
+//        MBProgressHUD.showAdded(to: self.view, animated: true);
+//        }
+//                           if (SKPaymentQueue.canMakePayments()) {
+//                               //self.buyNowButton.isEnabled = false
+//                               let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+//                               let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+//                               productsRequest.delegate = self;
+//                               productsRequest.start();
+//                               print("Fetching Products");
+//                           } else {
+//                               print("can't make purchases");
+//                           }
+//
+//
 
     }
     
@@ -2070,11 +2087,23 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        Flyshot.shared.delegate = self
         self.premiumSubView.layer.cornerRadius = 15
 //        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)
         self.imgScrollView.layer.cornerRadius = 15
-        
+        print(Flyshot.shared.isFlyshotUser())
+
+        // Returns true/false boolean if user has active campaign
+        print(Flyshot.shared.isCampaignActive())
+        // or
+        // Returns true/false boolean if user has active campaign for a specific offering (Product ID or In-App Purchase ID)
+              print(Flyshot.shared.isCampaignActive(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
+
+        // Returns true/false boolean if user is eligible for Flyshot promo
+                    print(Flyshot.shared.isEligibleForPromo())
+        // or
+        // Returns true/false boolean if user is eligible for Flyshot promo for a specific offering
+                          print(Flyshot.shared.isEligibleForPromo(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
         //IndIWj1mSzQ1GDlBpUt
 //        if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
