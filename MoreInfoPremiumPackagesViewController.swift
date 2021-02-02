@@ -35,6 +35,7 @@ extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
    func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
       // implement logic to process Flyshot IAP transactions
       // normally you would check for transactionState and mark the product as purchased in your database store
+    MBProgressHUD.hide(for: self.view, animated: true)
    }
 
    // Flyshot will rely on this method before invoking any in-app purchase
@@ -644,6 +645,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             print(status)
             if status == .found {
                 print("yes")
+                MBProgressHUD.showAdded(to: self.view, animated: true)
             } else if status == .notFound {
                 print("not found")
             } else if status == .redeemed {
@@ -2109,6 +2111,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         // or
         // Returns true/false boolean if user is eligible for Flyshot promo for a specific offering
                           print(Flyshot.shared.isEligibleForPromo(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
+//        Flyshot.test.clearUserData()
+//        Flyshot.test.campaignRedeemTest = true
+//        Flyshot.test.clearCampaignData()
         //IndIWj1mSzQ1GDlBpUt
 //        if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
