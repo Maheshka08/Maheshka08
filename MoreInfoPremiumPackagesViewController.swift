@@ -907,7 +907,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                         MBProgressHUD.hide(for: self.view, animated: true);
 
                     }
-                    TweakAndEatUtils.AlertView.showAlert(view: self, message: trans.error?.localizedDescription as Any as! String)
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
                     
@@ -2139,7 +2139,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
             } else if self.countryCode == "1" {
                 self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
-                self.referralCodeBtn.isHidden = false
+                //self.referralCodeBtn.isHidden = false
             } else if self.countryCode == "65" {
                 self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
             } else if self.countryCode == "60" {

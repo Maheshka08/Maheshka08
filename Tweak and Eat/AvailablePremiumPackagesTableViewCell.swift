@@ -9,6 +9,8 @@
 import UIKit
 protocol AvailablePackagesCellDelegate {
     func cellTappedOnHowToSubscribeVideo(_ cell: AvailablePremiumPackagesTableViewCell)
+    func uploadReferralCodeBtnTapped(_ cell: AvailablePackagesCell2)
+    func selectBtnTapped(_ cell: AvailablePackagesCell2)
     func cellTappedOnImage(_ cell: AvailablePremiumPackagesTableViewCell, sender: UITapGestureRecognizer)
 
 }

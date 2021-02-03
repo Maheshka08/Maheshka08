@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3IO-yt-yZe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3IO-yt-yZe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <array key="OrkneyMedium.otf">
             <string>Orkney-Medium</string>
         </array>
-        <array key="OrkneyRegular.otf">
+        <array key="OrkneyRegular.ttf">
             <string>Orkney-Regular</string>
         </array>
         <array key="QUESTRIAL-REGULAR.TTF">
@@ -4466,7 +4466,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9de-rB-Lqm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tku-Be-Cse">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -4552,7 +4552,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLW-4n-DZI">
-                                        <rect key="frame" x="0.0" y="705" width="414" height="56"/>
+                                        <rect key="frame" x="0.0" y="754" width="414" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="VgO-RY-3uc"/>
                                         </constraints>
@@ -4676,7 +4676,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-eY-GzX">
-                                        <rect key="frame" x="47" y="394" width="320" height="74.333333333333314"/>
+                                        <rect key="frame" x="47" y="394" width="320" height="74.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Rlv-ga-x2t"/>
                                         </constraints>
@@ -4701,7 +4701,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="F79-Dv-oT0">
-                                        <rect key="frame" x="175" y="271.33333333333331" width="64" height="90"/>
+                                        <rect key="frame" x="175" y="271.5" width="64" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="Scj-k0-6wm"/>
                                             <constraint firstAttribute="width" constant="64" id="qbb-nr-gBl"/>
@@ -5426,7 +5426,7 @@ Enjoy!</string>
                                 <rect key="frame" x="10" y="17" width="394" height="691"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesomes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X96-yg-q0L">
-                                        <rect key="frame" x="34" y="10.5" width="78.5" height="17"/>
+                                        <rect key="frame" x="34" y="11" width="78.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7174,8 +7174,89 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="206" width="414" height="656"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.84313725490196079" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell2" rowHeight="130" id="aQJ-Eo-I8i" customClass="AvailablePackagesCell2" customModule="Tweak_and_Eat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aQJ-Eo-I8i" id="S5V-NA-NNn">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4G-HZ-s0P">
+                                                    <rect key="frame" x="10" y="10" width="394" height="110"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-w4-WPI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="48"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="48" id="wqv-Ay-BgS"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szn-He-DXn">
+                                                            <rect key="frame" x="8" y="56" width="200" height="45"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="200" id="d7C-CG-JvN"/>
+                                                                <constraint firstAttribute="height" constant="45" id="xl9-GU-uQz"/>
+                                                            </constraints>
+                                                            <state key="normal" image="referral_code"/>
+                                                            <connections>
+                                                                <action selector="uploadReferralCodeBtnTapped:" destination="aQJ-Eo-I8i" eventType="touchUpInside" id="grZ-5j-rl8"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pv4-dn-xAQ">
+                                                            <rect key="frame" x="296" y="56" width="90" height="45"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="90" id="8fe-bM-4up"/>
+                                                                <constraint firstAttribute="height" constant="45" id="jTn-6q-1LP"/>
+                                                            </constraints>
+                                                            <state key="normal" image="select"/>
+                                                            <connections>
+                                                                <action selector="selectBtnTapped:" destination="aQJ-Eo-I8i" eventType="touchUpInside" id="449-Cr-Gz4"/>
+                                                            </connections>
+                                                        </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon-1" translatesAutoresizingMaskIntoConstraints="NO" id="P9b-6b-Iue">
+                                                            <rect key="frame" x="359" y="0.0" width="35" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="35" id="XBG-kh-7kW"/>
+                                                                <constraint firstAttribute="width" constant="35" id="bqS-1f-sfh"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="9Nw-w4-WPI" firstAttribute="top" secondItem="C4G-HZ-s0P" secondAttribute="top" id="0fy-cD-c6x"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Pv4-dn-xAQ" secondAttribute="bottom" constant="9" id="1yt-PT-kAY"/>
+                                                        <constraint firstItem="Szn-He-DXn" firstAttribute="leading" secondItem="C4G-HZ-s0P" secondAttribute="leading" constant="8" id="7Il-yc-Sum"/>
+                                                        <constraint firstItem="Pv4-dn-xAQ" firstAttribute="leading" secondItem="Szn-He-DXn" secondAttribute="trailing" constant="88" id="ETV-yh-cIC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Pv4-dn-xAQ" secondAttribute="trailing" constant="8" id="HJt-1g-QnN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="P9b-6b-Iue" secondAttribute="trailing" id="OOh-vl-eBP"/>
+                                                        <constraint firstItem="9Nw-w4-WPI" firstAttribute="leading" secondItem="C4G-HZ-s0P" secondAttribute="leading" id="Owh-FU-4ze"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9Nw-w4-WPI" secondAttribute="trailing" id="XbR-BK-iSE"/>
+                                                        <constraint firstItem="Pv4-dn-xAQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Szn-He-DXn" secondAttribute="trailing" constant="5" id="a3R-Qm-x5J"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Szn-He-DXn" secondAttribute="bottom" constant="9" id="dSw-iz-p7b"/>
+                                                        <constraint firstItem="P9b-6b-Iue" firstAttribute="top" secondItem="C4G-HZ-s0P" secondAttribute="top" id="lbh-WI-LSA"/>
+                                                        <constraint firstItem="Szn-He-DXn" firstAttribute="top" secondItem="9Nw-w4-WPI" secondAttribute="bottom" constant="8" id="sTS-2f-aEk"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="C4G-HZ-s0P" firstAttribute="top" secondItem="S5V-NA-NNn" secondAttribute="top" constant="10" id="5AI-UA-5bZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="C4G-HZ-s0P" secondAttribute="trailing" constant="10" id="DUF-mR-7Ck"/>
+                                                <constraint firstItem="C4G-HZ-s0P" firstAttribute="leading" secondItem="S5V-NA-NNn" secondAttribute="leading" constant="10" id="iiW-RG-aHo"/>
+                                                <constraint firstAttribute="bottom" secondItem="C4G-HZ-s0P" secondAttribute="bottom" constant="10" id="qu7-Pi-hqF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="packageImageView" destination="9Nw-w4-WPI" id="DnT-b1-yZo"/>
+                                            <outlet property="packageImageViewHeightConstraint" destination="wqv-Ay-BgS" id="ZLI-Ef-J5L"/>
+                                            <outlet property="packagesView" destination="C4G-HZ-s0P" id="CRY-mQ-SPa"/>
+                                            <outlet property="selectBtn" destination="Pv4-dn-xAQ" id="DiB-mn-quL"/>
+                                            <outlet property="tickMarkImageView" destination="P9b-6b-Iue" id="WUF-Nd-ARc"/>
+                                            <outlet property="uploadReferralCodeBtn" destination="Szn-He-DXn" id="Ncb-Jl-f4y"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" rowHeight="575" id="PCI-yq-nQ3" customClass="AvailablePremiumPackagesTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="575"/>
+                                        <rect key="frame" x="0.0" y="158" width="414" height="575"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PCI-yq-nQ3" id="c2e-kR-EoE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="575"/>
@@ -7255,8 +7336,47 @@ Enjoy!</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-aP-RcE">
-                                <rect key="frame" x="-414" y="0.0" width="414" height="862"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_bg1" translatesAutoresizingMaskIntoConstraints="NO" id="aoA-Iw-JRo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="CFl-pI-90b"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKq-rD-8J8">
+                                <rect key="frame" x="12" y="39" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="0Qm-Q8-X2N"/>
+                                    <constraint firstAttribute="height" constant="40" id="Pu0-yT-edZ"/>
+                                </constraints>
+                                <state key="normal" image="back_arrow"/>
+                                <connections>
+                                    <action selector="backAction:" destination="OP8-7j-rYk" eventType="touchUpInside" id="KlU-A0-eCp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2K-gu-A0q">
+                                <rect key="frame" x="152" y="39" width="110" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Vzk-ti-bzE"/>
+                                    <constraint firstAttribute="width" constant="110" id="okx-Gu-L5B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="24"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have taken a very important step to live healthy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vR-ew-o06">
+                                <rect key="frame" x="52" y="69" width="310" height="37.5"/>
+                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a package from the options below that is right for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YO5-oO-jCJ">
+                                <rect key="frame" x="20" y="152" width="374" height="43.5"/>
+                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="21"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-aP-RcE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="Txj-q2-Wec">
                                         <rect key="frame" x="175" y="77" width="64" height="84"/>
@@ -7351,46 +7471,54 @@ Enjoy!</string>
                                     <constraint firstItem="QfF-DX-tAG" firstAttribute="top" secondItem="F5f-dU-141" secondAttribute="bottom" constant="8" id="tF1-tN-zf4"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_bg1" translatesAutoresizingMaskIntoConstraints="NO" id="aoA-Iw-JRo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UW-t7-z9o">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9J9-VX-lkK">
+                                        <rect key="frame" x="47" y="411" width="320" height="74.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="VA1-kT-vTW"/>
+                                        </constraints>
+                                        <string key="text">Congratulations on joining the Tweak &amp; Eat Club!
+Enjoy!</string>
+                                        <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="24"/>
+                                        <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2z-7U-oan">
+                                        <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                                        <color key="backgroundColor" red="0.39321953059999998" green="0.12741079929999999" blue="0.52551943059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="lu6-BX-woB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="24"/>
+                                        <state key="normal" title="DONE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clubSuccessDoneTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="C1c-7o-G3i"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="7Uf-yV-qGO">
+                                        <rect key="frame" x="175" y="288.5" width="64" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="FBD-io-0HY"/>
+                                            <constraint firstAttribute="width" constant="64" id="To3-UD-Ab6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="CFl-pI-90b"/>
+                                    <constraint firstItem="9J9-VX-lkK" firstAttribute="centerX" secondItem="7UW-t7-z9o" secondAttribute="centerX" id="Fip-AY-kc0"/>
+                                    <constraint firstItem="7Uf-yV-qGO" firstAttribute="centerX" secondItem="7UW-t7-z9o" secondAttribute="centerX" id="HJJ-PB-IUM"/>
+                                    <constraint firstItem="9J9-VX-lkK" firstAttribute="centerY" secondItem="7UW-t7-z9o" secondAttribute="centerY" id="KQo-xG-I6W"/>
+                                    <constraint firstItem="e2z-7U-oan" firstAttribute="leading" secondItem="7UW-t7-z9o" secondAttribute="leading" id="PB7-jc-LE1"/>
+                                    <constraint firstAttribute="trailing" secondItem="e2z-7U-oan" secondAttribute="trailing" id="PJB-rr-rGF"/>
+                                    <constraint firstAttribute="bottom" secondItem="e2z-7U-oan" secondAttribute="bottom" id="ZXh-Qo-YbZ"/>
+                                    <constraint firstItem="9J9-VX-lkK" firstAttribute="top" secondItem="7Uf-yV-qGO" secondAttribute="bottom" constant="32.5" id="kuE-2Z-y2Z"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKq-rD-8J8">
-                                <rect key="frame" x="12" y="39" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="0Qm-Q8-X2N"/>
-                                    <constraint firstAttribute="height" constant="40" id="Pu0-yT-edZ"/>
-                                </constraints>
-                                <state key="normal" image="back_arrow"/>
-                                <connections>
-                                    <action selector="backAction:" destination="OP8-7j-rYk" eventType="touchUpInside" id="KlU-A0-eCp"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2K-gu-A0q">
-                                <rect key="frame" x="152" y="39" width="110" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Vzk-ti-bzE"/>
-                                    <constraint firstAttribute="width" constant="110" id="okx-Gu-L5B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="24"/>
-                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have taken a very important step to live healthy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vR-ew-o06">
-                                <rect key="frame" x="52" y="69" width="310" height="37.5"/>
-                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
-                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a package from the options below that is right for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YO5-oO-jCJ">
-                                <rect key="frame" x="20" y="152" width="374" height="43.5"/>
-                                <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="21"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nutrition_labels_Included_for_all" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-I6-EtU">
+                            </view>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nutrition_labels_Included_for_all" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-I6-EtU">
                                 <rect key="frame" x="20" y="862" width="374" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="kyd-77-C3P"/>
@@ -7402,11 +7530,15 @@ Enjoy!</string>
                         <constraints>
                             <constraint firstItem="a0a-I6-EtU" firstAttribute="leading" secondItem="2Qc-LT-Sm9" secondAttribute="leading" constant="20" id="06v-nA-iWw"/>
                             <constraint firstItem="YO5-oO-jCJ" firstAttribute="leading" secondItem="2Qc-LT-Sm9" secondAttribute="leading" constant="20" id="421-Yb-jqs"/>
+                            <constraint firstItem="7UW-t7-z9o" firstAttribute="leading" secondItem="2Qc-LT-Sm9" secondAttribute="leading" id="5Zb-Dp-5vN"/>
                             <constraint firstItem="2Qc-LT-Sm9" firstAttribute="trailing" secondItem="YO5-oO-jCJ" secondAttribute="trailing" constant="20" id="6e4-Vy-Prt"/>
+                            <constraint firstItem="7UW-t7-z9o" firstAttribute="top" secondItem="fRV-i0-zbY" secondAttribute="top" id="7au-C0-rdN"/>
                             <constraint firstItem="wof-63-Jyp" firstAttribute="top" secondItem="YO5-oO-jCJ" secondAttribute="bottom" constant="10.5" id="98u-Nl-b9T"/>
                             <constraint firstItem="bv2-aP-RcE" firstAttribute="leading" secondItem="2Qc-LT-Sm9" secondAttribute="leading" id="9Mg-3s-8c3"/>
                             <constraint firstItem="0vR-ew-o06" firstAttribute="top" secondItem="L2K-gu-A0q" secondAttribute="bottom" constant="8" id="AT0-K1-Tjf"/>
                             <constraint firstItem="YO5-oO-jCJ" firstAttribute="top" secondItem="aoA-Iw-JRo" secondAttribute="bottom" constant="12" id="D2V-1e-2LX"/>
+                            <constraint firstAttribute="bottom" secondItem="7UW-t7-z9o" secondAttribute="bottom" id="F17-VC-1DP"/>
+                            <constraint firstItem="2Qc-LT-Sm9" firstAttribute="trailing" secondItem="7UW-t7-z9o" secondAttribute="trailing" id="IDu-BG-Uyw"/>
                             <constraint firstItem="0vR-ew-o06" firstAttribute="leading" secondItem="BKq-rD-8J8" secondAttribute="trailing" id="Ml5-Rv-SCs"/>
                             <constraint firstItem="bv2-aP-RcE" firstAttribute="top" secondItem="fRV-i0-zbY" secondAttribute="top" id="QHA-hy-o2j"/>
                             <constraint firstItem="2Qc-LT-Sm9" firstAttribute="trailing" secondItem="aoA-Iw-JRo" secondAttribute="trailing" id="Qgz-fA-Z4n"/>
@@ -7428,6 +7560,7 @@ Enjoy!</string>
                     </view>
                     <navigationItem key="navigationItem" title="Packages" id="qtD-iG-5Mq"/>
                     <connections>
+                        <outlet property="clubPaymentSuccessView" destination="7UW-t7-z9o" id="Qzf-0Z-c0h"/>
                         <outlet property="nutritionstDescLbl" destination="Vsf-U6-glR" id="bMK-gp-Toa"/>
                         <outlet property="paySucessView" destination="bv2-aP-RcE" id="5Au-TK-Rte"/>
                         <outlet property="tableView" destination="wof-63-Jyp" id="chz-Eb-Xdc"/>
@@ -10676,15 +10809,15 @@ Once you are unsubscribed you will not have access to:
         <scene sceneID="Gu1-wY-72F">
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rF-T1-Xhw" customClass="MoreInfoPremiumPackagesViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xd8-fO-0Ej">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="xd8-fO-0Ej">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
-                                <rect key="frame" x="0.0" y="223" width="414" height="639"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkv-CE-EA9">
+                                <rect key="frame" x="0.0" y="223" width="375" height="639"/>
                                 <subviews>
-                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-RY-uuO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">AiDP – tweakyfai (our own AI platform) generated Diet Plans at just Rs.149.  (Compare that to an average of Five thousand rupees …yes…Rs.5000 being charged for a diet plan)!
 Now that’s INCREDIBLE VALUE! Get one, follow it and live the magic!
@@ -10707,7 +10840,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuQ-TF-6mG">
-                                <rect key="frame" x="0.0" y="222" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="222" width="375" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-RU-dGb">
                                         <rect key="frame" x="8" y="12" width="111" height="21"/>
@@ -10720,7 +10853,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-6a-m4O">
-                                        <rect key="frame" x="257.5" y="12" width="62" height="21"/>
+                                        <rect key="frame" x="218.5" y="12" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="Vsz-5d-5Zv"/>
                                         </constraints>
@@ -10729,7 +10862,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREMIUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-kF-2nJ">
-                                        <rect key="frame" x="336.5" y="12" width="71.5" height="21"/>
+                                        <rect key="frame" x="297.5" y="12" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -10748,19 +10881,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="aK2-kF-2nJ" secondAttribute="trailing" constant="6" id="ssd-lv-DaJ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
-                                <rect key="frame" x="0.0" y="267" width="414" height="342"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icc-DJ-AC3">
+                                <rect key="frame" x="0.0" y="267" width="375" height="342"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="cqP-gB-zrd" customClass="MoreInfoPackageTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="17"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="17"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cqP-gB-zrd" id="U1e-zj-XZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-TC-XGP">
-                                                    <rect key="frame" x="8" y="0.0" width="271" height="17"/>
+                                                    <rect key="frame" x="8" y="0.0" width="232" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="177" id="QEP-Pr-5Hu"/>
                                                     </constraints>
@@ -10769,14 +10902,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-t9-LxV">
-                                                    <rect key="frame" x="287" y="-6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="248" y="-6.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="EHu-rf-szI"/>
                                                         <constraint firstAttribute="height" constant="30" id="qyq-xc-82O"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-d4-u09">
-                                                    <rect key="frame" x="356" y="-6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="-6.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="0vK-Sz-MC9"/>
                                                         <constraint firstAttribute="height" constant="30" id="DNz-1b-IdK"/>
@@ -10807,8 +10940,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="TvT-Sc-u8O"/>
                                 </connections>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-VA-aSQ">
-                                <rect key="frame" x="20" y="730" width="374" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-VA-aSQ">
+                                <rect key="frame" x="20" y="730" width="335" height="128"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Ot9-3j-SfP"/>
@@ -10822,19 +10955,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCJ-bO-auo">
-                                <rect key="frame" x="10" y="54" width="394" height="158"/>
+                                <rect key="frame" x="10" y="54" width="355" height="158"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="158" id="taN-ei-Keb"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Em-f1-DYs">
-                                <rect key="frame" x="0.0" y="613" width="414" height="0.0"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Em-f1-DYs">
+                                <rect key="frame" x="0.0" y="613" width="375" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2Cm-J5-3qV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-8L-ErT">
-                                <rect key="frame" x="47" y="613" width="320" height="0.0"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-8L-ErT">
+                                <rect key="frame" x="27.5" y="613" width="320" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Mr9-di-Wwp"/>
                                 </constraints>
@@ -10843,11 +10976,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <action selector="callNutritionistBtn1Tapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Y6b-cr-SUF"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJe-W0-VgJ">
-                                <rect key="frame" x="10" y="613" width="394" height="0.0"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJe-W0-VgJ">
+                                <rect key="frame" x="10" y="613" width="355" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KB-2t-bcB">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -10862,11 +10995,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="9KB-2t-bcB" firstAttribute="top" secondItem="GJe-W0-VgJ" secondAttribute="top" id="sYs-oo-V2e"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-Kv-pMb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-Kv-pMb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X06-xj-Abk">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="5"/>
                                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="eUc-VZ-SF1"/>
@@ -10876,14 +11009,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TR5-om-ikV" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="264" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="264" width="375" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="mcK-jI-Twu"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L1Q-4c-0RQ" customClass="CarouselCollectionView2" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="264" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="264" width="375" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xi2-DR-S6v">
                                             <size key="itemSize" width="128" height="128"/>
@@ -10916,14 +11049,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="L1Q-4c-0RQ" firstAttribute="trailing" secondItem="TR5-om-ikV" secondAttribute="trailing" id="zgD-Hy-ulo"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-d6-6kK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-d6-6kK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-ly-0gM">
-                                        <rect key="frame" x="0.0" y="2" width="414" height="860"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-ly-0gM">
+                                        <rect key="frame" x="0.0" y="2" width="375" height="860"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR5-tQ-Ttz">
-                                                <rect key="frame" x="10" y="8" width="394" height="21"/>
+                                                <rect key="frame" x="10" y="8" width="355" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="zRm-Vk-Qwb"/>
                                                 </constraints>
@@ -10932,13 +11065,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjK-Ux-sAA">
-                                                <rect key="frame" x="10" y="34" width="394" height="0.0"/>
+                                                <rect key="frame" x="10" y="34" width="355" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.22560176253318787" green="0.61159390211105347" blue="0.58418112993240356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  What you get:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMF-iv-JaO">
-                                                <rect key="frame" x="0.0" y="40" width="414" height="29"/>
+                                                <rect key="frame" x="0.0" y="40" width="375" height="29"/>
                                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="WAw-XG-Bcn"/>
@@ -10947,17 +11080,17 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-4I-ABp">
-                                                <rect key="frame" x="6" y="69" width="402" height="522"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-4I-ABp">
+                                                <rect key="frame" x="6" y="69" width="363" height="522"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-YF-qOl">
-                                                <rect key="frame" x="30" y="652" width="354" height="45"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-YF-qOl">
+                                                <rect key="frame" x="30" y="652" width="315" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please choose a  subscription plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUp-Ff-Z2q">
-                                                        <rect key="frame" x="8" y="4" width="277" height="37"/>
+                                                        <rect key="frame" x="8" y="4" width="238" height="37"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="37" id="wlD-oh-vh2"/>
                                                         </constraints>
@@ -10966,7 +11099,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAZ-QS-km7">
-                                                        <rect key="frame" x="293" y="0.0" width="56" height="45"/>
+                                                        <rect key="frame" x="254" y="0.0" width="56" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="3Vl-Kl-BfR"/>
                                                             <constraint firstAttribute="width" constant="56" id="5By-kg-7Wo"/>
@@ -10988,8 +11121,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <constraint firstAttribute="height" constant="45" id="u2g-D2-9b7"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-Rb-vY1">
-                                                <rect key="frame" x="30" y="706" width="354" height="46"/>
+                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-Rb-vY1">
+                                                <rect key="frame" x="30" y="706" width="315" height="46"/>
                                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="nbp-1K-pRI"/>
@@ -11002,8 +11135,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <action selector="buyTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Gjv-jE-oOw"/>
                                                 </connections>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H7O-YD-OSc">
-                                                <rect key="frame" x="20" y="760" width="374" height="92"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H7O-YD-OSc">
+                                                <rect key="frame" x="20" y="760" width="335" height="92"/>
                                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="92" id="fzK-8z-Le7"/>
@@ -11016,8 +11149,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="cOo-2O-zH9"/>
                                                 </connections>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-us-78n">
-                                                <rect key="frame" x="47" y="599" width="320" height="45"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-us-78n">
+                                                <rect key="frame" x="27.5" y="599" width="320" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="9DW-t5-kZE"/>
                                                     <constraint firstAttribute="width" constant="320" id="qQM-SR-SyM"/>
@@ -11028,11 +11161,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <action selector="callNutritionistBtn2Tapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="Z6B-JE-Pdp"/>
                                                 </connections>
                                             </button>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpM-F0-KQC">
-                                                <rect key="frame" x="10" y="599" width="394" height="45"/>
+                                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpM-F0-KQC">
+                                                <rect key="frame" x="10" y="599" width="355" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrM-vL-VC1">
-                                                        <rect key="frame" x="10" y="10" width="374" height="25"/>
+                                                        <rect key="frame" x="10" y="10" width="335" height="25"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -11089,8 +11222,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="q2K-ly-0gM" firstAttribute="top" secondItem="oMu-d6-6kK" secondAttribute="top" constant="2" id="xL7-5O-4Iu"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-CF-64T">
-                                <rect key="frame" x="30" y="673" width="354" height="46"/>
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-CF-64T">
+                                <rect key="frame" x="30" y="673" width="315" height="46"/>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="mTG-PC-iN9"/>
@@ -11103,11 +11236,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <action selector="buyTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="w9z-v1-hJg"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-xM-8Fv">
-                                <rect key="frame" x="30" y="618" width="354" height="45"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-xM-8Fv">
+                                <rect key="frame" x="30" y="618" width="315" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please choose a  subscription plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lf-Vn-01q">
-                                        <rect key="frame" x="8" y="4" width="277" height="37"/>
+                                        <rect key="frame" x="8" y="4" width="238" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="vrb-fd-sts"/>
                                         </constraints>
@@ -11116,7 +11249,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJw-ot-fcE">
-                                        <rect key="frame" x="293" y="0.0" width="56" height="45"/>
+                                        <rect key="frame" x="254" y="0.0" width="56" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="IBS-aw-EHW"/>
                                             <constraint firstAttribute="height" constant="45" id="vaI-Oh-G3J"/>
@@ -11138,18 +11271,18 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstItem="1lf-Vn-01q" firstAttribute="leading" secondItem="JzL-xM-8Fv" secondAttribute="leading" constant="8" id="zq2-dn-nfy"/>
                                 </constraints>
                             </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-GI-pu9">
-                                <rect key="frame" x="0.0" y="604" width="414" height="258"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-GI-pu9">
+                                <rect key="frame" x="0.0" y="604" width="375" height="258"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="258" id="gS7-v2-SoO"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pricesCell" id="vy2-o6-Pqv">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vy2-o6-Pqv" id="04v-fu-i1g">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11160,11 +11293,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <outlet property="delegate" destination="8rF-T1-Xhw" id="yZv-0N-xme"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-cT-gi3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-cT-gi3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_bg1" translatesAutoresizingMaskIntoConstraints="NO" id="nKt-iR-EQC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Ccz-0Y-Xqc"/>
                                         </constraints>
@@ -11181,7 +11314,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npI-z2-QEp">
-                                        <rect key="frame" x="152" y="39" width="110" height="22"/>
+                                        <rect key="frame" x="132.5" y="39" width="110" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="CAI-L6-8y0"/>
                                             <constraint firstAttribute="height" constant="22" id="OS3-qK-QfU"/>
@@ -11191,7 +11324,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have taken a very important step to live healthy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egl-uX-j4T">
-                                        <rect key="frame" x="55" y="65" width="328" height="41"/>
+                                        <rect key="frame" x="55" y="65" width="289" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="XRX-1i-bsQ"/>
                                         </constraints>
@@ -11199,41 +11332,41 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdY-1k-8OQ">
-                                        <rect key="frame" x="20" y="152" width="374" height="662"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EdY-1k-8OQ">
+                                        <rect key="frame" x="20" y="152" width="335" height="662"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBA-ec-oZb">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="Ydt-uR-PnL"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mSc-pU-Eee">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="BW7-Ri-VDJ"/>
                                                 </constraints>
                                             </imageView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xp8-OS-J0Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwl-S9-rsg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8c-VC-Z2L">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T6p-zM-mzQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" id="z7T-aU-f3J"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6E-0L-VvO">
-                                                                <rect key="frame" x="334" y="0.0" width="40" height="40"/>
+                                                                <rect key="frame" x="295" y="0.0" width="40" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="ki9-Nd-eER"/>
                                                                     <constraint firstAttribute="height" constant="40" id="oed-ts-euJ"/>
@@ -11269,13 +11402,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <constraint firstItem="Vwl-S9-rsg" firstAttribute="leading" secondItem="Xp8-OS-J0Y" secondAttribute="leading" id="voy-Zu-BZU"/>
                                                 </constraints>
                                             </scrollView>
-                                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Vvl-Rj-fNx">
-                                                <rect key="frame" x="126" y="597" width="122.5" height="23"/>
+                                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Vvl-Rj-fNx">
+                                                <rect key="frame" x="106.5" y="597" width="122.5" height="23"/>
                                                 <color key="pageIndicatorTintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.3502984643" green="0.0" blue="0.5019912124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </pageControl>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk0-rD-ZTp">
-                                                <rect key="frame" x="128" y="627" width="118" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk0-rD-ZTp">
+                                                <rect key="frame" x="108.5" y="627" width="118" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="hKl-hk-66J"/>
                                                 </constraints>
@@ -11306,8 +11439,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                             <constraint firstItem="mSc-pU-Eee" firstAttribute="top" secondItem="MBA-ec-oZb" secondAttribute="bottom" id="y0D-zT-dWf"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No commitment. Cancel anytime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kw4-be-ZTC">
-                                        <rect key="frame" x="0.0" y="855" width="414" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No commitment. Cancel anytime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kw4-be-ZTC">
+                                        <rect key="frame" x="0.0" y="855" width="375" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="24N-jU-8PO"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="lkx-fO-lFF"/>
@@ -11316,7 +11449,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89k-Sk-ZIh">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89k-Sk-ZIh">
                                         <rect key="frame" x="20" y="819" width="112" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="cq9-Qj-67U"/>
@@ -11329,8 +11462,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                             <action selector="termsOfUseBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="QsC-AK-hgB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-7B-fvF">
-                                        <rect key="frame" x="277" y="819" width="117" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-7B-fvF">
+                                        <rect key="frame" x="238" y="819" width="117" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Privacy Policy">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11366,8 +11499,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="EdY-1k-8OQ" secondAttribute="trailing" constant="20" id="zwu-OF-nAu"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHB-Bc-aKk">
-                                <rect key="frame" x="82.5" y="602" width="249" height="60"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHB-Bc-aKk">
+                                <rect key="frame" x="63" y="602" width="249" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="249" id="5Kl-tO-M13"/>
                                     <constraint firstAttribute="height" constant="60" id="LBL-rn-03o"/>
@@ -11377,15 +11510,15 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <action selector="buyNowBttnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="YhN-BT-DC4"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDa-ey-gCL" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="553" width="414" height="194"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LDa-ey-gCL" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="553" width="375" height="194"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="194" id="tFI-l2-TdL"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3fR-J2-e6x" customClass="CarouselCollectionView" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="553" width="414" height="194"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3fR-J2-e6x" customClass="CarouselCollectionView" customModule="Tweak_and_Eat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="553" width="375" height="194"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cwu-Ld-LoJ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -11404,11 +11537,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-T1-7QS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-T1-7QS">
+                                <rect key="frame" x="0.0" y="44" width="375" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-2i-4Z4">
-                                        <rect key="frame" x="22" y="30" width="369" height="560"/>
+                                        <rect key="frame" x="22" y="30" width="330" height="560"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THv-Vh-JWY">
                                                 <rect key="frame" x="41" y="321.5" width="200" height="34"/>
@@ -11457,17 +11590,17 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-qM-FtK" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="369" height="305.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="305.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-zb-yPo">
-                                                <rect key="frame" x="18" y="419.5" width="333" height="35.5"/>
+                                                <rect key="frame" x="18" y="419.5" width="294" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to fix a call at 5/05/2020 9:15 AM?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGD-2U-RAR">
-                                                <rect key="frame" x="18" y="506" width="333" height="0.0"/>
+                                                <rect key="frame" x="18" y="506" width="294" height="0.0"/>
                                                 <color key="backgroundColor" red="0.84258264299999996" green="0.99554067850000005" blue="0.74898362159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="9qf-KO-t5A"/>
@@ -11477,7 +11610,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CN-Th-iye">
-                                                <rect key="frame" x="92" y="506" width="122" height="35"/>
+                                                <rect key="frame" x="53" y="506" width="122" height="35"/>
                                                 <color key="backgroundColor" red="0.66187959910000005" green="0.1941522956" blue="0.50982528920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <state key="normal" title="Cancel">
@@ -11488,7 +11621,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbf-ar-FDX">
-                                                <rect key="frame" x="231" y="506" width="122" height="35"/>
+                                                <rect key="frame" x="192" y="506" width="122" height="35"/>
                                                 <color key="backgroundColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="ei8-jD-Hi0"/>
@@ -11535,10 +11668,10 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </tableView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-Uo-Y1Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="369" height="560"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="560"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-Jd-ipQ">
-                                                        <rect key="frame" x="39" y="19" width="291" height="273.5"/>
+                                                        <rect key="frame" x="19.5" y="19" width="291" height="273.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm to schedule the call" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDp-6i-p3h">
                                                                 <rect key="frame" x="10" y="10" width="268" height="20"/>
@@ -11714,18 +11847,18 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="tCS-2i-4Z4" secondAttribute="trailing" constant="23" id="ztl-XO-OYq"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUZ-sa-uxe">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HUZ-sa-uxe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="kMk-mn-3mZ">
-                                        <rect key="frame" x="175" y="77" width="64" height="84"/>
+                                        <rect key="frame" x="155.5" y="77" width="64" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="G2t-gW-Zim"/>
                                             <constraint firstAttribute="height" constant="84" id="Tnl-js-Cv4"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONGRATULATIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORk-QS-uov">
-                                        <rect key="frame" x="83" y="180" width="248" height="21"/>
+                                        <rect key="frame" x="63.5" y="180" width="248" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="6ps-wg-wis"/>
                                             <constraint firstAttribute="width" constant="248" id="Xez-kf-qyP"/>
@@ -11735,7 +11868,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Payment is Successful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-ed-G0U">
-                                        <rect key="frame" x="88.5" y="225" width="237" height="22"/>
+                                        <rect key="frame" x="69" y="225" width="237" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="237" id="GRd-DA-TRn"/>
                                             <constraint firstAttribute="height" constant="22" id="lij-Dh-hj0"/>
@@ -11745,19 +11878,19 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnX-5M-V7M">
-                                        <rect key="frame" x="8" y="275" width="398" height="0.0"/>
+                                        <rect key="frame" x="8" y="275" width="359" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-hH-QTU">
-                                        <rect key="frame" x="14" y="317" width="386" height="0.0"/>
+                                        <rect key="frame" x="14" y="317" width="347" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABc-hF-VUF">
-                                        <rect key="frame" x="60.5" y="339" width="293" height="21"/>
+                                        <rect key="frame" x="41" y="339" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eEM-AP-6kL"/>
                                             <constraint firstAttribute="width" constant="293" id="yvF-0W-byi"/>
@@ -11766,8 +11899,8 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-tm-xvk">
-                                        <rect key="frame" x="0.0" y="848" width="414" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-tm-xvk">
+                                        <rect key="frame" x="0.0" y="848" width="375" height="48"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="dUz-v7-sxd"/>
@@ -11781,7 +11914,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-9P-bxm">
-                                        <rect key="frame" x="22" y="283" width="370" height="19"/>
+                                        <rect key="frame" x="22" y="283" width="331" height="19"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -11811,11 +11944,11 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                     <constraint firstAttribute="trailing" secondItem="LNd-hH-QTU" secondAttribute="trailing" constant="14" id="zek-Uo-TQ4"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egI-8S-HYf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egI-8S-HYf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-VJ-i6d">
-                                        <rect key="frame" x="47" y="411" width="320" height="74.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-VJ-i6d">
+                                        <rect key="frame" x="27.5" y="406" width="320" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="b6i-VR-Z0b"/>
                                         </constraints>
@@ -11825,8 +11958,8 @@ Enjoy!</string>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nd-Sf-Zc8">
-                                        <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nd-Sf-Zc8">
+                                        <rect key="frame" x="0.0" y="836" width="375" height="60"/>
                                         <color key="backgroundColor" red="0.39321953059999998" green="0.12741079929999999" blue="0.52551943059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="A0t-9Z-Gt6"/>
@@ -11839,8 +11972,8 @@ Enjoy!</string>
                                             <action selector="clubSuccessDoneTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="N3L-5A-u4u"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-aj-NLY">
-                                        <rect key="frame" x="175" y="288.5" width="64" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-aj-NLY">
+                                        <rect key="frame" x="155.5" y="283.5" width="64" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="TDF-Jp-4NV"/>
                                             <constraint firstAttribute="height" constant="90" id="e2m-vj-dnz"/>
@@ -15051,18 +15184,18 @@ It will also include 'Recommendations for the coming week in terms of both % car
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="L3b-DM-3HI"/>
+        <segue reference="ZxD-4P-ZEp"/>
         <segue reference="Pf6-Bl-kGD"/>
-        <segue reference="lPI-KC-Cke"/>
-        <segue reference="8Io-NT-hdk"/>
-        <segue reference="zVF-by-iNH"/>
-        <segue reference="wAY-l1-OTQ"/>
+        <segue reference="wN5-ei-u57"/>
+        <segue reference="KN2-Gy-7ip"/>
+        <segue reference="NUj-2a-Gdt"/>
+        <segue reference="xXj-fr-1VY"/>
         <segue reference="yqf-tj-sTU"/>
         <segue reference="lPw-O8-679"/>
         <segue reference="Yl1-aV-dl8"/>
         <segue reference="Zyf-gX-8GO"/>
         <segue reference="gcd-dv-aAH"/>
-        <segue reference="cfW-e7-Ff1"/>
+        <segue reference="2eF-Oz-vLq"/>
         <segue reference="5vE-qp-Xfk"/>
         <segue reference="Npq-p8-1E4"/>
         <segue reference="TTo-mK-CFO"/>
@@ -15070,7 +15203,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="uKn-Ey-94X"/>
         <segue reference="iKK-b0-QD3"/>
         <segue reference="hRM-RF-hHt"/>
-        <segue reference="sLZ-Wk-h5u"/>
+        <segue reference="2OQ-eL-zMw"/>
         <segue reference="Ld2-Me-2bI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.36368450522422791" green="0.08630264550447464" blue="0.53960508108139038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -15172,8 +15305,10 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <image name="ptp_promo" width="750" height="1334"/>
         <image name="receiverTail" width="82" height="66"/>
         <image name="recipepic" width="966" height="725"/>
+        <image name="referral_code" width="413" height="61"/>
         <image name="reload_icon" width="24" height="31"/>
         <image name="reminders" width="25" height="25"/>
+        <image name="select" width="135" height="61"/>
         <image name="selectCamera" width="16" height="16"/>
         <image name="selectLocation" width="16" height="16"/>
         <image name="selectMessage" width="16" height="16"/>
@@ -15213,246 +15348,6 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <image name="whiteCheckbox" width="30" height="30"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -190,6 +190,7 @@
 		83222C6F24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */; };
 		8326169E2493802D0002B77C /* PopUpNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8326169D2493802D0002B77C /* PopUpNotificationView.xib */; };
 		832616A0249380BD0002B77C /* PopUpNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326169F249380BD0002B77C /* PopUpNotificationView.swift */; };
+		8333848625CAD79E004155C1 /* AvailablePackagesCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8333848525CAD79E004155C1 /* AvailablePackagesCell2.swift */; };
 		83360CB5253199CF0006BD63 /* CongratulationsTweaker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83360CB4253199CF0006BD63 /* CongratulationsTweaker.xib */; };
 		83360CB72531AD290006BD63 /* CongratulationsTweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */; };
 		83360CB92531EA6C0006BD63 /* HowToTweak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83360CB82531EA6C0006BD63 /* HowToTweak.swift */; };
@@ -575,6 +576,7 @@
 		83222C6E24DE0E4E00A6E4E0 /* TAEClub4VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAEClub4VCViewController.swift; sourceTree = "<group>"; };
 		8326169D2493802D0002B77C /* PopUpNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpNotificationView.xib; sourceTree = "<group>"; };
 		8326169F249380BD0002B77C /* PopUpNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNotificationView.swift; sourceTree = "<group>"; };
+		8333848525CAD79E004155C1 /* AvailablePackagesCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailablePackagesCell2.swift; sourceTree = "<group>"; };
 		83360CB4253199CF0006BD63 /* CongratulationsTweaker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CongratulationsTweaker.xib; sourceTree = "<group>"; };
 		83360CB62531AD290006BD63 /* CongratulationsTweaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsTweaker.swift; sourceTree = "<group>"; };
 		83360CB82531EA6C0006BD63 /* HowToTweak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToTweak.swift; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				8333848525CAD79E004155C1 /* AvailablePackagesCell2.swift */,
 				8375DB1225AD67FE00C978E5 /* SIA */,
 				83360CBC2531EAC40006BD63 /* HowToTweak.xib */,
 				83360CB82531EA6C0006BD63 /* HowToTweak.swift */,
@@ -1979,6 +1982,7 @@
 				5702E5EA1D9D646100647A54 /* UIImageView+WebCache.m in Sources */,
 				73C6836D20A480F300C7D08D /* InstaMojoViewController.swift in Sources */,
 				5735D8391D79CEEB001DAF83 /* UIImageView+AFNetworking.m in Sources */,
+				8333848625CAD79E004155C1 /* AvailablePackagesCell2.swift in Sources */,
 				5702E5EB1D9D646100647A54 /* UIView+WebCacheOperation.m in Sources */,
 				041856B2224BB0D8008E2A7C /* PageControlCollectionViewCell.swift in Sources */,
 				84F287721F27C3D3004F7B18 /* TweakPieChartValues.swift in Sources */,
