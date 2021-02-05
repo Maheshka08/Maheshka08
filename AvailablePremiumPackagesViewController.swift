@@ -23,7 +23,8 @@ class PremiumPackages {
     @objc  var pp_image_ba: String
     @objc  var mppc_img_banner_ios: String
     @objc  var mppc_name: String
-    @objc var isCellTapped: Bool
+    @objc  var isCellTapped: Bool
+    @objc var isSelected = false
     
     init(mppc_fb_id: String, pp_image_ba: String, mppc_img_banner_ios: String, mppc_name: String, isCellTapped: Bool ) {
         self.mppc_fb_id = mppc_fb_id
@@ -535,12 +536,15 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                     }
                     print(trans.transactionIdentifier ?? "")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    DispatchQueue.main.async {
 
                      DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
                 }
-                    }
+                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+                    cellDictionary.isSelected = false
+                    self.tableView.reloadData()
+
+                    
                     SKPaymentQueue.default().remove(self)
                     
                     
@@ -556,6 +560,9 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                         MBProgressHUD.hide(for: self.view, animated: true);
 
                     }
+                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+                    cellDictionary.isSelected = false
+                    self.tableView.reloadData()
                     //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
@@ -579,22 +586,40 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
             }
         }
     }
-    func uploadReferralCodeBtnTapped(_ cell: AvailablePackagesCell2) {
+    
+    func infoBtnTapped(_ cell: AvailablePackagesCell2) {
         
+    }
+    
+    func uploadReferralCodeBtnTapped(_ cell: AvailablePackagesCell2) {
+       
+
         Flyshot.shared.upload(onSuccess: { (status) in
             print(status)
             if status == .found {
                 print("yes")
                 self.myIndex = cell.cellIndexPath
+                self.selectedIndex = self.myIndex
                 let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+                cellDictionary.isSelected = true
+                self.tableView.reloadData()
                 self.packageId = cellDictionary.mppc_fb_id
+                DispatchQueue.main.async {
                 MBProgressHUD.showAdded(to: self.view, animated: true)
+                }
             } else if status == .notFound {
                 print("not found")
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose the right image and try again!")
+                DispatchQueue.main.async {
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please choose the right image and try again!")
+
+                }
             } else if status == .redeemed {
                 print("redeemed")
+                DispatchQueue.main.async {
                 TweakAndEatUtils.AlertView.showAlert(view: self, message: "The referral code is already redeemed!")
+                }
+            } else {
+                
             }
            // status enum:
            //   notFound (notify the user that no active promos were found)
@@ -602,15 +627,21 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
            //   redeemed (notify the user that campaign was already redeemed)
         }, onFailure: { (error) in
            // Handle error
+            DispatchQueue.main.async {
             TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again later!")
+            }
 
         })
     }
     
     func selectBtnTapped(_ cell: AvailablePackagesCell2) {
         self.myIndex = cell.cellIndexPath
+        self.selectedIndex = self.myIndex
         let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
         self.packageId = cellDictionary.mppc_fb_id
+        cellDictionary.isSelected = true
+        self.tableView.reloadData()
+
         if  countryCode == "91" {
            // labelsPrice = "pkgRecurPrice"
          
@@ -1275,7 +1306,7 @@ return
     }
     
 
-    
+    var selectedIndex = 0
     @objc var labelPriceDict = [String: AnyObject]();
     @objc var displayCurrency : String = "";
     @objc var pkgDescription : String = "";
@@ -1436,6 +1467,14 @@ return
             self.name = myProfileObj.name;
         }
         self.title = "Premium Packs";
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true);
+        self.premiumPackagesApiArray.removeAll()
+        self.navigationController?.isNavigationBarHidden = true
         if self.fromCrown == false {
             if self.countryCode == "91" {
                 self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
@@ -1461,13 +1500,6 @@ return
         } else {
         self.getPremiumPackagesApi();
         }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true);
-        self.navigationController?.isNavigationBarHidden = true
-        
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -2073,15 +2105,23 @@ return
 //          return 80
 //    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
         
-        if self.countryCode == "1" {
+
+        if (self.countryCode == "1" && UserDefaults.standard.value(forKey: cellDictionary.mppc_fb_id) == nil) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myCell2", for: indexPath) as! AvailablePackagesCell2;
             cell.cellDelegate = self
             cell.cellIndexPath = indexPath.row;
             cell.myIndexPath = indexPath;
             
             let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
-           
+            if cellDictionary.isSelected == true {
+                cell.packagesView.layer.borderWidth = 3
+                cell.packagesView.layer.borderColor = UIColor.purple.cgColor
+            } else {
+                cell.packagesView.layer.borderWidth = 1
+                cell.packagesView.layer.borderColor = UIColor.clear.cgColor
+            }
             if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
                 let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
                 if language == "BA" {
@@ -2346,9 +2386,10 @@ return
 //    }
     
     @IBAction func paymentSuccessOKTapped(_ sender: Any) {
+        self.paySucessView.isHidden = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let myTweakandEatViewController : MyTweakAndEatVCViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as! MyTweakAndEatVCViewController;
-        myTweakandEatViewController.packageID = UserDefaults.standard.value(forKey: "SELECTED_PACKAGE") as! String; self.navigationController?.pushViewController(myTweakandEatViewController, animated: true);
+        myTweakandEatViewController.packageID = self.packageId; self.navigationController?.pushViewController(myTweakandEatViewController, animated: true);
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -35,7 +35,11 @@ class AvailablePackagesCell2: UITableViewCell {
         self.cellDelegate?.uploadReferralCodeBtnTapped(self)
 
     }
-    
+    @IBAction func infoTapped(_ sender: Any) {
+        self.cellDelegate?.infoBtnTapped(self)
+    }
+        
+        
     @IBAction func selectBtnTapped(_ sender: Any) {
         self.cellDelegate?.selectBtnTapped(self)
 
