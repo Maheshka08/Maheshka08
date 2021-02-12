@@ -55,12 +55,6 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
-	<key>CleverTapAccountID</key>
-	<string>W4R-8Z6-RZ6Z</string>
-	<key>CleverTapToken</key>
-	<string>61b-240</string>
-	<key>CleverTapUseIFA</key>
-	<true/>
 	<key>FacebookAppID</key>
 	<string>1608652672644833</string>
 	<key>FacebookAutoInitEnabled</key>

@@ -27,7 +27,7 @@ import CoreTelephony
 import Branch
 import FacebookCore
 import RNCryptor
-import CleverTapSDK
+//import CleverTapSDK
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -10009,8 +10009,8 @@ self.floatingCallBtn.isHidden = false
                                                 "Mobile Number": mobileNumber,
                                                 "Country Code": ccCode
                                             ] 
-                                            CleverTap.sharedInstance()?.profilePush(profile)
-                                            CleverTap.sharedInstance()?.recordEvent("Registration successful")
+                                           // CleverTap.sharedInstance()?.profilePush(profile)
+                                           // CleverTap.sharedInstance()?.recordEvent("Registration successful")
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 
