@@ -7550,6 +7550,9 @@ Enjoy!</string>
                                     <constraint firstAttribute="width" constant="119" id="svC-Lh-xtN"/>
                                 </constraints>
                                 <state key="normal" image="ask_sia_btn"/>
+                                <connections>
+                                    <segue destination="HsA-oL-Bna" kind="show" id="FlF-Sj-LCr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Qc-LT-Sm9"/>
@@ -15200,6 +15203,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                             <constraint firstItem="rXL-U2-pFh" firstAttribute="leading" secondItem="EWA-xJ-t7g" secondAttribute="leading" id="o81-Z7-zun"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZBj-uS-SZi"/>
                     <connections>
                         <outlet property="botTable" destination="DC4-6P-PSZ" id="w7f-Qj-h5D"/>
                     </connections>
