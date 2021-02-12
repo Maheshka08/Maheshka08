@@ -784,6 +784,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     @IBOutlet weak  var paySucessView: UIView!
     @IBOutlet weak  var usdAmtLabel: UILabel!
     @IBOutlet weak  var nutritionstDescLbl: UILabel!
+    @IBOutlet weak var askSiaButton: UIButton!
     var identifierFromPopUp = ""
     var clubPackageSubscribed = ""
     var packageId = ""
@@ -1344,6 +1345,8 @@ return
     @objc var name : String = "";
     @objc var countryCode = "";
     @IBOutlet weak var nextArrow: UILabel!;
+    @IBOutlet weak var wantHelpLabel: UILabel!;
+    @IBOutlet weak var askSiaButtonHeightConstraint: NSLayoutConstraint!
     var cellTapped:Bool = true
     var currentRow = 0;
     func goToHomePage() {
@@ -1401,9 +1404,19 @@ return
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)";
         }
+        if self.countryCode == "91" {
+            self.askSiaButton.isHidden = false
+            self.wantHelpLabel.isHidden = false
+            self.askSiaButtonHeightConstraint.constant = 34
+        } else {
+            self.askSiaButton.isHidden = true
+            self.wantHelpLabel.isHidden = true
+            self.askSiaButtonHeightConstraint.constant = 0
 
+        }
         if self.countryCode == "91" {
             self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+            
         } else if self.countryCode == "62" {
             self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
         } else if self.countryCode == "1" {
