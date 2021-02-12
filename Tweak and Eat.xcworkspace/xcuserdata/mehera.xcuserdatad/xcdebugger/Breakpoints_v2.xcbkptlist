@@ -7,324 +7,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BBE10651-8D49-477E-87DB-7CF90B3C7156"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "728"
-            endingLineNumber = "728"
-            landmarkName = "startPurchase(identifier:dict:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BFC0D860-75A3-4C0E-9336-D6BB361E00A1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
-            landmarkName = "packagLabelSelections(pkg:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A05E6EE1-E37D-47E8-97AC-7F47203778A3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "763"
-            endingLineNumber = "763"
-            landmarkName = "moveToAnotherView(link:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E7BCE8B0-FC70-4EE0-842B-6E5582EDE8CB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "677"
-            endingLineNumber = "677"
-            landmarkName = "packagLabelSelections(pkg:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E0E4D029-3CEA-411B-A681-9A2B999B852E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
-            landmarkName = "uploadReferralCodeBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4FF907B-1637-49AF-9CBC-FA8CB98FD5F7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
-            landmarkName = "uploadReferralCodeBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "716B6929-EBA7-4058-8EE1-9EADFFA644BD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
-            landmarkName = "uploadReferralCodeBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EAF9CE71-69D0-4162-85C8-AAD8DBC227DF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
-            landmarkName = "uploadReferralCodeBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1B6A1BE9-EBA1-4490-A118-80467D7BC19E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
-            landmarkName = "paymentQueue(_:updatedTransactions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "84FFBE7E-58D7-43BF-BE14-DB243EC75921"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3102"
-            endingLineNumber = "3102"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F5A5197-3D25-4F2C-B22F-D2FCDBFECA58"
+            uuid = "A8F8F7DB-A8C9-4A4F-A01F-45C1C5C918D0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyWallViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "getFireBaseData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0C97FE9D-AD18-4D46-A8C0-1B335CCC761D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3077"
-            endingLineNumber = "3077"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D41D77DB-7677-4F4D-B203-5467EE8EACDC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3078"
-            endingLineNumber = "3078"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B1DE7050-C5C6-43F9-905F-D979E95EBDDD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/NotificationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "82A26BAA-9DCC-43E8-8E2C-6E29AB6104F6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/NotificationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BD54790F-2BE8-45EA-AD57-D679D4F1EC75"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "postBtnTapped(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BD54790F-2BE8-45EA-AD57-D679D4F1EC75 - 8b81fdb276b632b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "276"
-                  endingLineNumber = "276"
-                  offsetFromSymbolStart = "5392">
-               </Location>
-               <Location
-                  uuid = "BD54790F-2BE8-45EA-AD57-D679D4F1EC75 - d543b33b6650859a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "239"
-                  endingLineNumber = "239"
-                  offsetFromSymbolStart = "380">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DDD90ABE-E483-4347-BDA6-7EDEE9B33538"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "postBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A8BBAD69-9194-4846-9A9C-A24E37FA0963"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyWallViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1238"
-            endingLineNumber = "1238"
+            startingLineNumber = "1228"
+            endingLineNumber = "1228"
             landmarkName = "likesAndNoLikes(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A8BBAD69-9194-4846-9A9C-A24E37FA0963 - e2f9c45a0ab6c726"
+                  uuid = "A8F8F7DB-A8C9-4A4F-A01F-45C1C5C918D0 - e2f9c45a0ab6c00f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -334,24 +30,24 @@
                   urlString = "file:///Users/mehera/Documents/GitHub/TAE/MyWallViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1235"
-                  endingLineNumber = "1235"
-                  offsetFromSymbolStart = "5000">
+                  startingLineNumber = "1228"
+                  endingLineNumber = "1228"
+                  offsetFromSymbolStart = "5144">
                </Location>
                <Location
-                  uuid = "A8BBAD69-9194-4846-9A9C-A24E37FA0963 - 4be6ce4c1c90fd21"
+                  uuid = "A8F8F7DB-A8C9-4A4F-A01F-45C1C5C918D0 - 7e34fdec9def9fae"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.MyWallViewController.likesAndNoLikes(Tweak_and_Eat.TweakMyWallTableViewCell) -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.MyWallViewController.likesAndNoLikes(Tweak_and_Eat.TweakMyWallTableViewCell) -&gt; ()"
                   moduleName = "Tweak and Eat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mehera/Documents/GitHub/TAE/MyWallViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1236"
-                  endingLineNumber = "1236"
-                  offsetFromSymbolStart = "160">
+                  startingLineNumber = "1229"
+                  endingLineNumber = "1229"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -359,63 +55,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A4926C41-A56C-4E22-B0EF-937A87495F0C"
+            uuid = "3202E472-61CF-4AAB-9A20-DBA71E3996D6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyWallViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1245"
-            endingLineNumber = "1245"
-            landmarkName = "likesAndNoLikes(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A4926C41-A56C-4E22-B0EF-937A87495F0C - e7c3c56a27da9119"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Optional&lt;__C.NSError&gt;) -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.MyWallViewController.likesAndNoLikes(Tweak_and_Eat.TweakMyWallTableViewCell) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MyWallViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1242"
-                  endingLineNumber = "1242"
-                  offsetFromSymbolStart = "396">
-               </Location>
-               <Location
-                  uuid = "A4926C41-A56C-4E22-B0EF-937A87495F0C - 9e0fbbdc25368cd0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #3 (Swift.Optional&lt;__C.NSError&gt;) -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.MyWallViewController.likesAndNoLikes(Tweak_and_Eat.TweakMyWallTableViewCell) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/MyWallViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1243"
-                  endingLineNumber = "1243"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CF12E32C-FD10-471C-9FCE-19F96599C5BE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyWallViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1240"
-            endingLineNumber = "1240"
+            startingLineNumber = "1227"
+            endingLineNumber = "1227"
             landmarkName = "likesAndNoLikes(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,87 +71,39 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CBC4745-CE5C-4397-92ED-7F5D98D7A2AE"
+            uuid = "E63E371F-B5D6-4007-A1D9-85B65EA74B5E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            filePath = "MyWallViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "postBtnTapped(_:)"
+            startingLineNumber = "1243"
+            endingLineNumber = "1243"
+            landmarkName = "likesAndNoLikes(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7672F2CA-66D7-4AE7-A90C-4165F6A12EA1"
+            uuid = "D1D462C5-D965-48F0-96C1-C52707D702BF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            filePath = "MyWallViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "postBtnTapped(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7672F2CA-66D7-4AE7-A90C-4165F6A12EA1 - f2f687459001b63f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "7672F2CA-66D7-4AE7-A90C-4165F6A12EA1 - df4f37a44d66a445"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;__C.NSError&gt;) -&gt; () in closure #2 () -&gt; () in Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
-                  moduleName = "Tweak and Eat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "304"
-                  endingLineNumber = "304"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "789CE67E-0616-41CF-A28B-20E51F27172B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "postBtnTapped(_:)"
+            startingLineNumber = "1248"
+            endingLineNumber = "1248"
+            landmarkName = "likesAndNoLikes(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E30B2239-B237-4CAE-9F45-59B733B819ED"
+            uuid = "B8733804-D688-40A8-A5EA-EC8D7226B087"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -519,16 +119,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "83C8EE02-BD05-4AD2-890D-76152CD1FD1C"
+            uuid = "5F13C9C7-1A3E-4878-A640-08898A6501BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "postBtnTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70A82F90-E226-40F8-A261-529592A1AE17"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "postBtnTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D1F848F-EDF3-4541-A9ED-A28BF99155B6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyWallViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1226"
-            endingLineNumber = "1226"
-            landmarkName = "likesAndNoLikes(_:)"
+            startingLineNumber = "926"
+            endingLineNumber = "926"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3478F7E5-86C0-4205-AA7B-4934CE2CC4BA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "postBtnTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7DEE9AB3-9C1D-4EE6-8485-B1FB892A19C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "postBtnTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7DEE9AB3-9C1D-4EE6-8485-B1FB892A19C3 - 8b81fdb276b6334a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "5972">
+               </Location>
+               <Location
+                  uuid = "7DEE9AB3-9C1D-4EE6-8485-B1FB892A19C3 - d543b33b665085bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Tweak_and_Eat.AwesomeCountViewController.postBtnTapped(Any) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/Tweak%20and%20Eat/AwesomeCountViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "240"
+                  endingLineNumber = "240"
+                  offsetFromSymbolStart = "380">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12B7E37D-2CD7-4DAF-90EE-5D30614D7DD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "postBtnTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B46A1B0-938F-43B6-86AC-1ECDF363BE6B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/AwesomeCountViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "postBtnTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

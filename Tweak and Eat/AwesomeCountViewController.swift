@@ -22,6 +22,7 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
     @objc var gender : String = ""
     @objc var imageUrl : String = ""
     @objc var msisdn : String = ""
+    @objc var tweakOwnerMsisdn = ""
     @objc var postedOn : String = ""
     @objc var tweakOwner : String = ""
     @objc var awesomeCount : Int = 0
@@ -264,12 +265,14 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         if msisdnSet.contains(self.userMsisdn) {
         msisdnSet.remove(self.userMsisdn)
         }
-//        if msisdnSet.count == 0 {
-//            msisdnSet.insert(self.userMsisdn)
-//        } else {
-//        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
-//        }
+        msisdnSet.insert(self.tweakOwnerMsisdn)
+        if msisdnSet.count == 0 {
+            msisdnSet.insert(self.tweakOwnerMsisdn)
+            feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+        } else {
         feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+        }
+        //feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
         feedSet["noteType"] = 4 as AnyObject
         feedSet["feedId"] = self.childSnap as AnyObject
         print(feedSet)
@@ -298,6 +301,8 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
             }
             //let noteType : Int = 4
             APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: feedSet, success: { response in
+                
+                print(response)
                     
             }, failure : { error in
                 
