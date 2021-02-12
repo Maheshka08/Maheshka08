@@ -261,15 +261,15 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
             let mobile: String = awesome.aweSomeMsisdn
             msisdnSet.insert(mobile)
         }
-//        if msisdnSet.contains(self.userMsisdn) {
-//        msisdnSet.remove(self.userMsisdn)
-//        }
-        if msisdnSet.count == 0 {
-            msisdnSet.insert(self.userMsisdn)
-        } else {
-        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+        if msisdnSet.contains(self.userMsisdn) {
+        msisdnSet.remove(self.userMsisdn)
         }
-       // feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//        if msisdnSet.count == 0 {
+//            msisdnSet.insert(self.userMsisdn)
+//        } else {
+//        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//        }
+        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
         feedSet["noteType"] = 4 as AnyObject
         feedSet["feedId"] = self.childSnap as AnyObject
         print(feedSet)

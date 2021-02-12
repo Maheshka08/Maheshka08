@@ -1202,15 +1202,18 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let mobile: String = com.commentsMsisdn
                     msisdnSet.insert(mobile)
                 }
-//                if msisdnSet.contains(self.userMsisdn) {
-//                msisdnSet.remove(self.userMsisdn)
-//                }
-
-                if msisdnSet.count == 0 {
-                    msisdnSet.insert(self.userMsisdn)
-                } else {
-                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+                if msisdnSet.contains(self.userMsisdn) {
+                msisdnSet.remove(self.userMsisdn)
                 }
+
+//                if msisdnSet.count == 0 {
+//                    msisdnSet.insert(self.userMsisdn)
+//                } else {
+//                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//                }
+                
+                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+
 
                 feedSet["noteType"] = 3 as AnyObject
                 feedSet["feedId"] = snap as AnyObject
