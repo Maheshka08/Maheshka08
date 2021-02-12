@@ -233,9 +233,17 @@ extension NotificationService: UNUserNotificationCenterDelegate {
 
                 } else if type == 4 {
                     
-
+                    if tweakID == 0 {
+                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                               let myWall : MyWallViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as! MyWallViewController;
+                              // myWall.postedOn = postedOn
+                               myWall.feedId = link
+                               myWall.type = type
+                               navController?.pushViewController(myWall, animated: true);
+                    } else {
                         UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)
+                    }
                     
                     
                 } else if type == 5 {

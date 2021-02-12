@@ -921,7 +921,10 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let popOverVC = segue.destination as! AwesomeCountViewController
                 let cellDict = self.tweakFeedsArray[self.myIndexPath.row]
                 let comments = cellDict.comments
-                
+                let awesomeMembers = cellDict.awesomeMembers
+
+                popOverVC.awesomeMembers = awesomeMembers
+                popOverVC.commentMembers = comments
                 if cellDict.commentsCount != 0 {
                     var tempDict : [String:AnyObject] = [:]
                     for members in comments {
@@ -1169,6 +1172,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let snap = cellDict.snapShot
                 var aweSomeCount = cellDict.awesomeCount
                 let awesomeMem = cellDict.awesomeMembers
+                let postedComments = cellDict.comments
                 for mem in awesomeMem {
                     if mem.youLiked == "true" {
                         
@@ -1187,6 +1191,31 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     "nickName": self.nicKName as AnyObject
                     ])
                 self.tweakFeedsRef.child(snap).updateChildValues(["awesomeCount" : aweSomeCount as AnyObject])
+                var feedSet = [String: AnyObject]()
+                feedSet["nickName"] = self.nicKName as AnyObject
+                var msisdnSet = Set<String>()
+                for mob in awesomeMem {
+                    let mobile: String = mob.aweSomeMsisdn
+                    msisdnSet.insert(mobile)
+                }
+                for com in postedComments {
+                    let mobile: String = com.commentsMsisdn
+                    msisdnSet.insert(mobile)
+                }
+//                if msisdnSet.contains(self.userMsisdn) {
+//                msisdnSet.remove(self.userMsisdn)
+//                }
+
+                if msisdnSet.count == 0 {
+                    msisdnSet.insert(self.userMsisdn)
+                } else {
+                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+                }
+
+                feedSet["noteType"] = 3 as AnyObject
+                feedSet["feedId"] = snap as AnyObject
+                
+                print(feedSet)
                 
                 //  }
                 //             DispatchQueue.main.async {
@@ -1202,12 +1231,8 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                    }
                     return
                 }
-                let noteType : Int = 3
-                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: [
-                    "msisdn": cellDict.msisdn as AnyObject,
-                    "noteType": noteType as AnyObject ,
-                    "feedId": snap as AnyObject
-                    ], success: { response in
+                //let noteType : Int = 3
+                APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: feedSet, success: { response in
                         DispatchQueue.main.async {
                             
                         }

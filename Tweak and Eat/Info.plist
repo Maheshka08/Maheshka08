@@ -55,6 +55,12 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
+	<key>CleverTapAccountID</key>
+	<string>W4R-8Z6-RZ6Z</string>
+	<key>CleverTapToken</key>
+	<string>61b-240</string>
+	<key>CleverTapUseIFA</key>
+	<true/>
 	<key>FacebookAppID</key>
 	<string>1608652672644833</string>
 	<key>FacebookAutoInitEnabled</key>
@@ -85,7 +91,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>"Tweak &amp; Eat" would like access to help take photos of food plates so we can help you tweak it</string>
+	<string>&quot;Tweak &amp; Eat&quot; would like access to help take photos of food plates so we can help you tweak it</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Tweak and Eat wants to access your health data to send to our nutritionists</string>
 	<key>NSHealthUpdateUsageDescription</key>
@@ -93,17 +99,17 @@
 	<key>NSLocalizedDescription</key>
 	<string>$(PRODUCT_NAME) local location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants to use your location to assign the right local nutritionist and help tweak your meal.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>"Tweak &amp; Eat" would like access the device's microphone to make and receive calls</string>
+	<string>&quot;Tweak &amp; Eat&quot; would like access the device&apos;s microphone to make and receive calls</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>"Tweak &amp; Eat" needs permission to save photos.</string>
+	<string>&quot;Tweak &amp; Eat&quot; needs permission to save photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>"Tweak &amp; Eat" would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
+	<string>&quot;Tweak &amp; Eat&quot; would like access to photo library to help choose photos of food plates so we can help you tweak it</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>"Tweak &amp; Eat" wants users to remind of tweaking their food plate.</string>
+	<string>&quot;Tweak &amp; Eat&quot; wants users to remind of tweaking their food plate.</string>
 	<key>Privacy - Tracking Usage Description</key>
 	<string>Please confirm IDFA collection</string>
 	<key>UIAppFonts</key>

@@ -27,6 +27,7 @@ import CoreTelephony
 import Branch
 import FacebookCore
 import RNCryptor
+import CleverTapSDK
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -9989,6 +9990,27 @@ self.floatingCallBtn.isHidden = false
                                             }
                                             //last
                                             AppEvents.logEvent(.completedRegistration, parameters: ["country": self.countryCode])
+                                            self.myProfileInfo = uiRealm.objects(MyProfileInfo.self);
+                                            var name = ""
+                                            var email = ""
+                                            var mobileNumber = ""
+                                            var ccCode = ""
+                                            for prof in self.myProfileInfo! {
+                                                name = prof.name
+                                                email = prof.email
+                                                mobileNumber = prof.msisdn
+                                                ccCode = self.countryCode
+                                            }
+                                            let profile = [
+                                                //Update pre-defined profile properties
+                                                "Name": name,
+                                                "Email": email,
+                                                //Update custom profile properties
+                                                "Mobile Number": mobileNumber,
+                                                "Country Code": ccCode
+                                            ] 
+                                            CleverTap.sharedInstance()?.profilePush(profile)
+                                            CleverTap.sharedInstance()?.recordEvent("Registration successful")
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 

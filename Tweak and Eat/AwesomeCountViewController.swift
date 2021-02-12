@@ -31,6 +31,8 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
     @objc var userMsisdn : String = ""
     @objc var childSnap: String = ""
     @objc var recipeTitle: String = ""
+    var awesomeMembers = [TweakWallAwesomeMembers]()
+    var commentMembers = [TweakWallCommentsMembers]()
     @IBOutlet var placeHolderLabel: UILabel!
     
     @objc var titleName : String!
@@ -245,7 +247,32 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         tempDict["msisdn"] = self.userMsisdn as AnyObject;
         let currentTimeStamp = getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
         let currentTime = Int64(currentTimeStamp);
-        
+        //let commentMembers = self.tweakDictionary["comments"]! as! NSMutableArray;
+        //let awesomeMembers = self.tweakDictionary["awesomeMembers"]! as! NSMutableArray
+        var feedSet = [String: AnyObject]()
+        feedSet["nickName"] = self.nicKName as AnyObject
+        var msisdnSet = Set<String>()
+        for mob in commentMembers {
+           // let mobile = mob["msisdn"]
+            let mobile: String = mob.commentsMsisdn
+            msisdnSet.insert(mobile)
+        }
+        for awesome in self.awesomeMembers {
+            let mobile: String = awesome.aweSomeMsisdn
+            msisdnSet.insert(mobile)
+        }
+//        if msisdnSet.contains(self.userMsisdn) {
+//        msisdnSet.remove(self.userMsisdn)
+//        }
+        if msisdnSet.count == 0 {
+            msisdnSet.insert(self.userMsisdn)
+        } else {
+        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+        }
+       // feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+        feedSet["noteType"] = 4 as AnyObject
+        feedSet["feedId"] = self.childSnap as AnyObject
+        print(feedSet)
         DispatchQueue.global(qos: .background).async {
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
@@ -269,12 +296,8 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
             if self.userMsisdn == self.msisdn {
                 return
             }
-            let noteType : Int = 4
-            APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: [
-                "msisdn": self.msisdn as AnyObject,
-                "noteType": noteType as AnyObject ,
-                "feedId": self.childSnap as AnyObject
-                ], success: { response in
+            //let noteType : Int = 4
+            APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: feedSet, success: { response in
                     
             }, failure : { error in
                 

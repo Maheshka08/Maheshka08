@@ -70,7 +70,7 @@ struct TweakAndEatURLConstants {
     static let BUZZ_FRIENDS : String  = BASE_URL + "/api/user/buzzsos";
     static let SEND_GCM : String    = BASE_URL + "/api/user/gcmid";
     static let SEND_FBTOKEN : String    = BASE_URL + "/api/user/fbtoken";
-    static let WALL_PUSH_NOTIFICATIONS : String    = BASE_URL + "/api/user/wall/pushawesomecomment2";
+    static let WALL_PUSH_NOTIFICATIONS : String    = BASE_URL + "/api/user/wall/pushawesomecomment3";
     static let ENDPOINT_NUTRITION_FBUID = BASE_URL + "/api/user/chat/nutritionistinfo"
     static let ENDPOINT_SERVE_AD = AD_URL + "/servead";
     static let ENDPOINT_CLICK_AD = AD_URL + "/clickad?";
