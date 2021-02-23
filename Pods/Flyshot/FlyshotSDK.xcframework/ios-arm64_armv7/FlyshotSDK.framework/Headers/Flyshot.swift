@@ -90,6 +90,10 @@ Class providing Sdk functionality
 		FlyshotManager.shared.initialize(sdkToken: sdkToken, onSuccess: onSuccess, onFailure: onFailure)
 	}
 	
+	@objc public func initialize(sdkToken: String) {
+		FlyshotManager.shared.initialize(sdkToken: sdkToken, onSuccess: nil, onFailure: nil)
+	}
+	
 	/**
 	Starts SDK
 	*/
@@ -170,8 +174,7 @@ Class providing Sdk functionality
 	onSuccess returns campaign status
 	*/
 	@objc public func upload(onSuccess: @escaping (_ status: CampaignStatus) -> Void, onFailure: @escaping (_ error: Error) -> Void) {
-		CampaignFetcher.shared.upload(onSuccess: onSuccess, onCanceled: { () -> (Void) in
-		}, onFailure: onFailure)
+		CampaignFetcher.shared.upload(onSuccess: onSuccess, onFailure: onFailure)
 	}
 	
 	/**

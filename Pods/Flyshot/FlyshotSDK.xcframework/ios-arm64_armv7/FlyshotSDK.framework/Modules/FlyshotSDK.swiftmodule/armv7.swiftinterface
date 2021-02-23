@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FlyshotSDK
-import AdSupport
 @_exported import FlyshotSDK
 import Foundation
 import Photos
@@ -39,6 +38,7 @@ public enum FlyshotError : Swift.Error {
   case userRequirements
   case inAppAvailability
   case inAppPurchase(productId: Swift.String)
+  case contentRecognition
   case unknown
 }
 extension FlyshotError : Foundation.LocalizedError {
@@ -50,6 +50,7 @@ extension FlyshotError : Foundation.LocalizedError {
   case notFound
   case found
   case redeemed
+  case canceled
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -213,6 +214,7 @@ public struct UserAgentBuilder {
     @objc set
   }
   @objc public func initialize(sdkToken: Swift.String, onSuccess: @escaping () -> Swift.Void, onFailure: @escaping (Swift.Error) -> Swift.Void)
+  @objc public func initialize(sdkToken: Swift.String)
   @objc public func start()
   @objc public func isFlyshotUser() -> Swift.Bool
   @objc public func isEligibleForDiscount(productId: Swift.String? = nil) -> Swift.Bool

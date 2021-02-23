@@ -40,7 +40,77 @@ extension AvailablePremiumPackagesViewController: FlyshotDelegate {
    func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
       // implement logic to process Flyshot IAP transactions
       // normally you would check for transactionState and mark the product as purchased in your database store
-    MBProgressHUD.hide(for: self.view, animated: true)
+    for transaction:AnyObject in transactions {
+        if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+
+  
+            switch trans.transactionState {
+            case .purchased:
+                print("Product Purchased")
+                //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+                
+                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+                cellDictionary.isSelected = true
+                self.packageId = cellDictionary.mppc_fb_id
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+
+
+                }
+                if self.packageId == self.clubPackageSubscribed {
+                    self.receiptValidation()
+                } else {
+                self.recptValidation()
+                }
+                print(trans.transactionIdentifier ?? "")
+                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+
+                 DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true);
+            }
+
+
+                SKPaymentQueue.default().remove(self)
+
+
+                break;
+            case .failed:
+
+                print("Purchased Failed");
+               // print(transaction)
+               // print(trans.error?.localizedDescription as Any)
+                DispatchQueue.main.async {
+
+
+                    MBProgressHUD.hide(for: self.view, animated: true);
+
+                }
+                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+                cellDictionary.isSelected = false
+                self.tableView.reloadData()
+                //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
+                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                SKPaymentQueue.default().remove(self)
+
+                break;
+            case .restored:
+                print("Already Purchased")
+                //Do unlocking etc stuff here in case of restor
+                DispatchQueue.main.async {
+
+                MBProgressHUD.hide(for: self.view, animated: true);
+                }
+                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                SKPaymentQueue.default().remove(self)
+
+            default:
+                // MBProgressHUD.hide(for: self.view, animated: true);
+
+                break;
+            }
+        }
+    }
    }
 
    // Flyshot will rely on this method before invoking any in-app purchase
@@ -55,11 +125,12 @@ extension AvailablePremiumPackagesViewController: FlyshotDelegate {
    }
 }
 class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AvailablePackagesCellDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print(response.products)
         let count : Int = response.products.count
         if (count>0) {
-            
+
             let validProduct: SKProduct = response.products[0] as SKProduct
             if (validProduct.productIdentifier == self.productIdentifier as String) {
                 print(validProduct.localizedTitle)
@@ -76,7 +147,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     
     func buyProduct(product: SKProduct) {
         if SKPaymentQueue.canMakePayments() {
-            
+
             print("Sending the Payment Request to Apple");
             let payment = SKPayment(product: product)
             self.productPrice = product.price
@@ -519,12 +590,8 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
         
         for transaction:AnyObject in transactions {
             if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
-                
-                // self.dismissPurchaseBtn.isEnabled = true
-                // self.restorePurchaseBtn.isEnabled = true
-//                self.carouselView1.isUserInteractionEnabled = true
-//                self.bckBtn.isHidden = false
-                
+
+      
                 switch trans.transactionState {
                 case .purchased:
                     print("Product Purchased")
@@ -544,19 +611,19 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                     cellDictionary.isSelected = false
                     self.tableView.reloadData()
 
-                    
+
                     SKPaymentQueue.default().remove(self)
-                    
-                    
+
+
                     break;
                 case .failed:
-                   
+
                     print("Purchased Failed");
                    // print(transaction)
                    // print(trans.error?.localizedDescription as Any)
                     DispatchQueue.main.async {
 
-                      
+
                         MBProgressHUD.hide(for: self.view, animated: true);
 
                     }
@@ -566,7 +633,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                     //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
-                    
+
                     break;
                 case .restored:
                     print("Already Purchased")
@@ -577,10 +644,10 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                     }
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     SKPaymentQueue.default().remove(self)
-                    
+
                 default:
                     // MBProgressHUD.hide(for: self.view, animated: true);
-                    
+
                     break;
                 }
             }
@@ -600,13 +667,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                 print("yes")
                 self.myIndex = cell.cellIndexPath
                 self.selectedIndex = self.myIndex
-                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
-                cellDictionary.isSelected = true
-                self.tableView.reloadData()
-                self.packageId = cellDictionary.mppc_fb_id
-                DispatchQueue.main.async {
-                MBProgressHUD.showAdded(to: self.view, animated: true)
-                }
+
             } else if status == .notFound {
                 print("not found")
                 DispatchQueue.main.async {
@@ -619,7 +680,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                 TweakAndEatUtils.AlertView.showAlert(view: self, message: "The referral code is already redeemed!")
                 }
             } else {
-                
+
             }
            // status enum:
            //   notFound (notify the user that no active promos were found)
@@ -718,14 +779,14 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
             self.currency = "\(self.labelPriceDict["currency"] as AnyObject as! String)";
             let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
             let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
-                           
+
                            let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
                            let totalDesc: String = labels + amount + currency;
-              
+
             self.packageName = (self.labelPriceDict[self.lables] as? String)!
-              
+
                            self.productIdentifier = identifier
-           
+
 
                                   if (SKPaymentQueue.canMakePayments()) {
                                      // self.buyNowButton.isEnabled = false
@@ -741,7 +802,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
               //  MBProgressHUD.showAdded(to: self.view, animated: true);
 
             }
-            
+
         }
     }
     
@@ -1380,6 +1441,7 @@ return
 //        Flyshot.test.clearUserData()
 //        Flyshot.test.campaignRedeemTest = true
 //        Flyshot.test.clearCampaignData()
+        
 //         DispatchQueue.main.async {
 //        self.tableView.reloadData()
 //        }
@@ -2118,72 +2180,72 @@ return
 //          return 80
 //    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
+        let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
         
 
-//        if (self.countryCode == "1" && UserDefaults.standard.value(forKey: cellDictionary.mppc_fb_id) == nil) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell2", for: indexPath) as! AvailablePackagesCell2;
-//            cell.cellDelegate = self
-//            cell.cellIndexPath = indexPath.row;
-//            cell.myIndexPath = indexPath;
-//
-//            let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
-//            if cellDictionary.isSelected == true {
-//                cell.packagesView.layer.borderWidth = 3
-//                cell.packagesView.layer.borderColor = UIColor.purple.cgColor
-//            } else {
-//                cell.packagesView.layer.borderWidth = 1
-//                cell.packagesView.layer.borderColor = UIColor.clear.cgColor
-//            }
-//            if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
-//                let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
-//                if language == "BA" {
-//                    let imageUrlBA = cellDictionary.mppc_img_banner_ios;
-//                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
-//                                                                       // Your code inside completion block
-//                        if image != nil {
-//                      let ratio = image!.size.width / image!.size.height
-//                            let newHeight = cell.packageImageView.frame.width / ratio
-//                            cell.packageImageViewHeightConstraint.constant = newHeight
-//                            cell.layoutIfNeeded()
-//                            UIView.performWithoutAnimation {
-//                                tableView.beginUpdates()
-//                                tableView.endUpdates()
-//                            }
-//
-//
-//                      }
-//                    }
-//
-//                } else {
-//                    let imageUrlEN = cellDictionary.mppc_img_banner_ios;
-//                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN)) { (image, error, cache, url) in
-//                                                                       // Your code inside completion block
-//                        if image != nil {
-//                      let ratio = image!.size.width / image!.size.height
-//                            let newHeight = cell.packageImageView.frame.width / ratio
-//                            cell.packageImageViewHeightConstraint.constant = newHeight
-//                            cell.layoutIfNeeded()
-//                            UIView.performWithoutAnimation {
-//                                tableView.beginUpdates()
-//                                tableView.endUpdates()
-//                            }
-//
-//
-//                      }
-//                    }
-//                }
-//            }
-//            if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" {
-//            let isPckgPurchased = self.isPackagePurchased(pkgID: cellDictionary.mppc_fb_id)
-//            if isPckgPurchased == true {
-//                cell.tickMarkImageView.isHidden = false
-//            } else {
-//                cell.tickMarkImageView.isHidden = true
-//            }
-//        }
-//            return cell
-//        } else {
+        if (self.countryCode == "91" && UserDefaults.standard.value(forKey: cellDictionary.mppc_fb_id) == nil) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell2", for: indexPath) as! AvailablePackagesCell2;
+            cell.cellDelegate = self
+            cell.cellIndexPath = indexPath.row;
+            cell.myIndexPath = indexPath;
+
+            let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
+            if cellDictionary.isSelected == true {
+                cell.packagesView.layer.borderWidth = 3
+                cell.packagesView.layer.borderColor = UIColor.purple.cgColor
+            } else {
+                cell.packagesView.layer.borderWidth = 1
+                cell.packagesView.layer.borderColor = UIColor.clear.cgColor
+            }
+            if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+                let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
+                if language == "BA" {
+                    let imageUrlBA = cellDictionary.mppc_img_banner_ios;
+                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
+                                                                       // Your code inside completion block
+                        if image != nil {
+                      let ratio = image!.size.width / image!.size.height
+                            let newHeight = cell.packageImageView.frame.width / ratio
+                            cell.packageImageViewHeightConstraint.constant = newHeight
+                            cell.layoutIfNeeded()
+                            UIView.performWithoutAnimation {
+                                tableView.beginUpdates()
+                                tableView.endUpdates()
+                            }
+
+
+                      }
+                    }
+
+                } else {
+                    let imageUrlEN = cellDictionary.mppc_img_banner_ios;
+                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN)) { (image, error, cache, url) in
+                                                                       // Your code inside completion block
+                        if image != nil {
+                      let ratio = image!.size.width / image!.size.height
+                            let newHeight = cell.packageImageView.frame.width / ratio
+                            cell.packageImageViewHeightConstraint.constant = newHeight
+                            cell.layoutIfNeeded()
+                            UIView.performWithoutAnimation {
+                                tableView.beginUpdates()
+                                tableView.endUpdates()
+                            }
+
+
+                      }
+                    }
+                }
+            }
+            if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" {
+            let isPckgPurchased = self.isPackagePurchased(pkgID: cellDictionary.mppc_fb_id)
+            if isPckgPurchased == true {
+                cell.tickMarkImageView.isHidden = false
+            } else {
+                cell.tickMarkImageView.isHidden = true
+            }
+        }
+            return cell
+        } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! AvailablePremiumPackagesTableViewCell;
         cell.cellDelegate = self
         cell.cellIndexPath = indexPath.row;
@@ -2240,8 +2302,8 @@ return
     }
     
         return cell;
-        //}
-        //return UITableViewCell()
+        }
+        return UITableViewCell()
         
     }
     

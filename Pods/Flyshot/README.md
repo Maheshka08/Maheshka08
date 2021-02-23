@@ -43,7 +43,7 @@ $ pod install
 
 ## Manually adding the SDK
 
-1. Download following [Zip file](https://bitbucket.org/flyshot/ios-sdk/src/4.0.1/FlyshotSDK.xcframework.zip/)
+1. Download following [Zip file](https://bitbucket.org/flyshot/ios-sdk/src/4.1.0/FlyshotSDK.xcframework.zip/)
 2. In XCode, select your project in Project navigator
 3. Finder, navigate to where you extracted the SDK
 4. Drag **FlyshotSDK.xcframework** to the **Frameworks, Libraries and Embedded Content** section under the general settings tab of your application's target. 

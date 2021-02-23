@@ -57,6 +57,12 @@
 	<true/>
 	<key>FacebookAppID</key>
 	<string>1608652672644833</string>
+	<key>CleverTapAccountID</key>
+	<string>W4R-8Z6-RZ6Z</string>
+	<key>CleverTapToken</key>
+	<string>61b-240</string>
+	<key>CleverTapUseIFA</key>
+	<true/>
 	<key>FacebookAutoInitEnabled</key>
 	<true/>
 	<key>FacebookAutoLogAppEventsEnabled</key>

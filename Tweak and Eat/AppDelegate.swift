@@ -23,8 +23,8 @@ import Branch
 import RNCryptor
 import FBSDKCoreKit
 import FlyshotSDK
-//import CleverTapSDK
-//import AppTrackingTransparency
+import CleverTapSDK
+import AppTrackingTransparency
 let uiRealm = try! Realm()
 
 @UIApplicationMain
@@ -220,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         //UIApplication.shared.applicationIconBadgeNumber = 1
         // if you are using the TEST key
          //Branch.setUseTestBranchKey(true)
-       // CleverTap.autoIntegrate()
+        CleverTap.autoIntegrate()
 
         Flyshot.shared.initialize(sdkToken: "fl_test_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lclV1aWQiOiI4ZjE0Mzc3MC1mZTk4LTQ4ZWEtOGJmZS1lNjUzZDk5Mjc4N2EiLCJhcHBsaWNhdGlvblV1aWQiOiIyYzRlNjBlNC1iZmJlLTRlMmItYjYzYi1kMjhjY2U5YzIyY2YiLCJ1dWlkIjoiMDYwMTZmNzEtYzYwYS00MjNjLTgyZDktNjJhNTZiMzkzMjJiIn0.XdAbRo-qhjuRio6Lk0hGxcwY0-eAuZiP9SfdV0gk2lE", onSuccess: {
            // SDK is ready for use

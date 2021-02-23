@@ -124,10 +124,10 @@ install_xcframework() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_xcframework "${PODS_ROOT}/Flyshot/FlyshotSDK.xcframework" "" "true" "ios-x86_64-simulator/FlyshotSDK.framework" "ios-arm64_armv7/FlyshotSDK.framework"
+  install_xcframework "${PODS_ROOT}/Flyshot/FlyshotSDK.xcframework" "" "true" "ios-arm64_armv7/FlyshotSDK.framework" "ios-x86_64-simulator/FlyshotSDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_xcframework "${PODS_ROOT}/Flyshot/FlyshotSDK.xcframework" "" "true" "ios-x86_64-simulator/FlyshotSDK.framework" "ios-arm64_armv7/FlyshotSDK.framework"
+  install_xcframework "${PODS_ROOT}/Flyshot/FlyshotSDK.xcframework" "" "true" "ios-arm64_armv7/FlyshotSDK.framework" "ios-x86_64-simulator/FlyshotSDK.framework"
 fi
 
 echo "Artifact list stored at $ARTIFACT_LIST_FILE"

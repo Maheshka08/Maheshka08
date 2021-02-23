@@ -232,7 +232,8 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         }
         MBProgressHUD.showAdded(to: self.view, animated: true);
         resetCommentsView();
-        
+        var msisdnSet = Set<String>()
+
         let dispatch_group = DispatchGroup()
         dispatch_group.enter()
         
@@ -252,7 +253,6 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         //let awesomeMembers = self.tweakDictionary["awesomeMembers"]! as! NSMutableArray
         var feedSet = [String: AnyObject]()
         feedSet["nickName"] = self.nicKName as AnyObject
-        var msisdnSet = Set<String>()
         for mob in commentMembers {
            // let mobile = mob["msisdn"]
             let mobile: String = mob.commentsMsisdn
@@ -262,17 +262,18 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
             let mobile: String = awesome.aweSomeMsisdn
             msisdnSet.insert(mobile)
         }
-        if msisdnSet.contains(self.userMsisdn) {
-        msisdnSet.remove(self.userMsisdn)
-        }
+       
         msisdnSet.insert(self.tweakOwnerMsisdn)
-        if msisdnSet.count == 0 {
-            msisdnSet.insert(self.tweakOwnerMsisdn)
-            feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
-        } else {
+        //if msisdnSet.contains(self.userMsisdn) {
+        msisdnSet.remove(self.userMsisdn)
+        //}
+//        if msisdnSet.count == 0 {
+//            msisdnSet.insert(self.tweakOwnerMsisdn)
+//            feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//        } else {
+//        feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//        }
         feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
-        }
-        //feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
         feedSet["noteType"] = 4 as AnyObject
         feedSet["feedId"] = self.childSnap as AnyObject
         print(feedSet)
@@ -296,7 +297,7 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         
         dispatch_group.leave()
         dispatch_group.notify(queue: DispatchQueue.main) {
-            if self.userMsisdn == self.msisdn {
+            if msisdnSet.count == 0 {
                 return
             }
             //let noteType : Int = 4

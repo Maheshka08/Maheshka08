@@ -15,7 +15,7 @@ import RealmSwift
 import Branch
 import RNCryptor
 import FacebookCore
-import FlyshotSDK
+//import FlyshotSDK
 
 //Sample model
 struct Item {
@@ -29,26 +29,26 @@ enum MyTheme {
     case light
     case dark
 }
-extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
-   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
-   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
-   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-      // implement logic to process Flyshot IAP transactions
-      // normally you would check for transactionState and mark the product as purchased in your database store
-    MBProgressHUD.hide(for: self.view, animated: true)
-   }
-
-   // Flyshot will rely on this method before invoking any in-app purchase
-   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
-      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
-       return true
-   }
-
-   // This method will be invoked as a callback when Flyshot campaign was detected
-   func flyshotCampaignDetected(productId: String?) {
-      // Optional: implement custom logic here with productId related to current campaign
-   }
-}
+//extension MoreInfoPremiumPackagesViewController: FlyshotDelegate {
+//   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
+//   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
+//   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//      // implement logic to process Flyshot IAP transactions
+//      // normally you would check for transactionState and mark the product as purchased in your database store
+//    MBProgressHUD.hide(for: self.view, animated: true)
+//   }
+//
+//   // Flyshot will rely on this method before invoking any in-app purchase
+//   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
+//      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
+//       return true
+//   }
+//
+//   // This method will be invoked as a callback when Flyshot campaign was detected
+//   func flyshotCampaignDetected(productId: String?) {
+//      // Optional: implement custom logic here with productId related to current campaign
+//   }
+//}
 class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
     var identifierFromPopUp = ""
     var scrolledIndex: Int = 0
@@ -641,23 +641,23 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
        }
     
     @IBAction func referralCodeBtnTapped(_ sender: Any) {
-        Flyshot.shared.upload(onSuccess: { (status) in
-            print(status)
-            if status == .found {
-                print("yes")
-                MBProgressHUD.showAdded(to: self.view, animated: true)
-            } else if status == .notFound {
-                print("not found")
-            } else if status == .redeemed {
-                print("redeemed")
-            }
-           // status enum:
-           //   notFound (notify the user that no active promos were found)
-           //   found (close the Promo Banner if "status == .found")
-           //   redeemed (notify the user that campaign was already redeemed)
-        }, onFailure: { (error) in
-           // Handle error
-        })
+//        Flyshot.shared.upload(onSuccess: { (status) in
+//            print(status)
+//            if status == .found {
+//                print("yes")
+//                MBProgressHUD.showAdded(to: self.view, animated: true)
+//            } else if status == .notFound {
+//                print("not found")
+//            } else if status == .redeemed {
+//                print("redeemed")
+//            }
+//           // status enum:
+//           //   notFound (notify the user that no active promos were found)
+//           //   found (close the Promo Banner if "status == .found")
+//           //   redeemed (notify the user that campaign was already redeemed)
+//        }, onFailure: { (error) in
+//           // Handle error
+//        })
         
     }
     
@@ -727,10 +727,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.showCalendarView()
     }
     @IBAction func paymentSuccessOKTapped(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-        let myTweakandEatViewController : MyTweakAndEatVCViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as! MyTweakAndEatVCViewController;
-        myTweakandEatViewController.fromWhichVC = "MoreInfoPremiumPackagesViewController"
-        myTweakandEatViewController.packageID = self.packageId; self.navigationController?.pushViewController(myTweakandEatViewController, animated: true);
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//        let myTweakandEatViewController : MyTweakAndEatVCViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as! MyTweakAndEatVCViewController;
+//        myTweakandEatViewController.fromWhichVC = "MoreInfoPremiumPackagesViewController"
+//        myTweakandEatViewController.packageID = self.packageId; self.navigationController?.pushViewController(myTweakandEatViewController, animated: true);
+        self.paySucessView.isHidden = true
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
@@ -2094,23 +2096,23 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Flyshot.shared.delegate = self
+      //  Flyshot.shared.delegate = self
         self.premiumSubView.layer.cornerRadius = 15
 //        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)
         self.imgScrollView.layer.cornerRadius = 15
-        print(Flyshot.shared.isFlyshotUser())
-
-        // Returns true/false boolean if user has active campaign
-        print(Flyshot.shared.isCampaignActive())
-        // or
-        // Returns true/false boolean if user has active campaign for a specific offering (Product ID or In-App Purchase ID)
-              print(Flyshot.shared.isCampaignActive(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
-
-        // Returns true/false boolean if user is eligible for Flyshot promo
-                    print(Flyshot.shared.isEligibleForPromo())
+//        print(Flyshot.shared.isFlyshotUser())
+//
+//        // Returns true/false boolean if user has active campaign
+//        print(Flyshot.shared.isCampaignActive())
+//        // or
+//        // Returns true/false boolean if user has active campaign for a specific offering (Product ID or In-App Purchase ID)
+//              print(Flyshot.shared.isCampaignActive(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
+//
+//        // Returns true/false boolean if user is eligible for Flyshot promo
+//                    print(Flyshot.shared.isEligibleForPromo())
         // or
         // Returns true/false boolean if user is eligible for Flyshot promo for a specific offering
-                          print(Flyshot.shared.isEligibleForPromo(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
+                  //        print(Flyshot.shared.isEligibleForPromo(productId: "com.purpleteal.tweak_and_eat.flyshot_my_tweak__eat_jan_2021_20_off"))
 //        Flyshot.test.clearUserData()
 //        Flyshot.test.campaignRedeemTest = true
 //        Flyshot.test.clearCampaignData()

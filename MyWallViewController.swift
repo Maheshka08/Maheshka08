@@ -1202,18 +1202,19 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let mobile: String = com.commentsMsisdn
                     msisdnSet.insert(mobile)
                 }
-                if msisdnSet.contains(self.userMsisdn) {
-                msisdnSet.remove(self.userMsisdn)
-                }
                 msisdnSet.insert(cellDict.msisdn)
-                if msisdnSet.count == 0 {
-                    msisdnSet.insert(cellDict.msisdn)
-                    feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
-                } else {
-                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
-                }
+
+                //if msisdnSet.contains(self.userMsisdn) {
+                msisdnSet.remove(self.userMsisdn)
+                //}
+//                if msisdnSet.count == 0 {
+//                    msisdnSet.insert(cellDict.msisdn)
+//                    feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//                } else {
+//                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+//                }
                 
-                //feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
+                feedSet["msisdns"] = msisdnSet.joined(separator: ",") as AnyObject
 
 
                 feedSet["noteType"] = 3 as AnyObject
@@ -1236,9 +1237,9 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     return
                 }
                 //let noteType : Int = 3
-//                if msisdnSet.count == 0 {
-//                    return
-//                }
+                if msisdnSet.count == 0 {
+                    return
+                }
                 APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.WALL_PUSH_NOTIFICATIONS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: feedSet, success: { response in
                         DispatchQueue.main.async {
                             

@@ -27,7 +27,7 @@ import CoreTelephony
 import Branch
 import FacebookCore
 import RNCryptor
-//import CleverTapSDK
+import CleverTapSDK
 
 let IS_IPHONE4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 let IS_iPHONE5 = (UIScreen.main.bounds.size.height == 568) ? true : false
@@ -9995,22 +9995,50 @@ self.floatingCallBtn.isHidden = false
                                             var email = ""
                                             var mobileNumber = ""
                                             var ccCode = ""
+                                            var age = ""
+                                            var gender = ""
+                                            var weight = ""
+                                            var goals = ""
+                                            var conditions = ""
+                                            var allergies = ""
+                                            var foodHabits = ""
+                                            
+                                            
+
                                             for prof in self.myProfileInfo! {
                                                 name = prof.name
                                                 email = prof.email
                                                 mobileNumber = prof.msisdn
                                                 ccCode = self.countryCode
+                                                age = prof.age
+                                                gender = prof.gender
+                                                weight = prof.weight
+                                                goals = prof.goals
+                                                conditions = prof.conditions
+                                                allergies = prof.allergies
+                                                foodHabits = prof.foodHabits
+                                                
+                                                
                                             }
-                                            let profile = [
+                                           
+                                            let profile: Dictionary<String, AnyObject> = [
                                                 //Update pre-defined profile properties
-                                                "Name": name,
-                                                "Email": email,
+                                                "Name": name as AnyObject,
+                                                "Identity": 12 as AnyObject,
+                                                "Email": email as AnyObject,
                                                 //Update custom profile properties
-                                                "Mobile Number": mobileNumber,
-                                                "Country Code": ccCode
+                                                "Phone Number": mobileNumber as AnyObject,
+                                                "Country Code": Int(ccCode)!  as AnyObject,
+                                                "Age": Int(age)!  as AnyObject,
+                                                "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
+                                                "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
+                                                "Allergies": allergies.components(separatedBy: ",") as AnyObject,
+                                                "Conditions": conditions.components(separatedBy: ",") as AnyObject,
+                                                "Goals": goals.components(separatedBy: ",") as AnyObject,
+                                                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject
                                             ] 
-                                           // CleverTap.sharedInstance()?.profilePush(profile)
-                                           // CleverTap.sharedInstance()?.recordEvent("Registration successful")
+                                            CleverTap.sharedInstance()?.profilePush(profile)
+                                            CleverTap.sharedInstance()?.recordEvent("Registration successful")
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 
