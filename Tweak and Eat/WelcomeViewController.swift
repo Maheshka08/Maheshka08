@@ -7499,7 +7499,13 @@ self.floatingCallBtn.isHidden = false
                         
                     }
                 } else {
-                self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+                //self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+                    if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+                    self.subscribeNowButton.setImage(UIImage.init(named: "upgrade_now_btn"), for: .normal)
+                } else {
+                    self.subscribeNowButton.setImage(UIImage.init(named: "subscribe_now_btn"), for: .normal)
+
+                }
                 }
             }
         }
@@ -8680,7 +8686,7 @@ self.floatingCallBtn.isHidden = false
                     }
                     
                     
-                } else if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                } else if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
                     self.tweakandeatClubButtonView.isHidden = true
                     self.tweakandeatClubButtonViewBottom.isHidden = true
                     self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
@@ -8699,7 +8705,7 @@ self.floatingCallBtn.isHidden = false
                     //self.showTrialPeriodView()
                                   }
             } else if self.countryCode == "62" {
-                            if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") == nil && UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil {
+                            if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: self.clubPackageSubscribed) == nil && UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil {
                                 let tenthAugDateStr = "2020-08-10"
                                 let fifteenthAugDateStr = "2020-08-16"
                                 let formatter = DateFormatter()
@@ -8782,7 +8788,7 @@ self.floatingCallBtn.isHidden = false
                                 }
                                 
                                 
-                            } else if UserDefaults.standard.value(forKey: self.ptpPackage) == nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") == nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil  {
+                            } else if UserDefaults.standard.value(forKey: self.ptpPackage) == nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") == nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") == nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) == nil  {
 //                                self.tweakandeatClubButtonView.isHidden = true
 //                                self.tweakandeatClubButtonViewBottom.isHidden = true
 //                                self.tweakAndEatCLubExpiryViewWithButtons.isHidden = true
@@ -8802,7 +8808,7 @@ self.floatingCallBtn.isHidden = false
                                               }
                         } else if self.countryCode == "60" {
                                     //UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil
-                                    if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil {
+                                    if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
 
                                                            self.removePTPExpiryView()
                                                       } else {
@@ -8817,7 +8823,7 @@ self.floatingCallBtn.isHidden = false
                 }
                                 } else  {
                     
-                                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                                if UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
 
 
                                      self.removePTPExpiryView()
@@ -10024,10 +10030,12 @@ self.floatingCallBtn.isHidden = false
                                             let profile: Dictionary<String, AnyObject> = [
                                                 //Update pre-defined profile properties
                                                 "Name": name as AnyObject,
-                                                "Identity": 12 as AnyObject,
+                                                "Identity": 13 as AnyObject,
                                                 "Email": email as AnyObject,
                                                 //Update custom profile properties
                                                 "Phone Number": mobileNumber as AnyObject,
+                                                "Mobile Number": mobileNumber as AnyObject,
+                                                "Phone": "+" + mobileNumber as AnyObject,
                                                 "Country Code": Int(ccCode)!  as AnyObject,
                                                 "Age": Int(age)!  as AnyObject,
                                                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
@@ -10035,9 +10043,15 @@ self.floatingCallBtn.isHidden = false
                                                 "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                                                 "Conditions": conditions.components(separatedBy: ",") as AnyObject,
                                                 "Goals": goals.components(separatedBy: ",") as AnyObject,
-                                                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject
+                                                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject,
+                                                "MSG-email": true as AnyObject,           // Disable email notifications
+                                                   "MSG-push": true as AnyObject,             // Enable push notifications
+                                                   "MSG-sms": false as AnyObject,             // Disable SMS notifications
+                                                   "MSG-whatsapp": false as AnyObject
+                                        
                                             ] 
-                                            CleverTap.sharedInstance()?.profilePush(profile)
+                                            //CleverTap.sharedInstance()?.profilePush(profile)
+                                            CleverTap.sharedInstance()?.onUserLogin(profile)
                                             CleverTap.sharedInstance()?.recordEvent("Registration successful")
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
@@ -10987,7 +11001,8 @@ self.floatingCallBtn.isHidden = false
        self.myNutritionViewLast10TweaksTableView.isHidden = true
        self.myNutritionViewSelectYourMealTableView.isHidden = true
        self.mealTypeTableView.isHidden = true
-        
+        CleverTap.sharedInstance()?.recordEvent("visit_premium_packages")
+
         fromCrown = false
 //        if countryCode == "91" {
 //            Analytics.logEvent("TAE_GO_PREM_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Go Premium Tapped On Home Page"])

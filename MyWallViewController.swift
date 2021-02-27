@@ -109,6 +109,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var topBannerImageLink = ""
     var topBannerImage = ""
     var ptpPackage = ""
+    var notificationBellButton = UIButton()
     @IBOutlet var tweakWallTableView: UITableView!
     
     @objc func goToDesiredPage(_ notification: NSNotification) {
@@ -135,10 +136,32 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "TOGGLE_WALL_NOTIFICATIONS") == nil {
+        UserDefaults.standard.setValue(true, forKey: "TOGGLE_WALL_NOTIFICATIONS")
+        UserDefaults.standard.synchronize()
+        } else {
+            let boolValue = UserDefaults.standard.value(forKey: "TOGGLE_WALL_NOTIFICATIONS") as! Bool
+            if boolValue == false {
+                UserDefaults.standard.setValue(false, forKey: "TOGGLE_WALL_NOTIFICATIONS")
+                UserDefaults.standard.synchronize()
+            DispatchQueue.main.async {
+                self.notificationBellButton.setImage(UIImage(named: "notification_icon2.png"), for: .normal)
+
+            }
+            } else {
+                UserDefaults.standard.setValue(true, forKey: "TOGGLE_WALL_NOTIFICATIONS")
+                UserDefaults.standard.synchronize()
+                DispatchQueue.main.async {
+                    self.notificationBellButton.setImage(UIImage(named: "notification_icon1.png"), for: .normal)
+
+                }
+            }
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MyWallViewController.goToDesiredPage(_:)), name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: nil);
         self.tweakFeedsArray = [TweakWall]()
         self.addBackButton()
+        self.addNotificationBellIcon()
         bundle = Bundle.init(path: path!)! as Bundle
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
@@ -189,6 +212,31 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         backButton.setImage(UIImage(named: "backIcon"), for: .normal)
         backButton.addTarget(self, action: #selector(self.backAction(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    
+    @objc func addNotificationBellIcon() {
+        self.notificationBellButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        self.notificationBellButton.setImage(UIImage(named: "notification_icon1.png"), for: .normal)
+        self.notificationBellButton.addTarget(self, action: #selector(bellButtonAction), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.notificationBellButton)
+    }
+    
+    @objc func bellButtonAction() {
+        if self.notificationBellButton.currentImage == UIImage(named: "notification_icon1.png") {
+            UserDefaults.standard.setValue(false, forKey: "TOGGLE_WALL_NOTIFICATIONS")
+            UserDefaults.standard.synchronize()
+        DispatchQueue.main.async {
+            self.notificationBellButton.setImage(UIImage(named: "notification_icon2.png"), for: .normal)
+
+        }
+        } else {
+            UserDefaults.standard.setValue(true, forKey: "TOGGLE_WALL_NOTIFICATIONS")
+            UserDefaults.standard.synchronize()
+            DispatchQueue.main.async {
+                self.notificationBellButton.setImage(UIImage(named: "notification_icon1.png"), for: .normal)
+
+            }
+        }
     }
     
     @IBAction func backAction(_ sender: UIButton) {

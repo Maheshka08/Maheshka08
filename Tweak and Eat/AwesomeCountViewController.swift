@@ -166,6 +166,7 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func cancelBtnAction(_ sender: Any) {
         self.view.endEditing(true);
         self.dismiss(animated: true, completion: {});
+        //self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

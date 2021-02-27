@@ -2180,72 +2180,72 @@ return
 //          return 80
 //    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
-        
-
-        if (self.countryCode == "91" && UserDefaults.standard.value(forKey: cellDictionary.mppc_fb_id) == nil) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell2", for: indexPath) as! AvailablePackagesCell2;
-            cell.cellDelegate = self
-            cell.cellIndexPath = indexPath.row;
-            cell.myIndexPath = indexPath;
-
-            let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
-            if cellDictionary.isSelected == true {
-                cell.packagesView.layer.borderWidth = 3
-                cell.packagesView.layer.borderColor = UIColor.purple.cgColor
-            } else {
-                cell.packagesView.layer.borderWidth = 1
-                cell.packagesView.layer.borderColor = UIColor.clear.cgColor
-            }
-            if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
-                let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
-                if language == "BA" {
-                    let imageUrlBA = cellDictionary.mppc_img_banner_ios;
-                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
-                                                                       // Your code inside completion block
-                        if image != nil {
-                      let ratio = image!.size.width / image!.size.height
-                            let newHeight = cell.packageImageView.frame.width / ratio
-                            cell.packageImageViewHeightConstraint.constant = newHeight
-                            cell.layoutIfNeeded()
-                            UIView.performWithoutAnimation {
-                                tableView.beginUpdates()
-                                tableView.endUpdates()
-                            }
-
-
-                      }
-                    }
-
-                } else {
-                    let imageUrlEN = cellDictionary.mppc_img_banner_ios;
-                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN)) { (image, error, cache, url) in
-                                                                       // Your code inside completion block
-                        if image != nil {
-                      let ratio = image!.size.width / image!.size.height
-                            let newHeight = cell.packageImageView.frame.width / ratio
-                            cell.packageImageViewHeightConstraint.constant = newHeight
-                            cell.layoutIfNeeded()
-                            UIView.performWithoutAnimation {
-                                tableView.beginUpdates()
-                                tableView.endUpdates()
-                            }
-
-
-                      }
-                    }
-                }
-            }
-            if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" {
-            let isPckgPurchased = self.isPackagePurchased(pkgID: cellDictionary.mppc_fb_id)
-            if isPckgPurchased == true {
-                cell.tickMarkImageView.isHidden = false
-            } else {
-                cell.tickMarkImageView.isHidden = true
-            }
-        }
-            return cell
-        } else {
+//        let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
+//        
+//
+//        if (self.countryCode == "-1" && UserDefaults.standard.value(forKey: cellDictionary.mppc_fb_id) == nil) {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell2", for: indexPath) as! AvailablePackagesCell2;
+//            cell.cellDelegate = self
+//            cell.cellIndexPath = indexPath.row;
+//            cell.myIndexPath = indexPath;
+//
+//            let cellDictionary = self.premiumPackagesApiArray[indexPath.row];
+//            if cellDictionary.isSelected == true {
+//                cell.packagesView.layer.borderWidth = 3
+//                cell.packagesView.layer.borderColor = UIColor.purple.cgColor
+//            } else {
+//                cell.packagesView.layer.borderWidth = 1
+//                cell.packagesView.layer.borderColor = UIColor.clear.cgColor
+//            }
+//            if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
+//                let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;
+//                if language == "BA" {
+//                    let imageUrlBA = cellDictionary.mppc_img_banner_ios;
+//                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlBA)) { (image, error, cache, url) in
+//                                                                       // Your code inside completion block
+//                        if image != nil {
+//                      let ratio = image!.size.width / image!.size.height
+//                            let newHeight = cell.packageImageView.frame.width / ratio
+//                            cell.packageImageViewHeightConstraint.constant = newHeight
+//                            cell.layoutIfNeeded()
+//                            UIView.performWithoutAnimation {
+//                                tableView.beginUpdates()
+//                                tableView.endUpdates()
+//                            }
+//
+//
+//                      }
+//                    }
+//
+//                } else {
+//                    let imageUrlEN = cellDictionary.mppc_img_banner_ios;
+//                    cell.packageImageView.sd_setImage(with: URL(string: imageUrlEN)) { (image, error, cache, url) in
+//                                                                       // Your code inside completion block
+//                        if image != nil {
+//                      let ratio = image!.size.width / image!.size.height
+//                            let newHeight = cell.packageImageView.frame.width / ratio
+//                            cell.packageImageViewHeightConstraint.constant = newHeight
+//                            cell.layoutIfNeeded()
+//                            UIView.performWithoutAnimation {
+//                                tableView.beginUpdates()
+//                                tableView.endUpdates()
+//                            }
+//
+//
+//                      }
+//                    }
+//                }
+//            }
+//            if  cellDictionary.mppc_fb_id != "-Qis3atRaproTlpr4zIs" && cellDictionary.mppc_fb_id != "-KyotHu4rPoL3YOsVxUu" && cellDictionary.mppc_fb_id != "-SquhLfL5nAsrhdq7GCY" {
+//            let isPckgPurchased = self.isPackagePurchased(pkgID: cellDictionary.mppc_fb_id)
+//            if isPckgPurchased == true {
+//                cell.tickMarkImageView.isHidden = false
+//            } else {
+//                cell.tickMarkImageView.isHidden = true
+//            }
+//        }
+//            return cell
+//        } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! AvailablePremiumPackagesTableViewCell;
         cell.cellDelegate = self
         cell.cellIndexPath = indexPath.row;
@@ -2302,8 +2302,8 @@ return
     }
     
         return cell;
-        }
-        return UITableViewCell()
+       // }
+        //return UITableViewCell()
         
     }
     

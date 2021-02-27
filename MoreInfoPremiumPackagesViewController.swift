@@ -15,6 +15,7 @@ import RealmSwift
 import Branch
 import RNCryptor
 import FacebookCore
+import CleverTapSDK
 //import FlyshotSDK
 
 //Sample model
@@ -77,6 +78,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
+       // CleverTap.sharedInstance()?.recordEvent("visit_premium_packages")
+        
         if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
             Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
         } else if self.packageId == "-IndWLIntusoe3uelxER" {
