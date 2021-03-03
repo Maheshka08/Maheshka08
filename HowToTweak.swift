@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CleverTapSDK
 
 class HowToTweak: UIView {
     @IBOutlet weak var step1BgHeightConstraint: NSLayoutConstraint!
@@ -63,6 +64,7 @@ class HowToTweak: UIView {
             self.delegate.resignHowToTweakScreen()
             
         } else {
+            CleverTap.sharedInstance()?.recordEvent("Home_viewed")
               let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     let dispatch_group = DispatchGroup();
                     dispatch_group.enter();

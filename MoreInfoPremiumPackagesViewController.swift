@@ -78,7 +78,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
-       // CleverTap.sharedInstance()?.recordEvent("visit_premium_packages")
+        CleverTap.sharedInstance()?.recordEvent("Purchase_initiated")
         
         if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
             Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
@@ -180,6 +180,31 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                            self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
                }
         
+    }
+    
+    func getScreenName(screenName: String) -> String {
+        if self.packageId == "-SgnMyAiDPuD8WVCipga" {
+           return "SGP MYAIDP"
+        }
+        if self.packageId == "-IdnMyAiDPoP9DFGkbas" {
+           return "INDONESIA MYAIDP"
+        }
+        if self.packageId == "-MzqlVh6nXsZ2TCdAbOp" {
+           return "USA MYTAE"
+        }
+        if self.packageId == "-MalAXk7gLyR3BNMusfi" {
+           return "MALASYIA MYTAE"
+        }
+        if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+           return "INDIA MYAIDP"
+        }
+        if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
+           return "INDIA MYTAE"
+        }
+        if self.packageId == "-IndWLIntusoe3uelxER" {
+           return "INDIA WLIF"
+        }
+        return ""
     }
     
     private func updateDataSource2() {
@@ -881,6 +906,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 switch trans.transactionState {
                 case .purchased:
                     print("Product Purchased")
+                    CleverTap.sharedInstance()?.recordEvent("Purchase_completed")
                     //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
                     if self.packageId == self.clubPackageSubscribed {
                         self.receiptValidation()
@@ -904,6 +930,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 case .failed:
                    
                     print("Purchased Failed");
+                    CleverTap.sharedInstance()?.recordEvent("Purchase_canceled")
                    // print(transaction)
                    // print(trans.error?.localizedDescription as Any)
                     DispatchQueue.main.async {
@@ -2098,7 +2125,22 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        CleverTap.sharedInstance()?.recordEvent("Single_package_viewed (POPUP)")
+        var counter = 15
+        if self.getScreenName(screenName: self.packageId).count > 0 {
+            let screenName = self.getScreenName(screenName: self.packageId)
+        let props = [
+            "package_name": screenName,
+        ]
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            counter -= 1
+            print(counter)
+            if counter == 0 {
+                CleverTap.sharedInstance()?.recordEvent("Idle_on_screen", withProps: props)
+                timer.invalidate()
+            }
+        }
+        }
       //  Flyshot.shared.delegate = self
         self.premiumSubView.layer.cornerRadius = 15
 //        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)

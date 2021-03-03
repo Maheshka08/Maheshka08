@@ -6208,6 +6208,7 @@ self.topImageView.alpha = 1
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
+        CleverTap.sharedInstance()?.recordEvent("Home_viewed")
         self.navigationController?.isNavigationBarHidden = true;
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             self.getAdDetails()
@@ -7102,9 +7103,10 @@ self.topImageView.alpha = 1
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
-        if self.countryCode == "91" {
-            self.getClubHome2()
-        } else {
+//        if self.countryCode == "91" {
+//            self.getClubHome2()
+//        } else {
+        CleverTap.sharedInstance()?.recordEvent("Freetrial_finished")
         DispatchQueue.main.async {
             self.navigationBarButtonItemTimer.tintColor = UIColor.white
             self.navigationBarButtonItemTimer.isEnabled = false
@@ -7114,12 +7116,11 @@ self.topImageView.alpha = 1
             self.trialPeriodExpired = true
             self.trialPeriodExpiryTextLbl.text = "Your trial period is completed.\n(Continue to use base service for free)\n\nClick here to subscribe now.";
             self.trialPeriodExpiryTextLbl.font = UIFont(name:"QUESTRIAL-REGULAR", size: 18.0)
-
+            self.startTweakingView.isHidden = true;
             self.startTweakingLabel.alpha = 0
-            self.startTweakingView.isHidden = true
             self.trialPeriodExpiryView.alpha = 0.8;
         }
-        }
+        //}
     }
     
 
@@ -9860,6 +9861,8 @@ self.floatingCallBtn.isHidden = false
                     
                     if response.index(forKey : "isNewRegistration") != nil {
                         if response["isNewRegistration"] as AnyObject as! Bool == true {
+                            CleverTap.sharedInstance()?.recordEvent("Freetrial_started")
+
                             let identifier = ProcessInfo.processInfo.globallyUniqueString
                             let content = UNMutableNotificationContent()
                             content.title = "First Tweaker Contest"
@@ -10030,7 +10033,7 @@ self.floatingCallBtn.isHidden = false
                                             let profile: Dictionary<String, AnyObject> = [
                                                 //Update pre-defined profile properties
                                                 "Name": name as AnyObject,
-                                                "Identity": 13 as AnyObject,
+                                                "Identity": "+" + mobileNumber as AnyObject,
                                                 "Email": email as AnyObject,
                                                 //Update custom profile properties
                                                 "Phone Number": mobileNumber as AnyObject,
@@ -10052,7 +10055,7 @@ self.floatingCallBtn.isHidden = false
                                             ] 
                                             //CleverTap.sharedInstance()?.profilePush(profile)
                                             CleverTap.sharedInstance()?.onUserLogin(profile)
-                                            CleverTap.sharedInstance()?.recordEvent("Registration successful")
+                                            CleverTap.sharedInstance()?.recordEvent("Signup_completed")
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 
@@ -10292,6 +10295,7 @@ self.floatingCallBtn.isHidden = false
     
     
     @IBAction func videoPlayAction(_ sender: Any) {
+        CleverTap.sharedInstance()?.recordEvent("Introvideo_watched")
         self.playVideo()
     }
     

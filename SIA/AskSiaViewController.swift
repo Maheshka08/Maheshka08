@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import CleverTapSDK
 
 private let siaChatUrl = "https://www.tweakandeat.com:5009/api/content/siappkgcontent/0"
 class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SIAButtonDelegate {
@@ -259,6 +260,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         refreshAlert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (action: UIAlertAction!) in
                     print("Handle Ok logic here")
+            CleverTap.sharedInstance()?.recordEvent("Sia_Left")
             self.navigationController?.popViewController(animated: true)
 
            }))
@@ -274,6 +276,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         if self.botMessages[cell.cellIndexPath.row].userInteraction == false {
             return
         }
+        CleverTap.sharedInstance()?.recordEvent("Sia_question_answered")
         print(self.botMessages[cell.cellIndexPath.row])
         let jsonDict = self.botMessages[cell.cellIndexPath.row]
         self.botMessages[cell.cellIndexPath.row].buttonIsHighlighted = true
@@ -433,8 +436,11 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             self.botTable.reloadData()
             self.botTable.scrollToRow(at: IndexPath.init(row: self.botMessages.count - 1, section: 0), at: .bottom, animated: true)
         })
+        CleverTap.sharedInstance()?.recordEvent("Sia_Started")
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // your code here
+
             self.getLatestLoans()
 
         }

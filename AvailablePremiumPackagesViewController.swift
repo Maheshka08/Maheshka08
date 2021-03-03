@@ -16,6 +16,7 @@ import StoreKit
 import RNCryptor
 import Branch
 import FacebookCore
+import CleverTapSDK
 
 
 class PremiumPackages {
@@ -1431,6 +1432,8 @@ return
         
         super.viewDidLoad();
       //  UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+        CleverTap.sharedInstance()?.recordEvent("Packages_viewed")
+
         SKPaymentQueue.default().add(self)
         Flyshot.shared.delegate = self
 
@@ -1517,6 +1520,33 @@ return
 //        if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
 //            self.imgPopup = "imgClubPopup"
 //        }
+        //self.premiumPackagesApiArray.removeAll()
+        self.navigationController?.isNavigationBarHidden = true
+        if self.fromCrown == false {
+            if self.countryCode == "91" {
+                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+            } else if self.countryCode == "62" {
+                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+            } else if self.countryCode == "1" {
+                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+            } else if self.countryCode == "65" {
+                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+            } else if self.countryCode == "60" {
+                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+            }
+            if self.countryCode == "91" {
+            if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+                getPremiumPackagesApi5()
+            } else {
+                getPremiumPackagesApi2();
+
+            }
+            } else {
+                getPremiumPackagesApi2();
+            }
+        } else {
+        self.getPremiumPackagesApi();
+        }
        
         self.myProfile = uiRealm.objects(MyProfileInfo.self);
 
@@ -1548,33 +1578,7 @@ return
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true);
-        self.premiumPackagesApiArray.removeAll()
-        self.navigationController?.isNavigationBarHidden = true
-        if self.fromCrown == false {
-            if self.countryCode == "91" {
-                self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
-            } else if self.countryCode == "62" {
-                self.clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
-            } else if self.countryCode == "1" {
-                self.clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
-            } else if self.countryCode == "65" {
-                self.clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
-            } else if self.countryCode == "60" {
-                self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
-            }
-            if self.countryCode == "91" {
-            if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
-                getPremiumPackagesApi5()
-            } else {
-                getPremiumPackagesApi2();
-
-            }
-            } else {
-                getPremiumPackagesApi2();
-            }
-        } else {
-        self.getPremiumPackagesApi();
-        }
+       
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

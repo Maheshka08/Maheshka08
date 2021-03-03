@@ -14,6 +14,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseInstanceID
 import FirebaseMessaging
+import CleverTapSDK
 
 let IS_IPHONES4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 
@@ -671,6 +672,8 @@ class ImageUploadingViewController: UIViewController {
                 if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
                     let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "first_tweak")
                     print(eventName)
+                    CleverTap.sharedInstance()?.recordEvent("Tweak_Sent (Tweak_Sent_First_time)")
+
                     Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "First tweak"])
                 }
                 

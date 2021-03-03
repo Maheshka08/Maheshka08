@@ -16,6 +16,7 @@ import CoreLocation
 import MobileCoreServices
 import AVKit
 import AVFoundation
+import CleverTapSDK
 
 
 
@@ -426,6 +427,8 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        CleverTap.sharedInstance()?.recordEvent("EDR_viewed")
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         // timelinesTableView.backgroundColor = UIColor.white

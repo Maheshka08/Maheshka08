@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseInstanceID
 import FirebaseMessaging
+import CleverTapSDK
 
 class TweakAndEatFinalIntroScreen: UIView {
 
@@ -52,6 +53,7 @@ class TweakAndEatFinalIntroScreen: UIView {
         dispatch_group.enter();
 //        UserDefaults.standard.set("44", forKey: "COUNTRY_CODE")
 //                          UserDefaults.standard.synchronize()
+        CleverTap.sharedInstance()?.recordEvent("Home_viewed")
         self.delegate.homeInfoApiCalls()
         
         self.delegate.checkAppVersion()

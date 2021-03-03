@@ -12,6 +12,7 @@ import FirebaseDatabase
 import Realm
 import RealmSwift
 import AVFoundation
+import CleverTapSDK
 
 class Recipes {
     @objc  var snapShot: String
@@ -833,6 +834,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        CleverTap.sharedInstance()?.recordEvent("Recipe_wall_viewed")
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.immunityBoosterBtn.setTitle("Immunity\nBooster", for: .normal)
         self.immunityBoosterBtn.titleLabel?.textAlignment = .center

@@ -12,6 +12,7 @@ import FirebaseDatabase
 import Realm
 import RealmSwift
 import AVFoundation
+import CleverTapSDK
 
 class TweakWall {
     @objc var snapShot : String
@@ -136,6 +137,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CleverTap.sharedInstance()?.recordEvent("Tweak_wall_viewed")
         if UserDefaults.standard.value(forKey: "TOGGLE_WALL_NOTIFICATIONS") == nil {
         UserDefaults.standard.setValue(true, forKey: "TOGGLE_WALL_NOTIFICATIONS")
         UserDefaults.standard.synchronize()
