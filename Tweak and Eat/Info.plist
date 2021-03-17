@@ -8,6 +8,8 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
@@ -22,7 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.purpleteal.tweakeatapp</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>tweakandeat</string>
@@ -30,37 +32,36 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>com.purpleteal.tweakeatapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>purpleteal</string>
+				<string>fb1608652672644833</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>None</string>
 			<key>CFBundleURLName</key>
-			<string>com.purpleteal.tweakeatapp</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb1608652672644833</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CleverTapAccountID</key>
+	<string>585-576-4Z6Z</string>
+	<key>CleverTapToken</key>
+	<string>6a5-5b5</string>
+	<key>CleverTapUseIFA</key>
+	<true/>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
 	<key>FacebookAppID</key>
 	<string>1608652672644833</string>
-	<key>CleverTapAccountID</key>
-	<string>485-576-4Z6Z</string>
-	<key>CleverTapToken</key>
-	<string>6a5-5b4</string>
-	<key>CleverTapUseIFA</key>
-	<true/>
 	<key>FacebookAutoInitEnabled</key>
 	<true/>
 	<key>FacebookAutoLogAppEventsEnabled</key>
@@ -71,6 +72,11 @@
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>purpleteal://</string>
+		<string>com.purpleteal.tweakeatapp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

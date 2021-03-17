@@ -163,7 +163,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NotificationCenter.default.addObserver(self, selector: #selector(MyWallViewController.goToDesiredPage(_:)), name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: nil);
         self.tweakFeedsArray = [TweakWall]()
         self.addBackButton()
-        self.addNotificationBellIcon()
+        //self.addNotificationBellIcon()
         bundle = Bundle.init(path: path!)! as Bundle
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String

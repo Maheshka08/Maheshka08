@@ -20,7 +20,7 @@ class MyNutritionView: UIView {
     @IBOutlet weak var viewHghtConstraint: NSLayoutConstraint!
     @IBOutlet weak var proteinsValue: UILabel!
     @IBOutlet weak var myNutritionProteinsView: CircularProgressView!
-    
+    @IBOutlet weak var myNutritionLabel: UILabel!
     @IBOutlet weak var carbsValue: UILabel!
     @IBOutlet weak var fatsValue: UILabel!
     var switchButton: SwitchWithText!

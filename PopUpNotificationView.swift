@@ -40,13 +40,6 @@ class PopUpNotificationView: UIView {
                               }
                               self.moveToAnotherView(promoAppLink: packageID)
 
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-//                       let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
-//        vc.packageID = packageID
-//        vc.identifierFromPopUp = identifier
-//         vc.fromHomePopups = true
-//                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-//                       navController?.pushViewController(vc, animated: true);
     }
     
     func showAvailablePremiumPackageVC(obj: [String : AnyObject]) {
@@ -99,6 +92,14 @@ class PopUpNotificationView: UIView {
         navController?.pushViewController(clickViewController!, animated: true);
     }
     
+    func goToAskSia() {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "AskSiaViewController") as? AskSiaViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func tappedOnPopUpDone() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
@@ -133,21 +134,23 @@ class PopUpNotificationView: UIView {
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
-        } else if link == "NCP_PUR_IND_OP" {
+        } else if link == "ASKSIA" {
+            self.goToAskSia()
+        } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
              self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
             }
-        } else if link == "MYAIDP_PUR_IND_OP_3M" {
+        } else if link == "MYAIDP_PUR_IND_OP_3M" || link == "MYAIDP_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
              self.showMyTweakAndEatVC(promoLink: "-AiDPwdvop1HU7fj8vfL")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-AiDPwdvop1HU7fj8vfL", identifier: link)
             }
-        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" || link == "MYTAE_PUR_IND_OP_1M" || link == "WLIF_PUR_IND_OP_1M" {
             if link == "MYTAE_PUR_IND_OP_3M" {
                 if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
                  self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
@@ -155,7 +158,21 @@ class PopUpNotificationView: UIView {
                 } else {
             self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
                 }
+            }else if link == "MYTAE_PUR_IND_OP_1M" {
+                if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                }
             } else if link == "WLIF_PUR_IND_OP_3M" {
+                if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                }
+            } else if link == "WLIF_PUR_IND_OP_1M" {
                 if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
                  self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
                     //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
@@ -250,89 +267,6 @@ class PopUpNotificationView: UIView {
                    
                }
         
-        //else if promoAppLink == "-Qis3atRaproTlpr4zIs" {
-//                   self.performSegue(withIdentifier: "floatingToNutrition", sender: promoAppLink)
-//
-//               } else if promoAppLink == "-AiDPwdvop1HU7fj8vfL" {
-//                   if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//                       DispatchQueue.main.async {
-//                       MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                     self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                   }
-//               } else if promoAppLink == "-IdnMyAiDPoP9DFGkbas" {
-//                   if UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//                       DispatchQueue.main.async {
-//                           MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                       self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                   }
-//               } else if promoAppLink == "-MalAXk7gLyR3BNMusfi" {
-//                   if UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//                       DispatchQueue.main.async {
-//                           MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                       self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                   }
-//               } else if promoAppLink == "-MzqlVh6nXsZ2TCdAbOp" {
-//                   if UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//                       DispatchQueue.main.async {
-//                           MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                       self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                   }
-//               } else if promoAppLink == "-SgnMyAiDPuD8WVCipga" {
-//                   if UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//                       DispatchQueue.main.async {
-//                           MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                       self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                   }
-//               } else if promoAppLink == "-MysRamadanwgtLoss99" {
-//                          if UserDefaults.standard.value(forKey: "-MysRamadanwgtLoss99") != nil {
-//
-//                              self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                          } else {
-//                              DispatchQueue.main.async {
-//                                  MBProgressHUD.showAdded(to: self.view, animated: true);
-//                              }
-//                              self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//                          }
-//                      } else if promoAppLink == self.ptpPackage {
-//                   if UserDefaults.standard.value(forKey:  self.ptpPackage) != nil {
-//
-//                       self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
-//                   } else {
-//
-//                       DispatchQueue.main.async {
-//                           MBProgressHUD.showAdded(to: self.view, animated: true);
-//                       }
-//                       self.moveToAnotherView(promoAppLink: promoAppLink)
-//
-//
-//                   }
-//               }
     }
     
     @objc func playVideo() {

@@ -136,35 +136,66 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
         if link == "HOME" || link == "" {
             self.goToHomePage()
             //NCP_PUR_IND_OP
-        } else if link == "NCP_PUR_IND_OP" {
+        } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
              self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
             }
-        } else if link == "MYAIDP_PUR_IND_OP_3M" {
+        } else if link == "MYAIDP_PUR_IND_OP_3M" || link == "MYAIDP_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
              self.showMyTweakAndEatVC(promoLink: "-AiDPwdvop1HU7fj8vfL")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-AiDPwdvop1HU7fj8vfL", identifier: link)
             }
-        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+        } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" || link == "MYTAE_PUR_IND_OP_1M" || link == "WLIF_PUR_IND_OP_1M" {
             if link == "MYTAE_PUR_IND_OP_3M" {
                 if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
                  self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
-                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
+                }
+            }else if link == "MYTAE_PUR_IND_OP_1M" {
+                if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
                 } else {
             self.goToBuyScreen(packageID: "-IndIWj1mSzQ1GDlBpUt", identifier: link)
                 }
             } else if link == "WLIF_PUR_IND_OP_3M" {
                 if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
                  self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
-                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
                 } else {
             self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
                 }
+            } else if link == "WLIF_PUR_IND_OP_1M" {
+                if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+                 self.showMyTweakAndEatVC(promoLink: "-IndWLIntusoe3uelxER")
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+                } else {
+            self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: link)
+                }
+            }
+        } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
+            
+            if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
+              self.goToTAEClubMemPage()
+            } else {
+                if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+                }
+                if self.countryCode == "91" {
+                self.goToBuyScreen(packageID: "-ClubInd3gu7tfwko6Zx", identifier: "CLUB_PUR_IND_OP_1M")
+                } else {
+                    self.goToPurchaseTAEClubScreen()
+
+                }
+                
+
             }
         } else if link == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" {
             

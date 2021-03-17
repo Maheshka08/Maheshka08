@@ -35,97 +35,97 @@ class PremiumPackages {
         self.isCellTapped = isCellTapped
     }
 }
-extension AvailablePremiumPackagesViewController: FlyshotDelegate {
-   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
-   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
-   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-      // implement logic to process Flyshot IAP transactions
-      // normally you would check for transactionState and mark the product as purchased in your database store
-    for transaction:AnyObject in transactions {
-        if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
-
-  
-            switch trans.transactionState {
-            case .purchased:
-                print("Product Purchased")
-                //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
-                
-                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
-                cellDictionary.isSelected = true
-                self.packageId = cellDictionary.mppc_fb_id
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    MBProgressHUD.showAdded(to: self.view, animated: true)
-
-
-                }
-                if self.packageId == self.clubPackageSubscribed {
-                    self.receiptValidation()
-                } else {
-                self.recptValidation()
-                }
-                print(trans.transactionIdentifier ?? "")
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-
-                 DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true);
-            }
-
-
-                SKPaymentQueue.default().remove(self)
-
-
-                break;
-            case .failed:
-
-                print("Purchased Failed");
-               // print(transaction)
-               // print(trans.error?.localizedDescription as Any)
-                DispatchQueue.main.async {
-
-
-                    MBProgressHUD.hide(for: self.view, animated: true);
-
-                }
-                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
-                cellDictionary.isSelected = false
-                self.tableView.reloadData()
-                //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                SKPaymentQueue.default().remove(self)
-
-                break;
-            case .restored:
-                print("Already Purchased")
-                //Do unlocking etc stuff here in case of restor
-                DispatchQueue.main.async {
-
-                MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                SKPaymentQueue.default().remove(self)
-
-            default:
-                // MBProgressHUD.hide(for: self.view, animated: true);
-
-                break;
-            }
-        }
-    }
-   }
-
-   // Flyshot will rely on this method before invoking any in-app purchase
-   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
-      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
-       return true
-   }
-
-   // This method will be invoked as a callback when Flyshot campaign was detected
-   func flyshotCampaignDetected(productId: String?) {
-      // Optional: implement custom logic here with productId related to current campaign
-   }
-}
-class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AvailablePackagesCellDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+//extension AvailablePremiumPackagesViewController: FlyshotDelegate {
+//   // This method will be invoked as a callback on In-App Purchase event made by Flyshot
+//   // It will pass the same parameters as you would get from Apple StoreKit paymentQueue(_:updatedTransactions:) method
+//   func flyshotPurchase(paymentQueue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//      // implement logic to process Flyshot IAP transactions
+//      // normally you would check for transactionState and mark the product as purchased in your database store
+//    for transaction:AnyObject in transactions {
+//        if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+//
+//
+//            switch trans.transactionState {
+//            case .purchased:
+//                print("Product Purchased")
+//                //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+//
+//                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+//                cellDictionary.isSelected = true
+//                self.packageId = cellDictionary.mppc_fb_id
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                    MBProgressHUD.showAdded(to: self.view, animated: true)
+//
+//
+//                }
+//                if self.packageId == self.clubPackageSubscribed {
+//                    self.receiptValidation()
+//                } else {
+//                self.recptValidation()
+//                }
+//                print(trans.transactionIdentifier ?? "")
+//                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//
+//                 DispatchQueue.main.async {
+//                MBProgressHUD.hide(for: self.view, animated: true);
+//            }
+//
+//
+//                SKPaymentQueue.default().remove(self)
+//
+//
+//                break;
+//            case .failed:
+//
+//                print("Purchased Failed");
+//               // print(transaction)
+//               // print(trans.error?.localizedDescription as Any)
+//                DispatchQueue.main.async {
+//
+//
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                }
+//                let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+//                cellDictionary.isSelected = false
+//                self.tableView.reloadData()
+//                //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
+//                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                SKPaymentQueue.default().remove(self)
+//
+//                break;
+//            case .restored:
+//                print("Already Purchased")
+//                //Do unlocking etc stuff here in case of restor
+//                DispatchQueue.main.async {
+//
+//                MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                SKPaymentQueue.default().remove(self)
+//
+//            default:
+//                // MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                break;
+//            }
+//        }
+//    }
+//   }
+//
+//   // Flyshot will rely on this method before invoking any in-app purchase
+//   func allowFlyshotPurchase(productIdentifier: String) -> Bool {
+//      // implement logic to check if Flyshot should be allowed to show In-App Purchase alert for particular Product Identifier
+//       return true
+//   }
+//
+//   // This method will be invoked as a callback when Flyshot campaign was detected
+//   func flyshotCampaignDetected(productId: String?) {
+//      // Optional: implement custom logic here with productId related to current campaign
+//   }
+//}
+class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AvailablePackagesCellDelegate {
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print(response.products)
@@ -587,73 +587,73 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
         //            print(parseError)
         //        }
     }
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
-        for transaction:AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
-
-      
-                switch trans.transactionState {
-                case .purchased:
-                    print("Product Purchased")
-                    //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
-                    if self.packageId == self.clubPackageSubscribed {
-                        self.receiptValidation()
-                    } else {
-                    self.recptValidation()
-                    }
-                    print(trans.transactionIdentifier ?? "")
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-
-                     DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
-                    cellDictionary.isSelected = false
-                    self.tableView.reloadData()
-
-
-                    SKPaymentQueue.default().remove(self)
-
-
-                    break;
-                case .failed:
-
-                    print("Purchased Failed");
-                   // print(transaction)
-                   // print(trans.error?.localizedDescription as Any)
-                    DispatchQueue.main.async {
-
-
-                        MBProgressHUD.hide(for: self.view, animated: true);
-
-                    }
-                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
-                    cellDictionary.isSelected = false
-                    self.tableView.reloadData()
-                    //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    SKPaymentQueue.default().remove(self)
-
-                    break;
-                case .restored:
-                    print("Already Purchased")
-                    //Do unlocking etc stuff here in case of restor
-                    DispatchQueue.main.async {
-
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    }
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    SKPaymentQueue.default().remove(self)
-
-                default:
-                    // MBProgressHUD.hide(for: self.view, animated: true);
-
-                    break;
-                }
-            }
-        }
-    }
+//    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//
+//        for transaction:AnyObject in transactions {
+//            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+//
+//
+//                switch trans.transactionState {
+//                case .purchased:
+//                    print("Product Purchased")
+//                    //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+//                    if self.packageId == self.clubPackageSubscribed {
+//                        self.receiptValidation()
+//                    } else {
+//                    self.recptValidation()
+//                    }
+//                    print(trans.transactionIdentifier ?? "")
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//
+//                     DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+//                    cellDictionary.isSelected = false
+//                    self.tableView.reloadData()
+//
+//
+//                    SKPaymentQueue.default().remove(self)
+//
+//
+//                    break;
+//                case .failed:
+//
+//                    print("Purchased Failed");
+//                   // print(transaction)
+//                   // print(trans.error?.localizedDescription as Any)
+//                    DispatchQueue.main.async {
+//
+//
+//                        MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                    }
+//                    let cellDictionary = self.premiumPackagesApiArray[self.myIndex]
+//                    cellDictionary.isSelected = false
+//                    self.tableView.reloadData()
+//                    //TweakAndEatUtils.AlertView.showAlert(view: self, message: "Purchase failed! Please try again!")
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                    SKPaymentQueue.default().remove(self)
+//
+//                    break;
+//                case .restored:
+//                    print("Already Purchased")
+//                    //Do unlocking etc stuff here in case of restor
+//                    DispatchQueue.main.async {
+//
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                    }
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                    SKPaymentQueue.default().remove(self)
+//
+//                default:
+//                    // MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                    break;
+//                }
+//            }
+//        }
+//    }
     
     func infoBtnTapped(_ cell: AvailablePackagesCell2) {
         
@@ -789,16 +789,16 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                            self.productIdentifier = identifier
 
 
-                                  if (SKPaymentQueue.canMakePayments()) {
-                                     // self.buyNowButton.isEnabled = false
-                                      let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
-                                      let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
-                                      productsRequest.delegate = self;
-                                      productsRequest.start();
-                                      print("Fetching Products");
-                                  } else {
-                                      print("can't make purchases");
-                                  }
+//                                  if (SKPaymentQueue.canMakePayments()) {
+//                                     // self.buyNowButton.isEnabled = false
+//                                      let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+//                                      let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+//                                      productsRequest.delegate = self;
+//                                      productsRequest.start();
+//                                      print("Fetching Products");
+//                                  } else {
+//                                      print("can't make purchases");
+//                                  }
             DispatchQueue.main.async {
               //  MBProgressHUD.showAdded(to: self.view, animated: true);
 
@@ -1434,8 +1434,8 @@ return
       //  UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
         CleverTap.sharedInstance()?.recordEvent("Packages_viewed")
 
-        SKPaymentQueue.default().add(self)
-        Flyshot.shared.delegate = self
+        //SKPaymentQueue.default().add(self)
+       // Flyshot.shared.delegate = self
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44

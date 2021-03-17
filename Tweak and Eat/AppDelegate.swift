@@ -924,6 +924,8 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         
         UserDefaults.standard.set(deviceTokenString, forKey: "deviceToken");
         Messaging.messaging().apnsToken = deviceToken
+        CleverTap.sharedInstance()?.setPushToken(deviceToken)
+
        // AppsFlyerLib.shared().handlePushNotification(userInfo)
 
         print(deviceTokenString);

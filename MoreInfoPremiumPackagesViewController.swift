@@ -78,7 +78,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
-        CleverTap.sharedInstance()?.recordEvent("Purchase_initiated")
+        self.idleTimer.invalidate()
+        let props = [
+            "package_id": self.packageId,
+        ]
+        CleverTap.sharedInstance()?.recordEvent("Purchase_initiated", withProps: props)
+       // }
         
         if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
             Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
@@ -405,7 +410,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           v.translatesAutoresizingMaskIntoConstraints=false
           return v
       }()
-    
+    var idleTimer = Timer()
     @IBOutlet weak var carouselView2: CarouselCollectionView!
     @IBOutlet weak var carouselView1: CarouselCollectionView!
     var packageName = ""
@@ -906,7 +911,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 switch trans.transactionState {
                 case .purchased:
                     print("Product Purchased")
-                    CleverTap.sharedInstance()?.recordEvent("Purchase_completed")
+                    let props = [
+                        "package_id": self.packageId,
+                    ]
+                    CleverTap.sharedInstance()?.recordEvent("Purchase_completed", withProps: props)
                     //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
                     if self.packageId == self.clubPackageSubscribed {
                         self.receiptValidation()
@@ -930,7 +938,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 case .failed:
                    
                     print("Purchased Failed");
-                    CleverTap.sharedInstance()?.recordEvent("Purchase_canceled")
+                    let props = [
+                        "package_id": self.packageId,
+                    ]
+                    CleverTap.sharedInstance()?.recordEvent("Purchase_canceled", withProps: props)
                    // print(transaction)
                    // print(trans.error?.localizedDescription as Any)
                     DispatchQueue.main.async {
@@ -1879,7 +1890,37 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                             }
                         }
                     }
-                } else if self.identifierFromPopUp == "NCP_PUR_IND_OP" {
+                } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_MONTHLY" {
+                                self.startPurchase(identifier: "WL_INT_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "MYAIDP_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYAIDP_IND_MONTHLY" {
+                                self.startPurchase(identifier: "MYAIDP_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_MONTHLY" {
+                                self.startPurchase(identifier: "MYTAE_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "NCP_PUR_IND_OP" || self.identifierFromPopUp == "PACK_IND_NCP" {
                     //WL_INT_IND_QUATERLY
                     if self.nutritionLabelPriceArray.count > 0 {
                         for dict in self.nutritionLabelPriceArray {
@@ -2125,22 +2166,25 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        CleverTap.sharedInstance()?.recordEvent("Single_package_viewed (POPUP)")
-        var counter = 15
-        if self.getScreenName(screenName: self.packageId).count > 0 {
-            let screenName = self.getScreenName(screenName: self.packageId)
         let props = [
-            "package_name": screenName,
+            "package_id": self.packageId,
         ]
+        CleverTap.sharedInstance()?.recordEvent("Single_package_viewed", withProps: props)
+        var counter = 15
+        //if self.getScreenName(screenName: self.packageId).count > 0 {
+           // let screenName = self.getScreenName(screenName: self.packageId)
+       
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            self.idleTimer = timer
             counter -= 1
             print(counter)
             if counter == 0 {
                 CleverTap.sharedInstance()?.recordEvent("Idle_on_screen", withProps: props)
+                
                 timer.invalidate()
             }
         }
-        }
+      
       //  Flyshot.shared.delegate = self
         self.premiumSubView.layer.cornerRadius = 15
 //        self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.77)

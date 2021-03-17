@@ -9,6 +9,8 @@
 import UIKit
 import Realm
 import RealmSwift
+import CleverTapSDK
+import FirebaseInstanceID
 
 class ManageProfileViewController: UITableViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -1648,6 +1650,68 @@ self.setUpUI()                                                                  
                     
                     saveToRealmOverwrite(objType: MyProfileInfo.self, objValues: profile)
                 }
+                self.myProfile = uiRealm.objects(MyProfileInfo.self);
+                if self.myProfile?.count == 0 {
+                    return
+                }
+                var name = ""
+                var email = ""
+                var mobileNumber = ""
+                var ccCode = ""
+                var age = ""
+                var gender = ""
+                var weight = ""
+                var goals = ""
+                var conditions = ""
+                var allergies = ""
+                var foodHabits = ""
+                var height = ""
+                
+                
+
+                for prof in self.myProfile! {
+                    name = prof.name
+                    email = prof.email
+                    mobileNumber = prof.msisdn
+                    ccCode = self.countryCode
+                    age = prof.age
+                    gender = prof.gender
+                    weight = prof.weight
+                    goals = prof.goals
+                    conditions = prof.conditions
+                    allergies = prof.allergies
+                    foodHabits = prof.foodHabits
+                    height = prof.height
+                    
+                    
+                }
+               
+                let profile: Dictionary<String, AnyObject> = [
+                    //Update pre-defined profile properties
+                    "Name": name as AnyObject,
+                    "Identity": "+" + mobileNumber as AnyObject,
+                    "Email": email as AnyObject,
+                    //Update custom profile properties
+                    "Phone": "+" + mobileNumber as AnyObject,
+                    "Country Code": Int(ccCode)!  as AnyObject,
+                    "Age": Int(age)!  as AnyObject,
+                    "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
+                    "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
+                    "Firebase Token": InstanceID.instanceID().token() as AnyObject,
+                    "BMI": Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
+//                    "Height": height as AnyObject,
+                    "Allergies": allergies.components(separatedBy: ",") as AnyObject,
+                    "Conditions": conditions.components(separatedBy: ",") as AnyObject,
+                    "Goals": goals.components(separatedBy: ",") as AnyObject,
+                    "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject,
+                    "MSG-email": true as AnyObject,           // Disable email notifications
+                       "MSG-push": true as AnyObject,             // Enable push notifications
+                       "MSG-sms": false as AnyObject,             // Disable SMS notifications
+                       "MSG-whatsapp": false as AnyObject
+            
+                ]
+                //CleverTap.sharedInstance()?.profilePush(profile)
+                CleverTap.sharedInstance()?.recordEvent("user_profile_updated", withProps: profile)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_TRENDS"), object: nil);
                 TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "update_profile_alert", value: nil, table: nil))
                 let responseDic : [String:AnyObject] = response as! [String:AnyObject];
@@ -1690,6 +1754,10 @@ self.setUpUI()                                                                  
 //            alertController.addAction(defaultAction)
 //            self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    func calculateBMI(massInKilograms mass: Double, heightInCentimeters height: Double) -> Double {
+        return mass / ((height * height) / 10000)
     }
     
     @IBAction func updateProfileAction(_ sender: Any) {

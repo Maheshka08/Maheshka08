@@ -540,7 +540,7 @@ class TweakAndEatOptionsView: UIView, UITextFieldDelegate {
                             
                             if(sizeGroups != nil && (sizeGroups?.count)! > 0) {
                                 self.bodyShapes = sizeGroups as NSArray!
-                                if(self.delegate.selectedGender == "M" ) {
+                                if(self.delegate.selectedGender == self.bundle.localizedString(forKey: "male", value: nil, table: nil) ) {
                                     self.setBodySizes(self.bundle.localizedString(forKey: "male", value: nil, table: nil) as NSString)
                                 } else {
                                     self.setBodySizes(self.bundle.localizedString(forKey: "female", value: nil, table: nil) as NSString)

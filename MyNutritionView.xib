@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -246,6 +246,7 @@
                 <outlet property="myNutritionCaloriesView" destination="jvX-XE-ljB" id="QCY-Tg-h89"/>
                 <outlet property="myNutritionCarbsView" destination="B7g-p8-XLt" id="m3F-Gz-2Il"/>
                 <outlet property="myNutritionFatsView" destination="B3A-rP-qZu" id="ZgZ-sb-F07"/>
+                <outlet property="myNutritionLabel" destination="ReI-O6-iqz" id="vHn-xo-jWG"/>
                 <outlet property="myNutritionProteinsView" destination="ocN-gZ-aYK" id="96x-Yk-EFy"/>
                 <outlet property="proteinsValue" destination="5Mk-9F-uIZ" id="QZR-fc-5M2"/>
                 <outlet property="selectYourMealLbl" destination="noF-ZM-tbA" id="Iie-Gm-eqo"/>

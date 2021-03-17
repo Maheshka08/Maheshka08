@@ -107,7 +107,7 @@ DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire
   - Branch
-  - CleverTap-iOS-SDK
+  - CleverTap-iOS-SDK (~> 3.9.2)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -197,6 +197,6 @@ SPEC CHECKSUMS:
   RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: e54f37398db0efd2946d970eef46ac7a7d79aaf0
+PODFILE CHECKSUM: dae08b9229ae223b41bb271f375e251721181714
 
 COCOAPODS: 1.9.1

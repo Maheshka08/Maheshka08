@@ -16,7 +16,7 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
     var tweaksArray = NSMutableArray()
     @IBOutlet weak var collectionView2: UICollectionView!
     @IBOutlet weak var collectionView1: UICollectionView!
-    let sectionHeaderTitleArray = ["Our recipes for the week","Latest greatest from the Tweak Wall"]
+    var sectionHeaderTitleArray = ["Our recipes for the week","Latest greatest from the Tweak Wall"]
     var tweakFeedsArray = [TweakWall]()
     var pullControl = UIRefreshControl()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -318,6 +318,16 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            let countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if countryCode == "62" {
+            sectionHeaderTitleArray = ["Resep Kami untuk Minggu Ini","Tweak Terbaru pada Dinding Tweak"]
+
+            } else {
+            sectionHeaderTitleArray = ["Our recipes for the week","Latest greatest from the Tweak Wall"]
+
+            }
+        }
         self.tableView.backgroundColor = .clear
         //self.pullControl.tintColor = .clear
         pullControl.attributedTitle = NSAttributedString(string: "Pull down to Collapse..")

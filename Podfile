@@ -31,7 +31,7 @@ target 'Tweak and Eat' do
   pod 'FacebookShare'
   pod 'RNCryptor'
   pod 'Flyshot'
-  pod "CleverTap-iOS-SDK"
+  pod "CleverTap-iOS-SDK", '~> 3.9.2'
   
   # Pods for Tweak and Eat
     

@@ -113,18 +113,23 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
             self.didSelectedTime = self.tweakReminders![indexPath.row].rmdrTime!;
         
             let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate;
-            overlayView = UIView(frame: CGRect.init(0, 0, appDelegate.window!.frame.size.width,appDelegate.window!.frame.size.height));
-        
-            datePicker = UIDatePicker(frame: CGRect.init(0, appDelegate.window!.frame.size.height-160-40, appDelegate.window!.frame.size.width,160));
-            datePicker.datePickerMode = UIDatePicker.Mode.time;
+            overlayView = UIView(frame: CGRect.init(0, 0, appDelegate.window!.bounds.size.width,appDelegate.window!.bounds.size.height));
+            overlayView.backgroundColor = .white
+            if #available(iOS 13.4, *) {
+                datePicker = UIDatePicker(frame: CGRect.init(0, appDelegate.window!.bounds.size.height-160-40, appDelegate.window!.bounds.size.width,160));
+               datePicker.preferredDatePickerStyle = .wheels
+               datePicker.backgroundColor = UIColor.white
+            }
+
+            
+            datePicker.datePickerMode = .time;
             datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged);
             datePicker.backgroundColor = UIColor.white;
         
             let dateFormatter = DateFormatter();
             dateFormatter.dateFormat = "HH:mm";
             datePicker.date = dateFormatter.date(from: self.tweakReminders![indexPath.row].rmdrTime!)!;
-          
-            let pickerToolbar : UIToolbar = UIToolbar(frame: CGRect.init(0, appDelegate.window!.frame.size.height-160-30-40, appDelegate.window!.frame.size.width,30));
+            let pickerToolbar : UIToolbar = UIToolbar(frame: CGRect.init(0, appDelegate.window!.bounds.size.height-160-30-50, appDelegate.window!.bounds.size.width,40));
             
             let spacing = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil);
             spacing.width = 15;

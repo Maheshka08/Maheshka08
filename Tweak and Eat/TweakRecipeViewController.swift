@@ -346,8 +346,11 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                  //self.navigationController?.navigationBar.isHidden = true
                  if self.immBoosterBtnUrlStrArray.count > 1 {
                      self.myTweakAndEatBtn.isHidden = false
+                    if self.countryCode == "91" {
                      self.myAiBPIndiaBtn.isHidden = false
+                    } else {
                      self.myAiBPtn.isHidden = true
+                    }
                      
                      DispatchQueue.global(qos: .background).async {
                          // Call your background task
@@ -386,7 +389,11 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                  } else if self.immBoosterBtnUrlStrArray.count == 1 {
                      self.myAiBPtn.isHidden = false
                      self.myTweakAndEatBtn.isHidden = true
-                     self.myAiBPIndiaBtn.isHidden = true
+                    if self.countryCode == "91" {
+                     self.myAiBPIndiaBtn.isHidden = false
+                    } else {
+                     self.myAiBPtn.isHidden = true
+                    }
                      DispatchQueue.global(qos: .background).async {
                          // Call your background task
                          let data = try? Data(contentsOf: URL(string: self.immBoosterBtnUrlStrArray.first!)!)
@@ -892,6 +899,9 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         self.title  = bundle.localizedString(forKey: "recipe_wall", value: nil, table: nil);
+        self.vegBtn.setTitle(bundle.localizedString(forKey: "veg", value: nil, table: nil), for: .normal)
+        self.nonVegBtn.setTitle(bundle.localizedString(forKey: "non_veg", value: nil, table: nil), for: .normal)
+        self.immunityBoosterBtn.setTitle(bundle.localizedString(forKey: "immunity_booster", value: nil, table: nil), for: .normal)
         if self.countryCode == "91" {
             self.title = "INDIA RECIPES"
         } else if self.countryCode == "1" {

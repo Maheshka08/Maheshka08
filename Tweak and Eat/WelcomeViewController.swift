@@ -1079,11 +1079,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 //                        self.containerViewBottomConstraint.constant = 110
 //                        self.topBgImageView.contentMode = .scaleToFill
                         if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = false
+                            self.startTweakingLabel.alpha = 1
+                        } else {
                             self.startTweakingView.isHidden = true
+                            self.startTweakingLabel.alpha = 0
                         }
                         if self.trialPeriodExpired == true {
-                        self.taeClubTrialPeriodExpiryView.isHidden = true
-                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+//                        self.taeClubTrialPeriodExpiryView.isHidden = true
+//                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
                             self.trialPeriodExpiryView.isHidden = true
                             self.trialPeriodExpiryTextLbl.isHidden = true
                         }
@@ -1110,10 +1114,15 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                         self.containerViewBottomConstraint.constant = 0
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = false
+                            self.startTweakingLabel.alpha = 1
+                        } else {
+                            self.startTweakingView.isHidden = true
+                            self.startTweakingLabel.alpha = 0
                         }
                         if self.trialPeriodExpired == true {
-                        self.taeClubTrialPeriodExpiryView.isHidden = false
-                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+                            
+//                        self.taeClubTrialPeriodExpiryView.isHidden = false
+//                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
                             self.trialPeriodExpiryView.isHidden = false
                             self.trialPeriodExpiryTextLbl.isHidden = false
 
@@ -2088,7 +2097,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         self.mealType = 0
         self.mealTypeLabel.text = "All"
         self.dataBtnName = "todaysData"
-        self.nutritionViewSelectedMeal = "Select your meal"
+        self.nutritionViewSelectedMeal = bundle.localizedString(forKey: "select_meal_type", value: nil, table: nil);
         self.nutritionViewLast10TweaksDataVal = "Today"
         
         
@@ -2098,7 +2107,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         self.mealType = 0
         self.mealTypeLabel.text = "All"
         self.dataBtnName = "weeksData"
-        self.nutritionViewSelectedMeal = "Select your meal"
+        self.nutritionViewSelectedMeal = bundle.localizedString(forKey: "select_meal_type", value: nil, table: nil);
         self.nutritionViewLast10TweaksDataVal = "Week"
         self.setDefaultDataBtns(name: "weeksData")
     }
@@ -2107,7 +2116,7 @@ if dictionary.index(forKey: "weeksData") != nil {
         self.mealType = 0
         self.mealTypeLabel.text = "All"
         self.dataBtnName = "monthsData"
-        self.nutritionViewSelectedMeal = "Select your meal"
+        self.nutritionViewSelectedMeal = bundle.localizedString(forKey: "select_meal_type", value: nil, table: nil);
         self.nutritionViewLast10TweaksDataVal = "Month"
         self.setDefaultDataBtns(name: "monthsData")
     }
@@ -2116,8 +2125,8 @@ if dictionary.index(forKey: "weeksData") != nil {
         self.mealType = 0
         self.mealTypeLabel.text = "All"
         self.dataBtnName = "lastTenData"
-        self.nutritionViewSelectedMeal = "Select your meal"
-        self.nutritionViewLast10TweaksDataVal = "Last 10 Tweaks"
+        self.nutritionViewSelectedMeal = bundle.localizedString(forKey: "select_meal_type", value: nil, table: nil);
+        self.nutritionViewLast10TweaksDataVal = bundle.localizedString(forKey: "last_ten_tweaks", value: nil, table: nil);
         self.setDefaultDataBtns(name: "lastTenData")
         
        
@@ -2273,6 +2282,9 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
     
     @IBAction func infoIconBarButtonTapped(_ sender: Any) {
+        if self.countryCode == "62" {
+            return
+        }
         self.infoIconTapped = true
         showHowToTweakScreen()
 
@@ -2429,6 +2441,7 @@ self.dummyNav2(packageIDs: "-MzqlVh6nXsZ2TCdAbOp", identifier: "WLIF_PUR_IND_OP_
         self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
         self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
         self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
+            self.myNutritionDetailsView.myNutritionLabel.text = bundle.localizedString(forKey: "my_nutrition", value: nil, table: nil);
 //            if UserDefaults.standard.value(forKey: "NEW_USER") != nil {
 //self.myNutritionDetailsView.isHidden = true
 //            } else {
@@ -2593,6 +2606,7 @@ self.topImageView.alpha = 1
             self.beforeTweakImageViewHeightConstraint.constant = 110
             self.topButtonsDataViewHeightConstraint.constant = 0
             self.startTweakingView.isHidden = true
+            self.startTweakingLabel.alpha = 0
             self.trialPeriodExpiryView.isHidden = true
             if self.trialPeriodExpired == false {
             self.taeClubTrialPeriodExpiryView.isHidden = true
@@ -2621,6 +2635,7 @@ self.topImageView.alpha = 1
                          //   self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
                             self.startTweakingView.isHidden = true
+                            self.startTweakingLabel.alpha = 0
                            } else {
                             self.startTweakingView.isHidden = false;
                             self.startTweakingLabel.alpha = 1.0
@@ -2697,6 +2712,7 @@ self.topImageView.alpha = 1
     }
     
     @objc func infoIconClick() {
+       
         showCongratulationsTweakerView()
         //self.dummyPopUp()
 
@@ -2704,6 +2720,7 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
+        
         //self.tapToTweakButton.flash()
       //  self.scrollContainerView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
 //        link = "-NcInd5BosUcUeeQ9Q32"
@@ -3757,11 +3774,15 @@ self.topImageView.alpha = 1
 //                        self.containerViewBottomConstraint.constant = 110
 //                        self.topBgImageView.contentMode = .scaleToFill
                         if self.totalTweakCount == "0" {
+                            self.startTweakingView.isHidden = false
+                            self.startTweakingLabel.alpha = 1
+                        } else {
                             self.startTweakingView.isHidden = true
+                            self.startTweakingLabel.alpha = 0
                         }
                         if self.trialPeriodExpired == true {
-                        self.taeClubTrialPeriodExpiryView.isHidden = true
-                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
+//                        self.taeClubTrialPeriodExpiryView.isHidden = true
+//                        self.taeClubTrialPeriodExpiryViewLbl.isHidden = true
                             self.trialPeriodExpiryView.isHidden = true
                             self.trialPeriodExpiryTextLbl.isHidden = true
                         }
@@ -3785,10 +3806,14 @@ self.topImageView.alpha = 1
                         self.containerViewBottomConstraint.constant = 0
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = false
+                            self.startTweakingLabel.alpha = 1
+                        } else {
+                            self.startTweakingView.isHidden = true
+                            self.startTweakingLabel.alpha = 0
                         }
                         if self.trialPeriodExpired == true {
-                        self.taeClubTrialPeriodExpiryView.isHidden = false
-                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
+//                        self.taeClubTrialPeriodExpiryView.isHidden = false
+//                            self.taeClubTrialPeriodExpiryViewLbl.isHidden = false
                             self.trialPeriodExpiryView.isHidden = false
                             self.trialPeriodExpiryTextLbl.isHidden = false
 
@@ -4507,8 +4532,8 @@ self.topImageView.alpha = 1
             self.mealTypeLabel.text = "All"
             self.dataBtnName = "lastTenData"
             self.trends = "Calories"
-            nutritionViewSelectedMeal = "Select your meal"
-            nutritionViewLast10TweaksDataVal = "Last 10 Tweaks"
+            nutritionViewSelectedMeal = bundle.localizedString(forKey: "select_meal_type", value: nil, table: nil);
+            nutritionViewLast10TweaksDataVal = bundle.localizedString(forKey: "last_ten_tweaks", value: nil, table: nil);
             DispatchQueue.main.async {
                       self.caloriesButton.alpha = 1.0
                       self.carbsButton.alpha = 1.0
@@ -4562,6 +4587,7 @@ self.topImageView.alpha = 1
       //  self.checkThisOutLabel.text = self.bundle.localizedString(forKey: "check_this_out", value: nil, table: nil);
         
       //  self.cameraTweakLabel.text = self.bundle.localizedString(forKey: "camera_click_text", value: nil, table: nil);
+            self.approxCalLeftForDayLabel.text = self.bundle.localizedString(forKey: "approximate_calories_left_for_the_day", value: nil, table: nil);
         
         self.recipeWallLabel.text = self.bundle.localizedString(forKey: "recipe_wall", value: nil, table: nil);
         
@@ -6206,9 +6232,82 @@ self.topImageView.alpha = 1
             }
 }
     }
+    
+    func calculateBMI(massInKilograms mass: Double, heightInCentimeters height: Double) -> Double {
+        return mass / ((height * height) / 10000)
+    }
+    
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
+        if UserDefaults.standard.value(forKey: "userSession") != nil {
+            //UserDefaults.standard.removeObject(forKey: "ct_profile_updated")
+        if UserDefaults.standard.value(forKey: "ct_profile_updated") == nil {
+            self.myProfileInfo = uiRealm.objects(MyProfileInfo.self);
+            if self.myProfileInfo?.count == 0 {
+                return
+            }
+            var name = ""
+            var email = ""
+            var mobileNumber = ""
+            var ccCode = ""
+            var age = ""
+            var gender = ""
+            var weight = ""
+            var goals = ""
+            var conditions = ""
+            var allergies = ""
+            var foodHabits = ""
+            var height = ""
+            
+            
+
+            for prof in self.myProfileInfo! {
+                name = prof.name
+                email = prof.email
+                mobileNumber = prof.msisdn
+                ccCode = self.countryCode
+                age = prof.age
+                gender = prof.gender
+                weight = prof.weight
+                goals = prof.goals
+                conditions = prof.conditions
+                allergies = prof.allergies
+                foodHabits = prof.foodHabits
+                height = prof.height
+                
+                
+            }
+           
+            let profile: Dictionary<String, AnyObject> = [
+                //Update pre-defined profile properties
+                "Name": name as AnyObject,
+                "Identity": "+" + mobileNumber as AnyObject,
+                "Email": email as AnyObject,
+                //Update custom profile properties
+                "Phone": "+" + mobileNumber as AnyObject,
+                "Country Code": Int(ccCode)!  as AnyObject,
+                "Age": Int(age)!  as AnyObject,
+                "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
+                "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
+                "Firebase Token": InstanceID.instanceID().token() as AnyObject,
+                "BMI": Int(Double(calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
+//                "Height": height as AnyObject,
+                "Allergies": allergies.components(separatedBy: ",") as AnyObject,
+                "Conditions": conditions.components(separatedBy: ",") as AnyObject,
+                "Goals": goals.components(separatedBy: ",") as AnyObject,
+                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject,
+                "MSG-email": true as AnyObject,           // Disable email notifications
+                   "MSG-push": true as AnyObject,             // Enable push notifications
+                   "MSG-sms": false as AnyObject,             // Disable SMS notifications
+                   "MSG-whatsapp": false as AnyObject
+        
+            ]
+            CleverTap.sharedInstance()?.recordEvent("user_profile_updated", withProps: profile)
+            UserDefaults.standard.setValue("YES", forKey: "ct_profile_updated")
+            UserDefaults.standard.synchronize()
+        }
         CleverTap.sharedInstance()?.recordEvent("Home_viewed")
+        }
         self.navigationController?.isNavigationBarHidden = true;
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             self.getAdDetails()
@@ -7816,6 +7915,7 @@ self.floatingCallBtn.isHidden = false
             if self.countryCode == "62" {
                 let ptpUserSubscribed = responseDic["userIdnAibpSub"] as! Int
                 
+                
                 if ptpUserSubscribed == 1 {
                     UserDefaults.standard.set(PTPPackages.ptpIndonesiaPackage, forKey: PTPPackages.ptpIndonesiaPackage)
                     UserDefaults.standard.synchronize()
@@ -8042,17 +8142,7 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
-//                    if userSubscribed == 1 {
-//                    UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
-//                    UserDefaults.standard.synchronize()
-//                     //   UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
-//
-//                    floatingButtonArray.append(["pkgName": "My Tweak & Eat" as AnyObject, "imgName": "tae-icon" as AnyObject, "pkg": "-MzqlVh6nXsZ2TCdAbOp" as AnyObject])
-//                    self.floatingCrownBtn.isHidden = false
-//                    } else {
-//                        UserDefaults.standard.removeObject(forKey: "-MzqlVh6nXsZ2TCdAbOp")
-//
-//                    }
+
                 } else {
                     if userSubscribed == 1 {
                     UserDefaults.standard.set("-MzqlVh6nXsZ2TCdAbOp", forKey: "-MzqlVh6nXsZ2TCdAbOp")
@@ -8093,15 +8183,7 @@ self.floatingCallBtn.isHidden = false
                 let currentDate = Date();
                 if expDate! < currentDate {
                     UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
-//                    if userSubscribedToClub == 1 {
-//                    UserDefaults.standard.set("-ClubUSA4tg6cvdhizQn", forKey: "-ClubUSA4tg6cvdhizQn")
-//                    UserDefaults.standard.synchronize()
-//
-//                    } else {
-//                        UserDefaults.standard.removeObject(forKey: "-ClubUSA4tg6cvdhizQn")
-//                        //self.tweakandeatClubButtonView.isHidden = false
-//
-//                    }
+
 
 
                 } else {
@@ -10011,7 +10093,7 @@ self.floatingCallBtn.isHidden = false
                                             var conditions = ""
                                             var allergies = ""
                                             var foodHabits = ""
-                                            
+                                            var height = ""
                                             
 
                                             for prof in self.myProfileInfo! {
@@ -10026,22 +10108,24 @@ self.floatingCallBtn.isHidden = false
                                                 conditions = prof.conditions
                                                 allergies = prof.allergies
                                                 foodHabits = prof.foodHabits
+                                                height = prof.height
                                                 
                                                 
                                             }
-                                           
+                                            
                                             let profile: Dictionary<String, AnyObject> = [
                                                 //Update pre-defined profile properties
                                                 "Name": name as AnyObject,
                                                 "Identity": "+" + mobileNumber as AnyObject,
                                                 "Email": email as AnyObject,
                                                 //Update custom profile properties
-                                                "Phone Number": mobileNumber as AnyObject,
-                                                "Mobile Number": mobileNumber as AnyObject,
                                                 "Phone": "+" + mobileNumber as AnyObject,
                                                 "Country Code": Int(ccCode)!  as AnyObject,
                                                 "Age": Int(age)!  as AnyObject,
                                                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
+                                                "Firebase Token": InstanceID.instanceID().token() as AnyObject,
+                                                "BMI": Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
+//                                                "Height": height as AnyObject,
                                                 "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
                                                 "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                                                 "Conditions": conditions.components(separatedBy: ",") as AnyObject,
