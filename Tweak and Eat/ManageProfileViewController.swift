@@ -1597,7 +1597,10 @@ self.setUpUI()                                                                  
       APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.UPDATEPROFILE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: ["user" : tempDict as AnyObject], success: { response in
             
             APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.PROFILEFACTS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
-                
+                var mob = ""
+                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+                mob = UserDefaults.standard.value(forKey: "msisdn") as! String;
+                }
                 if (self.myProfile?.count)! > 0 {
                     
                     for profileObj in self.myProfile! {
@@ -1613,6 +1616,7 @@ self.setUpUI()                                                                  
                     } else {
                         profile.gender = "F"
                     }
+                    profile.msisdn = mob
                     profile.weight = self.weightTextField.text!
                     profile.height = self.heightTextField.text!
                     

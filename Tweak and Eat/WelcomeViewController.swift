@@ -10150,7 +10150,6 @@ self.floatingCallBtn.isHidden = false
                                                 "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
                                                 "Firebase Token": InstanceID.instanceID().token() as AnyObject,
                                                 "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-                            //                    "Height": height as AnyObject, "\(totalCM)"
                                                 "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                                                 "Conditions": conditions.components(separatedBy: ",") as AnyObject,
                                                 "Goals": goals.components(separatedBy: ",") as AnyObject,

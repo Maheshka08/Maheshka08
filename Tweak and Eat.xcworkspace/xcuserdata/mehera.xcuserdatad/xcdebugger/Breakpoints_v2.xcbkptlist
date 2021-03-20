@@ -14,8 +14,8 @@
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10165"
-            endingLineNumber = "10165"
+            startingLineNumber = "10164"
+            endingLineNumber = "10164"
             landmarkName = "switchToSeventhScreen1()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Tweak and Eat/ManageProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1724"
-            endingLineNumber = "1724"
+            startingLineNumber = "1728"
+            endingLineNumber = "1728"
             landmarkName = "updateProfile()"
             landmarkType = "7">
          </BreakpointContent>
