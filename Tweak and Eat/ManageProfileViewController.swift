@@ -301,7 +301,7 @@ self.setUpUI()                                                                  
         weightTextField.delegate = self;
         heightTextField.inputView = pickerView;
         weightTextField.inputView = pickerView;
-        if country == "USA" {
+        if self.countryCode == "1" {
             self.weightFieldArray = [String]()
             for i in 20...550 {
                 let str1 = String(i)
