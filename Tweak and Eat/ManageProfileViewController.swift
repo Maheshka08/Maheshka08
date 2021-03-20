@@ -1708,12 +1708,13 @@ self.setUpUI()                                                                  
                     //Update custom profile properties
                     "Phone": "+" + mobileNumber as AnyObject,
                     "Country Code": Int(ccCode)!  as AnyObject,
-                    "Age in Years": Int(age)!  as AnyObject,
+                    "Age in years": Int(age)!  as AnyObject,
+                    "Age": Int(age)!  as AnyObject,
                     "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
                     "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
+                    "Height": (self.countryCode == "1") ? totalCM as AnyObject : height as AnyObject,
                     "Firebase Token": InstanceID.instanceID().token() as AnyObject,
                     "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-//                    "Height": height as AnyObject, "\(totalCM)"
                     "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                     "Conditions": conditions.components(separatedBy: ",") as AnyObject,
                     "Goals": goals.components(separatedBy: ",") as AnyObject,
