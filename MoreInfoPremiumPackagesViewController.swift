@@ -2169,7 +2169,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         let props = [
             "package_id": self.packageId,
         ]
-        CleverTap.sharedInstance()?.recordEvent("Single_package_viewed", withProps: props)
+       // CleverTap.sharedInstance()?.recordEvent("Single_package_viewed", withProps: props)
         var counter = 15
         //if self.getScreenName(screenName: self.packageId).count > 0 {
            // let screenName = self.getScreenName(screenName: self.packageId)

@@ -2640,7 +2640,9 @@ self.topImageView.alpha = 1
                             self.startTweakingView.isHidden = false;
                             self.startTweakingLabel.alpha = 1.0
                             self.startTweakingView.alpha = 0.8
+                            //if self.trialPeriodExpired == false {
                             self.startTweakingLabel.text = "Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!";
+                            //}
                     // self.myNutritionDetailsView.isHidden = true
                       //      self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.chartView.frame.maxY)
 
@@ -6278,6 +6280,17 @@ self.topImageView.alpha = 1
                 
             }
            
+            var totalCM: Int = 0
+            if self.countryCode == "1" {
+                let heightInFeets = height
+                let feetArray = heightInFeets.components(separatedBy: "'")
+                let feet = "\(feetArray[0])";
+                let inches = "\(feetArray[1])";
+                
+                 totalCM = Int((Float(Double(feet)! * 30.48) + Float(Double(inches)! * 2.54)));
+                
+            }
+           
             let profile: Dictionary<String, AnyObject> = [
                 //Update pre-defined profile properties
                 "Name": name as AnyObject,
@@ -6288,10 +6301,10 @@ self.topImageView.alpha = 1
                 "Country Code": Int(ccCode)!  as AnyObject,
                 "Age": Int(age)!  as AnyObject,
                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
-                "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
+                "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
                 "Firebase Token": InstanceID.instanceID().token() as AnyObject,
-                "BMI": Int(Double(calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-//                "Height": height as AnyObject,
+                "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
+//                    "Height": height as AnyObject, "\(totalCM)"
                 "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                 "Conditions": conditions.components(separatedBy: ",") as AnyObject,
                 "Goals": goals.components(separatedBy: ",") as AnyObject,
@@ -10113,6 +10126,17 @@ self.floatingCallBtn.isHidden = false
                                                 
                                             }
                                             
+                                            var totalCM: Int = 0
+                                            if self.countryCode == "1" {
+                                                let heightInFeets = height
+                                                let feetArray = heightInFeets.components(separatedBy: "'")
+                                                let feet = "\(feetArray[0])";
+                                                let inches = "\(feetArray[1])";
+                                                
+                                                 totalCM = Int((Float(Double(feet)! * 30.48) + Float(Double(inches)! * 2.54)));
+                                                
+                                            }
+                                           
                                             let profile: Dictionary<String, AnyObject> = [
                                                 //Update pre-defined profile properties
                                                 "Name": name as AnyObject,
@@ -10123,10 +10147,10 @@ self.floatingCallBtn.isHidden = false
                                                 "Country Code": Int(ccCode)!  as AnyObject,
                                                 "Age": Int(age)!  as AnyObject,
                                                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
+                                                "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
                                                 "Firebase Token": InstanceID.instanceID().token() as AnyObject,
-                                                "BMI": Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-//                                                "Height": height as AnyObject,
-                                                "Weight": (self.countryCode == "91") ? Int(weight)! * Int(2.2) as AnyObject : Int(weight)! as AnyObject,
+                                                "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
+                            //                    "Height": height as AnyObject, "\(totalCM)"
                                                 "Allergies": allergies.components(separatedBy: ",") as AnyObject,
                                                 "Conditions": conditions.components(separatedBy: ",") as AnyObject,
                                                 "Goals": goals.components(separatedBy: ",") as AnyObject,
@@ -10136,7 +10160,7 @@ self.floatingCallBtn.isHidden = false
                                                    "MSG-sms": false as AnyObject,             // Disable SMS notifications
                                                    "MSG-whatsapp": false as AnyObject
                                         
-                                            ] 
+                                            ]
                                             //CleverTap.sharedInstance()?.profilePush(profile)
                                             CleverTap.sharedInstance()?.onUserLogin(profile)
                                             CleverTap.sharedInstance()?.recordEvent("Signup_completed")

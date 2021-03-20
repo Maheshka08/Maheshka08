@@ -526,6 +526,9 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                       
                     }
                 }
+                if link == "" {
+                    return
+                }
                 let data = ["msg": msg, "imgUrlString":imgUrlString, "link": link, "type": type] as [String: AnyObject]
                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                 if type == 0 || type == 1 {
