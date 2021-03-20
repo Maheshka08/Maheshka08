@@ -6299,7 +6299,7 @@ self.topImageView.alpha = 1
                 //Update custom profile properties
                 "Phone": "+" + mobileNumber as AnyObject,
                 "Country Code": Int(ccCode)!  as AnyObject,
-                "Age": Int(age)!  as AnyObject,
+                "Age in Years": Int(age)!  as AnyObject,
                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
                 "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
                 "Firebase Token": InstanceID.instanceID().token() as AnyObject,
@@ -6315,6 +6315,7 @@ self.topImageView.alpha = 1
                    "MSG-whatsapp": false as AnyObject
         
             ]
+            CleverTap.sharedInstance()?.profilePush(profile)
             CleverTap.sharedInstance()?.recordEvent("user_profile_updated", withProps: profile)
             UserDefaults.standard.setValue("YES", forKey: "ct_profile_updated")
             UserDefaults.standard.synchronize()
@@ -10145,7 +10146,7 @@ self.floatingCallBtn.isHidden = false
                                                 //Update custom profile properties
                                                 "Phone": "+" + mobileNumber as AnyObject,
                                                 "Country Code": Int(ccCode)!  as AnyObject,
-                                                "Age": Int(age)!  as AnyObject,
+                                                "Age in Years": Int(age)!  as AnyObject,
                                                 "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
                                                 "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
                                                 "Firebase Token": InstanceID.instanceID().token() as AnyObject,
@@ -10162,7 +10163,7 @@ self.floatingCallBtn.isHidden = false
                                             ]
                                             //CleverTap.sharedInstance()?.profilePush(profile)
                                             CleverTap.sharedInstance()?.onUserLogin(profile)
-                                            CleverTap.sharedInstance()?.recordEvent("Signup_completed")
+                                            CleverTap.sharedInstance()?.recordEvent("Signup_completed",withProps: profile)
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 

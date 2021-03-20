@@ -53,9 +53,9 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CleverTapAccountID</key>
-	<string>585-576-4Z6Z</string>
+	<string>485-576-4Z6Z</string>
 	<key>CleverTapToken</key>
-	<string>6a5-5b5</string>
+	<string>6a5-5b4</string>
 	<key>CleverTapUseIFA</key>
 	<true/>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
