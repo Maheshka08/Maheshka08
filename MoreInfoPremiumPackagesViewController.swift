@@ -170,20 +170,20 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //             let indexPath = IndexPath(item: 1, section: 0)
 //                self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
 //            }
-        DispatchQueue.main.async {
-                   self.carouselView1.reloadData()
-          //  self.scrolledIndex = 1
-            if self.items.count == 1 {
-                self.pageControl.currentPage = 0
+//        DispatchQueue.main.async {
+//                   self.carouselView1.reloadData()
+//          //  self.scrolledIndex = 1
+//            if self.items.count == 1 {
+//                self.pageControl.currentPage = 0
+//
+//            } else if self.items.count > 1 {
+//                self.pageControl.currentPage = 1
+//
+//            }
 
-            } else if self.items.count > 1 {
-                self.pageControl.currentPage = 1
-
-            }
-
-            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
-                           self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-               }
+//            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
+//                           self.carouselView1.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+//               }
         
     }
     
@@ -233,11 +233,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //            ind = 1
 //        }
 //
-        DispatchQueue.main.async {
-            self.carouselView2.reloadData()
-            let indexPath = IndexPath(item: 1, section: 0)
-                           self.carouselView2.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-        }
+//        DispatchQueue.main.async {
+//            self.carouselView2.reloadData()
+//            let indexPath = IndexPath(item: 1, section: 0)
+//                           self.carouselView2.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+//        }
 //           DispatchQueue.main.async {
 //            let indexPath = IndexPath(item: 1 , section: 0)
 //                   self.carouselView2.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)

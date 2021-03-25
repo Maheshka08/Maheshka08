@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -54,7 +56,7 @@
                             <color key="textColor" red="0.2784313725" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-Gi-Zaa">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-Gi-Zaa">
                             <rect key="frame" x="279" y="597.5" width="90" height="45"/>
                             <color key="backgroundColor" red="0.35686274509999999" green="0.65098039220000004" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -65,9 +67,6 @@
                             <state key="normal" title="OK">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <connections>
-                                <action selector="onClickOfOkayWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="e8C-2P-siR"/>
-                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't forget to take a photo of your next meal and tweak it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo1-8s-POO">
                             <rect key="frame" x="30.5" y="191" width="313" height="41.5"/>
@@ -85,7 +84,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="hAR-HW-gw5" secondAttribute="trailing" constant="10" id="Fpa-Us-34z"/>
                                 <constraint firstItem="hAR-HW-gw5" firstAttribute="top" secondItem="Rh4-bU-ggr" secondAttribute="top" constant="10" id="UzM-AX-nMa"/>
@@ -165,6 +164,69 @@
                         <constraint firstAttribute="width" constant="180" id="xk1-CE-Lts"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="BLg-fz-6NP" customClass="HorizontalStepsIntro" customModule="Tweak_and_Eat" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tae_logo" translatesAutoresizingMaskIntoConstraints="NO" id="6IK-St-cTd">
+                            <rect key="frame" x="87" y="47" width="240" height="61"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="61" id="Kfx-GM-mV0"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweaking is easy. Just 3 quick steps!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trV-Zg-Fw1">
+                            <rect key="frame" x="20" y="135" width="374" height="22"/>
+                            <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="21"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-Bl-7Fw">
+                            <rect key="frame" x="20" y="177" width="374" height="584"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uJC-p2-DM9">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="h4N-TS-hNS">
+                            <rect key="frame" x="145.5" y="783" width="123" height="28"/>
+                            <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="currentPageIndicatorTintColor" red="0.39587974549999999" green="0.14656496050000001" blue="0.36472275850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </pageControl>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdD-HI-sO2">
+                            <rect key="frame" x="238" y="831" width="148" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="148" id="COd-TW-abH"/>
+                                <constraint firstAttribute="height" constant="45" id="mHL-mN-Uc4"/>
+                            </constraints>
+                            <state key="normal" image="letstweak_btn"/>
+                            <connections>
+                                <action selector="onClickOfOkayWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bqp-Fo-Ma7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="i9q-Gs-jzD"/>
+                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="6IK-St-cTd" firstAttribute="top" secondItem="i9q-Gs-jzD" secondAttribute="top" constant="47" id="3ic-U2-hQ5"/>
+                        <constraint firstItem="i9q-Gs-jzD" firstAttribute="trailing" secondItem="trV-Zg-Fw1" secondAttribute="trailing" constant="20" id="4lV-PV-Rhe"/>
+                        <constraint firstItem="6jJ-Bl-7Fw" firstAttribute="top" secondItem="trV-Zg-Fw1" secondAttribute="bottom" constant="20" id="DBo-ni-DK0"/>
+                        <constraint firstItem="6IK-St-cTd" firstAttribute="leading" secondItem="i9q-Gs-jzD" secondAttribute="leading" constant="87" id="Gl9-bB-QLK"/>
+                        <constraint firstItem="h4N-TS-hNS" firstAttribute="centerX" secondItem="6jJ-Bl-7Fw" secondAttribute="centerX" id="VLb-hW-sl7"/>
+                        <constraint firstItem="i9q-Gs-jzD" firstAttribute="bottom" secondItem="cdD-HI-sO2" secondAttribute="bottom" constant="20" id="VWJ-5W-rgu"/>
+                        <constraint firstItem="i9q-Gs-jzD" firstAttribute="trailing" secondItem="cdD-HI-sO2" secondAttribute="trailing" constant="28" id="Vz4-f6-vMR"/>
+                        <constraint firstItem="cdD-HI-sO2" firstAttribute="top" secondItem="h4N-TS-hNS" secondAttribute="bottom" constant="20" id="XvB-pr-Tk0"/>
+                        <constraint firstItem="trV-Zg-Fw1" firstAttribute="top" secondItem="6IK-St-cTd" secondAttribute="bottom" constant="27" id="bPS-fj-2RP"/>
+                        <constraint firstItem="6IK-St-cTd" firstAttribute="centerX" secondItem="i9q-Gs-jzD" secondAttribute="centerX" id="cGO-HR-l9Y"/>
+                        <constraint firstItem="i9q-Gs-jzD" firstAttribute="trailing" secondItem="6IK-St-cTd" secondAttribute="trailing" constant="87" id="hY5-PQ-l2e"/>
+                        <constraint firstItem="h4N-TS-hNS" firstAttribute="top" secondItem="6jJ-Bl-7Fw" secondAttribute="bottom" constant="22" id="s55-2k-KiJ"/>
+                        <constraint firstItem="trV-Zg-Fw1" firstAttribute="leading" secondItem="i9q-Gs-jzD" secondAttribute="leading" constant="20" id="smT-j3-8qC"/>
+                        <constraint firstItem="i9q-Gs-jzD" firstAttribute="trailing" secondItem="6jJ-Bl-7Fw" secondAttribute="trailing" constant="20" id="tj2-Xq-8Aq"/>
+                        <constraint firstItem="6jJ-Bl-7Fw" firstAttribute="leading" secondItem="i9q-Gs-jzD" secondAttribute="leading" constant="20" id="uft-Pb-i0p"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.34837430720000001" green="0.0" blue="0.46999907489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -176,13 +238,17 @@
                 <constraint firstItem="mMF-7B-H2P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="m5j-QZ-sl2"/>
                 <constraint firstItem="tq4-dJ-2hG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="350:480" id="sRQ-i1-mGS"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="animationView" destination="mMF-7B-H2P" id="WIe-Ip-5ye"/>
+                <outlet property="collectionView" destination="6jJ-Bl-7Fw" id="gJr-X8-a8V"/>
                 <outlet property="justTweakView" destination="Rh4-bU-ggr" id="dUo-SJ-gFI"/>
+                <outlet property="letsTweakBtn" destination="cdD-HI-sO2" id="ovP-II-H1M"/>
                 <outlet property="logoBorderView" destination="fFC-gr-kHa" id="ZVe-BL-l6M"/>
                 <outlet property="logoImageView" destination="Whc-h4-fJd" id="hBW-ot-bvA"/>
                 <outlet property="logoView" destination="iTc-bh-Vsa" id="08y-3t-I4U"/>
                 <outlet property="okBtn" destination="hyB-Gi-Zaa" id="iAM-3z-qo3"/>
+                <outlet property="pageControl" destination="h4N-TS-hNS" id="RMI-J2-0cP"/>
                 <outlet property="takePhotoOfNextMeal" destination="Oo1-8s-POO" id="NPe-lj-fFG"/>
                 <outlet property="titleLabel" destination="3bK-wF-VRE" id="fVl-9V-Ad2"/>
                 <outlet property="welcomeLabel" destination="Ldg-Ls-x0U" id="kSt-p9-SBC"/>
@@ -192,5 +258,13 @@
     </objects>
     <resources>
         <image name="birdie_food" width="405" height="662"/>
+        <image name="letstweak_btn" width="319.5" height="70"/>
+        <image name="tae_logo" width="320" height="93"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

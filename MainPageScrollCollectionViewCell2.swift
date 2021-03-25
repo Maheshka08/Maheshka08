@@ -1,14 +1,14 @@
 //
-//  MainPageScrollCollectionViewCell.swift
-//  GestureRecognizers
+//  MainPageScrollCollectionViewCell2.swift
+//  Tweak and Eat
 //
-//  Created by apple on 19/12/19.
-//  Copyright © 2019 Uday Surya. All rights reserved.
+//  Created by Mehera on 22/03/21.
+//  Copyright © 2021 Purpleteal. All rights reserved.
 //
 
 import UIKit
 
-class MainPageScrollCollectionViewCell: UICollectionViewCell {
+class MainPageScrollCollectionViewCell2: UICollectionViewCell {
     @IBOutlet weak var foodImageView: UIImageView!
     
     @IBOutlet weak var titleLabelHeightConstraint: NSLayoutConstraint!
@@ -19,11 +19,17 @@ class MainPageScrollCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 self.foodImageView.layer.cornerRadius = 10
+        self.itemLabel1.layer.cornerRadius = 3
+        self.itemLabel2.layer.cornerRadius = 3
+        self.itemLabel1.clipsToBounds = true
+        self.itemLabel2.clipsToBounds = true
+        
         self.foodImageView.layer.masksToBounds = true
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.itemLabel2.textAlignment = .center
+        self.itemLabel1.textAlignment = .center
         self.foodImageView.contentMode = .scaleAspectFill
     }
     

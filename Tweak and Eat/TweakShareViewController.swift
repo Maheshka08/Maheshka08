@@ -72,10 +72,39 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
                    self.nutritionTopConstraint.constant = 16
                }
         MBProgressHUD.showAdded(to: self.mealTypeTableView, animated: true)
+        if self.mealTypeArray.count == 0 {
         self.getMealTypes()
+        } else {
+            self.showMenu()
+        }
        
         
     }
+    
+    func showMenu() {
+        let actionSheetAlertController: UIAlertController = UIAlertController(title: "Please select your meal type", message: nil, preferredStyle: .actionSheet)
+
+        for meal in self.mealTypeArray {
+            let menu = meal["name"] as! String
+             let action = UIAlertAction(title: menu, style: .default) { (action) in
+                self.mealTypeValue = meal["value"] as! Int
+                DispatchQueue.main.async {
+                    self.mealTypeLabel.text = "  " + menu
+
+                }
+             }
+
+             
+
+             actionSheetAlertController.addAction(action)
+           }
+
+//           let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//           actionSheetAlertController.addAction(cancelActionButton)
+
+           self.present(actionSheetAlertController, animated: true, completion: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
        
@@ -231,14 +260,16 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
                     print(self.mealTypeArray)
                     self.mealTypeTableView.reloadData()
                     MBProgressHUD.hide(for: self.mealTypeTableView, animated: true);
-                    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
-                                   animations: {
-                                    
-                                    self.mealTypeTableView.isHidden = false
-                                    self.mealTypeTableViewHeightConstraint.constant = 250
-                                    self.view.layoutIfNeeded()
-                    },  completion: {(_ completed: Bool) -> Void in
-                    })
+//                    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+//                                   animations: {
+//
+//                                    self.mealTypeTableView.isHidden = false
+//                                    self.mealTypeTableViewHeightConstraint.constant = 250
+//                                    self.view.layoutIfNeeded()
+//                    },  completion: {(_ completed: Bool) -> Void in
+//                    })
+                    self.showMenu()
+
                     }
                 
             }else {

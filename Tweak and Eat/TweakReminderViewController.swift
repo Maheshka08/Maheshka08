@@ -12,7 +12,9 @@ import AVKit
 import UserNotifications
 
 @available(iOS 10.0, *)
-class TweakReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweakReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangeTime {
+   
+    
 
     @objc var player : AVAudioPlayer?;
     @IBOutlet var tweaksTableView: UITableView!;
@@ -64,6 +66,8 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : TweakAndEatRemindeCell = (Bundle.main.loadNibNamed("TweakAndEatRemindeCell", owner: self, options: nil)! as [Any])[0] as! TweakAndEatRemindeCell;
+        cell.myIndexPath = indexPath
+        cell.delegate = self
         if ((tweakReminders?.count)! > 0) {
             let reminderName = tweakReminders?[indexPath.row].rmdrName;
             
@@ -106,11 +110,11 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
         return 70;
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func changeTime(_ cell: TweakAndEatRemindeCell) {
         if ((tweakReminders?.count)! > 0) {
-            self.selectedIndexPath = indexPath;
-            self.selectedTime = self.tweakReminders![indexPath.row].rmdrTime!;
-            self.didSelectedTime = self.tweakReminders![indexPath.row].rmdrTime!;
+            self.selectedIndexPath = cell.myIndexPath;
+            self.selectedTime = self.tweakReminders![self.selectedIndexPath.row].rmdrTime!;
+            self.didSelectedTime = self.tweakReminders![self.selectedIndexPath.row].rmdrTime!;
         
             let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate;
             overlayView = UIView(frame: CGRect.init(0, 0, appDelegate.window!.bounds.size.width,appDelegate.window!.bounds.size.height));
@@ -128,7 +132,7 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
         
             let dateFormatter = DateFormatter();
             dateFormatter.dateFormat = "HH:mm";
-            datePicker.date = dateFormatter.date(from: self.tweakReminders![indexPath.row].rmdrTime!)!;
+            datePicker.date = dateFormatter.date(from: self.tweakReminders![self.selectedIndexPath.row].rmdrTime!)!;
             let pickerToolbar : UIToolbar = UIToolbar(frame: CGRect.init(0, appDelegate.window!.bounds.size.height-160-30-50, appDelegate.window!.bounds.size.width,40));
             
             let spacing = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil);
@@ -144,6 +148,11 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
             appDelegate.window!.addSubview(overlayView);
         }
     }
+    
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
     
     @objc func cancelNotificationForSpecificTime(hour : String, min : String) {
         if #available(iOS 10.0, *) {

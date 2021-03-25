@@ -28,7 +28,7 @@ import AppTrackingTransparency
 let uiRealm = try! Realm()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSSubscriptionObserver, UNUserNotificationCenterDelegate, MessagingDelegate,CleverTapInAppNotificationDelegate {
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
         print("onConversionDataSuccess data:")
                for (key, value) in conversionInfo {
@@ -216,11 +216,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       // self.goToHomePage()
-        //UIApplication.shared.applicationIconBadgeNumber = 1
-        // if you are using the TEST key
-         //Branch.setUseTestBranchKey(true)
+
         CleverTap.autoIntegrate()
+        CleverTap.sharedInstance()?.setInAppNotificationDelegate(self)
 
         Flyshot.shared.initialize(sdkToken: "fl_test_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lclV1aWQiOiI4ZjE0Mzc3MC1mZTk4LTQ4ZWEtOGJmZS1lNjUzZDk5Mjc4N2EiLCJhcHBsaWNhdGlvblV1aWQiOiIyYzRlNjBlNC1iZmJlLTRlMmItYjYzYi1kMjhjY2U5YzIyY2YiLCJ1dWlkIjoiMDYwMTZmNzEtYzYwYS00MjNjLTgyZDktNjJhNTZiMzkzMjJiIn0.XdAbRo-qhjuRio6Lk0hGxcwY0-eAuZiP9SfdV0gk2lE", onSuccess: {
            // SDK is ready for use
@@ -590,7 +588,7 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
                     if let viewControllers = navController?.viewControllers {
                         for viewController in viewControllers {
                             // some process
-                            if viewController is TimelinesViewController || viewController is TimelinesDetailsViewController {
+                            if viewController is TimelinesDetailsViewController {
                                 print("yes it is")
                               //  UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
                                 return

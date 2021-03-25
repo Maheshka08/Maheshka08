@@ -67,7 +67,7 @@ class TweakPieChartView: UIView {
     
     
     @IBAction func okAction(_ sender: Any) {
-        self.delegate.switchToSeventhScreen()
+        self.delegate.switchToSeventhScreen(isInfoIconTapped: false)
     }
     
     @objc func updateChartData(){

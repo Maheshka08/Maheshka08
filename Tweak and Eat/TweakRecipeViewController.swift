@@ -14,6 +14,7 @@ import RealmSwift
 import AVFoundation
 import CleverTapSDK
 
+
 class Recipes {
     @objc  var snapShot: String
     @objc  var bannerImg: String
@@ -594,7 +595,6 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func allRecipesTapped(_ sender: Any) {
         self.title = "ALL RECIPES"
-        // self.delDB()
         UserDefaults.standard.setValue(self.title, forKey: "TITLE")
                UserDefaults.standard.synchronize()
         self.noRecipesView.isHidden = true
@@ -670,9 +670,102 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         DispatchQueue.main.async {
             self.resultSearchController.isActive = false
         }
-        self.allCountryArray = NSMutableArray()
+        if self.allCountryArray.count == 0 {
         self.getAllCountryCodes()
+        } else {
+            self.showAllCountries()
+        }
         
+    }
+    
+    func showAllCountries() {
+        let actionSheetAlertController: UIAlertController = UIAlertController(title: "Please select a country", message: nil, preferredStyle: .actionSheet)
+
+        for meal in self.allCountryArray {
+            let dict = meal as! [String: AnyObject]
+            let menu = dict["ctr_name"] as AnyObject as? String
+
+             let action = UIAlertAction(title: menu, style: .default) { (action) in
+                
+                //DispatchQueue.main.async {
+                   
+                    if dict.count > 0 {
+                        self.countryCode = "\(dict["ctr_phonecode"] as AnyObject as! Int)"
+                        self.recipeTitle = (dict["ctr_name"] as AnyObject as? String)!
+                            + " RECIPES";
+                    }
+
+                self.title = self.recipeTitle
+                UserDefaults.standard.setValue(self.title, forKey: "TITLE")
+                UserDefaults.standard.synchronize()
+                if self.title == "ALL RECIPES" {
+                    
+                    return
+                }
+                if self.isVegOrNonVeg == false {
+                    //MBProgressHUD.showAdded(to: self.view, animated: true);
+                    self.getVegRecipes()
+                } else {
+                    self.getRecipesByFilter()
+                }
+
+             }
+            let imageUrl = dict["ctr_flag_url"] as AnyObject as? String
+            
+            let url = URL(string: imageUrl!)
+            DispatchQueue.global(qos: .background).async {
+                // Call your background task
+                let data = try? Data(contentsOf: url!)
+                // UI Updates here for task complete.
+             //   UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
+
+                if let imageData = data {
+                    let image = UIImage(data: imageData)
+//                    if let icon = image?.imageWithSize(scaledToSize: CGSize(width: 20, height: 20)) {
+//                        action.setValue(icon, forKey: "image")
+//
+//                       // action.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+//                       }
+                    action.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+
+                    DispatchQueue.main.async {
+                        
+                       // self.premiumMember.setImage(image, for: .normal)
+                        
+                    }
+            }
+            
+
+                
+            }
+             
+
+             actionSheetAlertController.addAction(action)
+           }
+
+        let cancelActionButton = UIAlertAction(title: "ALL RECIPES", style: .cancel, handler: {_ in
+            self.title = "ALL RECIPES"
+            UserDefaults.standard.setValue(self.title, forKey: "TITLE")
+                   UserDefaults.standard.synchronize()
+            self.noRecipesView.isHidden = true
+
+            self.countryCodesParentView.isHidden = true
+            
+            self.vegBtn.backgroundColor = .white
+            self.immunityBoosterBtn.backgroundColor = .white
+            self.nonVegBtn.backgroundColor = .white
+            self.vegBtn.setTitleColor(.black, for: .normal)
+            self.nonVegBtn.setTitleColor(.black, for: .normal)
+            self.immunityBoosterBtn.setTitleColor(.black, for: .normal)
+            self.isVegetarian = false
+            self.isVegOrNonVeg = false
+            self.isImmunityBoosterSelected = false
+            self.getFirebaseData()
+           })
+           actionSheetAlertController.addAction(cancelActionButton)
+
+           self.present(actionSheetAlertController, animated: true, completion: nil)
     }
     
     func getTodayWeekDay()-> String{
@@ -880,8 +973,8 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         self.addBackButton();
         bundle = Bundle.init(path: path!)! as Bundle;
         self.countryCodesParentView.isHidden = true
-        self.countryCodePickerView.delegate = self
-        self.countryCodePickerView.dataSource = self
+//        self.countryCodePickerView.delegate = self
+//        self.countryCodePickerView.dataSource = self
         
         vegBtn.setTitleColor(.black, for: .normal)
         nonVegBtn.setTitleColor(.black, for: .normal)
@@ -1469,7 +1562,9 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
                     
-                    self.countryCodesParentView.isHidden = false
+                    self.countryCodesParentView.isHidden = true
+                    self.allCountryArray = NSMutableArray()
+
                     let dispatch_group = DispatchGroup()
                     dispatch_group.enter()
                     for dict in response[TweakAndEatConstants.DATA] as AnyObject as! NSArray {
@@ -1489,14 +1584,14 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                             self.countryCode = "\(countryDict["ctr_phonecode"] as AnyObject as! Int)"
                             self.recipeTitle = (countryDict["ctr_name"] as AnyObject as? String)!
                                 + " RECIPES";
-                            
+                            self.showAllCountries()
                             //   let imageUrl = countryDict["ctr_flag_url"] as AnyObject as? String
                             
                             
                         }
                     }
-                    self.countryCodePickerView.reloadAllComponents()
-                    self.countryCodePickerView.selectRow(0, inComponent: 0, animated: true)
+//                    self.countryCodePickerView.reloadAllComponents()
+//                    self.countryCodePickerView.selectRow(0, inComponent: 0, animated: true)
                     
                 }
             } else {
@@ -2040,14 +2135,11 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             let carbs = bundle.localizedString(forKey: "carbs", value: nil, table: nil)
             
             let calories = bundle.localizedString(forKey: "calories", value: nil, table: nil)
-            cell.carbsLbl.attributedText =  setAttributedStringForLabel(mainString: "\(carbs) \(nutrition.carbs)", stringToColor: nutrition.carbs)
-            cell.caloriesLabel.attributedText = setAttributedStringForLabel(mainString: "\(calories) \(nutrition.calories)", stringToColor: nutrition.calories)
+            cell.carbsLbl.text =  "\(nutrition.carbs)  "
+            cell.caloriesLabel.text = "\(nutrition.calories)  "
         }
-        //        if let awesomeCount = cellDictionary["awesomeCount"] as AnyObject as? Int {
-        //            cell.awesomeLabel.text = "\(awesomeCount)" + " awesome"
-        //        } else {
-        //           cell.awesomeLabel.text = "0 awesome"
-        //        }
+                    cell.awesomeLabel.text = "\(cellDictionary.awesomeCount)  "
+                
         cell.awesomeBtn?.setImage(UIImage(named: "awesome_icon"), for: .normal)
         let awesomeMem = cellDictionary.awesomeMembers
         for mem in awesomeMem {

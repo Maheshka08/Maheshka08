@@ -14,6 +14,10 @@ import FirebaseInstanceID
 import FirebaseMessaging
 import CleverTapSDK
 
+struct StepsImages {
+    var image: String
+}
+
 class TweakAndEatFinalIntroScreen: UIView {
 
     @IBOutlet weak var justTweakView: UIView!
@@ -21,12 +25,15 @@ class TweakAndEatFinalIntroScreen: UIView {
     @IBOutlet var logoView: UIView!;
     @IBOutlet var logoImageView: UIImageView!;
     @IBOutlet var logoBorderView: UIView!;
-  
+    @IBOutlet weak var letsTweakBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     @objc var delegate : WelcomeViewController! = nil;
     @objc var timelines : TimelinesDetailsViewController! = nil;
     @objc var tweakOtpView : TweakAndEatOTPView! = nil;
     @objc var dbArray:[AnyObject] = [];
-    
+    var imageArray = [StepsImages]()
+    var infoIconTapped = false
     
     @IBOutlet weak var takePhotoOfNextMeal: UILabel!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -34,6 +41,9 @@ class TweakAndEatFinalIntroScreen: UIView {
     @IBOutlet weak var okBtn: UIButton!
     
     @objc func beginning() {
+        self.pageControl.isUserInteractionEnabled = false
+        self.letsTweakBtn.isHidden = true
+        self.imageArray = [StepsImages.init(image: "step_1"), StepsImages.init(image: "step_2"), StepsImages.init(image: "step_3")]
         self.justTweakView.layer.cornerRadius = 10
         self.justTweakView.layer.borderWidth = 2
         self.justTweakView.layer.borderColor = UIColor.black.cgColor
@@ -48,6 +58,11 @@ class TweakAndEatFinalIntroScreen: UIView {
     }
 
     @IBAction func onClickOfOkay(sender: AnyObject) {
+        if self.infoIconTapped == true {
+            self.delegate.resignRegistrationScreen()
+            return
+
+        }
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dispatch_group = DispatchGroup();
         dispatch_group.enter();

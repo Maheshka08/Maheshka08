@@ -21,6 +21,7 @@ let IS_IPHONES4 = (UIScreen.main.bounds.size.height == 480) ? true : false
 class ImageUploadingViewController: UIViewController {
     
     @IBOutlet weak var imageADView: UIImageView!
+    @IBOutlet weak var tweakSentImageView: UIImageView!
     @objc var pkgIdsArray = NSMutableArray()
     @objc var age = ""
     @objc var gender = ""
@@ -806,17 +807,17 @@ class ImageUploadingViewController: UIViewController {
                             self.didYouKnowText.isHidden = true
                             self.hereTipLabel.isHidden = true
                         } else {
-                            self.imageADView.isHidden = false
+                            self.imageADView.isHidden = true
                             self.didYouKnowText.isHidden = true
                             self.hereTipLabel.isHidden = true
                            
-                            self.imageADView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
-                                // Your code inside completion block
-                                let ratio = image!.size.width / image!.size.height
-                                let newHeight = self.imageADView.frame.width / ratio
-                                self.adImageViewHeightConstraint.constant = newHeight
-                                self.view.layoutIfNeeded()
-                            }
+//                            self.imageADView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
+//                                // Your code inside completion block
+//                                let ratio = image!.size.width / image!.size.height
+//                                let newHeight = self.imageADView.frame.width / ratio
+//                                self.adImageViewHeightConstraint.constant = newHeight
+//                                self.view.layoutIfNeeded()
+//                            }
                         }
                     }
 

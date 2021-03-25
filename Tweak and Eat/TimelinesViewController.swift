@@ -428,19 +428,19 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     override func viewDidLoad() {
         super.viewDidLoad()
         CleverTap.sharedInstance()?.recordEvent("EDR_viewed")
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(TimelinesViewController.reloadTimelines), name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATIONS"), object: nil)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         // timelinesTableView.backgroundColor = UIColor.white
         //        let data = ["msg": "Woohoo! Now our Premium Services is rated the BEST in Health & Wellness segment! Please click on  our Premium Services and try it. You owe it to yourself", "imgUrlString":"https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20190226_01.jpg", "link": "-AiDPwdvop1HU7fj8vfL"] as [String: AnyObject]
         //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_POPUP"), object: data)
-        self.title = "My EDR"
+        self.title = "My EDR (Electronic Diet Record)"
         // self.noEdrPopView.isHidden = true
 //        self.timelinesTableView.estimatedRowHeight = 332.0
 //        self.timelinesTableView.rowHeight = UITableView.automaticDimension
-        let homeBarButtonItem = UIBarButtonItem(image: UIImage(named: "home-1"), style: .plain, target: self, action: #selector(TimelinesViewController.clickButton))
-        homeBarButtonItem.tintColor = UIColor.black
-        self.navigationItem.rightBarButtonItem  = homeBarButtonItem
+//        let homeBarButtonItem = UIBarButtonItem(image: UIImage(named: "home-1"), style: .plain, target: self, action: #selector(TimelinesViewController.clickButton))
+//        homeBarButtonItem.tintColor = UIColor.black
+//        self.navigationItem.rightBarButtonItem  = homeBarButtonItem
         
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)";

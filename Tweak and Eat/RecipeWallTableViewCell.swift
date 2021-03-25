@@ -47,6 +47,12 @@ class RecipeWallTableViewCell: UITableViewCell {
         super.awakeFromNib();
        // self.buyIngredientsIconTrailingConstraint.constant = 8;
         // Initialization code
+        self.carbsLbl.layer.cornerRadius = 3
+        self.caloriesLabel.layer.cornerRadius = 3
+        self.awesomeLabel.layer.cornerRadius = 3
+        self.awesomeLabel.clipsToBounds = true
+        self.carbsLbl.clipsToBounds = true
+        self.caloriesLabel.clipsToBounds = true
         self.recipeImageView.contentMode = .scaleAspectFill
         self.recipeImageView.clipsToBounds = true
         self.sticker2ImageView.isHidden = true

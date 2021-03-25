@@ -2282,9 +2282,9 @@ if dictionary.index(forKey: "weeksData") != nil {
     }
     
     @IBAction func infoIconBarButtonTapped(_ sender: Any) {
-        if self.countryCode == "62" {
-            return
-        }
+//        if self.countryCode == "62" {
+//            return
+//        }
         self.infoIconTapped = true
         showHowToTweakScreen()
 
@@ -6244,80 +6244,9 @@ self.topImageView.alpha = 1
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             //UserDefaults.standard.removeObject(forKey: "ct_profile_updated")
         if UserDefaults.standard.value(forKey: "ct_profile_updated") == nil {
-            self.myProfileInfo = uiRealm.objects(MyProfileInfo.self);
-            if self.myProfileInfo?.count == 0 {
-                return
-            }
-            var name = ""
-            var email = ""
-            var mobileNumber = ""
-            var ccCode = ""
-            var age = ""
-            var gender = ""
-            var weight = ""
-            var goals = ""
-            var conditions = ""
-            var allergies = ""
-            var foodHabits = ""
-            var height = ""
-            
-            
 
-            for prof in self.myProfileInfo! {
-                name = prof.name
-                email = prof.email
-                mobileNumber = prof.msisdn
-                ccCode = self.countryCode
-                age = prof.age
-                gender = prof.gender
-                weight = prof.weight
-                goals = prof.goals
-                conditions = prof.conditions
-                allergies = prof.allergies
-                foodHabits = prof.foodHabits
-                height = prof.height
-                
-                
-            }
-           
-            var totalCM: Int = 0
-            if self.countryCode == "1" {
-                let heightInFeets = height
-                let feetArray = heightInFeets.components(separatedBy: "'")
-                let feet = "\(feetArray[0])";
-                let inches = "\(feetArray[1])";
-                
-                 totalCM = Int((Float(Double(feet)! * 30.48) + Float(Double(inches)! * 2.54)));
-                
-            }
-           
-            let profile: Dictionary<String, AnyObject> = [
-                //Update pre-defined profile properties
-                "Name": name as AnyObject,
-                "Identity": "+" + mobileNumber as AnyObject,
-                "Email": email as AnyObject,
-                //Update custom profile properties
-                "Phone": "+" + mobileNumber as AnyObject,
-                "Country Code": Int(ccCode)!  as AnyObject,
-                "Age in years": Int(age)!  as AnyObject,
-                "Age": Int(age)!  as AnyObject,
-                "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
-                "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
-                "Firebase Token": InstanceID.instanceID().token() as AnyObject,
-                "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-                "Height": (self.countryCode == "1") ? totalCM  as AnyObject : height as AnyObject,
-                "Allergies": allergies.components(separatedBy: ",") as AnyObject,
-                "Conditions": conditions.components(separatedBy: ",") as AnyObject,
-                "Goals": goals.components(separatedBy: ",") as AnyObject,
-                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject,
-                "MSG-email": true as AnyObject,           // Disable email notifications
-                   "MSG-push": true as AnyObject,             // Enable push notifications
-                   "MSG-sms": false as AnyObject,             // Disable SMS notifications
-                   "MSG-whatsapp": false as AnyObject
-        
-            ]
-            CleverTap.sharedInstance()?.profilePush(profile)
-            CleverTap.sharedInstance()?.recordEvent("user_profile_updated", withProps: profile)
+            let ct = CleverTapClass()
+            ct.updateCleverTapWithProp(isUpdateProfile: true)
             UserDefaults.standard.setValue("YES", forKey: "ct_profile_updated")
             UserDefaults.standard.synchronize()
         }
@@ -9498,27 +9427,27 @@ self.floatingCallBtn.isHidden = false
         
     }
     
-    @objc func switchToSeventhScreen() {
+    @objc func switchToSeventhScreen(isInfoIconTapped: Bool) {
        //seventhScreen
-        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
-         
-        let  countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
-            if countryCode == "91" {
-                self.tweakTermsServiceView.removeFromSuperview();
-                self.showCongratulationsTweakerView()
 
-            } else {
                 self.tweakFinalView = (Bundle.main.loadNibNamed("TweakAndEatFinalIntroScreen", owner: self, options: nil)! as NSArray).firstObject as! TweakAndEatFinalIntroScreen;
                         tweakFinalView.frame = self.view.frame;
                         tweakFinalView.delegate = self;
+        let cellIdentifier = "item"
+        tweakFinalView.collectionView.register(UINib(nibName:"HorizontalStepsIntroCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        tweakFinalView.infoIconTapped = infoIconTapped
                         tweakFinalView.beginning();
+        tweakFinalView.collectionView.delegate = self
+        tweakFinalView.collectionView.dataSource = self
+
+
+        tweakFinalView.pageControl.numberOfPages = tweakFinalView.imageArray.count
                         self.view.addSubview(self.tweakFinalView);
-                //        self.tweakFinalView.titleLabel.text = bundle.localizedString(forKey: "register_finished_1", value: nil, table: nil)
-                //        self.tweakFinalView.takePhotoOfNextMeal.text = bundle.localizedString(forKey: "register_finished_2", value: nil, table: nil)
+              
                         self.tweakFinalView.okBtn.setTitle(bundle.localizedString(forKey: "ok", value: nil, table: nil), for: .normal)
                         self.tweakTermsServiceView.removeFromSuperview();
-            }
-        }
+//            }
+//        }
         
         // pieChartView.removeFromSuperview();
         
@@ -9581,13 +9510,14 @@ self.floatingCallBtn.isHidden = false
     
     func showHowToTweakScreen() {
                 self.navigationController?.isNavigationBarHidden = true;
+        self.switchToSeventhScreen(isInfoIconTapped: true)
 
-        howToTweakView = (Bundle.main.loadNibNamed("HowToTweak", owner: self, options: nil)! as NSArray).firstObject as? HowToTweak;
-               howToTweakView.frame = self.view.frame;
-               howToTweakView.delegate = self;
-               self.view.addSubview(howToTweakView);
-               howToTweakView.beginning();
-               self.getIntroSlide2()
+//        howToTweakView = (Bundle.main.loadNibNamed("HowToTweak", owner: self, options: nil)! as NSArray).firstObject as? HowToTweak;
+//               howToTweakView.frame = self.view.frame;
+//               howToTweakView.delegate = self;
+//               self.view.addSubview(howToTweakView);
+//               howToTweakView.beginning();
+//               self.getIntroSlide2()
     }
     
     func updateUIForSlide1(data: [[String: AnyObject]] ) {
@@ -10096,77 +10026,10 @@ self.floatingCallBtn.isHidden = false
                                             }
                                             //last
                                             AppEvents.logEvent(.completedRegistration, parameters: ["country": self.countryCode])
-                                            self.myProfileInfo = uiRealm.objects(MyProfileInfo.self);
-                                            var name = ""
-                                            var email = ""
-                                            var mobileNumber = ""
-                                            var ccCode = ""
-                                            var age = ""
-                                            var gender = ""
-                                            var weight = ""
-                                            var goals = ""
-                                            var conditions = ""
-                                            var allergies = ""
-                                            var foodHabits = ""
-                                            var height = ""
-                                            
 
-                                            for prof in self.myProfileInfo! {
-                                                name = prof.name
-                                                email = prof.email
-                                                mobileNumber = prof.msisdn
-                                                ccCode = self.countryCode
-                                                age = prof.age
-                                                gender = prof.gender
-                                                weight = prof.weight
-                                                goals = prof.goals
-                                                conditions = prof.conditions
-                                                allergies = prof.allergies
-                                                foodHabits = prof.foodHabits
-                                                height = prof.height
-                                                
-                                                
-                                            }
-                                            
-                                            var totalCM: Int = 0
-                                            if self.countryCode == "1" {
-                                                let heightInFeets = height
-                                                let feetArray = heightInFeets.components(separatedBy: "'")
-                                                let feet = "\(feetArray[0])";
-                                                let inches = "\(feetArray[1])";
-                                                
-                                                 totalCM = Int((Float(Double(feet)! * 30.48) + Float(Double(inches)! * 2.54)));
-                                                
-                                            }
-                                           
-                                            let profile: Dictionary<String, AnyObject> = [
-                                                //Update pre-defined profile properties
-                                                "Name": name as AnyObject,
-                                                "Identity": "+" + mobileNumber as AnyObject,
-                                                "Email": email as AnyObject,
-                                                //Update custom profile properties
-                                                "Phone": "+" + mobileNumber as AnyObject,
-                                                "Country Code": Int(ccCode)!  as AnyObject,
-                                                "Age in years": Int(age)!  as AnyObject,
-                                                "Age": Int(age)!  as AnyObject,
-                                                "Gender": gender == "M" ? "Male" as AnyObject : "Female" as AnyObject,
-                                                "Height": (self.countryCode == "1") ? totalCM  as AnyObject : height as AnyObject,
-                                                "Weight": (self.countryCode == "1") ? Int(weight)! as AnyObject : Int(weight)! * Int(2.2) as AnyObject,
-                                                "Firebase Token": InstanceID.instanceID().token() as AnyObject,
-                                                "BMI": (self.countryCode == "1") ? Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)! / Int(2.2)), heightInCentimeters: Double(totalCM)))) as AnyObject : Int(Double(self.calculateBMI(massInKilograms: Double(Int(weight)!), heightInCentimeters: Double(height)!))) as AnyObject,
-                                                "Allergies": allergies.components(separatedBy: ",") as AnyObject,
-                                                "Conditions": conditions.components(separatedBy: ",") as AnyObject,
-                                                "Goals": goals.components(separatedBy: ",") as AnyObject,
-                                                "Food Habits": foodHabits.components(separatedBy: ",") as AnyObject,
-                                                "MSG-email": true as AnyObject,           // Disable email notifications
-                                                   "MSG-push": true as AnyObject,             // Enable push notifications
-                                                   "MSG-sms": false as AnyObject,             // Disable SMS notifications
-                                                   "MSG-whatsapp": false as AnyObject
-                                        
-                                            ]
-                                            //CleverTap.sharedInstance()?.profilePush(profile)
-                                            CleverTap.sharedInstance()?.onUserLogin(profile)
-                                            CleverTap.sharedInstance()?.recordEvent("Signup_completed",withProps: profile)
+                                            let ct = CleverTapClass()
+                                            ct.updateCleverTapWithProp(isUpdateProfile: false)
+
                                              if (self.countryCode == "91") {
                                                 Analytics.logEvent("TAE_REG_SUCCESS_IND", parameters: [AnalyticsParameterItemName: "Registration successful"]);
                                                 
@@ -10579,7 +10442,7 @@ self.floatingCallBtn.isHidden = false
                     saveToRealmOverwrite(objType: TweakPieChartValues.self, objValues: chartValues)
                 }
                 
-                self.switchToSeventhScreen()
+                self.switchToSeventhScreen(isInfoIconTapped: false)
                 
                 
             }, failure : { error in
@@ -11262,4 +11125,55 @@ fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotifica
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
     return input.rawValue
+}
+
+//MARK: - COLLECTIONVIEW DELEGATE AND DATASOURCE METHODS
+
+extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.tweakFinalView.imageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! HorizontalStepsIntroCell
+       
+        item.itemImageView.image = UIImage.init(named: self.tweakFinalView.imageArray[indexPath.row].image)!
+        return item
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = self.tweakFinalView.collectionView.contentOffset.x / self.tweakFinalView.collectionView.frame.width
+        self.tweakFinalView.pageControl.currentPage = Int(pageNumber)
+        if Int(pageNumber) == self.tweakFinalView.imageArray.count - 1 {
+            self.tweakFinalView.letsTweakBtn.isHidden = false
+        } else {
+            self.tweakFinalView.letsTweakBtn.isHidden = true
+
+        }
+    }
+    
+    
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension WelcomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = self.tweakFinalView.collectionView.frame.size
+        return CGSize(width: size.width, height: size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
 }

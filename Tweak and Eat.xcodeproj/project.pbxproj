@@ -33,7 +33,7 @@
 		1873DD292099E0D000827B0B /* Pods_Tweak_and_Eat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139224D70793BC93214F290E /* Pods_Tweak_and_Eat.framework */; };
 		18743651213D4A920012A17E /* MoreInfoPremiumPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18743650213D4A910012A17E /* MoreInfoPremiumPackagesViewController.swift */; };
 		1878DA2523AC918300F1FBAE /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1878DA2423AC918300F1FBAE /* AAInfographics.framework */; };
-		1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell.swift */; };
+		1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell1.swift */; };
 		1878DA2D23AC975C00F1FBAE /* MainPageScrollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878DA2923AC975C00F1FBAE /* MainPageScrollTableViewCell.swift */; };
 		1878DA3323AD03C600F1FBAE /* MainPageScrollableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878DA3223AD03C600F1FBAE /* MainPageScrollableTableViewController.swift */; };
 		187E4E3E20A4537000A24FDE /* AvailablePremiumPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E4E3D20A4536F00A24FDE /* AvailablePremiumPackagesViewController.swift */; };
@@ -203,9 +203,13 @@
 		8375DB3125AD6A7D00C978E5 /* TextSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */; };
 		8375DB3225AD6A7D00C978E5 /* ButtonReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */; };
 		8375DB3325AD6A7D00C978E5 /* TextReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */; };
+		83819B4826084CC200710025 /* HorizontalStepsIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83819B4726084CC200710025 /* HorizontalStepsIntroCell.swift */; };
 		83AD092325AED2550089C23D /* ChatTypingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */; };
 		83AD092A25AED7140089C23D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */; };
 		83AD094725AEE1AE0089C23D /* dots.gif in Resources */ = {isa = PBXBuildFile; fileRef = 83AD094625AEE1AD0089C23D /* dots.gif */; };
+		83AD111126086E4200763875 /* HorizontalStepsIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AD111026086E4200763875 /* HorizontalStepsIntroCell.xib */; };
+		83AD11672609197000763875 /* MainPageScrollCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */; };
+		83AD116C2609BF6800763875 /* CleverTapClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD116B2609BF6800763875 /* CleverTapClass.swift */; };
 		83AD99E825E3E1A5003430E1 /* CleverTapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AD99E725E3E1A5003430E1 /* CleverTapSDK.framework */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
 		83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */; };
@@ -366,7 +370,7 @@
 		186F13B4227062780045F7BB /* MyTweakAndEatVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTweakAndEatVCViewController.swift; sourceTree = "<group>"; };
 		18743650213D4A910012A17E /* MoreInfoPremiumPackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoPremiumPackagesViewController.swift; sourceTree = "<group>"; };
 		1878DA2423AC918300F1FBAE /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageScrollCollectionViewCell.swift; sourceTree = "<group>"; };
+		1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageScrollCollectionViewCell1.swift; sourceTree = "<group>"; };
 		1878DA2923AC975C00F1FBAE /* MainPageScrollTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageScrollTableViewCell.swift; sourceTree = "<group>"; };
 		1878DA3223AD03C600F1FBAE /* MainPageScrollableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageScrollableTableViewController.swift; sourceTree = "<group>"; };
 		187E4E3D20A4536F00A24FDE /* AvailablePremiumPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailablePremiumPackagesViewController.swift; sourceTree = "<group>"; };
@@ -590,9 +594,13 @@
 		8375DB2D25AD6A7C00C978E5 /* TextSenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSenderCell.swift; sourceTree = "<group>"; };
 		8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonReceiverCell.swift; sourceTree = "<group>"; };
 		8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReceiverCell.swift; sourceTree = "<group>"; };
+		83819B4726084CC200710025 /* HorizontalStepsIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStepsIntroCell.swift; sourceTree = "<group>"; };
 		83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTypingIndicatorCell.swift; sourceTree = "<group>"; };
 		83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		83AD094625AEE1AD0089C23D /* dots.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dots.gif; sourceTree = "<group>"; };
+		83AD111026086E4200763875 /* HorizontalStepsIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalStepsIntroCell.xib; sourceTree = "<group>"; };
+		83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageScrollCollectionViewCell2.swift; sourceTree = "<group>"; };
+		83AD116B2609BF6800763875 /* CleverTapClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleverTapClass.swift; sourceTree = "<group>"; };
 		83AD99E725E3E1A5003430E1 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C1443C25D114DA00F1BC20 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
@@ -775,7 +783,7 @@
 			isa = PBXGroup;
 			children = (
 				1878DA3223AD03C600F1FBAE /* MainPageScrollableTableViewController.swift */,
-				1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell.swift */,
+				1878DA2623AC975300F1FBAE /* MainPageScrollCollectionViewCell1.swift */,
 				1878DA2923AC975C00F1FBAE /* MainPageScrollTableViewCell.swift */,
 				186051EF23B1F6D400C9971A /* PremiumTweakPackController.swift */,
 				186051F023B1F6D800C9971A /* ScrollCell.swift */,
@@ -944,6 +952,10 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				83AD116B2609BF6800763875 /* CleverTapClass.swift */,
+				83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */,
+				83AD111026086E4200763875 /* HorizontalStepsIntroCell.xib */,
+				83819B4726084CC200710025 /* HorizontalStepsIntroCell.swift */,
 				8333848525CAD79E004155C1 /* AvailablePackagesCell2.swift */,
 				8375DB1225AD67FE00C978E5 /* SIA */,
 				83360CBC2531EAC40006BD63 /* HowToTweak.xib */,
@@ -1668,6 +1680,7 @@
 				83170921250BBEC400413723 /* CarouselCollectionViewCell.xib in Resources */,
 				84B054A81EBF35E100263BC1 /* TimelineTableViewCell.xib in Resources */,
 				5720938B1D87AB7E007B8E53 /* SourceSansPro-Regular.ttf in Resources */,
+				83AD111126086E4200763875 /* HorizontalStepsIntroCell.xib in Resources */,
 				83170932250BCA1200413723 /* CarouselCollectionViewCell2.xib in Resources */,
 				83360CBD2531EAC40006BD63 /* HowToTweak.xib in Resources */,
 				572093751D7D5BD2007B8E53 /* TweakAndEatOTPView.xib in Resources */,
@@ -1897,6 +1910,7 @@
 				5702E5E71D9D646100647A54 /* UIImage+MultiFormat.m in Sources */,
 				73B6778221C3BA3C0046E949 /* NutritionAnalyticsCollectionViewCell.swift in Sources */,
 				186051F123B1F6D800C9971A /* PremiumTweakPackController.swift in Sources */,
+				83AD11672609197000763875 /* MainPageScrollCollectionViewCell2.swift in Sources */,
 				73B9DBC1203C1DB000EBC0B0 /* LoginViewController.swift in Sources */,
 				84EF2DD31DE705C900F340C5 /* DatabaseController.swift in Sources */,
 				831F883924614AE600397143 /* GamifyViewController.swift in Sources */,
@@ -1935,6 +1949,7 @@
 				84805DF81F1E2A6E00E9AED6 /* AwesomeTableViewCell.swift in Sources */,
 				84B8E1631ED6D9D4007B1BD1 /* TipsNotifications.swift in Sources */,
 				732986CF1FEBD45E006A364C /* VCCells.swift in Sources */,
+				83AD116C2609BF6800763875 /* CleverTapClass.swift in Sources */,
 				7364BE01207914B400062F9A /* DietPlanCell.swift in Sources */,
 				840A2E601F3605000073E5A5 /* WeightInfo.swift in Sources */,
 				57C324891D9664ED0057B590 /* AboutAppViewController.swift in Sources */,
@@ -1955,7 +1970,7 @@
 				83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */,
 				83EA2FC924A6049A009DDABA /* CircularProgressView.swift in Sources */,
 				8375DB3125AD6A7D00C978E5 /* TextSenderCell.swift in Sources */,
-				1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell.swift in Sources */,
+				1878DA2A23AC975C00F1FBAE /* MainPageScrollCollectionViewCell1.swift in Sources */,
 				84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */,
 				5702E5AF1D9CAAF100647A54 /* TimelinesViewController.swift in Sources */,
 				186F13B5227062780045F7BB /* MyTweakAndEatVCViewController.swift in Sources */,
@@ -1966,6 +1981,7 @@
 				5735D83B1D79CF7E001DAF83 /* APIWrapper.swift in Sources */,
 				5735D8301D79CEEB001DAF83 /* AFHTTPRequestOperationManager.m in Sources */,
 				8375DB1525AD681000C978E5 /* AskSiaViewController.swift in Sources */,
+				83819B4826084CC200710025 /* HorizontalStepsIntroCell.swift in Sources */,
 				8375DB3025AD6A7D00C978E5 /* ImageReceiverCell.swift in Sources */,
 				732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */,
 				8317092D250BBEE700413723 /* CarouselNonAnimatedFlowLayout.swift in Sources */,
@@ -2198,7 +2214,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2209,7 +2225,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2236,7 +2252,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2247,7 +2263,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2276,13 +2292,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2310,13 +2326,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2334,13 +2350,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2358,13 +2374,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99041;
+				CURRENT_PROJECT_VERSION = 99044;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.8;
+				MARKETING_VERSION = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

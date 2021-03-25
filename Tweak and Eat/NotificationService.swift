@@ -405,30 +405,13 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         completionHandler([.alert,.badge, .sound]);
        
     }
+
+    
+
      func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
      
         completionHandler();
-//        var msg = "Dear Tweakers, We now have more than 2,20,000 tweakers! More the merrier! Here to healthy life!"
-//                       var imgUrlString = "https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20180906_01.png"
-//                       var link = "-IndIWj1mSzQ1GDlBpUt"
-//                       var type = 0
-//                      if type == 0 || type == 1 {
-//                          let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-//                                 self.popUpView = (Bundle.main.loadNibNamed("PopUpNotificationView", owner: self, options: nil)! as NSArray).firstObject as? PopUpNotificationView;
-//                                 self.popUpView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-//                              self.popUpView.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
-//                          self.popUpView.showUIForSmallPopUp(imgUrlString: imgUrlString, msg: msg, link: link, type: type)
-//                                 UIApplication.shared.keyWindow?.addSubview(self.popUpView)
-//      //                    let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-//      //                                          let v = UIView();
-//      //                                          v.frame = CGRect(0, 0, (navController?.view.frame.size.width)!, (navController?.view.frame.size.height)!);
-//      //                                          v.backgroundColor = .blue
-//      //                                         // navController?.view.window?.addSubview(v)
-//      //                           UIApplication.shared.keyWindow?.addSubview(v)
-//                      }
-     //   print(response.notification.request.content.title)
-        
-       // UIApplication.shared.applicationIconBadgeNumber = 1
+
         print(response)
         if response.notification.request.content.title == "Announcements" {
           
@@ -526,9 +509,9 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                       
                     }
                 }
-                if link == "" {
-                    return
-                }
+//                if link == "" {
+//                    return
+//                }
                 let data = ["msg": msg, "imgUrlString":imgUrlString, "link": link, "type": type] as [String: AnyObject]
                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                 if type == 0 || type == 1 {
@@ -549,6 +532,20 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                                myWall.type = type
                                navController?.pushViewController(myWall, animated: true);
                     } else {
+                        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController;
+                        if let viewControllers = navController?.viewControllers {
+                            for viewController in viewControllers {
+                                // some process
+                                if viewController is TimelinesViewController {
+                                    print("yes it is")
+                                  //  UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
+                                    UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATIONS"), object: nil)
+                                    return
+                                }
+                            }
+                        }
+
                         UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)
                     }

@@ -73,34 +73,39 @@ class MainPageScrollableTableViewController: UITableViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MainPageScrollCollectionViewCell
+        
         if collectionView == self.collectionView2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell2", for: indexPath) as! MainPageScrollCollectionViewCell2
             if self.tweakFeedsArray.count > 0 {
         let cellDict = self.tweakFeedsArray[indexPath.row]
                 DispatchQueue.main.async {
-                    cell.itemLabel1.text = "\(cellDict.awesomeCount)" + " " + "awesome"
-                    let comment = (cellDict.commentsCount > 0) ? "comments" : "comment";
-                    cell.itemLabel2.text = "\(cellDict.commentsCount)" + " " + comment + " "
+                    cell.itemLabel1.text = "\(cellDict.awesomeCount)  "
+                    //let comment = (cellDict.commentsCount > 0) ? "comments" : "comment";
+                    cell.itemLabel2.text = "\(cellDict.commentsCount)  "
                     let imageUrl = cellDict.imageUrl as AnyObject as? String
                     cell.foodImageView.sd_setImage(with: URL(string: imageUrl!))
                 }
        
             }
+            return cell
         }
         if collectionView == collectionView1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MainPageScrollCollectionViewCell1
             if self.recipesArray.count > 0 {
             let cellDict = self.recipesArray[indexPath.row] as! [String: AnyObject]
                  DispatchQueue.main.async {
-                    cell.itemLabel1.text = "carbs: " + "\(cellDict["recp_carbs"] as AnyObject as! String)"
-                    cell.itemLabel2.text = "calories: " + "\(cellDict["recp_cals"] as AnyObject as! String)" + " "
+                    cell.itemLabel1.text = "\(cellDict["recp_carbs"] as AnyObject as! String)  "
+                    cell.itemLabel2.text = "\(cellDict["recp_cals"] as AnyObject as! String)  "
             let imageUrl = cellDict["recp_img"] as AnyObject as! String
             cell.foodImageView.sd_setImage(with: URL(string: imageUrl))
             cell.titleLbl.text =  cellDict["recp_title"] as AnyObject as? String
                 }
                 
             }
+            return cell
+
         }
-        return cell
+        return UICollectionViewCell()
     }
     
     func foundSnapshot(_ snapshot: DataSnapshot) {
