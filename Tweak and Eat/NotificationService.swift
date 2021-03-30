@@ -532,19 +532,19 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                                myWall.type = type
                                navController?.pushViewController(myWall, animated: true);
                     } else {
-                        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController;
-                        if let viewControllers = navController?.viewControllers {
-                            for viewController in viewControllers {
-                                // some process
-                                if viewController is TimelinesViewController {
-                                    print("yes it is")
-                                  //  UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
-                                    UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
-                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATIONS"), object: nil)
-                                    return
-                                }
-                            }
-                        }
+//                        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController;
+//                        if let viewControllers = navController?.viewControllers {
+//                            for viewController in viewControllers {
+//                                // some process
+//                                if viewController is TimelinesViewController {
+//                                    print("yes it is")
+//                                  //  UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
+//                                    UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
+//                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATIONS"), object: nil)
+//                                    return
+//                                }
+//                            }
+//                        }
 
                         UserDefaults.standard.setValue(tweakID, forKey: "TWEAK_ID");
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATION"), object: nil)

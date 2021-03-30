@@ -603,7 +603,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to tweak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlZ-Jd-cGA">
-                                                <rect key="frame" x="132.66666666666666" y="62.999999999999993" width="110" height="13.666666666666664"/>
+                                                <rect key="frame" x="132.66666666666666" y="63.000000000000007" width="110" height="30.333333333333336"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="ZC1-8V-ABM"/>
@@ -1278,7 +1278,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="63"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq6-bS-lsC">
-                                                                <rect key="frame" x="-33" y="5" width="117" height="19"/>
+                                                                <rect key="frame" x="-47" y="5" width="123" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="19" id="p1S-t1-zgS"/>
                                                                 </constraints>
@@ -1291,7 +1291,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWf-hH-SHW">
-                                                                <rect key="frame" x="105" y="5" width="51" height="19"/>
+                                                                <rect key="frame" x="97" y="5" width="54" height="19"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                                 <state key="normal" title=" TODAY ">
                                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1301,7 +1301,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-qw-sxQ">
-                                                                <rect key="frame" x="176" y="5" width="46" height="19"/>
+                                                                <rect key="frame" x="171" y="5" width="48" height="19"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                                 <state key="normal" title=" WEEK ">
                                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1311,7 +1311,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4EK-HQ-UQo">
-                                                                <rect key="frame" x="242" y="5" width="56" height="19"/>
+                                                                <rect key="frame" x="239" y="5" width="59" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="19" id="4IX-7K-3MR"/>
                                                                 </constraints>
@@ -1324,21 +1324,21 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-G1-x4a">
-                                                                <rect key="frame" x="94" y="7" width="1" height="15"/>
+                                                                <rect key="frame" x="86" y="7" width="1" height="15"/>
                                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buY-N0-soo">
-                                                                <rect key="frame" x="163" y="7" width="1" height="15"/>
+                                                                <rect key="frame" x="158" y="7" width="1" height="15"/>
                                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bo-PQ-ELu">
-                                                                <rect key="frame" x="231" y="7" width="1" height="15"/>
+                                                                <rect key="frame" x="228" y="7" width="1" height="15"/>
                                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="eFs-n4-8oG"/>
@@ -1452,7 +1452,7 @@
                                                         <rect key="frame" x="0.0" y="63" width="335" height="39"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-3Q-WG4">
-                                                                <rect key="frame" x="271" y="4" width="56" height="16.333333333333332"/>
+                                                                <rect key="frame" x="271" y="4" width="56" height="30"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="56" id="V6m-WR-Wjq"/>
@@ -1466,7 +1466,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-2v-FT8">
-                                                                <rect key="frame" x="220" y="4" width="46" height="16.333333333333332"/>
+                                                                <rect key="frame" x="220" y="4" width="46" height="30"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="46" id="edp-43-cF3"/>
@@ -1480,7 +1480,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="932-EV-JTQ">
-                                                                <rect key="frame" x="164" y="4" width="51" height="16.333333333333332"/>
+                                                                <rect key="frame" x="164" y="4" width="51" height="30"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="51" id="n3c-Qz-bae"/>
@@ -1787,7 +1787,7 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqI-y4-8bE">
-                                        <rect key="frame" x="20" y="501.99999999999994" width="335" height="127.33333333333331"/>
+                                        <rect key="frame" x="20" y="502" width="335" height="133"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ln-gp-7yo">
                                                 <rect key="frame" x="100.66666666666667" y="12" width="40.333333333333329" height="50"/>
@@ -1798,7 +1798,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweak Wall" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DA-JS-QYD">
-                                                <rect key="frame" x="90.666666666666671" y="72" width="71.000000000000014" height="43.333333333333343"/>
+                                                <rect key="frame" x="90.666666666666671" y="72" width="71.000000000000014" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="71" id="VEv-AD-hgv"/>
                                                 </constraints>
@@ -1818,7 +1818,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My EDR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j66-mt-3hd">
-                                                <rect key="frame" x="19" y="72" width="49" height="43.333333333333343"/>
+                                                <rect key="frame" x="19" y="72" width="49" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="XKj-1U-c2e"/>
                                                 </constraints>
@@ -1843,7 +1843,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Wall" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-I5-pbh">
-                                                <rect key="frame" x="173" y="72" width="74" height="43.333333333333343"/>
+                                                <rect key="frame" x="173" y="72" width="74" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="74" id="5lG-cC-4o1"/>
                                                 </constraints>
@@ -1852,7 +1852,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tingkat Kebugaran saya" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J52-PK-oDz">
-                                                <rect key="frame" x="254.33333333333331" y="72" width="74" height="43.333333333333343"/>
+                                                <rect key="frame" x="254.33333333333331" y="72" width="74" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="74" id="i4Y-qA-VyU"/>
                                                 </constraints>
@@ -1897,7 +1897,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqS-Xh-vXK">
-                                        <rect key="frame" x="20" y="637.33333333333337" width="335" height="174.66666666666663"/>
+                                        <rect key="frame" x="20" y="643" width="335" height="169"/>
                                         <color key="backgroundColor" red="0.93726748230000001" green="0.93723225590000003" blue="0.93725609779999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <segue destination="oz5-HE-RWP" kind="embed" id="22G-QY-ZFA"/>
@@ -1930,7 +1930,7 @@
                                         <rect key="frame" x="20" y="98" width="335" height="285"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNM-KH-kHg">
-                                                <rect key="frame" x="8" y="124.99999999999999" width="319" height="35.333333333333329"/>
+                                                <rect key="frame" x="8" y="112.66666666666667" width="319" height="59.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1948,7 +1948,7 @@
                                         <rect key="frame" x="20" y="98" width="335" height="285"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv9-b9-aPX">
-                                                <rect key="frame" x="8" y="124.99999999999999" width="319" height="35.333333333333329"/>
+                                                <rect key="frame" x="8" y="112.66666666666667" width="319" height="59.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1966,7 +1966,7 @@
                                         <rect key="frame" x="20" y="98" width="335" height="285"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Tweaking to see your own Nutritional Trend here. Make the Trend your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaV-wR-Sxz">
-                                                <rect key="frame" x="8" y="124.99999999999999" width="319" height="35.333333333333329"/>
+                                                <rect key="frame" x="8" y="112.66666666666667" width="319" height="59.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2013,7 +2013,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium Tweak Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcW-Yh-n1X">
-                                                                    <rect key="frame" x="18" y="17.666666666666668" width="196" height="21.000000000000004"/>
+                                                                    <rect key="frame" x="18" y="17.666666666666671" width="196" height="23.333333333333329"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="196" id="7Vc-yl-0Dc"/>
                                                                     </constraints>
@@ -2460,7 +2460,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYx-m8-RsY">
-                                <rect key="frame" x="152" y="424" width="21" height="21"/>
+                                <rect key="frame" x="152" y="424" width="20" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QPM-zq-mQ1"/>
                                 </constraints>
@@ -2469,7 +2469,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea4-Nh-MFn">
-                                <rect key="frame" x="181" y="424" width="17" height="17"/>
+                                <rect key="frame" x="180" y="424" width="17" height="17"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="17" id="ogC-41-eJp"/>
@@ -2480,7 +2480,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fibre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yql-ao-oWi">
-                                <rect key="frame" x="201" y="424" width="32" height="21"/>
+                                <rect key="frame" x="200" y="424" width="32" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lax-m3-kul"/>
                                 </constraints>
@@ -2489,7 +2489,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbA-Gg-rgk">
-                                <rect key="frame" x="243.66666666666666" y="424" width="16.999999999999972" height="17"/>
+                                <rect key="frame" x="242.66666666666666" y="424" width="16.999999999999972" height="17"/>
                                 <color key="backgroundColor" red="0.13582369690000001" green="0.61015200609999998" blue="0.1322111785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="PgA-SW-aE4"/>
@@ -2500,7 +2500,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOP-0D-czv">
-                                <rect key="frame" x="263.66666666666669" y="424" width="44.333333333333314" height="21"/>
+                                <rect key="frame" x="262.66666666666669" y="424" width="44.333333333333314" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0mg-9v-zJl"/>
                                 </constraints>
@@ -2856,7 +2856,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04L-eG-dTe">
-                                                <rect key="frame" x="37" y="7.6666666666666856" width="54.666666666666657" height="15"/>
+                                                <rect key="frame" x="37" y="7.3333333333333135" width="55" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2896,7 +2896,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZB-41-tEE">
-                                                <rect key="frame" x="37" y="7.6666666666666856" width="40.666666666666657" height="15"/>
+                                                <rect key="frame" x="37" y="7.3333333333333135" width="40.666666666666657" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2936,7 +2936,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGC-0a-qgW">
-                                                <rect key="frame" x="37" y="7.6666666666666288" width="29.666666666666671" height="15"/>
+                                                <rect key="frame" x="37" y="7.3333333333333703" width="29" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2976,7 +2976,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-gH-dF4">
-                                                <rect key="frame" x="37" y="7.6666666666666288" width="47.666666666666657" height="15"/>
+                                                <rect key="frame" x="37" y="7.3333333333333703" width="47.666666666666657" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -4537,13 +4537,13 @@ It will also include 'Recommendations for the coming week in terms of both % car
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your feedback matters to us:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPt-7U-hkz">
-                                <rect key="frame" x="20" y="64" width="335" height="20"/>
+                                <rect key="frame" x="20" y="64" width="335" height="22.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-ou-FCH">
-                                <rect key="frame" x="20" y="104" width="335" height="200"/>
+                                <rect key="frame" x="20" y="106.33333333333331" width="335" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="2t9-qk-O7v"/>
@@ -4556,7 +4556,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPn-nf-EuW">
-                                <rect key="frame" x="65" y="337" width="245" height="50"/>
+                                <rect key="frame" x="57.666666666666657" y="339.33333333333331" width="260" height="50"/>
                                 <color key="backgroundColor" red="0.3502984643" green="0.0" blue="0.5019912124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wJf-3W-vaT"/>
@@ -4570,25 +4570,25 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/230" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vph-mY-PgU">
-                                <rect key="frame" x="313.66666666666669" y="309" width="41.333333333333314" height="17"/>
+                                <rect key="frame" x="313.66666666666669" y="311.33333333333331" width="41.333333333333314" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-37-dnN">
-                                <rect key="frame" x="172.66666666666666" y="402" width="30" height="22"/>
+                                <rect key="frame" x="172.66666666666666" y="404.33333333333331" width="30" height="24.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email us at:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ux-Rn-mwh">
-                                <rect key="frame" x="134" y="439" width="107" height="22"/>
+                                <rect key="frame" x="133" y="444" width="109" height="24.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdy-xz-cha">
-                                <rect key="frame" x="48" y="462" width="279" height="33"/>
+                                <rect key="frame" x="51" y="469.66666666666669" width="273" height="36"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="20"/>
                                 <state key="normal" title="appsmanager@purpleteal.com">
                                     <color key="titleColor" red="0.21040886640000001" green="0.4630315304" blue="0.43921604749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4598,7 +4598,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="LXQ-9v-eV2">
-                                <rect key="frame" x="120" y="516" width="135" height="128"/>
+                                <rect key="frame" x="120" y="526.66666666666663" width="135" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="C2Y-el-wB1"/>
                                     <constraint firstAttribute="height" constant="128" id="ZHi-87-3e9"/>
@@ -4663,7 +4663,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-oy-qAv">
-                                <rect key="frame" x="16" y="381" width="343" height="165"/>
+                                <rect key="frame" x="16" y="381" width="343" height="186.66666666666663"/>
                                 <string key="text">
 
 This is how your ideal plate should look like. It shows the % of Carbs, Protein, Fiber and Fat that you can consume when you have your breakfast, lunch or dinner.
@@ -4884,7 +4884,7 @@ My Profile Plate is generated algorithmically based on the profile information y
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-eY-GzX">
-                                        <rect key="frame" x="27.666666666666657" y="352" width="320" height="74.333333333333314"/>
+                                        <rect key="frame" x="27.666666666666657" y="347" width="320" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Rlv-ga-x2t"/>
                                         </constraints>
@@ -4909,7 +4909,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="F79-Dv-oT0">
-                                        <rect key="frame" x="155.66666666666666" y="229.33333333333337" width="64" height="90"/>
+                                        <rect key="frame" x="155.66666666666666" y="224.66666666666663" width="64" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="Scj-k0-6wm"/>
                                             <constraint firstAttribute="width" constant="64" id="qbb-nr-gBl"/>
@@ -5486,7 +5486,7 @@ Enjoy!</string>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZW-UZ-sn1">
-                                                            <rect key="frame" x="44.000000000000007" y="387" width="110.66666666666669" height="30"/>
+                                                            <rect key="frame" x="44.000000000000007" y="386" width="110.66666666666669" height="32"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <state key="normal" title="Awesome">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5496,7 +5496,7 @@ Enjoy!</string>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiN-jF-hh6">
-                                                            <rect key="frame" x="203.66666666666666" y="387" width="104.33333333333334" height="30"/>
+                                                            <rect key="frame" x="203.66666666666666" y="386" width="104.33333333333334" height="32"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <state key="normal" title="Comments">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5634,7 +5634,7 @@ Enjoy!</string>
                                 <rect key="frame" x="10" y="61" width="355" height="617"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesomes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X96-yg-q0L">
-                                        <rect key="frame" x="30.000000000000007" y="10.666666666666673" width="78.666666666666686" height="16.666666666666671"/>
+                                        <rect key="frame" x="30.000000000000007" y="9.6666666666666732" width="78.666666666666686" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -5670,19 +5670,19 @@ Enjoy!</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsx-Df-W9r">
-                                                            <rect key="frame" x="13" y="10.999999999999998" width="292" height="17.333333333333329"/>
+                                                            <rect key="frame" x="13" y="11" width="292" height="13"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eH1-aT-MNf">
-                                                            <rect key="frame" x="13" y="34.333333333333336" width="292" height="17.666666666666664"/>
+                                                            <rect key="frame" x="13" y="30" width="292" height="20"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkq-zm-MbQ">
-                                                            <rect key="frame" x="13" y="56" width="292" height="18"/>
+                                                            <rect key="frame" x="13" y="54" width="292" height="20"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -6690,20 +6690,20 @@ Enjoy!</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-8E-iWI">
-                                                            <rect key="frame" x="8" y="210" width="359" height="17.333333333333343"/>
+                                                            <rect key="frame" x="8" y="210" width="359" height="15.333333333333343"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="928.8 g " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-Zf-4QH">
-                                                            <rect key="frame" x="55" y="236.33333333333334" width="51.666666666666657" height="15.333333333333343"/>
+                                                            <rect key="frame" x="55" y="234.33333333333334" width="54.666666666666657" height="17.333333333333343"/>
                                                             <color key="backgroundColor" red="0.2574790716" green="0.56961035729999998" blue="0.49803364280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="100.5 kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h06-Hd-cBx">
-                                                            <rect key="frame" x="209.66666666666666" y="236" width="66.999999999999972" height="16"/>
+                                                            <rect key="frame" x="212.66666666666666" y="234" width="68.999999999999972" height="18"/>
                                                             <color key="backgroundColor" red="0.66186124089999998" green="0.19436088200000001" blue="0.50590336319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6742,7 +6742,7 @@ Enjoy!</string>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ui-4z-UoB">
-                                                                    <rect key="frame" x="304.66666666666669" y="13.666666666666629" width="62.333333333333314" height="18"/>
+                                                                    <rect key="frame" x="304.66666666666669" y="12.666666666666629" width="62.333333333333314" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="62" id="VGn-GI-Qxz"/>
                                                                     </constraints>
@@ -6822,7 +6822,7 @@ Enjoy!</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbs:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd9-IP-1H5">
-                                                            <rect key="frame" x="8" y="236.33333333333334" width="44" height="15.333333333333343"/>
+                                                            <rect key="frame" x="8" y="234.33333333333334" width="44" height="17.333333333333343"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="44" id="kJ2-Bo-BqP"/>
                                                             </constraints>
@@ -6831,7 +6831,7 @@ Enjoy!</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXz-A6-Whr">
-                                                            <rect key="frame" x="146.66666666666666" y="236.33333333333334" width="61" height="15.333333333333343"/>
+                                                            <rect key="frame" x="149.66666666666666" y="234.33333333333334" width="61" height="17.333333333333343"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="61" id="Oss-jx-NGm"/>
                                                             </constraints>
@@ -6840,20 +6840,20 @@ Enjoy!</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViM-ZE-sMv">
-                                                            <rect key="frame" x="347.33333333333331" y="236" width="0.0" height="15.666666666666657"/>
+                                                            <rect key="frame" x="352.66666666666669" y="234" width="0.0" height="17.666666666666657"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2N9-LN-z6M">
-                                                            <rect key="frame" x="329.66666666666669" y="236.33333333333334" width="16.666666666666686" height="15.333333333333343"/>
+                                                            <rect key="frame" x="334.66666666666669" y="234.33333333333334" width="17" height="17.333333333333343"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUP" translatesAutoresizingMaskIntoConstraints="NO" id="pje-cS-QTN">
-                                                            <rect key="frame" x="302" y="227" width="24" height="28"/>
+                                                            <rect key="frame" x="307" y="226" width="24" height="28"/>
                                                             <color key="tintColor" red="0.97012621160000001" green="0.82854366300000004" blue="0.39597082140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="H6y-Q8-QDw"/>
@@ -6954,7 +6954,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Yummy healthy recipes will be up soon! until then check out our recipes from other countries." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-yx-zpb">
-                                        <rect key="frame" x="8" y="359.66666666666669" width="359" height="59"/>
+                                        <rect key="frame" x="8" y="355.66666666666669" width="359" height="66.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7437,7 +7437,7 @@ Enjoy!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wof-63-Jyp">
-                                <rect key="frame" x="0.0" y="185" width="375" height="627"/>
+                                <rect key="frame" x="0.0" y="187" width="375" height="625"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.84313725490196079" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell2" rowHeight="130" id="aQJ-Eo-I8i" customClass="AvailablePackagesCell2" customModule="Tweak_and_Eat" customModuleProvider="target">
@@ -7643,13 +7643,13 @@ Enjoy!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are one step closer to acheiving your goals." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vR-ew-o06">
-                                <rect key="frame" x="52" y="40" width="271" height="37.333333333333343"/>
+                                <rect key="frame" x="52" y="40" width="271" height="42"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the package that is right for you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YO5-oO-jCJ">
-                                <rect key="frame" x="20" y="122" width="335" height="19"/>
+                                <rect key="frame" x="20" y="122" width="335" height="21"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -7697,13 +7697,13 @@ Enjoy!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsf-U6-glR">
-                                        <rect key="frame" x="14" y="316.66666666666669" width="347" height="0.0"/>
+                                        <rect key="frame" x="14" y="319" width="347" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3G-YK-ea2">
-                                        <rect key="frame" x="41" y="338.66666666666669" width="293" height="21"/>
+                                        <rect key="frame" x="41" y="341" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="293" id="hj2-jW-4DC"/>
                                             <constraint firstAttribute="height" constant="21" id="qyU-93-VEX"/>
@@ -7726,7 +7726,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfF-DX-tAG">
-                                        <rect key="frame" x="22" y="283" width="331" height="18.666666666666686"/>
+                                        <rect key="frame" x="22" y="283" width="331" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7760,7 +7760,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9J9-VX-lkK">
-                                        <rect key="frame" x="27.666666666666657" y="369" width="320" height="74.333333333333314"/>
+                                        <rect key="frame" x="27.666666666666657" y="364" width="320" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="VA1-kT-vTW"/>
                                         </constraints>
@@ -7785,7 +7785,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="7Uf-yV-qGO">
-                                        <rect key="frame" x="155.66666666666666" y="246.33333333333337" width="64" height="90"/>
+                                        <rect key="frame" x="155.66666666666666" y="241.66666666666663" width="64" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="FBD-io-0HY"/>
                                             <constraint firstAttribute="width" constant="64" id="To3-UD-Ab6"/>
@@ -7810,7 +7810,7 @@ Enjoy!</string>
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clg-lk-HT4">
-                                <rect key="frame" x="197" y="145" width="119" height="34"/>
+                                <rect key="frame" x="197" y="147" width="119" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="BGO-zu-9Zk"/>
                                     <constraint firstAttribute="width" constant="119" id="svC-Lh-xtN"/>
@@ -8009,7 +8009,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="292" width="375" height="486"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="UGj-U6-IOd">
-                                    <rect key="frame" x="0.0" y="91.999998092651367" width="375" height="125"/>
+                                    <rect key="frame" x="0.0" y="94.333332061767578" width="375" height="125"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gt-EL-Kgu">
@@ -8043,14 +8043,14 @@ Enjoy!</string>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="zBb-Sk-gG9" customClass="RecipeDetailsCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="18.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBb-Sk-gG9" id="DXW-R6-ePA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="18.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-nU-i2e">
-                                                    <rect key="frame" x="7" y="0.0" width="361" height="18.666666666666668"/>
+                                                    <rect key="frame" x="7" y="0.0" width="361" height="21"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -8215,7 +8215,7 @@ Enjoy!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tuesday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpq-R7-paf">
-                                                    <rect key="frame" x="13" y="27" width="51" height="21"/>
+                                                    <rect key="frame" x="12.999999999999996" y="27" width="49.666666666666657" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="VVN-jK-gKG"/>
                                                         <constraint firstAttribute="height" constant="21" id="iyi-YD-fM8"/>
@@ -8272,7 +8272,7 @@ Enjoy!</string>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="friday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ1-Hv-K1c">
-                                                    <rect key="frame" x="324" y="26" width="36" height="21"/>
+                                                    <rect key="frame" x="325" y="26" width="35" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="HZE-Kc-aCn"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="xLG-iv-eke"/>
@@ -8779,7 +8779,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-hU-6pJ">
-                                                <rect key="frame" x="14" y="5" width="117" height="19"/>
+                                                <rect key="frame" x="0.0" y="5" width="123" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Vzk-rY-CbR"/>
                                                 </constraints>
@@ -8793,7 +8793,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZn-fb-JSz">
-                                                <rect key="frame" x="152" y="5" width="51" height="19"/>
+                                                <rect key="frame" x="144" y="5" width="54" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" TODAY ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8804,7 +8804,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubl-VC-c2N">
-                                                <rect key="frame" x="223" y="5" width="46" height="19"/>
+                                                <rect key="frame" x="218" y="5" width="48" height="19"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="14"/>
                                                 <state key="normal" title=" WEEK ">
                                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8815,7 +8815,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-YK-k7V">
-                                                <rect key="frame" x="289" y="5" width="56" height="19"/>
+                                                <rect key="frame" x="286" y="5" width="59" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="9ga-bM-dJx"/>
                                                 </constraints>
@@ -8829,21 +8829,21 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-E9-AVf">
-                                                <rect key="frame" x="141" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="133" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-V5-NFN">
-                                                <rect key="frame" x="210" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="205" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFz-N1-ccK">
-                                                <rect key="frame" x="278" y="7" width="1" height="15"/>
+                                                <rect key="frame" x="275" y="7" width="1" height="15"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="8Y5-iH-Jie"/>
@@ -9014,7 +9014,7 @@ Once you are unsubscribed you will not have access to:
                                         <rect key="frame" x="0.0" y="63" width="375" height="39"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-Mt-DTX">
-                                                <rect key="frame" x="311" y="4" width="56" height="16.333333333333332"/>
+                                                <rect key="frame" x="311" y="4" width="56" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="FHm-is-ghV"/>
@@ -9028,7 +9028,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq1-kg-58W">
-                                                <rect key="frame" x="260" y="4" width="46" height="16.333333333333332"/>
+                                                <rect key="frame" x="260" y="4" width="46" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="GtJ-Ec-LSM"/>
@@ -9042,7 +9042,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-m0-R5m">
-                                                <rect key="frame" x="204" y="4" width="51" height="16.333333333333332"/>
+                                                <rect key="frame" x="204" y="4" width="51" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="Z1o-fl-lLO"/>
@@ -9056,7 +9056,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aER-aK-x1t">
-                                                <rect key="frame" x="134" y="4" width="65" height="16"/>
+                                                <rect key="frame" x="134" y="4" width="65" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="ouc-ga-7cf"/>
@@ -9070,7 +9070,7 @@ Once you are unsubscribed you will not have access to:
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Carbs Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlK-Gy-Qzv">
-                                                <rect key="frame" x="8" y="4" width="84" height="13"/>
+                                                <rect key="frame" x="8" y="4" width="85.333333333333329" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="9bJ-Ju-Sd9"/>
                                                 </constraints>
@@ -10636,11 +10636,11 @@ Once you are unsubscribed you will not have access to:
         <scene sceneID="CCu-LB-aSC">
             <objects>
                 <viewController storyboardIdentifier="NutritionLabelViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tiG-8e-hWb" customClass="NutritionLabelViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="0I3-Mz-n9h">
+                    <view key="view" contentMode="scaleToFill" id="0I3-Mz-n9h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ul5-c4-NT4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ul5-c4-NT4">
                                 <rect key="frame" x="10" y="672" width="355" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your pack" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-l3-tyg">
@@ -10650,7 +10650,7 @@ Once you are unsubscribed you will not have access to:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im2-Rg-C8d">
-                                        <rect key="frame" x="300" y="5.3333333333333428" width="35" height="35"/>
+                                        <rect key="frame" x="300" y="5.6666666666666288" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="UzZ-hy-R3j"/>
                                             <constraint firstAttribute="height" constant="35" id="c0a-Zk-cLO"/>
@@ -10672,13 +10672,13 @@ Once you are unsubscribed you will not have access to:
                                     <constraint firstAttribute="height" constant="46" id="iDr-s8-vGI"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="nutrition-labels-img01" translatesAutoresizingMaskIntoConstraints="NO" id="G4u-7D-MME">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nutrition-labels-img01" translatesAutoresizingMaskIntoConstraints="NO" id="G4u-7D-MME">
                                 <rect key="frame" x="10" y="121" width="355" height="146"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="146" id="KFQ-dz-OVV"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Package Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-mN-ooT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Package Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-mN-ooT">
                                 <rect key="frame" x="10" y="285" width="355" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -10688,7 +10688,7 @@ Once you are unsubscribed you will not have access to:
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCD-Iy-wHL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCD-Iy-wHL">
                                 <rect key="frame" x="10" y="339" width="355" height="195"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -10697,11 +10697,11 @@ Once you are unsubscribed you will not have access to:
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zru-2u-SJY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zru-2u-SJY">
                                 <rect key="frame" x="27.666666666666657" y="552" width="320" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFc-D9-dg9">
-                                        <rect key="frame" x="248" y="29.333333333333343" width="52" height="18"/>
+                                        <rect key="frame" x="248" y="29.666666666666686" width="52" height="18"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="1R7-pD-8Ey"/>
@@ -10732,7 +10732,7 @@ Once you are unsubscribed you will not have access to:
                                     <constraint firstAttribute="width" constant="320" id="z6Y-MD-eg6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-C3-evE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-C3-evE">
                                 <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -10746,7 +10746,7 @@ Once you are unsubscribed you will not have access to:
                                     <action selector="buyNowTapped:" destination="tiG-8e-hWb" eventType="touchUpInside" id="QIU-NF-FS1"/>
                                 </connections>
                             </button>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQi-WJ-vDE">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQi-WJ-vDE">
                                 <rect key="frame" x="0.0" y="277" width="375" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -10761,7 +10761,7 @@ Once you are unsubscribed you will not have access to:
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-fj-LIF">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-fj-LIF">
                                 <rect key="frame" x="10" y="285" width="355" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
@@ -11156,7 +11156,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-6a-m4O">
-                                        <rect key="frame" x="218.66666666666666" y="12" width="61.999999999999972" height="21"/>
+                                        <rect key="frame" x="215" y="12" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="Vsz-5d-5Zv"/>
                                         </constraints>
@@ -11165,7 +11165,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREMIUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-kF-2nJ">
-                                        <rect key="frame" x="297.66666666666669" y="12" width="71.333333333333314" height="21"/>
+                                        <rect key="frame" x="294" y="12" width="75" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11189,14 +11189,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="cqP-gB-zrd" customClass="MoreInfoPackageTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="17"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="19"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cqP-gB-zrd" id="U1e-zj-XZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-TC-XGP">
-                                                    <rect key="frame" x="8" y="0.0" width="232" height="17"/>
+                                                    <rect key="frame" x="8" y="0.0" width="232" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="177" id="QEP-Pr-5Hu"/>
                                                     </constraints>
@@ -11205,14 +11205,14 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-t9-LxV">
-                                                    <rect key="frame" x="248" y="-6.6666666666666661" width="30" height="30.333333333333329"/>
+                                                    <rect key="frame" x="248" y="-5.6666666666666661" width="30" height="30.333333333333329"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="EHu-rf-szI"/>
                                                         <constraint firstAttribute="height" constant="30" id="qyq-xc-82O"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-d4-u09">
-                                                    <rect key="frame" x="317" y="-6.6666666666666661" width="30" height="30.333333333333329"/>
+                                                    <rect key="frame" x="317" y="-5.6666666666666661" width="30" height="30.333333333333329"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="0vK-Sz-MC9"/>
                                                         <constraint firstAttribute="height" constant="30" id="DNz-1b-IdK"/>
@@ -11847,7 +11847,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <rect key="frame" x="22" y="30" width="330" height="560"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THv-Vh-JWY">
-                                                <rect key="frame" x="41" y="321.66666666666669" width="200" height="34"/>
+                                                <rect key="frame" x="41" y="317.33333333333331" width="200" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="XXL-ks-3jx"/>
@@ -11857,7 +11857,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLease choose Language" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="REg-uY-U2Z">
-                                                <rect key="frame" x="41" y="371.66666666666669" width="220" height="34"/>
+                                                <rect key="frame" x="41" y="367.33333333333331" width="220" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Oz6-4Y-igk"/>
@@ -11867,37 +11867,37 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zx-cD-tuz">
-                                                <rect key="frame" x="41" y="371.66666666666669" width="256" height="34"/>
+                                                <rect key="frame" x="41" y="367.33333333333331" width="256" height="34"/>
                                                 <connections>
                                                     <action selector="languageBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="bz7-7L-l4W"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaS-Oh-fLG">
-                                                <rect key="frame" x="41" y="321.66666666666669" width="236" height="34"/>
+                                                <rect key="frame" x="41" y="317.33333333333331" width="236" height="34"/>
                                                 <connections>
                                                     <action selector="getTimeSlotsBtnTapped:" destination="8rF-T1-Xhw" eventType="touchUpInside" id="G5I-qa-FbW"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="m0H-dv-oxR">
-                                                <rect key="frame" x="5" y="323.66666666666669" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="319.33333333333331" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0jI-uQ-hOI"/>
                                                     <constraint firstAttribute="width" constant="30" id="9u4-EZ-Ikc"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speak" translatesAutoresizingMaskIntoConstraints="NO" id="Go8-Qt-71m">
-                                                <rect key="frame" x="5" y="373.66666666666669" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="369.33333333333331" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0Tf-ww-mqm"/>
                                                     <constraint firstAttribute="width" constant="30" id="SJT-0Y-5RL"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-qM-FtK" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="330" height="305.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="301.33333333333331"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-zb-yPo">
-                                                <rect key="frame" x="18" y="419.66666666666669" width="294" height="35.333333333333314"/>
+                                                <rect key="frame" x="18" y="415.33333333333331" width="294" height="39.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -11939,21 +11939,21 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="9CB-OD-F6W">
-                                                <rect key="frame" x="271" y="374.33333333333331" width="28" height="29"/>
+                                                <rect key="frame" x="271" y="370" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="0r3-KZ-BJd"/>
                                                     <constraint firstAttribute="height" constant="29" id="h0K-uh-uGX"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-uG-voH">
-                                                <rect key="frame" x="249" y="324.33333333333331" width="28" height="29"/>
+                                                <rect key="frame" x="249" y="320" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="7ei-cB-kfs"/>
                                                     <constraint firstAttribute="width" constant="28" id="Cvp-Ca-XaY"/>
                                                 </constraints>
                                             </imageView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYa-V7-JUB">
-                                                <rect key="frame" x="41" y="410.66666666666669" width="220" height="148.33333333333331"/>
+                                                <rect key="frame" x="41" y="406.33333333333331" width="220" height="152.66666666666669"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="34" id="4Jc-rX-NaC">
@@ -11974,7 +11974,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="560"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-Jd-ipQ">
-                                                        <rect key="frame" x="19.666666666666657" y="19" width="291" height="273.33333333333331"/>
+                                                        <rect key="frame" x="19.666666666666657" y="19" width="291" height="280.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm to schedule the call" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDp-6i-p3h">
                                                                 <rect key="frame" x="10" y="10" width="268" height="20"/>
@@ -11989,7 +11989,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please enter the 4 digit code shown to complete the SCHEDULING CALL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-Mp-od1" userLabel="Please enter the 4 digit code shown to complete the SCHEDULING CALL">
-                                                                <rect key="frame" x="11.333333333333343" y="95" width="269" height="52.666666666666657"/>
+                                                                <rect key="frame" x="11.333333333333343" y="95" width="269" height="59.666666666666657"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -12007,7 +12007,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="4 Digit code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ksr-QP-TzD">
-                                                                <rect key="frame" x="27" y="155.66666666666666" width="237" height="35.666666666666657"/>
+                                                                <rect key="frame" x="27" y="162.66666666666666" width="237" height="35.666666666666657"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.3502984643" green="0.0" blue="0.5019912124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -12018,7 +12018,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJN-2z-FF9">
-                                                                <rect key="frame" x="12" y="218.33333333333331" width="99" height="35"/>
+                                                                <rect key="frame" x="12" y="225.33333333333331" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.66187959910000005" green="0.1941522956" blue="0.50982528920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="4uS-42-V4Y"/>
@@ -12030,7 +12030,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx3-IC-k0m">
-                                                                <rect key="frame" x="180" y="218.33333333333331" width="99" height="35"/>
+                                                                <rect key="frame" x="180" y="225.33333333333331" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="99" id="0eY-vU-1kY"/>
@@ -12187,13 +12187,13 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-hH-QTU">
-                                        <rect key="frame" x="14" y="316.66666666666669" width="347" height="0.0"/>
+                                        <rect key="frame" x="14" y="319" width="347" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press OK to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABc-hF-VUF">
-                                        <rect key="frame" x="41" y="338.66666666666669" width="293" height="21"/>
+                                        <rect key="frame" x="41" y="341" width="293" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eEM-AP-6kL"/>
                                             <constraint firstAttribute="width" constant="293" id="yvF-0W-byi"/>
@@ -12217,7 +12217,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personal nutritionist details are:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-9P-bxm">
-                                        <rect key="frame" x="22" y="283" width="331" height="18.666666666666686"/>
+                                        <rect key="frame" x="22" y="283" width="331" height="21"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="18"/>
                                         <color key="textColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -12251,7 +12251,7 @@ All for Rs.149. Now that’s incredible indeed!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-VJ-i6d">
-                                        <rect key="frame" x="27.666666666666657" y="369" width="320" height="74.333333333333314"/>
+                                        <rect key="frame" x="27.666666666666657" y="364" width="320" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="b6i-VR-Z0b"/>
                                         </constraints>
@@ -12276,7 +12276,7 @@ Enjoy!</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-aj-NLY">
-                                        <rect key="frame" x="155.66666666666666" y="246.33333333333337" width="64" height="90"/>
+                                        <rect key="frame" x="155.66666666666666" y="241.66666666666663" width="64" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="TDF-Jp-4NV"/>
                                             <constraint firstAttribute="height" constant="90" id="e2m-vj-dnz"/>
@@ -12596,14 +12596,14 @@ Enjoy!</string>
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myCell" id="OGS-yw-UPG" customClass="AiDPTableViewCell" customModule="Tweak_and_Eat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="311" height="15.666666984558105"/>
+                                        <rect key="frame" x="0.0" y="58" width="311" height="17.666666030883789"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OGS-yw-UPG" id="3wU-Nj-0P9">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="15.666666984558105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="17.666666030883789"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klb-xX-nS3">
-                                                    <rect key="frame" x="11" y="0.0" width="301" height="15.666666666666666"/>
+                                                    <rect key="frame" x="11" y="0.0" width="301" height="17.666666666666668"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -12667,7 +12667,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
-                                        <rect key="frame" x="8.3333333333333428" y="380.33333333333331" width="358.33333333333326" height="17.666666666666686"/>
+                                        <rect key="frame" x="5.3333333333333428" y="379" width="364.66666666666663" height="20"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -13100,7 +13100,7 @@ Enjoy!</string>
                                                 <rect key="frame" x="5" y="258" width="290" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Er-jXe">
-                                                        <rect key="frame" x="8" y="4.3333333333333144" width="20" height="16.666666666666668"/>
+                                                        <rect key="frame" x="8" y="3.3333333333333144" width="20" height="18.666666666666668"/>
                                                         <color key="backgroundColor" red="0.0" green="0.41960784309999999" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="873-N7-VMF"/>
@@ -13110,7 +13110,7 @@ Enjoy!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="carbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-0P-SJj">
-                                                        <rect key="frame" x="36" y="2" width="35" height="19.666666666666668"/>
+                                                        <rect key="frame" x="36" y="3" width="35" height="19.666666666666668"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="c5b-I4-9OC"/>
                                                         </constraints>
@@ -13119,7 +13119,7 @@ Enjoy!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb3-pe-2gb">
-                                                        <rect key="frame" x="77" y="2" width="20" height="19.666666666666668"/>
+                                                        <rect key="frame" x="77" y="3" width="20" height="19.666666666666668"/>
                                                         <color key="backgroundColor" red="0.63921568630000003" green="0.1450980392" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="hPc-W4-l6D"/>
@@ -13129,7 +13129,7 @@ Enjoy!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-fa-B5s">
-                                                        <rect key="frame" x="105" y="2" width="35" height="19.666666666666668"/>
+                                                        <rect key="frame" x="105" y="3" width="35" height="19.666666666666668"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="ANy-Qb-i1Y"/>
                                                         </constraints>
@@ -13138,7 +13138,7 @@ Enjoy!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-e0-wRc">
-                                                        <rect key="frame" x="141" y="2" width="20" height="19.666666666666668"/>
+                                                        <rect key="frame" x="141" y="3" width="20" height="19.666666666666668"/>
                                                         <color key="backgroundColor" red="0.86666666670000003" green="0.41960784309999999" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="V41-qT-k12"/>
@@ -13148,7 +13148,7 @@ Enjoy!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghY-Dk-XHW">
-                                                        <rect key="frame" x="169" y="2" width="41" height="19.666666666666668"/>
+                                                        <rect key="frame" x="169" y="3" width="41" height="19.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -13468,7 +13468,7 @@ Enjoy!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmQ-QU-Z2n">
-                                        <rect key="frame" x="8" y="90.999999999999986" width="359" height="227.66666666666663"/>
+                                        <rect key="frame" x="8" y="91" width="359" height="257.66666666666669"/>
                                         <string key="text">Your reports will be updated every Saturday and you will be informed through a notification as soon as the Reports are updated.
 
 Your Reports will include your 'Last week's report on what you have consumed in terms of %carbs, protein, fiber and fat' and some comments from our certified nutritionist.
@@ -14142,7 +14142,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
             <objects>
                 <tableViewController id="oz5-HE-RWP" customClass="MainPageScrollableTableViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="-1" id="sqy-g3-9Ny">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="174.66666666666666"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="169"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -14173,10 +14173,10 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="foodPlate" translatesAutoresizingMaskIntoConstraints="NO" id="WT8-49-OOm">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="121"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="119.66666666666667"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MACKEREL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIJ-XO-YTa">
-                                                                        <rect key="frame" x="6" y="124.33333333333333" width="224" height="12.666666666666671"/>
+                                                                        <rect key="frame" x="6" y="123" width="224" height="14"/>
                                                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="12"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -14571,7 +14571,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! Thank you for subscribing to Premium Tweak Pack." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujk-Fv-JyZ">
-                                        <rect key="frame" x="27.666666666666657" y="314" width="320" height="62"/>
+                                        <rect key="frame" x="27.666666666666657" y="310" width="320" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="lav-Y5-vk3"/>
                                         </constraints>
@@ -14594,7 +14594,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birdie_food" translatesAutoresizingMaskIntoConstraints="NO" id="voo-eq-EWE">
-                                        <rect key="frame" x="155.66666666666666" y="191" width="64" height="84"/>
+                                        <rect key="frame" x="155.66666666666666" y="187" width="64" height="84"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="Z4T-MV-hnL"/>
                                             <constraint firstAttribute="height" constant="84" id="dNi-hh-J12"/>
@@ -14742,7 +14742,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                         <rect key="frame" x="22" y="30" width="330" height="654"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please choose TimeSlot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-tI-gds">
-                                                <rect key="frame" x="41" y="466.66666666666663" width="200" height="34"/>
+                                                <rect key="frame" x="41" y="462.33333333333337" width="200" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="mGJ-BQ-5Sc"/>
@@ -14751,7 +14751,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLease choose Language" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bV-eO-wS1">
-                                                <rect key="frame" x="41" y="516.66666666666663" width="220" height="34"/>
+                                                <rect key="frame" x="41" y="512.33333333333337" width="220" height="34"/>
                                                 <color key="backgroundColor" red="0.94118911029999996" green="0.94115382430000005" blue="0.94117778539999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="uBz-Tz-bQ3"/>
@@ -14760,37 +14760,37 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYN-XL-UVh">
-                                                <rect key="frame" x="41" y="516.66666666666663" width="256" height="34"/>
+                                                <rect key="frame" x="41" y="512.33333333333337" width="256" height="34"/>
                                                 <connections>
                                                     <action selector="languageBtnTapped:" destination="fln-oG-sxT" eventType="touchUpInside" id="jrh-p0-6f2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-FN-tof">
-                                                <rect key="frame" x="41" y="466.66666666666663" width="236" height="34"/>
+                                                <rect key="frame" x="41" y="462.33333333333337" width="236" height="34"/>
                                                 <connections>
                                                     <action selector="getTimeSlotsBtnTapped:" destination="fln-oG-sxT" eventType="touchUpInside" id="SRF-WG-QFf"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="7cN-Mv-307">
-                                                <rect key="frame" x="5" y="468.66666666666663" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="464.33333333333337" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Cx5-oN-UrQ"/>
                                                     <constraint firstAttribute="width" constant="30" id="zEb-Ed-qz8"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speak" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-vx-gME">
-                                                <rect key="frame" x="5" y="518.66666666666663" width="30" height="30"/>
+                                                <rect key="frame" x="5" y="514.33333333333337" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="EYZ-PS-65m"/>
                                                     <constraint firstAttribute="width" constant="30" id="uK7-tk-hSJ"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbX-Tl-DUB" customClass="UIVView">
-                                                <rect key="frame" x="0.0" y="0.0" width="330" height="450.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="446.33333333333331"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our nutritionist will be reaching you on your registered phone number:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxg-yn-OLH">
-                                                <rect key="frame" x="18" y="564.66666666666663" width="294" height="35.333333333333371"/>
+                                                <rect key="frame" x="18" y="560.33333333333337" width="294" height="39.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -14832,21 +14832,21 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xsj-mF-PSb">
-                                                <rect key="frame" x="271" y="519.33333333333337" width="28" height="29"/>
+                                                <rect key="frame" x="271" y="515" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="8TD-hp-Rny"/>
                                                     <constraint firstAttribute="height" constant="29" id="Bq4-Bk-CSH"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdownImage" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-1G-BwZ">
-                                                <rect key="frame" x="249" y="469.33333333333337" width="28" height="29"/>
+                                                <rect key="frame" x="249" y="465" width="28" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="UfG-Uk-g2U"/>
                                                     <constraint firstAttribute="width" constant="28" id="eQQ-Bd-bK8"/>
                                                 </constraints>
                                             </imageView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XUk-sc-lu0">
-                                                <rect key="frame" x="41" y="555.66666666666663" width="256" height="97.333333333333371"/>
+                                                <rect key="frame" x="41" y="551.33333333333337" width="256" height="101.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="34" id="upZ-sk-y62">
@@ -14867,29 +14867,29 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="654"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT6-d0-gcM">
-                                                        <rect key="frame" x="19.666666666666657" y="19" width="291" height="271"/>
+                                                        <rect key="frame" x="19.666666666666657" y="19" width="291" height="280.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm to schedule the call" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj7-aF-V40">
-                                                                <rect key="frame" x="10" y="10.000000000000002" width="268" height="17.666666666666671"/>
+                                                                <rect key="frame" x="10" y="10" width="268" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <color key="textColor" red="0.29291322829999999" green="0.1201387718" blue="0.55297327039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjC-hI-i0T">
-                                                                <rect key="frame" x="10" y="29.666666666666657" width="268" height="0.0"/>
+                                                                <rect key="frame" x="10" y="32" width="268" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Please enter the 4 digit code shown to complete the SCHEDULING CALL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8X-gH-YL7">
-                                                                <rect key="frame" x="11.333333333333343" y="92.666666666666657" width="269" height="52.666666666666657"/>
+                                                                <rect key="frame" x="11.333333333333343" y="95" width="269" height="59.666666666666657"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-IP-G0T">
-                                                                <rect key="frame" x="61" y="39.666666666666657" width="169" height="45"/>
+                                                                <rect key="frame" x="61" y="42" width="169" height="45"/>
                                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="1AP-pM-csk"/>
@@ -14900,7 +14900,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="4 Digit code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0j8-xu-wZh">
-                                                                <rect key="frame" x="27" y="153.33333333333331" width="237" height="35.666666666666657"/>
+                                                                <rect key="frame" x="27" y="162.66666666666669" width="237" height="35.666666666666657"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35.5" id="lmV-vK-L8q"/>
@@ -14910,7 +14910,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrj-HH-hbd">
-                                                                <rect key="frame" x="12" y="216" width="99" height="35"/>
+                                                                <rect key="frame" x="12" y="225.33333333333331" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.66187959910000005" green="0.1941522956" blue="0.50982528920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="9mw-Ka-lG4"/>
@@ -14924,7 +14924,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W00-GH-d5X">
-                                                                <rect key="frame" x="180" y="216" width="99" height="35"/>
+                                                                <rect key="frame" x="180" y="225.33333333333331" width="99" height="35"/>
                                                                 <color key="backgroundColor" red="0.21853199600000001" green="0.48250901699999998" blue="0.46666824820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="0X6-0y-xBa"/>
@@ -14938,7 +14938,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-rZ-Kb5">
-                                                                <rect key="frame" x="238.00000000000003" y="47.333333333333343" width="29.999999999999972" height="30"/>
+                                                                <rect key="frame" x="238.00000000000003" y="49.666666666666657" width="29.999999999999972" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="1af-Wt-J32"/>
                                                                     <constraint firstAttribute="width" constant="30" id="BNC-lF-0Yn"/>
