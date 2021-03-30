@@ -204,6 +204,7 @@
 		8375DB3225AD6A7D00C978E5 /* ButtonReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */; };
 		8375DB3325AD6A7D00C978E5 /* TextReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */; };
 		83819B4826084CC200710025 /* HorizontalStepsIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83819B4726084CC200710025 /* HorizontalStepsIntroCell.swift */; };
+		838B7AB126123BD900CA088C /* HandleRedirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838B7AB026123BD900CA088C /* HandleRedirections.swift */; };
 		83AD092325AED2550089C23D /* ChatTypingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */; };
 		83AD092A25AED7140089C23D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */; };
 		83AD094725AEE1AE0089C23D /* dots.gif in Resources */ = {isa = PBXBuildFile; fileRef = 83AD094625AEE1AD0089C23D /* dots.gif */; };
@@ -595,6 +596,7 @@
 		8375DB2E25AD6A7C00C978E5 /* ButtonReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonReceiverCell.swift; sourceTree = "<group>"; };
 		8375DB2F25AD6A7D00C978E5 /* TextReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReceiverCell.swift; sourceTree = "<group>"; };
 		83819B4726084CC200710025 /* HorizontalStepsIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStepsIntroCell.swift; sourceTree = "<group>"; };
+		838B7AB026123BD900CA088C /* HandleRedirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRedirections.swift; sourceTree = "<group>"; };
 		83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTypingIndicatorCell.swift; sourceTree = "<group>"; };
 		83AD092925AED7140089C23D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		83AD094625AEE1AD0089C23D /* dots.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dots.gif; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				838B7AB026123BD900CA088C /* HandleRedirections.swift */,
 				83AD116B2609BF6800763875 /* CleverTapClass.swift */,
 				83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */,
 				83AD111026086E4200763875 /* HorizontalStepsIntroCell.xib */,
@@ -2010,6 +2013,7 @@
 				5735D8391D79CEEB001DAF83 /* UIImageView+AFNetworking.m in Sources */,
 				8333848625CAD79E004155C1 /* AvailablePackagesCell2.swift in Sources */,
 				5702E5EB1D9D646100647A54 /* UIView+WebCacheOperation.m in Sources */,
+				838B7AB126123BD900CA088C /* HandleRedirections.swift in Sources */,
 				041856B2224BB0D8008E2A7C /* PageControlCollectionViewCell.swift in Sources */,
 				84F287721F27C3D3004F7B18 /* TweakPieChartValues.swift in Sources */,
 				84B66E061F1F64DD008D1949 /* MyProfileInfo.swift in Sources */,
@@ -2214,7 +2218,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2225,7 +2229,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2252,7 +2256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2263,7 +2267,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2292,13 +2296,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2326,13 +2330,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2350,13 +2354,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2374,13 +2378,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99044;
+				CURRENT_PROJECT_VERSION = 99045;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 10.9;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -83,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     //@objc var locManager = CLLocationManager();
     @objc var longitude = "0.0";
     @objc var latitude = "0.0";
+    var inAppMessageDictionary = [AnyHashable : Any]()
     
     enum ShortcutIdentifier: String {
         case TweakNow
@@ -99,6 +100,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
             return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
         }
     }
+    
+    func inAppNotificationButtonTapped(withCustomExtras customExtras: [AnyHashable : Any]!) {
+          print("In-App Button Tapped with custom extras:", customExtras ?? "");
+        inAppMessageDictionary = customExtras
+        if inAppMessageDictionary.index(forKey: "btn_click") != nil {
+//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//                                     let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+//
+//                      // vc.fromHomePopups = true
+//                                     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+//                                     navController?.pushViewController(vc, animated: true);
+//            }
+            HandleRedirections.sharedInstance.tappedOnPopUpDone(link: (inAppMessageDictionary["btn_click"] as! String).replacingOccurrences(of: "tweakandeat://", with: ""))
+           // inAppMessageDictionary = [AnyHashable: Any]()
+
+
+    }
+      }
+    
+//    func inAppNotificationDismissed(withExtras extras: [AnyHashable : Any]!, andActionExtras actionExtras: [AnyHashable : Any]!) {
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//                             let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+//
+//              // vc.fromHomePopups = true
+//                             let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+//                             navController?.pushViewController(vc, animated: true);
+//
+//    }
+//    func inAppNotificationDismissed(withExtras extras: [AnyHashable : Any]!, andActionExtras actionExtras: [AnyHashable : Any]!) {
+//        if inAppMessageDictionary.count == 0 {
+//            inAppMessageDictionary = actionExtras
+//            if inAppMessageDictionary.index(forKey: "wzrk_c2a") != nil {
+////                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+////                                     let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
+////
+////                      // vc.fromHomePopups = true
+////                                     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+////                                     navController?.pushViewController(vc, animated: true);
+////            }
+//                HandleRedirections.sharedInstance.tappedOnPopUpDone(link: (inAppMessageDictionary["wzrk_c2a"] as! String).replacingOccurrences(of: "tweakandeat://", with: ""))
+//               // inAppMessageDictionary = [AnyHashable: Any]()
+//
+//
+//        }
+//
+//    }
+//
+//    }
+    
+//    func shouldShowInAppNotification(withExtras extras: [AnyHashable : Any]!) -> Bool {
+//        return true
+//    }
+    
+   
     
     @objc var launchedShortcutItem: UIApplicationShortcutItem?
     
@@ -218,6 +273,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         CleverTap.autoIntegrate()
+        //CleverTap.setDebugLevel(CleverTapLogLevel.debug.rawValue)
         CleverTap.sharedInstance()?.setInAppNotificationDelegate(self)
 
         Flyshot.shared.initialize(sdkToken: "fl_test_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lclV1aWQiOiI4ZjE0Mzc3MC1mZTk4LTQ4ZWEtOGJmZS1lNjUzZDk5Mjc4N2EiLCJhcHBsaWNhdGlvblV1aWQiOiIyYzRlNjBlNC1iZmJlLTRlMmItYjYzYi1kMjhjY2U5YzIyY2YiLCJ1dWlkIjoiMDYwMTZmNzEtYzYwYS00MjNjLTgyZDktNjJhNTZiMzkzMjJiIn0.XdAbRo-qhjuRio6Lk0hGxcwY0-eAuZiP9SfdV0gk2lE", onSuccess: {

@@ -1849,6 +1849,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 //                    self.carouselView1.isUserInteractionEnabled = false
 //                    self.bckBtn.isHidden = true
                     
+                    
                     UserDefaults.standard.removeObject(forKey: "POP_UP_IDENTIFIERS")
             if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
                 //MYTAE_IND_QUATERLY
@@ -2173,7 +2174,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         var counter = 15
         //if self.getScreenName(screenName: self.packageId).count > 0 {
            // let screenName = self.getScreenName(screenName: self.packageId)
-       
+        if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") == nil {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.idleTimer = timer
             counter -= 1
@@ -2183,6 +2184,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
                 timer.invalidate()
             }
+        }
         }
       
       //  Flyshot.shared.delegate = self

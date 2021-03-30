@@ -35,6 +35,10 @@ class TimelinesDetailsViewController: UIViewController {
     @objc var weight = ""
     @objc var height = ""
     @objc var longitude = "0"
+    var carbs = " N/A "
+    var proteins = " N/A "
+    var calories = " N/A "
+    var fat = " N/A "
     @objc var countryCode = ""
     @objc var latitude = "0"
     @objc var adId: Int = 0
@@ -51,7 +55,15 @@ class TimelinesDetailsViewController: UIViewController {
     @objc var premiumPackagesArray = NSMutableArray()
     @objc var myMutableString = NSMutableAttributedString()
     
-
+    @IBOutlet weak var carbslbl: UILabel!
+    @IBOutlet weak var calorieslbl: UILabel!
+    @IBOutlet weak var proteinlbl: UILabel!
+    @IBOutlet weak var fatlbl: UILabel!
+    @IBOutlet weak var caloriesView: UIView!
+    @IBOutlet weak var carbsView: UIView!
+    @IBOutlet weak var fatView: UIView!
+    @IBOutlet weak var proteinView: UIView!
+    @IBOutlet weak var nutritionLabelsView: UIView!
     @IBOutlet weak var tweakInfoTextView: UILabel!
     @IBOutlet weak var askAQuestionBtn: UIButton!
     @IBOutlet var shareBtn: UIButton!
@@ -376,6 +388,21 @@ class TimelinesDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.imageADView.isHidden = true
+        self.adImageViewHeightConstraint.constant = 0
+        self.carbsView.layer.cornerRadius = 5
+        self.caloriesView.layer.cornerRadius = 5
+        self.fatView.layer.cornerRadius = 5
+        self.proteinView.layer.cornerRadius = 5
+        self.carbslbl.layer.cornerRadius = 5
+        self.calorieslbl.layer.cornerRadius = 5
+        self.fatlbl.layer.cornerRadius = 5
+        self.proteinlbl.layer.cornerRadius = 5
+        self.proteinlbl.clipsToBounds = true
+        self.carbslbl.clipsToBounds = true
+        self.calorieslbl.clipsToBounds = true
+        self.fatlbl.clipsToBounds = true
+        self.nutritionLabelsView.addBorders(color: .lightGray, margins: 0, borderLineSize: 0.5, attribute: .bottom)
+        self.nutritionLabelsView.addBorders(color: .lightGray, margins: 00, borderLineSize: 0.5, attribute: .top)
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                   countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
               }
@@ -700,9 +727,83 @@ class TimelinesDetailsViewController: UIViewController {
         return
     }
     
+    func sendTweakID() {
+       
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.TWEAK_DETAILS_BY_ID, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: ["tid": tweakId] as [String: AnyObject], success: { response in
+            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                         var responseResult = ""
+                         if responseDic.index(forKey: "callStatus") != nil {
+                             responseResult = responseDic["callStatus"] as! String
+                         } else if responseDic.index(forKey: "CallStatus") != nil {
+                             responseResult = responseDic["CallStatus"] as! String
+                         }
+                         if  responseResult == "GOOD" {
+                             MBProgressHUD.hide(for: self.view, animated: true);
+                            let responseData: [String: AnyObject] = responseDic["data"] as! [String : AnyObject]
+                            if responseData.index(forKey: "tweak_cl_calories") != nil {
+                                if responseData["tweak_cl_calories"] as! Int != 0 {
+                                    DispatchQueue.main.async {
+                                        self.calorieslbl.text = "\(responseData["tweak_cl_calories"] as! Int)"
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                    self.calorieslbl.text = "N/A"
+                                    }
+                                }
+                            }
+                            
+                            if responseData.index(forKey: "tweak_cl_carbs") != nil {
+                                if responseData["tweak_cl_carbs"] as! Int != 0 {
+                                    DispatchQueue.main.async {
+                                        self.carbslbl.text = "\(responseData["tweak_cl_carbs"] as! Int)%"
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                    self.carbslbl.text = "N/A"
+                                    }
+                                }
+                            }
+                            
+                            if responseData.index(forKey: "tweak_cl_protein") != nil {
+                                if responseData["tweak_cl_protein"] as! Int != 0 {
+                                    DispatchQueue.main.async {
+                                        self.proteinlbl.text = "\(responseData["tweak_cl_protein"] as! Int)%"
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                    self.proteinlbl.text = "N/A"
+                                    }
+                                }
+                            }
+                            
+                            if responseData.index(forKey: "tweak_cl_fats") != nil {
+                                if responseData["tweak_cl_fats"] as! Int != 0 {
+                                    DispatchQueue.main.async {
+                                        self.fatlbl.text = "\(responseData["tweak_cl_fats"] as! Int)%"
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                    self.fatlbl.text = "N/A"
+                                    }
+                                }
+                                
+                            }
+                           
+
+                         }
+                     }, failure : { error in
+                         MBProgressHUD.hide(for: self.view, animated: true);
+                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection!")
+
+                         
+                     })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-
+        sendTweakID()
         //self.serveAD()
 NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetailsViewController.moveToWall), name: NSNotification.Name(rawValue: "TWEAK_SHARED"), object: nil)
         let cornerRadius = (screenHeight * 0.105) / 2;
@@ -851,22 +952,22 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
                         let promoImgUrl = response["promoImgUrl"] as! String
                         print(promoImgUrl)
                         let promoAppLink = response["promoAppLink"] as! String
-                        if promoImgUrl == "" || promoAppLink == "" {
-                            self.imageADView.isHidden = true
-                           
-                        } else {
-                            self.imageADView.isHidden = false
-                            
-                            self.imageADView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
-                                    // Your code inside completion block
-                                    let ratio = image!.size.width / image!.size.height
-                                    let newHeight = self.imageADView.frame.width / ratio
-                                    self.adImageViewHeightConstraint.constant = newHeight
-                                    self.view.layoutIfNeeded()
-                                }
-                          
-                            
-                        }
+//                        if promoImgUrl == "" || promoAppLink == "" {
+//                            self.imageADView.isHidden = true
+//
+//                        } else {
+//                            self.imageADView.isHidden = false
+//
+//                            self.imageADView.sd_setImage(with: URL(string: promoImgUrl)) { (image, error, cache, url) in
+//                                    // Your code inside completion block
+//                                    let ratio = image!.size.width / image!.size.height
+//                                    let newHeight = self.imageADView.frame.width / ratio
+//                                    self.adImageViewHeightConstraint.constant = newHeight
+//                                    self.view.layoutIfNeeded()
+//                                }
+//
+//
+//                        }
                     }
                     
                 }

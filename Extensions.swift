@@ -15,6 +15,40 @@ import UserNotifications
 //    }
 //    
 //}
+extension UIView {
+func addBorders(color: UIColor = UIColor.red, margins: CGFloat = 0, borderLineSize: CGFloat = 1, attribute: NSLayoutConstraint.Attribute) {
+    let border = UIView()
+    border.backgroundColor = color
+    border.translatesAutoresizingMaskIntoConstraints = false
+    self.addSubview(border)
+    border.addConstraint(NSLayoutConstraint(item: border,
+                                            attribute: .height,
+                                            relatedBy: .equal,
+                                            toItem: nil,
+                                            attribute: .height,
+                                            multiplier: 1, constant: borderLineSize))
+    self.addConstraint(NSLayoutConstraint(item: border,
+                                          attribute: attribute,
+                                          relatedBy: .equal,
+                                          toItem: self,
+                                          attribute: attribute,
+                                          multiplier: 1, constant: 0))
+    self.addConstraint(NSLayoutConstraint(item: border,
+                                          attribute: .leading,
+                                          relatedBy: .equal,
+                                          toItem: self,
+                                          attribute: .leading,
+                                          multiplier: 1, constant: margins))
+    self.addConstraint(NSLayoutConstraint(item: border,
+                                          attribute: .trailing,
+                                          relatedBy: .equal,
+                                          toItem: self,
+                                          attribute: .trailing,
+                                          multiplier: 1, constant: margins))
+}
+
+}
+
 
 extension Date {
     func dateStringWithFormat(format: String) -> String {
