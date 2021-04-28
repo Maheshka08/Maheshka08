@@ -679,10 +679,10 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             self.chatViewHeightConstraint.constant = 160
             aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 160)
             }
-         
+
             self.monthBtnTrailingConstraint.constant = 50;
             self.myNutritionTopConstraint.constant = 80;
-            
+
         } else if IS_iPHONE678 {
             if self.showGraph == false {
                 self.chatViewHeightConstraint.constant = 170
@@ -693,7 +693,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             }
            self.myNutritionTopConstraint.constant = 15
             self.monthBtnTrailingConstraint.constant = 30;
-            
+
         } else if IS_iPHONEXXS {
             self.myNutritionTopConstraint.constant = 50
             if self.showGraph == false {
@@ -704,7 +704,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             aaChartView.frame = CGRect(x: 0, y: 0, width: 375, height: 200)
             }
             self.monthBtnTrailingConstraint.constant = 30;
-            
+
         } else if IS_iPHONEXRXSMAX {
             self.myNutritionTopConstraint.constant = 80
             if self.showGraph == false {
@@ -715,7 +715,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                 aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
             }
             self.monthBtnTrailingConstraint.constant = 50;
-            
+
         }
         self.view.layoutIfNeeded()
           self.loadingView.frame = CGRect(x: self.outerChartView.frame.origin.x, y: self.view.frame.origin.y, width: self.outerChartView.frame.size.width, height: self.chartView.frame.maxY)

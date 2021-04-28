@@ -102,9 +102,18 @@ class CleverTapClass {
         }
     }
     
+    func sendUserProfile(profile: Dictionary<String, AnyObject>) {
+        CleverTap.sharedInstance()?.profilePush(profile)
+
+    }
+    
     // calculate BMI based on weight in kilograms and height in centimeters
     
     func calculateBMI(massInKilograms mass: Double, heightInCentimeters height: Double) -> Double {
         return mass / ((height * height) / 10000)
+    }
+    
+    func recordNotification(request: UNNotificationRequest) {
+        CleverTap.sharedInstance()?.recordNotificationViewedEvent(withData: request.content.userInfo)
     }
 }

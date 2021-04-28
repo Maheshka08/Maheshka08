@@ -70,6 +70,7 @@ class TweakAndEatFinalIntroScreen: UIView {
 //                          UserDefaults.standard.synchronize()
         CleverTap.sharedInstance()?.recordEvent("Home_viewed")
         self.delegate.homeInfoApiCalls()
+        self.delegate.checkActivePackages()
         
         self.delegate.checkAppVersion()
         self.delegate.setUpUI()

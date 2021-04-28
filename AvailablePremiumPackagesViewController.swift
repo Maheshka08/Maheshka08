@@ -1578,6 +1578,7 @@ return
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true);
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
        
     }
   

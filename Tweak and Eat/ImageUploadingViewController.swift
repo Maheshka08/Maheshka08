@@ -673,7 +673,7 @@ class ImageUploadingViewController: UIViewController {
                 if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
                     let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "first_tweak")
                     print(eventName)
-                    CleverTap.sharedInstance()?.recordEvent("Tweak_Sent (Tweak_Sent_First_time)")
+                    CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
 
                     Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "First tweak"])
                 }

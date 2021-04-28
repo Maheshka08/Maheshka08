@@ -316,6 +316,12 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var monthBtn: UIButton!
     @IBOutlet weak var selectYourMealTypeView: UIView!
     @IBOutlet weak var mealTypeLabel: UILabel!;
+    @IBOutlet weak var mainMenuView: UIView!
+    @IBOutlet weak var myEDRView: UIView!
+    @IBOutlet weak var tweakWallView: UIView!
+    @IBOutlet weak var recipeView: UIView!
+    @IBOutlet weak var myFitnessView: UIView!
+    
 
     @IBOutlet weak var mealTypeView: UIView!
     var dataBtnName = "lastTenData"
@@ -394,6 +400,14 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     let dataPoints = [0,400,150,280,140,290,110,300,460,0]
     private var foodImageFrame: CGRect!
     var flashCounter = 0
+//    var tapToTweak = Bool() {
+//        didSet {
+//            if tapToTweak == true {
+//                self.tappedOnStartTweakingView()
+//            }
+//        }
+//    }
+    var tapToTweak = false
 
     @IBOutlet weak var myTrendsLabel: UILabel!
     
@@ -1058,26 +1072,10 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                     withDuration: 1,
                     animations: { [self] in
                         self.upperMainView.alpha = 0
-                        self.upperViewTopConstraint.constant = -302
+                        self.upperViewTopConstraint.constant = -270
                         self.topBgImageView.contentMode = .scaleToFill
                         self.containerViewBottomConstraint.constant = 110
-//                        self.topViewHeightConstraint.constant = 0
-//                        if self.showGraph == false {
-//                        self.outerChartView.isHidden = true
-//                        } else {
-//                            self.outerChartView.alpha = 0
-//
-//                        }
-//                        self.outerViewHeightConstraint.constant = 0
-//                        if (self.myNutritionDetailsView != nil) {
-//                        self.myNutritionDetailsView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
-//
-//                            self.myNutritionView.frame = CGRect(x: 0, y: 0, width: self.myNutritionView.frame.width, height: 237)
-//                            self.outerChartView.frame = self.myNutritionView.frame
-//                        }
-//                        self.approxCalLeftView.isHidden = true
-//                        self.containerViewBottomConstraint.constant = 110
-//                        self.topBgImageView.contentMode = .scaleToFill
+
                         if self.totalTweakCount == "0" {
                             self.startTweakingView.isHidden = false
                             self.startTweakingLabel.alpha = 1
@@ -2285,6 +2283,7 @@ if dictionary.index(forKey: "weeksData") != nil {
 //        if self.countryCode == "62" {
 //            return
 //        }
+//        HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "TAP_TO_TWEAK")
         self.infoIconTapped = true
         showHowToTweakScreen()
 
@@ -2723,6 +2722,14 @@ self.topImageView.alpha = 1
 
         super.viewDidLoad();
         
+        self.mainMenuView.layer.cornerRadius = 10
+        self.myEDRView.layer.cornerRadius = 10
+        self.tweakWallView.layer.cornerRadius = 10
+        self.recipeView.layer.cornerRadius = 10
+        self.myFitnessView.layer.cornerRadius = 10
+        self.mainMenuView.addBorders(color: .lightGray, margins: 0, borderLineSize: 0.5, attribute: .bottom)
+
+        
         //self.tapToTweakButton.flash()
       //  self.scrollContainerView.addBorder(toSide: .Top, withColor: UIColor.darkGray.cgColor, andThickness: 1)
 //        link = "-NcInd5BosUcUeeQ9Q32"
@@ -2769,6 +2776,8 @@ self.topImageView.alpha = 1
         self.adsImageViewTapped = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnNewAdImageView))
         self.adsImageViewTapped.numberOfTapsRequired = 1
         self.adsImageView?.addGestureRecognizer(self.adsImageViewTapped)
+        
+      
 
         if UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") != nil {
             link = UserDefaults.standard.value(forKey: "FROM_DEEP_LINKS") as! String
@@ -3753,7 +3762,7 @@ self.topImageView.alpha = 1
                     withDuration: 1,
                     animations: { [self] in
                         self.upperMainView.alpha = 0
-                        self.upperViewTopConstraint.constant = -302
+                        self.upperViewTopConstraint.constant = -270
                         self.topBgImageView.contentMode = .scaleToFill
                         self.containerViewBottomConstraint.constant = 110
 //                        self.topViewHeightConstraint.constant = 0
@@ -4033,10 +4042,20 @@ self.topImageView.alpha = 1
         UserDefaults.standard.removeObject(forKey: "PUSHWHENKILLED")
         
     }
+    
+    func goToTweakTrends() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TweakTrendReportViewController = storyBoard.instantiateViewController(withIdentifier: "TweakTrendReportViewController") as! TweakTrendReportViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    
     @objc func swapViews(_ notification: NSNotification) {
         let bool = notification.object as! Bool
         UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
                }, completion: {(_ completed: Bool) -> Void in
+                //self.goToTweakTrends()
+                
                 if bool == true {
                     if (self.myNutritionDetailsView != nil) {
                         self.myNutritionViewLast10TweaksTableView.isHidden = true
@@ -4045,7 +4064,7 @@ self.topImageView.alpha = 1
                         self.switchButton.isHidden = false
                         self.showGraph = true
                         //self.myNutritionDetailsView.switchButton.setStatus(bool)
-                        
+
                         self.updateSwitchUI(bool: true)
                         self.setDefaultDataBtns(name: self.dataBtnName)
                     }
@@ -4930,6 +4949,27 @@ self.topImageView.alpha = 1
             }
         })
     }
+    
+   
+    
+    
+    
+    
+    
+    @IBAction func mainViewTweakWallTapped(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as? MyWallViewController;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+    }
+    
+    @IBAction func mainViewRecipeTapped(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakRecipeViewController") as? TweakRecipeViewController;
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+    }
+    
+
+    
     
     @objc func tappedOnNewAdImageView() {
         self.tapOnPromoAd(mhp_id: self.mhpId)
@@ -6516,6 +6556,7 @@ self.topImageView.alpha = 1
         if UserDefaults.standard.value(forKey: "userSession") as? String != nil {
             
             homeInfoApiCalls()
+            checkActivePackages()
             
             self.checkAppVersion()
             self.getUserCallSchedueDetails()
@@ -6527,6 +6568,110 @@ self.topImageView.alpha = 1
             }
             comingFromSettings = false;
         }
+    }
+    
+    func checkActivePackages() {
+        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.GET_ACTIVE_PACKAGE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
+            print(responseDic)
+            if responseDic["callStatus"] as! String == "GOOD" {
+            if responseDic.index(forKey: "data") != nil {
+                    let dataDict  = responseDic["data"] as! [String: AnyObject]
+                if dataDict.count == 0 {
+                   // CleverTap.sharedInstance()?.profilePush(["Subscription Status": 0])
+
+                } else {
+                var expdttmsArray = [String]()
+                var pkgIdsArray = [String]()
+                    if UserDefaults.standard.object(forKey: "ACTIVE_PACKAGES") == nil {
+                        let ct = CleverTapClass()
+                        var profile = Dictionary<String, AnyObject>()
+                        expdttmsArray = dataDict["expDttms"] as! [String]
+                        pkgIdsArray = dataDict["pkgIds"] as! [String]
+                        profile["Subscription Package Ids"] = pkgIdsArray as AnyObject
+                        profile["Expiry Dates"] = expdttmsArray as AnyObject
+                        UserDefaults.standard.setValue(dataDict, forKey: "ACTIVE_PACKAGES")
+                        
+                        
+                        if expdttmsArray.count == 0 {
+                            CleverTap.sharedInstance()?.profilePush(["Subscription Status": 0])
+                            profile["Subscription Package Ids"] = "-" as AnyObject
+                            profile["Expiry Dates"] = "-" as AnyObject
+                            ct.sendUserProfile(profile: profile)
+                        } else {
+                            CleverTap.sharedInstance()?.profilePush(["Subscription Status": 1])
+                            ct.sendUserProfile(profile: profile)
+                        }
+                        
+
+                    } else {
+                        expdttmsArray = dataDict["expDttms"] as! [String]
+                        pkgIdsArray = dataDict["pkgIds"] as! [String]
+                        let savedActivePackageDict = UserDefaults.standard.object(forKey: "ACTIVE_PACKAGES")  as! [String: AnyObject]
+                        let expdttmsArrayFromDef = savedActivePackageDict["expDttms"] as! [String]
+                        let pkgIdsArrayFromDef = savedActivePackageDict["pkgIds"] as! [String]
+                        
+                        //if expdttmsArray.count != expdttmsArrayFromDef.count {
+                            var profile = Dictionary<String, AnyObject>()
+                            expdttmsArray = dataDict["expDttms"] as! [String]
+                            pkgIdsArray = dataDict["pkgIds"] as! [String]
+                            profile["Subscription Package Ids"] = pkgIdsArray as AnyObject
+                            profile["Expiry Dates"] = expdttmsArray as AnyObject
+                            UserDefaults.standard.setValue(dataDict, forKey: "ACTIVE_PACKAGES")
+                        UserDefaults.standard.synchronize()
+                            let ct = CleverTapClass()
+                            if expdttmsArray.count
+                                == 0 {
+                                CleverTap.sharedInstance()?.profilePush(["Subscription Status": 0])
+                                profile["Subscription Package Ids"] = "-" as AnyObject
+                                profile["Expiry Dates"] = "-" as AnyObject
+                                ct.sendUserProfile(profile: profile)
+
+
+                            } else {
+                                CleverTap.sharedInstance()?.profilePush(["Subscription Status": 1])
+                                ct.sendUserProfile(profile: profile)
+
+                            }
+                        //}
+                        
+//                        if pkgIdsArray.count != pkgIdsArrayFromDef.count {
+//                            var profile = Dictionary<String, AnyObject>()
+//                            expdttmsArray = dataDict["expDttms"] as! [String]
+//                            pkgIdsArray = dataDict["pkgIds"] as! [String]
+//                            profile["Subscription Package Ids"] = pkgIdsArray as AnyObject
+//                            profile["Expiry Dates"] = expdttmsArray as AnyObject
+//                            UserDefaults.standard.setValue(dataDict, forKey: "ACTIVE_PACKAGES")
+//                            let ct = CleverTapClass()
+//                            ct.sendUserProfile(profile: profile)
+//                            if expdttmsArray.count
+//                                == 0 {
+//                                CleverTap.sharedInstance()?.profilePush(["Subscription Status": 0])
+//
+//                            } else {
+//                                CleverTap.sharedInstance()?.profilePush(["Subscription Status": 1])
+//                            }
+//                        }
+
+                        
+                    }
+            }
+                }
+            }
+            
+            
+    },
+        failure : { error in
+            
+            //            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+            //
+            //            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+            //            alertController.addAction(defaultAction)
+            //            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true);
+                }
+        })
     }
     
     @objc func alert() {
@@ -7045,7 +7190,9 @@ self.topImageView.alpha = 1
     }
     
     @objc func tappedOnStartTweakingView() {
-        self.checkTweakable()
+//        if self.tapToTweakView.isHidden == false {
+            self.checkTweakable()
+      //  }
     }
     
     func removeBarButtonItem() {
@@ -8621,7 +8768,16 @@ self.floatingCallBtn.isHidden = false
 //                }
 //            }
             //UserDefaults.standard.set("-ClubInd3gu7tfwko6Zx", forKey: "-ClubInd3gu7tfwko6Zx")
+            let sixDaysAfterCrtDttm = Calendar.current.date(byAdding: .day, value: 6, to: crtDate)!
+            
+            if sixDaysAfterCrtDttm > Date() {
+                CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 1])
 
+            } else {
+                CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 0])
+
+            }
+            
             if self.countryCode == "91" {
                 if UserDefaults.standard.value(forKey: self.ptpPackage) == nil && UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") == nil && UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") == nil && UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") == nil && UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") == nil {
                     let tenthAugDateStr = "2020-08-10"
@@ -8968,6 +9124,10 @@ self.floatingCallBtn.isHidden = false
                 }
                 if self.trialPeriodExpired == true {
                     self.tapToTweakView.isHidden = true
+                } else {
+                    if self.tapToTweak == true {
+                        self.checkTweakable()
+                    }
                 }
                
                 
@@ -10381,7 +10541,7 @@ self.floatingCallBtn.isHidden = false
                         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakShareViewController") as! TweakShareViewController;
                         clickViewController.tweakImage = detect  as UIImage;
                         clickViewController.parameterDict1 = tweakImageParams as [String : AnyObject];
-                        
+                        clickViewController.tweakCount = self.tweakCount
                         self.navigationController?.pushViewController(clickViewController, animated: false);
                         
                     }

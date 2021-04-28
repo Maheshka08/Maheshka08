@@ -14,8 +14,12 @@ import RealmSwift
 import Firebase
 import MediaPlayer
 import WebKit
+import CleverTapSDK
+
 
 @available(iOS 10.0, *)
+
+
 class NotificationService: NSObject {
     @objc var popUpView : PopUpNotificationView! = nil;
 
@@ -223,6 +227,15 @@ class NotificationService: NSObject {
             }
         })
     }
+    
+    func tapToTweak() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        clickViewController?.tapToTweak = true
+     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func goToNutritonConsultantScreen(packageID: String) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
@@ -263,9 +276,12 @@ class NotificationService: NSObject {
             
         } else if link == "ASKSIA" {
             self.goToAskSia()
+        } else if link == "TAP_TO_TWEAK" {
+            self.tapToTweak()
+            
         } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
-             self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
+                self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
@@ -397,6 +413,9 @@ class NotificationService: NSObject {
     }
 }
 
+
+
+
 @available(iOS 10.0, *)
 extension NotificationService: UNUserNotificationCenterDelegate {
     
@@ -413,6 +432,8 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         completionHandler();
 
         print(response)
+        CleverTap.sharedInstance()?.handleNotification(withData: response.notification.request.content.userInfo)
+
         if response.notification.request.content.title == "Announcements" {
           
             let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController

@@ -17,7 +17,7 @@ class HandleRedirections {
     static var sharedInstance = HandleRedirections()
     var countryCode = ""
     private init() {
-        
+        //setHomePage()
     }
     
     func goToBuyScreen(packageID: String, identifier: String) {
@@ -26,7 +26,7 @@ class HandleRedirections {
         DispatchQueue.main.async {
             //MBProgressHUD.showAdded(to: self, animated: true);
                               }
-                              self.moveToAnotherView(promoAppLink: packageID)
+        self.moveToAnotherView(promoAppLink: packageID)
 
     }
     
@@ -37,8 +37,9 @@ class HandleRedirections {
        let cellDict = obj as AnyObject as! [String: AnyObject]
        vc.packageID = (cellDict["packageId"] as AnyObject as? String)!
         vc.fromHomePopups = true
-                      let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                      navController?.pushViewController(vc, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(vc, animated: true);
     }
     
     func moveToAnotherView(promoAppLink: String) {
@@ -76,7 +77,8 @@ class HandleRedirections {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
         clickViewController?.packageID = packageID
-        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
         navController?.pushViewController(clickViewController!, animated: true);
     }
     
@@ -84,28 +86,26 @@ class HandleRedirections {
         //AskSiaViewController
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "AskSiaViewController") as? AskSiaViewController;
-        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
         navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
+    func tapToTweak() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        clickViewController?.tapToTweak = true
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+        
     }
     
     func tappedOnPopUpDone(link: String) {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
-//
-//        if self.countryCode == "91" {
-//            self.ptpPackage = "-IndAiBPtmMrS4VPnwmD"
-//        } else if self.countryCode == "1" {
-//            self.ptpPackage = "-UsaAiBPxnaopT55GJxl"
-//        } else if self.countryCode == "65" {
-//            self.ptpPackage = "-SgnAiBPJlXfM3KzDWR8"
-//        } else if self.countryCode == "62" {
-//            self.ptpPackage = "-IdnAiBPLKMO5ePamQle"
-//        } else if self.countryCode == "60" {
-//            self.ptpPackage = "-MysAiBPyaX9TgFT1YOp"
-//        } else if self.countryCode == "63" {
-//            self.ptpPackage = "-PhyAiBPcYLiSYlqhjbI"
-//        }
+
         var clubPackageSubscribed = ""
         if self.countryCode == "91" {
             clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
@@ -124,9 +124,16 @@ class HandleRedirections {
             
         } else if link == "ASKSIA" {
             self.goToAskSia()
+        } else if link == "TAP_TO_TWEAK" {
+            self.tapToTweak()
+            
+        } else if link == "HOW_IT_WORKS" {
+            
+            self.playVideo()
         } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
-             self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
+                self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
+                
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
@@ -210,13 +217,12 @@ class HandleRedirections {
             }
             
         } else if promoAppLink == "PP_PACKAGES" {
-          //  self.performSegue(withIdentifier: "buyPackages", sender: self);
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                                  let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
-                  
-                  // vc.fromHomePopups = true
-                                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                                 navController?.pushViewController(vc, animated: true);
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let navController = appDelegate.window?.rootViewController as? UINavigationController
+            navController?.pushViewController(vc, animated: true);
+            
         } else if promoAppLink == "PP_LABELS" || promoAppLink == "-Qis3atRaproTlpr4zIs" {
            // self.performSegue(withIdentifier: "nutritionPack", sender: self)
             self.showNutritionLabels(promoLink: promoAppLink)
@@ -258,7 +264,8 @@ class HandleRedirections {
     }
     
     @objc func playVideo() {
-        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             
@@ -320,8 +327,9 @@ class HandleRedirections {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                        let vc : NutritionLabelViewController = storyBoard.instantiateViewController(withIdentifier: "NutritionLabelViewController") as! NutritionLabelViewController;
                vc.packageID = promoLink
-                       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                       navController?.pushViewController(vc, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(vc, animated: true);
     }
     
     func showMyTweakAndEatVC(promoLink: String) {
@@ -329,29 +337,34 @@ class HandleRedirections {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc : MyTweakAndEatVCViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as! MyTweakAndEatVCViewController;
         vc.packageID = promoLink
-                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                navController?.pushViewController(vc, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(vc, animated: true);
     }
     
     func goToHomePage() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
-     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
         navController?.pushViewController(clickViewController!, animated: true);
+        
     }
     
     func goToTAEClub() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc : TAEClub1VCViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub1VCViewController") as! TAEClub1VCViewController;
-                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                navController?.pushViewController(vc, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(vc, animated: true);
     }
     
     func goToTAEClubMemPage() {
           let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
           let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakandEatClubMemberVC") as? TweakandEatClubMemberVC;
-       let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-       navController?.pushViewController(clickViewController!, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
          
       }
     
@@ -359,8 +372,9 @@ class HandleRedirections {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TAEClub4VCViewController") as? TAEClub4VCViewController;
         clickViewController?.fromPopUpScreen = true
-     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-     navController?.pushViewController(clickViewController!, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
     }
 
     
@@ -371,8 +385,9 @@ class HandleRedirections {
          let vc : CaloriesLeftForTheDayController = storyBoard.instantiateViewController(withIdentifier: "CaloriesLeftForTheDayController") as! CaloriesLeftForTheDayController;
         // myWall.postedOn = postedOn
         
-         let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-         navController?.pushViewController(vc, animated: true);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navController = appDelegate.window?.rootViewController as? UINavigationController
+        navController?.pushViewController(vc, animated: true);
     }
     
 

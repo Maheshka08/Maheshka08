@@ -20,11 +20,13 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     @objc var tweakImage : UIImage!;
     @objc var commentBoxMinY: CGFloat = 0.0;
     @IBOutlet weak var checkBoxBtn: UIButton!
-    
+    var tweakCount = 0
     @objc var isRefill = "0";
     var popUp : Bool?;
     var mealTypeValue = 0;
+    @IBOutlet weak var commentBoxView: UIView!
     
+    @IBOutlet weak var threeRedArrowGifImageView: UIImageView!
     @IBOutlet weak var mealTypeTableViewHeightConstraint: NSLayoutConstraint!;
     @IBOutlet weak var sendTweakBtn: UIButton!;
     @IBOutlet weak var mealTypeTableView: UITableView!;
@@ -113,7 +115,8 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        self.commentBox.tintColor = UIColor.black
+        let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "vpt", withExtension: "gif")!)
+        self.threeRedArrowGifImageView.image = UIImage.gifImageWithData(imageData!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
         self.commentBox.becomeFirstResponder()
         }
@@ -124,6 +127,9 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         
        // self.getMealTypes()
         self.commentsView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.9)
+        self.commentBox.textColor = UIColor.black
+        self.commentBox.tintColor = .black
+
         self.commentBox.autocorrectionType = .no
         self.mealTypeLabel.layer.cornerRadius = 4;
         self.mealTypeTableView.delegate = self
@@ -185,8 +191,8 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         self.okButton.layer.cornerRadius = 5
         
         self.commentBox.delegate = self;
-        commentBox.layer.borderWidth = 4
-        commentBox.layer.borderColor = UIColor.yellow.cgColor
+        commentBoxView.layer.borderWidth = 4
+        commentBoxView.layer.borderColor = UIColor.yellow.cgColor
 //        self.commentsView.layer.backgroundColor =  UIColor(red: 18/255, green: 24/255, blue: 3/255, alpha: 1).cgColor;
         
         self.sharingView.layer.backgroundColor =  UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1).cgColor;
@@ -382,6 +388,25 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     }
 
     @IBAction func sendTweakAction(_ sender: UIButton) {
+        if DataManager.sharedInstance.fetchTweaks()?.count ?? 0 < 2 && UserDefaults.standard.value(forKey: "IS_TWEAK_COUNT_POP_UP_SHOWN") == nil && self.commentBox.text.count == 0 {
+            let alert = UIAlertController(title: "", message: bundle.localizedString(forKey: "tweak_Count_Pop_Up_Text", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+
+          
+                  alert.addAction(UIAlertAction(title: "OK",
+                                                style: UIAlertAction.Style.default,
+                                                handler: {(_: UIAlertAction!) in
+                                                    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+                                                                          animations: {
+                        self.commentBox.becomeFirstResponder()
+                        self.commentsViewBottomConstant.constant = -255
+                        UserDefaults.standard.setValue(true, forKey: "IS_TWEAK_COUNT_POP_UP_SHOWN")
+                        UserDefaults.standard.synchronize()
+
+                                                           }, completion: nil)
+                  }))
+                  self.present(alert, animated: true, completion: nil)
+            return
+        }
         if self.mealTypeValue == 0 {
             TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please select your meal type !")
             return
@@ -391,7 +416,8 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         parameterDict1["userComments"] = commentBox.text as AnyObject
         parameterDict1["refillComments"] = popUpTextView.text as AnyObject
         parameterDict1["mealType"] = self.mealTypeValue as AnyObject
-
+        UserDefaults.standard.removeObject(forKey: "IS_TWEAK_COUNT_POP_UP_SHOWN")
+        UserDefaults.standard.synchronize()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "ImageUploadingViewController") as! ImageUploadingViewController;
                        clickViewController.uploadedImage = tweakImage  as UIImage;

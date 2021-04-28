@@ -138,7 +138,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
             //NCP_PUR_IND_OP
         } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
-             self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
+                self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)

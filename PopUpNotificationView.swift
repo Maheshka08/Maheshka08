@@ -100,6 +100,14 @@ class PopUpNotificationView: UIView {
         navController?.pushViewController(clickViewController!, animated: true);
     }
     
+    func tapToTweak() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as? WelcomeViewController;
+        clickViewController?.tapToTweak = true
+     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func tappedOnPopUpDone() {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
@@ -136,9 +144,12 @@ class PopUpNotificationView: UIView {
             
         } else if link == "ASKSIA" {
             self.goToAskSia()
+        } else if link == "TAP_TO_TWEAK" {
+            self.tapToTweak()
+            
         } else if link == "NCP_PUR_IND_OP" || link == "PACK_IND_NCP" {
             if UserDefaults.standard.value(forKey: "-NcInd5BosUcUeeQ9Q32") != nil {
-             self.showMyTweakAndEatVC(promoLink: "-NcInd5BosUcUeeQ9Q32")
+                self.goToNutritonConsultantScreen(packageID: "-NcInd5BosUcUeeQ9Q32")
                 //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)

@@ -129,8 +129,8 @@ class NutritionistPopViewController: UIViewController, UITextViewDelegate {
             if (finished)
             {
                 self.view.removeFromSuperview();
-                self.viewController?.checkTweakable();
-                self.EDRViewController?.checkTweakable();
+//                self.viewController?.checkTweakable();
+//                self.EDRViewController?.checkTweakable();
             }
         });
     }

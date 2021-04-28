@@ -101,21 +101,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSPermissionObserver, OSS
         }
     }
     
+    
+    func setRootView() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "homeViewController") as! WelcomeViewController;
+        let navigationController = UINavigationController(rootViewController: mainViewController);
+        self.window?.rootViewController = navigationController;
+    }
+    
     func inAppNotificationButtonTapped(withCustomExtras customExtras: [AnyHashable : Any]!) {
           print("In-App Button Tapped with custom extras:", customExtras ?? "");
         inAppMessageDictionary = customExtras
         if inAppMessageDictionary.index(forKey: "btn_click") != nil {
-//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-//                                     let vc : AvailablePremiumPackagesViewController = storyBoard.instantiateViewController(withIdentifier: "AvailablePremiumPackagesViewController") as! AvailablePremiumPackagesViewController;
-//
-//                      // vc.fromHomePopups = true
-//                                     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-//                                     navController?.pushViewController(vc, animated: true);
-//            }
+            //self.setRootView()
             HandleRedirections.sharedInstance.tappedOnPopUpDone(link: (inAppMessageDictionary["btn_click"] as! String).replacingOccurrences(of: "tweakandeat://", with: ""))
-           // inAppMessageDictionary = [AnyHashable: Any]()
-
-
+           
     }
       }
     
