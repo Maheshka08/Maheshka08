@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import Alamofire
 
 //extension String {
 //    func getEventNames(countryISO: String, eventName: String) -> String {
@@ -15,6 +16,119 @@ import UserNotifications
 //    }
 //    
 //}
+
+//enum BackendError: RawRepresentable, Error {
+//    typealias RawValue = AFError
+//    
+//    case parsing(reason: String)
+//}
+extension Date {
+   static var tomorrow:  Date { return Date().dayAfter }
+    static var yesterday:  Date { return Date().dayBefore }
+   static var today: Date {return Date()}
+   var dayAfter: Date {
+      return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+   }
+    var dayBefore: Date {
+       return Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    }
+}
+
+extension Date {
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let startDay = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: startDay)
+    }
+
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+            guard let startDay = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+           return gregorian.date(byAdding: .day, value: 7, to: startDay)
+       }
+}
+
+extension String {
+    
+    func getOrdinalValue() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        return formatter.string(from: NSNumber(value: Int(self) ?? 0)) ?? ""
+    }
+    
+   
+    
+    func getFormattedString() -> String {
+        if self == "" {
+            return ""
+        }
+        let strArr = self.components(separatedBy: "-")
+        let dd = strArr.last?.deletingPrefix("0").getOrdinalValue() ?? "0"
+        let mm = strArr[1].deletingPrefix("0")
+        switch mm {
+        case "1":
+        return dd + " " + "Jan"
+        case "2":
+        return dd + " " + "Feb"
+        case "3":
+        return dd + " " + "Mar"
+        case "4":
+        return dd + " " + "Apr"
+        case "5":
+        return dd + " " + "May"
+        case "6":
+        return dd + " " + "Jun"
+        case "7":
+        return dd + " " + "Jul"
+        case "8":
+        return dd + " " + "Aug"
+        case "9":
+        return dd + " " + "Sep"
+        case "10":
+        return dd + " " + "Oct"
+        case "11":
+        return dd + " " + "Nov"
+        case "12":
+        return dd + " " + "Dec"
+        
+        default:
+        return ""
+    }
+    
+}
+    
+}
+
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+
+extension JSONDecoder {
+  func decodeResponse<T: Decodable>(from response: AFDataResponse<Data>) ->T {
+    guard response.error == nil else {
+      print(response.error!)
+        return response.error?.localizedDescription as! T
+    }
+
+    guard let responseData = response.data else {
+      print("didn't get any data from API")
+        return response.error?.localizedDescription as! T
+    }
+
+    do {
+      let item = try decode(T.self, from: responseData)
+      return item
+    } catch {
+      print("error trying to decode response")
+      print(error)
+        return response.error?.localizedDescription as! T
+    }
+  }
+}
+
 extension UIView {
 func addBorders(color: UIColor = UIColor.red, margins: CGFloat = 0, borderLineSize: CGFloat = 1, attribute: NSLayoutConstraint.Attribute) {
     let border = UIView()

@@ -144,6 +144,9 @@ struct TweakAndEatURLConstants {
     static let NCP_CALL_SCHEDULE = BASE_URL + "/api/callschedules/schedulencpkgcall"
     static let TWEAK_DETAILS_BY_ID = BASE_URL + "/api/user/tweakdetailsbyid"
     static let GET_ACTIVE_PACKAGE = BASE_URL + "/api/user/getactivepackage"
+    static let GET_MONTLY_TRENDS_TOP = BASE_URL + "/api/reports/monthlytrendstop"
+    static let GET_MONTLY_TRENDS_BOTTOM = BASE_URL + "/api/reports/monthlytrendsbottom"
+
     
     
     

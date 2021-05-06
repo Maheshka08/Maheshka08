@@ -94,6 +94,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
             Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
         }
+//        if self.countryCode == "1" {
+//            Analytics.logEvent("TAE_REG_SUCCESS_MYS", parameters: [AnalyticsParameterItemName: "Registration successful"]);
+//            
+//        }
 
         SKPaymentQueue.default().add(self)
 

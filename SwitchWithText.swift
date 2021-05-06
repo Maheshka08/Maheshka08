@@ -17,8 +17,8 @@ var fromWhichVc = ""
             self.update()
         }
     }
-    var offImage = UIImage(named: "details_btn")
-    var onImage = UIImage(named: "summary_btn")
+    var offImage = UIImage(named: "reports_btn")
+    var onImage = UIImage(named: "reports_btn")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

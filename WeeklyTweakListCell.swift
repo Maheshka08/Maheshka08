@@ -11,7 +11,6 @@ import UIKit
 class WeeklyTweakListCell: UITableViewCell {
 
     @IBOutlet weak var mealTypeLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,15 +10,19 @@ import UIKit
 
 class WeeklyListCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var weekDayLabel: UILabel!
-    @IBOutlet weak var calorieLabel: UILabel!
-    @IBOutlet weak var imageV: UIImageView!
+    @IBOutlet weak var weekDayLabelTrends: UILabel!
+    @IBOutlet weak var calorieLabelTrends: UILabel!
+    @IBOutlet weak var foodPlateTrends: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.imageV.layer.cornerRadius = self.imageV.frame.size.height / 2
-        self.imageV.layer.borderColor = UIColor.white.cgColor
-        self.imageV.layer.borderWidth = 3.0
+        self.foodPlateTrends.layer.cornerRadius = self.foodPlateTrends.frame.size.height / 2
+        self.foodPlateTrends.layer.borderColor = UIColor.white.cgColor
+        self.foodPlateTrends.layer.borderWidth = 3.0
+        self.foodPlateTrends.contentMode = .scaleAspectFill
+        self.calorieLabelTrends.text = ""
+//        self.contentView.backgroundColor = .clear
         
     }
 }

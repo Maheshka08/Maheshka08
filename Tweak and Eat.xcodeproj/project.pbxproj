@@ -202,6 +202,7 @@
 		8343D65A262B4E89009B9C6B /* 3redFast.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D658262B4E89009B9C6B /* 3redFast.gif */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
+		8360F836264171B400564FFC /* MonthlyTrendsTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360F835264171B400564FFC /* MonthlyTrendsTop.swift */; };
 		8375DB1525AD681000C978E5 /* AskSiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */; };
 		8375DB1625AD681000C978E5 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1425AD681000C978E5 /* MessageResponse.swift */; };
 		8375DB3025AD6A7D00C978E5 /* ImageReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */; };
@@ -217,8 +218,12 @@
 		83AD11672609197000763875 /* MainPageScrollCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */; };
 		83AD116C2609BF6800763875 /* CleverTapClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD116B2609BF6800763875 /* CleverTapClass.swift */; };
 		83AD99E825E3E1A5003430E1 /* CleverTapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AD99E725E3E1A5003430E1 /* CleverTapSDK.framework */; };
+		83B6D80D264044240094137E /* MonthlyTrendsBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D80C264044230094137E /* MonthlyTrendsBottom.swift */; };
 		83B7F9EE24D1E00800359731 /* QUESTRIAL-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18973AE22249FFEA00044137 /* QUESTRIAL-REGULAR.TTF */; };
 		83DB7DC5251D18D300F38C70 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */; };
+		83E25357263FDB8C003EFD11 /* TAECalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E25354263FDB8B003EFD11 /* TAECalendarView.swift */; };
+		83E25358263FDB8C003EFD11 /* TAEMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E25355263FDB8B003EFD11 /* TAEMonthView.swift */; };
+		83E25359263FDB8C003EFD11 /* TAEWeekdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E25356263FDB8C003EFD11 /* TAEWeekdaysView.swift */; };
 		83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */; };
 		83E7320224439B8300ACF0F5 /* PurchasedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */; };
 		83E76FE626175ADE0089A6F5 /* TweakTrendReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E76FE526175ADD0089A6F5 /* TweakTrendReportViewController.swift */; };
@@ -612,6 +617,7 @@
 		8343D658262B4E89009B9C6B /* 3redFast.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3redFast.gif; sourceTree = "<group>"; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
+		8360F835264171B400564FFC /* MonthlyTrendsTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTrendsTop.swift; sourceTree = "<group>"; };
 		8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskSiaViewController.swift; sourceTree = "<group>"; };
 		8375DB1425AD681000C978E5 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReceiverCell.swift; sourceTree = "<group>"; };
@@ -627,8 +633,12 @@
 		83AD11662609197000763875 /* MainPageScrollCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageScrollCollectionViewCell2.swift; sourceTree = "<group>"; };
 		83AD116B2609BF6800763875 /* CleverTapClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleverTapClass.swift; sourceTree = "<group>"; };
 		83AD99E725E3E1A5003430E1 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83B6D80C264044230094137E /* MonthlyTrendsBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTrendsBottom.swift; sourceTree = "<group>"; };
 		83C1443C25D114DA00F1BC20 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DB7DC4251D18D300F38C70 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		83E25354263FDB8B003EFD11 /* TAECalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAECalendarView.swift; sourceTree = "<group>"; };
+		83E25355263FDB8B003EFD11 /* TAEMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAEMonthView.swift; sourceTree = "<group>"; };
+		83E25356263FDB8C003EFD11 /* TAEWeekdaysView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAEWeekdaysView.swift; sourceTree = "<group>"; };
 		83E731FF24439B8000ACF0F5 /* PurchasePackagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePackagesTableViewCell.swift; sourceTree = "<group>"; };
 		83E7320024439B8300ACF0F5 /* PurchasedPackagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPackagesViewController.swift; sourceTree = "<group>"; };
 		83E76FE526175ADD0089A6F5 /* TweakTrendReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakTrendReportViewController.swift; sourceTree = "<group>"; };
@@ -988,6 +998,8 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				83B6D80B2640440A0094137E /* Models */,
+				83E25353263FDB69003EFD11 /* CalendarView */,
 				8343D63A262ADD96009B9C6B /* GIFS */,
 				8343F5FA2629CFD500D64501 /* CleverTap */,
 				8343F5F92629CF1500D64501 /* Localized Strings */,
@@ -1300,6 +1312,25 @@
 				83AD092225AED2550089C23D /* ChatTypingIndicatorCell.swift */,
 			);
 			path = SIA;
+			sourceTree = "<group>";
+		};
+		83B6D80B2640440A0094137E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83B6D80C264044230094137E /* MonthlyTrendsBottom.swift */,
+				8360F835264171B400564FFC /* MonthlyTrendsTop.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		83E25353263FDB69003EFD11 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				83E25354263FDB8B003EFD11 /* TAECalendarView.swift */,
+				83E25355263FDB8B003EFD11 /* TAEMonthView.swift */,
+				83E25356263FDB8C003EFD11 /* TAEWeekdaysView.swift */,
+			);
+			name = CalendarView;
 			sourceTree = "<group>";
 		};
 		846D07471F271D3100902097 /* FirebaseModels */ = {
@@ -2005,6 +2036,7 @@
 				5702E5E81D9D646100647A54 /* UIImage+WebP.m in Sources */,
 				83FE05D02463ECB200C3FC23 /* MonthView.swift in Sources */,
 				5702E5DE1D9D646100647A54 /* SDImageCache.m in Sources */,
+				83E25359263FDB8C003EFD11 /* TAEWeekdaysView.swift in Sources */,
 				735B637F1F8E26640055DF17 /* SettingsTabBarController.swift in Sources */,
 				84882AFA1F76527D0082A442 /* ConstantsTable.swift in Sources */,
 				83FE05CF2463ECB200C3FC23 /* WeekdaysView.swift in Sources */,
@@ -2027,6 +2059,7 @@
 				83170931250BCA1200413723 /* CarouselCollectionViewCell2.swift in Sources */,
 				732986DB1FEBDC9D006A364C /* Helper Files.swift in Sources */,
 				73AF11091FE25E5100C90E7E /* RecipeDetailsCell.swift in Sources */,
+				83E25358263FDB8C003EFD11 /* TAEMonthView.swift in Sources */,
 				57C324961D9680450057B590 /* TweakAndEatRemindeCell.swift in Sources */,
 				84B2BD6B1EC449F4004F19D0 /* TimelineTableViewCellWithAd.swift in Sources */,
 				1806240A2175BD390084238E /* AiDPTableViewCell.swift in Sources */,
@@ -2035,6 +2068,7 @@
 				84EF2D8C1DE6CA6700F340C5 /* TBL_Contacts+CoreDataClass.swift in Sources */,
 				573A1D6B1DA2CBB7007E2A85 /* TimelinesDetailsViewController.swift in Sources */,
 				83360CB72531AD290006BD63 /* CongratulationsTweaker.swift in Sources */,
+				83B6D80D264044240094137E /* MonthlyTrendsBottom.swift in Sources */,
 				732986DD1FED0F49006A364C /* NutritionChat.swift in Sources */,
 				18F1A99820EA02B7004FAC2D /* TextAreaTableViewCell.swift in Sources */,
 				83222C6724DDC45700A6E4E0 /* TAEClub2VCViewController.swift in Sources */,
@@ -2155,6 +2189,7 @@
 				845089A41ED30301006C5C88 /* NotificationService.swift in Sources */,
 				57BED14E1D749B780008CC4D /* Tweak_and_Eat.xcdatamodeld in Sources */,
 				5702E5DD1D9D646100647A54 /* NSData+ImageContentType.m in Sources */,
+				8360F836264171B400564FFC /* MonthlyTrendsTop.swift in Sources */,
 				5735D8381D79CEEB001DAF83 /* UIImage+animatedGIF.m in Sources */,
 				5735D8311D79CEEB001DAF83 /* AFHTTPSessionManager.m in Sources */,
 				73B9DBBC203C1A3000EBC0B0 /* Notifications.swift in Sources */,
@@ -2169,6 +2204,7 @@
 				18ED12C12188369D0006C7DE /* ProfileInfoTableViewController.swift in Sources */,
 				83E7320124439B8300ACF0F5 /* PurchasePackagesTableViewCell.swift in Sources */,
 				841DDCBB1F346486004D9D43 /* NutritionistPopViewController.swift in Sources */,
+				83E25357263FDB8C003EFD11 /* TAECalendarView.swift in Sources */,
 				84536C601DE2C2A4005FE31E /* ContactTableViewCell.swift in Sources */,
 				04A618CD22D0B28500BEB383 /* WeightReadingsChartView.swift in Sources */,
 				83222C6524DD8B4100A6E4E0 /* TAEClub1VCViewController.swift in Sources */,

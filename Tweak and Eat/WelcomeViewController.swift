@@ -4054,32 +4054,32 @@ self.topImageView.alpha = 1
         let bool = notification.object as! Bool
         UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
                }, completion: {(_ completed: Bool) -> Void in
-                //self.goToTweakTrends()
+                self.goToTweakTrends()
                 
-                if bool == true {
-                    if (self.myNutritionDetailsView != nil) {
-                        self.myNutritionViewLast10TweaksTableView.isHidden = true
-                        self.myNutritionViewSelectYourMealTableView.isHidden = true
-                        self.myNutritionView.isHidden = true
-                        self.switchButton.isHidden = false
-                        self.showGraph = true
-                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
-
-                        self.updateSwitchUI(bool: true)
-                        self.setDefaultDataBtns(name: self.dataBtnName)
-                    }
-                } else {
-                    if (self.myNutritionDetailsView != nil) {
-                        self.mealTypeTableView.isHidden = true
-                        self.switchButton.isHidden = true
-                                   self.myNutritionView.isHidden = false
-                                   self.showGraph = false
-                         self.myNutritionDetailsView.switchButton.setStatus(false)
-                                   self.setDefaultDataBtns(name: self.dataBtnName)
-                    }
-                }
-
-                self.updateUIAccordingTOEachDevice()
+//                if bool == true {
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionViewLast10TweaksTableView.isHidden = true
+//                        self.myNutritionViewSelectYourMealTableView.isHidden = true
+//                        self.myNutritionView.isHidden = true
+//                        self.switchButton.isHidden = false
+//                        self.showGraph = true
+//                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
+//
+//                        self.updateSwitchUI(bool: true)
+//                        self.setDefaultDataBtns(name: self.dataBtnName)
+//                    }
+//                } else {
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.mealTypeTableView.isHidden = true
+//                        self.switchButton.isHidden = true
+//                                   self.myNutritionView.isHidden = false
+//                                   self.showGraph = false
+//                         self.myNutritionDetailsView.switchButton.setStatus(false)
+//                                   self.setDefaultDataBtns(name: self.dataBtnName)
+//                    }
+//                }
+//
+//                self.updateUIAccordingTOEachDevice()
 
         })
         
@@ -6283,6 +6283,8 @@ self.topImageView.alpha = 1
         super.viewWillAppear(true)
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             //UserDefaults.standard.removeObject(forKey: "ct_profile_updated")
+            let dictionary = Bundle.main.infoDictionary!
+            let version = dictionary["CFBundleShortVersionString"] as! String
         if UserDefaults.standard.value(forKey: "ct_profile_updated") == nil {
 
             let ct = CleverTapClass()
