@@ -61,8 +61,11 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     var presentYear = 0
     var todaysDate = 0
     var thirtyTHDay = 0
+    var currentDate = ""
+    var currentMonth = 0
     var getNumberOfDays = 0
     var firstWeekDayOfMonth = 0
+    var index = 0
     var clubMemberExpDate = 0//(Sunday-Saturday 1-7)
     var dataArray = [[String: Int?]]() {
         didSet {
@@ -135,7 +138,9 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         
         setupViews()
         self.thirtyDaysFromNow()
-        
+        currentDate = Date().dateStringWithFormat(format: "yyyy-MM-dd")
+        let currMonArray = currentDate.components(separatedBy: "-")
+        currentMonth = Int(currMonArray[1])!
         myCollectionView.delegate=self
         myCollectionView.dataSource=self
         myCollectionView.register(DateCVCell.self, forCellWithReuseIdentifier: "Cell")
@@ -164,31 +169,123 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         cell.emoji.isHidden = true
         let itemDict = self.dataArray[indexPath.item]
         for (key,val) in itemDict {
-            print(key,val)
             if key.contains("-") {
             let keyArray = key.components(separatedBy: "-")
+                let keyDate = key.date!
                 let keyString = keyArray[1].deletingPrefix("0")
-                if keyString == "\(currentMonthIndex)" {
+                if currentMonthIndex == currentMonth {
+                    if Int(keyString)! <= currentMonthIndex && (keyDate <= self.currentDate.date! )   {
+                        index = indexPath.item
+                        cell.backgroundColor = UIColor.groupTableViewBackground
+                        cell.layer.borderWidth = 1
+                        cell.layer.borderColor = UIColor.clear.cgColor
+                        cell.dotImageView.isHidden = false
+                        cell.lbl.text = keyArray.last?.deletingPrefix("0")
+                        cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                        cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                        cell.emoji.isHidden = true
+                        cell.calorieLbl.isHidden = false
+                        cell.lbl.isHidden = false
+
+                    } else {
+                        cell.backgroundColor = UIColor.clear
+                        cell.layer.borderWidth = 1
+                        cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+                        cell.lbl.text = keyArray.last?.deletingPrefix("0")
+                        //cell.calorieLbl.text = ""
+                        cell.emoji.isHidden = true
+                        cell.dotImageView.isHidden = true
+                        cell.calorieLbl.isHidden = true
+                        cell.lbl.isHidden = false
+
+                        
+
+                    }
+                } else {
                     cell.backgroundColor = UIColor.groupTableViewBackground
                     cell.layer.borderWidth = 1
                     cell.layer.borderColor = UIColor.clear.cgColor
+                    cell.dotImageView.isHidden = false
+                    cell.lbl.isHidden = false
+                    cell.lbl.text = keyArray.last?.deletingPrefix("0")
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                    cell.emoji.isHidden = true
+                    cell.calorieLbl.isHidden = false
 
-                } else {
-                    cell.backgroundColor = UIColor.clear
-                    cell.layer.borderWidth = 1
-                    cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
                 }
-                cell.lbl.text = keyArray.last?.deletingPrefix("0")
-                cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
-                cell.calorieLbl.textColor = val ?? 0 > 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
-                cell.emoji.isHidden = true
+               
+               
             } else if key.contains("_") {
-                cell.emoji.image = val ?? 0 > 0 ? UIImage.init(named: "smily_emoji") : UIImage.init(named: "sad_emoji")
-
+                cell.backgroundColor = UIColor.clear
+                cell.layer.borderWidth = 1
+                cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+                cell.emoji.image = val ?? 0 >= 0 ? UIImage.init(named: "smily_emoji") : UIImage.init(named: "sad_emoji")
                 cell.dotImageView.isHidden = true
                 cell.emoji.isHidden = false
                 cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
-                cell.calorieLbl.textColor = val ?? 0 > 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                cell.calorieLbl.isHidden = true
+                cell.lbl.isHidden = true
+                if currentMonthIndex == currentMonth {
+
+                if indexPath.item == 7 && (0...7).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if indexPath.item == 15 && (8...15).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if  indexPath.item == 23 && (16...23).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if indexPath.item == 31 && (24...31).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if indexPath.item == 39 && (32...39).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if indexPath.item == 47 && (40...47).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else if indexPath.item == 55 && (48...55).contains(index) {
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.isHidden = false
+                    cell.emoji.isHidden = false
+                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
+                } else {
+                    cell.emoji.isHidden = true
+                    cell.dotImageView.isHidden = true
+                    cell.calorieLbl.text = ""
+                    cell.calorieLbl.isHidden = true
+
+                }
+                } else {
+                    cell.calorieLbl.isHidden = false
+                }
+//                if  indexPath.item > index {
+//                    cell.emoji.isHidden = true
+//                    cell.calorieLbl.text = ""
+//                    cell.calorieLbl.isHidden = true
+//                }
 
             }
         }
@@ -266,23 +363,18 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell=collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor=UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        let cell=collectionView.cellForItem(at: indexPath) as! DateCVCell
+        if cell.calorieLbl.isHidden == true {
+            return
+        }
+        cell.backgroundColor=UIColor.init(red: 0.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         var startWeek = ""
         var endWeek = ""
         var itemDict = self.dataArray[indexPath.item]
-//        for (key, _) in itemDict {
-//            if key.contains("-") {
-//
-//            let now = convertDateToLocalTime(df.date(from: key)!)
-//                if now > todaysDate {
-//
-//                }
-//            }
-//        }
 
+       
         if indexPath.item == 6 || indexPath.item == 14 || indexPath.item == 22 || indexPath.item == 30 || indexPath.item == 38 || indexPath.item == 46 || indexPath.item == 54 {
             itemDict = self.dataArray[indexPath.item - 1]
         }
@@ -340,20 +432,25 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         let cell=collectionView.cellForItem(at: indexPath)
         let itemDict = self.dataArray[indexPath.item]
         for (key,val) in itemDict {
-            print(key,val)
             if key.contains("-") {
             let keyArray = key.components(separatedBy: "-")
+                let keyDate = key.date!
                 let keyString = keyArray[1].deletingPrefix("0")
-                if keyString == "\(currentMonthIndex)" {
+                if currentMonthIndex == currentMonth {
+                if Int(keyString)! <= currentMonthIndex && (keyDate <= self.currentDate.date! ) {
                     cell?.backgroundColor=UIColor.groupTableViewBackground
 
                 } else {
                     cell?.backgroundColor=UIColor.clear
 
                 }
+                } else {
+                    cell?.backgroundColor=UIColor.groupTableViewBackground
+
+                }
 
             } else if key.contains("_") {
-                cell?.backgroundColor=UIColor.groupTableViewBackground
+                cell?.backgroundColor=UIColor.clear
 
 
             }
@@ -397,6 +494,7 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
         selectedDate = 0
         currentMonthIndex=monthIndex+1
         currentYear = year
+        index = 0
 
         
         //for leap year, make february month of 29 days
@@ -525,15 +623,15 @@ class DateCVCell: UICollectionViewCell {
         calorieLbl.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         //calorieLbl.heightAnchor.constraint(equalToConstant: 15).isActive = true
 
-        emoji.topAnchor.constraint(equalTo: topAnchor).isActive=true
+        emoji.topAnchor.constraint(equalTo: topAnchor, constant: 1).isActive=true
         emoji.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
         emoji.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-        emoji.bottomAnchor.constraint(equalTo: calorieLbl.topAnchor).isActive=true
+        emoji.bottomAnchor.constraint(equalTo: calorieLbl.topAnchor, constant: 1).isActive=true
     }
     
     let lbl: UILabel = {
         let label = UILabel()
-        label.text = "00"
+        label.text = ""
         label.textAlignment = .center
         label.font=UIFont.systemFont(ofSize: 15)
         label.textColor=Colors.darkGray

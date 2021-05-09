@@ -12,7 +12,12 @@ import Alamofire
 class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     
     func reloadCalendarView(dt: String) {
-        getMonthlyTrendsTop(dt: dt)
+        currMonInString = String(dt.suffix(2))
+        currYrInString = String(dt.prefix(4))
+        
+        
+        //self.getCalAssume(dt: "\(currYrInString)\(currMonInString)")
+        self.getMonthlyTrendsTop(dt: dt)
 
     }
     
@@ -20,9 +25,50 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         
     }
     
+    @IBAction func switchButtonTapped(_ sender: Any) {
+        var calsAssume = 0
+        if self.switchButton.currentImage == UIImage.init(named: "off_btn")  {
+            calsAssume = 1
+            self.switchButton.setImage(UIImage.init(named: "on_btn"), for: .normal)
+        } else {
+            calsAssume = 0
+            self.switchButton.setImage(UIImage.init(named: "off_btn"), for: .normal)
+        }
+        MBProgressHUD.showAdded(to: self.view, animated: true);
+        APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.UPDATE_CAL_ASSUME, userSession: UserDefaults.standard.value(forKey: "userSession") as! String,parameters: [
+            "calsAssume": calsAssume
+        ] as [String : AnyObject] , success: { response in
+            print(response)
+            MBProgressHUD.hide(for: self.view, animated: true);
+
+            
+            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+            let responseResult = responseDic["callStatus"] as! String;
+            if  responseResult == "GOOD" {
+//                var currentMonth = ""
+//                if self.currentMonthIndex < 10 {
+//                    currentMonth = "0\(self.currentMonthIndex)"
+//                } else {
+//                    currentMonth = "\(self.currentMonthIndex)"
+//                }
+                
+                self.getCalAssume(dt: "\(self.currYrInString)\(self.currMonInString)")
+            }
+        }, failure : { error in
+            MBProgressHUD.hide(for: self.view, animated: true);
+            
+            print("failure")
+             //TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil));
+            
+        })
+    }
+    @IBOutlet weak var switchButton: UIButton!
+    @IBOutlet weak var assumeStandardView: UIView!
     @IBOutlet weak var calendarLabelView: UIView!
     @IBOutlet weak var calendarLabel: UILabel!
     @IBOutlet weak var approxCalorieLeftView: UIView!
+    var currMonInString = ""
+    var currYrInString = ""
     var currentMonthIndex = 0
     var currentYear = 0
     var todaysDate = 0
@@ -49,6 +95,27 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         return day
     }
     
+    func getCalAssume(dt: String) {
+        APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.GET_CAL_ASSUME, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+            print(responseDic)
+            if responseDic["callStatus"] as! String == "GOOD" {
+                if responseDic["calsAssume"] as! Int == 1 {
+                    self.switchButton.setImage(UIImage.init(named: "on_btn"), for: .normal)
+                } else {
+                    self.switchButton.setImage(UIImage.init(named: "off_btn"), for: .normal)
+                }
+                self.getMonthlyTrendsTop(dt: dt)
+
+            }
+            
+            
+    },
+        failure : { error in
+            
+           
+        })
+    }
   
     
     override func viewDidLoad() {
@@ -58,6 +125,8 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         self.calendarLabel.text = txt
         currentMonthIndex = Calendar.current.component(.month, from: Date())
         currentYear = Calendar.current.component(.year, from: Date())
+        currMonInString = currentMonthIndex < 10 ? "0\(currentMonthIndex)" : "\(currentMonthIndex))"
+        currYrInString = "\(currentYear)"
 //        todaysDate = Calendar.current.component(.day, from: Date())
 ////        firstWeekDayOfMonth=getFirstWeekDay() - 1
 //        firstWeekDayOfMonth = getFirstWeekDay() == 1 ? 7 : getFirstWeekDay() - 1
@@ -72,6 +141,7 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
 //        calendar.rangeOfUnit(.WeekOfMonth, startDate: &startOfTheWeek, interval: &interval, forDate: NSDate())
 //        endOfWeek = startOfTheWeek!.addingTimeInterval(interval - 1)
         
+        assumeStandardView.layer.cornerRadius = 15
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.calendarView.addSubview(calView)
         calView.topAnchor.constraint(equalTo: self.calendarView.topAnchor, constant: 10).isActive=true
@@ -115,24 +185,20 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         } else {
             currentMonth = "\(currentMonthIndex)"
         }
-        getMonthlyTrendsTop(dt: "\(currentYear)\(currentMonth)")
+        
+        getCalAssume(dt: "\(currentYear)\(currentMonth)")
+       // getMonthlyTrendsTop(dt: "\(currentYear)\(currentMonth)")
+        
+        
         // Do any additional setup after loading the view.
     }
     
-    func convertDateToLocalTime(_ date: Date) -> Date {
-            let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: date))
-            return Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: date)!
-    }
-    
     func getMonthlyTrendsTop(dt: String) {
-        let headers: HTTPHeaders = [
-            "Authorization" : UserDefaults.standard.value(forKey: "userSession") as! String,
-            "Content-Type": "application/json"]
-        AF.request(URL(string: TweakAndEatURLConstants.GET_MONTLY_TRENDS_TOP)!, method: .post, parameters: [
-            "mdate": dt] as [String : AnyObject], encoding: JSONEncoding.default, headers: headers).responseData { response in
-            let decoder = JSONDecoder()
-            let todo: MonthlyTrendsTop = decoder.decodeResponse(from: response)
-            print(todo)
+        self.getMonthlyTrendsTop(dt: dt) { result in
+            switch result {
+            
+            case .success(let todo):
+                if todo.callStatus == "GOOD" {
                 if todo.data.count == 48 {
                     self.calendarViewHeightConstraint.constant = 430
 
@@ -157,10 +223,68 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_BOTTOM_TRENDS"), object: [startWeek, endWeek]);
                 }
                 
+                }
 
-
+            case .failure( let error):
+                print(error.localizedDescription)
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again!")
+            }
         }
     }
+    
+    func convertDateToLocalTime(_ date: Date) -> Date {
+            let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: date))
+            return Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: date)!
+    }
+    
+    func getMonthlyTrendsTop(dt: String, completion:@escaping (Result<MonthlyTrendsTop, AFError>)->Void) {
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.value(forKey: "userSession") as! String,
+            "Content-Type": "application/json"]
+        AF.request(URL(string: TweakAndEatURLConstants.GET_MONTLY_TRENDS_TOP)!, method: .post, parameters: [
+            "mdate": dt] as [String : AnyObject], encoding: JSONEncoding.default, headers: headers)
+                    .responseDecodable { (response: DataResponse<MonthlyTrendsTop, AFError>) in
+               completion(response.result)
+           }
+       }
+    
+//    func getMonthlyTrendsTop(dt: String) {
+//        let headers: HTTPHeaders = [
+//            "Authorization" : UserDefaults.standard.value(forKey: "userSession") as! String,
+//            "Content-Type": "application/json"]
+//        AF.request(URL(string: TweakAndEatURLConstants.GET_MONTLY_TRENDS_TOP)!, method: .post, parameters: [
+//            "mdate": dt] as [String : AnyObject], encoding: JSONEncoding.default, headers: headers).responseData { response in
+//            let decoder = JSONDecoder()
+//            let todo: MonthlyTrendsTop = decoder.decodeResponse(from: response)
+//            print(todo)
+//                if todo.data.count == 48 {
+//                    self.calendarViewHeightConstraint.constant = 430
+//
+//                } else if todo.data.count == 40 {
+//                    self.calendarViewHeightConstraint.constant = 390
+//
+//                } else if todo.data.count == 32 {
+//                    self.calendarViewHeightConstraint.constant = 350
+//                }
+//                self.view.setNeedsLayout()
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MONTHLY_TOP_DATA"), object: todo.data);
+//                var startWeek = ""
+//                var endWeek = ""
+//                let df = DateFormatter()
+//                df.dateFormat = "yyyy-MM-dd"
+//                let todoDict = todo.data.first as [String : Int?]?
+//                for (key, _) in todoDict! {
+//                    let now = self.convertDateToLocalTime(df.date(from: key)!)
+//
+//                    startWeek = self.convertDateToLocalTime(now.startOfWeek!).dateStringWithFormat(format: "yyyy-MM-dd")
+//                    endWeek = self.convertDateToLocalTime(now.endOfWeek!).dateStringWithFormat(format: "yyyy-MM-dd")
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_BOTTOM_TRENDS"), object: [startWeek, endWeek]);
+//                }
+//
+//
+//
+//        }
+//    }
     
     @IBAction func backBtnTapped(_ sender: Any) {
     

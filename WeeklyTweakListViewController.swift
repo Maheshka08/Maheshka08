@@ -189,15 +189,28 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 
         }
         if imagesArray.count == 0 {
+            TweakAndEatUtils.AlertView.showAlert(view: self, message: "No tweaks for today!")
             return
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "PageViewImageSlider") as! PageViewImageSlider
-        controller.itemIndex = self.imageIndex
+        controller.itemIndex = 0
         controller.imagesArray = imagesArray
         self.present(controller, animated: true, completion: nil)
     }
     
+    func getMonthlyTrendsBottom(startDate: String, endDate: String, completion:@escaping (Result<MonthlyTrendsBottom, AFError>)->Void) {
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.value(forKey: "userSession") as! String,
+            "Content-Type": "application/json"]
+        AF.request(URL(string: TweakAndEatURLConstants.GET_MONTLY_TRENDS_BOTTOM)!, method: .post, parameters: [
+            "sdate": startDate,
+            "edate": endDate
+        ] as [String : AnyObject], encoding: JSONEncoding.default, headers: headers)
+                    .responseDecodable { (response: DataResponse<MonthlyTrendsBottom, AFError>) in
+               completion(response.result)
+           }
+       }
     
     func getMonthlyTrendsBottom(startDate: String, endDate: String) {
         let headers: HTTPHeaders = [
@@ -239,6 +252,8 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 label.text = "Hey! Looks like you did not tweak your \(mealType).\nPlease tweak your \(mealType) also to get comparison reports."
             }
             
+        } else {
+            label.isHidden = true
         }
     }
     
@@ -249,27 +264,14 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         for (key, _) in dataDict {
             let dataArr = dataDict[key]
             imgUrl = dataArr!["Imgs"]?.first as AnyObject as? String ?? ""
+            self.imagesArray = dataArr!["Imgs"] ?? []
 
         }
         if imgUrl == "-" {
             return []
         }
-        let dataArray = data
-        for itemDict in dataArray {
-            for (key,val) in itemDict {
-                print(key,val)
-              
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
-                if imageUrl == "-" {
-                    //cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                } else {
-                //cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                    self.imagesArray.append(imageUrl!)
-                }
-            }
-        }
+
         
-        self.imageIndex = self.imagesArray.index(of: imgUrl) ?? 0
         return self.imagesArray
     }
     
@@ -278,7 +280,22 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         srtDate = obj[0]
         eDate = obj[1]
         
-        self.getMonthlyTrendsBottom(startDate: obj[0], endDate: obj[1])
+        self.getMonthlyTrendsBottom(startDate: obj[0], endDate: obj[1]) { result in
+            switch result {
+            case .success(let data):
+                if data.callStatus == "GOOD" {
+                self.monthlyData = data
+                self.showNoData(dataArray: (self.monthlyData?.data.breakfast)!, mealType: "breakfast", label: self.noDataLabelForBreakfast)
+                self.showNoData(dataArray: (self.monthlyData?.data.brunch)!, mealType: "brunch", label: self.noDataLabelForBrunch)
+                self.showNoData(dataArray: (self.monthlyData?.data.lunch)!, mealType: "lunch", label: self.noDataLabelForLunch)
+                self.showNoData(dataArray: (self.monthlyData?.data.eveningSnack)!, mealType: "evening snack", label: self.noDataLabelForEveningSnack)
+                self.showNoData(dataArray: (self.monthlyData?.data.dinner)!, mealType: "dinner", label: self.noDataLabelForDinner)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Please check your internet connection and try again!")
+            }
+        }
 
     }
 

@@ -146,6 +146,8 @@ struct TweakAndEatURLConstants {
     static let GET_ACTIVE_PACKAGE = BASE_URL + "/api/user/getactivepackage"
     static let GET_MONTLY_TRENDS_TOP = BASE_URL + "/api/reports/monthlytrendstop"
     static let GET_MONTLY_TRENDS_BOTTOM = BASE_URL + "/api/reports/monthlytrendsbottom"
+    static let GET_CAL_ASSUME = BASE_URL + "/api/user/getcalsassume"
+    static let UPDATE_CAL_ASSUME = BASE_URL + "/api/user/updatecalsassume"
 
     
     

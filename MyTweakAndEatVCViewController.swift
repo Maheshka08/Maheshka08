@@ -628,33 +628,42 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     
         self.switchButton.setStatus(bool)
     }
+    
+    func goToTweakTrends() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TweakTrendReportViewController = storyBoard.instantiateViewController(withIdentifier: "TweakTrendReportViewController") as! TweakTrendReportViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    
     @objc func swapViews(_ notification: NSNotification) {
         
         let bool = notification.object as! Bool
         UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
                }, completion: {(_ completed: Bool) -> Void in
-                if bool == true {
-                    if (self.myNutritionDetailsView != nil) {
-                        self.myNutritionViewLast10TweaksTableView.isHidden = true
-                        self.myNutritionViewSelectYourMealTableView.isHidden = true
-                        self.myNutritionDetailsView.isHidden = true
-                        self.showGraph = true
-                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
-                        self.updateSwitchUI(bool: true)
-                        self.setDefaultDataBtns(name: self.dataBtnName)
-                    }
-                } else {
-                    if (self.myNutritionDetailsView != nil) {
-                        self.mealTypeTableView.isHidden = true
-
-                                   self.myNutritionDetailsView.isHidden = false
-                                   self.showGraph = false
-                         self.myNutritionDetailsView.switchButton.setStatus(false)
-                                   self.setDefaultDataBtns(name: self.dataBtnName)
-                    }
-                }
-
-                self.updateUIAccordingTOEachDevice()
+                self.goToTweakTrends()
+//                if bool == true {
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.myNutritionViewLast10TweaksTableView.isHidden = true
+//                        self.myNutritionViewSelectYourMealTableView.isHidden = true
+//                        self.myNutritionDetailsView.isHidden = true
+//                        self.showGraph = true
+//                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
+//                        self.updateSwitchUI(bool: true)
+//                        self.setDefaultDataBtns(name: self.dataBtnName)
+//                    }
+//                } else {
+//                    if (self.myNutritionDetailsView != nil) {
+//                        self.mealTypeTableView.isHidden = true
+//
+//                                   self.myNutritionDetailsView.isHidden = false
+//                                   self.showGraph = false
+//                         self.myNutritionDetailsView.switchButton.setStatus(false)
+//                                   self.setDefaultDataBtns(name: self.dataBtnName)
+//                    }
+//                }
+//
+//                self.updateUIAccordingTOEachDevice()
 
         })
         
