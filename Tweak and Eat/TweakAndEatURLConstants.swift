@@ -117,8 +117,8 @@ struct TweakAndEatURLConstants {
     static let IDN_AiDP_CONTENT = BASE_URL + "/api/payments/myaidpcontentidn"
     static let AIBP_REGISTRATION = BASE_URL + "/api/payments/indsubregistration"
     static let HOMERECIPES = BASE_URL + "/api/user/homerecipes"
-    static let GET_PREMIUM_PACKAGES_BY_COUNTRY = BASE_URL + "/api/user/getppkgsbycountry101"
-    static let GET_PREMIUM_PACKAGES_BY_COUNTRY5 = BASE_URL + "/api/user/getppkgsbycountry102"
+    static let GET_PREMIUM_PACKAGES_BY_COUNTRY = BASE_URL + "/api/user/getppkgsbycountry103"
+    static let GET_PREMIUM_PACKAGES_BY_COUNTRY5 = BASE_URL + "/api/user/getppkgsbycountry103"
 
     static  let GET_TWEAK_LABELS = BASE_URL + "/api/user/tweaklabels"
     static let GET_ALL_TIMESLOTS = BASE_URL + "/api/callschedules/getalltimeslots"
@@ -148,6 +148,7 @@ struct TweakAndEatURLConstants {
     static let GET_MONTLY_TRENDS_BOTTOM = BASE_URL + "/api/reports/monthlytrendsbottom"
     static let GET_CAL_ASSUME = BASE_URL + "/api/user/getcalsassume"
     static let UPDATE_CAL_ASSUME = BASE_URL + "/api/user/updatecalsassume"
+    static let CLUB_AIDP_CONTENT = BASE_URL + "/api/payments/clubaidpcontent"
 
     
     

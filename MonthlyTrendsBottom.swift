@@ -15,15 +15,17 @@ import Foundation
 
 import Foundation
 
+
 // MARK: - MonthlyTrendsBottom
 struct MonthlyTrendsBottom: Codable {
     let callStatus: String
-    let data: TrendsBottom
+    let dailyCalsLimit: DailyCalsLimit
+    let data: DataClass
 }
 
 // MARK: - DataClass
-struct TrendsBottom: Codable {
-    let breakfast, brunch, lunch, eveningSnack, dinner: [[String: [String: [String]]]]
+struct DataClass: Codable {
+    let breakfast, brunch, lunch, eveningSnack, dinner: [[String: Meal]]
 
     enum CodingKeys: String, CodingKey {
         case breakfast = "Breakfast"
@@ -33,3 +35,34 @@ struct TrendsBottom: Codable {
         case dinner = "Dinner"
     }
 }
+
+// MARK: - Breakfast
+struct Meal: Codable {
+    let cals: Int
+    let imgs: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case cals = "Cals"
+        case imgs = "Imgs"
+    }
+}
+
+// MARK: - DailyCalsLimit
+struct DailyCalsLimit: Codable {
+    let breakfast, brunch, lunch, eveningSnack: Int
+    let dinner: Int
+
+    enum CodingKeys: String, CodingKey {
+        case breakfast = "Breakfast"
+        case brunch = "Brunch"
+        case lunch = "Lunch"
+        case eveningSnack = "Evening Snack"
+        case dinner = "Dinner"
+    }
+}
+
+enum Img: String, Codable {
+    case empty = "-"
+}
+
+

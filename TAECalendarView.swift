@@ -181,7 +181,7 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
                         cell.layer.borderColor = UIColor.clear.cgColor
                         cell.dotImageView.isHidden = false
                         cell.lbl.text = keyArray.last?.deletingPrefix("0")
-                        cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                        cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                         cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                         cell.emoji.isHidden = true
                         cell.calorieLbl.isHidden = false
@@ -208,7 +208,7 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
                     cell.dotImageView.isHidden = false
                     cell.lbl.isHidden = false
                     cell.lbl.text = keyArray.last?.deletingPrefix("0")
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                     cell.emoji.isHidden = true
                     cell.calorieLbl.isHidden = false
@@ -223,7 +223,7 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
                 cell.emoji.image = val ?? 0 >= 0 ? UIImage.init(named: "smily_emoji") : UIImage.init(named: "sad_emoji")
                 cell.dotImageView.isHidden = true
                 cell.emoji.isHidden = false
-                cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                 cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 cell.calorieLbl.isHidden = true
                 cell.lbl.isHidden = true
@@ -233,43 +233,43 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if indexPath.item == 15 && (8...15).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if  indexPath.item == 23 && (16...23).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if indexPath.item == 31 && (24...31).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if indexPath.item == 39 && (32...39).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if indexPath.item == 47 && (40...47).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else if indexPath.item == 55 && (48...55).contains(index) {
                     cell.dotImageView.isHidden = true
                     cell.calorieLbl.isHidden = false
                     cell.emoji.isHidden = false
-                    cell.calorieLbl.text = "\(val ?? 0)".replacingOccurrences(of: "-", with: "")
+                    cell.calorieLbl.text = val ?? 0 > 0 ? "+\(val ?? 0)" : "\(val ?? 0)"
                     cell.calorieLbl.textColor = val ?? 0 >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
                 } else {
                     cell.emoji.isHidden = true
@@ -472,7 +472,7 @@ class TAECalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width/8 - 8
-        let height: CGFloat = 40
+        let height: CGFloat = 44
         return CGSize(width: width, height: height)
     }
     
@@ -623,10 +623,12 @@ class DateCVCell: UICollectionViewCell {
         calorieLbl.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         //calorieLbl.heightAnchor.constraint(equalToConstant: 15).isActive = true
 
-        emoji.topAnchor.constraint(equalTo: topAnchor, constant: 1).isActive=true
+        emoji.topAnchor.constraint(equalTo: topAnchor, constant: 2).isActive=true
         emoji.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
         emoji.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-        emoji.bottomAnchor.constraint(equalTo: calorieLbl.topAnchor, constant: 1).isActive=true
+        emoji.bottomAnchor.constraint(equalTo: calorieLbl.topAnchor, constant: 2).isActive=true
+        emoji.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
     }
     
     let lbl: UILabel = {
@@ -654,8 +656,9 @@ class DateCVCell: UICollectionViewCell {
     let calorieLbl: UILabel = {
         let label = UILabel()
         label.text = "300"
+        label.numberOfLines = 0
         label.textAlignment = .center
-        label.font=UIFont.systemFont(ofSize: 12)
+        label.font=UIFont.boldSystemFont(ofSize: 10)
         label.textColor=Colors.darkGray
         label.translatesAutoresizingMaskIntoConstraints=false
         return label

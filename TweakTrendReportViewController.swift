@@ -73,6 +73,8 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     var currentYear = 0
     var todaysDate = 0
     var toDate = ""
+    var scrollUpOnce = 0
+    var calendarViewHeight: CGFloat = 0.0
     var firstWeekDayOfMonth = 0
     @IBOutlet weak var approxCalorieLeftLabel: UILabel!
     var monthlyTrendsBottomData: MonthlyTrendsBottom!
@@ -87,7 +89,8 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     @IBOutlet weak var calendarView: UIView!
     
 
-   
+    @IBOutlet weak var assumeStandardViewHeightConstraint: NSLayoutConstraint!
+    
 
     func getFirstWeekDay() -> Int {
         let day = ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
@@ -117,10 +120,54 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         })
     }
   
+    @objc func scrollHome(notification : NSNotification) {
+        let notify = notification.object as! Bool
+        if notify == false {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5, animations: {
+                self.calendarViewHeightConstraint.constant = 0
+                self.assumeStandardViewHeightConstraint.constant = 0
+                self.assumeStandardView.isHidden = true
+                self.calendarLabelView.isHidden = true
+                self.calView.isHidden = true
+                self.view.layoutIfNeeded()
+
+            }) { _ in
+                    self.scrollUpOnce += 1
+                    self.calendarView.isHidden = true
+                    if self.scrollUpOnce == 1 {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_TABLE_VIEW_TO_TOP"), object: nil);
+                    }
+
+
+            }
+            }
+        } else {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5, animations: {
+                self.calendarViewHeightConstraint.constant = self.calendarViewHeight
+                    
+                    self.calendarView.isHidden = false
+
+                self.assumeStandardViewHeightConstraint.constant = 55
+                self.view.layoutIfNeeded()
+
+            }) { _ in
+                    self.assumeStandardView.isHidden = false
+                    self.calendarLabelView.isHidden = false
+                    self.calView.isHidden = false
+
+
+
+            }
+            }
+           
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(TweakTrendReportViewController.scrollHome(notification:)), name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: nil);
         let txt = "*Net excess/deficit calories each day/week"
         self.calendarLabel.text = txt
         currentMonthIndex = Calendar.current.component(.month, from: Date())
@@ -175,8 +222,8 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         self.approxCalorieLeftLabel.layer.cornerRadius = 9
         self.approxCalorieLeftView.layer.cornerRadius = 15
         self.approxCalorieLeftLabel.clipsToBounds = true
-        if UserDefaults.standard.value(forKey: "APPROX_CALORIES") != nil {
-            self.approxCalorieLeftLabel.text = "\(String(describing: UserDefaults.standard.value(forKey: "APPROX_CALORIES") as! Int))   "
+        if UserDefaults.standard.value(forKey: "MEAN_CALORIES") != nil {
+            self.approxCalorieLeftLabel.text = "\(String(describing: UserDefaults.standard.value(forKey: "MEAN_CALORIES") as! Int))   "
         }
         //getMonthlyTrendsBottom()
         var currentMonth = ""
@@ -200,14 +247,15 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
             case .success(let todo):
                 if todo.callStatus == "GOOD" {
                 if todo.data.count == 48 {
-                    self.calendarViewHeightConstraint.constant = 430
+                    self.calendarViewHeightConstraint.constant = 460
 
                 } else if todo.data.count == 40 {
-                    self.calendarViewHeightConstraint.constant = 390
+                    self.calendarViewHeightConstraint.constant = 420
 
                 } else if todo.data.count == 32 {
-                    self.calendarViewHeightConstraint.constant = 350
+                    self.calendarViewHeightConstraint.constant = 380
                 }
+                    self.calendarViewHeight = self.calendarViewHeightConstraint.constant
                 self.view.setNeedsLayout()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MONTHLY_TOP_DATA"), object: todo.data);
                 var startWeek = ""

@@ -56,7 +56,47 @@ extension String {
         return formatter.string(from: NSNumber(value: Int(self) ?? 0)) ?? ""
     }
     
-   
+    func getFormattedStringWithYear() -> String {
+        if self == "" {
+            return ""
+        }
+        let strArr = self.components(separatedBy: "-")
+        let dd = strArr.last?.deletingPrefix("0").getOrdinalValue() ?? "0"
+        let mm = strArr[1].deletingPrefix("0")
+        let yy = strArr[0]
+        switch mm {
+        case "1":
+        return dd + " " + "Jan, " + yy
+        case "2":
+        return dd + " " + "Feb, " + yy
+        case "3":
+        return dd + " " + "Mar, " + yy
+        case "4":
+        return dd + " " + "Apr, " + yy
+        case "5":
+        return dd + " " + "May, " + yy
+        case "6":
+        return dd + " " + "Jun, " + yy
+        case "7":
+        return dd + " " + "Jul, " + yy
+        case "8":
+        return dd + " " + "Aug, " + yy
+        case "9":
+        return dd + " " + "Sep, " + yy
+        case "10":
+        return dd + " " + "Oct, " + yy
+        case "11":
+        return dd + " " + "Nov, " + yy
+        case "12":
+        return dd + " " + "Dec" + yy
+        
+        default:
+        return ""
+    }
+        
+        
+    
+}
     
     func getFormattedString() -> String {
         if self == "" {
@@ -94,9 +134,21 @@ extension String {
         default:
         return ""
     }
+        
+        
     
 }
     
+}
+
+extension UIView {
+
+    var snapshot: UIImage {
+        return UIGraphicsImageRenderer(size: bounds.size).image { _ in
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
+        }
+    }
+
 }
 
 extension String {

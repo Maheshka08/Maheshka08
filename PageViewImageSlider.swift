@@ -9,7 +9,8 @@
 import UIKit
 
 class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+    var dateInfo = ""
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var tweaksSwipe: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -63,8 +64,10 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateLabel.numberOfLines = 0
+        self.dateLabel.text = dateInfo
     self.collectionView.delegate = self
-        
+        self.view.backgroundColor = .black
         self.collectionView.dataSource = self;
         // Do any additional setup after loading the view.
         pageControl.numberOfPages = imagesArray.count

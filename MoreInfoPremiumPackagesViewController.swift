@@ -415,6 +415,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           return v
       }()
     var idleTimer = Timer()
+    
+    @IBOutlet weak var pp_pkgsImageVIew: UIImageView!
+    @IBOutlet weak var pp_PackagesInnerDetailView: UIView!
+    @IBOutlet weak var pp_PackagesDetailView: UIView!
     @IBOutlet weak var carouselView2: CarouselCollectionView!
     @IBOutlet weak var carouselView1: CarouselCollectionView!
     var packageName = ""
@@ -422,11 +426,13 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     var packagesImagesArray = NSMutableArray()
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var calendarInnerView: UIView!
+    @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var languageTableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var calView: UIView!
     @IBOutlet weak var calendarOuterView: UIView!
     @IBOutlet weak var scheduleBtn: UIButton!
+    @IBOutlet weak var inAppPurchasePriceTableView: UITableView!
     @IBOutlet weak var moreInfoSelectPlanView: UIView!
     @IBOutlet weak var chooseSubScriptionPlanLbl: UILabel!
     @IBOutlet weak var userCallScheduleView1: UIView!
@@ -448,6 +454,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var scrollViewImageView: UIImageView!
     @IBOutlet weak var noCommitmentLabel: UILabel!
    
+    @IBOutlet weak var termsOfUseBtnForPPView: UIButton!
+    @IBOutlet weak var privacyPolicyForPPView: UIButton!
     @IBOutlet weak var crossBtn: UIButton!
     @IBOutlet weak var privacyPolicyBtn: UIButton!
     @IBOutlet weak var termsofUseBtn: UIButton!
@@ -660,21 +668,38 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     self.navigationItem.hidesBackButton = false
                  }
     }
+    @IBAction func privacyPolicyBtnForPPViewTapped(_ sender: Any) {
+        self.privacyPolicy()
+       }
+    
     @IBAction func privacyPolicyBtnTapped(_ sender: Any) {
+        self.privacyPolicy()
+    }
+    
+    @IBAction func termsOfUseBtnForPPViewTapped(_ sender: Any) {
+        self.termsOfUse()
+    }
+    
+    func privacyPolicy() {
         guard let url = URL(string: "http://www.tweakandeat.com/privacy-policy.html") else {
                                             return
                                         }
                                        if UIApplication.shared.canOpenURL(url) {
                                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
-       }
-       @IBAction func termsOfUseBtnTapped(_ sender: Any) {
+    }
+    
+    func termsOfUse() {
         guard let url = URL(string: "http://www.tweakandeat.com/terms-of-use.html") else {
                                             return
                                         }
                                        if UIApplication.shared.canOpenURL(url) {
                                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
+    }
+    
+       @IBAction func termsOfUseBtnTapped(_ sender: Any) {
+        self.termsOfUse()
        }
     
     @IBAction func referralCodeBtnTapped(_ sender: Any) {
@@ -2171,6 +2196,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.pp_pkgsImageVIew.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.pp_PackagesInnerDetailView.layer.cornerRadius = 15
         let props = [
             "package_id": self.packageId,
         ]
@@ -2271,6 +2299,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         let attributeString = NSMutableAttributedString(string: "Terms of Use",
                                                            attributes: termsAttr)
         self.termsofUseBtn.setAttributedTitle(attributeString, for: .normal)
+        self.termsOfUseBtnForPPView.setAttributedTitle(attributeString, for: .normal)
         
         let privacyAttr : [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font : UIFont(name: "QUESTRIAL-REGULAR", size: 18)!,
@@ -2279,6 +2308,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                let attributeString1 = NSMutableAttributedString(string: "Privacy Policy",
                                                                   attributes: privacyAttr)
                self.privacyPolicyBtn.setAttributedTitle(attributeString1, for: .normal)
+        self.privacyPolicyForPPView.setAttributedTitle(attributeString1, for: .normal)
         let referralCodeBtnAttr : [NSAttributedString.Key: Any] = [
                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
             NSAttributedString.Key.foregroundColor : UIColor.blue,

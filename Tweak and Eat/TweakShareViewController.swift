@@ -67,7 +67,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     
     @IBAction func dropDownTapped(_ sender: Any) {
         self.view.endEditing(true)
-        if self.commentsViewBottomConstant.constant == -255 {
+        if self.commentsViewBottomConstant.constant == -311 {
                   self.commentsViewBottomConstant.constant = 0
                }
                if self.nutritionTopConstraint.constant == -120 {
@@ -240,7 +240,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
            // DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
                                   animations: {
-                                    self.commentsViewBottomConstant.constant = -255
+                                    self.commentsViewBottomConstant.constant = -311
 
                    }, completion: nil)
            // }
@@ -353,7 +353,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     
     @objc func refillPopUp() {
         view.endEditing(true)
-        if self.commentsViewBottomConstant.constant == -255 {
+        if self.commentsViewBottomConstant.constant == -311 {
             self.commentsViewBottomConstant.constant = 0
         }else  if self.nutritionTopConstraint.constant == -120 {
             self.nutritionTopConstraint.constant = 16
@@ -398,7 +398,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
                                                     UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
                                                                           animations: {
                         self.commentBox.becomeFirstResponder()
-                        self.commentsViewBottomConstant.constant = -255
+                        self.commentsViewBottomConstant.constant = -311
                         UserDefaults.standard.setValue(true, forKey: "IS_TWEAK_COUNT_POP_UP_SHOWN")
                         UserDefaults.standard.synchronize()
 
@@ -495,7 +495,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
-        if self.commentsViewBottomConstant.constant == -255 {
+        if self.commentsViewBottomConstant.constant == -311 {
            self.commentsViewBottomConstant.constant = 0
         }
         if self.nutritionTopConstraint.constant == -120 {

@@ -203,6 +203,7 @@
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		8360F836264171B400564FFC /* MonthlyTrendsTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360F835264171B400564FFC /* MonthlyTrendsTop.swift */; };
+		83739E36264CE0000082C593 /* InAppPackagePriceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83739E35264CE0000082C593 /* InAppPackagePriceViewCell.swift */; };
 		8375DB1525AD681000C978E5 /* AskSiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */; };
 		8375DB1625AD681000C978E5 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB1425AD681000C978E5 /* MessageResponse.swift */; };
 		8375DB3025AD6A7D00C978E5 /* ImageReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */; };
@@ -618,6 +619,7 @@
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
 		8360F835264171B400564FFC /* MonthlyTrendsTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTrendsTop.swift; sourceTree = "<group>"; };
+		83739E35264CE0000082C593 /* InAppPackagePriceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPackagePriceViewCell.swift; sourceTree = "<group>"; };
 		8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskSiaViewController.swift; sourceTree = "<group>"; };
 		8375DB1425AD681000C978E5 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		8375DB2C25AD6A7C00C978E5 /* ImageReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReceiverCell.swift; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 		57BED1391D749B780008CC4D = {
 			isa = PBXGroup;
 			children = (
+				83739E34264CDFBC0082C593 /* TableViewCells */,
 				83B6D80B2640440A0094137E /* Models */,
 				83E25353263FDB69003EFD11 /* CalendarView */,
 				8343D63A262ADD96009B9C6B /* GIFS */,
@@ -1296,6 +1299,14 @@
 				83AD116B2609BF6800763875 /* CleverTapClass.swift */,
 			);
 			name = CleverTap;
+			sourceTree = "<group>";
+		};
+		83739E34264CDFBC0082C593 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				83739E35264CE0000082C593 /* InAppPackagePriceViewCell.swift */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 		8375DB1225AD67FE00C978E5 /* SIA */ = {
@@ -2066,6 +2077,7 @@
 				04BA63E1225DB74D00D2CA4D /* MYEDRCell.swift in Sources */,
 				572093771D7F0AEC007B8E53 /* TweakAndEatOptionsView.swift in Sources */,
 				84EF2D8C1DE6CA6700F340C5 /* TBL_Contacts+CoreDataClass.swift in Sources */,
+				83739E36264CE0000082C593 /* InAppPackagePriceViewCell.swift in Sources */,
 				573A1D6B1DA2CBB7007E2A85 /* TimelinesDetailsViewController.swift in Sources */,
 				83360CB72531AD290006BD63 /* CongratulationsTweaker.swift in Sources */,
 				83B6D80D264044240094137E /* MonthlyTrendsBottom.swift in Sources */,

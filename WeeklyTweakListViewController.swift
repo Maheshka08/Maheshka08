@@ -14,6 +14,8 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
     var srtDate = ""
     var eDate = ""
     var imageIndex = 0
+    var dateInfo = ""
+    var pullControl = UIRefreshControl()
     @IBOutlet weak var breakfastLabel: UILabel!
     @IBOutlet weak var dinnerLabel: UILabel!
     @IBOutlet weak var eveningSnackLabel: UILabel!
@@ -37,7 +39,11 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
      @IBOutlet weak var collectionViewForDinner: UICollectionView!
     @IBOutlet weak var noDataLabelForDinner: UILabel!
 
-    
+//    @IBOutlet weak var breakFastTextLbl: UILabel!
+//    @IBOutlet weak var brunchTextLbl: UILabel!
+//    @IBOutlet weak var lunchTextLbl: UILabel!
+//    @IBOutlet weak var eveningSnackTextLbl: UILabel!
+//    @IBOutlet weak var dinnerTextLbl: UILabel!
     var cellSection = 0
 
     
@@ -59,7 +65,27 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
             self.collectionViewForEveningSnack.reloadData()
             self.collectionViewForDinner.reloadData()
             self.tableView.reloadData()
-            self.tableView.scrollsToTop = true
+            let topRow = IndexPath(row: 0,
+                                       section: 0)
+                // 2
+            self.tableView.scrollToRow(at: topRow,
+                                           at: .top,
+                                           animated: true)
+//            self.collectionViewForBreakfast.scrollToItem(at: topRow,
+//                                                         at: .top,
+//                                                         animated: true)
+//            self.collectionViewForBrunch.scrollToItem(at: topRow,
+//                                                         at: .top,
+//                                                         animated: true)
+//            self.collectionViewForLunch.scrollToItem(at: topRow,
+//                                                         at: .top,
+//                                                         animated: true)
+//            self.collectionViewForEveningSnack.scrollToItem(at: topRow,
+//                                                         at: .top,
+//                                                         animated: true)
+//            self.collectionViewForDinner.scrollToItem(at: topRow,
+//                                                         at: .top,
+//                                                         animated: true)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -85,15 +111,17 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 print(key,val)
                 let keyArray = key.components(separatedBy: "-")
                 cell.weekDayLabelTrends.text = keyArray.last?.deletingPrefix("0").getOrdinalValue()
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 if imageUrl == "-" {
                     cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                    cell.calorieLabelTrends.text = ""
+                    //cell.calorieLabelTrends.text = ""
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 } else {
                 cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                    cell.calorieLabelTrends.text = val["Cals"]?.first?.replacingOccurrences(of: "-", with: "")
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
 
                 }
+                cell.calorieLabelTrends.textColor = val.cals >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
             }
             
         } else if collectionView == self.collectionViewForBrunch {
@@ -103,14 +131,16 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 let keyArray = key.components(separatedBy: "-")
                 
                 cell.weekDayLabelTrends.text = keyArray.last?.deletingPrefix("0").getOrdinalValue()
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 if imageUrl == "-" {
                     cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                    cell.calorieLabelTrends.text = ""
+                    //cell.calorieLabelTrends.text = ""
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 } else {
                 cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                    cell.calorieLabelTrends.text = val["Cals"]?.first?.replacingOccurrences(of: "-", with: "")
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 }
+                cell.calorieLabelTrends.textColor = val.cals >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
             }
             
         } else if collectionView == self.collectionViewForLunch {
@@ -119,14 +149,16 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 print(key,val)
                 let keyArray = key.components(separatedBy: "-")
                 cell.weekDayLabelTrends.text = keyArray.last?.deletingPrefix("0").getOrdinalValue()
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 if imageUrl == "-" {
                     cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                    cell.calorieLabelTrends.text = ""
+                    //cell.calorieLabelTrends.text = ""
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 } else {
                 cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                    cell.calorieLabelTrends.text = val["Cals"]?.first?.replacingOccurrences(of: "-", with: "")
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 }
+                cell.calorieLabelTrends.textColor = val.cals >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
             }
             
         } else if collectionView == self.collectionViewForEveningSnack {
@@ -135,14 +167,16 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 print(key,val)
                 let keyArray = key.components(separatedBy: "-")
                 cell.weekDayLabelTrends.text = keyArray.last?.deletingPrefix("0").getOrdinalValue()
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 if imageUrl == "-" {
                     cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                    cell.calorieLabelTrends.text = ""
+                    //cell.calorieLabelTrends.text = ""
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 } else {
                 cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                    cell.calorieLabelTrends.text = val["Cals"]?.first?.replacingOccurrences(of: "-", with: "")
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 }
+                cell.calorieLabelTrends.textColor = val.cals >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
             }
             
         } else if collectionView == self.collectionViewForDinner {
@@ -151,14 +185,16 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
                 print(key,val)
                 let keyArray = key.components(separatedBy: "-")
                 cell.weekDayLabelTrends.text = keyArray.last?.deletingPrefix("0").getOrdinalValue()
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 if imageUrl == "-" {
                     cell.foodPlateTrends.image = UIImage.init(named: "X_img")
-                    cell.calorieLabelTrends.text = ""
+                    //cell.calorieLabelTrends.text = ""
+                    cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 } else {
                 cell.foodPlateTrends.sd_setImage(with: URL(string: imageUrl!))
-                cell.calorieLabelTrends.text = val["Cals"]?.first?.replacingOccurrences(of: "-", with: "")
+                cell.calorieLabelTrends.text = val.cals > 0 ? "+\(val.cals)" : "\(val.cals)"
                 }
+                cell.calorieLabelTrends.textColor = val.cals >= 0 ? #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1) : #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1)
             }
             
         }
@@ -173,19 +209,19 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         
         var imagesArray = [String]()
         if collectionView == self.collectionViewForBreakfast {
-            imagesArray = self.getImages(data: (self.monthlyData?.data.breakfast)!, index: indexPath.item)
+            imagesArray = self.getImages(data: (self.monthlyData?.data.breakfast)!, index: indexPath.item, mealType: "Breakfast")
 
         } else if collectionView == self.collectionViewForBrunch {
-            imagesArray = self.getImages(data: (self.monthlyData?.data.brunch)!, index: indexPath.item)
+            imagesArray = self.getImages(data: (self.monthlyData?.data.brunch)!, index: indexPath.item, mealType: "Brunch")
 
         } else if collectionView == self.collectionViewForLunch {
-            imagesArray = self.getImages(data: (self.monthlyData?.data.lunch)!, index: indexPath.item)
+            imagesArray = self.getImages(data: (self.monthlyData?.data.lunch)!, index: indexPath.item, mealType: "Lunch")
 
         } else if collectionView == self.collectionViewForEveningSnack {
-            imagesArray = self.getImages(data: (self.monthlyData?.data.eveningSnack)!, index: indexPath.item)
+            imagesArray = self.getImages(data: (self.monthlyData?.data.eveningSnack)!, index: indexPath.item, mealType: "Evening Snack")
 
         } else if collectionView == self.collectionViewForDinner {
-            imagesArray = self.getImages(data: (self.monthlyData?.data.dinner)!, index: indexPath.item)
+            imagesArray = self.getImages(data: (self.monthlyData?.data.dinner)!, index: indexPath.item, mealType: "Dinner")
 
         }
         if imagesArray.count == 0 {
@@ -195,6 +231,7 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "PageViewImageSlider") as! PageViewImageSlider
         controller.itemIndex = 0
+        controller.dateInfo = dateInfo
         controller.imagesArray = imagesArray
         self.present(controller, animated: true, completion: nil)
     }
@@ -236,13 +273,13 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         }
     }
     
-    func showNoData(dataArray: [[String : [String : [String]]]], mealType: String, label: UILabel) {
+    func showNoData(dataArray: [[String : Meal]], mealType: String, label: UILabel) {
         var imgsArray = [String]()
         for itemDict in dataArray {
             for (key,val) in itemDict {
                 print(key,val)
               
-                let imageUrl = val["Imgs"]?.first as AnyObject as? String
+                let imageUrl = val.imgs.first as AnyObject as? String
                 imgsArray.append(imageUrl!)
             }
         }
@@ -257,14 +294,16 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         }
     }
     
-    func getImages(data: [[String : [String : [String]]]], index: Int) -> [String] {
+    func getImages(data: [[String : Meal]], index: Int, mealType: String) -> [String] {
         self.imagesArray = []
-        let dataDict: [String : [String : [String]]] = data[index]
+        let dataDict: [String : Meal] = data[index]
         var imgUrl = ""
+        self.dateInfo = ""
         for (key, _) in dataDict {
+            self.dateInfo = key.getFormattedStringWithYear() + " - " + mealType
             let dataArr = dataDict[key]
-            imgUrl = dataArr!["Imgs"]?.first as AnyObject as? String ?? ""
-            self.imagesArray = dataArr!["Imgs"] ?? []
+            imgUrl = dataArr?.imgs.first ?? ""
+            self.imagesArray = dataArr?.imgs ?? []
 
         }
         if imgUrl == "-" {
@@ -273,6 +312,17 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 
         
         return self.imagesArray
+    }
+    
+    func getMealTypeHeaders(calLimit: Int, mealType: String) -> String {
+        return "\(mealType) (\(calLimit) Cals Limit / day)    "
+        
+    }
+    @objc func refresh(_ sender: Any) {
+        //  your code to reload tableView
+        print("refreshing...")
+        self.pullControl.endRefreshing()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: true)
     }
     
     @objc func updateBottomTrends(_ notification: Notification) {
@@ -284,6 +334,13 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
             switch result {
             case .success(let data):
                 if data.callStatus == "GOOD" {
+                    DispatchQueue.main.async {
+                        self.breakfastLabel.text = self.getMealTypeHeaders(calLimit: data.dailyCalsLimit.breakfast, mealType: "Breakfast")
+                        self.brunchLabel.text = self.getMealTypeHeaders(calLimit: data.dailyCalsLimit.brunch, mealType: "Brunch")
+                        self.lunchLabel.text = self.getMealTypeHeaders(calLimit: data.dailyCalsLimit.lunch, mealType: "Lunch")
+                        self.eveningSnackLabel.text = self.getMealTypeHeaders(calLimit: data.dailyCalsLimit.eveningSnack, mealType: "Evening Snack")
+                        self.dinnerLabel.text = self.getMealTypeHeaders(calLimit: data.dailyCalsLimit.dinner, mealType: "Dinner")
+                    }
                 self.monthlyData = data
                 self.showNoData(dataArray: (self.monthlyData?.data.breakfast)!, mealType: "breakfast", label: self.noDataLabelForBreakfast)
                 self.showNoData(dataArray: (self.monthlyData?.data.brunch)!, mealType: "brunch", label: self.noDataLabelForBrunch)
@@ -298,9 +355,24 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         }
 
     }
+    @objc func scrollTableViewToTop() {
+        let topRow = IndexPath(row: 0,
+                                   section: 0)
+            // 2
+        self.tableView.scrollToRow(at: topRow,
+                                       at: .top,
+                                       animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pullControl.attributedTitle = NSAttributedString(string: "Pull down to Collapse..")
+       // pullControl.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
+
+        self.pullControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(pullControl)
+//
+        NotificationCenter.default.addObserver(self, selector: #selector(WeeklyTweakListViewController.scrollTableViewToTop), name: NSNotification.Name(rawValue: "SCROLL_TABLE_VIEW_TO_TOP"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(WeeklyTweakListViewController.updateBottomTrends(_:)), name: NSNotification.Name(rawValue: "GET_BOTTOM_TRENDS"), object: nil)
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .white
@@ -385,6 +457,18 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 
         return 40
     }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // example code
+        if decelerate {
+            if(scrollView.contentOffset.y < 0) {
+               
+            } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: false)
+            }
+
+        }
+}
 
     
 
