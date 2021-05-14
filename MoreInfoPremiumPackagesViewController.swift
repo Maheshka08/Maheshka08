@@ -137,6 +137,18 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     // MARK: - Properties
       /// The list of promotionItems
+    var itemsArray = [Item]() {
+        didSet {
+            self.inAppPurchasePriceTableView.isHidden = false
+            self.inAppPurchasePriceTableView.delegate = self
+            self.inAppPurchasePriceTableView.dataSource = self
+            self.inAppPurchasePriceTableView.reloadData()
+            if itemsArray.count > 0 {
+                self.inAppPurchaseTableViewHeightConstraint.constant = CGFloat(itemsArray.count * 55)
+                self.view.setNeedsLayout()
+            }
+        }
+    }
       public var items = [Item]() {
           didSet {
               updateDataSource()
@@ -453,7 +465,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var bckBtn: UIButton!
     @IBOutlet weak var scrollViewImageView: UIImageView!
     @IBOutlet weak var noCommitmentLabel: UILabel!
-   
+    var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
     @IBOutlet weak var termsOfUseBtnForPPView: UIButton!
     @IBOutlet weak var privacyPolicyForPPView: UIButton!
     @IBOutlet weak var crossBtn: UIButton!
@@ -462,7 +474,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var buyNowButton: UIButton!;
     @IBOutlet weak var infoView: UIView!;
     @IBOutlet weak var noCommitmentHeightConstraint: NSLayoutConstraint!
-     @IBOutlet weak var termsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ppPackagesInnerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var inAppPurchaseTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var termsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pp_pkgImgView: UIImageView!
      @IBOutlet weak var packagesCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
     
@@ -475,6 +490,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var areYouSureLbl: UILabel!
     @IBOutlet weak var unSubscribeImgViewHeightContraint: NSLayoutConstraint!
     
+    @IBOutlet weak var ppPackageDetailsImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyNowBtton: UIButton!
     @IBOutlet weak var callNutritionistBtn2HeightContraint: NSLayoutConstraint!
     @IBOutlet weak var carouselsView: UIView!
@@ -779,6 +795,11 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
       }
     }
     
+    
+    @IBAction func ppPackageInnerViewCancelTapped(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func callNutritionistBtn2Tapped(_ sender: Any) {
         self.gettimeSlots()
         
@@ -1076,6 +1097,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             return self.moreInfoPremiumPackagesArray.count;
         } else if tableView == languageTableView {
             return self.languagesArray.count;
+        } else if tableView == inAppPurchasePriceTableView {
+            return self.itemsArray.count;
         } else {
             return self.nutritionLabelPriceArray.count
         }
@@ -1127,12 +1150,18 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             return cell
             
         } else if tableView == languageTableView {
-                   let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
             cell.contentView.backgroundColor = .groupTableViewBackground
             let cellDict = self.languagesArray[indexPath.row] ;
             cell.textLabel?.font = UIFont(name:"QUESTRIAL-REGULAR", size: 17.0)
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.text = cellDict["mcl_name"] as? String
+            return cell
+        } else if tableView == inAppPurchasePriceTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InAppPackagePriceViewCell
+            let cellDictionary = self.itemsArray[indexPath.row]
+            let imageUrl = cellDictionary.value
+            cell.imgView.sd_setImage(with: URL(string: imageUrl))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pricesCell", for: indexPath)
@@ -1156,6 +1185,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         } else {
             return ""
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -1190,6 +1223,68 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.languageTextField.text = cellDict["mcl_name"] as? String
             self.languageTableView.isHidden = true
             self.updateAreYouSureLbl()
+        } else if tableView == inAppPurchasePriceTableView {
+//            let cell = tableView.cellForRow(at: indexPath) as! InAppPackagePriceViewCell
+//            cell.imgView.transform = CGAffineTransform(scaleX: 2, y: 2)
+
+            self.selectedIndex = indexPath.row
+            self.idleTimer.invalidate()
+            let props = [
+                "package_id": self.packageId,
+            ]
+            CleverTap.sharedInstance()?.recordEvent("Purchase_initiated", withProps: props)
+           // }
+            
+            if self.packageId == "-IndIWj1mSzQ1GDlBpUt" {
+                Analytics.logEvent("TAE_MYTAE_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            } else if self.packageId == "-IndWLIntusoe3uelxER" {
+                Analytics.logEvent("TAE_WLIF_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+                Analytics.logEvent("TAE_MYAIDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            } else if self.packageId == "-ClubInd3gu7tfwko6Zx" {
+                Analytics.logEvent("TAE_CLUB_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            } else if self.packageId == "-ClubInd4tUPXHgVj9w3" {
+                Analytics.logEvent("TAE_CLUBAiDP_BUYNOW_CLICKED_IND", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            } else if self.packageId == "-ClubUsa5nDa1M8WcRA6" {
+                Analytics.logEvent("TAE_CLUBAiDP_BUYNOW_CLICKED_USA", parameters: [AnalyticsParameterItemName: "Buy Now Tapped."]);
+            }
+    //        if self.countryCode == "1" {
+    //            Analytics.logEvent("TAE_REG_SUCCESS_MYS", parameters: [AnalyticsParameterItemName: "Registration successful"]);
+    //
+    //        }
+
+            SKPaymentQueue.default().add(self)
+
+                        self.labelPriceDict  = self.nutritionLabelPriceArray[self.selectedIndex] as! [String : AnyObject];
+                        self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+                        self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+                        self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+                        self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+                        self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+                        let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+                        let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+
+                        let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+                        let totalDesc: String = labels + amount + currency;
+
+                        self.packageName = (self.labelPriceDict[lables] as? String)!
+
+                        self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+                         DispatchQueue.main.async {
+            MBProgressHUD.showAdded(to: self.view, animated: true);
+            }
+                               if (SKPaymentQueue.canMakePayments()) {
+                                   //self.buyNowButton.isEnabled = false
+                                   let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+                                   let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                                   productsRequest.delegate = self;
+                                   productsRequest.start();
+                                   print("Fetching Products");
+                               } else {
+                                   print("can't make purchases");
+                               }
+
+
         }
     }
     
@@ -1198,9 +1293,58 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.view.endEditing(true)
     }
     
-    func getMyTweakAndEatDetails() {
+    func getNewMyTweakAndEatDetails() {
+        //self.packageId = "-ClubInd4tUPXHgVj9w3"
        // MBProgressHUD.showAdded(to: self.view, animated: true);
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
+            // this runs on the background queue
+            // here the query starts to add new 10 rows of data to arrays
+            self.nutritionLabelPackagesArray = NSMutableArray();
+
+            if snapshot.childrenCount > 0 {
+                
+                let dispatch_group = DispatchGroup();
+                dispatch_group.enter();
+                
+                for premiumPackages in snapshot.children.allObjects as! [DataSnapshot] {
+
+                    if premiumPackages.key == self.packageId  {
+                        let packageObj = premiumPackages.value as? [String : AnyObject];
+                        if !((packageObj?["activeCountries"] as AnyObject) is NSNull) {
+                          
+                        self.nutritionLabelPackagesArray.add(packageObj!);
+                            //DispatchQueue.global(qos: .userInitiated).async {
+                                self.newPackagLabelSelections();
+                           // }
+                            
+                        } else {
+                            TweakAndEatUtils.AlertView.showAlert(view: self, message: "There is no package available. Please try again later!!");
+                        }
+                        
+                    }
+                }
+                dispatch_group.leave();
+                dispatch_group.notify(queue: DispatchQueue.main) {
+                   
+                   
+                     DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
+                }
+                
+            } else {
+                 DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                }
+                
+            }
+        })
+    }
+    
+    func getMyTweakAndEatDetails() {
+        //self.packageId = "-ClubInd4tUPXHgVj9w3"
+       // MBProgressHUD.showAdded(to: self.view, animated: true);
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             self.nutritionLabelPackagesArray = NSMutableArray();
@@ -1552,13 +1696,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                         Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
                             if error == nil {
                                 //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
-                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" {
                                     var url = ""
                                     if self.packageId == self.ptpPackage {
                                         url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
                                     } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
                                         url = TweakAndEatURLConstants.IND_AiDP_CONTENT
-                                    }
                                         APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
                                         let responseDic : [String:AnyObject] = response as! [String:AnyObject];
                                             var responseResult = ""
@@ -1597,6 +1740,48 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                         TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
                                         
                                     })
+                                    } else if self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" {
+                                        url = TweakAndEatURLConstants.CLUB_AIDP_CONTENT
+                                        APIWrapper.sharedInstance.postReceiptData(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: ["pkgId": self.packageId] as [String : AnyObject], success: { response in
+                                            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                                                var responseResult = ""
+                                                
+                                                if responseDic.index(forKey: "callStatus") != nil {
+                                                    responseResult = responseDic["callStatus"] as! String
+                                                } else if responseDic.index(forKey: "CallStatus") != nil {
+                                                    responseResult = responseDic["CallStatus"] as! String
+                                                }
+                                            if  responseResult == "GOOD" {
+                                                 DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                           //     self.navigationItem.hidesBackButton = true;
+                                                self.backBtn.isHidden = true
+                                                self.paySucessView.isHidden = false
+                                                self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+                                                
+                                                let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+                                                
+                                                let msg = signature.html2String;
+                                                self.nutritionstDescLbl.text =
+                                                msg;
+                                                
+                                            } else{
+                                                 DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                            }
+                                        }, failure : { error in
+                                            //  print(error?.description)
+                                            //            self.getQuestionsFromFB()
+                                             DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
+                                            
+                                        })
+                                    }
+
                                     
                                 } else {
                                    // self.navigationItem.hidesBackButton = true;
@@ -1650,27 +1835,26 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                         Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
                             if error == nil {
                                 //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
-                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" {
                                     var url = ""
                                     if self.packageId == self.ptpPackage {
                                         url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
                                     } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
                                         url = TweakAndEatURLConstants.IND_AiDP_CONTENT
-                                    }
-                                    APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                                        APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
                                         let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                                        var responseResult = ""
-                                        
-                                        if responseDic.index(forKey: "callStatus") != nil {
-                                            responseResult = responseDic["callStatus"] as! String
-                                        } else if responseDic.index(forKey: "CallStatus") != nil {
-                                            responseResult = responseDic["CallStatus"] as! String
-                                        }
+                                            var responseResult = ""
+                                            
+                                            if responseDic.index(forKey: "callStatus") != nil {
+                                                responseResult = responseDic["callStatus"] as! String
+                                            } else if responseDic.index(forKey: "CallStatus") != nil {
+                                                responseResult = responseDic["CallStatus"] as! String
+                                            }
                                         if  responseResult == "GOOD" {
                                              DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
                 }
-                                        //    self.navigationItem.hidesBackButton = true;
+                                       //     self.navigationItem.hidesBackButton = true;
                                             self.backBtn.isHidden = true
                                             self.paySucessView.isHidden = false
                                             self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
@@ -1695,7 +1879,49 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                                         TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
                                         
                                     })
+                                    } else if self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" {
+                                        url = TweakAndEatURLConstants.CLUB_AIDP_CONTENT
+                                        APIWrapper.sharedInstance.postReceiptData(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: ["pkgId": self.packageId] as [String : AnyObject], success: { response in
+                                            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                                                var responseResult = ""
+                                                
+                                                if responseDic.index(forKey: "callStatus") != nil {
+                                                    responseResult = responseDic["callStatus"] as! String
+                                                } else if responseDic.index(forKey: "CallStatus") != nil {
+                                                    responseResult = responseDic["CallStatus"] as! String
+                                                }
+                                            if  responseResult == "GOOD" {
+                                                 DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                           //     self.navigationItem.hidesBackButton = true;
+                                                self.backBtn.isHidden = true
+                                                self.paySucessView.isHidden = false
+                                                self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+                                                
+                                                let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+                                                
+                                                let msg = signature.html2String;
+                                                self.nutritionstDescLbl.text =
+                                                msg;
+                                                
+                                            } else{
+                                                 DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                            }
+                                        }, failure : { error in
+                                            //  print(error?.description)
+                                            //            self.getQuestionsFromFB()
+                                             DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+                                            TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
+                                            
+                                        })
+                                    }
 
+                                    
                                 } else {
                                 //self.navigationItem.hidesBackButton = true;
                                     self.backBtn.isHidden = true
@@ -1782,6 +2008,160 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         let _ = self.navigationController?.popViewController(animated: true)
         
     }
+    
+    @objc func newPackagLabelSelections() {
+        if self.nutritionLabelPackagesArray.count > 0 {
+            
+            let nutritionLabelDict = nutritionLabelPackagesArray[0] as! [String : AnyObject];
+            print(nutritionLabelDict);
+            let packagePriceArray = nutritionLabelDict["packagePrice"] as! NSMutableArray;
+            for pckgPrice in packagePriceArray {
+                let packagePriceDict = pckgPrice as! [String : AnyObject];
+                if packagePriceDict["countryCode"] as AnyObject as! String == self.countryCode {
+                    if (packagePriceDict.index(forKey: "pkgRecurPrice") != nil) {
+                        self.nutritionLabelPriceArray = NSMutableArray()
+                        for dict  in packagePriceDict["pkgRecurPrice"] as! NSMutableArray {
+                            let priceDict = dict as! [String : AnyObject];
+                            if priceDict["isActive"] as! Bool == true {
+                            self.nutritionLabelPriceArray.add(priceDict);
+                            }
+                        }
+                    }
+                }
+                
+            }
+            print(self.nutritionLabelPackagesArray);
+            for priceDict in self.nutritionLabelPriceArray {
+                let dict = priceDict as! [String: AnyObject]
+                if dict.index(forKey: "imgBtn") != nil {
+                   // self.packagesImagesArray.add(dict["pkgImg"] as! String)
+                    self.itemsArray.append(Item(value: dict["imgBtn"] as! String))
+                    
+                }
+            }
+            //self.pageControl.numberOfPages = self.items.count
+            
+            //print(self.packagesImagesArray)
+            DispatchQueue.main.async {
+//                self.packagesCarouselView.reloadData()
+//                self.packagesCarouselView.scrollToItem(at: self.packagesImagesArray.count >= 2 ? 1: 0, animated: true)
+
+                       }
+            
+            
+            for packageDict in self.nutritionLabelPackagesArray {
+                let dict = packageDict as! [String: AnyObject]
+                for (key,val) in dict {
+
+                    if key == "imgPopupBg" {
+                            let urlString = val as! String
+                        //pp_pkgsImageVIew.isHidden = true
+                          self.pp_pkgsImageVIew.sd_setImage(with: URL(string: urlString)) { (image, error, cache, url) in
+                                                                             // Your code inside completion block
+                            let ratio = image!.size.width / image!.size.height
+                            let newHeight = self.pp_pkgsImageVIew.frame.width / ratio
+                           self.ppPackageDetailsImageViewHeightConstraint.constant = newHeight
+                            self.ppPackagesInnerViewHeightConstraint.constant = newHeight
+                            self.view.layoutIfNeeded()
+                               
+
+                            }
+                    }
+                }
+                }
+            DispatchQueue.main.async {
+
+                if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
+
+                    UserDefaults.standard.removeObject(forKey: "POP_UP_IDENTIFIERS")
+            if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_3M" {
+                //MYTAE_IND_QUATERLY
+                if self.nutritionLabelPriceArray.count > 0 {
+                    for dict in self.nutritionLabelPriceArray {
+                        let recurPriceDict = dict as! [String: AnyObject]
+                        if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_QUARTERLY" {
+                            self.startPurchase(identifier: "MYTAE_IND_QUARTERLY", dict: recurPriceDict)
+                        }
+                    }
+                }
+            } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_3M" {
+                //WL_INT_IND_QUATERLY
+                if self.nutritionLabelPriceArray.count > 0 {
+                    for dict in self.nutritionLabelPriceArray {
+                        let recurPriceDict = dict as! [String: AnyObject]
+                        if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_QUATERLY" {
+                            self.startPurchase(identifier: "WL_INT_IND_QUATERLY", dict: recurPriceDict)
+                        }
+                    }
+                }
+            } else if self.identifierFromPopUp == "CLUB_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "TAECLUB_IND_MONTHLY" {
+                                self.startPurchase(identifier: "TAECLUB_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "MYAIDP_PUR_IND_OP_3M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYAIDP_IND_QUARTERLY" {
+                                self.startPurchase(identifier: "MYAIDP_IND_QUARTERLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "WLIF_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "WL_INT_IND_MONTHLY" {
+                                self.startPurchase(identifier: "WL_INT_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "MYAIDP_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYAIDP_IND_MONTHLY" {
+                                self.startPurchase(identifier: "MYAIDP_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "MYTAE_PUR_IND_OP_1M" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "MYTAE_IND_MONTHLY" {
+                                self.startPurchase(identifier: "MYTAE_IND_MONTHLY", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                } else if self.identifierFromPopUp == "NCP_PUR_IND_OP" || self.identifierFromPopUp == "PACK_IND_NCP" {
+                    //WL_INT_IND_QUATERLY
+                    if self.nutritionLabelPriceArray.count > 0 {
+                        for dict in self.nutritionLabelPriceArray {
+                            let recurPriceDict = dict as! [String: AnyObject]
+                            if recurPriceDict["productIdentifier"] as! String == "NCP_IND_ONETIME" {
+                                self.startPurchase(identifier: "NCP_IND_ONETIME", dict: recurPriceDict)
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            }
+        }
+
+        }
     
     @objc func packagLabelSelections() {
         if self.nutritionLabelPackagesArray.count > 0 {
@@ -2196,8 +2576,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.pp_pkgsImageVIew.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.inAppPurchasePriceTableView.isHidden = true
+        self.inAppPurchasePriceTableView.backgroundColor = .clear
+        self.overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         self.pp_PackagesInnerDetailView.layer.cornerRadius = 15
         let props = [
             "package_id": self.packageId,
@@ -2258,6 +2639,27 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.referralCodeBtn.isHidden = true
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if self.countryCode == "91" || self.countryCode == "1" {
+                if self.countryCode == "91" {
+                    DispatchQueue.main.async {
+                        self.pp_pkgImgView.image = UIImage.init(named: "pp_pkgs")
+                    }
+                    
+                } else if self.countryCode == "1" {
+                    DispatchQueue.main.async {
+                        self.pp_pkgImgView.image = UIImage.init(named: "pp_pkgs-usa")
+
+                    }
+                }
+                self.pp_PackagesDetailView.isHidden = false
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+                self.getNewMyTweakAndEatDetails()
+            } else {
+                self.pp_PackagesDetailView.isHidden = true
+                self.carouselsView.isHidden = false
+                self.moreInfoView.isHidden = false
+                self.packagesCarouselView.isHidden = false
+            }
             if self.countryCode == "91" {
                 self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
             } else if self.countryCode == "62" {
@@ -2270,27 +2672,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             } else if self.countryCode == "60" {
                 self.clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
             }
-            self.carouselsView.isHidden = false
-            self.moreInfoView.isHidden = false
-            self.packagesCarouselView.isHidden = false
-//            if self.packageId == self.clubPackageSubscribed {
-//                self.carouselsView.isHidden = true
-//                self.moreInfoView.isHidden = false
-//                self.featuresView.isHidden = true
-//                //self.moreInfoView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-//            } else {
-//                self.carouselsView.isHidden = false
-//                self.moreInfoView.isHidden = false
-//                self.packagesCarouselView.isHidden = false
-//            }
-//            } else {
-//                self.packagesCarouselView.isHidden = true
-//                self.carouselView1.isHidden = true
-//                self.moreInfoView.isHidden = true
-//                self.navigationController?.setNavigationBarHidden(false, animated: true)
-//            }
+
            
         }
+        
         //self.packagesCarouselView.centerItemWhenSelected = true
         let termsAttr : [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
@@ -2582,16 +2967,16 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             
-            if  countryCode == "91" {
+            if  countryCode == "91" || self.countryCode == "1" {
                // labelsPrice = "pkgRecurPrice"
-             
-                if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
-                    self.imgPopup = "imgClubPopup"
-                    self.labelsPrice = "pkgRecurClubPrice"
-                } else {
-                    labelsPrice = "pkgRecurPrice"
-
-                }
+                labelsPrice = "pkgRecurPrice"
+//                if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+//                    self.imgPopup = "imgClubPopup"
+//                    self.labelsPrice = "pkgRecurClubPrice"
+//                } else {
+//                    labelsPrice = "pkgRecurPrice"
+//
+//                }
                // self.featuresView.isHidden = false
                 //self.getPackageDetails()
                 
@@ -2603,7 +2988,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 labelsPrice = "pkgPrice"
                 }
             }
-            self.getMyTweakAndEatDetails()
+            if self.countryCode != "91" || self.countryCode != "1" {
+                self.getMyTweakAndEatDetails()
+            }
 
 //            } else  {
 ////                if self.packageId == self.clubPackageSubscribed {
@@ -2957,10 +3344,14 @@ extension MoreInfoPremiumPackagesViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         let center = self.view.convert(self.carouselView1.center, to: self.carouselView1)
-        let index = self.carouselView1.indexPathForItem(at: center)
-        if self.moreInfoView.isHidden == false {
-        self.pageControl.currentPage = Int(index!.row)
+       // let index = self.carouselView1.indexPathForItem(at: center)
+        if let index = self.carouselView1.indexPathForItem(at: center) {
+            if self.moreInfoView.isHidden == false {
+                
+                self.pageControl.currentPage = Int(index.row)
+            }
         }
+        
     }
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        for cell in self.carouselView1.visibleCells {

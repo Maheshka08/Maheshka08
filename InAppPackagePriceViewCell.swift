@@ -13,6 +13,10 @@ class InAppPackagePriceViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
+        self.imgView.contentMode = .scaleAspectFit
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

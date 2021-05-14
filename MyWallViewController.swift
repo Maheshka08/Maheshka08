@@ -485,7 +485,15 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
        }
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        var cCode = ""
+        var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if cCode == "91" || cCode == "1" {
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+            }
+              }
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             if snapshot.childrenCount > 0 {
@@ -655,6 +663,38 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             
             if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        }  else if promoAppLink == "-ClubInd4tUPXHgVj9w3" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        }  else if promoAppLink == "-ClubUsa5nDa1M8WcRA6" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
                 
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
             } else {
@@ -1054,28 +1094,39 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func cellTappedOnImage(_ cell: TweakMyWallTableViewCell, sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let dismissBtn = UIButton(frame: CGRect(5, 64, 36, 36))
-        dismissBtn.setImage(UIImage.init(named: "icons8-delete"), for: .normal)
-        dismissBtn.addTarget(self, action: #selector(self.dismissImageView), for: .touchUpInside)
-        scrollV = UIScrollView(frame: CGRect(x: 0, y: 0 - 64, width: self.view.frame.size.width, height: self.view.frame.size.height + 64))
-        scrollV.minimumZoomScale = 1.0
-        scrollV.maximumZoomScale = 3.5
-        scrollV.delegate = self
-        scrollV.backgroundColor = UIColor.black
-        self.view.addSubview(scrollV)
-        newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = CGRect(x:0, y:0 , width: self.view.frame.size.width, height: self.view.frame.size.height)
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
-        newImageView.isUserInteractionEnabled = true
-        
-        scrollV.addSubview(newImageView)
-        scrollV.addSubview(dismissBtn)
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.navigationBar.isHidden = false
-        
-        newImageView.isUserInteractionEnabled = true
+//        let imageView = sender.view as! UIImageView
+//        let dismissBtn = UIButton(frame: CGRect(5, 64, 36, 36))
+//        dismissBtn.setImage(UIImage.init(named: "icons8-delete"), for: .normal)
+//        dismissBtn.addTarget(self, action: #selector(self.dismissImageView), for: .touchUpInside)
+//        scrollV = UIScrollView(frame: CGRect(x: 0, y: 0 - 64, width: self.view.frame.size.width, height: self.view.frame.size.height + 64))
+//        scrollV.minimumZoomScale = 1.0
+//        scrollV.maximumZoomScale = 3.5
+//        scrollV.delegate = self
+//        scrollV.backgroundColor = UIColor.black
+//        self.view.addSubview(scrollV)
+//        newImageView = UIImageView(image: imageView.image)
+//        newImageView.frame = CGRect(x:0, y:0 , width: self.view.frame.size.width, height: self.view.frame.size.height)
+//        newImageView.backgroundColor = .black
+//        newImageView.contentMode = .scaleAspectFit
+//        newImageView.isUserInteractionEnabled = true
+//
+//        scrollV.addSubview(newImageView)
+//        scrollV.addSubview(dismissBtn)
+//        self.tabBarController?.tabBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = false
+//
+//        newImageView.isUserInteractionEnabled = true
+        var imagesArray = [String]()
+        let cellDictionary = self.tweakFeedsArray[cell.cellIndexPath]
+        let imageUrl = cellDictionary.imageUrl as AnyObject as? String
+        imagesArray.append(imageUrl!)
+        let feedContent = cellDictionary.feedContent as AnyObject as? String
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "PageViewImageSlider") as! PageViewImageSlider
+        controller.itemIndex = 0
+        controller.dateInfo = feedContent!
+        controller.imagesArray = imagesArray
+        self.present(controller, animated: true, completion: nil)
         
         
     }

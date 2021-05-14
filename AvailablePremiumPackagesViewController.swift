@@ -810,7 +810,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
     func moveToAnotherView(link: String) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         var packageObj = [String : AnyObject]();
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             if snapshot.childrenCount > 0 {
@@ -1129,7 +1129,7 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
 //                 self.goToTAEClub()
 //             }
 //        } else {
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             self.premiumPackagesArray = NSMutableArray()
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
@@ -1162,6 +1162,24 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
                             } else  if (cellDictionary.mppc_fb_id == "-IndIWj1mSzQ1GDlBpUt") {
                                 if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
                                     self.performSegue(withIdentifier: "myTweakAndEat", sender: "-IndIWj1mSzQ1GDlBpUt");
+
+                                } else  {
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+
+
+                            } else  if (cellDictionary.mppc_fb_id == "-ClubInd4tUPXHgVj9w3") {
+                                if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+
+                                } else  {
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+
+
+                            } else  if (cellDictionary.mppc_fb_id == "-ClubUsa5nDa1M8WcRA6") {
+                                if UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubUsa5nDa1M8WcRA6");
 
                                 } else  {
                                     self.performSegue(withIdentifier: "moreInfo", sender: self);
@@ -1250,6 +1268,26 @@ class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataS
 
                                 }
                                 return
+
+                            } else  if (cellDictionary.mppc_fb_id == "-ClubInd4tUPXHgVj9w3") {
+                                if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+
+                                } else  {
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+                                return
+
+
+                            } else  if (cellDictionary.mppc_fb_id == "-ClubUsa5nDa1M8WcRA6") {
+                                if UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubUsa5nDa1M8WcRA6");
+
+                                } else  {
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+                                return
+
 
                             } else if (cellDictionary.mppc_fb_id == self.clubPackageSubscribed) {
                                 if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil  {
@@ -1410,6 +1448,7 @@ return
     @IBOutlet weak var wantHelpLabel: UILabel!;
     @IBOutlet weak var askSiaButtonHeightConstraint: NSLayoutConstraint!
     var cellTapped:Bool = true
+    var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
     var currentRow = 0;
     func goToHomePage() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -1468,6 +1507,9 @@ return
         }
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)";
+        }
+        if self.countryCode == "91" || self.countryCode == "1" {
+            dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
         }
         if self.countryCode == "91" {
             self.askSiaButton.isHidden = false

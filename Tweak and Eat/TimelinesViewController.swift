@@ -1019,7 +1019,15 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
        }
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        var cCode = ""
+        var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if cCode == "91" || cCode == "1" {
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+            }
+              }
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             if snapshot.childrenCount > 0 {
@@ -1200,6 +1208,38 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             
             
             if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        }  else if promoAppLink == "-ClubInd4tUPXHgVj9w3" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        }  else if promoAppLink == "-ClubUsa5nDa1M8WcRA6" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
                 
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
             } else {

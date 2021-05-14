@@ -117,7 +117,15 @@ class TimelinesDetailsViewController: UIViewController {
     
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        var cCode = ""
+        var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if cCode == "91" || cCode == "1" {
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+            }
+              }
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             if snapshot.childrenCount > 0 {
@@ -284,7 +292,39 @@ class TimelinesDetailsViewController: UIViewController {
                 
             }
             
-        }else if promoAppLink == "-IndWLIntusoe3uelxER" {
+        }  else if promoAppLink == "-ClubInd4tUPXHgVj9w3" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        }  else if promoAppLink == "-ClubUsa5nDa1M8WcRA6" {
+            
+            
+            if UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                
+                self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);
+            } else {
+                DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true);
+                }
+                self.moveToAnotherView(promoAppLink: promoAppLink)
+
+                
+                
+            }
+            
+        } else if promoAppLink == "-IndWLIntusoe3uelxER" {
             
             
             if UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
@@ -543,7 +583,15 @@ class TimelinesDetailsViewController: UIViewController {
     }
     
     @objc func getPremiumPackagesArray() {
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        var cCode = ""
+        var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if cCode == "91" || cCode == "1" {
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+            }
+              }
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             self.premiumPackagesArray = NSMutableArray()

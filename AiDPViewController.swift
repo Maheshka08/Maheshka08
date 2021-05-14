@@ -228,7 +228,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         self.questionIconButton.isHidden = false;
         self.chatIconButton.isHidden = false;
        
-        if packageId == "-SquhLfL5nAsrhdq7GCY" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage {
+        if packageId == "-SquhLfL5nAsrhdq7GCY" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" {
             self.statusView.isHidden = true
         } else {
             self.chatIconButton.isHidden = true
@@ -236,7 +236,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
 
         self.optionsLabel.text = "On WakeUp Options";
-        self.title = "AiDP";
+        //self.title = "AiDP";
         self.getFirebaseData();
     }
     
@@ -348,7 +348,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                             } else {
                                 self.itemsArray = NSMutableArray();
                                 self.dietPlanArray = NSMutableArray();
-                                if self.packageId == "-SquhLfL5nAsrhdq7GCY" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage {
+                                if self.packageId == "-SquhLfL5nAsrhdq7GCY" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" || self.packageId == self.ptpPackage {
                                     self.dietPopupView.isHidden = false
 //                                    let refreshAlert = UIAlertController(title: "", message: "Your diet plan is getting ready... Please visit later..." , preferredStyle: UIAlertController.Style.alert);
 //
@@ -361,7 +361,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                                     self.isPublished = false
                                 }
                                 self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none;
-                                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi"  || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas") {
+                                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi"  || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas") {
                                     self.chatIconButton.isHidden = true
                                     self.questionIconButton.isHidden = true
                                 } else {
@@ -408,7 +408,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 dispatch_group.leave();
                 dispatch_group.notify(queue: DispatchQueue.main) {
                     MBProgressHUD.hide(for: self.view, animated: true);
-                    if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas") {
+                    if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6") {
                     if self.status == 0 {
                         let htmlStatus = "AiDP - tweakyfai (our own Ai platform) generates a Personalised diet plan.\n\nAs a \"My Tweak & Eat\" subscriber you can ask for your AiDP plan at any time.\n\nPlease click below to start the process.";
                         self.dietPlanCaseLbl.text = htmlStatus;
@@ -448,7 +448,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 //
 //                self.present(refreshAlert, animated: true, completion: nil);
                 self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none;
-                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas") {
+                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi" || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6") {
                     self.chatIconButton.isHidden = true
                     self.questionIconButton.isHidden = true
                 } else {

@@ -3,4 +3,86 @@
    uuid = "33F67CA2-1762-4B05-9DF4-6454D6039418"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "New Group/Message.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "downloadAllMessages2(forUserID:chatID:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3 - c2dfe807c54f158d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Tweak_and_Eat.Message.downloadAllMessages2(forUserID: Swift.String, chatID: Swift.String, completion: (Tweak_and_Eat.Message) -&gt; ()) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/New%20Group/Message.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "400">
+               </Location>
+               <Location
+                  uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3 - e1bc8d741cf15a66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in static Tweak_and_Eat.Message.downloadAllMessages2(forUserID: Swift.String, chatID: Swift.String, completion: (Tweak_and_Eat.Message) -&gt; ()) -&gt; ()"
+                  moduleName = "Tweak and Eat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/New%20Group/Message.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B2DDD6B-5D7A-43F1-8B0E-A7ADA38BE6DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyTweakAndEatVCViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1476"
+            endingLineNumber = "1476"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36CA49F3-0AB9-4B62-92FE-790E0C955200"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9168"
+            endingLineNumber = "9168"
+            landmarkName = "homeInfoApiCalls()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

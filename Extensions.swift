@@ -34,6 +34,21 @@ extension Date {
     }
 }
 
+extension UILabel {
+    
+    func setLineHeight(lineHeight: CGFloat, txt: String?) {
+        let text = txt
+        if let text = text {
+            let attributeString = NSMutableAttributedString(string: text)
+            let style = NSMutableParagraphStyle()
+            
+            style.lineSpacing = lineHeight
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, txt?.count ?? 0))
+            self.attributedText = attributeString
+        }
+    }
+}
+
 extension Date {
     var startOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)

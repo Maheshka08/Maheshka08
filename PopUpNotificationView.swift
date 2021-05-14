@@ -55,7 +55,15 @@ class PopUpNotificationView: UIView {
     
     func moveToAnotherView(promoAppLink: String) {
         var packageObj = [String : AnyObject]();
-        Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+        var cCode = ""
+        var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+            if cCode == "91" || cCode == "1" {
+                dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+            }
+              }
+        dbReference.observe(DataEventType.value, with: { (snapshot) in
             // this runs on the background queue
             // here the query starts to add new 10 rows of data to arrays
             if snapshot.childrenCount > 0 {

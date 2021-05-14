@@ -791,6 +791,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         UserDefaults.standard.set("MY_TAE", forKey: "SWAP_SWITCH_VIEW")
         UserDefaults.standard.synchronize()
                 if UserDefaults.standard.value(forKey: "APPROX_CALORIES") != nil {
@@ -994,7 +995,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         }
         //self.countryCode = "1"
         if self.countryCode == "91" {
-            self.immunityBoosterView.isHidden = false
+            self.immunityBoosterView.isHidden = true
         } else {
           self.immunityBoosterView.isHidden = true
         }
@@ -1014,7 +1015,14 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         if countryCode == "1" {
             self.unsubScribePlan = TweakAndEatURLConstants.UNSUBSCRIBE_USA
             tipImage.image = UIImage.init(named: "tip_of_the_day")
-            self.title = "My Tweak & Eat"
+            if self.packageID == "-ClubUsa5nDa1M8WcRA6" {
+                self.title = "My Club AiDP"
+
+            } else {
+                self.title = "My Tweak & Eat"
+
+            }
+            
             self.myAiDPLbl.text = "My Diet Plan"
             self.dietPlanImageView.image = UIImage(named: "my_diet_plan_icon")
         } else if countryCode == "60" ||  countryCode == "62" {
@@ -1050,7 +1058,13 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                            self.myAiDPLbl.text = "My Diet Plan"
                            self.dietPlanImageView.image = UIImage(named: "my_diet_plan_icon")
                           // self.myAiDPBtn.setImage(UIImage(named: "my_diet_plan_icon"), for: .normal)
-                       }
+            } else if self.packageID == "-ClubInd4tUPXHgVj9w3" {
+                tipImage.image = UIImage.init(named: "tip_of_the_day4")
+                self.title = "My Club AiDP"
+                self.myAiDPLbl.text = "My Diet Plan"
+                self.dietPlanImageView.image = UIImage(named: "my_diet_plan_icon")
+                
+            }
         }
         if self.packageID == self.ptpPackage {
             tipImage.image = UIImage.init(named: "tip_of_the_day4")
@@ -1277,7 +1291,15 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     
    func getFirebaseData() {
      MBProgressHUD.showAdded(to: self.view, animated: true);
-    Database.database().reference().child("PremiumPackageDetailsiOS").observe(DataEventType.value, with: { (snapshot) in
+    var cCode = ""
+    var dbReference = Database.database().reference().child("PremiumPackageDetailsiOS")
+    if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+        cCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        if cCode == "91" || cCode == "1" {
+            dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
+        }
+          }
+    dbReference.observe(DataEventType.value, with: { (snapshot) in
     // this runs on the background queue
     // here the query starts to add new 10 rows of data to arrays
     self.nutritionLabelPackagesArray = NSMutableArray();
@@ -1424,7 +1446,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         self.myNutritionViewLast10TweaksTableView.isHidden = true
         self.myNutritionViewSelectYourMealTableView.isHidden = true
         self.mealTypeTableView.isHidden = true
-        if self.packageID == "-AiDPwdvop1HU7fj8vfL" || self.packageID == "-MzqlVh6nXsZ2TCdAbOp" || self.countryCode == "1"  || self.packageID == "-MalAXk7gLyR3BNMusfi" || self.countryCode == "60" || self.packageID == "-SgnMyAiDPuD8WVCipga"  || self.packageID == "-IdnMyAiDPoP9DFGkbas" || self.packageID == self.ptpPackage || self.countryCode == "65" || self.countryCode == "62" || self.countryCode == "63"  {
+        if self.packageID == "-AiDPwdvop1HU7fj8vfL" || self.packageID == "-MzqlVh6nXsZ2TCdAbOp" || self.countryCode == "1"  || self.packageID == "-MalAXk7gLyR3BNMusfi" || self.countryCode == "60" || self.packageID == "-SgnMyAiDPuD8WVCipga"  || self.packageID == "-IdnMyAiDPoP9DFGkbas" || self.packageID == self.ptpPackage || self.countryCode == "65" || self.countryCode == "62" || self.countryCode == "63" || self.packageID == "-ClubInd4tUPXHgVj9w3" || self.packageID == "-ClubUsa5nDa1M8WcRA6" {
          self.performSegue(withIdentifier: "aidpPurchasePack", sender: self)
         } else if self.packageID == "-IndIWj1mSzQ1GDlBpUt" || self.packageID == "-MysRamadanwgtLoss99" || self.packageID == "-IndWLIntusoe3uelxER" {
             self.performSegue(withIdentifier: "dietPlan", sender: self)
@@ -1471,6 +1493,8 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                     destination.chatID = self.ptpPackage
                 } else if self.packageID == "-MzqlVh6nXsZ2TCdAbOp" {
                     destination.chatID = "-MzqlVh6nXsZ2TCdAbOp"
+                } else if self.packageID == "-ClubUsa5nDa1M8WcRA6" {
+                    destination.chatID = "-ClubUsa5nDa1M8WcRA6"
                 }
             } else if countryCode == "60" {
                 if self.packageID == self.ptpPackage {
@@ -1509,6 +1533,8 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                     popOverVC.packageId = self.ptpPackage
                 } else if self.packageID == "-MzqlVh6nXsZ2TCdAbOp" {
                     popOverVC.packageId = "-MzqlVh6nXsZ2TCdAbOp"
+                } else if self.packageID == "-ClubUsa5nDa1M8WcRA6" {
+                    popOverVC.packageId = "-ClubUsa5nDa1M8WcRA6"
                 }
             } else if countryCode == "60" {
                 if self.packageID == self.ptpPackage {
@@ -1542,6 +1568,9 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                     
                 } else if self.packageID == "-IndWLIntusoe3uelxER" {
                     popOverVC.packageId = "-IndWLIntusoe3uelxER";
+                                   
+                } else if self.packageID == "-ClubInd4tUPXHgVj9w3" {
+                    popOverVC.packageId = "-ClubInd4tUPXHgVj9w3";
                                    
                 }
                 

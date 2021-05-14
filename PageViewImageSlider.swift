@@ -23,15 +23,15 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
     @objc var imagesArray = [String]()
     @objc var itemIndex = 0
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        
-//        pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-//    }
-//    
-//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        
-//        pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-//    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        
+        pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -66,17 +66,22 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         self.dateLabel.numberOfLines = 0
         self.dateLabel.text = dateInfo
+        self.dateLabel.textAlignment = .center
     self.collectionView.delegate = self
         self.view.backgroundColor = .black
         self.collectionView.dataSource = self;
         // Do any additional setup after loading the view.
         pageControl.numberOfPages = imagesArray.count
         pageControl.currentPage = itemIndex;
+        pageControl.isUserInteractionEnabled = false
+        pageControl.transform = CGAffineTransform (scaleX: 1.5, y: 1.5);
         
         if imagesArray.count == 1 {
-            self.tweaksSwipe.isHidden = true
+            pageControl.isHidden = true
+
         } else {
-            self.tweaksSwipe.isHidden = false
+            pageControl.isHidden = false
+
         }
  
     }

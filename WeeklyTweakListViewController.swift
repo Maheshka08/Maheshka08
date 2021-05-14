@@ -225,6 +225,7 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 
         }
         if imagesArray.count == 0 {
+            
             TweakAndEatUtils.AlertView.showAlert(view: self, message: "No tweaks for today!")
             return
         }
@@ -286,6 +287,7 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
         if imgsArray.allSatisfy({$0 == "-"}) {
             DispatchQueue.main.async {
                 label.isHidden = false
+                label.isUserInteractionEnabled = false
                 label.text = "Hey! Looks like you did not tweak your \(mealType).\nPlease tweak your \(mealType) also to get comparison reports."
             }
             

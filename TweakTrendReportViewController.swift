@@ -126,8 +126,6 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                 self.calendarViewHeightConstraint.constant = 0
-                self.assumeStandardViewHeightConstraint.constant = 0
-                self.assumeStandardView.isHidden = true
                 self.calendarLabelView.isHidden = true
                 self.calView.isHidden = true
                 self.view.layoutIfNeeded()
@@ -149,11 +147,9 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
                     
                     self.calendarView.isHidden = false
 
-                self.assumeStandardViewHeightConstraint.constant = 55
                 self.view.layoutIfNeeded()
 
             }) { _ in
-                    self.assumeStandardView.isHidden = false
                     self.calendarLabelView.isHidden = false
                     self.calView.isHidden = false
 
@@ -167,9 +163,14 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.assumeStandardView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(TweakTrendReportViewController.scrollHome(notification:)), name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: nil);
-        let txt = "*Net excess/deficit calories each day/week"
+        let txt = "*Net excess/deficit calories each day/week.\nRecommended calories assumed on no tweak."
         self.calendarLabel.text = txt
+        //self.calendarLabel.setLineHeight(lineHeight: 25, txt: txt)
+
+        self.calendarLabel.numberOfLines = 0
+        //self.calendarLabel.textAlignment = .left
         currentMonthIndex = Calendar.current.component(.month, from: Date())
         currentYear = Calendar.current.component(.year, from: Date())
         currMonInString = currentMonthIndex < 10 ? "0\(currentMonthIndex)" : "\(currentMonthIndex))"
@@ -233,8 +234,8 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
             currentMonth = "\(currentMonthIndex)"
         }
         
-        getCalAssume(dt: "\(currentYear)\(currentMonth)")
-       // getMonthlyTrendsTop(dt: "\(currentYear)\(currentMonth)")
+        //getCalAssume(dt: "\(currentYear)\(currentMonth)")
+        getMonthlyTrendsTop(dt: "\(currentYear)\(currentMonth)")
         
         
         // Do any additional setup after loading the view.
@@ -393,6 +394,7 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        self.assumeStandardViewHeightConstraint.constant = 0
     }
     
 
