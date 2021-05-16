@@ -2292,9 +2292,9 @@ if dictionary.index(forKey: "weeksData") != nil {
 //        if self.countryCode == "62" {
 //            return
 //        }
-        HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-ClubUsa5nDa1M8WcRA6")
-//        self.infoIconTapped = true
-//        showHowToTweakScreen()
+        //HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-ClubInd4tUPXHgVj9w3")
+        self.infoIconTapped = true
+        showHowToTweakScreen()
 
         
     }
