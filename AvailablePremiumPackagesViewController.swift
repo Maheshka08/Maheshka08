@@ -1610,8 +1610,8 @@ return
        
         UserDefaults.standard.removeObject(forKey: "RECEIPT")
         //self.receiptValidation()
-        NotificationCenter.default.addObserver(self, selector: #selector(AvailablePremiumPackagesViewController.handlePurchaseNotification(_:)), name: NSNotification.Name(rawValue: "IN-APP-PURCHASE-SUCCESSFUL"),
-                                               object: nil)
+      //  NotificationCenter.default.addObserver(self, selector: #selector(AvailablePremiumPackagesViewController.handlePurchaseNotification(_:)), name: NSNotification.Name(rawValue: "IN-APP-PURCHASE-SUCCESSFUL"),
+                                               //object: nil)
         
       
         //self.countryCode = "33"

@@ -725,6 +725,16 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             }
             self.monthBtnTrailingConstraint.constant = 50;
 
+        } else {
+            self.myNutritionTopConstraint.constant = 80
+            if self.showGraph == false {
+            self.chatViewHeightConstraint.constant = 170
+            aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 170)
+            } else {
+                self.chatViewHeightConstraint.constant = 200
+                aaChartView.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
+            }
+            self.monthBtnTrailingConstraint.constant = 50;
         }
         self.view.layoutIfNeeded()
           self.loadingView.frame = CGRect(x: self.outerChartView.frame.origin.x, y: self.view.frame.origin.y, width: self.outerChartView.frame.size.width, height: self.chartView.frame.maxY)
