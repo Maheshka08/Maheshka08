@@ -77,7 +77,7 @@ struct TweakAndEatURLConstants {
     
     //GetPremiumPackages
     
-    static let GET_PREMIUM_PACKAGES : String = BASE_URL + "/api/user/getpremiumpackages";
+    static let GET_PREMIUM_PACKAGES : String = BASE_URL + "/api/user/getppkgsbycountry103";
     
     //Chat PushNotification
     

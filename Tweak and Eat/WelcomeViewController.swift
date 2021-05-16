@@ -821,13 +821,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.navigationController?.pushViewController(clickViewController!, animated: true)
 
     }
-    @IBAction func floatingCrownBtnTapped(_ sender: Any) {
-        if self.floatingCrownBtn.currentImage != UIImage.init(named: "cancel-btn") {
+    @IBAction func floatingCrownBtnTapped(_ sender: Any) {//CancelBtn
+        if self.floatingCrownBtn.currentImage != UIImage.init(named: "CancelBtn") {
             DispatchQueue.main.async {
                 self.view.bringSubviewToFront(self.floatingButtonsView)
                 self.view.bringSubviewToFront(self.floatingCrownBtn)
 
-                     self.floatingCrownBtn.setImage(UIImage.init(named: "cancel-btn"), for: .normal)
+                     self.floatingCrownBtn.setImage(UIImage.init(named: "CancelBtn"), for: .normal)
                    self.floatingButtonsView.isHidden = false
                    self.floatingButtonsView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
                    self.floatingTableView.reloadData()
@@ -2292,7 +2292,7 @@ if dictionary.index(forKey: "weeksData") != nil {
 //        if self.countryCode == "62" {
 //            return
 //        }
-        //HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-ClubInd4tUPXHgVj9w3")
+        //HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-IndWLIntusoe3uelxER")
         self.infoIconTapped = true
         showHowToTweakScreen()
 

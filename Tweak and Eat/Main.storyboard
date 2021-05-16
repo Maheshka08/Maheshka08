@@ -354,7 +354,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qL0-Nk-TRu">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="137"/>
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="137"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakfast        " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSm-u3-MvF">
                                                             <rect key="frame" x="12" y="-13" width="103" height="33"/>
@@ -367,7 +367,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SoZ-a9-VSk">
-                                                            <rect key="frame" x="12" y="21" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="21" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="116" id="ZDe-CS-TNW"/>
@@ -429,7 +429,7 @@
                                                             </cells>
                                                         </collectionView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk2-ph-DF8">
-                                                            <rect key="frame" x="12" y="21" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="21" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -468,7 +468,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUa-qO-C5p">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="135"/>
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="135"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Brunch          " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jss-jW-yJC">
                                                             <rect key="frame" x="12" y="-15" width="95.333333333333329" height="33"/>
@@ -481,7 +481,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="klE-PY-bbb">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="116" id="eXC-vd-fRR"/>
@@ -543,7 +543,7 @@
                                                             </cells>
                                                         </collectionView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1F-Wb-xKU">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -582,7 +582,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f28-ep-2hB">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="134"/>
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="134"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Lunch      " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SF9-t9-x8I">
                                                             <rect key="frame" x="12" y="-16" width="72.333333333333329" height="33"/>
@@ -595,7 +595,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6CB-1G-Ynb">
-                                                            <rect key="frame" x="12" y="18" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="18" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="116" id="TcC-to-0wO"/>
@@ -657,7 +657,7 @@
                                                             </cells>
                                                         </collectionView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArX-Bg-veA">
-                                                            <rect key="frame" x="12" y="18" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="18" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -696,7 +696,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTj-LC-fy8">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="135"/>
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="135"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Evening Snack    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLA-un-28S">
                                                             <rect key="frame" x="12" y="-15" width="130.33333333333334" height="33"/>
@@ -709,7 +709,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f1w-hE-B1H">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="116" id="NMG-lF-dOX"/>
@@ -771,7 +771,7 @@
                                                             </cells>
                                                         </collectionView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGM-qP-2Qt">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -810,7 +810,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-Fx-Irp">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="135"/>
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="135"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Dinner    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K39-Ht-Hhk">
                                                             <rect key="frame" x="12" y="-15" width="68.333333333333329" height="33"/>
@@ -823,7 +823,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gCO-Wr-aA1">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="116" id="Myx-fB-jdy"/>
@@ -885,7 +885,7 @@
                                                             </cells>
                                                         </collectionView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2m-jN-5Q2">
-                                                            <rect key="frame" x="12" y="19" width="277" height="116"/>
+                                                            <rect key="frame" x="12" y="19" width="292" height="116"/>
                                                             <color key="backgroundColor" red="0.94903236629999999" green="0.94899672270000002" blue="0.94902092220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -15317,7 +15317,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-QZ-luX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="182.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="182.66666666666666"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uqV-rL-hMk">
                                                         <size key="itemSize" width="230" height="162"/>
@@ -15442,7 +15442,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R4P-tK-z31">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="172.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="172.66666666666666"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mjl-iz-ZFq">
                                                         <size key="itemSize" width="230" height="149"/>

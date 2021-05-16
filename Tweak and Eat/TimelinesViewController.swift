@@ -1386,10 +1386,10 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
 
             let buttonImage = UIButton(type: .custom)
 
-            buttonImage.frame = CGRect(x: tableView.frame.width - 190, y: 12, width: 180, height: 40)
+            buttonImage.frame = CGRect(x: tableView.frame.width - 230, y: 12, width: 220, height: 40)
             buttonImage.setImage(UIImage.init(named: "REPORTS-(My-Nutrition)_btn"), for: .normal)
             buttonImage.addTarget(self, action:#selector(self.reportsButtonTapped), for: .touchUpInside)
-            headerView.backgroundColor = UIColor.groupTableViewBackground
+            headerView.backgroundColor = UIColor.white
             headerView.addSubview(buttonImage)
 
             return headerView

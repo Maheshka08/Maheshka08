@@ -207,12 +207,12 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         let rangeOfExcessText = (txt as NSString).range(of: excessText)
         if (rangeOfExcessText.length > 0) {
             attrsString.addAttribute(NSAttributedString.Key.foregroundColor,value:greenColor,range:rangeOfExcessText)
-            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: rangeOfExcessText)
+            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 22), range: rangeOfExcessText)
         }
         let rangeOfDeficitText = (txt as NSString).range(of: deficitText)
         if (rangeOfDeficitText.length > 0) {
             attrsString.addAttribute(NSAttributedString.Key.foregroundColor,value:redColor,range:rangeOfDeficitText)
-            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: rangeOfDeficitText)
+            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 22), range: rangeOfDeficitText)
         }
                 
         // set attributed text

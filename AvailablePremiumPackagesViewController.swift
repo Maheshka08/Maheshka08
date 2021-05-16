@@ -1667,7 +1667,9 @@ return
 
         } else if segue.identifier == "moreInfo" {
             
-        
+//            DispatchQueue.main.async {
+//           self.tableView.reloadData()
+//           }
             let popOverVC = segue.destination as! MoreInfoPremiumPackagesViewController;
             if UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") != nil {
                 self.identifierFromPopUp = UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") as! String

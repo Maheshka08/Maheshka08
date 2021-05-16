@@ -1457,6 +1457,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     func receiptValidation() {
+        if self.priceInDouble == 0.0 {
+            return
+        }
          DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
         }
@@ -1526,6 +1529,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
   
     }
     func sendNCPdetails(transactionID: String) {
+        if self.priceInDouble == 0.0 {
+         return
+        }
         DispatchQueue.main.async {
        MBProgressHUD.showAdded(to: self.view, animated: true);
        }
@@ -1589,6 +1595,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
  
    }
     func recptValidation() {
+        if self.price == "" {
+            return
+        }
         DispatchQueue.main.async {
             MBProgressHUD.showAdded(to: self.view, animated: true);
 
