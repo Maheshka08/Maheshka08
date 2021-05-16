@@ -590,6 +590,13 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
             
+        } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+            }
         } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
@@ -849,46 +856,46 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }    }
           
-       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-           if self.topBannersDict.count > 0 {
-           let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 80))
-
-           let buttonImage = UIButton(type: .custom)
-           buttonImage.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80)
-           //        button2.backgroundColor = .blue
-          // buttonImage.setImage(UIImage.init(named: "ad-banner-1"), for: .normal)
-               //  let imageUrl = self.topBannersDict["img"] as! String
-               let url = URL(string: self.topBannerImage)
-                      DispatchQueue.global(qos: .background).async {
-                          // Call your background task
-                          let data = try? Data(contentsOf: url!)
-                          // UI Updates here for task complete.
-                       //   UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
-
-                          if let imageData = data {
-                              let image = UIImage(data: imageData)
-                              DispatchQueue.main.async {
-                                  
-                               buttonImage.setBackgroundImage(image, for: .normal)
-                                  
-                              }
-                       }
-               }
-           buttonImage.addTarget(self, action:#selector(self.bannerClicked), for: .touchUpInside)
-           headerView.backgroundColor = UIColor.groupTableViewBackground
-           headerView.addSubview(buttonImage)
-
-           return headerView
-           }
-           return UIView()
-       }
+//       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//           if self.topBannersDict.count > 0 {
+//           let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 80))
+//
+//           let buttonImage = UIButton(type: .custom)
+//           buttonImage.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80)
+//           //        button2.backgroundColor = .blue
+//          // buttonImage.setImage(UIImage.init(named: "ad-banner-1"), for: .normal)
+//               //  let imageUrl = self.topBannersDict["img"] as! String
+//               let url = URL(string: self.topBannerImage)
+//                      DispatchQueue.global(qos: .background).async {
+//                          // Call your background task
+//                          let data = try? Data(contentsOf: url!)
+//                          // UI Updates here for task complete.
+//                       //   UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
+//
+//                          if let imageData = data {
+//                              let image = UIImage(data: imageData)
+//                              DispatchQueue.main.async {
+//                                  
+//                               buttonImage.setBackgroundImage(image, for: .normal)
+//                                  
+//                              }
+//                       }
+//               }
+//           buttonImage.addTarget(self, action:#selector(self.bannerClicked), for: .touchUpInside)
+//           headerView.backgroundColor = UIColor.groupTableViewBackground
+//           headerView.addSubview(buttonImage)
+//
+//           return headerView
+//           }
+//           return UIView()
+//       }
        
-       func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           if self.topBannersDict.count > 0 {
-              return 80
-           }
-        return 0
-       }
+//       func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//           if self.topBannersDict.count > 0 {
+//              return 80
+//           }
+//        return 0
+//       }
        
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -1166,7 +1173,7 @@ class MyWallViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
-     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
             self.getFireBaseData()
         } else {
         let weekday = getTodayWeekDay()

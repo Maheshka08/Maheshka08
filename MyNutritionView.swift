@@ -13,6 +13,9 @@ protocol MyNutritionButtonsTapped {
     func tappedOnLast10Tweaks()
     func tappedOnSelectYourMeal()
 }
+protocol ReportsButtonTaped {
+    func reportsButtonTapped()
+}
 
 class MyNutritionView: UIView {
     @IBOutlet weak var myNutritionFatsView: CircularProgressView!
@@ -27,17 +30,24 @@ class MyNutritionView: UIView {
     @IBOutlet weak var caloriesValue: UILabel!
     @IBOutlet weak var myNutritionCarbsView: CircularProgressView!
     var delegate: MyNutritionButtonsTapped!
+    var reportsButtonDelegate: ReportsButtonTaped?
     @IBOutlet weak var last10TweaksLbl: UILabel!
     @IBOutlet weak var selectYourMealLbl: UILabel!
     @IBOutlet weak var last10TweaksView: UIView!
     @IBOutlet weak var selectYourMealView: UIView!
     @IBOutlet weak var myNutritionCaloriesView: UIView!
+    @IBOutlet weak var reportsButton: UIButton!
     
     func updateSwitchUI(bool: Bool) {
-         switchButton = SwitchWithText(frame: CGRect(x: self.frame.width - 100, y: 14, width: 90, height: 30))
-                self.addSubview(switchButton)
-        self.switchButton.setStatus(bool)
+//         switchButton = SwitchWithText(frame: CGRect(x: self.frame.width - 130, y: 9, width: 125, height: 40))
+//              //  self.addSubview(switchButton)
+//        self.switchButton.setStatus(bool)
     }
+    
+    @IBAction func reportsButtonTapped(_ sender: Any) {
+        self.reportsButtonDelegate?.reportsButtonTapped()
+    }
+
     
     @IBAction func last10TweaksTapped(_ sender: Any) {
         self.delegate.tappedOnLast10Tweaks()

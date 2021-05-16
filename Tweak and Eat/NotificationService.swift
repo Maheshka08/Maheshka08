@@ -294,6 +294,13 @@ class NotificationService: NSObject {
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
             }
+        } else if link == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                self.showMyTweakAndEatVC(promoLink: "-ClubInd4tUPXHgVj9w3")
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: link)
+            }
         } else if link == "MYAIDP_PUR_IND_OP_3M" || link == "MYAIDP_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
              self.showMyTweakAndEatVC(promoLink: "-AiDPwdvop1HU7fj8vfL")
@@ -527,7 +534,7 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                          links = (userInfo["wzrk_dl"] as! String).replacingOccurrences(of: "tweakandeat://", with: "")
                         }
 
-                            if (links == "-Qis3atRaproTlpr4zIs" || links == "-KyotHu4rPoL3YOsVxUu" || links == "-SquhLfL5nAsrhdq7GCY" || links == "-TacvBsX4yDrtgbl6YOQ" || links == "PP_LABELS" || links == "PP_PACKAGES" || links == "-IndIWj1mSzQ1GDlBpUt" || links == "-AiDPwdvop1HU7fj8vfL" || links == "-MalAXk7gLyR3BNMusfi" || links == "-MzqlVh6nXsZ2TCdAbOp" || links == "-IdnMyAiDPoP9DFGkbas" || links == "-SgnMyAiDPuD8WVCipga" || links == "-PtpIndu4fke3hfj8skf" || links == "-PtpUsa9aqws5fcb7mkG" || links == "-PtpSgn5Kavqo3cakpqh" || links == "-PtpMys1ogs7bwt3malu" || links == "-PtpIdno8kwg2npl5vna" || links == "-PtpPhy3mskop9Avqj5L" || links == "-IndAiBPtmMrS4VPnwmD" || links == "-IdnAiBPLKMO5ePamQle" || links == "-SgnAiBPJlXfM3KzDWR8" || links == "-MysAiBPyaX9TgFT1YOp" || links == "-MysRamadanwgtLoss99" || links == "-PhyAiBPcYLiSYlqhjbI" || links == "-UsaAiBPxnaopT55GJxl"  || links == "CALS_LEFT_FS_POPUP" || links == "HOW_IT_WORKS" || links == "CHECK_THIS_OUT" || links == "-IndWLIntusoe3uelxER" || links == "CLUB_SUBSCRIPTION" || links == "-ClubInd3gu7tfwko6Zx" || links == "-ClubIdn4hd8flchs9Vy" || links == "-ClubUSA4tg6cvdhizQn" || links == "-ClubSGNPbeleu8beyKn" || links == "-ClubMYSheke8ebdjoWs" || links == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" || link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" || link == "-NcInd5BosUcUeeQ9Q32" || link == "MYAIDP_PUR_IND_OP_3M" || link == "NCP_PUR_IND_OP" || link == "MYAIDP_PUR_IND_OP_1M" || link == "MYTAE_PUR_IND_OP_1M" || link == "WLIF_PUR_IND_OP_1M" || link == "ASKSIA" || link == "-ClubInd4tUPXHgVj9w3" || link == "-ClubUsa5nDa1M8WcRA6" ) {
+                            if (links == "-Qis3atRaproTlpr4zIs" || links == "-KyotHu4rPoL3YOsVxUu" || links == "-SquhLfL5nAsrhdq7GCY" || links == "-TacvBsX4yDrtgbl6YOQ" || links == "PP_LABELS" || links == "PP_PACKAGES" || links == "-IndIWj1mSzQ1GDlBpUt" || links == "-AiDPwdvop1HU7fj8vfL" || links == "-MalAXk7gLyR3BNMusfi" || links == "-MzqlVh6nXsZ2TCdAbOp" || links == "-IdnMyAiDPoP9DFGkbas" || links == "-SgnMyAiDPuD8WVCipga" || links == "-PtpIndu4fke3hfj8skf" || links == "-PtpUsa9aqws5fcb7mkG" || links == "-PtpSgn5Kavqo3cakpqh" || links == "-PtpMys1ogs7bwt3malu" || links == "-PtpIdno8kwg2npl5vna" || links == "-PtpPhy3mskop9Avqj5L" || links == "-IndAiBPtmMrS4VPnwmD" || links == "-IdnAiBPLKMO5ePamQle" || links == "-SgnAiBPJlXfM3KzDWR8" || links == "-MysAiBPyaX9TgFT1YOp" || links == "-MysRamadanwgtLoss99" || links == "-PhyAiBPcYLiSYlqhjbI" || links == "-UsaAiBPxnaopT55GJxl"  || links == "CALS_LEFT_FS_POPUP" || links == "HOW_IT_WORKS" || links == "CHECK_THIS_OUT" || links == "-IndWLIntusoe3uelxER" || links == "CLUB_SUBSCRIPTION" || links == "-ClubInd3gu7tfwko6Zx" || links == "-ClubIdn4hd8flchs9Vy" || links == "-ClubUSA4tg6cvdhizQn" || links == "-ClubSGNPbeleu8beyKn" || links == "-ClubMYSheke8ebdjoWs" || links == "CLUB_PURCHASE" || link == "CLUB_PUR_IND_OP_1M" || link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" || link == "-NcInd5BosUcUeeQ9Q32" || link == "MYAIDP_PUR_IND_OP_3M" || link == "NCP_PUR_IND_OP" || link == "MYAIDP_PUR_IND_OP_1M" || link == "MYTAE_PUR_IND_OP_1M" || link == "WLIF_PUR_IND_OP_1M" || link == "ASKSIA" || link == "-ClubInd4tUPXHgVj9w3" || link == "-ClubUsa5nDa1M8WcRA6" || link == "CLUBAIDP_PUR_IND_OP_1M" ) {
                             link = links
                         } else {
                             link = links

@@ -177,6 +177,17 @@
                         <constraint firstAttribute="height" id="x51-iR-yD4"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVh-aB-gBk">
+                    <rect key="frame" x="260" y="8" width="151" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="151" id="JsI-md-A39"/>
+                        <constraint firstAttribute="height" constant="42" id="SX4-jC-Qtp"/>
+                    </constraints>
+                    <state key="normal" image="reports_btn"/>
+                    <connections>
+                        <action selector="reportsButtonTapped:" destination="gJ4-VX-h0L" eventType="touchUpInside" id="SLl-Nr-Chw"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="oWm-KK-qSa"/>
             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -185,10 +196,12 @@
                 <constraint firstItem="jvX-XE-ljB" firstAttribute="top" secondItem="ReI-O6-iqz" secondAttribute="bottom" constant="10" id="127-c6-UkN"/>
                 <constraint firstItem="bt7-If-iiu" firstAttribute="leading" secondItem="gJ4-VX-h0L" secondAttribute="leading" id="2YN-Rt-ciC"/>
                 <constraint firstItem="5Mk-9F-uIZ" firstAttribute="leading" secondItem="ocN-gZ-aYK" secondAttribute="leading" id="4bZ-IJ-htK"/>
+                <constraint firstItem="fVh-aB-gBk" firstAttribute="centerY" secondItem="ReI-O6-iqz" secondAttribute="centerY" id="5Fe-Wc-R39"/>
                 <constraint firstAttribute="trailing" secondItem="bt7-If-iiu" secondAttribute="trailing" id="5zH-Wm-Svd"/>
                 <constraint firstItem="ReI-O6-iqz" firstAttribute="top" secondItem="gJ4-VX-h0L" secondAttribute="top" constant="15" id="6cz-1Z-GdB"/>
                 <constraint firstItem="i20-IQ-G4k" firstAttribute="bottom" secondItem="r5Y-pt-9dZ" secondAttribute="bottom" id="6uI-80-DRP"/>
                 <constraint firstItem="i20-IQ-G4k" firstAttribute="leading" secondItem="B7g-p8-XLt" secondAttribute="leading" id="6ws-g4-dhY"/>
+                <constraint firstItem="oWm-KK-qSa" firstAttribute="trailing" secondItem="fVh-aB-gBk" secondAttribute="trailing" constant="3" id="85M-gQ-Woq"/>
                 <constraint firstItem="5Mk-9F-uIZ" firstAttribute="top" secondItem="r5Y-pt-9dZ" secondAttribute="top" id="89w-WV-dy1"/>
                 <constraint firstItem="XtB-RB-GPe" firstAttribute="leading" secondItem="B3A-rP-qZu" secondAttribute="leading" id="B1k-dy-kG8"/>
                 <constraint firstItem="B3A-rP-qZu" firstAttribute="top" secondItem="jvX-XE-ljB" secondAttribute="top" id="B2d-DY-zDq"/>
@@ -238,15 +251,17 @@
                 <outlet property="myNutritionLabel" destination="ReI-O6-iqz" id="vHn-xo-jWG"/>
                 <outlet property="myNutritionProteinsView" destination="ocN-gZ-aYK" id="96x-Yk-EFy"/>
                 <outlet property="proteinsValue" destination="5Mk-9F-uIZ" id="QZR-fc-5M2"/>
+                <outlet property="reportsButton" destination="fVh-aB-gBk" id="fYs-tn-PIP"/>
                 <outlet property="selectYourMealLbl" destination="noF-ZM-tbA" id="Iie-Gm-eqo"/>
                 <outlet property="selectYourMealView" destination="w7e-7p-GV1" id="XjG-ZM-0y3"/>
                 <outlet property="viewWdthConstraint" destination="o3k-Aw-Pn8" id="IKi-BE-mck"/>
             </connections>
-            <point key="canvasLocation" x="37.5" y="313.125"/>
+            <point key="canvasLocation" x="37.5" y="312.5"/>
         </view>
     </objects>
     <resources>
         <image name="dropdownImage" width="30" height="30"/>
+        <image name="reports_btn" width="207" height="52"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

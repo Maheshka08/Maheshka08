@@ -11,15 +11,15 @@ import Firebase
 import Realm
 import RealmSwift
 import Razorpay
-import StoreKit
+//import StoreKit
 
 
-class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RazorpayPaymentCompletionProtocol, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RazorpayPaymentCompletionProtocol {
     
     //If an error occurs, the code will go to this function
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        // Show some alert
-    }
+//    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+//        // Show some alert
+//    }
     
 //    func request(_ request: SKRequest, didFailWithError error: Error) {
 //        print(error.localizedDescription)
@@ -29,79 +29,79 @@ class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDa
 //        print(transactions)
 //    }
     
-    func buyProduct(product: SKProduct) {
-       // MBProgressHUD.hide(for: self.view, animated: true);
-        print("Sending the Payment Request to Apple");
-        let payment = SKPayment(product: product)
-        self.productPrice = product.price
-        SKPaymentQueue.default().add(payment);
-        
-
-    }
+//    func buyProduct(product: SKProduct) {
+//       // MBProgressHUD.hide(for: self.view, animated: true);
+//        print("Sending the Payment Request to Apple");
+//        let payment = SKPayment(product: product)
+//        self.productPrice = product.price
+//        SKPaymentQueue.default().add(payment);
+//
+//
+//    }
     
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for transaction:AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
-                
-                // self.dismissPurchaseBtn.isEnabled = true
-                // self.restorePurchaseBtn.isEnabled = true
-                // self.buyNowButton.isEnabled = true
-                
-                switch trans.transactionState {
-                case .purchased:
-                    print("Product Purchased")
-                    
-                    //Do unlocking etc stuff here in case of new purchase
-                    self.tableView.isHidden = true
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    //print(trans.transactionIdentifier!)
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    self.receiptValidation()
-                    SKPaymentQueue.default().remove(self)
-                    
-                    break;
-                case .failed:
-                    print("Purchased Failed");
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    self.tableView.isHidden = false;
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    SKPaymentQueue.default().remove(self)
-                    self.navigationController?.popViewController(animated: true)
-                    break;
-                case .restored:
-                    print("Already Purchased")
-                    //Do unlocking etc stuff here in case of restor
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                    SKPaymentQueue.default().remove(self)
-                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                
-                default:
-                   // MBProgressHUD.hide(for: self.view, animated: true);
-
-                    break;
-                }
-            }
-        }
-    }
+//    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//        for transaction:AnyObject in transactions {
+//            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+//
+//                // self.dismissPurchaseBtn.isEnabled = true
+//                // self.restorePurchaseBtn.isEnabled = true
+//                // self.buyNowButton.isEnabled = true
+//
+//                switch trans.transactionState {
+//                case .purchased:
+//                    print("Product Purchased")
+//
+//                    //Do unlocking etc stuff here in case of new purchase
+//                    self.tableView.isHidden = true
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                    //print(trans.transactionIdentifier!)
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                    self.receiptValidation()
+//                    SKPaymentQueue.default().remove(self)
+//
+//                    break;
+//                case .failed:
+//                    print("Purchased Failed");
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                    self.tableView.isHidden = false;
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//                    SKPaymentQueue.default().remove(self)
+//                    self.navigationController?.popViewController(animated: true)
+//                    break;
+//                case .restored:
+//                    print("Already Purchased")
+//                    //Do unlocking etc stuff here in case of restor
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                    SKPaymentQueue.default().remove(self)
+//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+//
+//                default:
+//                   // MBProgressHUD.hide(for: self.view, animated: true);
+//
+//                    break;
+//                }
+//            }
+//        }
+//    }
     
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products)
-        let count : Int = response.products.count
-        if (count>0) {
-            
-            let validProduct: SKProduct = response.products[0] as SKProduct
-            if (validProduct.productIdentifier == self.productIdentifier as String) {
-                print(validProduct.localizedTitle)
-                print(validProduct.localizedDescription)
-                print(validProduct.price)
-                self.buyProduct(product: validProduct)
-            } else {
-                print(validProduct.productIdentifier)
-            }
-        } else {
-            print("nothing")
-        }
-    }
+//    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+//        print(response.products)
+//        let count : Int = response.products.count
+//        if (count>0) {
+//
+//            let validProduct: SKProduct = response.products[0] as SKProduct
+//            if (validProduct.productIdentifier == self.productIdentifier as String) {
+//                print(validProduct.localizedTitle)
+//                print(validProduct.localizedDescription)
+//                print(validProduct.price)
+//                self.buyProduct(product: validProduct)
+//            } else {
+//                print(validProduct.productIdentifier)
+//            }
+//        } else {
+//            print("nothing")
+//        }
+//    }
     static let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         
@@ -468,16 +468,16 @@ class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDa
         //self.tableView.isHidden = true;
        // self.navigationItem.hidesBackButton = true
         MBProgressHUD.showAdded(to: self.view, animated: true);
-        SKPaymentQueue.default().add(self)
-        if (SKPaymentQueue.canMakePayments()) {
-            let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
-            let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
-            productsRequest.delegate = self;
-            productsRequest.start();
-            print("Fetching Products");
-        } else {
-            print("can't make purchases");
-        }
+        //SKPaymentQueue.default().add(self)
+//        if (SKPaymentQueue.canMakePayments()) {
+//            let productID:NSSet = NSSet(array: [self.productIdentifier as String]);
+//            let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+//            productsRequest.delegate = self;
+//            productsRequest.start();
+//            print("Fetching Products");
+//        } else {
+//            print("can't make purchases");
+//        }
         
         
     }
@@ -495,129 +495,129 @@ class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDa
         return strTimeStamp
     }
     
-    func receiptValidation() {
-        MBProgressHUD.showAdded(to: self.view, animated: true);
-
-        let receiptFileURL = Bundle.main.appStoreReceiptURL
-        let receiptData = try? Data(contentsOf: receiptFileURL!)
-        var jsonDict = [String: AnyObject]()
-        
-        let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageID
-            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
-        //91e841953e9f4d19976283cd2ee78992
-        
-        print(recieptString!)
-        //        UserDefaults.standard.set(receiptData, forKey: "RECEIPT")
-        //        UserDefaults.standard.synchronize()
-        //
-        
-       // MBProgressHUD.showAdded(to: self.view, animated: true);
-        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
-            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-            let responseResult = responseDic["callStatus"] as! String
-            if  responseResult == "GOOD" {
-                MBProgressHUD.hide(for: self.view, animated: true);
-                print("in-app done")
-                let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
-                let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
-                
-                let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
-                let totalDesc: String = labels + amount + currency;
-//                responseDic["priceDesc"] = totalDesc as AnyObject
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "IN-APP-PURCHASE-SUCCESSFUL"), object: responseDic);
-                var data = [String: AnyObject]()
-                let response = responseDic ;
-                if response.index(forKey: "data") != nil {
-                    // contains key
-                    data = responseDic["data"] as AnyObject as! [String: AnyObject]
-                    
-                } else if response.index(forKey: "Data") != nil {
-                    // contains key
-                    data = responseDic["Data"] as AnyObject as! [String: AnyObject]
-                    
-                }
-                
-                //   let data = responseDic["data"] as AnyObject as! [String: AnyObject]
-                if data["NutritionistFirebaseId"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistFirebaseId")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistFirebaseId"] as AnyObject as! String, forKey: "NutritionistFirebaseId")
-                }
-                
-                if data["NutritionistFirstName"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistFirstName")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistFirstName"] as AnyObject as! String, forKey: "NutritionistFirstName")
-                }
-                if data["NutritionistSignature"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistSignature")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistSignature"] as AnyObject as! String, forKey: "NutritionistSignature")
-                }
-                
-                let currentDate = Date();
-                let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
-                let currentTime = Int64(currentTimeStamp);
-                var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfileInfo?.first?.msisdn as Any,"name": self.myProfileInfo?.first?.name as Any, "unread": false, "email": self.myProfileInfo?.first?.email as Any, "height": self.myProfileInfo?.first?.height as Any, "weight": self.myProfileInfo?.first?.weight as Any, "foodHabits": self.myProfileInfo?.first?.foodHabits as Any, "allergies": self.myProfileInfo?.first?.allergies as Any, "conditions": self.myProfileInfo?.first?.conditions as Any, "bodyShape": self.myProfileInfo?.first?.bodyShape as Any, "goals": self.myProfileInfo?.first?.goals as Any, "gender": self.myProfileInfo?.first?.gender as Any, "age": self.myProfileInfo?.first?.age as Any] as [String : Any]
-                pkgsArray["packages"] = [self.packageID];
-                
-                Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageID).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
-                })
-                Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
-                    if error == nil {
-                        self.navigationItem.hidesBackButton = true;
-                        self.paySucessView.isHidden = false
-                        self.usdAmtLabel.text = "Thank you for subscribing to " + totalDesc;
-                        
-                        let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
-                        
-                        let msg = signature.html2String;
-                        self.nutritionstDescLbl.text =
-                        msg;
-                        
-                        
-                    } else {
-                        MBProgressHUD.hide(for: self.view, animated: true);
-                        
-                    }
-                })
-            }
-        }, failure : { error in
-            MBProgressHUD.hide(for: self.view, animated: true);
-            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
-            
-            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        })
-        
-        
-        //        do {
-        //            let requestData = try JSONSerialization.data(withJSONObject: jsonDict, options: JSONSerialization.WritingOptions.prettyPrinted)
-        //            let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
-        //            var storeRequest = URLRequest(url: storeURL)
-        //            storeRequest.httpMethod = "POST"
-        //            storeRequest.httpBody = requestData
-        //
-        //            let session = URLSession(configuration: URLSessionConfiguration.default)
-        //            let task = session.dataTask(with: storeRequest, completionHandler: { [weak self] (data, response, error) in
-        //
-        //                do {
-        //                    let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-        //                    print("=======>",jsonResponse)
-        //                    if let date = self?.getExpirationDateFromResponse(jsonResponse as! NSDictionary) {
-        //                        print(date)
-        //                    }
-        //                } catch let parseError {
-        //                    print(parseError)
-        //                }
-        //            })
-        //            task.resume()
-        //        } catch let parseError {
-        //            print(parseError)
-        //        }
-    }
+//    func receiptValidation() {
+//        MBProgressHUD.showAdded(to: self.view, animated: true);
+//
+//        let receiptFileURL = Bundle.main.appStoreReceiptURL
+//        let receiptData = try? Data(contentsOf: receiptFileURL!)
+//        var jsonDict = [String: AnyObject]()
+//        
+//        let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageID
+//            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+//        //91e841953e9f4d19976283cd2ee78992
+//        
+//        print(recieptString!)
+//        //        UserDefaults.standard.set(receiptData, forKey: "RECEIPT")
+//        //        UserDefaults.standard.synchronize()
+//        //
+//        
+//       // MBProgressHUD.showAdded(to: self.view, animated: true);
+//        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
+//            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+//            let responseResult = responseDic["callStatus"] as! String
+//            if  responseResult == "GOOD" {
+//                MBProgressHUD.hide(for: self.view, animated: true);
+//                print("in-app done")
+//                let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
+//                let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+//                
+//                let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+//                let totalDesc: String = labels + amount + currency;
+////                responseDic["priceDesc"] = totalDesc as AnyObject
+////                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "IN-APP-PURCHASE-SUCCESSFUL"), object: responseDic);
+//                var data = [String: AnyObject]()
+//                let response = responseDic ;
+//                if response.index(forKey: "data") != nil {
+//                    // contains key
+//                    data = responseDic["data"] as AnyObject as! [String: AnyObject]
+//                    
+//                } else if response.index(forKey: "Data") != nil {
+//                    // contains key
+//                    data = responseDic["Data"] as AnyObject as! [String: AnyObject]
+//                    
+//                }
+//                
+//                //   let data = responseDic["data"] as AnyObject as! [String: AnyObject]
+//                if data["NutritionistFirebaseId"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirebaseId")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistFirebaseId"] as AnyObject as! String, forKey: "NutritionistFirebaseId")
+//                }
+//                
+//                if data["NutritionistFirstName"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirstName")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistFirstName"] as AnyObject as! String, forKey: "NutritionistFirstName")
+//                }
+//                if data["NutritionistSignature"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistSignature")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistSignature"] as AnyObject as! String, forKey: "NutritionistSignature")
+//                }
+//                
+//                let currentDate = Date();
+//                let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
+//                let currentTime = Int64(currentTimeStamp);
+//                var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfileInfo?.first?.msisdn as Any,"name": self.myProfileInfo?.first?.name as Any, "unread": false, "email": self.myProfileInfo?.first?.email as Any, "height": self.myProfileInfo?.first?.height as Any, "weight": self.myProfileInfo?.first?.weight as Any, "foodHabits": self.myProfileInfo?.first?.foodHabits as Any, "allergies": self.myProfileInfo?.first?.allergies as Any, "conditions": self.myProfileInfo?.first?.conditions as Any, "bodyShape": self.myProfileInfo?.first?.bodyShape as Any, "goals": self.myProfileInfo?.first?.goals as Any, "gender": self.myProfileInfo?.first?.gender as Any, "age": self.myProfileInfo?.first?.age as Any] as [String : Any]
+//                pkgsArray["packages"] = [self.packageID];
+//                
+//                Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageID).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
+//                })
+//                Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
+//                    if error == nil {
+//                        self.navigationItem.hidesBackButton = true;
+//                        self.paySucessView.isHidden = false
+//                        self.usdAmtLabel.text = "Thank you for subscribing to " + totalDesc;
+//                        
+//                        let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+//                        
+//                        let msg = signature.html2String;
+//                        self.nutritionstDescLbl.text =
+//                        msg;
+//                        
+//                        
+//                    } else {
+//                        MBProgressHUD.hide(for: self.view, animated: true);
+//                        
+//                    }
+//                })
+//            }
+//        }, failure : { error in
+//            MBProgressHUD.hide(for: self.view, animated: true);
+//            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+//            
+//            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            self.present(alertController, animated: true, completion: nil)
+//        })
+//        
+//        
+//        //        do {
+//        //            let requestData = try JSONSerialization.data(withJSONObject: jsonDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+//        //            let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+//        //            var storeRequest = URLRequest(url: storeURL)
+//        //            storeRequest.httpMethod = "POST"
+//        //            storeRequest.httpBody = requestData
+//        //
+//        //            let session = URLSession(configuration: URLSessionConfiguration.default)
+//        //            let task = session.dataTask(with: storeRequest, completionHandler: { [weak self] (data, response, error) in
+//        //
+//        //                do {
+//        //                    let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        //                    print("=======>",jsonResponse)
+//        //                    if let date = self?.getExpirationDateFromResponse(jsonResponse as! NSDictionary) {
+//        //                        print(date)
+//        //                    }
+//        //                } catch let parseError {
+//        //                    print(parseError)
+//        //                }
+//        //            })
+//        //            task.resume()
+//        //        } catch let parseError {
+//        //            print(parseError)
+//        //        }
+//    }
     
     @IBAction func payTapped(_ sender: Any) {
 //        if self.razorPayAPIKEY == "" {
@@ -861,7 +861,7 @@ class StripePaymentGateway: UIViewController, UITableViewDelegate, UITableViewDa
 //        self.navigationItem.hidesBackButton = true
         self.title = "Purchase"
         self.payBtn.isHidden = true;
-        SKPaymentQueue.default().add(self)
+        //SKPaymentQueue.default().add(self)
    //     SKPaymentQueue.default().restoreCompletedTransactions();
 
         // postAction()

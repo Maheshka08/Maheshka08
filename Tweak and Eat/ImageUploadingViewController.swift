@@ -244,6 +244,13 @@ class ImageUploadingViewController: UIViewController {
         }
         if promoAppLink == "HOME" || promoAppLink == "" {
             self.goToHomePage()
+        } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+            }
         } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()

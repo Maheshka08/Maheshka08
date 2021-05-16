@@ -165,7 +165,7 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         super.viewDidLoad()
         self.assumeStandardView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(TweakTrendReportViewController.scrollHome(notification:)), name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: nil);
-        let txt = "*Net excess/deficit calories each day/week.\nRecommended calories assumed on no tweak."
+        let txt = "*Net + / - calories each day/week.\nRecommended calories assumed on no tweak."
         self.calendarLabel.text = txt
         //self.calendarLabel.setLineHeight(lineHeight: 25, txt: txt)
 
@@ -199,19 +199,20 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         calView.delegate = self
         let greenColor = #colorLiteral(red: 0.07306484133, green: 0.805339992, blue: 0.1354261637, alpha: 1);
         let redColor = #colorLiteral(red: 0.9842862487, green: 0.03971153125, blue: 0.04987836629, alpha: 1);
-        let excessText = "excess"
-        let deficitText = "deficit"
+        let excessText = "+"
+        let deficitText = "-"
                 
         let attrsString =  NSMutableAttributedString(string:txt);
-                
-        // search for word occurrence
+        
         let rangeOfExcessText = (txt as NSString).range(of: excessText)
         if (rangeOfExcessText.length > 0) {
             attrsString.addAttribute(NSAttributedString.Key.foregroundColor,value:greenColor,range:rangeOfExcessText)
+            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: rangeOfExcessText)
         }
         let rangeOfDeficitText = (txt as NSString).range(of: deficitText)
         if (rangeOfDeficitText.length > 0) {
             attrsString.addAttribute(NSAttributedString.Key.foregroundColor,value:redColor,range:rangeOfDeficitText)
+            attrsString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: rangeOfDeficitText)
         }
                 
         // set attributed text

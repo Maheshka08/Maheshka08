@@ -90,7 +90,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc var tableArray1 = [[String:String]]();
     @objc var tableArray2 = [[String:String]]();
     @objc var tableArray3 = [[String:String]]();
-    
+    var clubPackageSubscribed = ""
     @objc var carbs = 0;
     @objc var fiber = 0;
     @objc var fats = 0;
@@ -362,7 +362,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
        
 //        UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
-if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
             self.reloadTimelines();
         } else {
            let weekday = getTodayWeekDay()
@@ -427,9 +427,22 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+                   self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        }
+                if self.countryCode == "91" {
+            clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
+        } else if self.countryCode == "62" {
+            clubPackageSubscribed = "-ClubIdn4hd8flchs9Vy"
+        } else if self.countryCode == "1" {
+            clubPackageSubscribed = "-ClubUSA4tg6cvdhizQn"
+        } else if self.countryCode == "65" {
+            clubPackageSubscribed = "-ClubSGNPbeleu8beyKn"
+        } else if self.countryCode == "60" {
+            clubPackageSubscribed = "-ClubMYSheke8ebdjoWs"
+        }
         CleverTap.sharedInstance()?.recordEvent("EDR_viewed")
         NotificationCenter.default.addObserver(self, selector: #selector(TimelinesViewController.reloadTimelines), name: NSNotification.Name(rawValue: "TWEAK_NOTIFICATIONS"), object: nil)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         // timelinesTableView.backgroundColor = UIColor.white
         //        let data = ["msg": "Woohoo! Now our Premium Services is rated the BEST in Health & Wellness segment! Please click on  our Premium Services and try it. You owe it to yourself", "imgUrlString":"https://s3.ap-south-1.amazonaws.com/tweakandeatpush/push_img_20190226_01.jpg", "link": "-AiDPwdvop1HU7fj8vfL"] as [String: AnyObject]
@@ -882,6 +895,8 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.hidesBackButton = true;
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
        // self.reloadTimelines();
         self.getTopBanners()
         
@@ -1134,6 +1149,13 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         if promoAppLink == "HOME" || promoAppLink == "" {
                    self.goToHomePage()
                    
+               } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+                if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                 self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+                } else {
+               self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+                }
                } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                      self.goToTAEClubMemPage()
@@ -1358,37 +1380,33 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if self.topBannersDict.count > 0 {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 80))
+        
+        if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 60))
 
-        let buttonImage = UIButton(type: .custom)
-        buttonImage.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80)
-        //        button2.backgroundColor = .blue
-       // buttonImage.setImage(UIImage.init(named: "ad-banner-1"), for: .normal)
-            //  let imageUrl = self.topBannersDict["img"] as! String
-            let url = URL(string: self.topBannerImage)
-                   DispatchQueue.global(qos: .background).async {
-                       // Call your background task
-                       let data = try? Data(contentsOf: url!)
-                       // UI Updates here for task complete.
-                    //   UserDefaults.standard.set(data, forKey: "PREMIUM_BUTTON_DATA");
+            let buttonImage = UIButton(type: .custom)
 
-                       if let imageData = data {
-                           let image = UIImage(data: imageData)
-                           DispatchQueue.main.async {
-                               
-                            buttonImage.setBackgroundImage(image, for: .normal)
-                               
-                           }
-                    }
-            }
-        buttonImage.addTarget(self, action:#selector(self.bannerClicked), for: .touchUpInside)
-        headerView.backgroundColor = UIColor.groupTableViewBackground
-        headerView.addSubview(buttonImage)
+            buttonImage.frame = CGRect(x: tableView.frame.width - 190, y: 12, width: 180, height: 40)
+            buttonImage.setImage(UIImage.init(named: "REPORTS-(My-Nutrition)_btn"), for: .normal)
+            buttonImage.addTarget(self, action:#selector(self.reportsButtonTapped), for: .touchUpInside)
+            headerView.backgroundColor = UIColor.groupTableViewBackground
+            headerView.addSubview(buttonImage)
 
-        return headerView
+            return headerView
         }
+        
+        
+        
         return UIView()
+    }
+    func goToTweakTrends() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+                let vc : TweakTrendReportViewController = storyBoard.instantiateViewController(withIdentifier: "TweakTrendReportViewController") as! TweakTrendReportViewController;
+                let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+                navController?.pushViewController(vc, animated: true);
+    }
+    @objc func reportsButtonTapped() {
+        goToTweakTrends()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -1650,9 +1668,14 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         if tableView == self.reportsTableView {
             return 1
         } else if tableView == self.timelinesTableView {
-            if self.topBannersDict.count > 0 {
-               return 80
+//            if self.topBannersDict.count > 0 {
+//               return 80
+//            }
+            if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+                return 60
+
             }
+            return 0
         }
         return 0
     }
@@ -1670,6 +1693,7 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             self.selectedIndex = indexPath.row
             let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
             timelineDetail.tweakId = Int(tweak.tweakId)
+            
             timelineDetail.tweakSuggestedText = tweak.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweak.tweakSuggestedText!;
             timelineDetail.tweakStatus = Int(truncating: tweak.tweakStatus as Any as! NSNumber)
             

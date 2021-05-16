@@ -24,6 +24,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     @objc var isRefill = "0";
     var popUp : Bool?;
     var mealTypeValue = 0;
+    var keyboardHeight: CGFloat = 0.0
     @IBOutlet weak var commentBoxView: UIView!
     
     @IBOutlet weak var threeRedArrowGifImageView: UIImageView!
@@ -67,7 +68,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     
     @IBAction func dropDownTapped(_ sender: Any) {
         self.view.endEditing(true)
-        if self.commentsViewBottomConstant.constant == -311 {
+        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
                   self.commentsViewBottomConstant.constant = 0
                }
                if self.nutritionTopConstraint.constant == -120 {
@@ -112,9 +113,23 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
        
 
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardHeight = keyboardRectangle.height
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
         let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "vpt", withExtension: "gif")!)
         self.threeRedArrowGifImageView.image = UIImage.gifImageWithData(imageData!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -240,7 +255,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
            // DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
                                   animations: {
-                                    self.commentsViewBottomConstant.constant = -311
+                                    self.commentsViewBottomConstant.constant = -self.keyboardHeight
 
                    }, completion: nil)
            // }
@@ -353,7 +368,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     
     @objc func refillPopUp() {
         view.endEditing(true)
-        if self.commentsViewBottomConstant.constant == -311 {
+        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
             self.commentsViewBottomConstant.constant = 0
         }else  if self.nutritionTopConstraint.constant == -120 {
             self.nutritionTopConstraint.constant = 16
@@ -398,7 +413,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
                                                     UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
                                                                           animations: {
                         self.commentBox.becomeFirstResponder()
-                        self.commentsViewBottomConstant.constant = -311
+                        self.commentsViewBottomConstant.constant = -self.keyboardHeight
                         UserDefaults.standard.setValue(true, forKey: "IS_TWEAK_COUNT_POP_UP_SHOWN")
                         UserDefaults.standard.synchronize()
 
@@ -495,7 +510,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
-        if self.commentsViewBottomConstant.constant == -311 {
+        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
            self.commentsViewBottomConstant.constant = 0
         }
         if self.nutritionTopConstraint.constant == -120 {

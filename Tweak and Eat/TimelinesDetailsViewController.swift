@@ -18,11 +18,13 @@ class TimelinesDetailsViewController: UIViewController {
     var ptpPackage = ""
     @objc var adsImageViewTapped = UITapGestureRecognizer();
     @objc var imagesArray = [String]()
+    @objc var userCommentsArray = [String]()
     @objc var tweaksList : [AnyObject]?;
     @objc var path = Bundle.main.path(forResource: "en", ofType: "lproj")
     @objc var selectedIndex = 0
     @objc var bundle = Bundle()
     @objc var tweakSuggestedText = ""
+    var userComments = ""
     let realm :Realm = try! Realm()
     var myProfile : Results<MyProfileInfo>?
     @objc var tweakUserComments = ""
@@ -206,7 +208,14 @@ class TimelinesDetailsViewController: UIViewController {
         if promoAppLink == "HOME" || promoAppLink == "" {
                    self.goToHomePage()
                    
-               } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
+               } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+                if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                 self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                    //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+                } else {
+               self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+                }
+              } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
                    if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
                      self.goToTAEClubMemPage()
                    } else {
@@ -908,8 +917,8 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
         
         DispatchQueue.main.async {
             for tweakObjs in self.tweaksList! {
-                self.timelineDetails = tweakObjs as! TBL_Tweaks
-                
+                self.timelineDetails = tweakObjs as? TBL_Tweaks
+                self.userCommentsArray.append(self.timelineDetails.tweakUserComments ?? "")
                 if self.timelineDetails.tweakModifiedImageURL == ""{
                     self.imagesArray.append(self.timelineDetails.tweakOriginalImageURL ?? "")
                 }
@@ -1070,6 +1079,8 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
             let destinationVC = segue.destination as! PageViewImageSlider
             destinationVC.itemIndex = selectedIndex
             destinationVC.imagesArray = self.imagesArray
+            destinationVC.userCommentsArray = self.userCommentsArray
+
         } else if segue.identifier == "nutritionLabels" {
                           let pkgID = sender as! String
                           let popOverVC = segue.destination as! NutritionLabelViewController;

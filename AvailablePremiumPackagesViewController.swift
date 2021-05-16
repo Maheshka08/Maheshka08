@@ -12,7 +12,7 @@ import RealmSwift
 import Firebase
 import FirebaseDatabase
 import FlyshotSDK
-import StoreKit
+//import StoreKit
 import RNCryptor
 import Branch
 import FacebookCore
@@ -127,466 +127,466 @@ class PremiumPackages {
 //}
 class AvailablePremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AvailablePackagesCellDelegate {
     
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products)
-        let count : Int = response.products.count
-        if (count>0) {
-
-            let validProduct: SKProduct = response.products[0] as SKProduct
-            if (validProduct.productIdentifier == self.productIdentifier as String) {
-                print(validProduct.localizedTitle)
-                print(validProduct.localizedDescription)
-                print(validProduct.price)
-                self.buyProduct(product: validProduct)
-            } else {
-                print(validProduct.productIdentifier)
-            }
-        } else {
-            print("nothing")
-        }
-    }
+//    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+//        print(response.products)
+//        let count : Int = response.products.count
+//        if (count>0) {
+//
+//            let validProduct: SKProduct = response.products[0] as SKProduct
+//            if (validProduct.productIdentifier == self.productIdentifier as String) {
+//                print(validProduct.localizedTitle)
+//                print(validProduct.localizedDescription)
+//                print(validProduct.price)
+//                self.buyProduct(product: validProduct)
+//            } else {
+//                print(validProduct.productIdentifier)
+//            }
+//        } else {
+//            print("nothing")
+//        }
+//    }
     
-    func buyProduct(product: SKProduct) {
-        if SKPaymentQueue.canMakePayments() {
-
-            print("Sending the Payment Request to Apple");
-            let payment = SKPayment(product: product)
-            self.productPrice = product.price
-            //   SKPaymentQueue.default().add(self)
-            SKPaymentQueue.default().add(payment);
-        }
-    }
+//    func buyProduct(product: SKProduct) {
+//        if SKPaymentQueue.canMakePayments() {
+//
+//            print("Sending the Payment Request to Apple");
+//            let payment = SKPayment(product: product)
+//            self.productPrice = product.price
+//            //   SKPaymentQueue.default().add(self)
+//            SKPaymentQueue.default().add(payment);
+//        }
+//    }
     
 
     
-    func receiptValidation() {
-         DispatchQueue.main.async {
-        MBProgressHUD.showAdded(to: self.view, animated: true);
-        }
-        
-        let receiptFileURL = Bundle.main.appStoreReceiptURL
-        let receiptData = try? Data(contentsOf: receiptFileURL!)
-        var jsonDict = [String: AnyObject]()
-        
-        let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId
-            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
-        //91e841953e9f4d19976283cd2ee78992
-        
-        print(recieptString!)
-
-        
-        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
-            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
-            var responseResult = ""
-            if responseDic.index(forKey: "callStatus") != nil {
-                responseResult = responseDic["callStatus"] as! String
-            } else if responseDic.index(forKey: "CallStatus") != nil {
-                responseResult = responseDic["CallStatus"] as! String
-            }
-            if  responseResult == "GOOD" {
-                DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                print("in-app done")
-                      //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+//    func receiptValidation() {
+//         DispatchQueue.main.async {
+//        MBProgressHUD.showAdded(to: self.view, animated: true);
+//        }
+//
+//        let receiptFileURL = Bundle.main.appStoreReceiptURL
+//        let receiptData = try? Data(contentsOf: receiptFileURL!)
+//        var jsonDict = [String: AnyObject]()
+//
+//        let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//        jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId
+//            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+//        //91e841953e9f4d19976283cd2ee78992
+//
+//        print(recieptString!)
+//
+//
+//        APIWrapper.sharedInstance.postReceiptData(TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
+//            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
+//            var responseResult = ""
+//            if responseDic.index(forKey: "callStatus") != nil {
+//                responseResult = responseDic["callStatus"] as! String
+//            } else if responseDic.index(forKey: "CallStatus") != nil {
+//                responseResult = responseDic["CallStatus"] as! String
+//            }
+//            if  responseResult == "GOOD" {
+//                DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                print("in-app done")
+//                      //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: "CLUB Subscription", AFEventParamContentId: self.packageID, AFEventParamCurrency: self.currency])
+////                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+////                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+////                    Branch.getInstance().setIdentity(msisdn)
+////
+////                }
 //                if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-//                    Branch.getInstance().setIdentity(msisdn)
+//                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+//                    let password = "sFdebvQawU9uZJ"
+//                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+//                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 //
 //                }
-                if UserDefaults.standard.value(forKey: "msisdn") != nil {
-                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-                    let data: NSData = msisdn.data(using: .utf8)! as NSData
-                    let password = "sFdebvQawU9uZJ"
-                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
-                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
-
-                }
-                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
-                let event = BranchEvent.customEvent(withName: "purchase")
-                event.eventDescription = "User completed payment."
-                event.customData["packageID"] = self.packageId
-                event.customData["currency"] = self.currency
-                event.logEvent()
-          self.clubPaymentSuccessView.isHidden = false
-                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
-
-            }
-        }, failure : { error in
-            self.navigationItem.hidesBackButton = false
-             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
-            
-            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        })
-        
-        
-  
-    }
+//                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+//                let event = BranchEvent.customEvent(withName: "purchase")
+//                event.eventDescription = "User completed payment."
+//                event.customData["packageID"] = self.packageId
+//                event.customData["currency"] = self.currency
+//                event.logEvent()
+//          self.clubPaymentSuccessView.isHidden = false
+//                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TAECLUB-IN-APP-SUCCESSFUL"), object: responseDic);
+//
+//            }
+//        }, failure : { error in
+//            self.navigationItem.hidesBackButton = false
+//             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+//
+//            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            self.present(alertController, animated: true, completion: nil)
+//        })
+//
+//
+//
+//    }
     
-    func recptValidation() {
-        DispatchQueue.main.async {
-            MBProgressHUD.showAdded(to: self.view, animated: true);
-
-        }
-        
-       var url = ""
-        var jsonDict = [String: AnyObject]()
-        if self.packageId == self.ptpPackage || self.packageId == "-MysRamadanwgtLoss99" {
-            let currentDate = Date();
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYMMddHHmmss"
-            let strDate = dateFormatter.string(from: currentDate)
-            let msisdn = self.myProfile?.first?.msisdn as AnyObject as! String
-            let paymentID = "\(msisdn)_" + strDate
-          url = TweakAndEatURLConstants.AIBP_REGISTRATION
-            jsonDict = ["paymentId" : paymentID as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration, "packageRecurring": 0 as AnyObject] as [String : AnyObject]
-        } else {
-            
-            url = TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE
-            let receiptFileURL = Bundle.main.appStoreReceiptURL
-            let receiptData = try? Data(contentsOf: receiptFileURL!)
-            let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-             jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
-        }
-       
-      
-        print(jsonDict)
-       
-        //91e841953e9f4d19976283cd2ee78992
-        
-        //print(recieptString!)
-        //        UserDefaults.standard.set(receiptData, forKey: "RECEIPT")
-        //        UserDefaults.standard.synchronize()
-        //
-        
-      //  MBProgressHUD.showAdded(to: self.view, animated: true);
-        APIWrapper.sharedInstance.postReceiptData(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
-            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
-            var responseResult = ""
-            
-            if responseDic.index(forKey: "callStatus") != nil {
-                responseResult = responseDic["callStatus"] as! String
-            } else if responseDic.index(forKey: "CallStatus") != nil {
-                responseResult = responseDic["CallStatus"] as! String
-            }
-            if  responseResult == "GOOD" {
-                //IndIWj1mSzQ1GDlBpUt
-                 //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
+//    func recptValidation() {
+//        DispatchQueue.main.async {
+//            MBProgressHUD.showAdded(to: self.view, animated: true);
+//
+//        }
+//
+//       var url = ""
+//        var jsonDict = [String: AnyObject]()
+//        if self.packageId == self.ptpPackage || self.packageId == "-MysRamadanwgtLoss99" {
+//            let currentDate = Date();
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "YYYMMddHHmmss"
+//            let strDate = dateFormatter.string(from: currentDate)
+//            let msisdn = self.myProfile?.first?.msisdn as AnyObject as! String
+//            let paymentID = "\(msisdn)_" + strDate
+//          url = TweakAndEatURLConstants.AIBP_REGISTRATION
+//            jsonDict = ["paymentId" : paymentID as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration, "packageRecurring": 0 as AnyObject] as [String : AnyObject]
+//        } else {
+//
+//            url = TweakAndEatURLConstants.IAP_INDIA_SUBSCRIBE
+//            let receiptFileURL = Bundle.main.appStoreReceiptURL
+//            let receiptData = try? Data(contentsOf: receiptFileURL!)
+//            let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//             jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+//        }
+//
+//
+//        print(jsonDict)
+//
+//        //91e841953e9f4d19976283cd2ee78992
+//
+//        //print(recieptString!)
+//        //        UserDefaults.standard.set(receiptData, forKey: "RECEIPT")
+//        //        UserDefaults.standard.synchronize()
+//        //
+//
+//      //  MBProgressHUD.showAdded(to: self.view, animated: true);
+//        APIWrapper.sharedInstance.postReceiptData(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, params: jsonDict, success: { response in
+//            var responseDic : [String:AnyObject] = response as! [String:AnyObject];
+//            var responseResult = ""
+//
+//            if responseDic.index(forKey: "callStatus") != nil {
+//                responseResult = responseDic["callStatus"] as! String
+//            } else if responseDic.index(forKey: "CallStatus") != nil {
+//                responseResult = responseDic["CallStatus"] as! String
+//            }
+//            if  responseResult == "GOOD" {
+//                //IndIWj1mSzQ1GDlBpUt
+//                 //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
+////                if UserDefaults.standard.value(forKey: "msisdn") != nil {
+////                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
+////                    Branch.getInstance().setIdentity(msisdn)
+////
+////                }
 //                if UserDefaults.standard.value(forKey: "msisdn") != nil {
 //                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-//                    Branch.getInstance().setIdentity(msisdn)
+//                    let data: NSData = msisdn.data(using: .utf8)! as NSData
+//                    let password = "sFdebvQawU9uZJ"
+//                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
+//                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
 //
 //                }
-                if UserDefaults.standard.value(forKey: "msisdn") != nil {
-                 let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String
-                    let data: NSData = msisdn.data(using: .utf8)! as NSData
-                    let password = "sFdebvQawU9uZJ"
-                    let cipherData = RNCryptor.encrypt(data: data as Data, withPassword: password)
-                    Branch.getInstance().setIdentity(cipherData.base64EncodedString())
-
-                }
-                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
-
-                let event = BranchEvent.customEvent(withName: "purchase")
-                event.eventDescription = "User completed payment."
-                event.customData["packageID"] = self.packageId
-                event.customData["currency"] = self.currency
-                event.logEvent()
-                 DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                print("in-app done")
-                let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
-                let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
-                
-                let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
-                let totalDesc: String = labels + amount + currency;
-                var data = [String: AnyObject]()
-
-                let priceDesc = totalDesc
-                if responseDic.index(forKey: "data") != nil {
-                    // contains key
-                    data = responseDic["data"] as AnyObject as! [String: AnyObject]
-                    
-                } else if responseDic.index(forKey: "Data") != nil {
-                    // contains key
-                    data = responseDic["Data"] as AnyObject as! [String: AnyObject]
-                    
-                }
-                
-                if data["NutritionistFirebaseId"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistFirebaseId")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistFirebaseId"] as AnyObject as! String, forKey: "NutritionistFirebaseId")
-                }
-                
-                if data["NutritionistFirstName"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistFirstName")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistFirstName"] as AnyObject as! String, forKey: "NutritionistFirstName")
-                }
-                if data["NutritionistSignature"] is NSNull {
-                    UserDefaults.standard.setValue("", forKey: "NutritionistSignature")
-                } else {
-                    UserDefaults.standard.setValue(data["NutritionistSignature"] as AnyObject as! String, forKey: "NutritionistSignature")
-                }
-                var pkgesArr = NSMutableArray()
-                
-                Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                    if snapshot.childrenCount > 0 {
-                        let dispatch_group = DispatchGroup();
-                        dispatch_group.enter();
-                        
-                        let snpShotDict = snapshot.value as AnyObject as! [String: AnyObject]
-                        if snpShotDict.index(forKey: "packages") != nil {
-                            pkgesArr = snpShotDict["packages"] as AnyObject as! NSMutableArray
-                            
-                        }
-                        let currentDate = Date();
-                        let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
-                        let currentTime = Int64(currentTimeStamp);
-                        
-                        var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfile?.first?.msisdn as Any,"name": self.myProfile?.first?.name as Any, "unread": false, "email": self.myProfile?.first?.email as Any, "height": self.myProfile?.first?.height as Any, "weight": self.myProfile?.first?.weight as Any, "foodHabits": self.myProfile?.first?.foodHabits as Any, "allergies": self.myProfile?.first?.allergies as Any, "conditions": self.myProfile?.first?.conditions as Any, "bodyShape": self.myProfile?.first?.bodyShape as Any, "goals": self.myProfile?.first?.goals as Any, "gender": self.myProfile?.first?.gender as Any, "age": self.myProfile?.first?.age as Any] as [String : Any]
-                        if pkgesArr.count > 0 {
-                            pkgesArr.remove(self.packageId)
-                            pkgesArr.add(self.packageId)
-                            pkgsArray["packages"] = pkgesArr as AnyObject as! [String]
-                            
-                        } else {
-                            pkgsArray["packages"] = [self.packageId];
-                        }
-                        
-                        Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageId).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
-                            
-                        })
-                        Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
-                            if error == nil {
-                                //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
-                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-                                    var url = ""
-                                    if self.packageId == self.ptpPackage {
-                                        url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
-                                    } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-                                        url = TweakAndEatURLConstants.IND_AiDP_CONTENT
-                                    }
-                                        APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
-                                        let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                                            var responseResult = ""
-                                            
-                                            if responseDic.index(forKey: "callStatus") != nil {
-                                                responseResult = responseDic["callStatus"] as! String
-                                            } else if responseDic.index(forKey: "CallStatus") != nil {
-                                                responseResult = responseDic["CallStatus"] as! String
-                                            }
-                                        if  responseResult == "GOOD" {
-                                             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                       //     self.navigationItem.hidesBackButton = true;
-                                            //self.backBtn.isHidden = true
-                                            self.paySucessView.isHidden = false
-                                            self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
-                                            
-                                            let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
-                                            
-                                            let msg = signature.html2String;
-                                            self.nutritionstDescLbl.text =
-                                            msg;
-                                            
-                                        } else{
-                                             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                        }
-                                    }, failure : { error in
-                                        //  print(error?.description)
-                                        //            self.getQuestionsFromFB()
-                                         DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
-                                        
-                                    })
-                                    
-                                } else {
-                                   // self.navigationItem.hidesBackButton = true;
-                                  //  self.backBtn.isHidden = true
-                                    self.paySucessView.isHidden = false
-                                    self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
-                                    
-                                    let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
-                                    
-                                    let msg = signature.html2String;
-                                    self.nutritionstDescLbl.text =
-                                    msg;
-                                }
-                                 DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                
-                                
-                            } else {
-                                 DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                
-                            }
-                        })
-                        dispatch_group.leave();
-                        dispatch_group.notify(queue: DispatchQueue.main) {
-                            // MBProgressHUD.hide(for: self.view, animated: true);
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PREMIUM_PACK_IN-APP-SUCCESSFUL"), object: nil);
-                        }
-                    } else {
-                        let dispatch_group = DispatchGroup();
-                        dispatch_group.enter();
-                        let currentDate = Date();
-                        let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
-                        let currentTime = Int64(currentTimeStamp);
-                        
-                        var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfile?.first?.msisdn as Any,"name": self.myProfile?.first?.name as Any, "unread": false, "email": self.myProfile?.first?.email as Any, "height": self.myProfile?.first?.height as Any, "weight": self.myProfile?.first?.weight as Any, "foodHabits": self.myProfile?.first?.foodHabits as Any, "allergies": self.myProfile?.first?.allergies as Any, "conditions": self.myProfile?.first?.conditions as Any, "bodyShape": self.myProfile?.first?.bodyShape as Any, "goals": self.myProfile?.first?.goals as Any, "gender": self.myProfile?.first?.gender as Any, "age": self.myProfile?.first?.age as Any] as [String : Any]
-                        if pkgesArr.count > 0 {
-                            pkgesArr.remove(self.packageId)
-                            pkgesArr.add(self.packageId)
-                            pkgsArray["packages"] = pkgesArr as AnyObject as! [String]
-                            
-                        } else {
-                            pkgsArray["packages"] = [self.packageId];
-                        }
-                        
-                        Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageId).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
-                            
-                        })
-                        Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
-                            if error == nil {
-                                //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
-                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-                                    var url = ""
-                                    if self.packageId == self.ptpPackage {
-                                        url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
-                                    } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
-                                        url = TweakAndEatURLConstants.IND_AiDP_CONTENT
-                                    }
-                                    APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
-                                        let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                                        var responseResult = ""
-                                        
-                                        if responseDic.index(forKey: "callStatus") != nil {
-                                            responseResult = responseDic["callStatus"] as! String
-                                        } else if responseDic.index(forKey: "CallStatus") != nil {
-                                            responseResult = responseDic["CallStatus"] as! String
-                                        }
-                                        if  responseResult == "GOOD" {
-                                             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                        //    self.navigationItem.hidesBackButton = true;
-                                           // self.backBtn.isHidden = true
-                                            self.paySucessView.isHidden = false
-                                            self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
-                                            
-                                            let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
-                                            
-                                            let msg = signature.html2String;
-                                            self.nutritionstDescLbl.text =
-                                            msg;
-                                            
-                                        } else{
-                                             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                        }
-                                    }, failure : { error in
-                                        //  print(error?.description)
-                                        //            self.getQuestionsFromFB()
-                                         DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
-                                        
-                                    })
-
-                                } else {
-                                //self.navigationItem.hidesBackButton = true;
-                                   // self.backBtn.isHidden = true
-                                self.paySucessView.isHidden = false
-                                self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
-                                
-                                let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
-                                
-                                let msg = signature.html2String;
-                                self.nutritionstDescLbl.text =
-                                msg;
-                                }
-                                 DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                
-                                
-                            } else {
-                                 DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-                                
-                            }
-                        })
-                        dispatch_group.leave();
-                        dispatch_group.notify(queue: DispatchQueue.main) {
-                            // MBProgressHUD.hide(for: self.view, animated: true);
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PREMIUM_PACK_IN-APP-SUCCESSFUL"), object: nil);
-                        }
-                    }
-                })
-
-                
-            }
-        }, failure : { error in
-             DispatchQueue.main.async {
-                    MBProgressHUD.hide(for: self.view, animated: true);
-                }
-            if error!.code == -1011 {
-                self.navigationController?.popViewController(animated: true)
-                return
-            }
-            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
-            
-            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        })
-        
-        
-        //        do {
-        //            let requestData = try JSONSerialization.data(withJSONObject: jsonDict, options: JSONSerialization.WritingOptions.prettyPrinted)
-        //            let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
-        //            var storeRequest = URLRequest(url: storeURL)
-        //            storeRequest.httpMethod = "POST"
-        //            storeRequest.httpBody = requestData
-        //
-        //            let session = URLSession(configuration: URLSessionConfiguration.default)
-        //            let task = session.dataTask(with: storeRequest, completionHandler: { [weak self] (data, response, error) in
-        //
-        //                do {
-        //                    let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-        //                    print("=======>",jsonResponse)
-        //                    if let date = self?.getExpirationDateFromResponse(jsonResponse as! NSDictionary) {
-        //                        print(date)
-        //                    }
-        //                } catch let parseError {
-        //                    print(parseError)
-        //                }
-        //            })
-        //            task.resume()
-        //        } catch let parseError {
-        //            print(parseError)
-        //        }
-    }
+//                AppEvents.logEvent(.purchased, parameters: ["packageID": self.packageId, "curency": self.currency])
+//
+//                let event = BranchEvent.customEvent(withName: "purchase")
+//                event.eventDescription = "User completed payment."
+//                event.customData["packageID"] = self.packageId
+//                event.customData["currency"] = self.currency
+//                event.logEvent()
+//                 DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                print("in-app done")
+//                let labels =  (self.labelPriceDict[self.lables] as? String)! + " ("
+//                let amount = "\(self.labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+//
+//                let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+//                let totalDesc: String = labels + amount + currency;
+//                var data = [String: AnyObject]()
+//
+//                let priceDesc = totalDesc
+//                if responseDic.index(forKey: "data") != nil {
+//                    // contains key
+//                    data = responseDic["data"] as AnyObject as! [String: AnyObject]
+//
+//                } else if responseDic.index(forKey: "Data") != nil {
+//                    // contains key
+//                    data = responseDic["Data"] as AnyObject as! [String: AnyObject]
+//
+//                }
+//
+//                if data["NutritionistFirebaseId"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirebaseId")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistFirebaseId"] as AnyObject as! String, forKey: "NutritionistFirebaseId")
+//                }
+//
+//                if data["NutritionistFirstName"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistFirstName")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistFirstName"] as AnyObject as! String, forKey: "NutritionistFirstName")
+//                }
+//                if data["NutritionistSignature"] is NSNull {
+//                    UserDefaults.standard.setValue("", forKey: "NutritionistSignature")
+//                } else {
+//                    UserDefaults.standard.setValue(data["NutritionistSignature"] as AnyObject as! String, forKey: "NutritionistSignature")
+//                }
+//                var pkgesArr = NSMutableArray()
+//
+//                Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+//                    if snapshot.childrenCount > 0 {
+//                        let dispatch_group = DispatchGroup();
+//                        dispatch_group.enter();
+//
+//                        let snpShotDict = snapshot.value as AnyObject as! [String: AnyObject]
+//                        if snpShotDict.index(forKey: "packages") != nil {
+//                            pkgesArr = snpShotDict["packages"] as AnyObject as! NSMutableArray
+//
+//                        }
+//                        let currentDate = Date();
+//                        let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
+//                        let currentTime = Int64(currentTimeStamp);
+//
+//                        var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfile?.first?.msisdn as Any,"name": self.myProfile?.first?.name as Any, "unread": false, "email": self.myProfile?.first?.email as Any, "height": self.myProfile?.first?.height as Any, "weight": self.myProfile?.first?.weight as Any, "foodHabits": self.myProfile?.first?.foodHabits as Any, "allergies": self.myProfile?.first?.allergies as Any, "conditions": self.myProfile?.first?.conditions as Any, "bodyShape": self.myProfile?.first?.bodyShape as Any, "goals": self.myProfile?.first?.goals as Any, "gender": self.myProfile?.first?.gender as Any, "age": self.myProfile?.first?.age as Any] as [String : Any]
+//                        if pkgesArr.count > 0 {
+//                            pkgesArr.remove(self.packageId)
+//                            pkgesArr.add(self.packageId)
+//                            pkgsArray["packages"] = pkgesArr as AnyObject as! [String]
+//
+//                        } else {
+//                            pkgsArray["packages"] = [self.packageId];
+//                        }
+//
+//                        Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageId).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
+//
+//                        })
+//                        Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
+//                            if error == nil {
+//                                //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
+//                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+//                                    var url = ""
+//                                    if self.packageId == self.ptpPackage {
+//                                        url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
+//                                    } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+//                                        url = TweakAndEatURLConstants.IND_AiDP_CONTENT
+//                                    }
+//                                        APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+//                                        let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+//                                            var responseResult = ""
+//
+//                                            if responseDic.index(forKey: "callStatus") != nil {
+//                                                responseResult = responseDic["callStatus"] as! String
+//                                            } else if responseDic.index(forKey: "CallStatus") != nil {
+//                                                responseResult = responseDic["CallStatus"] as! String
+//                                            }
+//                                        if  responseResult == "GOOD" {
+//                                             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                       //     self.navigationItem.hidesBackButton = true;
+//                                            //self.backBtn.isHidden = true
+//                                            self.paySucessView.isHidden = false
+//                                            self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+//
+//                                            let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+//
+//                                            let msg = signature.html2String;
+//                                            self.nutritionstDescLbl.text =
+//                                            msg;
+//
+//                                        } else{
+//                                             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                        }
+//                                    }, failure : { error in
+//                                        //  print(error?.description)
+//                                        //            self.getQuestionsFromFB()
+//                                         DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
+//
+//                                    })
+//
+//                                } else {
+//                                   // self.navigationItem.hidesBackButton = true;
+//                                  //  self.backBtn.isHidden = true
+//                                    self.paySucessView.isHidden = false
+//                                    self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+//
+//                                    let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+//
+//                                    let msg = signature.html2String;
+//                                    self.nutritionstDescLbl.text =
+//                                    msg;
+//                                }
+//                                 DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//
+//
+//                            } else {
+//                                 DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//
+//                            }
+//                        })
+//                        dispatch_group.leave();
+//                        dispatch_group.notify(queue: DispatchQueue.main) {
+//                            // MBProgressHUD.hide(for: self.view, animated: true);
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PREMIUM_PACK_IN-APP-SUCCESSFUL"), object: nil);
+//                        }
+//                    } else {
+//                        let dispatch_group = DispatchGroup();
+//                        dispatch_group.enter();
+//                        let currentDate = Date();
+//                        let currentTimeStamp = self.getCurrentTimeStampWOMiliseconds(dateToConvert: currentDate as NSDate);
+//                        let currentTime = Int64(currentTimeStamp);
+//
+//                        var pkgsArray = [ "lastUpdatedOn": currentTime!, "msisdn": self.myProfile?.first?.msisdn as Any,"name": self.myProfile?.first?.name as Any, "unread": false, "email": self.myProfile?.first?.email as Any, "height": self.myProfile?.first?.height as Any, "weight": self.myProfile?.first?.weight as Any, "foodHabits": self.myProfile?.first?.foodHabits as Any, "allergies": self.myProfile?.first?.allergies as Any, "conditions": self.myProfile?.first?.conditions as Any, "bodyShape": self.myProfile?.first?.bodyShape as Any, "goals": self.myProfile?.first?.goals as Any, "gender": self.myProfile?.first?.gender as Any, "age": self.myProfile?.first?.age as Any] as [String : Any]
+//                        if pkgesArr.count > 0 {
+//                            pkgesArr.remove(self.packageId)
+//                            pkgesArr.add(self.packageId)
+//                            pkgsArray["packages"] = pkgesArr as AnyObject as! [String]
+//
+//                        } else {
+//                            pkgsArray["packages"] = [self.packageId];
+//                        }
+//
+//                        Database.database().reference().child("UserPremiumPackages").child((Auth.auth().currentUser?.uid)!).child(self.packageId).setValue(["userFbToken":InstanceID.instanceID().token()!, "dietPlan": ["isPublished": false, "status": 0], "purchasedOn": Int64(currentTimeStamp)!], withCompletionBlock: { (error, _) in
+//
+//                        })
+//                        Database.database().reference().child("NutritionistPremiumPackages").child(UserDefaults.standard.value(forKey: "NutritionistFirebaseId") as! String).child((Auth.auth().currentUser?.uid)!).setValue(pkgsArray, withCompletionBlock: { (error, _) in
+//                            if error == nil {
+//                                //      if self.packageID == "-IndIWj1mSzQ1GDlBpUt" {
+//                                if self.packageId == self.ptpPackage || self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+//                                    var url = ""
+//                                    if self.packageId == self.ptpPackage {
+//                                        url = TweakAndEatURLConstants.ALL_AiBP_CONTENT
+//                                    } else if self.packageId == "-AiDPwdvop1HU7fj8vfL" {
+//                                        url = TweakAndEatURLConstants.IND_AiDP_CONTENT
+//                                    }
+//                                    APIWrapper.sharedInstance.postRequestWithHeadersForIndiaAiDPContent(url, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+//                                        let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+//                                        var responseResult = ""
+//
+//                                        if responseDic.index(forKey: "callStatus") != nil {
+//                                            responseResult = responseDic["callStatus"] as! String
+//                                        } else if responseDic.index(forKey: "CallStatus") != nil {
+//                                            responseResult = responseDic["CallStatus"] as! String
+//                                        }
+//                                        if  responseResult == "GOOD" {
+//                                             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                        //    self.navigationItem.hidesBackButton = true;
+//                                           // self.backBtn.isHidden = true
+//                                            self.paySucessView.isHidden = false
+//                                            self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+//
+//                                            let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+//
+//                                            let msg = signature.html2String;
+//                                            self.nutritionstDescLbl.text =
+//                                            msg;
+//
+//                                        } else{
+//                                             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                        }
+//                                    }, failure : { error in
+//                                        //  print(error?.description)
+//                                        //            self.getQuestionsFromFB()
+//                                         DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//                                        TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your internet connection is appears to be offline !! Please answer the questions again !!")
+//
+//                                    })
+//
+//                                } else {
+//                                //self.navigationItem.hidesBackButton = true;
+//                                   // self.backBtn.isHidden = true
+//                                self.paySucessView.isHidden = false
+//                                self.usdAmtLabel.text = "Thank you for subscribing to " + priceDesc;
+//
+//                                let signature =  UserDefaults.standard.value(forKey: "NutritionistSignature") as! String;
+//
+//                                let msg = signature.html2String;
+//                                self.nutritionstDescLbl.text =
+//                                msg;
+//                                }
+//                                 DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//
+//
+//                            } else {
+//                                 DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//
+//                            }
+//                        })
+//                        dispatch_group.leave();
+//                        dispatch_group.notify(queue: DispatchQueue.main) {
+//                            // MBProgressHUD.hide(for: self.view, animated: true);
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PREMIUM_PACK_IN-APP-SUCCESSFUL"), object: nil);
+//                        }
+//                    }
+//                })
+//
+//
+//            }
+//        }, failure : { error in
+//             DispatchQueue.main.async {
+//                    MBProgressHUD.hide(for: self.view, animated: true);
+//                }
+//            if error!.code == -1011 {
+//                self.navigationController?.popViewController(animated: true)
+//                return
+//            }
+//            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+//
+//            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            self.present(alertController, animated: true, completion: nil)
+//        })
+//
+//
+//        //        do {
+//        //            let requestData = try JSONSerialization.data(withJSONObject: jsonDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+//        //            let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+//        //            var storeRequest = URLRequest(url: storeURL)
+//        //            storeRequest.httpMethod = "POST"
+//        //            storeRequest.httpBody = requestData
+//        //
+//        //            let session = URLSession(configuration: URLSessionConfiguration.default)
+//        //            let task = session.dataTask(with: storeRequest, completionHandler: { [weak self] (data, response, error) in
+//        //
+//        //                do {
+//        //                    let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        //                    print("=======>",jsonResponse)
+//        //                    if let date = self?.getExpirationDateFromResponse(jsonResponse as! NSDictionary) {
+//        //                        print(date)
+//        //                    }
+//        //                } catch let parseError {
+//        //                    print(parseError)
+//        //                }
+//        //            })
+//        //            task.resume()
+//        //        } catch let parseError {
+//        //            print(parseError)
+//        //        }
+//    }
 //    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
 //
 //        for transaction:AnyObject in transactions {
@@ -1354,8 +1354,20 @@ return
                             return
 
 
-                            } else if (cellDictionary.mppc_fb_id == "-MalAXk7gLyR3BNMusfi") {
+                            } else if (cellDictionary.mppc_fb_id == "-SgnMyAiDPuD8WVCipga") {
 
+                                if UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil {
+                                    self.performSegue(withIdentifier: "myTweakAndEat", sender: "-SgnMyAiDPuD8WVCipga");
+
+                                } else  {
+
+                                    self.performSegue(withIdentifier: "moreInfo", sender: self);
+                                }
+                                return
+
+
+                            } else if (cellDictionary.mppc_fb_id == "-MalAXk7gLyR3BNMusfi") {
+                                
                                 if UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil {
                                     self.performSegue(withIdentifier: "myTweakAndEat", sender: "-MalAXk7gLyR3BNMusfi");
 
@@ -1470,7 +1482,7 @@ return
     override func viewDidLoad() {
         
         super.viewDidLoad();
-      //  UserDefaults.standard.removeObject(forKey: "-ClubInd3gu7tfwko6Zx")
+        //UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
         CleverTap.sharedInstance()?.recordEvent("Packages_viewed")
 
         //SKPaymentQueue.default().add(self)
@@ -1511,16 +1523,19 @@ return
         if self.countryCode == "91" || self.countryCode == "1" {
             dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
         }
-        if self.countryCode == "91" {
-            self.askSiaButton.isHidden = false
-            self.wantHelpLabel.isHidden = false
-            self.askSiaButtonHeightConstraint.constant = 34
-        } else {
-            self.askSiaButton.isHidden = true
-            self.wantHelpLabel.isHidden = true
-            self.askSiaButtonHeightConstraint.constant = 0
-
-        }
+//        if self.countryCode == "91" {
+//            self.askSiaButton.isHidden = false
+//            self.wantHelpLabel.isHidden = false
+//            self.askSiaButtonHeightConstraint.constant = 34
+//        } else {
+//            self.askSiaButton.isHidden = true
+//            self.wantHelpLabel.isHidden = true
+//            self.askSiaButtonHeightConstraint.constant = 0
+//
+//        }
+        self.askSiaButton.isHidden = true
+        self.wantHelpLabel.isHidden = true
+        self.askSiaButtonHeightConstraint.constant = 0
         if self.countryCode == "91" {
             self.clubPackageSubscribed = "-ClubInd3gu7tfwko6Zx"
             
@@ -1658,6 +1673,8 @@ return
                 self.identifierFromPopUp = UserDefaults.standard.value(forKey: "POP_UP_IDENTIFIERS") as! String
             }
             popOverVC.identifierFromPopUp = self.identifierFromPopUp
+            let image: UIImage = self.view.snapshot
+            popOverVC.snapShotImage = image
             let cellD =  self.premiumPackagesApiArray[currentRow]
             if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
                 let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String;

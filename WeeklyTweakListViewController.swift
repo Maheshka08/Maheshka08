@@ -23,7 +23,8 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
     @IBOutlet weak var brunchLabel: UILabel!
     @IBOutlet weak var collectionViewForBreakfast: UICollectionView!
     @IBOutlet weak var noDataLabelForBreakfast: UILabel!
-    
+    var timerForShowScrollIndicator: Timer?
+
 
     @IBOutlet weak var collectionViewForBrunch: UICollectionView!
     @IBOutlet weak var noDataLabelForBrunch: UILabel!
@@ -64,6 +65,13 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
             self.collectionViewForLunch.reloadData()
             self.collectionViewForEveningSnack.reloadData()
             self.collectionViewForDinner.reloadData()
+            self.collectionViewForBreakfast.showsHorizontalScrollIndicator = true
+            self.collectionViewForBrunch.showsHorizontalScrollIndicator = true
+            self.collectionViewForLunch.showsHorizontalScrollIndicator = true
+            self.collectionViewForEveningSnack.showsHorizontalScrollIndicator = true
+            self.collectionViewForDinner.showsHorizontalScrollIndicator = true
+
+    
             self.tableView.reloadData()
             let topRow = IndexPath(row: 0,
                                        section: 0)
@@ -87,6 +95,36 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 //                                                         at: .top,
 //                                                         animated: true)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        startTimerForShowScrollIndicator()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(true)
+
+       if self.timerForShowScrollIndicator != nil
+       {
+        self.timerForShowScrollIndicator?.invalidate()
+          self.timerForShowScrollIndicator = nil
+       }
+    }
+    
+    @objc func showScrollIndicatorsInContacts() {
+        UIView.animate(withDuration: 0.001) {
+            self.collectionViewForBreakfast.flashScrollIndicators()
+            self.collectionViewForBrunch.flashScrollIndicators()
+            self.collectionViewForLunch.flashScrollIndicators()
+            self.collectionViewForEveningSnack.flashScrollIndicators()
+            self.collectionViewForDinner.flashScrollIndicators()
+        }
+    }
+    
+    func startTimerForShowScrollIndicator() {
+        self.timerForShowScrollIndicator = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.showScrollIndicatorsInContacts), userInfo: nil, repeats: true)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionViewForBreakfast {
@@ -368,6 +406,7 @@ class WeeklyTweakListViewController: UITableViewController, UICollectionViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         pullControl.attributedTitle = NSAttributedString(string: "Pull down to Collapse..")
        // pullControl.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
 

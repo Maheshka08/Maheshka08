@@ -236,7 +236,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
 
         self.optionsLabel.text = "On WakeUp Options";
-        //self.title = "AiDP";
+        self.title = "My Diet Plan";
         self.getFirebaseData();
     }
     
@@ -342,7 +342,7 @@ class AiDPViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                         if dietPlan.key == "isPublished" {
                             
                             if dietPlanObj as! Bool == true {
-                                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi"  || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas") {
+                                if (self.packageId == "-MzqlVh6nXsZ2TCdAbOp" || self.packageId == "-MalAXk7gLyR3BNMusfi"  || self.packageId == "-AiDPwdvop1HU7fj8vfL" || self.packageId == self.ptpPackage || self.packageId == "-SgnMyAiDPuD8WVCipga"  || self.packageId == "-IdnMyAiDPoP9DFGkbas" || self.packageId == "-ClubInd4tUPXHgVj9w3" || self.packageId == "-ClubUsa5nDa1M8WcRA6") {
                                  self.isPublished = true
                                 }
                             } else {

@@ -78,7 +78,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
             return
         }
-        self.idleTimer.invalidate()
+        self.idleTimer?.invalidate()
         let props = [
             "package_id": self.packageId,
         ]
@@ -426,8 +426,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
           v.translatesAutoresizingMaskIntoConstraints=false
           return v
       }()
-    var idleTimer = Timer()
-    
+    var idleTimer: Timer?
+    @IBOutlet weak var ppPackagesInnerDetailViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var pp_pkgsImageVIew: UIImageView!
     @IBOutlet weak var pp_PackagesInnerDetailView: UIView!
     @IBOutlet weak var pp_PackagesDetailView: UIView!
@@ -480,7 +480,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var pp_pkgImgView: UIImageView!
      @IBOutlet weak var packagesCarouselHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerCalendarViewHeightConstant: NSLayoutConstraint!
-    
+    var snapShotImage = UIImage()
     @IBOutlet weak var referralCodeBtn: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var ratingsCarouselHeightConstraint: NSLayoutConstraint!
@@ -489,7 +489,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var packageDescTextView: UITextView!;
     @IBOutlet weak var areYouSureLbl: UILabel!
     @IBOutlet weak var unSubscribeImgViewHeightContraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var ppPackageInnerViewWidthContraint: NSLayoutConstraint!
     @IBOutlet weak var ppPackageDetailsImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyNowBtton: UIButton!
     @IBOutlet weak var callNutritionistBtn2HeightContraint: NSLayoutConstraint!
@@ -961,18 +961,26 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 switch trans.transactionState {
                 case .purchased:
                     print("Product Purchased")
+                    
                     let props = [
                         "package_id": self.packageId,
                     ]
                     CleverTap.sharedInstance()?.recordEvent("Purchase_completed", withProps: props)
                     //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
                     if self.packageId == self.clubPackageSubscribed {
+                        if self.priceInDouble != 0.0 {
                         self.receiptValidation()
+                        }
                     } else if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
+                        if self.priceInDouble != 0.0 {
                         self.sendNCPdetails(transactionID: trans.transactionIdentifier ?? "")
+                        }
                     } else {
+                        if self.price != "" {
                     self.recptValidation()
+                        }
                     }
+                    
                     print(trans.transactionIdentifier ?? "")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     DispatchQueue.main.async {
@@ -1045,7 +1053,18 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        startTimerForShowScrollIndicator()
+       // startTimerForShowScrollIndicator()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(true)
+
+    
+       if self.idleTimer != nil
+       {
+        self.idleTimer?.invalidate()
+          self.idleTimer = nil
+       }
     }
     
     
@@ -1224,11 +1243,23 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             self.languageTableView.isHidden = true
             self.updateAreYouSureLbl()
         } else if tableView == inAppPurchasePriceTableView {
-//            let cell = tableView.cellForRow(at: indexPath) as! InAppPackagePriceViewCell
-//            cell.imgView.transform = CGAffineTransform(scaleX: 2, y: 2)
+            let cell = tableView.cellForRow(at: indexPath) as! InAppPackagePriceViewCell
+            //cell.imgView.transform = CGAffineTransform(scaleX: 2, y: 2)
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2,
+                    animations: {
+                        cell.imgView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                    },
+                    completion: { _ in
+                        UIView.animate(withDuration: 0.2) {
+                            cell.imgView.transform = CGAffineTransform.identity
+                        }
+                    })
+            }
+          
 
             self.selectedIndex = indexPath.row
-            self.idleTimer.invalidate()
+            self.idleTimer?.invalidate()
             let props = [
                 "package_id": self.packageId,
             ]
@@ -2061,6 +2092,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                             let ratio = image!.size.width / image!.size.height
                             let newHeight = self.pp_pkgsImageVIew.frame.width / ratio
                            self.ppPackageDetailsImageViewHeightConstraint.constant = newHeight
+                            //self.ppPackagesInnerDetailViewWidthConstraint.constant = image!.size.width
                             self.ppPackagesInnerViewHeightConstraint.constant = newHeight
                             self.view.layoutIfNeeded()
                                
@@ -2095,12 +2127,22 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     }
                 }
             } else if self.identifierFromPopUp == "CLUB_PUR_IND_OP_1M" {
+                //WL_INT_IND_QUATERLY
+                if self.nutritionLabelPriceArray.count > 0 {
+                    for dict in self.nutritionLabelPriceArray {
+                        let recurPriceDict = dict as! [String: AnyObject]
+                        if recurPriceDict["productIdentifier"] as! String == "TAECLUB_IND_MONTHLY" {
+                            self.startPurchase(identifier: "TAECLUB_IND_MONTHLY", dict: recurPriceDict)
+                        }
+                    }
+                }
+            } else if self.identifierFromPopUp == "CLUBAIDP_PUR_IND_OP_1M" {
                     //WL_INT_IND_QUATERLY
                     if self.nutritionLabelPriceArray.count > 0 {
                         for dict in self.nutritionLabelPriceArray {
                             let recurPriceDict = dict as! [String: AnyObject]
-                            if recurPriceDict["productIdentifier"] as! String == "TAECLUB_IND_MONTHLY" {
-                                self.startPurchase(identifier: "TAECLUB_IND_MONTHLY", dict: recurPriceDict)
+                            if recurPriceDict["productIdentifier"] as! String == "TAECLUBAIDP_IND_MONTHLY" {
+                                self.startPurchase(identifier: "TAECLUBAIDP_IND_MONTHLY", dict: recurPriceDict)
                             }
                         }
                     }
@@ -2569,16 +2611,14 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-//        self.packagesCarouselView.removeFromSuperview()
-//        self.ratingsCarouselView.removeFromSuperview()
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pp_pkgImgView.contentMode = .scaleAspectFit
+        self.pp_pkgImgView.clipsToBounds = true
         self.inAppPurchasePriceTableView.isHidden = true
         self.inAppPurchasePriceTableView.backgroundColor = .clear
-        self.overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        self.overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.99)
         self.pp_PackagesInnerDetailView.layer.cornerRadius = 15
         let props = [
             "package_id": self.packageId,
@@ -2640,17 +2680,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if self.countryCode == "91" || self.countryCode == "1" {
-                if self.countryCode == "91" {
-                    DispatchQueue.main.async {
-                        self.pp_pkgImgView.image = UIImage.init(named: "pp_pkgs")
-                    }
-                    
-                } else if self.countryCode == "1" {
-                    DispatchQueue.main.async {
-                        self.pp_pkgImgView.image = UIImage.init(named: "pp_pkgs-usa")
-
-                    }
+                DispatchQueue.main.async {
+                    self.pp_pkgImgView.image = self.snapShotImage
                 }
+               
                 self.pp_PackagesDetailView.isHidden = false
                 dbReference = Database.database().reference().child("PremiumPackageDetails").child("Packs")
                 self.getNewMyTweakAndEatDetails()

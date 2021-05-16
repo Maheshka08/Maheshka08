@@ -13,7 +13,7 @@ import Firebase
 import FirebaseDatabase
 import AAInfographics
 
-class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITableViewDelegate, UITableViewDataSource, MyNutritionButtonsTapped {
+class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITableViewDelegate, UITableViewDataSource, MyNutritionButtonsTapped, ReportsButtonTaped {
     
     func tappedOnLast10Tweaks() {
            self.myNutritionViewSelectYourMealTableView.isHidden = true
@@ -626,7 +626,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     }
     func updateSwitchUI(bool: Bool) {
     
-        self.switchButton.setStatus(bool)
+       // self.switchButton.setStatus(bool)
     }
     
     func goToTweakTrends() {
@@ -638,36 +638,36 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
     
     @objc func swapViews(_ notification: NSNotification) {
         
-        let bool = notification.object as! Bool
-        UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
-               }, completion: {(_ completed: Bool) -> Void in
-                self.goToTweakTrends()
-//                if bool == true {
-//                    if (self.myNutritionDetailsView != nil) {
-//                        self.myNutritionViewLast10TweaksTableView.isHidden = true
-//                        self.myNutritionViewSelectYourMealTableView.isHidden = true
-//                        self.myNutritionDetailsView.isHidden = true
-//                        self.showGraph = true
-//                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
-//                        self.updateSwitchUI(bool: true)
-//                        self.setDefaultDataBtns(name: self.dataBtnName)
-//                    }
-//                } else {
-//                    if (self.myNutritionDetailsView != nil) {
-//                        self.mealTypeTableView.isHidden = true
+//        let bool = notification.object as! Bool
+//        UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
+//               }, completion: {(_ completed: Bool) -> Void in
+//                self.goToTweakTrends()
+////                if bool == true {
+////                    if (self.myNutritionDetailsView != nil) {
+////                        self.myNutritionViewLast10TweaksTableView.isHidden = true
+////                        self.myNutritionViewSelectYourMealTableView.isHidden = true
+////                        self.myNutritionDetailsView.isHidden = true
+////                        self.showGraph = true
+////                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
+////                        self.updateSwitchUI(bool: true)
+////                        self.setDefaultDataBtns(name: self.dataBtnName)
+////                    }
+////                } else {
+////                    if (self.myNutritionDetailsView != nil) {
+////                        self.mealTypeTableView.isHidden = true
+////
+////                                   self.myNutritionDetailsView.isHidden = false
+////                                   self.showGraph = false
+////                         self.myNutritionDetailsView.switchButton.setStatus(false)
+////                                   self.setDefaultDataBtns(name: self.dataBtnName)
+////                    }
+////                }
+////
+////                self.updateUIAccordingTOEachDevice()
 //
-//                                   self.myNutritionDetailsView.isHidden = false
-//                                   self.showGraph = false
-//                         self.myNutritionDetailsView.switchButton.setStatus(false)
-//                                   self.setDefaultDataBtns(name: self.dataBtnName)
-//                    }
-//                }
+//        })
 //
-//                self.updateUIAccordingTOEachDevice()
-
-        })
-        
-        
+//
     }
     
     func updateUIAccordingTOEachDevice() {
@@ -852,40 +852,46 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         }
     }
     
+    func reportsButtonTapped() {
+        self.goToTweakTrends()
+    }
+    
+    
     func showMyNutritionDetails() {
         if (self.myNutritionDetailsView == nil) {
-        self.myNutritionDetailsView = (Bundle.main.loadNibNamed("MyNutritionView", owner: self, options: nil)! as NSArray).firstObject as? MyNutritionView;
-        self.myNutritionDetailsView.frame = CGRect(x: 0, y: self.outerChartView.frame.minY, width: self.view.frame.width, height: self.chartView.frame.maxY)
-        self.myNutritionDetailsView.delegate = self
-        self.myNutritionViewSelectYourMealTableView.backgroundColor = UIColor.groupTableViewBackground
-        self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
-       self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
-              self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
-        self.view.addSubview(self.myNutritionDetailsView)
-            self.myNutritionDetailsView.updateSwitchUI(bool: false)
-       
-//             if IS_iPHONE5 || IS_IPHONE4 {
-//                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
-//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
-//                    } else if IS_iPHONE678 {
-//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
-//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
-//                    } else if IS_iPHONE678P {
-//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
-//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
-//                    } else if IS_iPHONEXRXSMAX {
-//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
-//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
-//                      } else if IS_iPHONEXXS {
-//                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
-//                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
-//                    }
-                    self.myNutritionDetailsView.layoutIfNeeded()
-                    self.myNutritionDetailsView.myNutritionCarbsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
-                    self.myNutritionDetailsView.myNutritionFatsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
-                    self.myNutritionDetailsView.myNutritionProteinsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
-              //v2.frame = v1.frame
-       self.showCircularProgressViews()
+            self.myNutritionDetailsView = (Bundle.main.loadNibNamed("MyNutritionView", owner: self, options: nil)! as NSArray).firstObject as? MyNutritionView;
+            self.myNutritionDetailsView.frame = CGRect(x: 0, y: self.outerChartView.frame.minY, width: self.view.frame.width, height: self.chartView.frame.maxY)
+            self.myNutritionDetailsView.delegate = self
+            self.myNutritionDetailsView.reportsButtonDelegate = self
+            self.myNutritionViewSelectYourMealTableView.backgroundColor = UIColor.groupTableViewBackground
+            self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
+            self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
+            self.myNutritionDetailsView.selectYourMealLbl.text = self.nutritionViewSelectedMeal
+            self.view.addSubview(self.myNutritionDetailsView)
+            //  self.myNutritionDetailsView.updateSwitchUI(bool: false)
+            
+            //             if IS_iPHONE5 || IS_IPHONE4 {
+            //                self.myNutritionDetailsView.viewHghtConstraint.constant = 70
+            //                        self.myNutritionDetailsView.viewWdthConstraint.constant = 70
+            //                    } else if IS_iPHONE678 {
+            //                        self.myNutritionDetailsView.viewHghtConstraint.constant = 84
+            //                        self.myNutritionDetailsView.viewWdthConstraint.constant = 84
+            //                    } else if IS_iPHONE678P {
+            //                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.67
+            //                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.67
+            //                    } else if IS_iPHONEXRXSMAX {
+            //                        self.myNutritionDetailsView.viewHghtConstraint.constant = 93.5
+            //                        self.myNutritionDetailsView.viewWdthConstraint.constant = 93.5
+            //                      } else if IS_iPHONEXXS {
+            //                        self.myNutritionDetailsView.viewHghtConstraint.constant = 83.67
+            //                        self.myNutritionDetailsView.viewWdthConstraint.constant = 83.67
+            //                    }
+            self.myNutritionDetailsView.layoutIfNeeded()
+            self.myNutritionDetailsView.myNutritionCarbsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
+            self.myNutritionDetailsView.myNutritionFatsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
+            self.myNutritionDetailsView.myNutritionProteinsView.layer.cornerRadius = self.myNutritionDetailsView.myNutritionCaloriesView.frame.size.height / 2
+            //v2.frame = v1.frame
+            self.showCircularProgressViews()
         } else {
             self.showCircularProgressViews()
         }
@@ -957,8 +963,8 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         self.myNutritionViewSelectYourMealTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
         self.myNutritionViewLast10TweaksTableView.isHidden = true
         self.myNutritionViewLast10TweaksTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-       self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 100, y: 2.5, width: 90, height: 30))
-        self.mealTypeView.addSubview(switchButton)
+        self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 130, y: 9, width: 125, height: 40))
+        //self.mealTypeView.addSubview(switchButton)
         NotificationCenter.default.addObserver(self, selector: #selector(MyTweakAndEatVCViewController.swapViews(_:)), name: NSNotification.Name(rawValue: "SWAP_VIEW_IN_MYTAE"), object: nil);
         
         self.minCalCountLabel.text = ""
@@ -1016,7 +1022,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
             self.unsubScribePlan = TweakAndEatURLConstants.UNSUBSCRIBE_USA
             tipImage.image = UIImage.init(named: "tip_of_the_day")
             if self.packageID == "-ClubUsa5nDa1M8WcRA6" {
-                self.title = "My Club AiDP"
+                self.title = "Club Package"
 
             } else {
                 self.title = "My Tweak & Eat"
@@ -1060,7 +1066,7 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
                           // self.myAiDPBtn.setImage(UIImage(named: "my_diet_plan_icon"), for: .normal)
             } else if self.packageID == "-ClubInd4tUPXHgVj9w3" {
                 tipImage.image = UIImage.init(named: "tip_of_the_day4")
-                self.title = "My Club AiDP"
+                self.title = "Club Package"
                 self.myAiDPLbl.text = "My Diet Plan"
                 self.dietPlanImageView.image = UIImage(named: "my_diet_plan_icon")
                 
@@ -1476,17 +1482,17 @@ class MyTweakAndEatVCViewController: UIViewController, LineChartDelegate, UITabl
         if segue.identifier == "chat" {
             let destination = segue.destination as! ChatVC;
             destination.fromPackages = true;
-            if countryCode == "91" {
-                if UserDefaults.standard.value(forKey: "AIDP_EXP_DATE") != nil {
-                               let start = Date()
-                               let end = UserDefaults.standard.value(forKey: "AIDP_EXP_DATE")
-                               let diff = calculateDaysBetweenTwoDates(start: start, end: end as! Date)
-                               if diff < 22 {
-                                destination.hideBottomMessageBox = true
-                                //2020-07-14T05:22:06.000Z
-                               }
-                           }
-            }
+//            if countryCode == "91" {
+//                if UserDefaults.standard.value(forKey: "AIDP_EXP_DATE") != nil {
+//                               let start = Date()
+//                               let end = UserDefaults.standard.value(forKey: "AIDP_EXP_DATE")
+//                               let diff = calculateDaysBetweenTwoDates(start: start, end: end as! Date)
+//                               if diff < 22 {
+//                                destination.hideBottomMessageBox = true
+//                                //2020-07-14T05:22:06.000Z
+//                               }
+//                           }
+//            }
            
             if countryCode == "1" {
                 if self.packageID == self.ptpPackage {

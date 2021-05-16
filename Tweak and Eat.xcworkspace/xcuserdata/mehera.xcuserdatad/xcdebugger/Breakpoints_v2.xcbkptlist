@@ -7,47 +7,95 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3"
+            uuid = "43372BFE-6D55-4870-AC5E-47E331AF1759"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "New Group/Message.swift"
+            filePath = "Tweak and Eat/DietPlanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "downloadAllMessages2(forUserID:chatID:completion:)"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "checkNutritionistPublishedDietPlan()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84FFA1B2-A2AD-4434-AC58-509C4DC4140E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyTweakAndEatVCViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "967"
+            endingLineNumber = "967"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE8810D0-098B-4A75-A8ED-C044533D6FC8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyNutritionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "updateSwitchUI(bool:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A065E70C-54F9-483C-AE70-68C75D261292"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AvailablePremiumPackagesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1132"
+            endingLineNumber = "1132"
+            landmarkName = "cellTappedOnImage(_:sender:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3 - c2dfe807c54f158d"
+                  uuid = "A065E70C-54F9-483C-AE70-68C75D261292 - 6f650e059b45db31"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static Tweak_and_Eat.Message.downloadAllMessages2(forUserID: Swift.String, chatID: Swift.String, completion: (Tweak_and_Eat.Message) -&gt; ()) -&gt; ()"
+                  symbolName = "Tweak_and_Eat.AvailablePremiumPackagesViewController.cellTappedOnImage(_: Tweak_and_Eat.AvailablePremiumPackagesTableViewCell, sender: __C.UITapGestureRecognizer) -&gt; ()"
                   moduleName = "Tweak and Eat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/New%20Group/Message.swift"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/AvailablePremiumPackagesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "400">
+                  startingLineNumber = "1132"
+                  endingLineNumber = "1132"
+                  offsetFromSymbolStart = "1565">
                </Location>
                <Location
-                  uuid = "5AAE5CC5-3C58-463F-9E81-B2C66BEEF2A3 - e1bc8d741cf15a66"
+                  uuid = "A065E70C-54F9-483C-AE70-68C75D261292 - 215a2c5b0894c933"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in static Tweak_and_Eat.Message.downloadAllMessages2(forUserID: Swift.String, chatID: Swift.String, completion: (Tweak_and_Eat.Message) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Tweak_and_Eat.AvailablePremiumPackagesViewController.cellTappedOnImage(_: Tweak_and_Eat.AvailablePremiumPackagesTableViewCell, sender: __C.UITapGestureRecognizer) -&gt; ()"
                   moduleName = "Tweak and Eat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/New%20Group/Message.swift"
+                  urlString = "file:///Users/mehera/Documents/GitHub/TAE/AvailablePremiumPackagesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "148">
+                  startingLineNumber = "1133"
+                  endingLineNumber = "1133"
+                  offsetFromSymbolStart = "316">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -55,32 +103,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B2DDD6B-5D7A-43F1-8B0E-A7ADA38BE6DB"
+            uuid = "C25D6AE1-67D6-4E08-A7D7-F28EEDF6CE34"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyTweakAndEatVCViewController.swift"
+            filePath = "AvailablePremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1476"
-            endingLineNumber = "1476"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36CA49F3-0AB9-4B62-92FE-790E0C955200"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/WelcomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9168"
-            endingLineNumber = "9168"
-            landmarkName = "homeInfoApiCalls()"
+            startingLineNumber = "1122"
+            endingLineNumber = "1122"
+            landmarkName = "cellTappedOnImage(_:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

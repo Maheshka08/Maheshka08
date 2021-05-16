@@ -787,7 +787,7 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }//AiDPwdvop1HU7fj8vfL
-     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil {
+     if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
         MBProgressHUD.hide(for: self.view, animated: true);
 
          self.getVegRecipes()
@@ -1781,6 +1781,14 @@ class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: promoAppLink)
             }
         }
+        if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+           if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+            self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+               //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+           } else {
+       self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+           }
+       }
         if promoAppLink == "MYAIDP_PUR_IND_OP_3M" {
             if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
                 self.performSegue(withIdentifier: "myTweakAndEat", sender: promoAppLink);

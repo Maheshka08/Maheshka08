@@ -162,6 +162,13 @@ class PopUpNotificationView: UIView {
             } else {
         self.goToBuyScreen(packageID: "-NcInd5BosUcUeeQ9Q32", identifier: link)
             }
+        } else if link == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+                self.showMyTweakAndEatVC(promoLink: "-ClubInd4tUPXHgVj9w3")
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: link)
+            }
         } else if link == "MYAIDP_PUR_IND_OP_3M" || link == "MYAIDP_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil {
              self.showMyTweakAndEatVC(promoLink: "-AiDPwdvop1HU7fj8vfL")

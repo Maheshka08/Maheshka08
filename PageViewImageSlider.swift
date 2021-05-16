@@ -14,23 +14,31 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var tweaksSwipe: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+   
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
   
     @objc var imagesArray = [String]()
+    @objc var userCommentsArray = [String]()
     @objc var itemIndex = 0
     
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        let index = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+//        self.userCommentsIndex = index
+//
+//    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
+
         pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
-    
+
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        
+
         pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,9 +50,21 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! PageControlCollectionViewCell
         cell.imgView.sd_setImage(with: URL(string: self.imagesArray[indexPath.item] ));
-        cell.cellIndexPath = indexPath.item
+        if self.userCommentsArray.count > 0 {
+            DispatchQueue.main.async {
+                cell.commentsLabel.text = self.userCommentsArray[indexPath.item]
+            }
+        }
+        //cell.cellIndexPath = indexPath.item
+//        itemIndex = indexPath.item
+//
+//        if self.userCommentsArray.count > 0 {
+//            DispatchQueue.main.async {
+//                self.dateLabel.text = self.userCommentsArray[indexPath.item]
+//
+//            }
+//        }
 //        cell.scrollView.minimumZoomScale = 1.0
-        //itemIndex = indexPath.item
        // self.pageControl.updateCurrentPageDisplay()
         
         return cell;
@@ -86,11 +106,25 @@ class PageViewImageSlider: UIViewController, UICollectionViewDelegate, UICollect
  
     }
     
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let center = self.view.convert(self.collectionView.center, to: self.collectionView)
+//        let indexPath = self.collectionView.indexPathForItem(at: center)
+//        self.userCommentsIndex = indexPath?.item ?? 0
+//    }
+    
 //     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        let witdh = scrollView.frame.width - (scrollView.contentInset.left*2)
 //        let index = scrollView.contentOffset.x / witdh
 //        let roundedIndex = round(index)
 //        self.pageControl?.currentPage = Int(roundedIndex)
+////        DispatchQueue.main.async {
+////        let center = self.view.convert(self.collectionView.center, to: self.collectionView)
+////        let indexPath = self.collectionView.indexPathForItem(at: center)
+////        if self.userCommentsArray.count > 0 {
+////            self.dateLabel.text = self.userCommentsArray[indexPath?.item ?? 0]
+////
+////            }
+////        }
 //    }
     
 }

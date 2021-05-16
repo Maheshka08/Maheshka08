@@ -14,6 +14,7 @@ class PageControlCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate 
     @objc var cellIndexPath : Int = 0
     @objc var myIndexPath : IndexPath!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var commentsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,7 @@ class PageControlCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate 
         self.scrollView.delegate = self
         self.imgView.contentMode = .scaleAspectFit
         self.imgView.clipsToBounds = true
+        //self.commentsLabel.backgroundColor = .red
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

@@ -106,7 +106,7 @@ struct MonthData {
     
 }
 
-class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UserCallSchedule, MyNutritionButtonsTapped {
+class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UserCallSchedule, MyNutritionButtonsTapped, ReportsButtonTaped {
     var dataBtnArray = [String]()
     var dataBtnDict = [String: String]()
     var nutritionViewSelectedMeal = "Select your meal"
@@ -758,6 +758,13 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
 
             } else {
         self.goToBuyScreen(packageID: "-AiDPwdvop1HU7fj8vfL", identifier: link)
+            }
+        } else if link == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: link)
             }
         } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
             self.smallScreenPopUp.isHidden = true
@@ -2285,7 +2292,7 @@ if dictionary.index(forKey: "weeksData") != nil {
 //        if self.countryCode == "62" {
 //            return
 //        }
-        //HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-ClubInd4tUPXHgVj9w3")
+       // HandleRedirections.sharedInstance.tappedOnPopUpDone(link: "-ClubInd4tUPXHgVj9w3")
         self.infoIconTapped = true
         showHowToTweakScreen()
 
@@ -2438,6 +2445,7 @@ self.dummyNav2(packageIDs: "-MzqlVh6nXsZ2TCdAbOp", identifier: "WLIF_PUR_IND_OP_
             self.myNutritionDetailsView.layer.cornerRadius = 10
 
         self.myNutritionDetailsView.delegate = self
+        self.myNutritionDetailsView.reportsButtonDelegate = self
         self.myNutritionViewSelectYourMealTableView.backgroundColor = UIColor.groupTableViewBackground
         self.myNutritionViewLast10TweaksTableView.backgroundColor = UIColor.groupTableViewBackground
         self.myNutritionDetailsView.last10TweaksLbl.text = self.nutritionViewLast10TweaksDataVal
@@ -2537,7 +2545,7 @@ self.topImageView.alpha = 1
     
     func updateSwitchUI(bool: Bool) {
        
-           self.switchButton.setStatus(bool)
+          // self.switchButton.setStatus(bool)
        }
     
     func configureShadow(tableView: UITableView) {
@@ -2885,7 +2893,7 @@ self.topImageView.alpha = 1
         self.topImageView.alpha = 0
         self.outerChartView.alpha = 0
         
-        self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 140, y: self.mealTypeView.frame.minY + 2.5, width: 90, height: 30))
+        self.switchButton = SwitchWithText(frame: CGRect(x: self.view.frame.width - 130, y: 9, width: 125, height: 40))
         self.outerChartView.addSubview(self.switchButton)
         self.switchButton.isHidden = true
 
@@ -4045,6 +4053,10 @@ self.topImageView.alpha = 1
         
     }
     
+    func reportsButtonTapped() {
+        self.goToTweakTrends()
+    }
+    
     func goToTweakTrends() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc : TweakTrendReportViewController = storyBoard.instantiateViewController(withIdentifier: "TweakTrendReportViewController") as! TweakTrendReportViewController;
@@ -4053,37 +4065,37 @@ self.topImageView.alpha = 1
     }
     
     @objc func swapViews(_ notification: NSNotification) {
-        let bool = notification.object as! Bool
-        UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
-               }, completion: {(_ completed: Bool) -> Void in
-                self.goToTweakTrends()
-                
-//                if bool == true {
-//                    if (self.myNutritionDetailsView != nil) {
-//                        self.myNutritionViewLast10TweaksTableView.isHidden = true
-//                        self.myNutritionViewSelectYourMealTableView.isHidden = true
-//                        self.myNutritionView.isHidden = true
-//                        self.switchButton.isHidden = false
-//                        self.showGraph = true
-//                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
+//        let bool = notification.object as! Bool
+//        UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
+//               }, completion: {(_ completed: Bool) -> Void in
+//                self.goToTweakTrends()
 //
-//                        self.updateSwitchUI(bool: true)
-//                        self.setDefaultDataBtns(name: self.dataBtnName)
-//                    }
-//                } else {
-//                    if (self.myNutritionDetailsView != nil) {
-//                        self.mealTypeTableView.isHidden = true
-//                        self.switchButton.isHidden = true
-//                                   self.myNutritionView.isHidden = false
-//                                   self.showGraph = false
-//                         self.myNutritionDetailsView.switchButton.setStatus(false)
-//                                   self.setDefaultDataBtns(name: self.dataBtnName)
-//                    }
-//                }
+////                if bool == true {
+////                    if (self.myNutritionDetailsView != nil) {
+////                        self.myNutritionViewLast10TweaksTableView.isHidden = true
+////                        self.myNutritionViewSelectYourMealTableView.isHidden = true
+////                        self.myNutritionView.isHidden = true
+////                        self.switchButton.isHidden = false
+////                        self.showGraph = true
+////                        //self.myNutritionDetailsView.switchButton.setStatus(bool)
+////
+////                        self.updateSwitchUI(bool: true)
+////                        self.setDefaultDataBtns(name: self.dataBtnName)
+////                    }
+////                } else {
+////                    if (self.myNutritionDetailsView != nil) {
+////                        self.mealTypeTableView.isHidden = true
+////                        self.switchButton.isHidden = true
+////                                   self.myNutritionView.isHidden = false
+////                                   self.showGraph = false
+////                         self.myNutritionDetailsView.switchButton.setStatus(false)
+////                                   self.setDefaultDataBtns(name: self.dataBtnName)
+////                    }
+////                }
+////
+////                self.updateUIAccordingTOEachDevice()
 //
-//                self.updateUIAccordingTOEachDevice()
-
-        })
+//        })
         
         
     }
@@ -4182,6 +4194,13 @@ self.topImageView.alpha = 1
                 }
                 
 
+            }
+        } else if link == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: link)
             }
         } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
             self.popUpView.removeFromSuperview()
@@ -5071,6 +5090,13 @@ self.topImageView.alpha = 1
             self.goToBuyScreen(packageID: "-IndWLIntusoe3uelxER", identifier: promoAppLink)
                 }
             }
+        } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+            }
         } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
@@ -5476,6 +5502,13 @@ self.topImageView.alpha = 1
             self.goToTweakWall()
         } else if promoAppLink == "RECIPE_WALL" {
             self.goToRecipeWall()
+        } else if promoAppLink == "CLUBAIDP_PUR_IND_OP_1M" {
+            if UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil {
+             self.performSegue(withIdentifier: "myTweakAndEat", sender: "-ClubInd4tUPXHgVj9w3");
+                //self.performSegue(withIdentifier: "myTweakAndEat", sender: link);
+            } else {
+           self.goToBuyScreen(packageID: "-ClubInd4tUPXHgVj9w3", identifier: promoAppLink)
+            }
         } else if promoAppLink == "CLUB_PURCHASE" || promoAppLink == "CLUB_PUR_IND_OP_1M" {
             if UserDefaults.standard.value(forKey: "-ClubInd3gu7tfwko6Zx") != nil || UserDefaults.standard.value(forKey: "-ClubIdn4hd8flchs9Vy") != nil {
               self.goToTAEClubMemPage()
@@ -6350,7 +6383,7 @@ self.topImageView.alpha = 1
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
     countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
             if countryCode == "91" {
-                self.askSiaButton.isHidden = false
+                self.askSiaButton.isHidden = true
             } else {
                 self.askSiaButton.isHidden = true
             }
@@ -6419,7 +6452,7 @@ self.topImageView.alpha = 1
                 if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
             countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
                     if countryCode == "91" {
-                        self.askSiaButton.isHidden = false
+                        self.askSiaButton.isHidden = true
                     } else {
                         self.askSiaButton.isHidden = true
                     }
@@ -8411,7 +8444,7 @@ self.floatingCallBtn.isHidden = false
                     if userClubAidpSub == 1 {
                     UserDefaults.standard.set("-ClubUsa5nDa1M8WcRA6", forKey: "-ClubUsa5nDa1M8WcRA6")
                     UserDefaults.standard.synchronize()
-                      floatingButtonArray.append(["pkgName": "Club AiDP" as AnyObject, "imgName": "clubaidp" as AnyObject, "pkg": "-ClubUsa5nDa1M8WcRA6" as AnyObject])
+                      floatingButtonArray.append(["pkgName": "Club Package" as AnyObject, "imgName": "clubaidp" as AnyObject, "pkg": "-ClubUsa5nDa1M8WcRA6" as AnyObject])
                       self.floatingCrownBtn.isHidden = false
                     } else {
                         UserDefaults.standard.removeObject(forKey: "-ClubUsa5nDa1M8WcRA6")
@@ -8659,7 +8692,7 @@ self.floatingCallBtn.isHidden = false
                     if userClubAidpSub == 1 {
                     UserDefaults.standard.set("-ClubInd4tUPXHgVj9w3", forKey: "-ClubUSA4tg6cvdhizQn")
                     UserDefaults.standard.synchronize()
-                      floatingButtonArray.append(["pkgName": "Club AiDP" as AnyObject, "imgName": "clubaidp" as AnyObject, "pkg": "-ClubInd4tUPXHgVj9w3" as AnyObject])
+                      floatingButtonArray.append(["pkgName": "Club Package" as AnyObject, "imgName": "clubaidp" as AnyObject, "pkg": "-ClubInd4tUPXHgVj9w3" as AnyObject])
                       self.floatingCrownBtn.isHidden = false
                     } else {
                         UserDefaults.standard.removeObject(forKey: "-ClubInd4tUPXHgVj9w3")

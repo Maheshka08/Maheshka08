@@ -41,8 +41,8 @@ class DietPlanViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
-        self.title = "Diet Plan";
+        //self.tableView.separatorStyle = .none
+        self.title = "My Diet Plan";
         formatter.dateFormat = "dd-MM-yyyy";
         let result = formatter.string(from: Date());
         self.dateLabel.text = result;
@@ -269,7 +269,9 @@ class DietPlanViewController: UIViewController, UITableViewDelegate, UITableView
     @objc func checkNutritionistPublishedDietPlan() {
         if let currentUserID = Auth.auth().currentUser?.uid {
   
-            print( Database.database().reference().child("UserPremiumPackages").child(currentUserID).child(self.snapShot).child("dietPlan")); Database.database().reference().child("UserPremiumPackages").child(currentUserID).child(self.snapShot).child("dietPlan").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            print(Database.database().reference().child("UserPremiumPackages").child(currentUserID).child(self.snapShot).child("dietPlan"));
+            
+            Database.database().reference().child("UserPremiumPackages").child(currentUserID).child(self.snapShot).child("dietPlan").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 
                 if snapshot.childrenCount > 0 {
                     self.dateView.isHidden = false
@@ -298,24 +300,28 @@ class DietPlanViewController: UIViewController, UITableViewDelegate, UITableView
                             if dietPlan.key == "isPublished" {
                                 if dietPlanObj as! Bool == true {
                                     
-                                    if self.snapShot == "-TacvBsX4yDrtgbl6YOQ" {
-                                        self.formatter.dateFormat = "yyyy-MM-dd";
-
-                                        self.currentDate = self.firstKey
-                                        self.dateLabel.text = self.firstKey;
-                                        self.getDietPlanPerDay(date: self.currentDate)
-                                        if self.dictCount > 1 {
-                                            self.nextButton.isHidden = false
-                                            //self.prevButton.isHidden = false
-                                        }
-                                    } else if self.snapShot == "-KyotHu4rPoL3YOsVxUu" {
-                                        let dateFormatter1 = DateFormatter();
-                                        dateFormatter1.dateFormat  = "EEEE";//"EE" to get short style
-                                        let dayInWeek = dateFormatter1.string(from: Date());
-                                        self.dayLabel.text = dayInWeek;
-                                       self.getDietPlanPerDay(day: dayInWeek, date: Date());
-                                    }
-                                    
+//                                    if self.snapShot == "-TacvBsX4yDrtgbl6YOQ" {
+//                                        self.formatter.dateFormat = "yyyy-MM-dd";
+//
+//                                        self.currentDate = self.firstKey
+//                                        self.dateLabel.text = self.firstKey;
+//                                        self.getDietPlanPerDay(date: self.currentDate)
+//                                        if self.dictCount > 1 {
+//                                            self.nextButton.isHidden = false
+//                                            //self.prevButton.isHidden = false
+//                                        }
+//                                    } else if self.snapShot == "-KyotHu4rPoL3YOsVxUu" {
+//                                        let dateFormatter1 = DateFormatter();
+//                                        dateFormatter1.dateFormat  = "EEEE";//"EE" to get short style
+//                                        let dayInWeek = dateFormatter1.string(from: Date());
+//                                        self.dayLabel.text = dayInWeek;
+//                                       self.getDietPlanPerDay(day: dayInWeek, date: Date());
+//                                    }
+                                    let dateFormatter1 = DateFormatter();
+                                    dateFormatter1.dateFormat  = "EEEE";//"EE" to get short style
+                                    let dayInWeek = dateFormatter1.string(from: Date());
+                                    self.dayLabel.text = dayInWeek;
+                                    self.getDietPlanPerDay(day: dayInWeek, date: Date());
                                 } else {
                                     
                                     self.dateView.isHidden = true
