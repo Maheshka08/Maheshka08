@@ -70,8 +70,8 @@ class HowToTweak: UIView {
                     dispatch_group.enter();
             //        UserDefaults.standard.set("44", forKey: "COUNTRY_CODE")
             //                          UserDefaults.standard.synchronize()
-                    self.delegate.homeInfoApiCalls()
-                    
+                    self.delegate.getTrialPeriod()
+            self.delegate.checkActivePackages()
                     self.delegate.checkAppVersion()
                     self.delegate.setUpUI()
                     self.delegate.getTrends()

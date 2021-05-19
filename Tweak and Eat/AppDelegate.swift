@@ -1157,19 +1157,19 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
 //           return true
 //       }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if Branch.getInstance().application(app, open: url, options: options) {
-            return true
-
-        }
-        return ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
-        
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        if Branch.getInstance().application(app, open: url, options: options) {
+//            return true
+//
+//        }
+//        return ApplicationDelegate.shared.application(
+//            app,
+//            open: url,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//        )
+//        
+//    }
        // Report Push Notification attribution data for re-engagements
     func applicationDidBecomeActive(_ application: UIApplication) {
      //   AppsFlyerLib.shared().start()
@@ -1417,14 +1417,14 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
         })
     }
 //
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-//        let notification = Notification(
-//            name: Notification.Name(rawValue: NotificationConstants.launchNotification),
-//            object:nil,
-//            userInfo:[UIApplication.LaunchOptionsKey.url:url])
-//        NotificationCenter.default.post(notification)
-//        return true
-//    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let notification = Notification(
+            name: Notification.Name(rawValue: NotificationConstants.launchNotification),
+            object:nil,
+            userInfo:[UIApplication.LaunchOptionsKey.url:url])
+        NotificationCenter.default.post(notification)
+        return true
+    }
 
 }
 

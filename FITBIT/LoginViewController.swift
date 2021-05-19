@@ -210,6 +210,11 @@ self.updateChart(backGroundCol: "#168c7a", data: [] as [Any], name: "Weight", co
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        if (UserDefaults.standard.value(forKey: "HEALTHKIT") == nil &&  UserDefaults.standard.value(forKey: "FITBIT_TOKEN") != nil){
+            
+            self.myIndex = 0;
+            self.performSegue(withIdentifier: "activityTracker", sender: self);
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.weightTableView.isHidden = true
         self.weightReadings = uiRealm.objects(WeightInfo.self)
@@ -511,11 +516,7 @@ self.updateChart(backGroundCol: "#168c7a", data: [] as [Any], name: "Weight", co
         getWeightDetails()
 
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.refreshData), name: NSNotification.Name(rawValue: "DISCONNECTED_DEVICE"), object: nil);
-        if (UserDefaults.standard.value(forKey: "HEALTHKIT") == nil &&  UserDefaults.standard.value(forKey: "FITBIT_TOKEN") != nil){
-            
-            self.myIndex = 0;
-            self.performSegue(withIdentifier: "activityTracker", sender: self);
-        }
+       
         self.weightReadings = uiRealm.objects(WeightInfo.self);
         if (self.weightReadings?.count)! > 0 {
           //  refreshData1();

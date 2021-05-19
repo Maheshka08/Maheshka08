@@ -7,48 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "05A11CDA-B9B0-49D8-861C-8F36EC44FA56"
+            uuid = "8DE9BA92-B20E-43F0-ACD6-30B8210BD16B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1598"
-            endingLineNumber = "1598"
-            landmarkName = "recptValidation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4E9A77DD-4F4C-4642-883F-5E72104D069F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoreInfoPremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1460"
-            endingLineNumber = "1460"
-            landmarkName = "receiptValidation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "34441830-B537-4106-86F4-BC85FD9056E3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AvailablePremiumPackagesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1679"
-            endingLineNumber = "1679"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "9259"
+            endingLineNumber = "9259"
+            landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

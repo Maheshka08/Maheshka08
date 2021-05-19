@@ -69,7 +69,7 @@ class TweakAndEatFinalIntroScreen: UIView {
 //        UserDefaults.standard.set("44", forKey: "COUNTRY_CODE")
 //                          UserDefaults.standard.synchronize()
         CleverTap.sharedInstance()?.recordEvent("Home_viewed")
-        self.delegate.homeInfoApiCalls()
+        self.delegate.getTrialPeriod()
         self.delegate.checkActivePackages()
         
         self.delegate.checkAppVersion()
