@@ -9302,6 +9302,9 @@ self.floatingCallBtn.isHidden = false
                 self.floatingButtonsArray = floatingButtonArray
                 UserDefaults.standard.setValue(self.floatingButtonsArray, forKey: "FLOATING_BUTTONS_ARRAY")
                 UserDefaults.standard.synchronize()
+                self.floatingCrownBtn.isHidden = false
+            } else {
+                self.floatingCrownBtn.isHidden = true
             }
             
             let tweakStreakCountValue = responseDic["tweakStreak"] as! Int
@@ -9575,7 +9578,14 @@ self.floatingCallBtn.isHidden = false
             print(response)
             
             let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-            let responseResult = responseDic["CallStatus"] as! String
+            var responseResult = ""
+            if responseDic.index(forKey: "CallStatus") != nil {
+                responseResult = responseDic["CallStatus"] as! String
+
+            } else if responseDic.index(forKey: "callStatus") != nil {
+                responseResult = responseDic["callStatus"] as! String
+
+            }
             if  responseResult == "GOOD" {
                 
             }
