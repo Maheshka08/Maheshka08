@@ -9260,6 +9260,7 @@ self.floatingCallBtn.isHidden = false
                 CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 1])
                 self.trialPeriodExpired = false
                 self.tapToTweakView.isHidden = false
+                //
 
             } else {
                 self.trialPeriodExpired = true
