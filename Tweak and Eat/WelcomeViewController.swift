@@ -9259,17 +9259,24 @@ self.floatingCallBtn.isHidden = false
             if trialDaysAfterCrtDttm >= Date() || UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil  || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
                 CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 1])
                 self.trialPeriodExpired = false
-                self.tapToTweakView.isHidden = false
+                DispatchQueue.main.async {
+                    self.tapToTweakView.isHidden = false
+                }
                 //
 
             } else {
                 self.trialPeriodExpired = true
+                DispatchQueue.main.async {
+                    self.tapToTweakView.isHidden = true
+                }
                 CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 0])
                 self.showTrialPeriodView()
 
             }
             if self.trialPeriodExpired == true {
-                self.tapToTweakView.isHidden = true
+                DispatchQueue.main.async {
+                    self.tapToTweakView.isHidden = true
+                }
             } else {
                 if self.tapToTweak == true {
                     self.checkTweakable()

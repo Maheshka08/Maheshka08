@@ -6,8 +6,9 @@
 //  Copyright © 2021 Purpleteal. All rights reserved.
 //
 
+import UIKit
 import UserNotifications
-
+import UserNotificationsUI
 
 class NotificationService: UNNotificationServiceExtension {
     
@@ -18,7 +19,8 @@ class NotificationService: UNNotificationServiceExtension {
                              withContentHandler contentHandler:
         @escaping (UNNotificationContent) -> Void) {
         // call to record the Notification viewed
-               
+        //CleverTap.sharedInstance()?.recordNotificationViewedEvent(withData: request.content.userInfo)
+
         super.didReceive(request, withContentHandler: contentHandler)
 
         self.contentHandler = contentHandler

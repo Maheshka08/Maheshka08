@@ -176,19 +176,6 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
         currentYear = Calendar.current.component(.year, from: Date())
         currMonInString = currentMonthIndex < 10 ? "0\(currentMonthIndex)" : "\(currentMonthIndex))"
         currYrInString = "\(currentYear)"
-//        todaysDate = Calendar.current.component(.day, from: Date())
-////        firstWeekDayOfMonth=getFirstWeekDay() - 1
-//        firstWeekDayOfMonth = getFirstWeekDay() == 1 ? 7 : getFirstWeekDay() - 1
-//        if firstWeekDayOfMonth == 7 {
-//            toDate =
-//        }
-//        let calendar = NSCalendar.current
-//        var startOfTheWeek: NSDate?
-//        var endOfWeek: NSDate!
-//        var interval = TimeInterval(0)
-//
-//        calendar.rangeOfUnit(.WeekOfMonth, startDate: &startOfTheWeek, interval: &interval, forDate: NSDate())
-//        endOfWeek = startOfTheWeek!.addingTimeInterval(interval - 1)
         
         assumeStandardView.layer.cornerRadius = 15
         self.navigationController?.setNavigationBarHidden(true, animated: true)

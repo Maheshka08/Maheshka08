@@ -200,6 +200,8 @@
 		8343D64B262AF65E009B9C6B /* CleverTapRichNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8343D644262AF65D009B9C6B /* CleverTapRichNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8343D659262B4E89009B9C6B /* vpt.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D657262B4E89009B9C6B /* vpt.gif */; };
 		8343D65A262B4E89009B9C6B /* 3redFast.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D658262B4E89009B9C6B /* 3redFast.gif */; };
+		83501A51265C0FD2002920B5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A13211DC34B001A2515 /* UserNotifications.framework */; };
+		83501A52265C0FD2002920B5 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A15211DC34B001A2515 /* UserNotificationsUI.framework */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		8360F836264171B400564FFC /* MonthlyTrendsTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360F835264171B400564FFC /* MonthlyTrendsTop.swift */; };
@@ -616,6 +618,8 @@
 		8343D648262AF65E009B9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8343D657262B4E89009B9C6B /* vpt.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vpt.gif; sourceTree = "<group>"; };
 		8343D658262B4E89009B9C6B /* 3redFast.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3redFast.gif; sourceTree = "<group>"; };
+		83501A57265C215A002920B5 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83501A5E265C2283002920B5 /* CleverTapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CleverTapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
 		8360F835264171B400564FFC /* MonthlyTrendsTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTrendsTop.swift; sourceTree = "<group>"; };
@@ -801,6 +805,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83501A52265C0FD2002920B5 /* UserNotificationsUI.framework in Frameworks */,
+				83501A51265C0FD2002920B5 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1365,6 +1371,8 @@
 		847545B91EB8AD3E0042D84A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83501A5E265C2283002920B5 /* CleverTapSDK.framework */,
+				83501A57265C215A002920B5 /* CleverTapSDK.framework */,
 				83AD99E725E3E1A5003430E1 /* CleverTapSDK.framework */,
 				83C1443C25D114DA00F1BC20 /* CleverTapSDK.framework */,
 				8315CDD3256773D30061006C /* Alamofire.framework */,
