@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OrkneyMedium.otf">
+        <array key="OrkneyMedium.ttf">
             <string>Orkney-Medium</string>
         </array>
-        <array key="OrkneyRegular.ttf">
+        <array key="OrkneyRegular.otf">
             <string>Orkney-Regular</string>
         </array>
         <array key="QUESTRIAL-REGULAR.TTF">
@@ -3214,6 +3214,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="adImageViewTopConstraint" destination="gBf-Jh-Z1m" id="WVr-ua-89r"/>
                         <outlet property="adsImageView" destination="Ixd-Tf-D09" id="KVg-Vl-BbP"/>
                         <outlet property="adsImageViewHeightConstraint" destination="FLH-WD-WyJ" id="drJ-Bh-Wim"/>
                         <outlet property="appCheckVersionView" destination="cy9-Pb-2OC" id="s5U-2t-pej"/>
@@ -3325,6 +3326,7 @@
                         <outlet property="startTweakingView" destination="3Bl-cu-1Ij" id="ika-Q7-obr"/>
                         <outlet property="subscribeNowButton" destination="7nz-vY-hv4" id="fE5-t8-JdE"/>
                         <outlet property="subscribeNowButtonView" destination="ctY-du-V3w" id="VeE-cE-lxu"/>
+                        <outlet property="subscribeNowHeightConstraint" destination="bJ4-ig-Uhh" id="1gz-Pn-dAH"/>
                         <outlet property="subscribeToPTPNowLblHeightConstraint" destination="rbx-tF-GA0" id="9L9-XZ-3D8"/>
                         <outlet property="taeClubHome2Btn" destination="tYz-nW-Lke" id="QLW-IZ-agK"/>
                         <outlet property="taeClubMemberBottomButton" destination="Css-gG-zye" id="F5w-oi-JCr"/>

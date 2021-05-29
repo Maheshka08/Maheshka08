@@ -372,6 +372,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var innerDragMenuView: UIView!
     @IBOutlet weak var bottomBtnViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var ptpSubscribeLabel: UILabel!
+    @IBOutlet weak var adImageViewTopConstraint: NSLayoutConstraint!
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var smallScreenPopUpTextView: UITextView!
     @IBOutlet weak var smallScreenPopUpImageView: UIImageView!
@@ -625,6 +626,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var recipeWallLabel: UILabel!;
     @IBOutlet weak var myFitnessLabel: UILabel!;
     @IBOutlet weak var myEDRLabel: UILabel!;
+    @IBOutlet weak var subscribeNowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var checkThisOutLabel: UILabel!;
     @IBOutlet weak var tweakWallLabel: UILabel!;
     @objc var caloriesArray = NSMutableArray();
@@ -1896,7 +1898,16 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate, 
                          
                               UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
                                                     animations: {
+                                                        if self.countryCode == "1" {
+                                                            if  UserDefaults.standard.value(forKey: "-ClubUSA4tg6cvdhizQn") != nil ||  UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                                                                
+                                                                self.adsImageViewHeightConstraint.constant = 0
+                                                            } else {
+                                                                self.adsImageViewHeightConstraint.constant = newHeight
+                                                            }
+                                                    } else {
                                                      self.adsImageViewHeightConstraint.constant = newHeight
+                                                        }
                                                       self.view.layoutIfNeeded()
                                      }, completion: nil)
 
@@ -7702,11 +7713,11 @@ self.topImageView.alpha = 1
     func getStaticDateForComparison(noDays: Int) {
       
 
-            if noDays <= 7 {
-            self.removePTPExpiryView(noDays: noDays)
-        } else {
-            self.showTrialPeriodView()
-        }
+//            if noDays <= 7 {
+//            self.removePTPExpiryView(noDays: noDays)
+//        } else {
+//            self.showTrialPeriodView()
+//        }
     }
     
     @objc func getUserCallSchedueDetails() {
@@ -9259,12 +9270,27 @@ self.floatingCallBtn.isHidden = false
             if trialDaysAfterCrtDttm >= Date() || UserDefaults.standard.value(forKey: self.ptpPackage) != nil || UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: "-MzqlVh6nXsZ2TCdAbOp") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil  || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
                 CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 1])
                 self.trialPeriodExpired = false
+                self.trialPeriodExpiryView.isHidden = true
                 DispatchQueue.main.async {
                     self.tapToTweakView.isHidden = false
+                }
+                if self.countryCode == "1" {
+                    self.adsImageView.isHidden = true
+                    self.adsImageViewHeightConstraint.constant = 0
+                    self.subscribeNowButtonView.isHidden = true
+                    self.adImageViewTopConstraint.constant = -40
+                    //self.subscribeNowHeightConstraint.constant = 40
+                    self.view.layoutIfNeeded()
                 }
                 //
 
             } else {
+                //self.adsImageViewHeightConstraint.constant = 83
+                self.adsImageView.isHidden = false
+                self.subscribeNowButtonView.isHidden = false
+                self.adImageViewTopConstraint.constant = 10
+                self.view.layoutIfNeeded()
+
                 self.trialPeriodExpired = true
                 DispatchQueue.main.async {
                     self.tapToTweakView.isHidden = true

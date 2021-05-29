@@ -7,15 +7,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ABEFDDE9-3413-451F-90B4-ECEDF7EE8B99"
+            uuid = "2925C38B-B45C-4879-97E3-54C5851446C7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9265"
-            endingLineNumber = "9265"
+            startingLineNumber = "1909"
+            endingLineNumber = "1909"
+            landmarkName = "getAdDetails()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0697DAA9-C74F-4F3F-AF13-3B202C8533B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9280"
+            endingLineNumber = "9280"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,15 +39,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "41C9C595-8364-4C6A-BE97-ABFF4952C61F"
+            uuid = "0D93F1DE-E0E0-4566-AA20-1B783246C4C4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9273"
-            endingLineNumber = "9273"
+            startingLineNumber = "9289"
+            endingLineNumber = "9289"
             landmarkName = "homeInfoApiCalls()"
             landmarkType = "7">
          </BreakpointContent>
@@ -39,16 +55,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A26655E5-509D-4617-BBC9-F90D43A6E280"
+            uuid = "BD5F1ECA-E2BF-471B-A5CD-CD46B4F86050"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweak and Eat/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9258"
-            endingLineNumber = "9258"
-            landmarkName = "homeInfoApiCalls()"
+            startingLineNumber = "1903"
+            endingLineNumber = "1903"
+            landmarkName = "getAdDetails()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19423D1D-E716-40A5-82F8-D88D637A836C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/WelcomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1906"
+            endingLineNumber = "1906"
+            landmarkName = "getAdDetails()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
