@@ -9275,12 +9275,20 @@ self.floatingCallBtn.isHidden = false
                     self.tapToTweakView.isHidden = false
                 }
                 if self.countryCode == "1" {
-                    self.adsImageView.isHidden = true
-                    self.adsImageViewHeightConstraint.constant = 0
-                    self.subscribeNowButtonView.isHidden = true
-                    self.adImageViewTopConstraint.constant = -40
-                    //self.subscribeNowHeightConstraint.constant = 40
-                    self.view.layoutIfNeeded()
+                    if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil  || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                        self.adsImageView.isHidden = true
+                        self.adsImageViewHeightConstraint.constant = 0
+                        self.subscribeNowButtonView.isHidden = true
+                        self.adImageViewTopConstraint.constant = -40
+                        //self.subscribeNowHeightConstraint.constant = 40
+                        self.view.layoutIfNeeded()
+                    } else {
+                        self.adsImageView.isHidden = false
+                        self.subscribeNowButtonView.isHidden = false
+                        self.adImageViewTopConstraint.constant = 10
+                        self.view.layoutIfNeeded()
+                    }
+                  
                 }
                 //
 
