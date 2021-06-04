@@ -722,6 +722,7 @@ class ImageUploadingViewController: UIViewController {
         MBProgressHUD.showAdded(to: self.view, animated: true);
         APIWrapper.sharedInstance.tweakImage(parameterDict as NSDictionary, userSession: userSession, successBlock: {(responseDic : AnyObject!) -> (Void) in
             print("Sucess");
+            
             if UserDefaults.standard.value(forKey: "TWEAK_COUNT") != nil {
                 let tweakCount =  UserDefaults.standard.value(forKey: "TWEAK_COUNT") as! Int
                 if tweakCount == 0 {
