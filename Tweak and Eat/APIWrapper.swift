@@ -9,6 +9,7 @@
 import UIKit
 import Realm
 import RealmSwift
+import Alamofire
 
 class APIWrapper: AFHTTPSessionManager {
     
@@ -472,6 +473,13 @@ class APIWrapper: AFHTTPSessionManager {
         }) { (dataTask : URLSessionDataTask?, error : Error?) in
             failure(error as NSError!)
         }
+    }
+    
+    func getMethodAlamofire<T: Codable>(url: String, parameters: [String : AnyObject]?, headers: HTTPHeaders?, _ completion: @escaping (Result<T, AFError>)->Void) {
+        AF.request(URL(string: url)!, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable { (response: DataResponse<T, AFError>) in
+                completion(response.result)
+            }
     }
     
     @objc func postRequestWithHeaderMethod(_ url : String, userSession : String, parameters : [String : AnyObject], success : @escaping ((AnyObject!)->(Void)), failure : @escaping ((NSError!)->(Void))) {

@@ -163,6 +163,7 @@ class TweakTrendReportViewController: UIViewController, ReloadTweakTrendsView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.assumeStandardView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(TweakTrendReportViewController.scrollHome(notification:)), name: NSNotification.Name(rawValue: "SCROLL_MONTHLY_TOP_TRENDS"), object: nil);
         let txt = "*Net + / - calories each day/week.\nRecommended calories assumed on no tweak."
