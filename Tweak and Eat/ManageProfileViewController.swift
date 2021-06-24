@@ -334,7 +334,7 @@ self.setUpUI()                                                                  
         
         let msisdn = UserDefaults.standard.value(forKey: "msisdn") as! String;
         // "Registered Mobile: +\(msisdn)";
-        self.registeredMobile.text = bundle.localizedString(forKey: "registered_mobile", value: nil, table: nil) + "+\(msisdn)"
+        self.registeredMobile.text = bundle.localizedString(forKey: "registered_mobile", value: nil, table: nil) + " +\(msisdn)"
         self.myProfile = uiRealm.objects(MyProfileInfo.self);
         self.pieChartInfo = uiRealm.objects(TweakPieChartValues.self);
         print(Realm.Configuration.defaultConfiguration.fileURL!);
@@ -1595,8 +1595,14 @@ self.setUpUI()                                                                  
                     "provider": provider as AnyObject]
       //  MBProgressHUD.showAdded(to: self.view, animated: true)
       APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.UPDATEPROFILE, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, parameters: ["user" : tempDict as AnyObject], success: { response in
-            
-            APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.PROFILEFACTS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+        let responseDict : [String:AnyObject] = response as! [String:AnyObject];
+        if responseDict.index(forKey: "callStatus") != nil {
+            if responseDict["callStatus"] as! String == "GOOD" {
+                if responseDict.index(forKey: "nickName") != nil {
+                    DispatchQueue.main.async {
+                        self.nickNameTextField.text = (responseDict["nickName"] as! String)
+                    }
+                }
                 var mob = ""
                 if UserDefaults.standard.value(forKey: "msisdn") != nil {
                 mob = UserDefaults.standard.value(forKey: "msisdn") as! String;
@@ -1609,7 +1615,13 @@ self.setUpUI()                                                                  
                     
                     let profile = MyProfileInfo()
                     profile.id = self.incrementID()
-                    profile.name = self.nickNameTextField.text!
+                    if responseDict.index(forKey: "nickName") != nil {
+                        profile.name = (responseDict["nickName"] as! String)
+
+                    } else {
+                        profile.name = self.nickNameTextField.text!
+
+                    }
                     profile.age = self.ageTextField.text!
                     if self.gender == "M" {
                         profile.gender = "M"
@@ -1654,43 +1666,49 @@ self.setUpUI()                                                                  
                     
                     saveToRealmOverwrite(objType: MyProfileInfo.self, objValues: profile)
                 }
-            
-                let ct = CleverTapClass()
-                ct.updateCleverTapWithProp(isUpdateProfile: true)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_TRENDS"), object: nil);
-                TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "update_profile_alert", value: nil, table: nil))
-                let responseDic : [String:AnyObject] = response as! [String:AnyObject];
-                if responseDic.count == 2 {
-                    let responseResult =  responseDic["profileData"] as! [String : Int]
-                    
-                    if (self.pieChartInfo?.count)! > 0 {
+                APIWrapper.sharedInstance.postRequestWithHeaders(TweakAndEatURLConstants.PROFILEFACTS, userSession: UserDefaults.standard.value(forKey: "userSession") as! String, success: { response in
+                   
+                
+                    let ct = CleverTapClass()
+                    ct.updateCleverTapWithProp(isUpdateProfile: true)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GET_TRENDS"), object: nil);
+                    TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "update_profile_alert", value: nil, table: nil))
+                    let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+                    if responseDic.count == 2 {
+                        let responseResult =  responseDic["profileData"] as! [String : Int]
                         
-                        for pieChartObj in self.pieChartInfo! {
-                            deleteRealmObj(objToDelete: pieChartObj)
+                        if (self.pieChartInfo?.count)! > 0 {
+                            
+                            for pieChartObj in self.pieChartInfo! {
+                                deleteRealmObj(objToDelete: pieChartObj)
+                            }
+                            
+                            let chartValues = TweakPieChartValues()
+                            chartValues.id = self.incrementID()
+                            chartValues.carbsPerc = responseResult["carbsPerc"]!
+                            chartValues.proteinPerc = responseResult["proteinPerc"]!
+                            chartValues.fatPerc = responseResult["fatPerc"]!
+                            chartValues.fiberPerc = responseResult["otherPerc"]!
+                            saveToRealmOverwrite(objType: TweakPieChartValues.self, objValues: chartValues)
+                            
+                            
                         }
-                        
-                        let chartValues = TweakPieChartValues()
-                        chartValues.id = self.incrementID()
-                        chartValues.carbsPerc = responseResult["carbsPerc"]!
-                        chartValues.proteinPerc = responseResult["proteinPerc"]!
-                        chartValues.fatPerc = responseResult["fatPerc"]!
-                        chartValues.fiberPerc = responseResult["otherPerc"]!
-                        saveToRealmOverwrite(objType: TweakPieChartValues.self, objValues: chartValues)
-                        
+                    } else{
                         
                     }
-                } else{
                     
-                }
-                
-            }, failure : { error in
-                
-                print("failure")
-//                let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertControllerStyle.alert)
-//                let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
-//                alertController.addAction(defaultAction)
-//                self.present(alertController, animated: true, completion: nil)
-            })
+                }, failure : { error in
+                    
+                    print("failure")
+    //                let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertControllerStyle.alert)
+    //                let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+    //                alertController.addAction(defaultAction)
+    //                self.present(alertController, animated: true, completion: nil)
+                })
+            }
+        }
+            
+            
             
         }, failure : { error in
              print("failure")

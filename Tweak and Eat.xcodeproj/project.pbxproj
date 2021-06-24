@@ -121,11 +121,6 @@
 		731012461FB6DC7900EFD2C9 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731012451FB6DC7900EFD2C9 /* Announcements.swift */; };
 		731625941F7B9645007D48CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731625931F7B9645007D48CF /* WebViewController.swift */; };
 		731A288F2000DC8F0018EC7A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A288E2000DC8F0018EC7A /* DBManager.swift */; };
-		731C0A14211DC34B001A2515 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A13211DC34B001A2515 /* UserNotifications.framework */; };
-		731C0A16211DC34B001A2515 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A15211DC34B001A2515 /* UserNotificationsUI.framework */; };
-		731C0A19211DC34B001A2515 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C0A18211DC34B001A2515 /* NotificationViewController.swift */; };
-		731C0A1C211DC34B001A2515 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731C0A1A211DC34B001A2515 /* MainInterface.storyboard */; };
-		731C0A20211DC34C001A2515 /* NotificationContentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 731C0A12211DC345001A2515 /* NotificationContentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		732578971FBC81B700270CC3 /* BadgeCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732578961FBC81B700270CC3 /* BadgeCount.swift */; };
 		73281A4B21AFFBE900CECEC3 /* NutritionLabelsPaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFA32E21AFC03600FABBA2 /* NutritionLabelsPaymentHistoryViewController.swift */; };
 		732986CE1FEBD45E006A364C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732986C81FEBD448006A364C /* Message.swift */; };
@@ -159,7 +154,6 @@
 		73C6837020A5622700C7D08D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C6836F20A5622600C7D08D /* JavaScriptCore.framework */; };
 		73C683E920A5E32500C7D08D /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C683E820A5E32400C7D08D /* PushKit.framework */; };
 		73C683EB20A5E33700C7D08D /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C683EA20A5E33600C7D08D /* CallKit.framework */; };
-		73D5C9AE1EC581510083A059 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D5C9AD1EC581510083A059 /* NotificationService.swift */; };
 		73D93EC21FE3E22000A965F6 /* PrivacyPoliciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D93EC11FE3E22000A965F6 /* PrivacyPoliciesViewController.swift */; };
 		73DC7B621F2F405C00A16A05 /* ReportsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC7B611F2F405C00A16A05 /* ReportsTableViewCell.swift */; };
 		73EBF3771F370D730085E7BF /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EBF3761F370D730085E7BF /* LineChart.swift */; };
@@ -196,12 +190,8 @@
 		83360CB92531EA6C0006BD63 /* HowToTweak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83360CB82531EA6C0006BD63 /* HowToTweak.swift */; };
 		83360CBD2531EAC40006BD63 /* HowToTweak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83360CBC2531EAC40006BD63 /* HowToTweak.xib */; };
 		8343D63C262ADDA1009B9C6B /* 3red_arrows.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D63B262ADDA1009B9C6B /* 3red_arrows.gif */; };
-		8343D647262AF65E009B9C6B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343D646262AF65E009B9C6B /* NotificationService.swift */; };
-		8343D64B262AF65E009B9C6B /* CleverTapRichNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8343D644262AF65D009B9C6B /* CleverTapRichNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8343D659262B4E89009B9C6B /* vpt.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D657262B4E89009B9C6B /* vpt.gif */; };
 		8343D65A262B4E89009B9C6B /* 3redFast.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8343D658262B4E89009B9C6B /* 3redFast.gif */; };
-		83501A51265C0FD2002920B5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A13211DC34B001A2515 /* UserNotifications.framework */; };
-		83501A52265C0FD2002920B5 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731C0A15211DC34B001A2515 /* UserNotificationsUI.framework */; };
 		8350FB0324E2A33200FA50C0 /* student.json in Resources */ = {isa = PBXBuildFile; fileRef = 8350FB0224E2A33200FA50C0 /* student.json */; };
 		835FBA5C24E410AF00E9B143 /* TweakandEatClubMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */; };
 		8360F836264171B400564FFC /* MonthlyTrendsTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360F835264171B400564FFC /* MonthlyTrendsTop.swift */; };
@@ -289,7 +279,6 @@
 		84A5D0281EBB177A00966469 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A5D0271EBB177A00966469 /* MobileCoreServices.framework */; };
 		84AD652E1F18C496007067DB /* TweakMyWallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD652C1F18C496007067DB /* TweakMyWallTableViewCell.swift */; };
 		84AD65311F18E12B007067DB /* AwesomeCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD65301F18E12B007067DB /* AwesomeCountViewController.swift */; };
-		84AD856A1F5FFB91002BE811 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 73D5C9AB1EC581510083A059 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84AD856F1F5FFCA7002BE811 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84AD856E1F5FFCA7002BE811 /* GoogleService-Info.plist */; };
 		84B054A81EBF35E100263BC1 /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B054A71EBF35E100263BC1 /* TimelineTableViewCell.xib */; };
 		84B054AA1EBF5F3B00263BC1 /* ImageUploadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B054A91EBF5F3B00263BC1 /* ImageUploadingViewController.swift */; };
@@ -309,7 +298,6 @@
 		84D058541FA9A59900EB856A /* TweakNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D058531FA9A59900EB856A /* TweakNotificationsViewController.swift */; };
 		84D7E24D1F3C863900E3BA6E /* ManageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7E24C1F3C863900E3BA6E /* ManageProfileViewController.swift */; };
 		84DB23DF1F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB23DE1F0FB29800725A92 /* TweakAndEatSelectionView.xib */; };
-		84DB23E01F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB23DE1F0FB29800725A92 /* TweakAndEatSelectionView.xib */; };
 		84DB23E21F0FB2DD00725A92 /* TweakAndEatSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB23E11F0FB2DD00725A92 /* TweakAndEatSelectionView.swift */; };
 		84DD9A842025ACC1004F4020 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DD9A832025ACC1004F4020 /* GoogleService-Info-dev.plist */; };
 		84E630B21F288E8100A5EC43 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E630B11F288E8000A5EC43 /* Extensions.swift */; };
@@ -325,33 +313,7 @@
 		84F287721F27C3D3004F7B18 /* TweakPieChartValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F287711F27C3D3004F7B18 /* TweakPieChartValues.swift */; };
 		84F528352029B318001643FA /* OrdersInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F528342029B318001643FA /* OrdersInfo.swift */; };
 		84F79FD11EC057C4007FBC6F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F79FD01EC057C4007FBC6F /* CoreLocation.framework */; };
-		8E121D9F251A7F78A637740B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43CB3B89B1D55F9DC6121FF /* Pods_OneSignalNotificationServiceExtension.framework */; };
-		B7F3FF4369EF9E4EB91DCD8A /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B412BDF238FE861003D9CC1 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		731C0A1E211DC34C001A2515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 57BED13A1D749B780008CC4D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 731C0A11211DC344001A2515;
-			remoteInfo = NotificationContentExtension;
-		};
-		8343D649262AF65E009B9C6B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 57BED13A1D749B780008CC4D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8343D643262AF65D009B9C6B;
-			remoteInfo = CleverTapRichNotificationExtension;
-		};
-		84AD856B1F5FFB91002BE811 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 57BED13A1D749B780008CC4D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 73D5C9AA1EC581510083A059;
-			remoteInfo = OneSignalNotificationServiceExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		84AD856D1F5FFB91002BE811 /* Embed App Extensions */ = {
@@ -360,9 +322,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				84AD856A1F5FFB91002BE811 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
-				731C0A20211DC34C001A2515 /* NotificationContentExtension.appex in Embed App Extensions */,
-				8343D64B262AF65E009B9C6B /* CleverTapRichNotificationExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,7 +490,6 @@
 		731012451FB6DC7900EFD2C9 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		731625931F7B9645007D48CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
 		731A288E2000DC8F0018EC7A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		731C0A12211DC345001A2515 /* NotificationContentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationContentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		731C0A13211DC34B001A2515 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		731C0A15211DC34B001A2515 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		731C0A18211DC34B001A2515 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -574,7 +532,6 @@
 		73C6836F20A5622600C7D08D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		73C683E820A5E32400C7D08D /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		73C683EA20A5E33600C7D08D /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
-		73D5C9AB1EC581510083A059 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D5C9AD1EC581510083A059 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		73D5C9AF1EC581510083A059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73D5C9B71EC584BC0083A059 /* Tweak and Eat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tweak and Eat.entitlements"; sourceTree = "<group>"; };
@@ -613,7 +570,6 @@
 		83360CB82531EA6C0006BD63 /* HowToTweak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToTweak.swift; sourceTree = "<group>"; };
 		83360CBC2531EAC40006BD63 /* HowToTweak.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToTweak.xib; sourceTree = "<group>"; };
 		8343D63B262ADDA1009B9C6B /* 3red_arrows.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3red_arrows.gif; sourceTree = "<group>"; };
-		8343D644262AF65D009B9C6B /* CleverTapRichNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CleverTapRichNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8343D646262AF65E009B9C6B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8343D648262AF65E009B9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8343D657262B4E89009B9C6B /* vpt.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vpt.gif; sourceTree = "<group>"; };
@@ -780,33 +736,6 @@
 				847545C31EB8ADAD0042D84A /* AdSupport.framework in Frameworks */,
 				847545BF1EB8AD690042D84A /* EventKitUI.framework in Frameworks */,
 				847545BD1EB8AD5D0042D84A /* EventKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		731C0A0F211DC344001A2515 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				731C0A16211DC34B001A2515 /* UserNotificationsUI.framework in Frameworks */,
-				731C0A14211DC34B001A2515 /* UserNotifications.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73D5C9A81EC581510083A059 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8E121D9F251A7F78A637740B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
-				B7F3FF4369EF9E4EB91DCD8A /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8343D641262AF65D009B9C6B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83501A52265C0FD2002920B5 /* UserNotificationsUI.framework in Frameworks */,
-				83501A51265C0FD2002920B5 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,9 +990,6 @@
 			isa = PBXGroup;
 			children = (
 				57BED1421D749B780008CC4D /* Tweak and Eat.app */,
-				73D5C9AB1EC581510083A059 /* OneSignalNotificationServiceExtension.appex */,
-				731C0A12211DC345001A2515 /* NotificationContentExtension.appex */,
-				8343D644262AF65D009B9C6B /* CleverTapRichNotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1829,66 +1755,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				84AD856C1F5FFB91002BE811 /* PBXTargetDependency */,
-				731C0A1F211DC34C001A2515 /* PBXTargetDependency */,
-				8343D64A262AF65E009B9C6B /* PBXTargetDependency */,
 			);
 			name = "Tweak and Eat";
 			productName = "Tweak and Eat";
 			productReference = 57BED1421D749B780008CC4D /* Tweak and Eat.app */;
 			productType = "com.apple.product-type.application";
-		};
-		731C0A11211DC344001A2515 /* NotificationContentExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 731C0A23211DC34C001A2515 /* Build configuration list for PBXNativeTarget "NotificationContentExtension" */;
-			buildPhases = (
-				731C0A0E211DC344001A2515 /* Sources */,
-				731C0A0F211DC344001A2515 /* Frameworks */,
-				731C0A10211DC344001A2515 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NotificationContentExtension;
-			productName = NotificationContentExtension;
-			productReference = 731C0A12211DC345001A2515 /* NotificationContentExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		73D5C9AA1EC581510083A059 /* OneSignalNotificationServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73D5C9B31EC581510083A059 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
-			buildPhases = (
-				F10EE42519349B41C14D0AA1 /* [CP] Check Pods Manifest.lock */,
-				73D5C9A71EC581510083A059 /* Sources */,
-				73D5C9A81EC581510083A059 /* Frameworks */,
-				73D5C9A91EC581510083A059 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OneSignalNotificationServiceExtension;
-			productName = OneSignalNotificationServiceExtension;
-			productReference = 73D5C9AB1EC581510083A059 /* OneSignalNotificationServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		8343D643262AF65D009B9C6B /* CleverTapRichNotificationExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8343D64C262AF65E009B9C6B /* Build configuration list for PBXNativeTarget "CleverTapRichNotificationExtension" */;
-			buildPhases = (
-				8343D640262AF65D009B9C6B /* Sources */,
-				8343D641262AF65D009B9C6B /* Frameworks */,
-				8343D642262AF65D009B9C6B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CleverTapRichNotificationExtension;
-			productName = CleverTapRichNotificationExtension;
-			productReference = 8343D644262AF65D009B9C6B /* CleverTapRichNotificationExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1920,23 +1791,6 @@
 							};
 						};
 					};
-					731C0A11211DC344001A2515 = {
-						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = F6C8566GP6;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-					};
-					73D5C9AA1EC581510083A059 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = F6C8566GP6;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-					};
-					8343D643262AF65D009B9C6B = {
-						CreatedOnToolsVersion = 12.4;
-						DevelopmentTeam = F6C8566GP6;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 57BED13D1D749B780008CC4D /* Build configuration list for PBXProject "Tweak and Eat" */;
@@ -1955,9 +1809,6 @@
 			projectRoot = "";
 			targets = (
 				57BED1411D749B780008CC4D /* Tweak and Eat */,
-				73D5C9AA1EC581510083A059 /* OneSignalNotificationServiceExtension */,
-				731C0A11211DC344001A2515 /* NotificationContentExtension */,
-				8343D643262AF65D009B9C6B /* CleverTapRichNotificationExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -2025,29 +1876,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		731C0A10211DC344001A2515 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				731C0A1C211DC34B001A2515 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73D5C9A91EC581510083A059 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84DB23E01F0FB29800725A92 /* TweakAndEatSelectionView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8343D642262AF65D009B9C6B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2085,24 +1913,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tweak and Eat/Pods-Tweak and Eat-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F10EE42519349B41C14D0AA1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FFCE047753513A42916D65D7 /* [CP] Embed Pods Frameworks */ = {
@@ -2396,49 +2206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		731C0A0E211DC344001A2515 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				731C0A19211DC34B001A2515 /* NotificationViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73D5C9A71EC581510083A059 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73D5C9AE1EC581510083A059 /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8343D640262AF65D009B9C6B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8343D647262AF65E009B9C6B /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		731C0A1F211DC34C001A2515 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 731C0A11211DC344001A2515 /* NotificationContentExtension */;
-			targetProxy = 731C0A1E211DC34C001A2515 /* PBXContainerItemProxy */;
-		};
-		8343D64A262AF65E009B9C6B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8343D643262AF65D009B9C6B /* CleverTapRichNotificationExtension */;
-			targetProxy = 8343D649262AF65E009B9C6B /* PBXContainerItemProxy */;
-		};
-		84AD856C1F5FFB91002BE811 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 73D5C9AA1EC581510083A059 /* OneSignalNotificationServiceExtension */;
-			targetProxy = 84AD856B1F5FFB91002BE811 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18F06EBB212C197100609B06 /* Localizable.strings */ = {
@@ -2577,7 +2345,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99057;
+				CURRENT_PROJECT_VERSION = 99061;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2588,7 +2356,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 17;
+				MARKETING_VERSION = 20;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2615,7 +2383,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99057;
+				CURRENT_PROJECT_VERSION = 99061;
 				DEVELOPMENT_TEAM = F6C8566GP6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2626,7 +2394,7 @@
 				INFOPLIST_FILE = "Tweak and Eat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 17;
+				MARKETING_VERSION = 20;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2635,198 +2403,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tweak and Eat/Tweak and Eat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-			};
-			name = Release;
-		};
-		731C0A21211DC34C001A2515 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 12;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		731C0A22211DC34C001A2515 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 12;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.NotificationContentExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		73D5C9B41EC581510083A059 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30BE4505C8F6217EF2542413 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
-			};
-			name = Debug;
-		};
-		73D5C9B51EC581510083A059 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4152D2FD0922C24D86D4B23D /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.OneSignalNotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-			};
-			name = Release;
-		};
-		8343D64D262AF65E009B9C6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = CleverTapRichNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 12;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.CleverTapRichNotificationExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		8343D64E262AF65E009B9C6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99049;
-				DEVELOPMENT_TEAM = F6C8566GP6;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = CleverTapRichNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 12;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.purpleteal.tweakeatapp.CleverTapRichNotificationExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -2847,33 +2423,6 @@
 			buildConfigurations = (
 				57BED1581D749B780008CC4D /* Debug */,
 				57BED1591D749B780008CC4D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		731C0A23211DC34C001A2515 /* Build configuration list for PBXNativeTarget "NotificationContentExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				731C0A21211DC34C001A2515 /* Debug */,
-				731C0A22211DC34C001A2515 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		73D5C9B31EC581510083A059 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				73D5C9B41EC581510083A059 /* Debug */,
-				73D5C9B51EC581510083A059 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8343D64C262AF65E009B9C6B /* Build configuration list for PBXNativeTarget "CleverTapRichNotificationExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8343D64D262AF65E009B9C6B /* Debug */,
-				8343D64E262AF65E009B9C6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

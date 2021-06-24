@@ -1482,7 +1482,11 @@ return
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        //UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
+        //UserDefaults.standard.removeObject(forKey: "-IndWLIntusoe3uelxER")
+//ClubInd4tUPXHgVj9w3
+//IndIWj1mSzQ1GDlBpUt
+        
+        UserDefaults.standard.removeObject(forKey: "-ClubInd4tUPXHgVj9w3")
         CleverTap.sharedInstance()?.recordEvent("Packages_viewed")
 
         //SKPaymentQueue.default().add(self)

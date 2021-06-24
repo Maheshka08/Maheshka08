@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF4D3A4F-3910-4E0C-915A-AD1FAF87210D"
+            uuid = "117EDAF0-6609-4EF2-B399-78BE116FBED2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/ImageUploadingViewController.swift"
+            filePath = "MoreInfoPremiumPackages/MoreInfoPremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "1149"
+            endingLineNumber = "1149"
+            landmarkName = "paymentQueueRestoreCompletedTransactionsFinished(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ABFF95C7-237A-47DD-92BE-7FBEA1B7C799"
+            uuid = "3162B183-A00F-42BB-8810-C0FC7457F3AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/ImageUploadingViewController.swift"
+            filePath = "AvailablePremiumPackagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "735"
-            endingLineNumber = "735"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "1172"
+            endingLineNumber = "1172"
+            landmarkName = "cellTappedOnImage(_:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A0C88E46-85BF-4203-83DB-C27CA86E3747"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoreInfoPremiumPackages/MoreInfoPremiumPackagesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
+            landmarkName = "paymentQueueRestoreCompletedTransactionsFinished(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

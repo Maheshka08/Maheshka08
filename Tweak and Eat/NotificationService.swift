@@ -512,9 +512,14 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                         msg = message
                         
                     }
-                    if apsInfo.index(forKey: "img") != nil {
+                    if apsInfo.index(forKey: "img") != nil  || userInfo.index(forKey: "img") != nil {
                 
-                        imgUrlString = apsInfo["img"] as! String
+                        if apsInfo.index(forKey: "img") != nil {
+                            imgUrlString = apsInfo["img"] as AnyObject as! String
+                        }
+                        if userInfo.index(forKey: "img") != nil {
+                            imgUrlString = userInfo["img"] as! String
+                        }
 
                     }
                   
@@ -525,6 +530,11 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                     if apsInfo.index(forKey: "type") != nil {
                         type = apsInfo["type"] as AnyObject as! Int
                     }
+                    
+                    if userInfo.index(forKey: "noteType") != nil {
+                        type = Int(userInfo["noteType"] as! String) ?? 0
+                    }
+                    
                     if apsInfo.index(forKey: "link") != nil || userInfo.index(forKey: "wzrk_dl") != nil {
                          var links = ""
                         if apsInfo.index(forKey: "link") != nil {

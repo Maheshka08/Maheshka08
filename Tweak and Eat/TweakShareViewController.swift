@@ -67,10 +67,10 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     }
     
     @IBAction func dropDownTapped(_ sender: Any) {
-        self.view.endEditing(true)
-        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
-                  self.commentsViewBottomConstant.constant = 0
-               }
+        //self.view.endEditing(true)
+//        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
+//                  self.commentsViewBottomConstant.constant = 0
+//               }
                if self.nutritionTopConstraint.constant == -120 {
                    self.nutritionTopConstraint.constant = 16
                }
@@ -118,12 +118,20 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             keyboardHeight = keyboardRectangle.height
+            self.commentsViewBottomConstant.constant = -keyboardHeight
+
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad();
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
@@ -132,7 +140,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         )
         let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "vpt", withExtension: "gif")!)
         self.threeRedArrowGifImageView.image = UIImage.gifImageWithData(imageData!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
         self.commentBox.becomeFirstResponder()
         }
 
@@ -508,11 +516,11 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+        //view.endEditing(true)
         super.touchesBegan(touches, with: event)
-        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
-           self.commentsViewBottomConstant.constant = 0
-        }
+//        if self.commentsViewBottomConstant.constant == -self.keyboardHeight {
+//           self.commentsViewBottomConstant.constant = 0
+//        }
         if self.nutritionTopConstraint.constant == -120 {
             self.nutritionTopConstraint.constant = 16
         }

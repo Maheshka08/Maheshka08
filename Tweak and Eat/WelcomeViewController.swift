@@ -2759,6 +2759,19 @@ self.topImageView.alpha = 1
 
         super.viewDidLoad();
         
+        if UserDefaults.standard.value(forKey: "TRIAL_PERIOD_EXPIRED") != nil {
+            if UserDefaults.standard.value(forKey: "TRIAL_PERIOD_EXPIRED") as! Bool == true {
+            DispatchQueue.main.async {
+                self.tapToTweakView.isHidden = true
+            }
+            } else {
+                DispatchQueue.main.async {
+                    self.tapToTweakView.isHidden = false
+                }
+            }
+        }
+       
+        
         self.mainMenuView.layer.cornerRadius = 10
         self.myEDRView.layer.cornerRadius = 10
         self.tweakWallView.layer.cornerRadius = 10
@@ -4656,7 +4669,7 @@ self.topImageView.alpha = 1
       //  self.checkThisOutLabel.text = self.bundle.localizedString(forKey: "check_this_out", value: nil, table: nil);
         
       //  self.cameraTweakLabel.text = self.bundle.localizedString(forKey: "camera_click_text", value: nil, table: nil);
-            self.approxCalLeftForDayLabel.text = self.bundle.localizedString(forKey: "approximate_calories_left_for_the_day", value: nil, table: nil);
+            self.approxCalLeftForDayLabel.text = "Approx. calories left for the day"
         
         self.recipeWallLabel.text = self.bundle.localizedString(forKey: "recipe_wall", value: nil, table: nil);
         
@@ -9271,6 +9284,8 @@ self.floatingCallBtn.isHidden = false
                 CleverTap.sharedInstance()?.profilePush(["Free Trial Status": 1])
                 self.trialPeriodExpired = false
                 self.trialPeriodExpiryView.isHidden = true
+                UserDefaults.standard.setValue(false, forKey: "TRIAL_PERIOD_EXPIRED")
+                UserDefaults.standard.synchronize()
                 DispatchQueue.main.async {
                     self.tapToTweakView.isHidden = false
                 }
@@ -9300,6 +9315,8 @@ self.floatingCallBtn.isHidden = false
                 self.view.layoutIfNeeded()
 
                 self.trialPeriodExpired = true
+                UserDefaults.standard.setValue(true, forKey: "TRIAL_PERIOD_EXPIRED")
+                UserDefaults.standard.synchronize()
                 DispatchQueue.main.async {
                     self.tapToTweakView.isHidden = true
                 }
@@ -9308,6 +9325,8 @@ self.floatingCallBtn.isHidden = false
 
             }
             if self.trialPeriodExpired == true {
+                UserDefaults.standard.setValue(true, forKey: "TRIAL_PERIOD_EXPIRED")
+                UserDefaults.standard.synchronize()
                 DispatchQueue.main.async {
                     self.tapToTweakView.isHidden = true
                 }
@@ -10242,11 +10261,17 @@ self.floatingCallBtn.isHidden = false
             let userInfo = NSMutableDictionary()
             userInfo.setValue(self.msisdn, forKey: "msisdn");
             
-            let deviceToken : String? = UserDefaults.standard.value(forKey: "deviceToken") as? String;
-            if(deviceToken != nil) {
-                userInfo.setValue(deviceToken!, forKey: "deviceId");
+//            let deviceToken : String? = UserDefaults.standard.value(forKey: "deviceToken") as? String;
+//            if(deviceToken != nil) {
+//                userInfo.setValue(deviceToken!, forKey: "deviceId");
+//            } else {
+//                userInfo.setValue("APA91bHPRgkF3JUikC4ENAHEeMrd41Zxv3hVZjC9KtT8OvPVGJ-hQMRKRrZuJAEcl7B338qju59zJMjw2DELjzEvxwYv7hH5Ynpc1ODQ0aT4U4OFEeco8ohsN5PjL1iC2dNtk2BAokeMCg2ZXKqpc8FXKmhX94kIxQ", forKey: "deviceId");
+//            }
+            
+            if UserDefaults.standard.value(forKey: "deviceToken") != nil {
+                userInfo.setValue(UserDefaults.standard.value(forKey: "deviceToken") as! String, forKey: "deviceId");
             } else {
-                userInfo.setValue("APA91bHPRgkF3JUikC4ENAHEeMrd41Zxv3hVZjC9KtT8OvPVGJ-hQMRKRrZuJAEcl7B338qju59zJMjw2DELjzEvxwYv7hH5Ynpc1ODQ0aT4U4OFEeco8ohsN5PjL1iC2dNtk2BAokeMCg2ZXKqpc8FXKmhX94kIxQ", forKey: "deviceId");
+                userInfo.setValue("", forKey: "deviceId");
             }
             
             if self.tweakOptionView.delegate.selectedGender == self.bundle.localizedString(forKey: "male", value: nil, table: nil) {
@@ -10265,11 +10290,11 @@ self.floatingCallBtn.isHidden = false
             }
             userInfo.setValue("", forKey: "gcmId")
             
-            for _ in self.tweakSelection.selectedAllergies {
-                let element = self.tweakSelection.selectedAllergies.joined(separator: ",")
-                print(element)
-                userInfo.setValue(element, forKey: "allergies")
-            }
+//            for _ in self.tweakSelection.selectedAllergies {
+//                let element = self.tweakSelection.selectedAllergies.joined(separator: ",")
+//                print(element)
+//                userInfo.setValue(element, forKey: "allergies")
+//            }
             for _ in self.tweakGoalsView.goals {
                 let element = self.tweakGoalsView.goals.joined(separator: ",")
                 print(element)
@@ -10278,24 +10303,28 @@ self.floatingCallBtn.isHidden = false
             if self.tweakGoalsView.goals.count == 0 {
                 userInfo.setValue("", forKey: "goals")
             }
-            if self.tweakSelection.selectedAllergies.count == 0{
+            if self.tweakSelection.allergy.count == 0{
                 userInfo.setValue("", forKey: "allergies")
+            } else {
+                userInfo.setValue(self.tweakSelection.allergy.joined(separator: ","), forKey: "allergies")
             }
             
-            for _ in self.tweakSelection.selectedConditions {
-                let element = self.tweakSelection.selectedConditions.joined(separator: ",")
-                print(element)
-                userInfo.setValue(element , forKey: "conditions")
-            }
-            if self.tweakSelection.selectedConditions.count == 0{
+//            for _ in self.tweakSelection.selectedConditions {
+//                let element = self.tweakSelection.selectedConditions.joined(separator: ",")
+//                print(element)
+//                userInfo.setValue(element , forKey: "conditions")
+//            }
+            if self.tweakSelection.conditions.count == 0{
                 userInfo.setValue("", forKey: "conditions")
+            } else {
+                userInfo.setValue(self.tweakSelection.conditions.joined(separator: ","), forKey: "conditions")
             }
             
             userInfo.setValue(self.tweakOptionView.nickNameField.text, forKey: "nickName")
-            if self.tweakSelection.foodhabit == "" {
-                userInfo.setValue("1", forKeyPath: "foodhabit")
+            if self.tweakSelection.food.count == 0 {
+                userInfo.setValue("", forKeyPath: "foodhabit")
             } else {
-                userInfo.setValue(self.tweakSelection.foodhabit, forKeyPath: "foodhabit")
+                userInfo.setValue(self.tweakSelection.food.joined(separator: ","), forKeyPath: "foodhabit")
             }
             
             userInfo.setValue(self.tweakOptionView.emailTF.text, forKey: "email")
@@ -11424,7 +11453,7 @@ self.floatingCallBtn.isHidden = false
        self.myNutritionViewLast10TweaksTableView.isHidden = true
        self.myNutritionViewSelectYourMealTableView.isHidden = true
        self.mealTypeTableView.isHidden = true
-        CleverTap.sharedInstance()?.recordEvent("visit_premium_packages")
+       // CleverTap.sharedInstance()?.recordEvent("visit_premium_packages")
 
         fromCrown = false
 //        if countryCode == "91" {

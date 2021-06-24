@@ -726,16 +726,19 @@ class ImageUploadingViewController: UIViewController {
             if UserDefaults.standard.value(forKey: "TWEAK_COUNT") != nil {
                 let tweakCount =  UserDefaults.standard.value(forKey: "TWEAK_COUNT") as! Int
                 if tweakCount == 0 {
+                    if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
+                        let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "first_tweak")
+                        print(eventName)
+                      //  CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
+
+                        Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "First tweak"])
+                    }
                     CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
                 } else {
                     CleverTap.sharedInstance()?.recordEvent("Tweak_sent")
 
                 }
             } else {
-                CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
-            }
-            if UserDefaults.standard.value(forKey: "FIRST_TWEAK") == nil {
-            UserDefaults.standard.setValue("YES", forKey: "FIRST_TWEAK")
                 if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
                     let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "first_tweak")
                     print(eventName)
@@ -743,6 +746,17 @@ class ImageUploadingViewController: UIViewController {
 
                     Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "First tweak"])
                 }
+                CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
+            }
+            if UserDefaults.standard.value(forKey: "FIRST_TWEAK") == nil {
+            UserDefaults.standard.setValue("YES", forKey: "FIRST_TWEAK")
+//                if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
+//                    let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "first_tweak")
+//                    print(eventName)
+//                  //  CleverTap.sharedInstance()?.recordEvent("Tweak_Sent_First_Time")
+//
+//                    Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "First tweak"])
+//                }
                 
             }
             MBProgressHUD.hide(for: self.view, animated: true);

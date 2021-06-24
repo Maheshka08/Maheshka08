@@ -51,6 +51,8 @@ enum MyTheme {
 //   }
 //}
 class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UITextFieldDelegate, UserCallSchedule,iCarouselDelegate,iCarouselDataSource, CarouselButtonDelegate1 {
+    
+
     var identifierFromPopUp = ""
     var scrolledIndex: Int = 0
     func cellTappedOnButton(_ cell: CarouselCollectionViewCell) {
@@ -453,6 +455,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var buyNowMoreInfoBtn: UIButton!
     @IBOutlet weak var moreInfoSubscribeTextView: UITextView!
     @IBOutlet weak var featuresViewSubscribeTextView: UITextView!
+    @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var featuresView: UIView!
     @IBOutlet weak var callNutritionistTextLbl1: UILabel!
     @IBOutlet weak var callNutritionistTextLbl2: UILabel!
@@ -534,6 +537,36 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var packagePrice: UILabel!
     @IBOutlet weak var callNutritionistBtn1: UIButton!
     @IBOutlet weak var packageDescription: UITextView!
+    
+    @IBAction func restoreButtonTapped(_ sender: Any) {
+        
+        
+        if self.idleTimer != nil
+        {
+         self.idleTimer?.invalidate()
+           self.idleTimer = nil
+        }
+        
+//        let refresh = SKReceiptRefreshRequest()
+//        refresh.delegate = self
+//        refresh.start()
+        
+        SKPaymentQueue.default().add(self)
+
+        DispatchQueue.main.async {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+
+        }
+        if (SKPaymentQueue.canMakePayments()) {
+          SKPaymentQueue.default().restoreCompletedTransactions()
+        } else {
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true)
+
+            }
+        }
+    }
+    
     var pickerView: UIPickerView {
       get {
         let pickerView = UIPickerView()
@@ -818,9 +851,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        // Show some alert
-    }
+   
     
     func buyProduct(product: SKProduct) {
         if SKPaymentQueue.canMakePayments() {
@@ -993,6 +1024,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     
                     
                     break;
+                    
                 case .failed:
                    
                     print("Purchased Failed");
@@ -1015,14 +1047,20 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                     break;
                 case .restored:
                     print("Already Purchased")
-                    //Do unlocking etc stuff here in case of restor
+                    //Do unlocking etc stuff here in case of restore
+                    
                     DispatchQueue.main.async {
 
                     MBProgressHUD.hide(for: self.view, animated: true);
                     }
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    SKPaymentQueue.default().remove(self)
+                   // SKPaymentQueue.default().remove(self)
                     
+                    print("Received restored transactions: \((transaction as! SKPaymentTransaction).transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")")
+                    if queue.transactions.count > 0 {
+                    print("last transactions:", queue.transactions.last!)
+                    }
+                    break;
                 default:
                     // MBProgressHUD.hide(for: self.view, animated: true);
                     
@@ -1030,6 +1068,96 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 }
             }
         }
+    }
+    
+    func requestDidFinish(_ request: SKRequest) {
+        
+    }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+     // handleSuccess()
+        var transArray = [SKPaymentTransaction]()
+
+        print("Received restored transactions: \(queue.transactions.count)")
+        if queue.transactions.count > 0 {
+        print("last transactions:", queue.transactions.last!)
+            print("Received restored transactions: \(queue.transactions.last?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")")
+        }
+        var dates = [String]()
+        for scanTansaction in queue.transactions {
+           // print(scanTansaction.payment.productIdentifier, scanTansaction.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+            transArray.append(scanTansaction)
+        }
+        transArray = transArray.sorted(by: { (t1, t2) -> Bool in
+            t1.transactionDate!.compare(t2.transactionDate!) == .orderedDescending
+        })
+        //transArray = transArray.sorted(by: {$0.transactionDate ?? Date() > $1.transactionDate ?? Date()})
+        print(transArray.last?.payment.productIdentifier, transArray.last?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+        print("*-*-")
+        print(transArray.first?.payment.productIdentifier, transArray.first?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+//             for scanTansaction in queue.transactions {
+//                switch scanTansaction.transactionState {
+//                 case .restored:
+//                    transArray.append(scanTansaction)
+//                    print("Transactions:", transArray)
+//                  // NotificationCenter.default.post(name: .appstore, object: self)
+////                    DispatchQueue.main.async {
+////
+////                    MBProgressHUD.hide(for: self.view, animated: true);
+////                    }
+////                    let alert = UIAlertController(title: "Success!", message: "Purchase has been restored successfully!", preferredStyle: .alert)
+////
+////                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+////
+//////                        ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+////
+////                        self.price = "99"
+////                        self.currency = "USD"
+////                        self.pkgDuration = "1-M"
+////
+////
+////                        let props = [
+////                            "package_id": self.packageId,
+////                        ]
+////                        CleverTap.sharedInstance()?.recordEvent("Purchase_completed", withProps: props)
+////                        //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+////                        if self.packageId == self.clubPackageSubscribed {
+////                            //if self.priceInDouble != 0.0 {
+////                            self.receiptValidation()
+////                            //}
+////                        } else if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
+////                            //if self.priceInDouble != 0.0 {
+////                            self.sendNCPdetails(transactionID: scanTansaction.transactionIdentifier ?? "")
+////                            //}
+////                        } else {
+////                            //if self.price != "" {
+////                            self.recptValidation()
+////                            //}
+////                        }
+////                    }))
+////
+////                    self.present(alert, animated: true)
+//
+//                    queue.finishTransaction(scanTansaction)
+//                  default:
+//                     break
+//                    }
+//              }
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue,
+                      restoreCompletedTransactionsFailedWithError error: Error) {
+      //handleError()
+                            DispatchQueue.main.async {
+        
+                            MBProgressHUD.hide(for: self.view, animated: true);
+                            }
+        
+        TweakAndEatUtils.AlertView.showAlert(view: self, message: "There are no items available to restore at this time.")
     }
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
@@ -1457,9 +1585,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     }
     
     func receiptValidation() {
-        if self.priceInDouble == 0.0 {
-            return
-        }
+//        if self.priceInDouble == 0.0 {
+//            return
+//        }
          DispatchQueue.main.async {
         MBProgressHUD.showAdded(to: self.view, animated: true);
         }
@@ -1529,9 +1657,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
   
     }
     func sendNCPdetails(transactionID: String) {
-        if self.priceInDouble == 0.0 {
-         return
-        }
+//        if self.priceInDouble == 0.0 {
+//         return
+//        }
         DispatchQueue.main.async {
        MBProgressHUD.showAdded(to: self.view, animated: true);
        }
@@ -1595,9 +1723,9 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
  
    }
     func recptValidation() {
-        if self.price == "" {
-            return
-        }
+//        if self.price == "" {
+//            return
+//        }
         DispatchQueue.main.async {
             MBProgressHUD.showAdded(to: self.view, animated: true);
 
@@ -2623,6 +2751,8 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.restoreButton.isHidden = true
+        self.restoreButton.titleLabel?.tintColor = .black
         self.pp_pkgImgView.contentMode = .scaleAspectFit
         self.pp_pkgImgView.clipsToBounds = true
         self.inAppPurchasePriceTableView.isHidden = true
@@ -2632,7 +2762,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         let props = [
             "package_id": self.packageId,
         ]
-       // CleverTap.sharedInstance()?.recordEvent("Single_package_viewed", withProps: props)
+        CleverTap.sharedInstance()?.recordEvent("Single_package_viewed", withProps: props)
         var counter = 15
         //if self.getScreenName(screenName: self.packageId).count > 0 {
            // let screenName = self.getScreenName(screenName: self.packageId)
@@ -2926,7 +3056,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.priceLabel.text = " Please choose a subscription plan"
         self.chooseSubScriptionPlanLbl.text = " Please choose a subscription plan"
         SKPaymentQueue.default().add(self)
-        
+
         for myProfileObj in self.myProfile! {
             self.name = myProfileObj.name;
         }

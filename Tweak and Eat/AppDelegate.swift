@@ -970,19 +970,24 @@ AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenStr = deviceToken.map { String(format: "%02x", $0) }.joined()
-        let characterSet :CharacterSet = CharacterSet(charactersIn: "<>");
-        let deviceTokenString: String = (deviceToken.description)
-            .trimmingCharacters(in: characterSet)
-            .replacingOccurrences(of: " ", with: "");
+//        let deviceTokenStr = deviceToken.map { String(format: "%02x", $0) }.joined()
+//        let characterSet :CharacterSet = CharacterSet(charactersIn: "<>");
+//        let deviceTokenString: String = (deviceToken.description)
+//            .trimmingCharacters(in: characterSet)
+//            .replacingOccurrences(of: " ", with: "");
+        let tokenParts = deviceToken.map { data -> String in
+               return String(format: "%02.2hhx", data)
+           }
+               
+           let token = tokenParts.joined()
         
-        UserDefaults.standard.set(deviceTokenString, forKey: "deviceToken");
+        UserDefaults.standard.set(token, forKey: "deviceToken");
         Messaging.messaging().apnsToken = deviceToken
         CleverTap.sharedInstance()?.setPushToken(deviceToken)
 
        // AppsFlyerLib.shared().handlePushNotification(userInfo)
 
-        print(deviceTokenString);
+        print(token);
        // push?.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
 
     }
