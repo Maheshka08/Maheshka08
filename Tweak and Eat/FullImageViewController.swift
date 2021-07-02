@@ -41,7 +41,8 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
 
-        if self.view.frame.origin.y == 0 {                       self.view.frame.origin.y -= keyboardFrame.height
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= keyboardFrame.height
         }
         
     }
@@ -52,7 +53,8 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.origin.y != 0{                       self.view.frame.origin.y += keyboardFrame.height
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += keyboardFrame.height
         }
 
     }

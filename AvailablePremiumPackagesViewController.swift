@@ -1486,7 +1486,7 @@ return
 //ClubInd4tUPXHgVj9w3
 //IndIWj1mSzQ1GDlBpUt
         
-        UserDefaults.standard.removeObject(forKey: "-ClubInd4tUPXHgVj9w3")
+       // UserDefaults.standard.removeObject(forKey: "-IndIWj1mSzQ1GDlBpUt")
         CleverTap.sharedInstance()?.recordEvent("Packages_viewed")
 
         //SKPaymentQueue.default().add(self)

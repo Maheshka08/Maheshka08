@@ -27,6 +27,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     var keyboardHeight: CGFloat = 0.0
     @IBOutlet weak var commentBoxView: UIView!
     
+    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var threeRedArrowGifImageView: UIImageView!
     @IBOutlet weak var mealTypeTableViewHeightConstraint: NSLayoutConstraint!;
     @IBOutlet weak var sendTweakBtn: UIButton!;
@@ -131,6 +132,9 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
     override func viewDidLoad() {
         
         super.viewDidLoad();
+        self.cancelBtn.layer.cornerRadius = self.cancelBtn.frame.height / 2
+        self.cancelBtn.layer.borderWidth = 1
+        self.cancelBtn.layer.borderColor = UIColor.purple.cgColor
 
         NotificationCenter.default.addObserver(
             self,
@@ -153,7 +157,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         self.commentBox.textColor = UIColor.black
         self.commentBox.tintColor = .black
 
-        self.commentBox.autocorrectionType = .no
+        //self.commentBox.autocorrectionType = .no
         self.mealTypeLabel.layer.cornerRadius = 4;
         self.mealTypeTableView.delegate = self
         self.mealTypeTableView.dataSource = self
@@ -218,7 +222,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         commentBoxView.layer.borderColor = UIColor.yellow.cgColor
 //        self.commentsView.layer.backgroundColor =  UIColor(red: 18/255, green: 24/255, blue: 3/255, alpha: 1).cgColor;
         
-        self.sharingView.layer.backgroundColor =  UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1).cgColor;
+//        self.sharingView.layer.backgroundColor =  UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1).cgColor;
         
         parameterDict1["refillComments"] = "" as AnyObject
         parameterDict1["userComments"] = "" as AnyObject

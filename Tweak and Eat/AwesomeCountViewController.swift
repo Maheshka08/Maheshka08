@@ -88,6 +88,8 @@ class AwesomeCountViewController: UIViewController, UITableViewDelegate, UITable
         self.commentsTxtView.layer.cornerRadius = 5
         self.commentsTxtView.layer.borderColor = UIColor.darkGray.cgColor
         self.commentsTxtView.layer.borderWidth = 2
+        self.commentsTxtView.spellCheckingType = .yes
+        self.commentsTxtView.autocorrectionType = .yes
         self.imgView.clipsToBounds = true
         self.imgView.contentMode = .scaleAspectFill
         bundle = Bundle.init(path: path!)! as Bundle

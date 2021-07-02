@@ -437,6 +437,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var carouselView1: CarouselCollectionView!
     var packageName = ""
     var navTitle = ""
+    var restoreBtnTapped = false
     var packagesImagesArray = NSMutableArray()
     var checkUserScheduleArray = [[String: AnyObject]]()
     @IBOutlet weak var calendarInnerView: UIView!
@@ -505,6 +506,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak  var nutritionstDescLbl: UILabel!
     var userReviewsArray = NSMutableArray()
     
+    @IBOutlet weak var yourPaymentLbl: UILabel!
     @IBOutlet weak var bottomImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var ratingsCarouselView: iCarousel!
@@ -842,6 +844,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         self.backBtn.isHidden = true
         self.showCalendarView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     @IBAction func paymentSuccessOKTapped(_ sender: Any) {
 //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
 //        let myTweakandEatViewController : MyTweakAndEatVCViewController = storyBoard.instantiateViewController(withIdentifier: "MyTweakAndEatVCViewController") as! MyTweakAndEatVCViewController;
@@ -1081,6 +1087,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
      // handleSuccess()
         var transArray = [SKPaymentTransaction]()
+        var transArray1 = [SKPaymentTransaction]()
 
         print("Received restored transactions: \(queue.transactions.count)")
         if queue.transactions.count > 0 {
@@ -1088,60 +1095,118 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             print("Received restored transactions: \(queue.transactions.last?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")")
         }
         var dates = [String]()
+        
+       
         for scanTansaction in queue.transactions {
            // print(scanTansaction.payment.productIdentifier, scanTansaction.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
             transArray.append(scanTansaction)
         }
-        transArray = transArray.sorted(by: { (t1, t2) -> Bool in
+        
+        for priceDict in self.nutritionLabelPriceArray {
+            let dict = priceDict as! [String: AnyObject]
+            for tran in transArray {
+                if tran.payment.productIdentifier == (dict["productIdentifier"] as AnyObject as! String) {
+                    print(tran.payment.productIdentifier, tran.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+                    transArray1.append(tran)
+
+                }
+            }
+        }
+        
+        print("tran:", transArray1)
+        transArray1 = transArray1.sorted(by: { (t1, t2) -> Bool in
             t1.transactionDate!.compare(t2.transactionDate!) == .orderedDescending
         })
+        print("tran last:", transArray1.last?.payment.productIdentifier)
+
         //transArray = transArray.sorted(by: {$0.transactionDate ?? Date() > $1.transactionDate ?? Date()})
-        print(transArray.last?.payment.productIdentifier, transArray.last?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+        print(transArray1.last?.payment.productIdentifier, transArray1.last?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
         print("*-*-")
-        print(transArray.first?.payment.productIdentifier, transArray.first?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+        print(transArray1.first?.payment.productIdentifier, transArray1.first?.transactionDate?.dateStringWithFormat(format: "yyyy-MM-dd") ?? "")
+        for priceDict in self.nutritionLabelPriceArray {
+            let dict = priceDict as! [String: AnyObject]
+            if transArray1.first?.payment.productIdentifier == (dict["productIdentifier"] as AnyObject as! String) {
+            self.labelPriceDict  = dict
+            self.pkgDescription = "\(labelPriceDict["pkgDescription"] as AnyObject as! String)";
+            self.pkgDuration = labelPriceDict["pkgDuration"] as AnyObject as! String;
+            self.price = "\(labelPriceDict["transPayment"] as AnyObject as! Double)";
+            self.priceInDouble = labelPriceDict["transPayment"] as AnyObject as! Double;
+            self.currency = "\(labelPriceDict["currency"] as AnyObject as! String)";
+            let labels =  (self.labelPriceDict[lables] as? String)! + " ("
+            let amount = "\(labelPriceDict["display_amount"] as AnyObject as! Double)" + " "
+            
+            let currency = (self.labelPriceDict["display_currency"] as? String)! + ")"
+            let totalDesc: String = labels + amount + currency;
+            DispatchQueue.main.async {
+                if self.featuresView.isHidden == false {
+                self.priceLabel.text = " " + totalDesc
+                } else {
+                    self.chooseSubScriptionPlanLbl.text = " " + totalDesc
+
+                }
+            }
+         
+            self.packageName = (self.labelPriceDict[lables] as? String)!
+//            self.buyNowButton.isEnabled = true
+//            self.priceTableView.isHidden = true
+            self.productIdentifier = self.labelPriceDict["productIdentifier"] as AnyObject as! String
+            }
+        }
+        
 //             for scanTansaction in queue.transactions {
 //                switch scanTansaction.transactionState {
 //                 case .restored:
 //                    transArray.append(scanTansaction)
 //                    print("Transactions:", transArray)
 //                  // NotificationCenter.default.post(name: .appstore, object: self)
-////                    DispatchQueue.main.async {
-////
-////                    MBProgressHUD.hide(for: self.view, animated: true);
-////                    }
-////                    let alert = UIAlertController(title: "Success!", message: "Purchase has been restored successfully!", preferredStyle: .alert)
-////
-////                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-////
-//////                        ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
-////
-////                        self.price = "99"
-////                        self.currency = "USD"
-////                        self.pkgDuration = "1-M"
-////
-////
-////                        let props = [
-////                            "package_id": self.packageId,
-////                        ]
-////                        CleverTap.sharedInstance()?.recordEvent("Purchase_completed", withProps: props)
-////                        //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
-////                        if self.packageId == self.clubPackageSubscribed {
-////                            //if self.priceInDouble != 0.0 {
-////                            self.receiptValidation()
-////                            //}
-////                        } else if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
-////                            //if self.priceInDouble != 0.0 {
-////                            self.sendNCPdetails(transactionID: scanTansaction.transactionIdentifier ?? "")
-////                            //}
-////                        } else {
-////                            //if self.price != "" {
-////                            self.recptValidation()
-////                            //}
-////                        }
-////                    }))
-////
-////                    self.present(alert, animated: true)
+                    DispatchQueue.main.async {
+
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                    }
+        if transArray1.count == 0 {
+            DispatchQueue.main.async {
+            if self.restoreBtnTapped == true {
+                self.restoreBtnTapped = false
+                self.yourPaymentLbl.text = ""
+            }
+            }
+            TweakAndEatUtils.AlertView.showAlert(view: self, message: "There are no items available to restore at this time.")
+            return
+        }
+                    let alert = UIAlertController(title: "Success!", message: "Purchase has been restored successfully!", preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+
+//                        ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+
+//                        self.price = "99"
+//                        self.currency = "USD"
+//                        self.pkgDuration = "1-M"
 //
+//
+//                        let props = [
+//                            "package_id": self.packageId,
+//                        ]
+//                        CleverTap.sharedInstance()?.recordEvent("Purchase_completed", withProps: props)
+                        //Do unlocking etc stuff here in case of new purchaseself.packageId == self.clubPackageSubscribed
+                        self.restoreBtnTapped = true
+                        if self.packageId == self.clubPackageSubscribed {
+                            //if self.priceInDouble != 0.0 {
+                            self.receiptValidation()
+                            //}
+                        } else if self.packageId == "-NcInd5BosUcUeeQ9Q32" {
+                            //if self.priceInDouble != 0.0 {
+                           // self.sendNCPdetails(transactionID: scanTansaction.transactionIdentifier ?? "")
+                            //}
+                        } else {
+                            //if self.price != "" {
+                            self.recptValidation()
+                            //}
+                        }
+                    }))
+
+                    self.present(alert, animated: true)
+
 //                    queue.finishTransaction(scanTansaction)
 //                  default:
 //                     break
@@ -1152,6 +1217,13 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     func paymentQueue(_ queue: SKPaymentQueue,
                       restoreCompletedTransactionsFailedWithError error: Error) {
       //handleError()
+        DispatchQueue.main.async {
+        if self.restoreBtnTapped == true {
+            self.restoreBtnTapped = false
+            self.yourPaymentLbl.text = ""
+        }
+        }
+        
                             DispatchQueue.main.async {
         
                             MBProgressHUD.hide(for: self.view, animated: true);
@@ -1598,7 +1670,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
         
         let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId
-            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+            , "amountPaid": self.priceInDouble, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration, "prodIden": self.productIdentifier] as [String : AnyObject]
         //91e841953e9f4d19976283cd2ee78992
         
         print(recieptString!)
@@ -1748,7 +1820,7 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
             let receiptFileURL = Bundle.main.appStoreReceiptURL
             let receiptData = try? Data(contentsOf: receiptFileURL!)
             let recieptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-             jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration] as [String : AnyObject]
+            jsonDict = ["receiptData" : recieptString as AnyObject, "environment" : "Production" as AnyObject, "packageId":  self.packageId, "amountPaid": self.price, "amountCurrency" : self.currency, "packageDuration": self.pkgDuration, "prodIden": self.productIdentifier] as [String : AnyObject]
         }
        
       
@@ -1772,6 +1844,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 responseResult = responseDic["CallStatus"] as! String
             }
             if  responseResult == "GOOD" {
+                DispatchQueue.main.async {
+                if self.restoreBtnTapped == true {
+                    self.restoreBtnTapped = false
+                    self.yourPaymentLbl.text = ""
+                }
+                }
                 //IndIWj1mSzQ1GDlBpUt
                  //AppsFlyerLib.shared().logEvent("af_purchase", withValues: [AFEventParamContentType: self.packageName, AFEventParamContentId: self.packageId, AFEventParamCurrency: self.currency])
 //                if UserDefaults.standard.value(forKey: "msisdn") != nil {
@@ -2125,6 +2203,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                 
             }
         }, failure : { error in
+            DispatchQueue.main.async {
+            if self.restoreBtnTapped == true {
+                self.restoreBtnTapped = false
+                self.yourPaymentLbl.text = ""
+            }
+            }
              DispatchQueue.main.async {
                     MBProgressHUD.hide(for: self.view, animated: true);
                 }
@@ -2205,6 +2289,12 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
                    // self.packagesImagesArray.add(dict["pkgImg"] as! String)
                     self.itemsArray.append(Item(value: dict["imgBtn"] as! String))
                     
+                }
+            }
+            
+            if self.itemsArray.count > 0 {
+                DispatchQueue.main.async {
+                    self.restoreButton.isHidden = false
                 }
             }
             //self.pageControl.numberOfPages = self.items.count
@@ -2752,7 +2842,10 @@ class MoreInfoPremiumPackagesViewController: UIViewController, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.restoreButton.isHidden = true
-        self.restoreButton.titleLabel?.tintColor = .black
+        //self.restoreButton.titleLabel?.tintColor = .black
+        DispatchQueue.main.async {
+            self.restoreButton.isHidden = true
+        }
         self.pp_pkgImgView.contentMode = .scaleAspectFit
         self.pp_pkgImgView.clipsToBounds = true
         self.inAppPurchasePriceTableView.isHidden = true

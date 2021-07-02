@@ -6465,8 +6465,8 @@ self.topImageView.alpha = 1
        // UIApplication.shared.addObserver(self, forKeyPath: "applicationIconBadgeNumber", options: .new, context: nil)
         UserDefaults.standard.set("WELCOME_VIEW", forKey: "SWAP_SWITCH_VIEW")
         UserDefaults.standard.synchronize()
-        if UserDefaults.standard.value(forKey: "MEAN_CALORIES") != nil {
-              let approxCal = UserDefaults.standard.value(forKey: "MEAN_CALORIES") as AnyObject as! Int
+        if UserDefaults.standard.value(forKey: "APPROX_CALORIES") != nil {
+              let approxCal = UserDefaults.standard.value(forKey: "APPROX_CALORIES") as AnyObject as! Int
               DispatchQueue.main.async {
                   self.minCalCountLabel.text = "\(approxCal <= 0 ? 0: approxCal)";
               }
