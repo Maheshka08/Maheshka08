@@ -77,7 +77,7 @@ struct TBL_TweakConstants {
     static let TWEAK_LONGITUDE : String = "tweak_longitude"
     static let TWEAK_USER_COMMENTS: String = "tweak_usr_comments"
     static let TWEAK_AUDIO_MSG : String = "tweak_audio_message"
-    
+    static let MEAL_TYPE: String = "tweak_meal_type"
     static let TWEAK_CORRECT_DATE : String = "tweak_crt_dttm"
     static let TWEAK_UPDATED_DATE : String = "tweak_upd_dttm"
 }

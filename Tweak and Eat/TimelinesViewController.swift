@@ -1518,11 +1518,14 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             } else {
                 timelineCell.genderImgView.image = UIImage.init(named: "wall_male")
             }
-            if tweak.tweakUserComments!.count > 0 {
-            timelineCell.userCommentsLabel.text = "\n" + tweak.tweakUserComments! + "\n"
-            } else {
-                timelineCell.userCommentsLabel.text = ""
-            }
+//            if tweak.tweakUserComments?.count ?? 0 > 0 {
+//            timelineCell.userCommentsLabel.text = "\n" + tweak.tweakUserComments! + "\n"
+//            } else {
+//                timelineCell.userCommentsLabel.text = tweak.tweakUserComments!
+//            }
+            
+            timelineCell.userCommentsLabel.text = tweak.tweakUserComments!
+            
           
             timelineCell.selectionStyle = UITableViewCell.SelectionStyle.none;
             //}

@@ -2758,7 +2758,24 @@ self.topImageView.alpha = 1
     override func viewDidLoad() {
 
         super.viewDidLoad();
-        
+        if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
+            countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
+        if self.countryCode == "1" {
+            if UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil  || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil {
+                self.adsImageView.isHidden = true
+                self.adsImageViewHeightConstraint.constant = 0
+                self.subscribeNowButtonView.isHidden = true
+                self.adImageViewTopConstraint.constant = -40
+                //self.subscribeNowHeightConstraint.constant = 40
+                self.view.layoutIfNeeded()
+            } else {
+                self.adsImageView.isHidden = false
+                self.subscribeNowButtonView.isHidden = false
+                self.adImageViewTopConstraint.constant = 10
+                self.view.layoutIfNeeded()
+            }
+        }
+        }
         if UserDefaults.standard.value(forKey: "TRIAL_PERIOD_EXPIRED") != nil {
             if UserDefaults.standard.value(forKey: "TRIAL_PERIOD_EXPIRED") as! Bool == true {
             DispatchQueue.main.async {
@@ -6436,6 +6453,7 @@ self.topImageView.alpha = 1
     
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
+
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             //UserDefaults.standard.removeObject(forKey: "ct_profile_updated")
             let dictionary = Bundle.main.infoDictionary!

@@ -10,6 +10,27 @@ import Foundation
 import UserNotifications
 import Alamofire
 
+
+//extension String {
+//    var encodeEmoji: String{
+//        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
+//            return encodeStr as String
+//        }
+//        return self
+//    }
+//}
+//
+//extension String {
+//    var decodeEmoji: String{
+//        let data = self.data(using: String.Encoding.utf8);
+//        let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
+//        if let str = decodedStr{
+//            return str as String
+//        }
+//        return self
+//    }
+//}
+
 //extension String {
 //    func getEventNames(countryISO: String, eventName: String) -> String {
 //        return "evt_" + countryISO.lowercased() + "_" + "i_" + eventName

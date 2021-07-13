@@ -87,6 +87,7 @@ class DataManager: NSObject {
          } else {
         tweakObject!.tweakUserComments = tweak.value(forKey: TBL_TweakConstants.TWEAK_USER_COMMENTS) as? String;
         }
+        tweakObject!.mealType = tweak.value(forKey: TBL_TweakConstants.MEAL_TYPE) as! Int16
         self.saveChanges()
     }
     

@@ -156,6 +156,7 @@ class TweakShareViewController: UIViewController, UITextViewDelegate, UITableVie
         self.commentsView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.9)
         self.commentBox.textColor = UIColor.black
         self.commentBox.tintColor = .black
+        //self.commentBox.keyboardType = .asciiCapable
 
         //self.commentBox.autocorrectionType = .no
         self.mealTypeLabel.layer.cornerRadius = 4;

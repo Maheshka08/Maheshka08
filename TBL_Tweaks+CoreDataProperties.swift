@@ -26,6 +26,7 @@ extension TBL_Tweaks {
     @NSManaged public var tweakOriginalImageURL: String?
     @NSManaged public var tweakRating: Float
     @NSManaged public var tweakStatus: Int64
+    @NSManaged public var mealType: Int16
     @NSManaged public var tweakSuggestedText: String?
     @NSManaged public var tweakUserComments: String?
 

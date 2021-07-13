@@ -579,6 +579,7 @@
 		8350FB0224E2A33200FA50C0 /* student.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = student.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		835FBA5B24E410AF00E9B143 /* TweakandEatClubMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakandEatClubMemberVC.swift; sourceTree = "<group>"; };
 		8360F835264171B400564FFC /* MonthlyTrendsTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTrendsTop.swift; sourceTree = "<group>"; };
+		83676365268F86E80066BB24 /* Tweak_and_Eat 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tweak_and_Eat 5.xcdatamodel"; sourceTree = "<group>"; };
 		83739E35264CE0000082C593 /* InAppPackagePriceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPackagePriceViewCell.swift; sourceTree = "<group>"; };
 		8375DB1325AD680F00C978E5 /* AskSiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskSiaViewController.swift; sourceTree = "<group>"; };
 		8375DB1425AD681000C978E5 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
@@ -2433,12 +2434,13 @@
 		57BED14C1D749B780008CC4D /* Tweak_and_Eat.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				83676365268F86E80066BB24 /* Tweak_and_Eat 5.xcdatamodel */,
 				845A93641DE5697C0043B72E /* Tweak_and_Eat 4.xcdatamodel */,
 				5792EC671DCDDA43004CF94A /* Tweak_and_Eat 3.xcdatamodel */,
 				574FD0691DBA709900C4ACE5 /* Tweak_and_Eat 2.xcdatamodel */,
 				57BED14D1D749B780008CC4D /* Tweak_and_Eat.xcdatamodel */,
 			);
-			currentVersion = 845A93641DE5697C0043B72E /* Tweak_and_Eat 4.xcdatamodel */;
+			currentVersion = 83676365268F86E80066BB24 /* Tweak_and_Eat 5.xcdatamodel */;
 			name = Tweak_and_Eat.xcdatamodeld;
 			path = "Tweak and Eat/Tweak_and_Eat.xcdatamodeld";
 			sourceTree = "<group>";
