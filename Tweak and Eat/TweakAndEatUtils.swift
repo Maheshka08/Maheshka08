@@ -124,6 +124,16 @@ class TweakAndEatUtils {
         
         return dateFormat.string(from: resultDate) + " " + timeFormat.string(from: resultDate)
     }
+    
+    class func localTimeFromTZ(date : String) -> Date {
+        let simpleDateFormat : DateFormatter = DateFormatter()
+        simpleDateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        simpleDateFormat.timeZone = NSTimeZone(abbreviation: "GMT") as TimeZone? 
+        
+        let resultDate : Date = simpleDateFormat.date(from: date)!
+        
+      return resultDate
+    }
 }
 
 extension CGRect{

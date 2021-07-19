@@ -949,12 +949,8 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
         }else{
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let fullImageView : FullImageViewController = storyBoard.instantiateViewController(withIdentifier: "fullImageView") as! FullImageViewController;
-        fullImageView.shareAction = false
-//            if (timelineDetails.tweakUserComments == nil || timelineDetails.tweakUserComments == "") {
-//                fullImageView.tweakUserComments = ""
-//            } else {
-//                fullImageView.tweakUserComments = timelineDetails.tweakUserComments ?? ""
-//            }
+            fullImageView.shareAction = false
+
             fullImageView.tweakUserComments = self.tweakUserComments 
             fullImageView.fullImage = timelineImageView.image;
             fullImageView.imageUrl = imageUrl;

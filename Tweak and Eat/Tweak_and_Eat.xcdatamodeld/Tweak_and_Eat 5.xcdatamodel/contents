@@ -20,7 +20,11 @@
         <attribute name="rmdrType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="TBL_Tweaks" representedClassName=".TBL_Tweaks" syncable="YES">
+        <attribute name="calories" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="carbs" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fats" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mealType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="protein" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="tweakAudioMessage" optional="YES" attributeType="String"/>
         <attribute name="tweakDateCreated" optional="YES" attributeType="String"/>
         <attribute name="tweakDateUpdated" optional="YES" attributeType="String"/>
@@ -38,6 +42,6 @@
         <element name="TBL_Contacts" positionX="-596" positionY="-5562" width="128" height="103"/>
         <element name="TBL_DailyTips" positionX="-774" positionY="-5566" width="128" height="103"/>
         <element name="TBL_Reminders" positionX="-596" positionY="-5725" width="128" height="118"/>
-        <element name="TBL_Tweaks" positionX="-927" positionY="-5724" width="128" height="238"/>
+        <element name="TBL_Tweaks" positionX="-927" positionY="-5724" width="128" height="298"/>
     </elements>
 </model>

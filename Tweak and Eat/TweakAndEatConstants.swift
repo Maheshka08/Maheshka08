@@ -80,6 +80,10 @@ struct TBL_TweakConstants {
     static let MEAL_TYPE: String = "tweak_meal_type"
     static let TWEAK_CORRECT_DATE : String = "tweak_crt_dttm"
     static let TWEAK_UPDATED_DATE : String = "tweak_upd_dttm"
+    static let CALORIES: String = "tweak_cl_calories"
+    static let CARBS: String = "tweak_cl_carbs"
+    static let FATS: String = "tweak_cl_fats"
+    static let PROTEIN: String = "tweak_cl_protein"
 }
 
 struct TBL_ReminderConstants {

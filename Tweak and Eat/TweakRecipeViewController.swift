@@ -163,14 +163,9 @@ class BuyableFrm {
 class TweakRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AwesomeButtonCellDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
-        
-        //        let searchPredicate = NSPredicate(format: "title == %@", searchController.searchBar.text!)
-        //        let array = (tweakRecipesInfo as NSArray).filtered(using: searchPredicate)
         let tempArr = tweakRecipesInfo.filter({$0.title.localizedCaseInsensitiveContains(searchController.searchBar.text!)})
         filteredTableData = tempArr
-        //if filteredTableData.count > 0 {
         self.recipeWallTableView.reloadData()
-        //}
     }
     
     @IBOutlet weak var textImageView: UIImageView!

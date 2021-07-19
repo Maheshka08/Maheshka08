@@ -27,6 +27,10 @@ extension TBL_Tweaks {
     @NSManaged public var tweakRating: Float
     @NSManaged public var tweakStatus: Int64
     @NSManaged public var mealType: Int16
+    @NSManaged public var carbs: Int16
+    @NSManaged public var calories: Int16
+    @NSManaged public var fats: Int16
+    @NSManaged public var protein: Int16
     @NSManaged public var tweakSuggestedText: String?
     @NSManaged public var tweakUserComments: String?
 

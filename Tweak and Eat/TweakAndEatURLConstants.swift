@@ -150,6 +150,7 @@ struct TweakAndEatURLConstants {
     static let UPDATE_CAL_ASSUME = BASE_URL + "/api/user/updatecalsassume"
     static let CLUB_AIDP_CONTENT = BASE_URL + "/api/payments/clubaidpcontent"
     static let GET_TRIAL_PERIOD = BASE_URL + "/api/user/trialperiod"
+    static let COPY_MEAL = BASE_URL + "/api/user/copytweak"
 
     
     

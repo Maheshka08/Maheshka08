@@ -764,12 +764,12 @@ class ImageUploadingViewController: UIViewController {
         }, failureBlock: {(error : NSError!) -> (Void) in
             MBProgressHUD.hide(for: self.view, animated: true);
 
-            print("Failure");
-            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
-            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        })
+//            print("Failure");
+//            let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+//            let defaultAction = UIAlertAction(title:  self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
+//            self.present(alertController, animated: true, completion: nil)
+       })
     }
     
     func goToPurchaseTAEClubScreen() {
@@ -849,7 +849,7 @@ class ImageUploadingViewController: UIViewController {
             MBProgressHUD.hide(for: self.view, animated: true);
 
             print("failure")
-            TweakAndEatUtils.AlertView.showAlert(view: self, message:  self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil))
+           // TweakAndEatUtils.AlertView.showAlert(view: self, message:  self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil))
             
         })
         

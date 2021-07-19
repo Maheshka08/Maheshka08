@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CFEFB27B-9A0D-43B7-9AB2-CA52D4815844"
+            uuid = "FDC24718-6514-4FED-B7D9-377F2380813B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweak and Eat/TweakShareViewController.swift"
+            filePath = "Tweak and Eat/TimelinesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "449"
-            endingLineNumber = "449"
-            landmarkName = "sendTweakAction(_:)"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "getFilteredTweaks(filterBy:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

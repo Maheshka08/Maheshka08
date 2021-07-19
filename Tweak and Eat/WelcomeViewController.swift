@@ -3095,7 +3095,7 @@ self.topImageView.alpha = 1
          NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.getUserCallSchedueDetails), name: NSNotification.Name(rawValue: "SHOW_CALL_FLOATING_BUTTON"), object: nil)
        // NotificationCenter.default.addObserver(self, selector: #selector(WelcomeViewController.swipeDownDraggingView), name: NSNotification.Name(rawValue: "SWIPE_DOWN_DRAGGING_VIEW"), object: nil)
         
-        self.getTrends()
+//        self.getTrends()
       
         
         DispatchQueue.main.async {
@@ -6453,7 +6453,7 @@ self.topImageView.alpha = 1
     
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(true)
-
+        self.getTrends()
         if UserDefaults.standard.value(forKey: "userSession") != nil {
             //UserDefaults.standard.removeObject(forKey: "ct_profile_updated")
             let dictionary = Bundle.main.infoDictionary!

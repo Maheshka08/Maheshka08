@@ -88,6 +88,10 @@ class DataManager: NSObject {
         tweakObject!.tweakUserComments = tweak.value(forKey: TBL_TweakConstants.TWEAK_USER_COMMENTS) as? String;
         }
         tweakObject!.mealType = tweak.value(forKey: TBL_TweakConstants.MEAL_TYPE) as! Int16
+        tweakObject!.carbs = tweak.value(forKey: TBL_TweakConstants.CARBS) as! Int16
+        tweakObject!.calories = tweak.value(forKey: TBL_TweakConstants.CALORIES) as! Int16
+        tweakObject!.fats = tweak.value(forKey: TBL_TweakConstants.FATS) as! Int16
+        tweakObject!.protein = tweak.value(forKey: TBL_TweakConstants.PROTEIN) as! Int16
         self.saveChanges()
     }
     

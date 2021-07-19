@@ -20,17 +20,331 @@ import CleverTapSDK
 
 
 
-class TimelinesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource, TapOnAdsDelegate,LineChartDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TimelinesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource, TapOnAdsDelegate,LineChartDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, MYEDRDelegate {
+    
+    func getMealTypes() {
+        APIWrapper.sharedInstance.getMealTypes({ (responceDic : AnyObject!) -> (Void) in
+            if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                let response : [String:AnyObject] = responceDic as! [String:AnyObject]
+                
+                if(response[TweakAndEatConstants.CALL_STATUS] as! String == TweakAndEatConstants.TWEAK_STATUS_GOOD) {
+                    self.mealTypeArray = (response["data"] as AnyObject as! NSArray) as! [[String : AnyObject]]
+                    
+                    print(self.mealTypeArray)
+                    self.mealTypeTableView.delegate = self
+                    self.mealTypeTableView.dataSource = self
+                    self.mealTypeTableView.reloadData()
+                    MBProgressHUD.hide(for: self.mealTypeTableView, animated: true);
+//                    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut],
+//                                   animations: {
+//
+//                                    self.mealTypeTableView.isHidden = false
+//                                    self.mealTypeTableViewHeightConstraint.constant = 250
+//                                    self.view.layoutIfNeeded()
+//                    },  completion: {(_ completed: Bool) -> Void in
+//                    })
+                    self.mealTypeView.isHidden = false
+
+                    }
+                
+            }else {
+                //error
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.mealTypeTableView, animated: true);
+                }
+                print("error")
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil))
+            }
+        }) { (error : NSError!) -> (Void) in
+            //error
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.mealTypeTableView, animated: true);
+            }
+            
+            print("error")
+            
+        }
+    }
+    
+//    func showMenu() {
+//        let actionSheetAlertController: UIAlertController = UIAlertController(title: "Please select your meal type", message: nil, preferredStyle: .actionSheet)
+//
+//        for meal in self.mealTypeArray {
+//            let menu = meal["name"] as! String
+//             let action = UIAlertAction(title: menu, style: .default) { (action) in
+//                self.mealTypeValue = meal["value"] as! Int
+//                DispatchQueue.main.async {
+//                    self.mealTypeLabel.text = "  " + menu
+//
+//                }
+//             }
+//
+//
+//
+//             actionSheetAlertController.addAction(action)
+//           }
+//
+////           let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+////           actionSheetAlertController.addAction(cancelActionButton)
+//
+//           self.present(actionSheetAlertController, animated: true, completion: nil)
+//    }
+    
+    func copyMeal(_ cell: MYEDRCell) {
+        
+        getMealTypes()
+        var tweak = TBL_Tweaks()
+        if self.filteredTweaksList != nil {
+        if self.filteredTweaksList!.count > 0 {
+            tweak = self.filteredTweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        if self.tweaksList != nil {
+        if self.tweaksList!.count > 0 {
+            tweak = self.tweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        self.copyThisMealParams["tweakId"] = tweak.tweakId as AnyObject
+        self.copyThisMealParams["mealType"] = tweak.mealType as AnyObject
+       
+        
+    }
+    
+    func rateThisMeal(_ cell: MYEDRCell) {
+        self.starRatingView.isHidden = false
+        //self.fiveStarView.value = CGFloat(1)
+        var tweak = TBL_Tweaks()
+        if self.filteredTweaksList != nil {
+        if self.filteredTweaksList!.count > 0 {
+            tweak = self.filteredTweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        if self.tweaksList != nil {
+        if self.tweaksList!.count > 0 {
+            tweak = self.tweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        self.fiveStarView.value = CGFloat(tweak.tweakRating);
+        ratingParams["tid"] = "\(tweak.tweakId)"
+        selectedRow = cell.myIndex
+
+        
+    }
+    
+    func askAQuestion(_ cell: MYEDRCell) {
+        if UserDefaults.standard.value(forKey: "ASK_A_QUESTION") == nil {
+        UserDefaults.standard.set("YES", forKey: "ASK_A_QUESTION")
+            UserDefaults.standard.synchronize()
+        if UserDefaults.standard.value(forKey: "COUNTRY_ISO") != nil {
+            let eventName = TweakAndEatUtils.getEventNames(countryISO: UserDefaults.standard.value(forKey: "COUNTRY_ISO") as AnyObject as! String, eventName: "ask_a_question")
+            print(eventName)
+            Analytics.logEvent(eventName, parameters: [AnalyticsParameterItemName: "Ask a question"])
+        }
+        }
+        //ChatVC
+        var tweak = TBL_Tweaks()
+        if self.filteredTweaksList != nil {
+        if self.filteredTweaksList!.count > 0 {
+            tweak = self.filteredTweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        if self.tweaksList != nil {
+        if self.tweaksList!.count > 0 {
+            tweak = self.tweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "Chat") as? ChatVC;
+        clickViewController?.tweakID = String(tweak.tweakId)
+        if tweak.tweakModifiedImageURL == "" {
+            clickViewController?.imageUrl =  tweak.tweakOriginalImageURL! as String;
+        }
+        else{
+            clickViewController?.imageUrl =  tweak.tweakModifiedImageURL! as String;
+        }
+     self.navigationController?.pushViewController(clickViewController!, animated: true)
+        
+    }
+    
+    func shareToTweakWall(_ cell: MYEDRCell) {
+        var tweak = TBL_Tweaks()
+        if self.filteredTweaksList != nil {
+        if self.filteredTweaksList!.count > 0 {
+            tweak = self.filteredTweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        if self.tweaksList != nil {
+        if self.tweaksList!.count > 0 {
+            tweak = self.tweaksList![cell.myIndex] as! TBL_Tweaks;
+        }
+        }
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let fullImageView : FullImageViewController = storyBoard.instantiateViewController(withIdentifier: "fullImageView") as! FullImageViewController;
+            fullImageView.shareAction = false
+
+        fullImageView.tweakUserComments = tweak.tweakUserComments ?? ""
+        fullImageView.fullImage = cell.profileImageView.image;
+        if tweak.tweakModifiedImageURL == "" {
+            fullImageView.imageUrl =  tweak.tweakOriginalImageURL! as String;
+        }
+        else{
+            fullImageView.imageUrl =  tweak.tweakModifiedImageURL! as String;
+        }
+       // fullImageView.imageUrl = tweak.tweakModifiedImageURL;
+
+     
+        
+        self.navigationController?.present(fullImageView, animated: true, completion: nil);
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text == "" {
+            return
+        }
+        if self.filterbyVal != "All" {
+            tweaksList = nil
+
+
+            let tempArr = globalFilteredTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)})
+
+            filteredTweaksList = tempArr
+            self.timelinesTableView.reloadData()
+
+        } else {
+            filteredTweaksList?.removeAll(keepingCapacity: false)
+            let tempArr = globalTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)})
+
+            tweaksList = tempArr
+            self.timelinesTableView.reloadData()
+        }
+
+    }
+    
+    
+    func getFilteredTweaks(filterBy: String) {
+        filterbyVal = filterBy
+        tweaksList = nil
+        if filterBy == "Today" {
+            if searchController.isActive {
+                
+                filteredTweaksList?.removeAll(keepingCapacity: false)
+                let tempArr = globalTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)}).filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(Date().dateStringWithFormat(format: "d MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            } else {
+                let tempArr = globalTweaksList?.filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(Date().dateStringWithFormat(format: "d MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            }
+
+        } else if filterBy == "Yesterday" {
+            let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+
+            if searchController.isActive {
+                filteredTweaksList?.removeAll(keepingCapacity: false)
+                let tempArr = globalTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)}).filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(yesterday!.dateStringWithFormat(format: "d MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            } else {
+
+                let tempArr = globalTweaksList?.filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(yesterday!.dateStringWithFormat(format: "d MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            }
+        } else if filterBy == "Last Week" {
+            let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+
+            if searchController.isActive {
+                filteredTweaksList?.removeAll(keepingCapacity: false)
+                let tempArr = globalTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)}).filter({TweakAndEatUtils.localTimeFromTZ(date: $0.tweakDateCreated!) > lastWeek!})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            } else {
+
+                let tempArr = globalTweaksList?.filter({TweakAndEatUtils.localTimeFromTZ(date: $0.tweakDateCreated!) > lastWeek!})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            }
+        } else if filterBy == "Last Month" {
+            let lastMonth = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+
+            if searchController.isActive {
+                filteredTweaksList?.removeAll(keepingCapacity: false)
+                let tempArr = globalTweaksList?.filter({$0.tweakUserComments.localizedCaseInsensitiveContains(searchController.searchBar.text!)}).filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(lastMonth!.dateStringWithFormat(format: "d MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            } else {
+
+                let tempArr = globalTweaksList?.filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(lastMonth!.dateStringWithFormat(format: "MMM yyyy"))})
+
+                filteredTweaksList = tempArr
+                self.timelinesTableView.reloadData()
+            }
+        } else if filterBy == "The very beginning" {
+            filteredTweaksList = globalTweaksList
+            self.timelinesTableView.reloadData()
+            let ind = IndexPath(row: self.globalTweaksList!.count - 1, section: 0)
+            self.timelinesTableView.layoutIfNeeded()
+            self.timelinesTableView.scrollToRow(at: ind, at: .bottom, animated: true)
+        } else if filterbyVal == "All" {
+            filteredTweaksList?.removeAll(keepingCapacity: false)
+            
+
+            filteredTweaksList = globalTweaksList
+            self.timelinesTableView.reloadData()
+        } else if filterbyVal == "Jump to a specific date" {
+            self.datePickerView.isHidden = false
+            
+        }
+        
+        if searchController.isActive {
+            return
+        }
+        if filteredTweaksList != nil {
+            if filteredTweaksList!.count > 0 {
+                self.globalFilteredTweaksList = filteredTweaksList
+            } else {
+                
+            }
+        }
+        if filterbyVal != "Jump to a specific date" {
+            if filteredTweaksList != nil {
+                if filteredTweaksList!.count > 0 {
+                    self.noEdrPopView.isHidden = true
+                } else {
+                    self.noEdrPopView.isHidden = false
+                    self.noEdrLabel.text = "You don't have tweaks for \(filterBy)!"
+                }
+            } else {
+                if tweaksList != nil {
+            if tweaksList!.count > 0 {
+                self.noEdrPopView.isHidden = true
+            } else {
+                self.noEdrPopView.isHidden = false
+                self.noEdrLabel.text = "You don't have tweaks for \(filterBy)!"
+            }
+                }
+        }
+        }
+    }
     
     
     @IBOutlet weak var noEdrPopView: UIView!
     @IBOutlet weak var noEdrLabel: UILabel!
-    var timeZoneAbbreviations: [String:String] { return TimeZone.abbreviationDictionary }
-    var localTimeZoneName: String { return TimeZone.current.identifier }
+  
     
     var sectionsForGamifyArray = [[String: AnyObject]]()
-
-
+    var filterbyVal = "All"
+    @IBOutlet weak var mealTypeView: UIView!
+    var searchController: UISearchController!
     @objc let lineChartView = LineChart()
     @objc var dateFormatter = DateFormatter();
     @objc var nutritionValuesArray = NSMutableArray();
@@ -44,19 +358,29 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var legendView: UIView!
     @IBOutlet weak var dateLbl: UILabel!;
     @IBOutlet weak var tweakImgView: UIImageView!;
-    
+    var localTimeZoneName: String { return TimeZone.current.identifier }
+    var filterTweaksOptionsArray = ["All","Today", "Yesterday", "Last Week", "Last Month", "The very beginning", "Jump to a specific date"]
+    var timeZoneAbbreviations: [String:String] { return TimeZone.abbreviationDictionary }
+    @IBOutlet weak var starRatingView: UIView!
+    var pickerDate = ""
+    @IBOutlet weak var innerStarRatingView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!;
+    @IBOutlet weak var fiveStarView: HCSStarRatingView!
     @IBOutlet weak var chartView: UIView!;
     @IBOutlet weak var outerLineView: UIView!;
     @IBOutlet weak var nutritionLabelsCollectionView: UICollectionView!
     @IBOutlet weak var noReportsLabel: UILabel!;
     @IBOutlet weak var reportsTableView: UITableView!;
     @IBOutlet weak var nutritionAnalyticsView: UIView!;
+    @IBOutlet weak var mealTypeTableView: UITableView!
+    @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     var selectedIndex = 0
+    var selectedRow = 0
     @objc let rc = UIRefreshControl();
     let realm :Realm = try! Realm();
     var myProfile : Results<MyProfileInfo>?;
-    
+    var isRatingDone = false
     @objc var date : String!;
     @objc var age = "";
     @objc var gender = "";
@@ -82,8 +406,11 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var timelinesTableView: UITableView!;
     @objc var timeLineCell : TimelineTableViewCell! = nil;
     @objc var timeLineCellAd : TimelineTableViewCellWithAd! = nil;
-    
+    var copyThisMealParams = [String: AnyObject]()
     @objc var tweaksList : [AnyObject]?;
+    @objc var globalTweaksList : [AnyObject]?;
+    @objc var filteredTweaksList : [AnyObject]?;
+    @objc var globalFilteredTweaksList : [AnyObject]?;
     @objc var comingFromSettings : Bool = false;
     
     @objc var tableArray = [[String:AnyObject]]();
@@ -103,7 +430,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc var tableArrayKey1 = [String]();
     @objc var tableArrayKey2 = [String]();
     @objc var tableArrayKey3 = [String]();
-    
+    var mealTypeArray = [[String: AnyObject]]();
     @objc var proteinArray = NSMutableArray();
     @objc var fatsArray = NSMutableArray();
     @objc var carbsArray = NSMutableArray();
@@ -116,7 +443,9 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc var tweaksArray = NSArray();
     @objc var tweaksLabelsArray = NSMutableArray();
     @IBOutlet weak var reportsInfoView: UIView!;
-    
+    @IBOutlet weak var filterTweaksView: UIView!;
+    @IBOutlet weak var filterByLabel: UILabel!;
+    var ratingParams = [String : String]()
     @IBOutlet weak var totalNutritionLbl: UILabel!
     @IBOutlet weak var prevAdviseLabel: UILabel!;
     @IBOutlet weak var nextAdviseLabel: UILabel!;
@@ -134,6 +463,75 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         return xLabelsArray;
     }
     
+    @IBAction func fiveStarsView(_ sender: Any) {
+        let ratingNumber = sender as! HCSStarRatingView;
+        ratingParams["rate"] = "\(ratingNumber.value)"
+    }
+    
+    @IBAction func filterTweaksTapped(_ sender: Any) {
+        showMenu()
+    }
+    
+    func showMenu() {
+        let actionSheetAlertController: UIAlertController = UIAlertController(title: "Jump to..", message: nil, preferredStyle: .actionSheet)
+
+        for option in self.filterTweaksOptionsArray {
+            
+             let action = UIAlertAction(title: option, style: .default) { (action) in
+                //if option == "Today" {
+                    DispatchQueue.main.async {
+                    self.filterByLabel.text = option
+                    }
+                    self.getFilteredTweaks(filterBy: option)
+               // }
+               
+             }
+
+             
+
+             actionSheetAlertController.addAction(action)
+           }
+
+//           let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//           actionSheetAlertController.addAction(cancelActionButton)
+
+           self.present(actionSheetAlertController, animated: true, completion: nil)
+    }
+    @IBAction func datePickerCancelTapped(_ sender: Any) {
+        self.datePickerView.isHidden = true
+        self.getFilteredTweaks(filterBy: filterbyVal)
+    }
+    
+    @IBAction func datepickerDoneTapped(_ sender: Any) {
+        self.datePickerView.isHidden = true
+        let tempArr = globalTweaksList?.filter({TweakAndEatUtils.localTimeFromTZ(dateString: $0.tweakDateCreated!).contains(self.pickerDate)})
+
+        filteredTweaksList = tempArr
+        self.timelinesTableView.reloadData()
+        if filteredTweaksList != nil {
+            if filteredTweaksList!.count > 0 {
+                self.noEdrPopView.isHidden = true
+            } else {
+                self.noEdrPopView.isHidden = false
+                self.noEdrLabel.text = "You don't have tweaks for the selected date!"
+            }
+        } else {
+            if tweaksList != nil {
+        if tweaksList!.count > 0 {
+            self.noEdrPopView.isHidden = true
+        } else {
+            self.noEdrPopView.isHidden = false
+            self.noEdrLabel.text = "You don't have tweaks for the selected date!"
+        }
+            }
+    }
+
+    }
+    @IBAction func datePickerHandler(_ sender: UIDatePicker) {
+        let df = DateFormatter()
+        df.dateFormat = "d MMM yyyy"
+        pickerDate = df.string(from: sender.date)
+    }
     @objc func showLineChartView(nutritionVal: String) {
         lineChartView.clear()
         lineChartView.frame = lineChart.frame;
@@ -167,6 +565,58 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.lineChart.addSubview(lineChartView)
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        
+        self.mealTypeView.isHidden = true
+    }
+    @IBAction func copyThisMealButtonTapped(_ sender: Any) {
+        self.mealTypeView.isHidden = true
+
+        let currentDate = Date()
+        let isoFormatter = DateFormatter()
+        isoFormatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
+        let date = isoFormatter.string(from: currentDate);
+        print(date)
+
+        for (key,val) in self.timeZoneAbbreviations {
+            let localTimeZone = val
+            if localTimeZone == self.localTimeZoneName {
+                
+                self.copyThisMealParams["userLocalTime"] = date as AnyObject
+                self.copyThisMealParams["userLocalTimezone"] = key as AnyObject
+               
+            }
+        }
+        DispatchQueue.main.async {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
+        APIWrapper.sharedInstance.postRequestWithHeaderMethod(TweakAndEatURLConstants.COPY_MEAL, userSession: UserDefaults.standard.value(forKey: "userSession") as! String,parameters: self.copyThisMealParams , success: { response in
+            print(response)
+
+            let responseDic : [String:AnyObject] = response as! [String:AnyObject];
+            let responseResult = responseDic["callStatus"] as! String;
+            if  responseResult == "GOOD"  {
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+                self.reloadTimelines()
+                let ind = IndexPath(row: 0, section: 0)
+                self.timelinesTableView.layoutIfNeeded()
+                self.timelinesTableView.scrollToRow(at: ind, at: .top, animated: true)
+
+            }
+        }, failure : { error in
+            print("failure")
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+//             DispatchQueue.main.async {
+//                               self.sendButton.isHidden = true
+//                   }
+//             TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil));
+            
+        })
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.showColorForItem = indexPath.item;
         
@@ -223,6 +673,50 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.nutritionLabelsCollectionView.reloadData();
     }
     
+    @objc func moveToWall() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let myWall : MyWallViewController = storyBoard.instantiateViewController(withIdentifier: "MyWallViewController") as! MyWallViewController;
+       
+        self.navigationController?.pushViewController(myWall, animated: true);
+        return
+    }
+    func sendTweakRating(Withparams: [String: String]) {
+            let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
+            
+            APIWrapper.sharedInstance.updateRatingForTweak(ratingParams as NSDictionary,userSession: userSession, successBlock: {(responseDic : AnyObject!) -> (Void) in
+                print("Sucess");
+               
+                
+                //Update the floating value to Label
+                self.isRatingDone = true
+
+                self.starRatingView.isHidden = true
+                let alert = UIAlertController(title: "", message: self.bundle.localizedString(forKey: "rating_alert", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert);
+                alert.addAction(UIAlertAction(title: self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: UIAlertAction.Style.default, handler: { _ in
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+
+                    self.reloadTimelines()
+                    
+                }));
+                self.present(alert, animated: true, completion: nil);
+                
+                
+           
+            }, failureBlock: {(error : NSError!) -> (Void) in
+                print("Failure");
+                MBProgressHUD.hide(for: self.view, animated: true)
+//                let alertController = UIAlertController(title: self.bundle.localizedString(forKey: "no_internet", value: nil, table: nil), message: self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+//                let defaultAction = UIAlertAction(title: self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: .cancel, handler: nil)
+//                alertController.addAction(defaultAction)
+//                self.present(alertController, animated: true, completion: nil)
+            })
+            
+        
+    }
+    @IBAction func starRatingViewDoneTapped(_ sender: Any) {
+        sendTweakRating(Withparams: ratingParams)
+
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.nutritionValuesArray.count;
     }
@@ -425,8 +919,47 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                 })
         }
     }
+    
+//    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        // No need to update anything if we're being dismissed.
+//        if !searchController.isActive {
+//            return
+//        }
+//
+//        // you can access the text in the search bar as below
+//        var filterString = searchController.searchBar.text
+//
+//        print(filterString)
+//
+//        // write some code to filter the data provided to your tableview
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filterTweaksView.layer.cornerRadius = 10
+        self.mealTypeView.isHidden = true
+        self.mealTypeTableView.delegate = self
+        self.mealTypeTableView.dataSource = self
+        self.mealTypeView.backgroundColor =  UIColor.black.withAlphaComponent(0.8)
+        self.starRatingView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.datePickerView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.datePicker.backgroundColor = .white
+        self.datePicker.maximumDate = Date()
+        self.innerStarRatingView.layer.cornerRadius = 20
+        searchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.hidesNavigationBarDuringPresentation = false;
+            controller.searchBar.returnKeyType = .done
+            controller.searchBar.placeholder = "cheese, pasta, pizza, dosa"
+            
+            timelinesTableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
+        
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
@@ -892,11 +1425,25 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //self.floatingBtn.removeFromSuperview()
+        searchController.searchBar.isHidden = true
+        searchController.searchBar.endEditing(true)
+        self.globalTweaksList = nil
+        self.globalFilteredTweaksList = nil
+        self.tweaksList = nil
+        self.filteredTweaksList = nil
+        self.filterbyVal = "All"
+        self.filterByLabel.text = "All"
+        DispatchQueue.main.async {
+            self.searchController.isActive = false
+        }
+        searchController.resignFirstResponder()
     }
     override func viewWillAppear(_ animated: Bool) {
+        searchController.searchBar.isHidden = false
+
         self.navigationItem.hidesBackButton = true;
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetailsViewController.moveToWall), name: NSNotification.Name(rawValue: "TWEAK_SHARED"), object: nil)
        // self.reloadTimelines();
         self.getTopBanners()
         
@@ -942,6 +1489,7 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                             DataManager.sharedInstance.saveTweak(tweak: tweak as! NSDictionary);
                         }
                         self.tweaksList = DataManager.sharedInstance.fetchTweaks();
+                        self.globalTweaksList = DataManager.sharedInstance.fetchTweaks();
                         self.timelinesTableView.reloadData();
                         
                         print("This is run on the main queue, after the previous code in outer block")
@@ -966,8 +1514,13 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                                 }
                                 timelineDetail.tweakSuggestedText = tweakObject!.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweakObject!.tweakSuggestedText!; UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
                                 self.navigationController?.pushViewController(timelineDetail, animated: true);
-                                
+                                if self.isRatingDone == false {
                                 self.timelinesTableView.reloadData();
+                                } else {
+                                    self.isRatingDone = true
+                                    self.timelinesTableView.reloadRows(at: [IndexPath(row: self.selectedRow, section: 0)], with: .automatic)
+
+                                }
                             }
                             
                         }
@@ -1380,23 +1933,20 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
-            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 60))
 
-            let buttonImage = UIButton(type: .custom)
+        if tableView == self.mealTypeTableView {
+            let headerView = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
+            headerView.text = "  Please choose the meal type"
+            headerView.numberOfLines = 0
+            headerView.backgroundColor = .groupTableViewBackground
+            headerView.font = UIFont(name:"QUESTRIAL-REGULAR", size: 20.0)
 
-            buttonImage.frame = CGRect(x: tableView.frame.width - 230, y: 12, width: 220, height: 40)
-            buttonImage.setImage(UIImage.init(named: "REPORTS-(My-Nutrition)_btn"), for: .normal)
-            buttonImage.addTarget(self, action:#selector(self.reportsButtonTapped), for: .touchUpInside)
-            headerView.backgroundColor = UIColor.white
-            headerView.addSubview(buttonImage)
 
             return headerView
+        
+
         }
-        
-        
-        
+
         return UIView()
     }
     func goToTweakTrends() {
@@ -1411,14 +1961,27 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == timelinesTableView {
+            if (self.filteredTweaksList?.count ?? 0 > 0) {
+                return self.filteredTweaksList!.count
+            } else {
             if(self.tweaksList != nil) {
+              
+
                 return tweaksList!.count;
             } else {
+                
                 return 0;
+            }
             }
         }
         if tableView == self.reportsTableView {
             return self.datesArray.count
+        }
+        if tableView == self.mealTypeTableView {
+            if mealTypeArray.count > 0 {
+                return mealTypeArray.count
+            }
+            return 0
         }
         return 0
     }
@@ -1428,6 +1991,13 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     }
     
     @IBAction func onClickOfBack(_ sender: AnyObject) {
+        searchController.searchBar.isHidden = true
+        searchController.searchBar.endEditing(true)
+        DispatchQueue.main.async {
+            self.searchController.isActive = false
+        }
+        searchController.resignFirstResponder()
+        
         if self.fromGotIt == false {
             let _ = self.navigationController?.popViewController(animated: true)
         } else {
@@ -1436,6 +2006,14 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         }
     }
     
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if tableView == self.mealTypeTableView {
+//            return "Please choose the meal type you would like to copy for this meal"
+//        }
+//        return ""
+//    }
+    
+   
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // var timelineCell : MYEDRCell;
@@ -1487,8 +2065,22 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             let identifier = "myCell";
             let timelineCell = tableView.dequeueReusableCell(withIdentifier: identifier , for: indexPath) as! MYEDRCell;
             
-            let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
-            
+            var tweak = TBL_Tweaks()
+            if self.filteredTweaksList != nil {
+            if self.filteredTweaksList!.count > 0 {
+                tweak = self.filteredTweaksList![indexPath.row] as! TBL_Tweaks;
+            }
+            }
+            if self.tweaksList != nil {
+            if self.tweaksList!.count > 0 {
+                tweak = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+            }
+            }
+            if tweak.tweakStatus == 4 {
+                timelineCell.askAQuestionHeightConstraint.constant = 35
+            } else {
+                timelineCell.askAQuestionHeightConstraint.constant = 0
+            }
             if  tweak.tweakModifiedImageURL == "" {
                 timelineCell.profileImageView.sd_setImage(with: URL(string: tweak.tweakOriginalImageURL ?? ""));
                 
@@ -1499,9 +2091,9 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             }
             
             if(tweak.tweakDateUpdated == nil || tweak.tweakDateUpdated == "") {
-                timelineCell.timelineDate.text = tweak.tweakDateCreated;
+                timelineCell.timelineDate.text = TweakAndEatUtils.localTimeFromTZ(dateString: tweak.tweakDateCreated!);
             } else {
-                timelineCell.timelineDate.text = tweak.tweakDateUpdated;
+                timelineCell.timelineDate.text = TweakAndEatUtils.localTimeFromTZ(dateString: tweak.tweakDateUpdated!);
             }
             timelineCell.timelineTitle.text = tweak.tweakSuggestedText?.replacingOccurrences(of: "\n", with: " ");
             if timelineCell.timelineTitle.text == "" {
@@ -1512,7 +2104,7 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             timelineCell.contentView.layer.borderColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0).cgColor;
             timelineCell.ratingLabel.text = "\(tweak.tweakRating) / 5.0";
             
-            timelineCell.timelineDate.text = TweakAndEatUtils.localTimeFromTZ(dateString: tweak.tweakDateCreated!);
+           // timelineCell.timelineDate.text = TweakAndEatUtils.localTimeFromTZ(dateString: tweak.tweakDateCreated!);
             if self.gender == "F" {
                 timelineCell.genderImgView.image = UIImage.init(named: "wall_female")
             } else {
@@ -1523,6 +2115,24 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
 //            } else {
 //                timelineCell.userCommentsLabel.text = tweak.tweakUserComments!
 //            }
+            //print(tweak.mealType)
+            timelineCell.delegate = self
+            timelineCell.myIndex = indexPath.row
+            if tweak.mealType == 1 {
+                timelineCell.mealTypeLabel.text = "Breakfast"
+            } else if tweak.mealType == 2 {
+                timelineCell.mealTypeLabel.text = "Brunch"
+            } else if tweak.mealType == 3 {
+                timelineCell.mealTypeLabel.text = "Lunch"
+            } else if tweak.mealType == 5 {
+                timelineCell.mealTypeLabel.text = "Evening Snack"
+            } else if tweak.mealType == 7 {
+                timelineCell.mealTypeLabel.text = "Dinner"
+            }
+            timelineCell.caloriesLabel.text = "\(tweak.calories)"
+            timelineCell.carbsLabel.text = "\(tweak.carbs)%"
+            timelineCell.fatsLabel.text = "\(tweak.fats)%"
+            timelineCell.proteinLabel.text = "\(tweak.protein)%"
             
             timelineCell.userCommentsLabel.text = tweak.tweakUserComments!
             
@@ -1530,6 +2140,23 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             timelineCell.selectionStyle = UITableViewCell.SelectionStyle.none;
             //}
             return timelineCell;
+        }
+        if tableView == self.mealTypeTableView {
+            let mealCell = tableView.dequeueReusableCell(withIdentifier: "meal", for: indexPath)
+            let cellDict = self.mealTypeArray[indexPath.row];
+            mealCell.textLabel?.text = (cellDict["name"] as! String)
+            mealCell.textLabel?.font = UIFont(name:"QUESTRIAL-REGULAR", size: 19.0)
+            let mealType = cellDict["value"] as! Int
+            mealCell.tintColor = .black
+            if copyThisMealParams["mealType"] as! Int == mealType {
+                mealCell.accessoryType = .checkmark
+            } else {
+                mealCell.accessoryType = .none
+            }
+            
+
+            return mealCell
+            
         }
         //        if tableView == self.reportsTableView {
         //            let cell = self.reportsTableView.dequeueReusableCell(withIdentifier: "reportsCell", for: indexPath) as! ReportsTableViewCell
@@ -1674,11 +2301,13 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
 //            if self.topBannersDict.count > 0 {
 //               return 80
 //            }
-            if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
-                return 60
-
-            }
+//            if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDefaults.standard.value(forKey: "-AiDPwdvop1HU7fj8vfL") != nil || UserDefaults.standard.value(forKey: "-IndWLIntusoe3uelxER") != nil || UserDefaults.standard.value(forKey: "-ClubInd4tUPXHgVj9w3") != nil || UserDefaults.standard.value(forKey: "-ClubUsa5nDa1M8WcRA6") != nil || UserDefaults.standard.value(forKey: "-SgnMyAiDPuD8WVCipga") != nil || UserDefaults.standard.value(forKey: "-IdnMyAiDPoP9DFGkbas") != nil || UserDefaults.standard.value(forKey: "-MalAXk7gLyR3BNMusfi") != nil || UserDefaults.standard.value(forKey: self.clubPackageSubscribed) != nil {
+//                return 60
+//
+//            }
             return 0
+        } else if tableView == self.mealTypeTableView {
+            return 40
         }
         return 0
     }
@@ -1691,10 +2320,21 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
             let timelineDetail : TimelinesDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "timelineDetailViewController") as! TimelinesDetailsViewController;
             timelineDetail.isFromOneSignal = true
-            timelineDetail.timelineDetails = self.tweaksList![indexPath.row] as? TBL_Tweaks;
+            var tweak = TBL_Tweaks()
+            if self.filteredTweaksList != nil {
+            if self.filteredTweaksList!.count > 0 {
+                tweak = self.filteredTweaksList![indexPath.row] as! TBL_Tweaks;
+            }
+            }
+            if self.tweaksList != nil {
+            if self.tweaksList!.count > 0 {
+                tweak = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+            }
+            }
+            timelineDetail.timelineDetails = tweak;
             timelineDetail.selectedIndex = indexPath.row
             self.selectedIndex = indexPath.row
-            let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+            //let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
             timelineDetail.tweakId = Int(tweak.tweakId)
             
             timelineDetail.tweakSuggestedText = tweak.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweak.tweakSuggestedText!;
@@ -1710,6 +2350,12 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             timelineDetail.tweaksList = self.tweaksList
             timelineDetail.tweakUserComments = tweak.tweakUserComments! as String
             self.navigationController?.pushViewController(timelineDetail, animated: true);
+        }
+        if tableView == self.mealTypeTableView {
+            let cellDict = self.mealTypeArray[indexPath.row];
+            self.copyThisMealParams["mealType"] = cellDict["value"] as! Int as AnyObject
+            self.mealTypeTableView.reloadData()
+
         }
     }
     
