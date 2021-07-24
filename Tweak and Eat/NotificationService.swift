@@ -560,7 +560,7 @@ extension NotificationService: UNUserNotificationCenterDelegate {
 //                }
                 let data = ["msg": msg, "imgUrlString":imgUrlString, "link": link, "type": type] as [String: AnyObject]
                 let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-                if type == 0 || type == 1 {
+                if type == 0 || type == 1 || type == 8 {
                     let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
                            self.popUpView = (Bundle.main.loadNibNamed("PopUpNotificationView", owner: self, options: nil)! as NSArray).firstObject as? PopUpNotificationView;
                            self.popUpView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -606,6 +606,12 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                            UIApplication.shared.keyWindow?.addSubview(self.popUpView)
                 } else if type == -1 {
                     self.tappedOnPopUpDone(link: link)
+                } else if type == 6 {
+                    self.tappedOnPopUpDone(link: link)
+                } else if type == 7 {
+                    if let url = URL(string: link) {
+                        UIApplication.shared.open(url)
+                    }
                 } else {
                 if navController?.topViewController is MyWallViewController {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SHOW_TWEAKWALL_DETAIL"), object: data)

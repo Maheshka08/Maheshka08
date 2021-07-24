@@ -26,6 +26,7 @@ class PopUpNotificationView: UIView {
     var link = ""
     var countryCode = ""
     var ptpPackage = ""
+    var noteType = 0
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -117,6 +118,12 @@ class PopUpNotificationView: UIView {
     }
     
     func tappedOnPopUpDone() {
+        if self.noteType == 8 {
+            if let url = URL(string: link) {
+                UIApplication.shared.open(url)
+            }
+            return
+        }
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
         }
@@ -531,33 +538,7 @@ class PopUpNotificationView: UIView {
         } else if type == 5 {
             self.fullScreenPopUp.isHidden = false
             self.videoPlayerView.isHidden = false
-           // let url = URL(string: imgUrlString)!
-//            let videoURL = URL(string: imgUrlString);
-//            let player = AVPlayer(url: videoURL!);
-//            let playerViewController = AVPlayerViewController();
-//            playerViewController.view.frame = self.videoPlayerView.bounds
-//            playerViewController.player = player;
-//
-//            UIApplication.shared.keyWindow?.rootViewController!.present(playerViewController, animated: true) {
-//                playerViewController.player!.play();
-//            }
-//            if let url = URL(string: imgUrlString) {
-//                //2. Create AVPlayer object
-//                let asset = AVAsset(url: url)
-//                let playerItem = AVPlayerItem(asset: asset)
-//                let player = AVPlayer(playerItem: playerItem)
-//
-//                //3. Create AVPlayerLayer object
-//                let playerLayer = AVPlayerLayer(player: player)
-//                playerLayer.frame = self.videoPlayerView.bounds //bounds of the view in which AVPlayer should be displayed
-//                playerLayer.videoGravity = .resizeAspect
-//
-//                //4. Add playerLayer to view's layer
-//                self.videoPlayerView.layer.addSublayer(playerLayer)
-//
-//                //5. Play Video
-//                player.play()
-//            }
+       
             let mywkwebviewConfig = WKWebViewConfiguration()
 
               mywkwebviewConfig.allowsInlineMediaPlayback = true
@@ -569,17 +550,14 @@ class PopUpNotificationView: UIView {
 
             webView.load(youtubeRequest)
 
-//            let url = URL(string: imgUrlString)!
-//            webView.frame = self.videoPlayerView.bounds
-//            self.videoPlayerView.addSubview(webView)
-//            webView.load(URLRequest(url: url))
-//            let videoURL = NSURL(string: imgUrlString)
-//            let player = AVPlayer(url: videoURL! as URL)
-//            let playerLayer = AVPlayerLayer(player: player)
-//            playerLayer.frame = self.videoPlayerView.bounds
-//            self.layer.addSublayer(playerLayer)
-//            player.play()
 
+
+        } else if type == 8 {
+            self.fullScreenPopUp.isHidden = false
+            self.fullScreenImageView.sd_setImage(with: URL(string: imgUrlString))
+            self.noteType = type
+
+            
         }
         self.link = link
         

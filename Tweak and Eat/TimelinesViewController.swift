@@ -111,6 +111,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func rateThisMeal(_ cell: MYEDRCell) {
+        searchController.isActive = false
+
         self.starRatingView.isHidden = false
         //self.fiveStarView.value = CGFloat(1)
         var tweak = TBL_Tweaks()
@@ -167,6 +169,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func shareToTweakWall(_ cell: MYEDRCell) {
+        searchController.isActive = false
+
         var tweak = TBL_Tweaks()
         if self.filteredTweaksList != nil {
         if self.filteredTweaksList!.count > 0 {
@@ -469,6 +473,9 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func filterTweaksTapped(_ sender: Any) {
+        searchController.searchBar.endEditing(true)
+        searchController.searchBar.text = ""
+        searchController.isActive = false
         showMenu()
     }
     
