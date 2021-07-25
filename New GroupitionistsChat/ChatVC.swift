@@ -299,6 +299,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 330))
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 250))
             imgView.sd_setImage(with: URL(string: self.imageUrl));
+            imgView.contentMode = .scaleAspectFill
             
             let titleLbl = UILabel(frame: CGRect(x: 10 , y: imgView.frame.maxY, width: tableView.frame.size.width - 20, height: 128))
             
