@@ -182,6 +182,29 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
             tweak = self.tweaksList![cell.myIndex] as! TBL_Tweaks;
         }
         }
+        let currentTimeStamp = getCurrentTimeStampWOMiliseconds(dateToConvert: Date() as NSDate);
+        let currentTime = Int64(currentTimeStamp);
+        var imageUrl = ""
+        if tweak.tweakModifiedImageURL == "" {
+            imageUrl =  tweak.tweakOriginalImageURL! as String;
+        }
+        else{
+            imageUrl =  tweak.tweakModifiedImageURL! as String;
+        }
+        if tweak.tweakUserComments != "" {
+            self.tweakFeedsRef.child("TweakFeeds").childByAutoId().setValue(["feedContent": tweak.tweakUserComments!, "imageUrl": imageUrl, "gender": self.sex, "postedOn" : currentTime! , "tweakOwner": self.nicKName, "msisdn" : UserDefaults.standard.value(forKey: "msisdn") as! String, "awesomeCount" : 0, "commentsCount" : 0] as [String : AnyObject], withCompletionBlock: { (error, _) in
+            if error == nil {
+                //api
+              //  self.showAlertSuccess()
+                TweakAndEatUtils.AlertView.showAlert(view: self, message: "Your Tweak has been Shared to Tweak Wall Sucessfully!")
+
+            } else {
+            }
+                })
+
+            
+            return
+        }
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let fullImageView : FullImageViewController = storyBoard.instantiateViewController(withIdentifier: "fullImageView") as! FullImageViewController;
             fullImageView.shareAction = false
@@ -201,6 +224,12 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.present(fullImageView, animated: true, completion: nil);
     }
     
+    @objc func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
+        
+        let milliseconds: Int64 = Int64(dateToConvert.timeIntervalSince1970 * 1000);
+        let strTimeStamp: String = "\(milliseconds)";
+        return strTimeStamp;
+    }
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text == "" {
@@ -385,6 +414,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     let realm :Realm = try! Realm();
     var myProfile : Results<MyProfileInfo>?;
     @objc var date : String!;
+    @objc var nicKName : String = "";
+    @objc var sex : String = "";
     @objc var age = "";
     @objc var gender = "";
     @objc var weight = "";
@@ -455,6 +486,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     var topBannersDict = [String: AnyObject]()
     var topBannerImageLink = ""
     var topBannerImage = ""
+    @objc var tweakFeedsRef : DatabaseReference!;
     @IBOutlet weak var lineChartWidthConstraint: NSLayoutConstraint!
     @objc var xLabelsArray = [String]();
     
@@ -941,6 +973,8 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tweakFeedsRef = Database.database().reference();
+        
         self.filterTweaksView.layer.cornerRadius = 10
         self.mealTypeView.isHidden = true
         self.mealTypeTableView.delegate = self
@@ -1031,12 +1065,15 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         self.noReportsLabel.text = bundle.localizedString(forKey: "no_report", value: nil, table: nil);
         
         self.myProfile = self.realm.objects(MyProfileInfo.self);
-        
+        //self.myProfileInfo = self.realm.objects(MyProfileInfo.self);
+
         for myProfileObj in self.myProfile! {
             self.age = myProfileObj.age;
             self.height = myProfileObj.height;
             self.weight = myProfileObj.weight;
             self.gender = myProfileObj.gender;
+            nicKName = myProfileObj.name;
+            sex = myProfileObj.gender;
         }
         
         self.reportsInfoView.layer.cornerRadius = 5;

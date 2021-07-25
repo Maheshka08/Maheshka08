@@ -24,11 +24,11 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
     @objc var TimelineTableViewCell : TimelineTableViewCell? = nil;
     @objc var timelineDetails : TimelinesDetailsViewController? = nil;
     let realm :Realm = try! Realm();
-    var myProfileInfo : Results<MyProfileInfo>?;
     @IBOutlet var shareBtn: UIButton!;
     @IBOutlet weak var placeHolderLabel: UILabel!;
     @IBOutlet weak var commentsView: UIView!;
     @IBOutlet weak var tweakFeedComments: UITextView!;
+    var myProfileInfo : Results<MyProfileInfo>?;
     @objc var nicKName : String = "";
     @objc var sex : String = "";
     @objc var userMsisdn : String = "";
@@ -255,7 +255,7 @@ class FullImageViewController: UIViewController, UITextViewDelegate {
                                           style: UIAlertAction.Style.default,
                                           handler: {(_: UIAlertAction!) in
                                             //Sign out action
-                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_SHARED"), object: nil);
+                                          //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TWEAK_SHARED"), object: nil);
                                             self.dismiss(animated: true, completion: nil);
             }))
             self.present(alert, animated: true, completion: nil)
