@@ -93,7 +93,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
     func copyMeal(_ cell: MYEDRCell) {
-        
+        searchController.isActive = false
+
         getMealTypes()
         var tweak = TBL_Tweaks()
         if self.filteredTweaksList != nil {
@@ -241,6 +242,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+     
+        self.filterByLabel.text = "All"
         filteredTweaksList?.removeAll(keepingCapacity: false)
         let tempArr = globalTweaksList
 
