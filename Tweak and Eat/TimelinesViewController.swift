@@ -169,6 +169,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func shareToTweakWall(_ cell: MYEDRCell) {
+
+
         searchController.isActive = false
 
         var tweak = TBL_Tweaks()
@@ -537,7 +539,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     @IBAction func datePickerCancelTapped(_ sender: Any) {
         self.datePickerView.isHidden = true
-        self.getFilteredTweaks(filterBy: filterbyVal)
+       // self.getFilteredTweaks(filterBy: filterbyVal)
     }
     
     @IBAction func datepickerDoneTapped(_ sender: Any) {
