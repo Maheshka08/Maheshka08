@@ -205,8 +205,8 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                 })
 
             
-            return
-        }
+            
+        } else {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
         let fullImageView : FullImageViewController = storyBoard.instantiateViewController(withIdentifier: "fullImageView") as! FullImageViewController;
             fullImageView.shareAction = false
@@ -224,6 +224,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
      
         
         self.navigationController?.present(fullImageView, animated: true, completion: nil);
+        }
     }
     
     @objc func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
