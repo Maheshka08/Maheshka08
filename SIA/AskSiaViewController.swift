@@ -121,7 +121,13 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
                 navController?.pushViewController(vc, animated: true);
     }
     
-    
+    func goToCheckThisOut() {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakNotificationsViewController") as? TweakNotificationsViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
     
     func goToDesiredVC(link: String) {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
@@ -265,7 +271,7 @@ class AskSiaViewController: UIViewController,UITableViewDelegate,UITableViewData
            // self.performSegue(withIdentifier: "nutritionPack", sender: self)
             self.showNutritionLabels(promoLink: link)
         }else if link == "CHECK_THIS_OUT" {
-           // self.performSegue(withIdentifier: "checkThisOut", sender: self)
+            goToCheckThisOut()
         } else if link == "-NcInd5BosUcUeeQ9Q32" {
             
             

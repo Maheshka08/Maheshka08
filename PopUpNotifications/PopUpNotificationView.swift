@@ -117,6 +117,14 @@ class PopUpNotificationView: UIView {
         navController?.pushViewController(clickViewController!, animated: true);
     }
     
+    func goToCheckThisOut() {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakNotificationsViewController") as? TweakNotificationsViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func tappedOnPopUpDone() {
         if self.noteType == 8 {
             if let url = URL(string: link) {
@@ -267,6 +275,7 @@ class PopUpNotificationView: UIView {
             self.showNutritionLabels(promoLink: promoAppLink)
         }else if promoAppLink == "CHECK_THIS_OUT" {
            // self.performSegue(withIdentifier: "checkThisOut", sender: self)
+            goToCheckThisOut()
         } else if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
             
             

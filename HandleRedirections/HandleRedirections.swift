@@ -109,6 +109,14 @@ class HandleRedirections {
         
     }
     
+    func goToCheckThisOut() {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakNotificationsViewController") as? TweakNotificationsViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
+    
     func tappedOnPopUpDone(link: String) {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
                    self.countryCode = "\(UserDefaults.standard.value(forKey: "COUNTRY_CODE") as AnyObject)"
@@ -243,6 +251,7 @@ class HandleRedirections {
             self.showNutritionLabels(promoLink: promoAppLink)
         }else if promoAppLink == "CHECK_THIS_OUT" {
            // self.performSegue(withIdentifier: "checkThisOut", sender: self)
+            goToCheckThisOut()
         } else if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
             
             

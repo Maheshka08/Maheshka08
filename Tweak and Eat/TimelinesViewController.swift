@@ -384,7 +384,6 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc let rc = UIRefreshControl();
     let realm :Realm = try! Realm();
     var myProfile : Results<MyProfileInfo>?;
-    var isRatingDone = false
     @objc var date : String!;
     @objc var age = "";
     @objc var gender = "";
@@ -695,14 +694,13 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
                
                 
                 //Update the floating value to Label
-                self.isRatingDone = true
 
                 self.starRatingView.isHidden = true
                 let alert = UIAlertController(title: "", message: self.bundle.localizedString(forKey: "rating_alert", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert);
                 alert.addAction(UIAlertAction(title: self.bundle.localizedString(forKey: "ok", value: nil, table: nil), style: UIAlertAction.Style.default, handler: { _ in
                     MBProgressHUD.showAdded(to: self.view, animated: true)
 
-                    self.reloadTimelines()
+                    self.reloadTimeLinesAfterRating()
                     
                 }));
                 self.present(alert, animated: true, completion: nil);
@@ -1473,13 +1471,66 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
         
     }
     
+    @objc func reloadTimeLinesAfterRating() {
+        
+            let userdefaults = UserDefaults.standard
+            if let savedValue = userdefaults.string(forKey: "USERBLOCKED"){
+                self.noEdrPopView.isHidden = false
+                self.noEdrLabel.text = self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil)
+                return
+            }else{
+                let userSession : String = UserDefaults.standard.value(forKey: "userSession") as! String;
+                
+                APIWrapper.sharedInstance.getTimelines(sessionString: userSession, successBlock: { (responceDic : AnyObject!) -> (Void) in
+                    
+                    print("This is run on the background queue")
+                    if(TweakAndEatUtils.isValidResponse(responceDic as? [String:AnyObject])) {
+                        let response : [String:AnyObject] = responceDic as! [String:AnyObject];
+                        let tweaks : [AnyObject]? = response[TweakAndEatConstants.TWEAKS] as? [AnyObject];
+                        if(tweaks != nil) {
+                            for tweak in tweaks! {
+                                DataManager.sharedInstance.saveTweak(tweak: tweak as! NSDictionary);
+                            }
+                            self.globalTweaksList = DataManager.sharedInstance.fetchTweaks();
+                            self.timelinesTableView.reloadRows(at: [IndexPath(row: self.selectedRow, section: 0)], with: .automatic)
+                            print("This is run on the main queue, after the previous code in outer block")
+                            MBProgressHUD.hide(for: self.view, animated: true);
+
+                        }
+                    }
+                }) { (error : NSError!) -> (Void) in
+                    MBProgressHUD.hide(for: self.view, animated: true);
+                    if error?.code == -1011 {
+                        //                     TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil))
+                        //                    let alertController = UIAlertController(title: "", message: self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil), preferredStyle: UIAlertController.Style.alert)
+                        //
+                        //                    let okAction = UIAlertAction(title: self.bundle.localizedString(forKey: "button_ok", value: nil, table: nil)
+                        //                    , style: UIAlertAction.Style.default) {
+                        //                        UIAlertAction in
+                        //                        self.navigationController?.popViewController(animated: true)
+                        //                    }
+                        //                    alertController.addAction(okAction)
+                        //
+                        //                    // Present the controller
+                        //                    self.present(alertController, animated: true, completion: nil)
+                        
+                        self.noEdrPopView.isHidden = false
+                        self.noEdrLabel.text = self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil)
+                    } else {
+                        // TweakAndEatUtils.AlertView.showAlert(view: self, message:  self.bundle.localizedString(forKey: "check_internet_connection", value: nil, table: nil))
+                    }
+                }
+            }
+            
+            MBProgressHUD.hide(for: self.view, animated: true);
+        }
+    
+    
     @objc func reloadTimelines(){
         let userdefaults = UserDefaults.standard
         if let savedValue = userdefaults.string(forKey: "USERBLOCKED"){
-           // MBProgressHUD.hide(for: self.view, animated: true);
             self.noEdrPopView.isHidden = false
             self.noEdrLabel.text = self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil)
-            //            TweakAndEatUtils.AlertView.showAlert(view: self, message: self.bundle.localizedString(forKey: "no_edr_text", value: nil, table: nil))
             return
         }else{
             tweaksList = [AnyObject]()
@@ -1497,7 +1548,9 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                         }
                         self.tweaksList = DataManager.sharedInstance.fetchTweaks();
                         self.globalTweaksList = DataManager.sharedInstance.fetchTweaks();
+               
                         self.timelinesTableView.reloadData();
+
                         
                         print("This is run on the main queue, after the previous code in outer block")
                         MBProgressHUD.hide(for: self.view, animated: true);
@@ -1521,13 +1574,7 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                                 }
                                 timelineDetail.tweakSuggestedText = tweakObject!.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweakObject!.tweakSuggestedText!; UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
                                 self.navigationController?.pushViewController(timelineDetail, animated: true);
-                                if self.isRatingDone == false {
-                                self.timelinesTableView.reloadData();
-                                } else {
-                                    self.isRatingDone = true
-                                    self.timelinesTableView.reloadRows(at: [IndexPath(row: self.selectedRow, section: 0)], with: .automatic)
-
-                                }
+                                
                             }
                             
                         }

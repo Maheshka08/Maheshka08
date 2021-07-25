@@ -251,6 +251,15 @@ class NotificationService: NSObject {
         let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
         navController?.pushViewController(clickViewController!, animated: true);
     }
+    //TweakNotificationsViewController
+    
+    func goToCheckThisOut() {
+        //AskSiaViewController
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakNotificationsViewController") as? TweakNotificationsViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+    }
     
     func goToAskSia() {
         //AskSiaViewController
@@ -391,7 +400,7 @@ class NotificationService: NSObject {
            // self.performSegue(withIdentifier: "nutritionPack", sender: self)
             self.showNutritionLabels(promoLink: promoAppLink)
         }else if promoAppLink == "CHECK_THIS_OUT" {
-           // self.performSegue(withIdentifier: "checkThisOut", sender: self)
+            goToCheckThisOut()
         } else if promoAppLink == "-NcInd5BosUcUeeQ9Q32" {
             
             
