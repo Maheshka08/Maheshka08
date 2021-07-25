@@ -20,7 +20,9 @@ import CleverTapSDK
 
 
 
-class TimelinesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource, TapOnAdsDelegate,LineChartDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, MYEDRDelegate {
+class TimelinesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource, TapOnAdsDelegate,LineChartDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, MYEDRDelegate {
+    
+    
     
     func getMealTypes() {
         APIWrapper.sharedInstance.getMealTypes({ (responceDic : AnyObject!) -> (Void) in
@@ -168,6 +170,10 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    
+        
+    
+    
     func shareToTweakWall(_ cell: MYEDRCell) {
 
 
@@ -232,6 +238,14 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
         let milliseconds: Int64 = Int64(dateToConvert.timeIntervalSince1970 * 1000);
         let strTimeStamp: String = "\(milliseconds)";
         return strTimeStamp;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredTweaksList?.removeAll(keepingCapacity: false)
+        let tempArr = globalTweaksList
+
+        tweaksList = tempArr
+        self.timelinesTableView.reloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -995,6 +1009,7 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
             controller.searchBar.sizeToFit()
             controller.hidesNavigationBarDuringPresentation = false;
             controller.searchBar.returnKeyType = .done
+            controller.searchBar.delegate = self
             controller.searchBar.placeholder = "cheese, pasta, pizza, dosa"
             
             timelinesTableView.tableHeaderView = controller.searchBar
