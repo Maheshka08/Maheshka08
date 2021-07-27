@@ -116,6 +116,12 @@ class HandleRedirections {
         let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
         navController?.pushViewController(clickViewController!, animated: true);
     }
+    func goToRecipeWall() {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakRecipeViewController") as? TweakRecipeViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+        }
     
     func tappedOnPopUpDone(link: String) {
         if UserDefaults.standard.value(forKey: "COUNTRY_CODE") != nil {
@@ -140,6 +146,8 @@ class HandleRedirections {
             
         } else if link == "ASKSIA" {
             self.goToAskSia()
+        } else if link == "RECIPE_WALL" {
+            self.goToRecipeWall()
         } else if link == "TAP_TO_TWEAK" {
             self.tapToTweak()
             

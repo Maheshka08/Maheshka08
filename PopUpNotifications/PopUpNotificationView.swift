@@ -167,6 +167,8 @@ class PopUpNotificationView: UIView {
             
         } else if link == "ASKSIA" {
             self.goToAskSia()
+        } else if link == "RECIPE_WALL" {
+            self.goToRecipeWall()
         } else if link == "TAP_TO_TWEAK" {
             self.tapToTweak()
             
@@ -436,6 +438,12 @@ class PopUpNotificationView: UIView {
          let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
          navController?.pushViewController(vc, animated: true);
     }
+    func goToRecipeWall() {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+            let clickViewController = storyBoard.instantiateViewController(withIdentifier: "TweakRecipeViewController") as? TweakRecipeViewController;
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        navController?.pushViewController(clickViewController!, animated: true);
+        }
     
     @IBAction func doneTappedOnSmallPopUp(_ sender: Any) {
         self.removeFromSuperview()
@@ -464,7 +472,10 @@ class PopUpNotificationView: UIView {
                } else if link == "HOW_IT_WORKS" {
                    
                  self.playVideo()
-               } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
+               } else if link == "RECIPE_WALL" {
+                self.goToRecipeWall()
+                self.playVideo()
+              } else if link == "MYTAE_PUR_IND_OP_3M" || link == "WLIF_PUR_IND_OP_3M" {
                    if link == "MYTAE_PUR_IND_OP_3M" {
                        if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil {
                         self.showMyTweakAndEatVC(promoLink: "-IndIWj1mSzQ1GDlBpUt")

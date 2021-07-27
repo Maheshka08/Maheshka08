@@ -43,6 +43,10 @@ class MHAAddReadingsContainer: UIViewController, UITextFieldDelegate {
             self.dateTF.textColor = UIColor.lightGray
             self.timeTF.textColor = UIColor.lightGray
         }
+        if #available(iOS 14, *) {// Added condition for iOS 14
+            datePickerView.preferredDatePickerStyle = .wheels
+            datePickerView.sizeToFit()
+          }
         self.data1InputTF.delegate = self
         self.navigationItem.hidesBackButton = true
         let btn3 = UIButton(type: .custom)
@@ -195,6 +199,10 @@ class MHAAddReadingsContainer: UIViewController, UITextFieldDelegate {
     @objc func updateTextField(_ sender:Any) {
         let picker: UIDatePicker? = (self.timeTF.inputView as? UIDatePicker)
         _ = NSDate()
+        if #available(iOS 14, *) {// Added condition for iOS 14
+            picker?.preferredDatePickerStyle = .wheels
+            picker?.sizeToFit()
+          }
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm b"
         let dateString: String? = formatter.string(from: (picker?.date)!)

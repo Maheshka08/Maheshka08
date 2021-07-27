@@ -38,7 +38,7 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+       
         bundle = Bundle.init(path: path!)! as Bundle
         if UserDefaults.standard.value(forKey: "LANGUAGE") != nil {
             let language = UserDefaults.standard.value(forKey: "LANGUAGE") as! String
@@ -124,6 +124,10 @@ class TweakReminderViewController: UIViewController, UITableViewDelegate, UITabl
                datePicker.preferredDatePickerStyle = .wheels
                datePicker.backgroundColor = UIColor.white
             }
+            if #available(iOS 14, *) {// Added condition for iOS 14
+                datePicker.preferredDatePickerStyle = .wheels
+                datePicker.sizeToFit()
+              }
 
             
             datePicker.datePickerMode = .time;
