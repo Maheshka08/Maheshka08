@@ -740,6 +740,18 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
             
         })
     }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView == self.weightTableView {
+        return "Recorded Weight Readings"
+        }
+        return ""
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == self.weightTableView {
+        return 64
+        }
+        return 0
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == self.weightTableView {
