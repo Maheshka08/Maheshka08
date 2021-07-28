@@ -430,6 +430,8 @@ class ActivityTrackerViewController: UIViewController, UITableViewDelegate, UITa
         } else if IS_iPHONEXRXSMAX {
             aaChartV.frame = CGRect(x: 0, y: 0, width: 414, height: 200)
             
+        } else {
+            aaChartV.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
         }
         
     }

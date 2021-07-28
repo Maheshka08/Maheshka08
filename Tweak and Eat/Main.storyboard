@@ -11191,14 +11191,14 @@ Once you are unsubscribed you will not have access to:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meY-cE-Qd3">
-                                        <rect key="frame" x="0.0" y="104" width="390" height="200"/>
+                                        <rect key="frame" x="0.0" y="104" width="390" height="260"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="uix-se-nuU"/>
+                                            <constraint firstAttribute="height" constant="260" id="uix-se-nuU"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dds-5P-zRt">
-                                        <rect key="frame" x="0.0" y="332" width="390" height="390"/>
+                                        <rect key="frame" x="0.0" y="392" width="390" height="330"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weightCell" rowHeight="58" id="xRY-Xm-kxW" customClass="WeightGraphTableCell" customModule="Tweak_and_Eat" customModuleProvider="target">
@@ -11576,7 +11576,7 @@ Once you are unsubscribed you will not have access to:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-XI-DzD">
-                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QOt-bJ-YVd">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="52"/>
@@ -11736,7 +11736,7 @@ Once you are unsubscribed you will not have access to:
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-aS-WyT">
-                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adW-Nb-swH">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="91"/>
@@ -11805,7 +11805,7 @@ Once you are unsubscribed you will not have access to:
                                         </constraints>
                                     </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExH-F5-Wfc">
-                                        <rect key="frame" x="8" y="702" width="374" height="56"/>
+                                        <rect key="frame" x="8" y="658" width="374" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Xya-F8-In5"/>
                                         </constraints>
@@ -11814,14 +11814,14 @@ Once you are unsubscribed you will not have access to:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxs-z3-Btd">
-                                        <rect key="frame" x="0.0" y="104" width="390" height="200"/>
+                                        <rect key="frame" x="0.0" y="104" width="390" height="260"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="zhX-EN-xBs"/>
+                                            <constraint firstAttribute="height" constant="260" id="zhX-EN-xBs"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yOk-JC-SJb">
-                                        <rect key="frame" x="0.0" y="332" width="390" height="434"/>
+                                        <rect key="frame" x="0.0" y="392" width="390" height="330"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weightCell" rowHeight="58" id="KQC-Bs-98f" customClass="WeightGraphTableCell" customModule="Tweak_and_Eat" customModuleProvider="target">
@@ -11912,7 +11912,7 @@ Once you are unsubscribed you will not have access to:
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vtX-yb-2KD">
-                            <rect key="frame" x="112.5" y="6" width="189" height="32"/>
+                            <rect key="frame" x="100.66666666666669" y="6" width="189" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="FITNESS"/>
@@ -14222,7 +14222,7 @@ Enjoy!</string>
         <scene sceneID="OAQ-SO-xrY">
             <objects>
                 <viewController id="SQ6-ib-YyC" customClass="AiDPViewController" customModule="Tweak_and_Eat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Kc-Tw-oaX">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="7Kc-Tw-oaX">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -14384,10 +14384,10 @@ Enjoy!</string>
                                     <outlet property="delegate" destination="SQ6-ib-YyC" id="a4v-lA-OSh"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Due-Nx-Cu3">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-SE-VRl">
                                         <rect key="frame" x="0.0" y="909" width="390" height="44"/>
                                         <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -14419,11 +14419,11 @@ Enjoy!</string>
                                     <constraint firstItem="psZ-EU-PJH" firstAttribute="top" secondItem="Due-Nx-Cu3" secondAttribute="top" constant="36" id="pVv-3C-6yB"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-pi-Hvr">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
-                                        <rect key="frame" x="16" y="396.33333333333331" width="358.33333333333331" height="17.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your diet plan is getting ready. Please visit later.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqW-rU-fk9">
+                                        <rect key="frame" x="16" y="396.33333333333326" width="358.33333333333331" height="17.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Questrial-Regular" family="Questrial" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -17350,7 +17350,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="wAY-l1-OTQ"/>
         <segue reference="EMu-ga-oPP"/>
         <segue reference="aYr-98-64Z"/>
-        <segue reference="Yl1-aV-dl8"/>
+        <segue reference="xmD-KP-fYR"/>
         <segue reference="F2b-tb-uVq"/>
         <segue reference="cfl-VC-5nb"/>
         <segue reference="2eF-Oz-vLq"/>
@@ -17358,7 +17358,7 @@ It will also include 'Recommendations for the coming week in terms of both % car
         <segue reference="KNN-17-uDp"/>
         <segue reference="GHU-a4-eMf"/>
         <segue reference="OcY-kN-l00"/>
-        <segue reference="uKn-Ey-94X"/>
+        <segue reference="aQ1-wB-bIE"/>
         <segue reference="dDv-ou-lXy"/>
         <segue reference="O51-IR-8BS"/>
         <segue reference="2OQ-eL-zMw"/>
