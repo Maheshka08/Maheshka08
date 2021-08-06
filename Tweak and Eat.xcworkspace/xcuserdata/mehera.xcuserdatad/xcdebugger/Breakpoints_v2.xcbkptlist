@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D17D2E85-F868-432C-B797-790C6036277C"
+            uuid = "C04C657D-6049-4BE9-A24B-769F30CA9B0E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FITBIT/ActivityTrackerViewController.swift"
+            filePath = "Tweak and Eat/TimelinesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
-            landmarkName = "viewDidLayoutSubviews()"
+            startingLineNumber = "1681"
+            endingLineNumber = "1681"
+            landmarkName = "reloadTimelines()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "931F0E10-DA82-4348-B914-09FF763C9990"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tweak and Eat/TimelinesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1670"
+            endingLineNumber = "1670"
+            landmarkName = "reloadTimelines()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

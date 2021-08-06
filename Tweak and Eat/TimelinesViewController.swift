@@ -92,6 +92,71 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
 //           self.present(actionSheetAlertController, animated: true, completion: nil)
 //    }
     
+    func popUpImage(tweakObject: TBL_Tweaks?) {
+        self.imagesArray = [String]()
+
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+                let timelineDetails = tweakObject
+                self.userCommentsArray.append(timelineDetails?.tweakUserComments ?? "")
+                if timelineDetails?.tweakModifiedImageURL == ""{
+                    self.imagesArray.append(timelineDetails?.tweakOriginalImageURL ?? "")
+                }
+                else{
+                    self.imagesArray.append(timelineDetails?.tweakModifiedImageURL ?? "")
+                    
+                }
+                
+                
+            
+            group.leave()
+        }
+        
+        // does not wait. But the code in notify() gets run
+        // after enter() and leave() calls are balanced
+        
+        group.notify(queue: .main) {
+            self.performSegue(withIdentifier: "imageSlide", sender: self)
+            
+        }
+    }
+    
+    func popUpImage(tweakObjArray: [AnyObject]?) {
+        self.imagesArray = [String]()
+
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            for tweakObjs in tweakObjArray! {
+                let timelineDetails = tweakObjs as? TBL_Tweaks
+                self.userCommentsArray.append(timelineDetails?.tweakUserComments ?? "")
+                if timelineDetails?.tweakModifiedImageURL == ""{
+                    self.imagesArray.append(timelineDetails?.tweakOriginalImageURL ?? "")
+                }
+                else{
+                    self.imagesArray.append(timelineDetails?.tweakModifiedImageURL ?? "")
+                    
+                }
+                
+                
+            }
+            group.leave()
+        }
+        
+        // does not wait. But the code in notify() gets run
+        // after enter() and leave() calls are balanced
+        
+        group.notify(queue: .main) {
+            self.performSegue(withIdentifier: "imageSlide", sender: self)
+            
+        }
+    }
+    
     func copyMeal(_ cell: MYEDRCell) {
         searchController.isActive = false
 
@@ -496,6 +561,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc var nutritionAnalyticsBtnTapped = false;
     @objc var tweaksArray = NSArray();
     @objc var tweaksLabelsArray = NSMutableArray();
+    @objc var userCommentsArray = [String]()
     @IBOutlet weak var reportsInfoView: UIView!;
     @IBOutlet weak var filterTweaksView: UIView!;
     @IBOutlet weak var filterByLabel: UILabel!;
@@ -509,6 +575,7 @@ class TimelinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc var tweakFeedsRef : DatabaseReference!;
     @IBOutlet weak var lineChartWidthConstraint: NSLayoutConstraint!
     @objc var xLabelsArray = [String]();
+    var imagesArray = [String]()
     
     @objc func getXLabels(lbls: Int) -> [String] {
         
@@ -1615,24 +1682,9 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                         if ((UserDefaults.standard.value(forKey: "TWEAK_ID")) != nil){
                             let tweakObject : TBL_Tweaks? = DataManager.sharedInstance.fetchTWEAKWithId(value: UserDefaults.standard.value(forKey: "TWEAK_ID") as Any as! NSNumber);
                             if (tweakObject != nil) {
-                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-                                let timelineDetail : TimelinesDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "timelineDetailViewController") as! TimelinesDetailsViewController;
-                                timelineDetail.tweakId = Int(truncating: UserDefaults.standard.value(forKey: "TWEAK_ID") as Any as! NSNumber)
-                                
-                                timelineDetail.timelineDetails = tweakObject
-                                timelineDetail.tweakStatus = Int(truncating: tweakObject?.tweakStatus as Any as! NSNumber)
-                                timelineDetail.tweaksList = self.tweaksList;
-                                timelineDetail.tweakUserComments = tweakObject!.tweakUserComments! as String
-
-                                if tweakObject!.tweakModifiedImageURL == "" {
-                                    timelineDetail.imageUrl =  tweakObject!.tweakOriginalImageURL! as String;
-                                }
-                                else{
-                                    timelineDetail.imageUrl =  tweakObject!.tweakModifiedImageURL! as String;
-                                }
-                                timelineDetail.tweakSuggestedText = tweakObject!.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweakObject!.tweakSuggestedText!; UserDefaults.standard.removeObject(forKey: "TWEAK_ID");
-                                self.navigationController?.pushViewController(timelineDetail, animated: true);
-                                
+                                UserDefaults.standard.removeObject(forKey: "TWEAK_ID")
+                                UserDefaults.standard.synchronize()
+                                self.popUpImage(tweakObject: tweakObject)
                             }
                             
                         }
@@ -1755,7 +1807,13 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
                           destination.packageID = pkgID
 
                      // }
-                  }
+                  } else  if segue.identifier == "imageSlide" {
+                    let destinationVC = segue.destination as! PageViewImageSlider
+                    destinationVC.itemIndex = selectedIndex
+                    destinationVC.imagesArray = self.imagesArray
+                    destinationVC.userCommentsArray = self.userCommentsArray
+
+                }
        }
     func goToPurchaseTAEClubScreen() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
@@ -2427,41 +2485,46 @@ if UserDefaults.standard.value(forKey: "-IndIWj1mSzQ1GDlBpUt") != nil || UserDef
 //        return 332
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchController.isActive = false
         if tableView == timelinesTableView {
-            
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-            let timelineDetail : TimelinesDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "timelineDetailViewController") as! TimelinesDetailsViewController;
-            timelineDetail.isFromOneSignal = true
-            var tweak = TBL_Tweaks()
+            selectedIndex = indexPath.row
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+//            let timelineDetail : TimelinesDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "timelineDetailViewController") as! TimelinesDetailsViewController;
+            //timelineDetail.isFromOneSignal = true
+            //var tweak = TBL_Tweaks()
             if self.filteredTweaksList != nil {
             if self.filteredTweaksList!.count > 0 {
-                tweak = self.filteredTweaksList![indexPath.row] as! TBL_Tweaks;
+                //tweak = self.filteredTweaksList![indexPath.row] as! TBL_Tweaks;
+                popUpImage(tweakObjArray: filteredTweaksList)
+
             }
             }
             if self.tweaksList != nil {
             if self.tweaksList!.count > 0 {
-                tweak = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+                //tweak = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+                popUpImage(tweakObjArray: tweaksList)
+
             }
             }
-            timelineDetail.timelineDetails = tweak;
-            timelineDetail.selectedIndex = indexPath.row
-            self.selectedIndex = indexPath.row
-            //let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
-            timelineDetail.tweakId = Int(tweak.tweakId)
-            
-            timelineDetail.tweakSuggestedText = tweak.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweak.tweakSuggestedText!;
-            timelineDetail.tweakStatus = Int(truncating: tweak.tweakStatus as Any as! NSNumber)
-            
-            if tweak.tweakModifiedImageURL == "" {
-                timelineDetail.imageUrl =  tweak.tweakOriginalImageURL! as String;
-            }
-            else{
-                timelineDetail.imageUrl =  tweak.tweakModifiedImageURL! as String;
-            }
-            
-            timelineDetail.tweaksList = self.tweaksList
-            timelineDetail.tweakUserComments = tweak.tweakUserComments! as String
-            self.navigationController?.pushViewController(timelineDetail, animated: true);
+//            timelineDetail.timelineDetails = tweak;
+//            timelineDetail.selectedIndex = indexPath.row
+//            self.selectedIndex = indexPath.row
+//            //let tweak : TBL_Tweaks = self.tweaksList![indexPath.row] as! TBL_Tweaks;
+//            timelineDetail.tweakId = Int(tweak.tweakId)
+//
+//            timelineDetail.tweakSuggestedText = tweak.tweakSuggestedText == "" ? self.bundle.localizedString(forKey: "no_tweak_yet", value: nil, table: nil): tweak.tweakSuggestedText!;
+//            timelineDetail.tweakStatus = Int(truncating: tweak.tweakStatus as Any as! NSNumber)
+//
+//            if tweak.tweakModifiedImageURL == "" {
+//                timelineDetail.imageUrl =  tweak.tweakOriginalImageURL! as String;
+//            }
+//            else{
+//                timelineDetail.imageUrl =  tweak.tweakModifiedImageURL! as String;
+//            }
+//
+//            timelineDetail.tweaksList = self.tweaksList
+//            timelineDetail.tweakUserComments = tweak.tweakUserComments! as String
+//            self.navigationController?.pushViewController(timelineDetail, animated: true);
         }
         if tableView == self.mealTypeTableView {
             let cellDict = self.mealTypeArray[indexPath.row];

@@ -900,17 +900,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(TimelinesDetail
     }
     @IBAction func fullSizeImage(_ sender: AnyObject) {
         self.imagesArray = [String]()
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-//        let fullImageView : FullImageViewController = storyBoard.instantiateViewController(withIdentifier: "fullImageView") as! FullImageViewController;
-//        fullImageView.shareAction = true
-//        if timelineDetails.tweakModifiedImageURL == "" {
-//            fullImageView.imageUrl =  timelineDetails.tweakOriginalImageURL! as String;
-//        }
-//        else{
-//            fullImageView.imageUrl =  timelineDetails.tweakModifiedImageURL! as String;
-//        }
-//       
-//        self.navigationController?.present(fullImageView, animated: true, completion: nil);
+
         
         let group = DispatchGroup()
         group.enter()
